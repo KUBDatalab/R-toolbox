@@ -1,6 +1,24 @@
-# FIXME Lesson title
+# R statistical toolbox
 
-This repository generates the corresponding lesson website from [The Carpentries](https://carpentries.org/) repertoire of lessons. 
+Vi prøver at stykke et to timers kursus sammen med de hyppigst anvendte analytiske og deskriptive statistikker.
+
+Baseret på brugerfeedback indtil videre:
+Grafer (men kun overfladisk, for vi skal have et helt kursus om det!), boxplots nævnes explicit.
+
+t.tests.
+chi i anden
+survival analyse
+
+Og hvad output betyder.
+
+Vores egne noter:
+
+Du må simpelthen selv tage et statistik kursus. det vil vi ikke lære dig. Men vi vil godt vise hvordan man gør, så det gør vi.
+
+Vi skal have den polerede klamamse om hvad p-værdien egentlig betyder. Den skal vi have HEHO til at læse korrektur på.
+
+
+
 
 ## Contributing
 
