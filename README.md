@@ -1,5 +1,13 @@
 # R statistical toolbox
 
+DETTE ER IKKE ET STATISTIKKURSUS
+
+Du må selv, helt selv, få sat dig ind i hvilken test du skal bruge hvornår.
+
+Og om det overhovedet giver mening at bruge en given test på dine data.
+
+
+
 Vi prøver at stykke et to timers kursus sammen med de hyppigst anvendte analytiske og deskriptive statistikker.
 
 Baseret på brugerfeedback indtil videre:

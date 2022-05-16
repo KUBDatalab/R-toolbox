@@ -1,0 +1,25 @@
+---
+title: "FIXME"
+teaching: 30
+exercises: 10
+questions:
+- "FIXME"
+objectives:
+- "FIXME"
+keypoints:
+- "FIXME"
+source: Rmd
+---
+
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("99-")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+{% include links.md %}
