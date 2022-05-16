@@ -1,0 +1,81 @@
+---
+title: "FIXME"
+teaching: 30
+exercises: 10
+questions:
+- "FIXME"
+objectives:
+- "FIXME"
+keypoints:
+- "FIXME"
+source: Rmd
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("01-")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Når vi laver statistiske tests, afprøver vi om en hypotese holder.
+
+I et simpelt eksempel har vi to grupper. Den ene gruppe får et sovemiddel. Den anden gruppe får et andet sovemiddel. Så noterer vi hvor mange ekstra timer de to gruppe sover, i forhold til en kontrol der ikke får sovemiddel.
+
+Datasættet hedder "sleep". 
+
+```{r}
+head(sleep)
+```
+ID er patient id'et, extra er de ekstra timer de sover.
+```{r}
+library(tidyverse)
+sleep %>% 
+  group_by(group) %>% 
+  summarise(mean_extra = mean(extra))
+```
+
+Den ene gruppe sover 45 minutter længere end kontrollen. Den anden 2 timer og 20 minutter længere end kontrollen.
+
+Er forskellen på den gennemsnitlige længere søvn for de to grupper tilfældig, eller ej?
+
+Vi opstiller en hypotese, NULL-hypotesen, der siger at forskellen er tilfældig. Der er ingen forskel på de to grupper. 
+
+Den alternative hypotese er derfor at der er forskel på de to grupper.
+
+Den test vi bruger til at undersøge det hedder students t-test. Lad os prøve at køre den:
+```{r}
+test_res <- t.test(extra ~ group, data = sleep)
+test_res
+```
+
+Resultat?
+t er den testværdi der beregnes ud fra data. Den dukker ofte op, også i andre tests. Og undertiden hedder den noget andet end t. df er antallet af frihedsgrader. (DET MÅ VI HELLERE FORKLARE ET ELLER ANDET STED OGSÅ).
+Dem bruger vi sjælden tid på, men det er ofte en god ide at rapportere dem når man skriver opgaver og den slags.
+
+Den vi typisk fokuserer på er p-værdien. Den finder vi ud fra antallet af frihedsgrader og t-værdien, og i dette tilfælde er den 0.07939.
+
+Hvad betyder det? Det betyder, at vi ser en forskel på de to middelværdier. Den er på 1.58. Og vi har en NULL-hypotese om at der ikke er forskel.
+
+Hvis der ikke er forskel på de to middelværder. Så er sandsynligheden for at vi ser en forskel på dem, der er så ekstrem at den er på 1.58, 0.07839414.
+
+Eller, der er næsten 8% chance for, at hvis der ingen forskel er, at vi ser en forskel på 1.58 timer mellem de to grupper.
+
+Det er en relativt stor chance. Typisk er vores succeskriterium 5%. 
+Så vi kan IKKE afvise NULL-hypotesen. Vi kan ikke, med sikkerhed, sige at der er en forskel.
+
+
+
+# Frihedsgrader - hvad er det?
+
+# normalitet
+
+Cushny, A. R. and Peebles, A. R. (1905) The action of optical isomers: II hyoscines. The Journal of Physiology 32, 501–510. (issue 5-6)
+doi: 10.1113/jphysiol.1905.sp001097
+
+Student (1908) The probable error of the mean. Biometrika, 6, 20.
+side 1 til 25, hæfte 1 vol 6
+
+{% include links.md %}

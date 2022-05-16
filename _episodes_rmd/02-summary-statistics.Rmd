@@ -1,0 +1,42 @@
+---
+title: "Summary statistics"
+teaching: 30
+exercises: 10
+questions:
+- "FIXME"
+objectives:
+- "FIXME"
+keypoints:
+- "FIXME"
+source: Rmd
+---
+
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("02-")
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Deskreptiv statistik. Summariser og giver et første indtryk af vores data.
+
+Hvor er vores data
+
+mean, median, mode, interquartile mean
+
+Spredning
+
+SD, varians, range, inter quartile range, absolute deviation, mean absolute difference, distance standard deviation
+
+shape
+Skewness, kurtoses
+Er mine data faktisk normalfordelte?
+
+afhængighed mellem parrede variable.
+Pearson product-moment correlation coefficient
+
+
+{% include links.md %}
