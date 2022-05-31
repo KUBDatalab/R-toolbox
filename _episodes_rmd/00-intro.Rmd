@@ -36,4 +36,32 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+We are going to be using the palmer penguin dataset - because penguins are cool!
+
+Install the package:
+```{r eval =F}
+install.packages("palmerpenguins")
+```
+
+And load it:
+```{r}
+library(palmerpenguins)
+```
+
+Let us take a look at it:
+```{r}
+head(penguins)
+```
+There are three speciecs of penguins:
+![Three cool species of penquins](../fig/lter_penguins.png)
+We are told where a given penguin has been observed, and some data on their beaks:
+![alt text](../fig/culmen_depth.png)
+In addition we get the length of their flippers, their weight and sex, and when 
+the measurements were taken.
+
+Artwork by @allison_horst. Take a look at her other work, it is pretty awesome:
+https://github.com/allisonhorst/stats-illustrations
+
+
+
 {% include links.md %}
