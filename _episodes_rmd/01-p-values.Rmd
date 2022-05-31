@@ -1,5 +1,5 @@
 ---
-title: "FIXME"
+title: "p-values, distribution, quantiles and normality"
 teaching: 30
 exercises: 10
 questions:
@@ -20,16 +20,21 @@ knitr_fig_path("01-")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Når vi laver statistiske tests, afprøver vi om en hypotese holder.
+# what are we doing when we do a statistical test?
 
-I et simpelt eksempel har vi to grupper. Den ene gruppe får et sovemiddel. Den anden gruppe får et andet sovemiddel. Så noterer vi hvor mange ekstra timer de to gruppe sover, i forhold til en kontrol der ikke får sovemiddel.
+A simple example of doing a statistical test, would be to take two groups, in this case 10 persons, and give them two different sleep inducing drugs. We now measure the increase in the hours they sleep, and try to determine if there is a difference between the two drugs. Ie do they sleep longer taking drug 1 than they do taking drug 2.
 
-Datasættet hedder "sleep". 
+This is a classic dataset from the study af two versions (optical isomers) of scopolamine. 
+
+The datset is called "sleep", and is included with R:
 
 ```{r}
 head(sleep)
 ```
-ID er patient id'et, extra er de ekstra timer de sover.
+ID is the patient ID, extra the additional hours of sleep, when taking group (or drug version) 1 or 2.
+
+We can calculate the average number of extra sleep for the two drugs (group):
+
 ```{r}
 library(tidyverse)
 sleep %>% 
@@ -37,19 +42,69 @@ sleep %>%
   summarise(mean_extra = mean(extra))
 ```
 
-Den ene gruppe sover 45 minutter længere end kontrollen. Den anden 2 timer og 20 minutter længere end kontrollen.
+It would appear that drug 2 provides the test subjects with significant more sleep that drug 1. 
 
-Er forskellen på den gennemsnitlige længere søvn for de to grupper tilfældig, eller ej?
+But this might be due to chance! Idling engines or noisy birds might randomly disturb our sleep, and there is a natural variation in how many hours each individual sleeps every night.
 
-Vi opstiller en hypotese, NULL-hypotesen, der siger at forskellen er tilfældig. Der er ingen forskel på de to grupper. 
+Statistical tests will give us a measure of the odds of seeing the difference shown above, purely by change.
 
-Den alternative hypotese er derfor at der er forskel på de to grupper.
+Step 1 is to define a NULL-hypothesis, claiming that the diffence is coincidental, and that there is no true difference in the average number of extra hours slept when taking one of the two drugs. 
 
-Den test vi bruger til at undersøge det hedder students t-test. Lad os prøve at køre den:
+Step 2, which follows automatically, is that there is a difference. That the difference we are seeing is not due to chance.
+
+One test used for this is the Student's t-test.
+
+Running that test is step 3.
+
+The t-test can be run in two ways. 
+
+Method 1 requires us to have a dataframe with two columns, like we have in the sleep dataset shown above. We have a column with the value we are testing, extra sleep in this case, and a column indicating which group each observation is in.
+
+We can then input the data to the t.test in this manner:
+
 ```{r}
-test_res <- t.test(extra ~ group, data = sleep)
-test_res
+test_res_1 <- t.test(extra ~ group, data = sleep)
 ```
+We store the result as the variable test_res. The formual notation extra ~ group can be read as:
+
+The variable extra, as a function of group. Group is a categorical variable, the test subjects take either drug number 1 or number 2.
+
+We need to tell the test which dataframe we are using, specifying "data = sleep".
+
+The alternative way is to extract two vectors, containing the extra hours of sleep, one for each drug:
+
+```{r}
+d1 <- sleep[sleep$group==1,]$extra
+d2 <- sleep[sleep$group==2,]$extra
+```
+
+And then running the t-test in this manner:
+```{r}
+test_res_2 <- t.test(d1,d2)
+```
+
+The two results are not completely identical:
+
+```{r}
+test_res_1
+```
+
+However the difference is only due to the different ways we inputted the data to the function:
+```{r}
+test_res_2
+```
+And what does the output tell us?
+
+We are getting the t-statistics, and the number of degress of freedom. Today they are mostly used for reporting the results, but historically we would take them and use them to look up the p-value in a printed table.
+
+We no longer do that, we get the p-value directly. It is 0.07939.
+
+We are told that the alternative hypothosis is that the true difference in means for our two samples is not equal to 0. Which is a cumbersome way of saying that the alternative hypothesis is that the means are different.
+
+And what is the conclusion? 
+
+The p-value tells us the probability that if the two sam
+
 
 Resultat?
 t er den testværdi der beregnes ud fra data. Den dukker ofte op, også i andre tests. Og undertiden hedder den noget andet end t. df er antallet af frihedsgrader. (DET MÅ VI HELLERE FORKLARE ET ELLER ANDET STED OGSÅ).
@@ -67,6 +122,9 @@ Det er en relativt stor chance. Typisk er vores succeskriterium 5%.
 Så vi kan IKKE afvise NULL-hypotesen. Vi kan ikke, med sikkerhed, sige at der er en forskel.
 
 
+# distributions
+
+# quantiles
 
 # Frihedsgrader - hvad er det?
 
