@@ -21,22 +21,137 @@ knitr_fig_path("02-")
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Deskreptiv statistik. Summariser og giver et første indtryk af vores data.
 
-Hvor er vores data
+# Summary statistics 
 
-mean, median, mode, interquartile mean
+Summary statistics is a collective term for descriptive summarisations of observations. 
 
-Spredning
+They are typically divided into measurements of:
+Location
+dispersion
+Shape
+Dependence
+
+
+
+## Location
+
+Looking at our data, where are they?
+
+
+### Mean
+
+The average or geometric mean, but usually just mean, in this case the 
+average weight of penguins:
+```{r}
+mean(penguins$body_mass_g, na.rm = T)
+```
+Note that we are asking the mean function to remove missing, NA, values before
+calculating the mean.
+
+### Median
+
+Placing all our penguins in order from the lightest to the heaviest, what is the
+weight of the middle penguion?
+
+```{r}
+median(penguins$body_mass_g, na.rm = T)
+```
+That the median penguin is lighter than the average penguin tells us that weight 
+amongst these penguins is skewed towards lighter, smaller penguins.
+
+
+### Mode
+
+Mode is the most frequent or common observation of a given variable. 
+
+R does not have a built-in standard function for this. There are several ways of 
+getting it, this is just one way of getting the mode of the body mass of the 
+penguins:
+```{r}
+penguins %>%  
+  group_by(body_mass_g) %>% 
+  summarise(number = n()) %>% 
+  arrange(desc(number)) %>% 
+  slice(1) %>% 
+  pull(body_mass_g)
+```
+We group the penguins by body_mass_g, and get the number of observations in 
+each group of penguins. Then we arrange the resulting dataframe in order of 
+descending number of observations, use the slice function to give us only the
+first row of data in that dataframe. And finally we use the pull function to pull
+out the value in the column body_mass_g.
+
+### Interquartile mean
+
+Lidt mere bøvlet...
+
+## Spread
+
+Given the location of our data, how much are they spread out around that location
+
+SD, 
+varians, 
+range, 
+inter quartile range, 
+absolute deviation, 
+mean absolute difference, 
+distance standard deviation
+
+
+## Shape
+
+When we look at hte distribution of our data, what shape do they have. Summarised to numbers.
+
+Skewness
+
+kurtoses
+
+## Dependency
+
+If we measure more than one variable, are there dependencies between them. 
+Pearson product-moment correlation coefficient
+
+# quick summarystatistics
+
+
+```{r}
+summary(penguins$bill_length_mm)
+```
+```{r}
+boxplot(penguins$bill_depth_mm)
+```
+More often plotted as a series of boxplots where we make one boxplot for each of a
+number of groups.
+
+# details:
+
+## Location
+
+Getting the mean:
+Looking at our data, where are they?
+
+mean,
+median
+mode
+interquartile mean
+
+## Spread
+
+Given the location of our data, how much are they spread out around that location
 
 SD, varians, range, inter quartile range, absolute deviation, mean absolute difference, distance standard deviation
 
-shape
+
+## Shape
+
+When we look at hte distribution of our data, what shape do they have. Summarised to numbers.
+
 Skewness, kurtoses
-Er mine data faktisk normalfordelte?
 
-afhængighed mellem parrede variable.
+## Dependency
+
+If we measure more than one variable, are there dependencies between them. 
 Pearson product-moment correlation coefficient
-
 
 {% include links.md %}
