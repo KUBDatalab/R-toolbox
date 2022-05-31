@@ -16,6 +16,14 @@ keypoints:
 source: Rmd
 ---
 
+# THIS IS NOT A STATISTICS COURSE!
+
+We do NOT offer advice on which statistical test or method you should use.
+
+We do NOT offer advice on what your data actually shows you.
+
+We DO show how to make a t-test, a chi square test, how to make a boxplot, a linear regression an ANOVA test etc.
+
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
