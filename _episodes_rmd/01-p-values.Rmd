@@ -1,5 +1,5 @@
 ---
-title: "p-values and normality"
+title: "p-values, distribution, quantiles and normality"
 teaching: 30
 exercises: 10
 questions:
@@ -122,6 +122,9 @@ Det er en relativt stor chance. Typisk er vores succeskriterium 5%.
 Så vi kan IKKE afvise NULL-hypotesen. Vi kan ikke, med sikkerhed, sige at der er en forskel.
 
 
+# distributions
+
+# quantiles
 
 # Frihedsgrader - hvad er det?
 
