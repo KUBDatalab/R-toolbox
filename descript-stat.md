@@ -1,82 +1,124 @@
 ---
-title: 'descript_stat'
+title: 'Descriptive Statistics'
 teaching: 10
 exercises: 2
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
-:::::::::::::::::::::::::::::::::::::: questions 
+::: questions
+-   How can we describe a set of data?
+:::
 
-- How do you write a lesson using R Markdown and `{sandpaper}`?
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::: objectives
-
-- Explain how to use markdown with the new lesson template
-- Demonstrate how to include pieces of code, figures, and nested challenge blocks
-
-::::::::::::::::::::::::::::::::::::::::::::::::
+::: objectives
+-   Explain how to use markdown with the new lesson template
+-   Demonstrate how to include pieces of code, figures, and nested
+    challenge blocks
+:::
 
 ## Introduction
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
-
-Det kan være en udfordring hvis deltagene ikke ved hvad et 
-gennemsnit er. 
+::: instructor
+Det kan være en udfordring hvis deltagene ikke ved hvad et gennemsnit
+er.
 
 Inline instructor notes can help inform instructors of timing challenges
 associated with the lessons. They appear in the "Instructor View"
+:::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Descriptive statistic involves summarising or describing a set of data.
+It usually presents quantitative descriptions in a short form, and helps
+to simplify large datasaets.
 
-Descriptive statistic involves summarising or describing a set of data. 
-It usually presents quantitative descriptions in a short form, and helps to
-simplify large datasaets.
+Most descriptive statistical parameters applies to just one variable in
+our data, and includes:
 
-Most descriptive statistical parameters applies to just one variable in our
-data, and includes:
+| Central tendency | Measure of variation | NA | Measures of Shape |
+|------------------|---------------------------~---|-------------------------------|-------------------|
+| Mean             | Range                         |                       | Skewness          |
+| Median           | Quartiles (IQR)               |             | Kurtosis          |
+| Mode             | Percentiles                   |                               |                   |
+|              | Variance                   |                               |                   |
+|              | Standard deviation                   |                               |                   |
 
-* Mean
-* Median
-* Mode
-* Standard deviation
-* Range
-* Variance
-* Quartiles - especially the Interquartile Range, IQR
-* Skewness
-* Kurtosis
-* Percentiles
 
-The easiest way to get summary statistics on data is to use the `summarise` function
-from the `tidyverse` package.
+# Central tendency
+
+The easiest way to get summary statistics on data is to use the
+`summarise` function from the `tidyverse` package.
+
 
 ```r
 library(tidyverse)
 ```
 
-```output
-── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-```
-
-
 In the following we are working with the `palmerpenguins` dataset:
+
 
 ```r
 library(palmerpenguins)
 ```
 
+Specifically the weight of the penguins, stored in the variable
+`body_mass_g`:
+
+
+```r
+penguins$body_mass_g
+```
+
+```output
+  [1] 3750 3800 3250   NA 3450 3650 3625 4675 3475 4250 3300 3700 3200 3800 4400
+ [16] 3700 3450 4500 3325 4200 3400 3600 3800 3950 3800 3800 3550 3200 3150 3950
+ [31] 3250 3900 3300 3900 3325 4150 3950 3550 3300 4650 3150 3900 3100 4400 3000
+ [46] 4600 3425 2975 3450 4150 3500 4300 3450 4050 2900 3700 3550 3800 2850 3750
+ [61] 3150 4400 3600 4050 2850 3950 3350 4100 3050 4450 3600 3900 3550 4150 3700
+ [76] 4250 3700 3900 3550 4000 3200 4700 3800 4200 3350 3550 3800 3500 3950 3600
+ [91] 3550 4300 3400 4450 3300 4300 3700 4350 2900 4100 3725 4725 3075 4250 2925
+[106] 3550 3750 3900 3175 4775 3825 4600 3200 4275 3900 4075 2900 3775 3350 3325
+[121] 3150 3500 3450 3875 3050 4000 3275 4300 3050 4000 3325 3500 3500 4475 3425
+[136] 3900 3175 3975 3400 4250 3400 3475 3050 3725 3000 3650 4250 3475 3450 3750
+[151] 3700 4000 4500 5700 4450 5700 5400 4550 4800 5200 4400 5150 4650 5550 4650
+[166] 5850 4200 5850 4150 6300 4800 5350 5700 5000 4400 5050 5000 5100 4100 5650
+[181] 4600 5550 5250 4700 5050 6050 5150 5400 4950 5250 4350 5350 3950 5700 4300
+[196] 4750 5550 4900 4200 5400 5100 5300 4850 5300 4400 5000 4900 5050 4300 5000
+[211] 4450 5550 4200 5300 4400 5650 4700 5700 4650 5800 4700 5550 4750 5000 5100
+[226] 5200 4700 5800 4600 6000 4750 5950 4625 5450 4725 5350 4750 5600 4600 5300
+[241] 4875 5550 4950 5400 4750 5650 4850 5200 4925 4875 4625 5250 4850 5600 4975
+[256] 5500 4725 5500 4700 5500 4575 5500 5000 5950 4650 5500 4375 5850 4875 6000
+[271] 4925   NA 4850 5750 5200 5400 3500 3900 3650 3525 3725 3950 3250 3750 4150
+[286] 3700 3800 3775 3700 4050 3575 4050 3300 3700 3450 4400 3600 3400 2900 3800
+[301] 3300 4150 3400 3800 3700 4550 3200 4300 3350 4100 3600 3900 3850 4800 2700
+[316] 4500 3950 3650 3550 3500 3675 4450 3400 4300 3250 3675 3325 3950 3600 4050
+[331] 3350 3450 3250 4050 3800 3525 3950 3650 3650 4000 3400 3775 4100 3775
+```
+
+How can we describe these values?
 
 ## Mean
-The average of all datapoints:
+
+The mean is the average of all datapoints. We add all values (excluding
+the missing values encoded with `NA`), and divide with the number of
+observations:
+
+$$\overline{x} = \frac{1}{N}\sum_1^N x_i$$ Where N is the number of
+observations, and $x_i$ is the individual observations in the sample
+$x$.
+
+The easiest way of getting the mean is using the `mean()` function:
+
+
+```r
+mean(penguins$body_mass_g, na.rm = TRUE)
+```
+
+```output
+[1] 4201.754
+```
+
+A slightly more cumbersome way is using the summarise function from
+`tidyverse`:
 
 
 ```r
@@ -90,23 +132,23 @@ penguins %>%
      <dbl>
 1    4202.
 ```
-The variable contains missing data, encoded as NA, which we remove from the
-data before calculating the mean.
 
-Barring significant outliers, `mean` is an expression of position of the data.
-This is the weight we would expect a random penguin in our dataset to have. We
-also have three different species of penguins in the dataset, and they have 
-quite different average weights. There is also a significant difference in the
-average weight for the two sexes. We will get to that at the end of this 
-segment.
+The advantage will be clear below.
 
+Barring significant outliers, `mean` is an expression of position of the
+data. This is the weight we would expect a random penguin in our dataset
+to have. We also have three different species of penguins in the
+dataset, and they have quite different average weights. There is also a
+significant difference in the average weight for the two sexes. We will
+get to that at the end of this segment.
 
 ## Median
-Similarly to the average/mean, the `median` is an expression of the location 
-of the data. If we order our data by size, from the smallest to the largest
-value, and locate the middle observation, we get the median. This is the 
-value that half of the observations is smaller than. And half the observations
-is larger.
+
+Similarly to the average/mean, the `median` is an expression of the
+location of the data. If we order our data by size, from the smallest to
+the largest value, and locate the middle observation, we get the median.
+This is the value that half of the observations is smaller than. And
+half the observations is larger.
 
 
 ```r
@@ -120,16 +162,40 @@ penguins %>%
    <dbl>
 1   4050
 ```
-We can note that the mean is larger that the median. This indicates that the data
-is skewed, in this case toward the larger penguins. 
+
+We can note that the mean is larger that the median. This indicates that
+the data is skewed, in this case toward the larger penguins.
+
+We can get both `median` and `mean` in one go:
+
+
+```r
+penguins %>% 
+  summarise(median = median(body_mass_g, na.rm = T),
+            mean   = mean(body_mass_g, na.rm = TRUE))
+```
+
+```output
+# A tibble: 1 × 2
+  median  mean
+   <dbl> <dbl>
+1   4050 4202.
+```
+
+::: instructor
+This illustrates for the learners that we can calculate more than one
+summary statistics in one summarise function.
+:::
+
 
 ## Mode
 
-Mode is the most common, or frequently occurring, observation. R does not have 
-a build-in function for this, but we can easily find the mode by counting the
-different observations,and locating the most common one. We typically do not use
-this for continous variables. The mode of the `sex` variable in this dataset
-can be found like this:
+Mode is the most common, or frequently occurring, observation. R does
+not have a build-in function for this, but we can easily find the mode
+by counting the different observations,and locating the most common one.
+We typically do not use this for continous variables. The mode of the
+`sex` variable in this dataset can be found like this:
+
 
 ```r
 penguins %>% 
@@ -146,88 +212,28 @@ penguins %>%
 3 <NA>      11
 ```
 
-We count the different values in the `sex` variable, and arrange the counts
-in descending order (`desc`). The mode of the `sex` variable is male.
+We count the different values in the `sex` variable, and arrange the
+counts in descending order (`desc`). The mode of the `sex` variable is
+male.
 
-In this specific case, we note that the dataset is pretty balanced regarding the
-two sexes.
-
-## Standard deviation
-The standard deviation is a measurement of the variation or dispersion in the
-values. We have a mean, but how much variation do we actually have?
-
-A histogram is typically a good way to visualise the data:
-
-```r
-penguins %>% 
-  ggplot(aes(body_mass_g)) +
-  geom_histogram()
-```
-
-```output
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-```warning
-Warning: Removed 2 rows containing non-finite outside the scale range
-(`stat_bin()`).
-```
-
-<img src="fig/descript-stat-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
-
-We see a large peak around 3500 gram, but there is a lot of variation in the data,
-that is, it is spread out.
-
-NOTE: We are still looking at three different species of penguins, with two sexes,
-and it might be more reasonable to look only at one species, and one sex. We'll
-get to that.
-
-The standard deviation is easily found similarly to the previous examples:
-
-```r
-penguins %>% 
-  summarise(stddev = sd(body_mass_g, na.rm = T))
-```
-
-```output
-# A tibble: 1 × 1
-  stddev
-   <dbl>
-1   802.
-```
-The standard deviation is found by subtracting the mean from every observation,
-squaring the results, and calculating the mean of these squared deviations from
-the mean. Finally we take the square-root of the sum, and get the standard deviation.
-
-## Variance
-The variance is similar to the standard deviation. Actually we have already 
-calculated it above; the standard deviation is the square-root of the variance.
-
-Since the standard deviation occurs in several statistical tests, it is more
-frequently used that the variance. It is also more intuitively relateable to 
-the mean.
-
-NOTE - måske vi skal have variansen nævnt før standardafvigelsen?
-
-The variance is calculated similarly to the previous examples:
+In this specific case, we note that the dataset is pretty balanced
+regarding the two sexes.
 
 
-```r
-penguins %>% 
-  summarise(var = var(body_mass_g, na.rm = T))
-```
+# Measures of variance
 
-```output
-# A tibble: 1 × 1
-      var
-    <dbl>
-1 643131.
-```
+Knowing where the observations are located is interesting. But how do they
+vary? How can we describe the variation in the data?
 
 ## Range
-The range of the data is simply the smallest and larges observations.
+
+The simplest information about the variation is the range. What is the
+smallest and what is the largest value? The `range()` function can find
+it.
+
 Since this returns more than one value, we use the function reframe
 instead of summarise:
+
 
 ```r
 penguins %>% 
@@ -242,8 +248,9 @@ penguins %>%
 2  6300
 ```
 
-However it is typically more usefull to extract the two values to 
+However it is typically more usefull to extract the two values to
 separate columns in the output:
+
 
 ```r
 penguins %>% 
@@ -257,26 +264,158 @@ penguins %>%
   <int> <int>
 1  2700  6300
 ```
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
-This also illustrates for the learners that we can calculate more than one
-summary statistics in one summarise function.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+The range informs us of the spread of the observations
 
-The range, like the variance and the standard deviation informs us of the
-spread of the observations.
 
-## Quartiles - especially the Interquartile Range, IQR
+## Variance
 
-We saw the median. That was the value where 50% of the observations in the 
-dataset were smaller. That is also called the 50% quantile. 
+The observations varies. They are no all located at the mean (or
+median), but are spread out on both sides of the mean. Can we get a
+numerical value describing that?
 
-Similarly we have other quantiles. The 25% quantile is the value where 25% of
-the observations are smaller. And the 75% quantile is where 75% of the values
-are smaller. We are typically interested in the interquartile range, that is
-the range, in which we find 50% of the observations, centered around the median.
+An obvious way would be to calculate the difference between each of the
+observations and the mean, and then take the average of those
+differences.
 
-Like previous summary statistics, we get it using the summarise function:
+That will give us the average deviation. But we have a problem. The
+average weight of penguins was 4202 (rounded). Look at two penguins, one
+weighing 5000, and another weighing 3425. The differences are:
+
+-   5000 - 4202 = 798
+-   3425 - 4202 = -777
+
+The sum of those two differences is: -777 + 798 = 21 g. And the average
+is then 10.5 gram. That is *not* a good estimate of a variation from the
+mean of more than 700 gram.
+
+The problem is, that the differences can be both positive and negative,
+and might cancel each other out.
+
+We solve that problem by squaring the differences, and calculate the
+mean of those.
+
+
+::: instructor
+Why not just averaging the absolute values? Using the square rather than
+the absolute difference, weighs the deviations so larger deviations have 
+relatively larger influence on the variance. Squaring results in a continous
+and differentiable function, which helps in situations where we have to 
+do an optimisation. Also the normal distribution is defined by the variance as
+defined here, and we would really like to get a connection between what we 
+observe here, and the normal distribution.
+:::
+
+The mathematical notation would be:
+
+$$
+Var = \frac{\sum_{i=1}^N(x_i - \mu)^2}{N}
+$$
+
+Why are we suddenly using $\mu$ instead of $\overline{x}$? Because this
+definition uses the population mean. The mean, or average, in the entire
+population of all penguins everywhere in the universe. But we have not
+weighed all those penguins. Instead we will normally look at the sample
+variance:
+
+$$
+Var = \frac{\sum_{i=1}^N(x_i - \overline{x})^2}{N-1}
+$$
+
+And again we are not going to do that by hand, but will ask R to do it
+for us:
+
+
+```r
+penguins %>% 
+  summarise(
+            variance = var(body_mass_g, na.rm = T)
+          )
+```
+
+```output
+# A tibble: 1 × 1
+  variance
+     <dbl>
+1  643131.
+```
+
+## Standard deviation
+
+There is a problem with the variance. It is 643131, completely off scale
+from the actual values. There is also a problem with the unit. It is in
+$g^2$.
+
+A measurement of the variation of the data would be the standard
+deviation, simply defined as the square root of the variance:
+
+
+```r
+penguins %>% 
+  summarise(
+            stddev = sd(body_mass_g, na.rm = T)
+          )
+```
+
+```output
+# A tibble: 1 × 1
+  stddev
+   <dbl>
+1   802.
+```
+
+Since the standard deviation occurs in several statistical tests, it is
+more frequently used that the variance. It is also more intuitively
+relateable to the mean.
+
+
+## Quartiles
+
+The median can be understood as splitting the data in two equally sized parts,
+where one is characterized by having values smaller than the median and 
+the other as having values larger than the median. It is the value where 50%
+of the observations are smaller. 
+
+Similary we can calculate the value where 25% of the observations are smaller. 
+
+That is often called the first quartile, where the median is the 50%, or
+second quartile. Quartile implies four parts, and the existense of a third or 
+75% quartile. 
+
+We can calcultate those using the quantile function:
+
+
+```r
+quantile(penguins$body_mass_g, probs = .25, na.rm = T)
+```
+
+```output
+ 25% 
+3550 
+```
+
+
+and
+
+
+```r
+quantile(penguins$body_mass_g, probs = .75, na.rm = T)
+```
+
+```output
+ 75% 
+4750 
+```
+
+::: instructor
+probs because if we select a random penguin, we have a 25% chance of
+selecting a penguin that weighs less than 3550 gram. This ties in to
+percentiles and qq-plots.
+:::
+
+We are often interested in knowing the range in which 50% of the observations fall.
+
+That is used often enough that we have a dedicated function for it:
 
 
 ```r
@@ -291,43 +430,70 @@ penguins %>%
 1  1200
 ```
 
-It is often interesting to also know the values for the 25% quartile (also 
-called the first quartile), and the 75% quartile (aka third quartile).
-The function `quantile` allows us to specify exactly which quantile we 
-want:
+
+The name of the quantile function implies that we might have other quantiles than
+quartiles. Actually we can calculate any quantile, eg the 2.5% quantile:
+
 
 
 ```r
-quantile(penguins$body_mass_g, probs = .25, na.rm = T)
+quantile(penguins$body_mass_g, probs = .025, na.rm = T)
 ```
 
 ```output
- 25% 
-3550 
+    2.5% 
+2988.125 
 ```
 
+
+The individual quantiles can be interesting in themselves. If we want a visual
+representation of *all* quantiles, we can calculate all of them, and plot them.
+
+Instead of doing that by hand, we can use a concept called *CDF* or cumulative 
+density function:
+
+
+
 ```r
-quantile(penguins$body_mass_g, probs = .75, na.rm = T)
+CDF <- ecdf(penguins$body_mass_g)
+CDF
 ```
 
 ```output
- 75% 
-4750 
+Empirical CDF 
+Call: ecdf(penguins$body_mass_g)
+ x[1:94] =   2700,   2850,   2900,  ...,   6050,   6300
 ```
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
-probs because if we select a random penguin, we have a 25% chance of selecting
-a penguin that weighs less than 3550 gram.
-This ties in to percentiles and qq-plots.
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+That was not very informative. Lets plot it:
+
+[NOT QUITE DONE!]
+
+```r
+quantiler <- quantile(penguins$body_mass_g, probs = c(0.25, 0.5), na.rm = TRUE)
+ggplot(penguins, aes(body_mass_g)) + 
+  stat_ecdf(geom = "step") +
+  geom_hline(yintercept = c(0.25,0.5,0.75))
+```
+
+```warning
+Warning: Removed 2 rows containing non-finite outside the scale range
+(`stat_ecdf()`).
+```
+
+<img src="fig/descript-stat-rendered-unnamed-chunk-18-1.png" style="display: block; margin: auto;" />
+
+
+
+## Measures of shape
 
 ## Skewness
 
-We previously saw a histogram of the data, and noted that the observations 
-were skewed to the left, and that the "tail" on the right was longer than
-on the left. That skewness can be quantised.
+We previously saw a histogram of the data, and noted that the
+observations were skewed to the left, and that the "tail" on the right
+was longer than on the left. That skewness can be quantised.
 
-There is no function for skewness build into R, but we can get it from the
-librar `e1071`
+There is no function for skewness build into R, but we can get it from
+the librar `e1071`
 
 
 ```r
@@ -338,35 +504,21 @@ skewness(penguins$body_mass_g, na.rm = T)
 ```output
 [1] 0.4662117
 ```
-The skewness is positive, indicating that the data are skewed to the left, just
-as we saw. A negative skewness would indicate that the data skew to the right.
+
+The skewness is positive, indicating that the data are skewed to the
+left, just as we saw. A negative skewness would indicate that the data
+skew to the right.
 
 ## Kurtosis
 
 Og her skal vi nok lige have styr på den intuitive forståelse af det.
 
-## Percentiles
-
-Just as with the interquartile range, where we calculated the 25% and 75% 
-quantiles, we can calculate any quantile. 
-
-Here eg. the 1% quantile:
-
-
-```r
-quantile(penguins$body_mass_g, probs = .01, na.rm = T)
-```
-
-```output
-  1% 
-2900 
-```
-or, the value where 1% of the observations are smaller.
 
 ## Everythin Everywhere all at once
 
-A lot of these descriptive values can be gotten for every variable in the 
-dataset using the `summary` function:
+A lot of these descriptive values can be gotten for every variable in
+the dataset using the `summary` function:
+
 
 ```r
 summary(penguins)
@@ -390,12 +542,13 @@ summary(penguins)
  Max.   :231.0     Max.   :6300                Max.   :2009  
  NA's   :2         NA's   :2                                 
 ```
-Here we get the range, the 1st and 3rd quantiles (and from those the IQR), 
-the median and the mean and, rather useful, the number of missing values in 
-each variable.
 
-We can also get all the descriptive values in one table, by adding more than
-one summarising function to the summarise function:
+Here we get the range, the 1st and 3rd quantiles (and from those the
+IQR), the median and the mean and, rather useful, the number of missing
+values in each variable.
+
+We can also get all the descriptive values in one table, by adding more
+than one summarising function to the summarise function:
 
 
 ```r
@@ -420,11 +573,12 @@ penguins %>%
   <int> <int> <dbl>  <dbl>  <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl>    <dbl>
 1  2700  6300 4202.   4050   802. 643131.  3550  4750  1200 0.466   -0.740
 ```
+
 Which leads us to a table that is a bit too wide.
 
-As noted, we have three different species of penguins in the dataset. Their 
-weight varies a lot. If we want to do the summarising on each for the species,
-we can group the data by species, before summarising:
+As noted, we have three different species of penguins in the dataset.
+Their weight varies a lot. If we want to do the summarising on each for
+the species, we can group the data by species, before summarising:
 
 
 ```r
@@ -446,9 +600,12 @@ penguins %>%
 2 Chinstrap  2700  4800 3733.   3700   384.
 3 Gentoo     3950  6300 5076.   5000   504.
 ```
+
 We have removed some summary statistics in order to get a smaller table.
 
-Finally boxplots offers a way of visualising some of the summary statistics:
+Finally boxplots offers a way of visualising some of the summary
+statistics:
+
 
 ```r
 penguins %>% 
@@ -461,19 +618,75 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_boxplot()`).
 ```
 
-<img src="fig/descript-stat-rendered-unnamed-chunk-19-1.png" style="display: block; margin: auto;" />
-The boxplot shows us the median (the fat line in the middel of each box)m, the 
-1st and 3rd quartiles (the ends of the boxes), and the range, with the whiskers
-at each end of the boxes, illustrating the minimum and maximum. Any observations,
-more than 1.5 times the IQR from either the 1st or 3rd quartiles, are deemed as 
-outliers and would be plotted as individual points in the plot.
+<img src="fig/descript-stat-rendered-unnamed-chunk-23-1.png" style="display: block; margin: auto;" />
 
-::::::::::::::::::::::::::::::::::::: keypoints 
+The boxplot shows us the median (the fat line in the middel of each
+box)m, the 1st and 3rd quartiles (the ends of the boxes), and the range,
+with the whiskers at each end of the boxes, illustrating the minimum and
+maximum. Any observations, more than 1.5 times the IQR from either the
+1st or 3rd quartiles, are deemed as outliers and would be plotted as
+individual points in the plot.
 
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
+## A histogram
 
-::::::::::::::::::::::::::::::::::::::::::::::::
+A histogram is a plot or graph where we split the range of observations
+in a number of "buckets", and count the number of observations in each
+bucket:
 
+
+```r
+penguins %>% 
+  select(body_mass_g) %>% 
+  filter(!is.na(body_mass_g)) %>% 
+  mutate(buckets = cut(body_mass_g, breaks=seq(2500,6500,500))) %>% 
+group_by(buckets) %>% 
+summarise(antal = n())
+```
+
+```output
+# A tibble: 8 × 2
+  buckets         antal
+  <fct>           <int>
+1 (2.5e+03,3e+03]    11
+2 (3e+03,3.5e+03]    67
+3 (3.5e+03,4e+03]    92
+4 (4e+03,4.5e+03]    57
+5 (4.5e+03,5e+03]    54
+6 (5e+03,5.5e+03]    33
+7 (5.5e+03,6e+03]    26
+8 (6e+03,6.5e+03]     2
+```
+
+Typically, rather that counting ourself, we leave the work to R, and
+make a histogram:
+
+
+```r
+penguins %>% 
+ggplot((aes(x=body_mass_g))) +
+geom_histogram()
+```
+
+```output
+`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+```
+
+```warning
+Warning: Removed 2 rows containing non-finite outside the scale range
+(`stat_bin()`).
+```
+
+<img src="fig/descript-stat-rendered-unnamed-chunk-25-1.png" style="display: block; margin: auto;" />
+
+By default ggplot chooses 30 bins, typically we should chose a different
+number, ideally set the widths of them, manually.
+
+
+
+::: keypoints
+-   Use `.md` files for episodes when you want static content
+-   Use `.Rmd` files for episodes when you need to generate output
+-   Run `sandpaper::check_lesson()` to identify any issues with your
+    lesson
+-   Run `sandpaper::build_lesson()` to preview your lesson locally
+:::
