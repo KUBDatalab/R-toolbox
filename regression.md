@@ -1,5 +1,5 @@
 ---
-title: 'regression'
+title: 'Linear regression'
 teaching: 10
 exercises: 2
 ---
@@ -19,26 +19,16 @@ exercises: 2
 
 ## Introduction
 
-When making a regression, we are attempting to construct a model, explaining a
-dependent variable, with one or more independent variables.
-
-We are positing that at variable in our dataset varies, and that that variation
-can be explained by variations in other varibles. Ideally variables we can 
-control. That allows us to change an independent variable, and confirm that 
-the dependent variable actually changes as predicted.
-
-We begin by looking at the simplest case; identifying a linear relationship
-between two variables:
 
 
 Here is some data:
 
 
-```r
+``` r
 library(tidyverse)
 ```
 
-```output
+``` output
 ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
@@ -51,7 +41,7 @@ library(tidyverse)
 ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
-```r
+``` r
 mtcars %>% 
   ggplot(aes(wt,mpg)) +
   geom_point()
@@ -71,14 +61,14 @@ the connection between the two variables.
 Let us add a straight line:
 
 
-```r
+``` r
 mtcars %>% 
   ggplot(aes(wt,mpg)) +
   geom_point() +
   geom_smooth(method = "lm", se = F)
 ```
 
-```output
+``` output
 `geom_smooth()` using formula = 'y ~ x'
 ```
 
@@ -86,6 +76,23 @@ mtcars %>%
 
 Not that bad, the connection is not 100%, we are seeing variation.
 
+$$mpg = $$
+
+
+
+When making a regression, we are attempting to construct a model, explaining a
+dependent variable, with one or more independent variables.
+
+We are positing that at variable in our dataset varies, and that that variation
+can be explained by variations in other varibles. Ideally variables we can 
+control. That allows us to change an independent variable, and confirm that 
+the dependent variable actually changes as predicted.
+
+We begin by looking at the simplest case; identifying a linear relationship
+between two variables:
+
+
+Det der er pointen er at modellen også forudsiger.
 
 Lad os prøve at lægge en linie ind:
 
@@ -114,6 +121,7 @@ En ret linie kan beskrives som:
 
 
 $$ y = ax + b$$
+
 
 Eller, mere generelt
 
@@ -158,7 +166,7 @@ Det gider vi ikke selv, det får vi R. Og det gør vi med funktionen lm():
 
 
 
-```r
+``` r
 lm(y~x, data = data)
 ```
 
@@ -167,18 +175,18 @@ y~x er Rs formelnotation, der beskriver at y er en funktion af x.
 For vores eksempel ovenfor:
 
 
-```r
+``` r
 linear_model <- lm(mpg~wt, data = mtcars)
 ```
 
 Vi gemte resultatet i et objekt, så vi kan arbejde videre med det:
 
 
-```r
+``` r
 linear_model
 ```
 
-```output
+``` output
 
 Call:
 lm(formula = mpg ~ wt, data = mtcars)
@@ -194,11 +202,11 @@ med 5.344.
 Vi kan få flere detaljer:
 
 
-```r
+``` r
 summary(linear_model)
 ```
 
-```output
+``` output
 
 Call:
 lm(formula = mpg ~ wt, data = mtcars)
@@ -219,13 +227,17 @@ Multiple R-squared:  0.7528,	Adjusted R-squared:  0.7446
 F-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10
 ```
 
-
-
-
-
 summary - fortolkning af parametre.
 
+Let us look at the output, step by step.
+
+First, we get a repetition of the model we build
+
 Forudsætning: residualerne skal være normal fordelte. med andre ord, test det!
+
+
+
+
 
 ## Multipel lineær regression
 

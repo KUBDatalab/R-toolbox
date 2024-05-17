@@ -50,11 +50,11 @@ paste("This", "new", "lesson", "looks", "good")
 :::::::::::::::::::::::::::::::::
 
 
-```r
+``` r
 library(tidyverse)
 ```
 
-```output
+``` output
 ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
@@ -67,7 +67,7 @@ library(tidyverse)
 ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
-```r
+``` r
 # download.file("https://raw.githubusercontent.com/KUBDatalab/R-PUFF/main/data/FEV.csv", "data/fev.csv", mode = "wb")
 ```
 ## Data
@@ -77,7 +77,7 @@ i alderen 3-19, både rygere og ikke rygere, og af begge køn. Højden
 har vi også. Højde er i tommer. Volumen tror vi nok er i liter.
 
 
-```r
+``` r
 fev <- read_csv("data/fev.csv")
 summary(fev)
 ```
@@ -87,7 +87,7 @@ summary(fev)
 Vi ved ikke helt hvad en "scatterplot analysis" er. Men her er et scatterplot:
 
 
-```r
+``` r
 fev %>% ggplot(aes(x=Hgt, y = FEV)) +
   geom_point() 
 ```
@@ -97,7 +97,7 @@ Det får os til at tro at der måske er en lineær sammenhæng mellem højde og 
 
 ggplot kan lave det direkte. Men husk at sætte "method" i geom_smooth:
 
-```r
+``` r
 fev %>% ggplot(aes(x=Hgt, y = FEV)) +
   geom_point() +
   geom_smooth(method = "lm")
@@ -119,7 +119,7 @@ R can find slope and intercept for us:
 
 
 
-```r
+``` r
 model <- lm(FEV ~ Hgt, data = fev)
 model
 ```
@@ -130,7 +130,7 @@ Read the formula as: FEV is a function of Hgt. Hgt is the independent variabel. 
 What else:
 
 
-```r
+``` r
 summary(model)
 ```
 Here we get the p-values of the estimates of intercept and slope, handily coded with *** to indicate different levels of significance $\alpha$.
@@ -141,7 +141,7 @@ We also get a $R^2$ value describing the propotion of the variability of the dat
 In general it is a good idea to take a look at the residuals:
 
 
-```r
+``` r
 hist(model$residuals)
 ```
 The residuals should be normal distributed (one of the assumptions of the
@@ -150,7 +150,7 @@ linear regression, but we assume that has been covered in the textbook).
 Also take a look at the actual residuals, comparing the predicted values
 with the residuals:
 
-```r
+``` r
 plot(fitted(model), model$residuals)
 ```
 If there is a pattern in the residuals it is an indication that there is more signal in the data than we found with the model. Here it looks like there is something happening in the higher end of FEV - the dispersion of the values is qualitatively different in the two ends of the fit.
@@ -162,7 +162,7 @@ We can make the previous plot, just colored by Sex (Sex is recorded as
 0's and 1's). We need to coeerce Sex to a categorical variable using `factor()`:
 
 
-```r
+``` r
 fev %>% ggplot(aes(x=Hgt, y = FEV, color = factor(Sex))) +
   geom_point() +
   geom_smooth(method = "lm")
@@ -173,7 +173,7 @@ The dispersion is probably not related to Sex. We almost only have boys/men with
 
 Maybe FEV is dependent on both Height **and** Age?
 
-```r
+``` r
 model2 <- lm(FEV ~Age + Hgt , data = fev)
 model2 %>% summary()
 ```
@@ -186,7 +186,7 @@ What if we only look at the girls/women?
 
 
 
-```r
+``` r
 lm(FEV ~Age + Hgt , data = fev %>% filter(Sex == 0)) %>% summary()
 ```
 Adjusted $R^2$ is worse!
@@ -194,7 +194,7 @@ Adjusted $R^2$ is worse!
 
 and for the men/boys?
 
-```r
+``` r
 lm(FEV ~Age + Hgt , data = fev %>% filter(Sex == 1)) %>% summary()
 ```
 
@@ -208,7 +208,7 @@ explain it...
 It might be easier after looking at the result
 
 
-```r
+``` r
 lm(FEV ~ Age:factor(Sex) + Hgt:factor(Sex) + Age*Hgt, data = fev)  
 ```
 The intercept is what it is.
@@ -230,7 +230,7 @@ Does the final bit make sense? Physiologically? No idea.
 Looking closer at the model result:
 
 
-```r
+``` r
 lm(FEV ~ Age:factor(Sex) + Hgt:factor(Sex) + Age*Hgt, data = fev)  %>% summary()
 ```
 The model is now so complicated that we see elements that are not significant.
@@ -243,7 +243,7 @@ Maybe the model is too complicated.
 ## correlation matrix
 Pairwise correlations between the variables:
 
-```r
+``` r
 cor(fev)
 ```
 
@@ -251,14 +251,14 @@ The diagonal is very uninteresting.
 
 We can get the pairwise $R^2$ directly:
 
-```r
+``` r
 cor(fev)^2
 ```
 
 We can visualise it:
 
 
-```r
+``` r
 library(corrplot)
 
 corrplot(cor(fev), bg = "black")
@@ -268,7 +268,7 @@ small values.
 
 We think this function gives a nicer plot:
 
-```r
+``` r
 library(GGally)
 ggpairs(fev, progress = F)
 ```
@@ -279,7 +279,7 @@ ggpairs(fev, progress = F)
 We have already seen a non-linear model!
 
 
-```r
+``` r
 lm(FEV ~ Age:factor(Sex) + Hgt:factor(Sex) + Age*Hgt, data = fev)
 ```
 We multiply Age and Hgt. That is not linear!
@@ -288,36 +288,36 @@ lm can still be used. A non-linear model is simply a linear model with non-linea
 dependent variables.
 
 
-```r
+``` r
 lm(FEV ~ Age + Hgt + Sex, data = fev)
 ```
 
 If we want the polynomial expansion for fx Hgt (automagically):
 
-```r
+``` r
 lm(FEV ~ poly(Hgt, 2, raw=TRUE), data=fev) %>% summary()
 ```
 Or, if we want to control it more directly:
 
-```r
+``` r
 lm(FEV ~ Hgt + I(Hgt^2), data = fev)
 ```
 We need to encapsulate the quadratic expression in `I()` - otherwise R will
 try to interpret stuff before lm can do its math.
 
 
-```r
+``` r
 mydata <- read.csv("https://stats.idre.ucla.edu/stat/data/binary.csv")
 ```
 
 
-```r
+``` r
 mydata$rank <- factor(mydata$rank)
 view(mydata)
 ```
 
 
-```r
+``` r
 myprobit <- glm(admit ~ gre + gpa + rank, family = binomial(link = "probit"), 
     data = mydata)
 
@@ -326,11 +326,11 @@ mylogit <- glm(admit ~ gre + gpa + rank, family = binomial(link = "logit"),
 ```
 
 
-```r
+``` r
 myprobit %>% summary()
 ```
 
-```r
+``` r
 mylogit
 ```
 

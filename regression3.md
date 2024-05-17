@@ -46,7 +46,7 @@ variabler.
 
 Funktionen ser således ud:
 
-```r
+``` r
 library(ggplot2)
 
 logistic_function <- function(x) {

@@ -74,7 +74,7 @@ Read the documentation for details on how to read in specific cells or ranges.
 Use the package `haven` to read in spss files:
 
 
-```r
+``` r
 library(haven)
 read_spss("filename")
 ```
@@ -85,7 +85,7 @@ read_spss("filename")
 Use the package `haven` to read in stata files:
 
 
-```r
+``` r
 library(haven)
 read_stata("filename")
 ```
@@ -96,7 +96,7 @@ read_stata("filename")
 Use the package `haven` to read in spss files:
 
 
-```r
+``` r
 library(haven)
 read_sas("filename")
 ```

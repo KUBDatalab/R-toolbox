@@ -19,7 +19,7 @@ exercises: 2
 https://github.com/mermaid-js/mermaid#readme
 ## Introduction
 
-```r
+``` r
 library(DiagrammeR)
 mermaid("
 graph LR
@@ -27,8 +27,8 @@ graph LR
 ")
 ```
 
-<!--html_preserve--><div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-ce8cc490db0668835dca" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-ce8cc490db0668835dca">{"x":{"diagram":"\ngraph LR\n    A-->B\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-556f70c39432d7c9be15" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-556f70c39432d7c9be15">{"x":{"diagram":"\ngraph LR\n    A-->B\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 

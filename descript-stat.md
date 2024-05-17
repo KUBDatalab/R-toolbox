@@ -49,14 +49,14 @@ The easiest way to get summary statistics on data is to use the
 `summarise` function from the `tidyverse` package.
 
 
-```r
+``` r
 library(tidyverse)
 ```
 
 In the following we are working with the `palmerpenguins` dataset:
 
 
-```r
+``` r
 library(palmerpenguins)
 ```
 
@@ -64,11 +64,11 @@ Specifically the weight of the penguins, stored in the variable
 `body_mass_g`:
 
 
-```r
+``` r
 penguins$body_mass_g
 ```
 
-```output
+``` output
   [1] 3750 3800 3250   NA 3450 3650 3625 4675 3475 4250 3300 3700 3200 3800 4400
  [16] 3700 3450 4500 3325 4200 3400 3600 3800 3950 3800 3800 3550 3200 3150 3950
  [31] 3250 3900 3300 3900 3325 4150 3950 3550 3300 4650 3150 3900 3100 4400 3000
@@ -109,11 +109,11 @@ $x$.
 The easiest way of getting the mean is using the `mean()` function:
 
 
-```r
+``` r
 mean(penguins$body_mass_g, na.rm = TRUE)
 ```
 
-```output
+``` output
 [1] 4201.754
 ```
 
@@ -121,12 +121,12 @@ A slightly more cumbersome way is using the summarise function from
 `tidyverse`:
 
 
-```r
+``` r
 penguins %>% 
   summarise(avg_mass = mean(body_mass_g, na.rm = T))
 ```
 
-```output
+``` output
 # A tibble: 1 × 1
   avg_mass
      <dbl>
@@ -151,12 +151,12 @@ This is the value that half of the observations is smaller than. And
 half the observations is larger.
 
 
-```r
+``` r
 penguins %>% 
   summarise(median = median(body_mass_g, na.rm = T))
 ```
 
-```output
+``` output
 # A tibble: 1 × 1
   median
    <dbl>
@@ -169,13 +169,13 @@ the data is skewed, in this case toward the larger penguins.
 We can get both `median` and `mean` in one go:
 
 
-```r
+``` r
 penguins %>% 
   summarise(median = median(body_mass_g, na.rm = T),
             mean   = mean(body_mass_g, na.rm = TRUE))
 ```
 
-```output
+``` output
 # A tibble: 1 × 2
   median  mean
    <dbl> <dbl>
@@ -197,13 +197,13 @@ We typically do not use this for continous variables. The mode of the
 `sex` variable in this dataset can be found like this:
 
 
-```r
+``` r
 penguins %>% 
   count(sex) %>% 
   arrange(desc(n))
 ```
 
-```output
+``` output
 # A tibble: 3 × 2
   sex        n
   <fct>  <int>
@@ -235,12 +235,12 @@ Since this returns more than one value, we use the function reframe
 instead of summarise:
 
 
-```r
+``` r
 penguins %>% 
   reframe(range = range(body_mass_g, na.rm = T))
 ```
 
-```output
+``` output
 # A tibble: 2 × 1
   range
   <int>
@@ -252,13 +252,13 @@ However it is typically more usefull to extract the two values to
 separate columns in the output:
 
 
-```r
+``` r
 penguins %>% 
   summarise(min = min(body_mass_g, na.rm = T),
             max = max(body_mass_g, na.rm = T))
 ```
 
-```output
+``` output
 # A tibble: 1 × 2
     min   max
   <int> <int>
@@ -326,14 +326,14 @@ And again we are not going to do that by hand, but will ask R to do it
 for us:
 
 
-```r
+``` r
 penguins %>% 
   summarise(
             variance = var(body_mass_g, na.rm = T)
           )
 ```
 
-```output
+``` output
 # A tibble: 1 × 1
   variance
      <dbl>
@@ -350,14 +350,14 @@ A measurement of the variation of the data would be the standard
 deviation, simply defined as the square root of the variance:
 
 
-```r
+``` r
 penguins %>% 
   summarise(
             stddev = sd(body_mass_g, na.rm = T)
           )
 ```
 
-```output
+``` output
 # A tibble: 1 × 1
   stddev
    <dbl>
@@ -385,11 +385,11 @@ second quartile. Quartile implies four parts, and the existense of a third or
 We can calcultate those using the quantile function:
 
 
-```r
+``` r
 quantile(penguins$body_mass_g, probs = .25, na.rm = T)
 ```
 
-```output
+``` output
  25% 
 3550 
 ```
@@ -398,11 +398,11 @@ quantile(penguins$body_mass_g, probs = .25, na.rm = T)
 and
 
 
-```r
+``` r
 quantile(penguins$body_mass_g, probs = .75, na.rm = T)
 ```
 
-```output
+``` output
  75% 
 4750 
 ```
@@ -418,12 +418,12 @@ We are often interested in knowing the range in which 50% of the observations fa
 That is used often enough that we have a dedicated function for it:
 
 
-```r
+``` r
 penguins %>% 
   summarise(iqr = IQR(body_mass_g, na.rm = T))
 ```
 
-```output
+``` output
 # A tibble: 1 × 1
     iqr
   <dbl>
@@ -436,11 +436,11 @@ quartiles. Actually we can calculate any quantile, eg the 2.5% quantile:
 
 
 
-```r
+``` r
 quantile(penguins$body_mass_g, probs = .025, na.rm = T)
 ```
 
-```output
+``` output
     2.5% 
 2988.125 
 ```
@@ -454,12 +454,12 @@ density function:
 
 
 
-```r
+``` r
 CDF <- ecdf(penguins$body_mass_g)
 CDF
 ```
 
-```output
+``` output
 Empirical CDF 
 Call: ecdf(penguins$body_mass_g)
  x[1:94] =   2700,   2850,   2900,  ...,   6050,   6300
@@ -468,14 +468,14 @@ That was not very informative. Lets plot it:
 
 [NOT QUITE DONE!]
 
-```r
+``` r
 quantiler <- quantile(penguins$body_mass_g, probs = c(0.25, 0.5), na.rm = TRUE)
 ggplot(penguins, aes(body_mass_g)) + 
   stat_ecdf(geom = "step") +
   geom_hline(yintercept = c(0.25,0.5,0.75))
 ```
 
-```warning
+``` warning
 Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_ecdf()`).
 ```
@@ -496,12 +496,12 @@ There is no function for skewness build into R, but we can get it from
 the librar `e1071`
 
 
-```r
+``` r
 library(e1071)
 skewness(penguins$body_mass_g, na.rm = T)
 ```
 
-```output
+``` output
 [1] 0.4662117
 ```
 
@@ -520,11 +520,11 @@ A lot of these descriptive values can be gotten for every variable in
 the dataset using the `summary` function:
 
 
-```r
+``` r
 summary(penguins)
 ```
 
-```output
+``` output
       species          island    bill_length_mm  bill_depth_mm  
  Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
  Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
@@ -551,7 +551,7 @@ We can also get all the descriptive values in one table, by adding more
 than one summarising function to the summarise function:
 
 
-```r
+``` r
 penguins %>% 
   summarise(min = min(body_mass_g, na.rm = T),
             max = max(body_mass_g, na.rm = T),
@@ -567,7 +567,7 @@ penguins %>%
   )
 ```
 
-```output
+``` output
 # A tibble: 1 × 11
     min   max  mean median stddev     var    Q1    Q3   iqr  skew kurtosis
   <int> <int> <dbl>  <dbl>  <dbl>   <dbl> <dbl> <dbl> <dbl> <dbl>    <dbl>
@@ -581,7 +581,7 @@ Their weight varies a lot. If we want to do the summarising on each for
 the species, we can group the data by species, before summarising:
 
 
-```r
+``` r
 penguins %>% 
   group_by(species) %>% 
   summarise(min = min(body_mass_g, na.rm = T),
@@ -592,7 +592,7 @@ penguins %>%
   )
 ```
 
-```output
+``` output
 # A tibble: 3 × 6
   species     min   max  mean median stddev
   <fct>     <int> <int> <dbl>  <dbl>  <dbl>
@@ -607,13 +607,13 @@ Finally boxplots offers a way of visualising some of the summary
 statistics:
 
 
-```r
+``` r
 penguins %>% 
   ggplot(aes(x=body_mass_g, y = sex)) +
   geom_boxplot()
 ```
 
-```warning
+``` warning
 Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_boxplot()`).
 ```
@@ -634,7 +634,7 @@ in a number of "buckets", and count the number of observations in each
 bucket:
 
 
-```r
+``` r
 penguins %>% 
   select(body_mass_g) %>% 
   filter(!is.na(body_mass_g)) %>% 
@@ -643,7 +643,7 @@ group_by(buckets) %>%
 summarise(antal = n())
 ```
 
-```output
+``` output
 # A tibble: 8 × 2
   buckets         antal
   <fct>           <int>
@@ -661,17 +661,17 @@ Typically, rather that counting ourself, we leave the work to R, and
 make a histogram:
 
 
-```r
+``` r
 penguins %>% 
 ggplot((aes(x=body_mass_g))) +
 geom_histogram()
 ```
 
-```output
+``` output
 `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-```warning
+``` warning
 Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
