@@ -219,7 +219,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="regression.html">7. regression</a>
+        <a href="regression.html">7. Linear regression</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -331,13 +331,13 @@
           Previous: Descriptive
         </a>
         <a class="chapter-link float-end" href="../instructor/regression.html" rel="next">
-          Next: regression... 
+          Next: Linear regression... 
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>The normal distribution</h1>
-        <p>Last updated on 2024-05-14 |
+        <p>Last updated on 2024-05-17 |
         
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/normal-distribution.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -544,7 +544,7 @@ kurtosis minus 3 på 0, jo tættere på normalfordelt er data.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.0184655</code></pre>
+<pre class="output" tabindex="0"><code>[1] -0.0440908</code></pre>
 </div>
 <p>kurtosis</p>
 <div class="codewrapper sourceCode" id="cb8">
@@ -556,7 +556,7 @@ kurtosis minus 3 på 0, jo tættere på normalfordelt er data.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.2153277</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.2082346</code></pre>
 </div>
 <p>Bemærk at vores test-vektor er ret normal fordelt. Men ingen af
 parametrene er lig 0.</p>
@@ -574,7 +574,7 @@ parametrene er lig 0.</p>
 	Shapiro-Wilk normality test
 
 data:  test
-W = 0.99779, p-value = 0.2053</code></pre>
+W = 0.99842, p-value = 0.5057</code></pre>
 </div>
 <p>nul-hypotesen er her at data er normalfordelte. Hvis vi afviser
 null-hypotesen,vil det i dette tilfælde, være forkert i ca. 94% af
@@ -601,7 +601,7 @@ qq-plottet.</p>
 	Asymptotic one-sample Kolmogorov-Smirnov test
 
 data:  test
-D = 0.018581, p-value = 0.8803
+D = 0.018207, p-value = 0.8947
 alternative hypothesis: two-sided</code></pre>
 </div>
 <p>Vær forsigtig. Den forudsætter at vi kender “den sande” middelværdi
@@ -629,7 +629,7 @@ middelværdi og standardafvigelse.</p>
 	Lilliefors (Kolmogorov-Smirnov) normality test
 
 data:  test
-D = 0.018581, p-value = 0.5504</code></pre>
+D = 0.018207, p-value = 0.5833</code></pre>
 </div>
 <p>Samme null-hypotese som før. Men læg igen mærke til at selvom data er
 designet til at være normalfordelte, så er p-værdien ikke 1.</p>
@@ -651,7 +651,7 @@ designet til at være normalfordelte, så er p-værdien ikke 1.</p>
 	Anderson-Darling normality test
 
 data:  test
-A = 0.50463, p-value = 0.2029</code></pre>
+A = 0.33408, p-value = 0.5082</code></pre>
 </div>
 <p>Også her er null-hypotesen at data er normaltfordelte.</p>
 </div>
@@ -671,7 +671,7 @@ funktioner.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1]  1.02615365 -0.03683601 -0.69332351 -0.85786496 -0.73786236</code></pre>
+<pre class="output" tabindex="0"><code>[1] -0.6655231 -0.6826152 -1.0807710 -1.2705469 -0.3956280</code></pre>
 </div>
 <p>Den returnerer (her) fem tilfældige værdier fra en normalfordeling
 med (her) middelværdi 0 og standardafvigelse 1.</p>
@@ -729,7 +729,7 @@ any links that you are not going to use.
           Previous: Descriptive
         </a>
         <a class="chapter-link float-end" href="../instructor/regression.html" rel="next">
-          Next: regression... 
+          Next: Linear regression... 
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -775,8 +775,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/normal-distribution.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/normal-distribution.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2024-05-14",
-  "datePublished": "2024-05-14"
+  "dateModified": "2024-05-17",
+  "datePublished": "2024-05-17"
 }
 
   </script><script>

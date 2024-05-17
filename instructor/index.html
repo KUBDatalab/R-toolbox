@@ -144,12 +144,19 @@
                   <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         Summary and Schedule
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+        
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#prerequisites">Prerequisites</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
         
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -211,7 +218,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="regression.html">7. regression</a>
+        <a href="regression.html">7. Linear regression</a>
     </div><!--/div.accordion-header-->
         
   </div><!--/div.accordion-item-->
@@ -322,15 +329,27 @@
       <hr></nav><main id="main-content" class="main-content"><h1 class="schedule-heading">Summary and Schedule</h1>
       
 
+<p>This course introduces a selection of concepts and techniques for
+working with data in R.</p>
+<p>As this course is made-to-measure based on a more comprehensive
+collection of lessons, parts of the setup might not be strictly relevant
+for this specific instance of teaching, but should be useful anyway.</p>
+<section id="prerequisites"><h2 class="section-heading">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
+</h2>
+<hr class="half-width"><p>We expect you to have R and RStudio installed, or have an account on
+posit.cloud.</p>
+<p>Og så skal du have noget forudgående kendskab til R - og have mødt
+pipen som absolut minimum.</p>
+<p>This is a general collection of content covering concepts and
+curriculum frequently requested for tailormode courses in KUB Datalab.
+The</p>
 <p>This is a new lesson built with <a href="https://carpentries.github.io/sandpaper-docs" class="external-link">The Carpentries
 Workbench</a>.</p>
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
  -->
-
-
-      <section id="schedule"><table class="table table schedule table-striped" role="presentation"><tbody><tr><td></td><td><a href="#setup">Setup Instructions</a></td><td> Download files required for the lesson</td>
+</section><section id="schedule"><table class="table table schedule table-striped" role="presentation"><tbody><tr><td></td><td><a href="#setup">Setup Instructions</a></td><td> Download files required for the lesson</td>
           </tr><tr><td>
 <span class="visually-hidden">Duration: </span>00h 00m
 </td>
@@ -389,7 +408,7 @@ How do you write a lesson using R Markdown and <a href="https://carpentries.gith
 <span class="visually-hidden">Duration: </span>01h 12m
 </td>
 <td>
- 7. <a href="regression.html">regression</a>
+ 7. <a href="regression.html">Linear regression</a>
 </td>
 <td>
 How do you write a lesson using R Markdown and <a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?
@@ -463,7 +482,9 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><p>FIXME: Setup instructions live in this document. Please specify the
+      </section><section id="setup"><section id="setup"><h2 class="section-heading">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+</h2>
+<hr class="half-width"><p>FIXME: Setup instructions live in this document. Please specify the
 tools and the data sets the Learner needs to have installed.</p>
 <p>Fundamentet for to slags kurser.</p>
 <p>Det generelle toolbox kursus. Her kommer vi gennem et udvalg af
@@ -476,7 +497,7 @@ medicinere der interesserer sig for det alligevel.</p>
 nogen af os synes at vi forstår matematikken så godt at vi tør forklare
 den. Og så er der de episoder hvor vi kun ser på hvordan man gør dette
 eller hint i R. Det er når vi ikke synes at vi forstår matematikken.</p>
-<section id="data-sets"><h2 class="section-heading">Data Sets<a class="anchor" aria-label="anchor" href="#data-sets"></a>
+</section><section id="data-sets"><h2 class="section-heading">Data Sets<a class="anchor" aria-label="anchor" href="#data-sets"></a>
 </h2>
 <hr class="half-width"><!--
 FIXME: place any data you want learners to use in `episodes/data` and then use
@@ -484,6 +505,7 @@ FIXME: place any data you want learners to use in `episodes/data` and then use
        link to it, replacing the example.com link.
 --><p>Download the <a href="https://example.com/FIXME" class="external-link">data zip file</a>
 and unzip it to your Desktop</p>
+<p>palmerpenguins</p>
 </section><section id="software-setup"><h2 class="section-heading">Software Setup<a class="anchor" aria-label="anchor" href="#software-setup"></a>
 </h2>
 <hr class="half-width"><div id="details" class="callout discussion">
@@ -591,8 +613,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/index.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/index.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2024-05-14",
-  "datePublished": "2024-05-14"
+  "dateModified": "2024-05-17",
+  "datePublished": "2024-05-17"
 }
 
   </script><script>
