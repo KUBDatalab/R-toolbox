@@ -92,11 +92,11 @@
   R-toolbox
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 38%" class="percentage">
-    38%
+<aside class="col-md-12 lesson-progress"><div style="width: 33%" class="percentage">
+    33%
   </div>
   <div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 38%" aria-valuenow="38" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar library" role="progressbar" style="width: 33%" aria-valuenow="33" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -279,6 +279,24 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush15">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading15">
+        <a href="clt.html">14. CLT</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush16">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading16">
+        <a href="multiple-regression.html">15. Multiple linear regression</a>
+    </div><!--/div.accordion-header-->
+        
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -337,7 +355,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>The normal distribution</h1>
-        <p>Last updated on 2024-05-21 |
+        <p>Last updated on 2024-05-22 |
         
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/normal-distribution.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -384,11 +402,15 @@ population standard deviation. We can see that it is the “true” mean and
 standard deviation for the entire population, basically for the
 <em>entire</em> universe, because they are written using greek
 letters.</p>
-<p>If we plot the distribution, it looks like this:</p>
+<p>We are often working with the standardized normal distribution, where
+mean is 0 and the standard deviation is 1.</p>
+<p>If we plot that, it looks like this:</p>
 <p><img src="fig/The_Normal_Distribution.svg" alt="The Normal Distribution." class="figure"> The area under the curve is 1,
 equivalent to 100%.</p>
 <p>The normal distribution have a lot of nice mathematical properties,
 some of which are indicated on the graph.</p>
+<p>CDF-plottet - så vi har forbindelsen til den deskriptive
+statistik.</p>
 <p>Konceptet med - hvad er sandsynligheden for at se en observation der
 ligger x standardafvigelser fra middelværdien.</p>
 <p>This allows us to calculate the probability of finding a certain
@@ -488,7 +510,7 @@ afvigelsen.</p>
 episoden om deskriptiv statistik.</p>
 <p>indsæt qqplot.</p>
 <p>Punkterne kan selvfølgelig følge linien 100%. I så fald er vores data
-i hvert fald normal fordelte.</p>
+i hvert fald normalfordelte.</p>
 <p>Det vi oftest ser er at punkterne i midten af plottet følger linien
 ret nøje. Men at der er afvigelser i hver ende, hvor de enten ligger
 over eller under linien. Det giver fire forskellige udfald.</p>
@@ -527,7 +549,7 @@ kurtosis minus 3 på 0, jo tættere på normalfordelt er data.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.07650495</code></pre>
+<pre class="output" tabindex="0"><code>[1] -0.06971416</code></pre>
 </div>
 <p>kurtosis</p>
 <div class="codewrapper sourceCode" id="cb8">
@@ -539,7 +561,7 @@ kurtosis minus 3 på 0, jo tættere på normalfordelt er data.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] -0.1648088</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.314765</code></pre>
 </div>
 <p>Bemærk at vores test-vektor er ret normal fordelt. Men ingen af
 parametrene er lig 0.</p>
@@ -557,7 +579,7 @@ parametrene er lig 0.</p>
 	Shapiro-Wilk normality test
 
 data:  test
-W = 0.99803, p-value = 0.2938</code></pre>
+W = 0.99711, p-value = 0.06911</code></pre>
 </div>
 <p>nul-hypotesen er her at data er normalfordelte. Hvis vi afviser
 null-hypotesen,vil det i dette tilfælde, være forkert i ca. 94% af
@@ -584,7 +606,7 @@ qq-plottet.</p>
 	Asymptotic one-sample Kolmogorov-Smirnov test
 
 data:  test
-D = 0.020973, p-value = 0.7713
+D = 0.02034, p-value = 0.8024
 alternative hypothesis: two-sided</code></pre>
 </div>
 <p>Vær forsigtig. Den forudsætter at vi kender “den sande” middelværdi
@@ -612,7 +634,7 @@ middelværdi og standardafvigelse.</p>
 	Lilliefors (Kolmogorov-Smirnov) normality test
 
 data:  test
-D = 0.020973, p-value = 0.3549</code></pre>
+D = 0.02034, p-value = 0.403</code></pre>
 </div>
 <p>Samme null-hypotese som før. Men læg igen mærke til at selvom data er
 designet til at være normalfordelte, så er p-værdien ikke 1.</p>
@@ -634,7 +656,7 @@ designet til at være normalfordelte, så er p-værdien ikke 1.</p>
 	Anderson-Darling normality test
 
 data:  test
-A = 0.45157, p-value = 0.2731</code></pre>
+A = 0.42622, p-value = 0.314</code></pre>
 </div>
 <p>Også her er null-hypotesen at data er normaltfordelte.</p>
 </div>
@@ -654,7 +676,7 @@ funktioner.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1]  1.1048007 -1.4579114 -2.5402545  1.6009574 -0.5857973</code></pre>
+<pre class="output" tabindex="0"><code>[1]  2.3528165 -0.5575532 -0.5794990 -0.3633425  0.9044700</code></pre>
 </div>
 <p>Den returnerer (her) fem tilfældige værdier fra en normalfordeling
 med (her) middelværdi 0 og standardafvigelse 1.</p>
@@ -758,8 +780,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/normal-distribution.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/normal-distribution.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2024-05-21",
-  "datePublished": "2024-05-21"
+  "dateModified": "2024-05-22",
+  "datePublished": "2024-05-22"
 }
 
   </script><script>
