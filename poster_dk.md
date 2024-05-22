@@ -237,6 +237,12 @@ How about a neat table of data? See, Table \@ref(tab:iristable):
 </tbody>
 </table>
 
+
+
+``` error
+Error in knitr::include_graphics("../figure/palmerpenguins.png"): Cannot find the file(s): "../figure/palmerpenguins.png"
+```
+
 Hvor finder du den?
 https://github.com/kubdatalab/R-toolbox
 
