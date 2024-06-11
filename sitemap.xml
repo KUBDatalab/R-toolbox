@@ -19,6 +19,15 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/clt.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/datamanipulation-advanced.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/datamanipulation.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/datatidying.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/descreptive-statistics.html</loc>
   </url>
   <url>
@@ -50,6 +59,15 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/clt.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/datamanipulation-advanced.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/datamanipulation.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/datatidying.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/descreptive-statistics.html</loc>
@@ -88,7 +106,16 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/notes2.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/opgaver.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/packages.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/poster_dk.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/powerberegninger.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/profiles.html</loc>
@@ -112,7 +139,16 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/regression4.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/reproducible-analysis.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/rstudio.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/table1.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/tidy-data.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor-notes.html</loc>
@@ -136,7 +172,16 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/notes2.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/opgaver.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/packages.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/poster_dk.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/powerberegninger.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/profiles.html</loc>
@@ -160,6 +205,15 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/regression4.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/reproducible-analysis.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/rstudio.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/table1.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/tidy-data.html</loc>
   </url>
 </urlset>
