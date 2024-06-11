@@ -1,5 +1,5 @@
 ---
-title: 'diagramtest'
+title: 'tidyr'
 teaching: 10
 exercises: 2
 ---
@@ -16,19 +16,9 @@ exercises: 2
 - Demonstrate how to include pieces of code, figures, and nested challenge blocks
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-https://github.com/mermaid-js/mermaid#readme
+
 ## Introduction
-
-``` r
-library(DiagrammeR)
-mermaid("
-graph LR
-    A-->B
-")
-```
-
-<!--html_preserve--><div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-390661f2dca41fb0ea1a" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-390661f2dca41fb0ea1a">{"x":{"diagram":"\ngraph LR\n    A-->B\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+tidyr ting.
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 

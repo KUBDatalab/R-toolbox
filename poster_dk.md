@@ -5,7 +5,7 @@ main_bottomsize: 0.1
 title: ''
 author:
   - name: '**Ene Rammer**'
-    affil: 1
+    affil: 2
     main: true
     orcid: ''
     twitter: 
@@ -18,6 +18,8 @@ author:
 affiliation:
   - num: 1
     address: Københavns Universitetsbibliotek, KUB Datalab, Nørre Allé 49, 2200 København N
+  - num: 2
+    address: Roskilde
 
 main_findings:
   - "Made-to-Measure data kurser"
@@ -88,6 +90,9 @@ To get a better understanding of how to include features like these please refer
 **_Now on to the results!_**
 
 # Indhold
+
+Tematiseret episodeliste
+
 
 Here you may have some figures to show off, bellow I have made a scatterplot with the infamous Iris dataset and I can even reference to the figure automatically like this, `Figure \@ref(fig:irisfigure)`, Figure \@ref(fig:irisfigure).
 
@@ -243,7 +248,7 @@ How about a neat table of data? See, Table \@ref(tab:iristable):
 Error in knitr::include_graphics("../figure/palmerpenguins.png"): Cannot find the file(s): "../figure/palmerpenguins.png"
 ```
 
-Hvor finder du den?
+## Hvor finder du den?
 https://github.com/kubdatalab/R-toolbox
 
 https://kubdatalab.github.io/R-toolbox/
