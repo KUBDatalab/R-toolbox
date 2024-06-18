@@ -60,8 +60,7 @@ pacman::p_update(update = F)
 ```
 
 ``` output
-[1] "codetools"  "KernSmooth" "lattice"    "MASS"       "Matrix"    
-[6] "nlme"       "spatial"    "survival"  
+[1] "codetools" "lattice"   "MASS"      "Matrix"    "spatial"  
 ```
 
 ``` r
