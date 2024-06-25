@@ -16,6 +16,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/aio.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/best-noter.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/clt.html</loc>
   </url>
   <url>
@@ -58,6 +61,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/aio.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/best-noter.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/clt.html</loc>
   </url>
   <url>
@@ -89,6 +95,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/is-it-normal.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/key-points.html</loc>
@@ -151,10 +160,16 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/tidy-data.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/which-distribution.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor-notes.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/introduction.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/is-it-normal.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/key-points.html</loc>
@@ -215,5 +230,8 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/tidy-data.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/which-distribution.html</loc>
   </url>
 </urlset>
