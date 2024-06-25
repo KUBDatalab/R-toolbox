@@ -144,179 +144,6 @@ middelværdi vi måler, er.
 og det er stadig ikke en specielt god forklaring...
 
 
-Hvordan tester vi så om et datasæt er normalt fordelt?
-
-Start med summary. I en normalfordeling er median og middelværdi ens.
-
-Dernæst et histogram. Hvor mange observationer falder i et bestemt interval.
-Det histogram skal helst ligne en normalfordeling.
-
-Indsæt plot.
-
-Men i hvor høj grad ligner det faktisk en normalfordeling?
-
-Normalfordelingens egenskaber fortæller os at 50% af observationerne skal være
-større end gennemsnittet. Og 50% af observationerne skal være mindre.
-
-For hver eneste værdi på x-aksen i plottet af normalfordelingen, ved vi hvor stor en
-del af observationerne der skal være mindre eller større. 
-
-Så tæller vi op hvordan vores observationer faktisk fordeler sig. og sammenligner 
-med hvordan normalfordelingen ser ud - så kan vi se afvigelsen.
-
-her er der link til hvad jeg har fået skrevet om percentiler i episoden
-om deskriptiv statistik.
-
-indsæt qqplot.
-
-Punkterne kan selvfølgelig følge linien 100%. I så fald er vores data i hvert fald
-normalfordelte. 
-
-Det vi oftest ser er at punkterne i midten af plottet følger linien ret nøje. Men at 
-der er afvigelser i hver ende, hvor de enten ligger over eller under linien. 
-Det giver fire forskellige udfald.
-
-Hvis punkterne ligger over linien i begge ender.
-
-Det indikerer at data har tykkere haler end forventet. at der er flere 
-ekstreme værdier, både høje og lave, end vi forventer. større kurtosis end normalfordelingen.
-
-punkter ligger under linien i begge ender:
-
-data har tyndere haler end forventet. Der er færre ekstreme værdier end vi ville
-forvente. lavere kurtosis end normalfordelingen. 
-
-Øvre hale over, nedre hale under.
-Skæve data, hvor data er skubbet mod højere værdier. Høje værdier optræder 
-hyppigere end forventet. Eller lave værdier optræder sjældnere end forventet.
-
-øvre under, nedre over. 
-skæve data. i omvendt retning relativt til umiddelbart ovenstående.
-
-kurtosis 
-
-skewness
-
-kan vi sætte tal på?
-
-Ja. kurtosis og skewness. Jo tættere skewness kommer på 0, og kurtosis minus 3 på
-0, jo tættere på normalfordelt er data.
-
-R i sig selv kan ikke beregne det. Men det kan pakken
-e1071
-
-``` r
-library(e1071)
-test <- rnorm(1000)
-```
-
-Skewness:
-
-``` r
-skewness(test)
-```
-
-``` output
-[1] -0.08343561
-```
-
-kurtosis
-
-``` r
-kurtosis(test)
-```
-
-``` output
-[1] -0.2210292
-```
-Bemærk at vores test-vektor er ret normal fordelt. Men ingen af parametrene er
-lig 0.
-
-Andre tests:
-Shapiro-Wilk
-
-
-``` r
-shapiro.test(test) 
-```
-
-``` output
-
-	Shapiro-Wilk normality test
-
-data:  test
-W = 0.99773, p-value = 0.1871
-```
-nul-hypotesen er her at data er normalfordelte. Hvis vi afviser null-hypotesen,vil det 
-i dette tilfælde, være forkert i ca. 94% af tilfældene.
-
-Testen er særligt godt til små stikprøver (<50, nogen siger den er ok op op til <2000)
-
-Det er, vist nok, principielt et mål for den lineære korrelation mellem data og 
-normalfordelte kvantiler - altså det vi ser i qq-plottet.
-
-### Kolmogorov-Smirnov
-
-vi skal specificere at det er normalfordelingen vi tester imod ("pnorm") - den kan
-nemlig teste for andre fordelinger også.
-
-
-``` r
-ks.test(test, "pnorm", mean = mean(test), sd = sd(test))
-```
-
-``` output
-
-	Asymptotic one-sample Kolmogorov-Smirnov test
-
-data:  test
-D = 0.02253, p-value = 0.6904
-alternative hypothesis: two-sided
-```
-Vær forsigtig. Den forudsætter at vi kender "den sande" middelværdi og standardafvigelse,
-i stedet for som i dette eksempel at estimere dem fra vores stikprøve.
-
-NULL-hypotesen er også her at data er normalfordelte, p-værdien er her 0.99, og 
-vi kan derfor ikke afvise null-hypotesen.
-
-### Liliefors test
-Den er en variation af ks-testen, der er  designet specifikt til at teste normalitet.
-Og forudsætter _ikke_ at vi på forhånd kender middelværdi og standardafvigelse.
-
-
-``` r
-library(nortest)
-lillie.test(test)
-```
-
-``` output
-
-	Lilliefors (Kolmogorov-Smirnov) normality test
-
-data:  test
-D = 0.02253, p-value = 0.2514
-```
-Samme null-hypotese som før. Men læg igen mærke til at selvom data er 
-designet til at være normalfordelte, så er p-værdien ikke 1. 
-
-### Anderson-darling test
-
-Ikke tilgængelig i R direkte:
-
-``` r
-library(nortest)
-ad.test(test)
-```
-
-``` output
-
-	Anderson-Darling normality test
-
-data:  test
-A = 0.4774, p-value = 0.2365
-```
-Også her er null-hypotesen at data er normaltfordelte. 
-
 
 ### Fordelingsfunktionerne i R.
 
@@ -330,7 +157,7 @@ rnorm(5, mean = 0, sd = 1 )
 ```
 
 ``` output
-[1] -0.3840361  0.2247111  0.5356190 -0.9894638 -0.7127181
+[1]  0.7572878  1.5710501  1.3492312  0.1762008 -0.9210563
 ```
 Den returnerer (her) fem tilfældige værdier fra en normalfordeling med (her) 
 middelværdi 0 og standardafvigelse 1.
@@ -351,6 +178,51 @@ et p.
 
 i pnorm finder vi sandsynligheden for at værdien er mindre end x. I qnorm finder
 vi x for en given sandsynlighed.
+
+## Er ting normalfordelte?
+
+Normalfordelingen kaldes normal fordi Karl Pearson og Francis Galton i det 19.
+århundrede observerede at det var en statistisk fordeling der forklarede 
+rigtig mange fænomener i befolkningsdata. Højde, vægt, blodtryk, intelligenskvotienter
+mv. Faktisk var det den der forklarede flest (af de ting de nu undersøgte).
+
+Og så er det i øvrigt den fordeling som middelværdier af stikprøver vil tilnærme sig
+jf. den centrale grænseværdisætning.
+
+Så den er normal fordi det er normen, den hyppigst forekommende. Ikke at forveksle
+med en mere løs, dagligsprogs, normativ (pun intended) anvendelse af ordet norm. Normalen i 
+en statistisk sammenhæng er ganske enkelt den hyppigst forekommende observation.
+
+Det i statistisk forstand normale, normen, er at have brune øjne (>50% af klodens
+befolkning har brune øjne). Det betyder ikke at der er noget galt med at have
+blå øjne.
+
+Og rigtig mange ting er ret tæt på at være normalfordelte. Men i virkeligheden
+er der ikke mange fænomener der følger normalfordelingen fuldstændig. Et eksempel:
+
+Serum (en del af blod) Molybdæn (der er et essentielt sporstof i human fysiologi), har en 
+middelværdi på 1.55 og en standardafvigelse på 0.74 hos normale, raske mennesker.
+
+Rifai, N. (2017). Tietz textbook of clinical chemistry and molecular diagnostics : Tietz textbook of clinical chemistry and molecular diagnostics - e-book. Elsevier - Health Sciences Division.
+
+Hvis vi antager at serum-Molybdæn er normalfordelt i populationen, kan vi 
+beregne hvor stor en andel af den normale raske befolkning i danmark, der har 
+en Molybdæn-koncentration under 0:
+
+
+``` r
+pnorm(0, mean = 1.55, sd = 0.74)
+```
+
+``` output
+[1] 0.01810352
+```
+Hvilket vil sige at vi forventer at lidt over 100.000 danskere har et negativt 
+indhold af Molybdæn i blodet. Hvilket er fysisk umuligt.
+Hvorfor går det så godt alligevel? Fordi serum molybdæn er normalfordelt _nok_.
+
+
+
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
