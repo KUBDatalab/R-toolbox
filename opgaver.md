@@ -489,6 +489,15 @@ values set as bold:
 #hmlbwudibc .gt_indent_5 {
   text-indent: 25px;
 }
+
+#hmlbwudibc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hmlbwudibc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>

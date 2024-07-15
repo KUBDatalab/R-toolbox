@@ -78,15 +78,15 @@ It can look like this:
 </tr>
 <tr>
 <td class='rowlabel'>Mean (SD)</td>
-<td>29.2 (13.8)</td>
-<td>26.9 (12.3)</td>
-<td>28.0 (13.0)</td>
+<td>29.8 (12.5)</td>
+<td>33.9 (10.1)</td>
+<td>31.9 (11.4)</td>
 </tr>
 <tr>
 <td class='rowlabel'>Median [Min, Max]</td>
-<td>30.8 [11.6, 49.8]</td>
-<td>26.4 [10.5, 49.5]</td>
-<td>28.5 [10.5, 49.8]</td>
+<td>26.9 [12.1, 49.8]</td>
+<td>33.8 [12.2, 48.5]</td>
+<td>31.6 [12.1, 49.8]</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Missing</td>
@@ -102,15 +102,15 @@ It can look like this:
 </tr>
 <tr>
 <td class='rowlabel'>Mean (SD)</td>
-<td>73.3 (13.0)</td>
-<td>70.8 (14.0)</td>
-<td>72.0 (13.4)</td>
+<td>73.1 (21.1)</td>
+<td>66.8 (11.6)</td>
+<td>69.9 (17.1)</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Median [Min, Max]</td>
-<td class='lastrow'>74.8 [48.9, 107]</td>
-<td class='lastrow'>71.0 [49.3, 98.4]</td>
-<td class='lastrow'>73.1 [48.9, 107]</td>
+<td class='lastrow'>71.9 [40.9, 120]</td>
+<td class='lastrow'>64.0 [46.0, 94.0]</td>
+<td class='lastrow'>68.2 [40.9, 120]</td>
 </tr>
 </tbody>
 </table>
@@ -221,21 +221,21 @@ table1(~sex + age + weight|treatment, data = dat,
 </tr>
 <tr>
 <td class='rowlabel'>Mean (SD%)</td>
-<td>29.2 (13.8%)</td>
-<td>26.9 (12.3%)</td>
-<td>28.0 (13.0%)</td>
+<td>29.8 (12.5%)</td>
+<td>33.9 (10.1%)</td>
+<td>31.9 (11.4%)</td>
 </tr>
 <tr>
 <td class='rowlabel'>Median [Min, Max]</td>
-<td>30.8 [11.6, 49.8]</td>
-<td>26.4 [10.5, 49.5]</td>
-<td>28.5 [10.5, 49.8]</td>
+<td>26.9 [12.1, 49.8]</td>
+<td>33.8 [12.2, 48.5]</td>
+<td>31.6 [12.1, 49.8]</td>
 </tr>
 <tr>
 <td class='rowlabel'>Geom. mean (Geo. SD%)</td>
-<td>25.9 (1.69%)</td>
-<td>24.1 (1.65%)</td>
-<td>24.9 (1.66%)</td>
+<td>27.0 (1.60%)</td>
+<td>32.2 (1.43%)</td>
+<td>29.5 (1.52%)</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Missing</td>
@@ -251,21 +251,21 @@ table1(~sex + age + weight|treatment, data = dat,
 </tr>
 <tr>
 <td class='rowlabel'>Mean (SD%)</td>
-<td>73.3 (13.0%)</td>
-<td>70.8 (14.0%)</td>
-<td>72.0 (13.4%)</td>
+<td>73.1 (21.1%)</td>
+<td>66.8 (11.6%)</td>
+<td>69.9 (17.1%)</td>
 </tr>
 <tr>
 <td class='rowlabel'>Median [Min, Max]</td>
-<td>74.8 [48.9, 107]</td>
-<td>71.0 [49.3, 98.4]</td>
-<td>73.1 [48.9, 107]</td>
+<td>71.9 [40.9, 120]</td>
+<td>64.0 [46.0, 94.0]</td>
+<td>68.2 [40.9, 120]</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Geom. mean (Geo. SD%)</td>
-<td class='lastrow'>72.2 (1.20%)</td>
-<td class='lastrow'>69.5 (1.22%)</td>
-<td class='lastrow'>70.8 (1.21%)</td>
+<td class='lastrow'>70.3 (1.33%)</td>
+<td class='lastrow'>65.9 (1.19%)</td>
+<td class='lastrow'>68.0 (1.26%)</td>
 </tr>
 </tbody>
 </table>
@@ -339,15 +339,15 @@ render.continuous = my_summary)
 </tr>
 <tr>
 <td class='rowlabel'>Median</td>
-<td>30.758</td>
-<td>26.409</td>
-<td>28.488</td>
+<td>26.850</td>
+<td>33.816</td>
+<td>31.636</td>
 </tr>
 <tr>
 <td class='rowlabel'>Variance</td>
-<td>191.8</td>
-<td>151.0</td>
-<td>167.7</td>
+<td>156.8</td>
+<td>101.9</td>
+<td>129.6</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Missing</td>
@@ -363,15 +363,15 @@ render.continuous = my_summary)
 </tr>
 <tr>
 <td class='rowlabel'>Median</td>
-<td>74.813</td>
-<td>70.968</td>
-<td>73.064</td>
+<td>71.876</td>
+<td>64.026</td>
+<td>68.154</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Variance</td>
-<td class='lastrow'>170.2</td>
-<td class='lastrow'>196.6</td>
-<td class='lastrow'>180.3</td>
+<td class='lastrow'>443.5</td>
+<td class='lastrow'>133.9</td>
+<td class='lastrow'>291.3</td>
 </tr>
 </tbody>
 </table>
