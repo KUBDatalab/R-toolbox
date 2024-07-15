@@ -257,7 +257,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="reproducible-analysis.html">2. reproducible-analysis</a>
+        <a href="reproducible-analysis.html">2. Reproducible Data Analysis</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -269,7 +269,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="reading-files.html">3. Reading datafiles</a>
+        <a href="reading-files.html">3. Reading data from file</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -701,7 +701,7 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></section><section id="aio-reproducible-analysis"><p>Content from <a href="reproducible-analysis.html">reproducible-analysis</a></p>
+</section></section><section id="aio-reproducible-analysis"><p>Content from <a href="reproducible-analysis.html">Reproducible Data Analysis</a></p>
 <hr>
 <p>Last updated on 2024-07-15 |
 
@@ -718,8 +718,7 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>How do you write a lesson using R Markdown and
-<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+<li>How do I ensure that my results can be reproduced?</li>
 </ul>
 </div>
 </div>
@@ -742,26 +741,113 @@ challenge blocks</li>
 <a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <hr class="half-width">
-<p>Når vi laver dataanalyse vil vi gerne gøre det reproducerbart.
-Resultatet i morgen skal gerne være det samme som i dag. Resultatet i
-dag skal gerne være det samme som i går.</p>
-<p>En udfordring kan være hvis det data vi har liggende i hukommelsen på
-computeren ikke er det vi havde forventet. Hvis der ligger noget fra i
-går, og vi ikke kan huske at vi gangede alle tal med et eller andet, så
-kan vi få uventede resultater.</p>
-<p>Derfor - Rmarkdown. Vi samler kode, forklaringer, prosatekst og andet
-godt i et dokument. Og når vi så knitr dokumentet, så gøres det i en
-helt frisk R-session. Det sker uden at der er noget i hukommelsen, alle
-biblioteker er væk. Med det resultat at vi får samme svar <em>hver</em>
-gang.</p>
-<p>rækkefølge af hvad vi gør. Hvis vi gør A og så B, kan vi få et andet
-resultat end hvis vi gør B og dernæst A.</p>
-<p>Dokumentation af hvad vi gør, men især hvorfor.</p>
-<p>Navngivning af chuncks.</p>
-<p>Indlæs data med kode! Det er fint at lave peg og klik - men få koden
-ind i markdown dokumentet.</p>
-<p>Behøver man gøre det i markdwon? Nej, det behøver man ikke. Men så
-skal man selv være lidt mere vågen.</p>
+<p>? Why in danish?</p>
+<p>A key concept in the scientific process is reproducibility. We should
+be able to run the same experiment again, and get, more or less, the
+same result.</p>
+<p>This also applies to the analysis of data. If we have a collection of
+measurements of bloodpressure from patients before and after they have
+taken an antihypertensive drug, we might arrive at the result that this
+specific drug is not working. Doing the same analysis tomorrow, we
+should reach the same result.</p>
+<p>And that can be surprisingly difficult!</p>
+<p>There are a lot of pitfalls, ranging from accessibility to incentive
+structure in academia. But the two areas where R can help us are:</p>
+<ul>
+<li>Software Environment</li>
+<li>Documentation and Metadata</li>
+<li>Complex Workflows</li>
+</ul></section><section><h2 class="section-heading" id="software-environment">Software Environment<a class="anchor" aria-label="anchor" href="#software-environment"></a>
+<a class="anchor" aria-label="anchor" href="#software-environment"></a>
+</h2>
+<hr class="half-width">
+<p>Doing data analysis happens using specific software, libraries or
+packages, in a variety of versions. And it happens in an environment on
+the computer that might not be identical from day to day.</p>
+<p>One example of these problems is shown every time we load tidyverse:
+<img src="../fig/tidyverse_conflicts.png" alt="Tidyverse conflicts" class="figure"></p>
+<p>This message informs us that there is a <code>filter()</code>
+function in the <code>stats</code> packages which is part of the core
+R-installation. That function is masked by the <code>filter()</code>
+function from the <code>tidyverse´ package</code>dplyr`.</p>
+<p>If our analysis relies on the way the <code>filter()</code> function
+works in the <code>tidyverse</code>, we will get errors if
+<code>tidyverse</code> is not loaded.</p>
+<p>We might also have data stored in memory. Every time we close
+RStudio, we are asked if we want to save the environment:</p>
+<figure><img src="../fig/save_environment.png" alt="Should we save the environmet?" class="figure mx-auto d-block"><div class="figcaption">Should we save the environmet?</div>
+</figure><p>This will save all the objects we have in our environment, in order
+for RStudio to be able to load them into memory when we open RStudio
+again.</p>
+<p>That can be nice and useful. On the other hand we run the risk of
+having the wrong version of
+<code>my_data_that_is_ready_for_analysis</code> lying around in
+memory.</p>
+</section><section><h2 class="section-heading" id="documentation-and-metadata">Documentation and Metadata:<a class="anchor" aria-label="anchor" href="#documentation-and-metadata"></a>
+<a class="anchor" aria-label="anchor" href="#documentation-and-metadata"></a>
+</h2>
+<hr class="half-width">
+<p>What did we actually do in the analysis? Why did we do it? Why are we
+coming to the conclusion we have got to?</p>
+<p>Three very good questions. Having good metadata, data that describes
+your data, often makes understanding your data easier. Documenting the
+individual steps of your analysis, may not seem nessecary right now -
+you know why you are doing what you are doing. But future you - you in
+three months, or some one else, might not remember or be able to guess
+(correctly)</p>
+</section><section><h2 class="section-heading" id="complex-workflows">Complex Workflows<a class="anchor" aria-label="anchor" href="#complex-workflows"></a>
+<a class="anchor" aria-label="anchor" href="#complex-workflows"></a>
+</h2>
+<hr class="half-width">
+<p>Doing data analysis in eg Excel, can involve a lot of pointing and
+clicking.</p>
+<p>And in any piece of software, it will normally always involve more
+than one step. And those steps will have to be done in the correct
+order. Calculating a mean of some values, depends heavily on wether it
+happens before or after deleting irrelevant observations.</p>
+</section><section><h2 class="section-heading" id="the-solution-to-all-of-this">The solution to all of this!<a class="anchor" aria-label="anchor" href="#the-solution-to-all-of-this"></a>
+<a class="anchor" aria-label="anchor" href="#the-solution-to-all-of-this"></a>
+</h2>
+<hr class="half-width">
+<p><img src="../fig/horstmarkdown.png" alt="The Rmarkdown family" class="figure">{“Artwork by <a href="https://twitter.com/allison_horst" class="external-link"><span class="citation">@allison_horst</span></a>, CC-BY”}</p>
+<p>Working in RMarkdown allows us to collect the text describing our
+data, what and why we are doing what we do, the code actually doing it,
+and the results of that code - all in one document.</p>
+<p>Open a new file, choose RMarkdown, and give your document a name:</p>
+<figure><img src="../fig/rmarkdown.png" alt="An RMarkdown document" class="figure mx-auto d-block"><div class="figcaption">An RMarkdown document</div>
+</figure><p>In the code chunks, marked here with a light grey background,
+contains code, in this case not very advanced code. You can run the
+entire code chunk by clicking the green arrow on the right. Or by
+placing your cursor in the line of code you want to run, and pressing
+ctrl+enter (or command+enter on a Mac).</p>
+<p>Outside the code chunks we can add our reasons for actually running
+<code>summary</code> on the <code>cars</code> dataframe, and describe
+what it contains.</p>
+<p>You will see a new button in RStudio: <img src="../fig/knitr_button.png" alt="The Knit button" class="figure"></p>
+<p>Clicking this, will “knit” your document; run each chunck of code,
+add the output to your document, and combine your code, the results and
+all your explanatory text to one html-document.</p>
+<p>If you do not want an HTMl-document, you can knit to a MicroSoft Word
+document. Depending on your computer, you can knit directly to a
+pdf.</p>
+<p>Having the entirety of your analysis in an RMarkdown document, and
+then running it, ensures that the individual steps in the analysis are
+run in the correct order.</p>
+<p>It does not ensure that your documentation of what you do is written
+- it makes it easy to add it, but you still have to do it.</p>
+<div class="section level3">
+<h3 id="but-what-about-the-environment">But what about the environment?<a class="anchor" aria-label="anchor" href="#but-what-about-the-environment"></a>
+</h3>
+<p>So we force ourself to have the steps in our analysis in the correct
+order, and we make it easy to add documentation. What about the
+environment?</p>
+<p>That is the really nice thing. Every time we <code>knit</code> our
+document, RStudio opens a new session of R, without libraries or objects
+in memory. This ensures that the analysis is done in the exact same way
+each and every time.</p>
+<p>SPØRGSMÅL TIL RESTEN AF R-HOLDET</p>
+<p>ER DET HER VI HAR OMTALE AF PROJEKTER? OG NAVNGIVNING AF CHUNKS?</p>
+<p>OG INDLÆSNING AF KODE?</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -773,12 +859,6 @@ skal man selv være lidt mere vågen.</p>
 <ul>
 <li>Use <code>.md</code> files for episodes when you want static
 content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate
-output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
-with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
-locally</li>
 </ul>
 </div>
 </div>
@@ -787,7 +867,8 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></section><section id="aio-reading-files"><p>Content from <a href="reading-files.html">Reading datafiles</a></p>
+</div>
+</section></section><section id="aio-reading-files"><p>Content from <a href="reading-files.html">Reading data from file</a></p>
 <hr>
 <p>Last updated on 2024-07-15 |
 
@@ -826,7 +907,7 @@ files.</li>
 <a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <hr class="half-width">
-<p>The first step of doing dataanalysis, is normally to read-in the
+<p>The first step of doing dataanalysis, is normally to read in the
 data.</p>
 <p>Data can come from many different sources, and it is practically
 impossible to cover every possible format. Here we cover some of the
@@ -836,7 +917,7 @@ more common.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>The most important point is that there is a very high probability
 that at least one package exists that is designed to read a specific
@@ -845,18 +926,17 @@ weird data format.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="use-code">Use code!<a class="anchor" aria-label="anchor" href="#use-code"></a>
+<figure><img src="../fig/manyfiles.webp" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="use-code">Use code!<a class="anchor" aria-label="anchor" href="#use-code"></a>
 <a class="anchor" aria-label="anchor" href="#use-code"></a>
 </h2>
 <hr class="half-width">
 <p>RStudio makes it simple to load most common data formats. Right-click
 on the file in RStudio, and choose import. RStudio will then provide an
 interface for loading the data.</p>
-<p>However in general we prefer to have a script or a document, that can
+<figure><img src="../fig/data_import.png" class="figure mx-auto d-block"></figure><p>However in general we prefer to have a script or a document, that can
 be run without us pointing and clicking. So - instead of importing the
 data in this way, copy the code that RStudio uses to import the data,
 and paste it into your script or document.</p>
-<p>HER KUNNE VI GODT HAVE EN ILLUSTRATION.</p>
 </section><section><h2 class="section-heading" id="csv-files">CSV-files<a class="anchor" aria-label="anchor" href="#csv-files"></a>
 <a class="anchor" aria-label="anchor" href="#csv-files"></a>
 </h2>
@@ -1007,7 +1087,7 @@ preferred</li>
 proprietary file formats.</li>
 <li>In general a package will exist for reading strange datatypes.
 Google is your friend!</li>
-<li>Use code to read your data</li>
+<li>Use code to read in your data</li>
 </ul>
 </div>
 </div>
@@ -2689,13 +2769,13 @@ Age (years)
 Mean (SD)
 </td>
 <td>
-29.8 (12.5)
+30.7 (11.3)
 </td>
 <td>
-33.9 (10.1)
+27.9 (13.3)
 </td>
 <td>
-31.9 (11.4)
+29.3 (12.3)
 </td>
 </tr>
 <tr>
@@ -2703,13 +2783,13 @@ Mean (SD)
 Median [Min, Max]
 </td>
 <td>
-26.9 [12.1, 49.8]
+29.6 [12.6, 47.1]
 </td>
 <td>
-33.8 [12.2, 48.5]
+28.3 [10.2, 49.7]
 </td>
 <td>
-31.6 [12.1, 49.8]
+29.6 [10.2, 49.7]
 </td>
 </tr>
 <tr>
@@ -2742,13 +2822,13 @@ Weight (kg)
 Mean (SD)
 </td>
 <td>
-73.1 (21.1)
+81.9 (17.4)
 </td>
 <td>
-66.8 (11.6)
+71.8 (11.8)
 </td>
 <td>
-69.9 (17.1)
+76.9 (15.5)
 </td>
 </tr>
 <tr>
@@ -2756,13 +2836,13 @@ Mean (SD)
 Median [Min, Max]
 </td>
 <td class="lastrow">
-71.9 [40.9, 120]
+77.2 [54.9, 117]
 </td>
 <td class="lastrow">
-64.0 [46.0, 94.0]
+70.9 [50.6, 97.3]
 </td>
 <td class="lastrow">
-68.2 [40.9, 120]
+72.3 [50.6, 117]
 </td>
 </tr>
 </tbody>
@@ -2912,13 +2992,13 @@ Age (years)
 Mean (SD%)
 </td>
 <td>
-29.8 (12.5%)
+30.7 (11.3%)
 </td>
 <td>
-33.9 (10.1%)
+27.9 (13.3%)
 </td>
 <td>
-31.9 (11.4%)
+29.3 (12.3%)
 </td>
 </tr>
 <tr>
@@ -2926,13 +3006,13 @@ Mean (SD%)
 Median [Min, Max]
 </td>
 <td>
-26.9 [12.1, 49.8]
+29.6 [12.6, 47.1]
 </td>
 <td>
-33.8 [12.2, 48.5]
+28.3 [10.2, 49.7]
 </td>
 <td>
-31.6 [12.1, 49.8]
+29.6 [10.2, 49.7]
 </td>
 </tr>
 <tr>
@@ -2940,13 +3020,13 @@ Median [Min, Max]
 Geom. mean (Geo. SD%)
 </td>
 <td>
-27.0 (1.60%)
+28.5 (1.51%)
 </td>
 <td>
-32.2 (1.43%)
+24.6 (1.72%)
 </td>
 <td>
-29.5 (1.52%)
+26.4 (1.62%)
 </td>
 </tr>
 <tr>
@@ -2979,13 +3059,13 @@ Weight (kg)
 Mean (SD%)
 </td>
 <td>
-73.1 (21.1%)
+81.9 (17.4%)
 </td>
 <td>
-66.8 (11.6%)
+71.8 (11.8%)
 </td>
 <td>
-69.9 (17.1%)
+76.9 (15.5%)
 </td>
 </tr>
 <tr>
@@ -2993,13 +3073,13 @@ Mean (SD%)
 Median [Min, Max]
 </td>
 <td>
-71.9 [40.9, 120]
+77.2 [54.9, 117]
 </td>
 <td>
-64.0 [46.0, 94.0]
+70.9 [50.6, 97.3]
 </td>
 <td>
-68.2 [40.9, 120]
+72.3 [50.6, 117]
 </td>
 </tr>
 <tr>
@@ -3007,13 +3087,13 @@ Median [Min, Max]
 Geom. mean (Geo. SD%)
 </td>
 <td class="lastrow">
-70.3 (1.33%)
+80.2 (1.23%)
 </td>
 <td class="lastrow">
-65.9 (1.19%)
+70.9 (1.18%)
 </td>
 <td class="lastrow">
-68.0 (1.26%)
+75.4 (1.22%)
 </td>
 </tr>
 </tbody>
@@ -3123,13 +3203,13 @@ Age (years)
 Median
 </td>
 <td>
-26.850
+29.585
 </td>
 <td>
-33.816
+28.259
 </td>
 <td>
-31.636
+29.585
 </td>
 </tr>
 <tr>
@@ -3137,13 +3217,13 @@ Median
 Variance
 </td>
 <td>
-156.8
+128.8
 </td>
 <td>
-101.9
+177.8
 </td>
 <td>
-129.6
+151.9
 </td>
 </tr>
 <tr>
@@ -3176,13 +3256,13 @@ Weight (kg)
 Median
 </td>
 <td>
-71.876
+77.161
 </td>
 <td>
-64.026
+70.881
 </td>
 <td>
-68.154
+72.318
 </td>
 </tr>
 <tr>
@@ -3190,13 +3270,13 @@ Median
 Variance
 </td>
 <td class="lastrow">
-443.5
+304.2
 </td>
 <td class="lastrow">
-133.9
+138.5
 </td>
 <td class="lastrow">
-291.3
+241.7
 </td>
 </tr>
 </tbody>
@@ -3216,7 +3296,7 @@ specifying <code>render.categorical</code>.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Primarily of use if there are medical students on the course</p>
 </div>
@@ -3288,7 +3368,7 @@ challenge blocks</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -3414,7 +3494,7 @@ funktioner.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1]  1.3365586 -0.7434106  0.7962233  1.2899863 -0.7094294</code></pre>
+<pre class="output" tabindex="0"><code>[1] -0.3864120 -1.3347477 -0.3214503  0.2336621 -0.2218848</code></pre>
 </div>
 <p>Den returnerer (her) fem tilfældige værdier fra en normalfordeling
 med (her) middelværdi 0 og standardafvigelse 1.</p>
@@ -4009,7 +4089,7 @@ reinforce the objectives.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -4041,7 +4121,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4069,7 +4149,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -4884,10 +4964,10 @@ Introduction</p>
 <span><span class="st">    A--&gt;B</span></span>
 <span><span class="st">"</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="htmlwidget-d96174ccc720d8956100" class="DiagrammeR html-widget html-fill-item" style="width:504px;height:504px;">
+<div id="htmlwidget-80e53e042c621c5b4669" class="DiagrammeR html-widget html-fill-item" style="width:504px;height:504px;">
 
 </div>
-<script type="application/json" data-for="htmlwidget-d96174ccc720d8956100">{"x":{"diagram":"\ngraph LR\n    A-->B\n"},"evals":[],"jsHooks":[]}</script><div id="keypoints1" class="callout keypoints">
+<script type="application/json" data-for="htmlwidget-80e53e042c621c5b4669">{"x":{"diagram":"\ngraph LR\n    A-->B\n"},"evals":[],"jsHooks":[]}</script><div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
@@ -4974,7 +5054,7 @@ This is definitely not normally distributed.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.4893357</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.490218</code></pre>
 </div>
 <p>The important point of the Central Limit Theorem is, that if we take
 a large number of random samples, and calculate the mean of each of
@@ -4990,7 +5070,7 @@ this:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.5300682</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.456203</code></pre>
 </div>
 <p>And we can use the <code>replicate()</code> function to repeat that
 calculation several times, in this case 1000 times:</p>
@@ -6919,10 +6999,11 @@ challenge blocks</li>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
-<a class="anchor" aria-label="anchor" href="#introduction"></a>
-</h2>
-<hr class="half-width">
+<p><a href="https://rstats-wtf.github.io/wtf-debugging-slides/#/additional-resources" class="external-link uri">https://rstats-wtf.github.io/wtf-debugging-slides/#/additional-resources</a></p>
+<p><a href="https://github.com/jennybc/debugging" class="external-link uri">https://github.com/jennybc/debugging</a></p>
+<p>CC-BY “Artwork by <a href="https://twitter.com/allison_horst" class="external-link"><span class="citation">@allison_horst</span></a>, CC-BY”.</p>
+<p>CC-BY (Creative Commons Attribution 4.0 International License).
+Unless otherwise indicated, please cite using “Artwork by <a href="https://twitter.com/allison_horst" class="external-link"><span class="citation">@allison_horst</span></a>”. <a href="https://twitter.com/allison_horst" class="external-link uri">https://twitter.com/allison_horst</a> ## Introduction</p>
 <p>Liste over ting der kan tilføjes når dette er tilføjet, kan
 R-Bestiarium repoet slettes</p>
 <p>Der kan tilføjes en del punkter fra <a href="https://kubdatalab.github.io/forklaringer/" class="external-link uri">https://kubdatalab.github.io/forklaringer/</a> også</p>
@@ -6936,8 +7017,11 @@ R-Bestiarium repoet slettes</p>
 <p>animering af ggplot <a href="https://kubdatalab.github.io/R-Bestiarium/10-bar-race-animation/index.html" class="external-link uri">https://kubdatalab.github.io/R-Bestiarium/10-bar-race-animation/index.html</a>
 <a href="https://kubdatalab.github.io/R-Bestiarium/17-animationer/index.html" class="external-link uri">https://kubdatalab.github.io/R-Bestiarium/17-animationer/index.html</a></p>
 <p>Generering af farvepaletter <a href="https://kubdatalab.github.io/R-Bestiarium/15-farver-og-striber/index.html" class="external-link uri">https://kubdatalab.github.io/R-Bestiarium/15-farver-og-striber/index.html</a></p>
-<p>Debugging af R <a href="https://kubdatalab.github.io/R-Bestiarium/20-debugging/index.html" class="external-link uri">https://kubdatalab.github.io/R-Bestiarium/20-debugging/index.html</a></p>
-</section><div class="section level1">
+<p><a href="https://x.com/allison_horst/status/1216411271903318016" class="external-link uri">https://x.com/allison_horst/status/1216411271903318016</a></p>
+<p>Debugging af R <a href="https://kubdatalab.github.io/R-Bestiarium/20-debugging/index.html" class="external-link uri">https://kubdatalab.github.io/R-Bestiarium/20-debugging/index.html</a>
+<a href="https://cosimameyer.com/post/mastering-debugging-in-r/" class="external-link uri">https://cosimameyer.com/post/mastering-debugging-in-r/</a></p>
+<p><a href="https://blogs.rstudio.com/ai/posts/2022-10-06-audio-classification-torch/" class="external-link uri">https://blogs.rstudio.com/ai/posts/2022-10-06-audio-classification-torch/</a></p>
+<div class="section level1">
 <h1 id="herunder-er-de-tilføjet">Herunder er de tilføjet<a class="anchor" aria-label="anchor" href="#herunder-er-de-tilf%C3%B8jet"></a>
 </h1>
 <p>Hvilken fordeling følger mine data? <a href="https://kubdatalab.github.io/R-Bestiarium/16-hvilken-fordeling/index.html" class="external-link uri">https://kubdatalab.github.io/R-Bestiarium/16-hvilken-fordeling/index.html</a></p>
@@ -7275,7 +7359,7 @@ dem ved at lave samme kald - men med en anden <code>family</code>:</p>
             class = c("gamlss.family","family")
           )
 }
-&lt;bytecode: 0x55e61cb500f0&gt;
+&lt;bytecode: 0x55fdcff33e90&gt;
 &lt;environment: namespace:gamlss.dist&gt;</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb24">
@@ -7592,7 +7676,7 @@ kurtosis minus 3 på 0, jo tættere på normalfordelt er data.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] -0.09720642</code></pre>
+<pre class="output" tabindex="0"><code>[1] -0.0746485</code></pre>
 </div>
 <p>kurtosis</p>
 <div class="codewrapper sourceCode" id="cb16">
@@ -7604,7 +7688,7 @@ kurtosis minus 3 på 0, jo tættere på normalfordelt er data.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] -0.06258691</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.06237524</code></pre>
 </div>
 <p>Bemærk at vores test-vektor er ret normal fordelt. Men ingen af
 parametrene er lig 0.</p>
@@ -7622,7 +7706,7 @@ parametrene er lig 0.</p>
 	Shapiro-Wilk normality test
 
 data:  test
-W = 0.99844, p-value = 0.516</code></pre>
+W = 0.9984, p-value = 0.4937</code></pre>
 </div>
 <p>nul-hypotesen er her at data er normalfordelte. Hvis vi afviser
 null-hypotesen,vil det i dette tilfælde, være forkert i ca. 94% af
@@ -7651,7 +7735,7 @@ qq-plottet.</p>
 	Asymptotic one-sample Kolmogorov-Smirnov test
 
 data:  test
-D = 0.026811, p-value = 0.4686
+D = 0.023647, p-value = 0.6309
 alternative hypothesis: two-sided</code></pre>
 </div>
 <p>Vær forsigtig. Den forudsætter at vi kender “den sande” middelværdi
@@ -7680,7 +7764,7 @@ middelværdi og standardafvigelse.</p>
 	Lilliefors (Kolmogorov-Smirnov) normality test
 
 data:  test
-D = 0.026811, p-value = 0.08723</code></pre>
+D = 0.023647, p-value = 0.1916</code></pre>
 </div>
 <p>Samme null-hypotese som før. Men læg igen mærke til at selvom data er
 designet til at være normalfordelte, så er p-værdien ikke 1.</p>
@@ -7703,7 +7787,7 @@ designet til at være normalfordelte, så er p-værdien ikke 1.</p>
 	Anderson-Darling normality test
 
 data:  test
-A = 0.34204, p-value = 0.4923</code></pre>
+A = 0.49347, p-value = 0.2161</code></pre>
 </div>
 <p>Også her er null-hypotesen at data er normaltfordelte.</p>
 <div id="keypoints1" class="callout keypoints">
@@ -7840,7 +7924,7 @@ nyttige i andre sammenhænge.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.3</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.2</code></pre>
 </div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
