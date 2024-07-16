@@ -203,7 +203,7 @@ skewness(test)
 ```
 
 ``` output
-[1] -0.0746485
+[1] -0.02517593
 ```
 
 kurtosis
@@ -213,7 +213,7 @@ kurtosis(test)
 ```
 
 ``` output
-[1] 0.06237524
+[1] 0.1480198
 ```
 Bemærk at vores test-vektor er ret normal fordelt. Men ingen af parametrene er
 lig 0.
@@ -231,7 +231,7 @@ shapiro.test(test)
 	Shapiro-Wilk normality test
 
 data:  test
-W = 0.9984, p-value = 0.4937
+W = 0.9976, p-value = 0.1524
 ```
 nul-hypotesen er her at data er normalfordelte. Hvis vi afviser null-hypotesen,vil det 
 i dette tilfælde, være forkert i ca. 94% af tilfældene.
@@ -256,7 +256,7 @@ ks.test(test, "pnorm", mean = mean(test), sd = sd(test))
 	Asymptotic one-sample Kolmogorov-Smirnov test
 
 data:  test
-D = 0.023647, p-value = 0.6309
+D = 0.02497, p-value = 0.5611
 alternative hypothesis: two-sided
 ```
 Vær forsigtig. Den forudsætter at vi kender "den sande" middelværdi og standardafvigelse,
@@ -280,7 +280,7 @@ lillie.test(test)
 	Lilliefors (Kolmogorov-Smirnov) normality test
 
 data:  test
-D = 0.023647, p-value = 0.1916
+D = 0.02497, p-value = 0.1365
 ```
 Samme null-hypotese som før. Men læg igen mærke til at selvom data er 
 designet til at være normalfordelte, så er p-værdien ikke 1. 
@@ -299,7 +299,7 @@ ad.test(test)
 	Anderson-Darling normality test
 
 data:  test
-A = 0.49347, p-value = 0.2161
+A = 0.57979, p-value = 0.1314
 ```
 Også her er null-hypotesen at data er normaltfordelte. 
 
