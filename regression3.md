@@ -1,5 +1,5 @@
 ---
-title: 'logistisk'
+title: 'Logistisk regression'
 teaching: 10
 exercises: 2
 editor_options: 
@@ -13,8 +13,6 @@ editor_options:
 
 ::: objectives
 -   Explain how to use markdown with the new lesson template
--   Demonstrate how to include pieces of code, figures, and nested
-    challenge blocks
 :::
 
 ## Logistisk Regression
@@ -45,29 +43,7 @@ variabler.
 
 
 Funktionen ser således ud:
-
-``` r
-library(ggplot2)
-
-logistic_function <- function(x) {
-  1 / (1 + exp(-x))
-}
-
-
-x_values <- seq(-10, 10, by = 0.1)
-logistic_values <- logistic_function(x_values)
-data <- data.frame(x = x_values, logistic = logistic_values)
-
-
-ggplot(data, aes(x = x, y = logistic)) +
-  geom_line() +
-  labs(title = "Logistic Function",
-       x = "Logit value x",
-       y = "Probability p") +
-  theme_minimal()
-```
-
-<img src="fig/regression3-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/regression3-rendered-logit_func_plot-1.png" style="display: block; margin: auto;" />
 
 Og pointen er altså at vi hælder noget input ind, og så får vi
 langt henadvejen enten 0 eller 1 ud. Der vil stort set altid
@@ -82,11 +58,19 @@ for at svaret er 1 i virkeligheden er 49%
 
 Alt det er udemærket. Måden vi i praksis gør det på er ved:
 
-model \<- glm(y \~ x1 + x2, family = binomial, data = data)
+``` r
+model <- glm(y~x1+x2, family = "binomial", data = data)
+```
 
 # koefficienter og p-værdier
 
+
+``` r
 summary(model)
+```
+
+
+
 
 # predict
 
@@ -114,8 +98,4 @@ Der er andre.
 
 ::: keypoints
 -   Use `.md` files for episodes when you want static content
--   Use `.Rmd` files for episodes when you need to generate output
--   Run `sandpaper::check_lesson()` to identify any issues with your
-    lesson
--   Run `sandpaper::build_lesson()` to preview your lesson locally
 :::

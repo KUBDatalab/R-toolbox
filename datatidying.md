@@ -18,7 +18,30 @@ exercises: 2
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Introduction
-tidyr ting.
+pivotering.
+pivot_longer
+pivot_wider
+replace_na
+Det der skal til for at gøre ting tidy. 
+
+unite
+separate - der er superseeded. Og bør erstattes med de to nye.
+nesting - måske til en Avanceret? Både nest og unnest
+fill
+drop_na
+
+
+``` r
+tidyr::
+```
+
+``` error
+Error: <text>:2:0: unexpected end of line
+1: tidyr::
+   ^
+```
+
+
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 

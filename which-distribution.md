@@ -36,6 +36,7 @@ can do just that:
 
 
 ``` r
+library(tidyverse)
 library(gamlss)
 library(gamlss.dist)
 library(gamlss.add)
@@ -57,9 +58,7 @@ faithful %>%
   geom_histogram(bins=20)
 ```
 
-``` error
-Error in faithful %>% filter(eruptions > 3) %>% ggplot(aes(eruptions)): could not find function "%>%"
-```
+<img src="fig/which-distribution-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
 This does not look very normally distributed, and the fact that eruptions can not
 have negative lengths in it self, indicates that the data is probably not normally
 distributed. This is because the normal distribution would give us non-zero 
@@ -67,7 +66,7 @@ probabilities for negative eruption-lengths.
 
 So - which statistical distribution best matches our data?
 
-We begin by preparing the data:
+We begin by preparing the data.:
 
 
 ``` r
@@ -76,13 +75,9 @@ eruption_example <- faithful %>%
   select(eruptions)
 ```
 
-``` error
-Error in faithful %>% filter(eruptions > 3) %>% select(eruptions): could not find function "%>%"
-```
-
 The function `fitDist()` from `gamlss` will fit the data to a selection of different
 statistical distributions, calculate a measure of the goodness of fit, and return
-the best fit (and information on all the others). Rather than testing agains all 
+the best fit (and information on all the others). Rather than testing against all 
 97 different distributions supported by `gamlss`, we can specify only a selection,
 in this case `realplus`, that only includes the 23 distributions that are defined
 for positive, real numbers:
@@ -93,8 +88,12 @@ for positive, real numbers:
 fit <- fitDist(eruptions, type = "realplus", data = eruption_example)
 ```
 
-``` error
-Error in eval(expr, envir, enclos): object 'eruption_example' not found
+``` output
+  |                                                                              |                                                                      |   0%  |                                                                              |===                                                                   |   4%  |                                                                              |======                                                                |   9%  |                                                                              |=========                                                             |  13%  |                                                                              |============                                                          |  17%  |                                                                              |===============                                                       |  22%  |                                                                              |==================                                                    |  26%  |                                                                              |=====================                                                 |  30%  |                                                                              |========================                                              |  35%  |                                                                              |===========================                                           |  39%  |                                                                              |==============================                                        |  43%  |                                                                              |=================================                                     |  48%  |                                                                              |=====================================                                 |  52%  |                                                                              |========================================                              |  57%  |                                                                              |===========================================                           |  61%  |                                                                              |==============================================                        |  65%  |                                                                              |=================================================                     |  70%  |                                                                              |====================================================                  |  74%  |                                                                              |=======================================================               |  78%  |                                                                              |==========================================================            |  83%Error in solve.default(oout$hessian) : 
+  Lapack routine dgesv: system is exactly singular: U[4,4] = 0
+  |                                                                              |=============================================================         |  87%Error in solve.default(oout$hessian) : 
+  Lapack routine dgesv: system is exactly singular: U[4,4] = 0
+  |                                                                              |================================================================      |  91%  |                                                                              |===================================================================   |  96%  |                                                                              |======================================================================| 100%
 ```
 If you do this yourself, you will notice a lot of error-messages. It is not 
 possible to fit this particular data to _all_ the distributions, and the ones
@@ -107,12 +106,27 @@ The output from `fitDist()` will return the best fit:
 fit
 ```
 
-``` error
-Error in eval(expr, envir, enclos): object 'fit' not found
+``` output
+
+Family:  c("WEI2", "Weibull type 2") 
+Fitting method: "nlminb" 
+
+Call:  gamlssML(formula = y, family = DIST[i]) 
+
+Mu Coefficients:
+[1]  -18.69
+Sigma Coefficients:
+[1]  2.524
+
+ Degrees of Freedom for the fit: 2 Residual Deg. of Freedom   173 
+Global Deviance:     175.245 
+            AIC:     179.245 
+            SBC:     185.574 
 ```
 We are told that the statistical distribution that best fits the data is
 `Weibull type 2` and that the AIC-measurement of goodness of fit is 170.245.
 
+:::: callout
 Is that a good fit? That is a good question. It strongly depends on the 
 values in the dataset. In this dataset, the length of the eruptions are 
 measured in seconds. If we choose to measure that length in another unit, eg
@@ -121,6 +135,7 @@ the distribution should not change. But the AIC will change.
 
 We can use the AIC to decide that one distribution fits the data better than 
 another, but not to conclude that that distribution is the correct one.
+::::
 
 The `fit` object containing the output of the `fitDist()` function contains 
 quite a bit more.
@@ -133,8 +148,12 @@ two distributions that failed enough to cause errors:
 fit$failed
 ```
 
-``` error
-Error in eval(expr, envir, enclos): object 'fit' not found
+``` output
+[[1]]
+[1] "GIG"
+
+[[2]]
+[1] "LNO"
 ```
 As mentioned `fitDist()` fitted the data to 23 different distributions. We can
 inspect the rest, and their associated AIC-values like this:
@@ -144,8 +163,13 @@ inspect the rest, and their associated AIC-values like this:
 fit$fits
 ```
 
-``` error
-Error in eval(expr, envir, enclos): object 'fit' not found
+``` output
+    WEI2     WEI3      WEI       GG    BCPEo     BCPE    BCCGo     BCCG 
+179.2449 179.2449 179.2449 181.1349 181.4953 181.4953 183.1245 183.1245 
+     GB2      BCT     BCTo   exGAUS       GA   LOGNO2    LOGNO       IG 
+183.1354 185.1245 185.1245 190.2994 194.4665 198.3047 198.3047 198.3558 
+  IGAMMA      EXP       GP PARETO2o  PARETO2 
+202.6759 861.8066 863.8067 863.8079 863.8081 
 ```
 Here we get `WEI2` first, with an AIC of 179.2449, but we can see that `WEI3` and
 `WEI1` have almost exactly the same AIC. Not that surprising if we guess that 
@@ -157,28 +181,59 @@ large enough for us to think that `WEI2` is significantly better than `WEI3`?
 No. As a general rule of thumb, the difference between the AIC of two distributions
 have to be larger than 2 for us to see a significant difference.
 
-
+We can get more details using the `summary()` function:
 
 ``` r
 summary(fit)
 ```
 
-``` error
-Error in eval(expr, envir, enclos): object 'fit' not found
+``` output
+*******************************************************************
+Family:  c("WEI2", "Weibull type 2") 
+
+Call:  gamlssML(formula = y, family = DIST[i]) 
+
+Fitting method: "nlminb" 
+
+
+Coefficient(s):
+             Estimate  Std. Error  t value   Pr(>|t|)    
+eta.mu    -18.6934274   1.1306427 -16.5334 < 2.22e-16 ***
+eta.sigma   2.5242093   0.0589965  42.7858 < 2.22e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+ Degrees of Freedom for the fit: 2 Residual Deg. of Freedom   173 
+Global Deviance:     175.245 
+            AIC:     179.245 
+            SBC:     185.574 
 ```
-Det er et pænt QQ-plot.
+And we can get at graphical description as well:
 
-## Hvordan med de andre muligheder?
-
-Dem kan vi også få: 
 
 ``` r
 plot(fit)
 ```
 
-``` error
-Error in eval(expr, envir, enclos): object 'fit' not found
+<img src="fig/which-distribution-rendered-unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+
+``` output
+******************************************************************
+	      Summary of the Quantile Residuals
+                           mean   =  -0.001205749 
+                       variance   =  0.9953007 
+               coef. of skewness  =  0.09022876 
+               coef. of kurtosis  =  2.529951 
+Filliben correlation coefficient  =  0.9976953 
+******************************************************************
 ```
+
+## Hvordan med de andre muligheder?
+
+Dem kan vi også få: 
+
+
+
 
 ``` r
 fitte <- gamlss(eruptions ~ 1, family = LOGNO, data = test)
@@ -186,6 +241,14 @@ fitte <- gamlss(eruptions ~ 1, family = LOGNO, data = test)
 
 ``` error
 Error in eval(expr, envir, enclos): object 'test' not found
+```
+
+``` r
+plot(fitte)
+```
+
+``` error
+Error in eval(expr, envir, enclos): object 'fitte' not found
 ```
 Og det var så de fordelinger der er definerede for reelle, positive tal. Vi går efter den mindste "deviance" - afvigelsen fra idealet. Bemærk at jo flere datapunkter vi har, jo større bliver tallene. Det bedste fit er dog stadig det med den laveste værdi.
 
@@ -263,7 +326,7 @@ function (mu.link ="log", sigma.link="log")
             class = c("gamlss.family","family")
           )
 }
-<bytecode: 0x55bb8df8c468>
+<bytecode: 0x55f1b8be48c0>
 <environment: namespace:gamlss.dist>
 ```
 
@@ -281,13 +344,7 @@ Resultatet kan behandles ganske som tidligere.
 test <- as_tibble(faithful) %>% 
 select(eruptions) %>% 
   filter(eruptions > 3)
-```
 
-``` error
-Error in as_tibble(faithful) %>% select(eruptions) %>% filter(eruptions > : could not find function "%>%"
-```
-
-``` r
 faithful$eruptions
 ```
 
@@ -321,17 +378,29 @@ faithful$eruptions
 gamlss(eruptions ~ 1, family = LOGNO2, data = eruption_example) %>% plot()
 ```
 
-``` error
-Error in gamlss(eruptions ~ 1, family = LOGNO2, data = eruption_example) %>% : could not find function "%>%"
+``` output
+GAMLSS-RS iteration 1: Global Deviance = 194.3047 
+GAMLSS-RS iteration 2: Global Deviance = 194.3047 
+```
+
+<img src="fig/which-distribution-rendered-unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
+
+``` output
+******************************************************************
+	      Summary of the Quantile Residuals
+                           mean   =  -2.44886e-16 
+                       variance   =  1.005747 
+               coef. of skewness  =  -0.7063289 
+               coef. of kurtosis  =  3.179548 
+Filliben correlation coefficient  =  0.9814924 
+******************************************************************
 ```
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
+- The data generating function is not neccesarily the same as the distribution that best fit the data.
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 

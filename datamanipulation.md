@@ -1,12 +1,12 @@
 ---
-title: 'datamanipulation'
+title: 'Elementary Datamanipulation'
 teaching: 10
 exercises: 2
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do you write a lesson using R Markdown and `{sandpaper}`?
+- How do I manipulate the data to have a specific shape?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -18,32 +18,30 @@ exercises: 2
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-``` output
-── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-```
 
 
 ## Introduction
+Og det er elementær fordi det er de grundlæggende elementer. Så måske et andet
+ord? det er elementary som i "periodic table of the elements".
 
-Det meste af det vi skal gøre er let. Hvis vores data har den rette form.
+Konceptet er at vi kan manipulere, opsummere og transformere data.
+filter(): Filtrerer rækker baseret på betingelser.
+select(): Vælger specifikke kolonner.
+mutate(): Tilføjer nye kolonner eller ændrer eksisterende.
+group_by()
+summarise(): Opsummerer data med aggregerede funktioner.
+arrange(): Sorterer rækker.
+join(): Kombinerer flere datasæt.
 
-Tommelfingerreglen er at vi bruger 80% af tiden på at rense data, og 20% på
-at analysere data. Det er ikke helt ved siden af.
-
-Hvordan gør vi det?
 
 ## pipen
 
-Vi taler tidy-dialekten her. Så pipen er vigtig.
+Vi taler tidy-dialekten her. Så pipen er vigtig. Vi bruger magrittr pipen,
+som kan håndtere mere komplekse operationer, og som stadig er meget udbredt når
+vi finder hjælp på nettet.
+
+Der findes også den native pipe |> som undertiden vil være hurtigere.
+
 
 ## dplyr
 
