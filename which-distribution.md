@@ -326,7 +326,7 @@ function (mu.link ="log", sigma.link="log")
             class = c("gamlss.family","family")
           )
 }
-<bytecode: 0x55aa8d28e948>
+<bytecode: 0x55edc220c450>
 <environment: namespace:gamlss.dist>
 ```
 

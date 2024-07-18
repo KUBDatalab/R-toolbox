@@ -60,7 +60,7 @@ pacman::p_update(update = F)
 ```
 
 ``` output
-[1] "codetools" "foreign"   "lattice"   "MASS"      "Matrix"    "spatial"  
+[1] "codetools" "foreign"   "lattice"   "Matrix"    "spatial"  
 ```
 
 ``` r

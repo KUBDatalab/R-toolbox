@@ -8,13 +8,11 @@ editor_options:
 ---
 
 ::: questions
--   How do you write a lesson using R Markdown and `{sandpaper}`?
+-   How do we determine if a dataset might be normally distributed?
 :::
 
 ::: objectives
 -   Explain how to use markdown with the new lesson template
--   Demonstrate how to include pieces of code, figures, and nested
-    challenge blocks
 :::
 
 
@@ -77,7 +75,7 @@ normal_test_data %>%
 `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="fig/is-it-normal-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="fig/is-it-normal-rendered-histogram-1.png" style="display: block; margin: auto;" />
 
 This does not really look like a normal distribution. The fact that mean
 and median are almost identical was not a sufficient criterium for
@@ -93,7 +91,7 @@ normal_test_data %>%
   geom_density()
 ```
 
-<img src="fig/is-it-normal-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="fig/is-it-normal-rendered-densityplot-1.png" style="display: block; margin: auto;" />
 
 We can think of this as a histogram with infinitely small bins.
 
@@ -127,7 +125,7 @@ normal_test_data %>%
   geom_qq_line()
 ```
 
-<img src="fig/is-it-normal-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="fig/is-it-normal-rendered-qq-plot-1.png" style="display: block; margin: auto;" />
 
 The `geom_qq` function calculate and plots which percentile an
 observation is in.
@@ -160,152 +158,216 @@ wrong with the data - in regards to how it deviates from normalcy.
 | Above     | Above      | Right skewed | A tail that stretches to the higher values - the extreme values are larger. |
 | Below     | Below      | Left skewed  | A tail that stretches to the lower values - the extreme values are smaller. |
 
-
-``` output
-
-Attaching package: 'gridExtra'
-```
-
-``` output
-The following object is masked from 'package:dplyr':
-
-    combine
-```
-
-<img src="fig/is-it-normal-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="fig/is-it-normal-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
 :::
 
+## Numerical measures rather than graphical
 
+With experience the qq-plots can be used to determine if
+the data is normally distributed - the points are exactly on
+the line. But only rarely the points matches exactly - even
+if the data is normally distributed *enough*. And how much
+can the tails deviate from the line before the data is not 
+normally distributed *enough*?
 
-Ja. kurtosis og skewness. Jo tættere skewness kommer på 0, og kurtosis
-minus 3 på 0, jo tættere på normalfordelt er data.
+The deviations can be described numerically using two parameters:
 
-R i sig selv kan ikke beregne det. Men det kan pakken e1071
+Kurtosis and skewness. 
+
+Base-R do not have functions for this, but the package `e1071` does.
+
 
 
 ``` r
 library(e1071)
-test <- rnorm(1000)
 ```
-
-Skewness:
 
 
 ``` r
-skewness(test)
+skewness(normal_test_data$bill_depth_mm, na.rm = TRUE)
 ```
 
 ``` output
-[1] 0.02857772
+[1] 0.006578141
 ```
 
 kurtosis
 
 
 ``` r
-kurtosis(test)
+kurtosis(normal_test_data$bill_depth_mm, na.rm = TRUE)
 ```
 
 ``` output
-[1] -0.02368209
+[1] -0.960087
 ```
+As a rule of thumb, skewness should be within +/-0.5 if the data is normally distributed. Values between +/-0.5 and +/- 1 
+indicates a moderate skewness, where data *can* still be approximately normally distributed. Values larger that +/-1 indicates a
+significant skewness, and the data is probably not normally distributed.
 
-Bemærk at vores test-vektor er ret normal fordelt. Men ingen af
-parametrene er lig 0.
+For the kurtosis matters are a bit more complicated as the
+kurtosis for a normal distribution is 3. We therefore look at 
+excess kurtosis, where i subtract 3 from the calculated kurtosis.
+An value of +/-1 exces kurtosis indicates that the data has
+a 'tailedness' close to the normal distribution.
+Values between +/-1 and +/-2 indicates a moderate deviation from
+the normal distribution, but the data can still be approximately
+normally distributed.
+Values larger than +/-2 is in general taken as an indication that the data is not normally distributed.
 
-Andre tests: Shapiro-Wilk
+The absolute value of the excess kurtosis is larger than 2, indicating that
+the data is not normally distributed.
+
+
+
+## More direct tests
+
+The question of wether or not data is normally distributed is
+important in many contexts, and it should come as no surprise
+that a multitude of tests has been devised for testing exactly
+that.
+
+::::: instructor
+
+These tests can be difficult for learners that have not
+encountered hypothesis-testing before.
+
+:::::
+
+### Shapiro-Wilk
+
+The Shapiro-Wilk test is especially suited for small
+sample sizes (<50, some claim it works well up to <2000).
+
+It is a measure of the linear correlation between data and
+the normally distributed quantiles, what we see in the qqplot.
+
+The null-hypothesis is that data is normally distributed, and
+the Shapiro-Wilk test returns a p-value reporting the risk
+of being wrong if we reject the null-hypothesis. 
 
 
 ``` r
-shapiro.test(test) 
+shapiro.test(normal_test_data$bill_depth_mm) 
 ```
 
 ``` output
 
 	Shapiro-Wilk normality test
 
-data:  test
-W = 0.99773, p-value = 0.1877
+data:  normal_test_data$bill_depth_mm
+W = 0.97274, p-value = 0.1418
 ```
-
-nul-hypotesen er her at data er normalfordelte. Hvis vi afviser
-null-hypotesen,vil det i dette tilfælde, være forkert i ca. 94% af
-tilfældene.
-
-Testen er særligt godt til små stikprøver (\<50, nogen siger den er ok
-op op til \<2000)
-
-Det er, vist nok, principielt et mål for den lineære korrelation mellem
-data og normalfordelte kvantiler - altså det vi ser i qq-plottet.
+The p-value in this case is 0.1418 - and we do not have 
+enough evidense to reject the null-hypothesis. The data is 
+probably normally distributed.
 
 ### Kolmogorov-Smirnov
 
-vi skal specificere at det er normalfordelingen vi tester imod
-("pnorm") - den kan nemlig teste for andre fordelinger også.
+The KS-test allows us to test if the data is distributed
+as a lot of different distributions, not only the normal 
+distribution. Because of this, we need to specify the
+specific distribution we are testing for, in this case
+a normal distribution with specific values for mean and
+standard deviation.
+
+Therefore we need to calculate those:
 
 
 ``` r
-ks.test(test, "pnorm", mean = mean(test), sd = sd(test))
+mean <- mean(normal_test_data$bill_depth_mm, na.rm = TRUE)
+sd <- sd(normal_test_data$bill_depth_mm, na.rm = TRUE)
+ks.test(normal_test_data$bill_depth_mm, "pnorm", mean = mean, sd = sd)
+```
+
+``` warning
+Warning in ks.test.default(normal_test_data$bill_depth_mm, "pnorm", mean =
+mean, : ties should not be present for the one-sample Kolmogorov-Smirnov test
 ```
 
 ``` output
 
 	Asymptotic one-sample Kolmogorov-Smirnov test
 
-data:  test
-D = 0.026656, p-value = 0.4761
+data:  normal_test_data$bill_depth_mm
+D = 0.073463, p-value = 0.8565
 alternative hypothesis: two-sided
 ```
+In this test the null-hypothesis is also that data is normally
+distributed. The p-values is very high, and therefore we 
+cannot reject the null-hypothesis. Again, this is not the same
+as the data *actually* being normally distributed. 
 
-Vær forsigtig. Den forudsætter at vi kender "den sande" middelværdi og
-standardafvigelse, i stedet for som i dette eksempel at estimere dem fra
-vores stikprøve.
+This test assumes that there are no repeated values in the data,
+as that can affect the precision of the test. The p-value is 
+still very high, and we will conclude that we cannot rule out
+that the data is not normally distributed.
 
-NULL-hypotesen er også her at data er normalfordelte, p-værdien er her
-0.99, og vi kan derfor ikke afvise null-hypotesen.
+Note that the KS-test assumes that we actually know the true
+mean and standard deviation. Here we calculate those values based on the sample, which is problematic.
 
 ### Liliefors test
 
-Den er en variation af ks-testen, der er designet specifikt til at teste
-normalitet. Og forudsætter *ikke* at vi på forhånd kender middelværdi og
-standardafvigelse.
+This is a variation on the KS-test, that is designed specifically
+for testing for normality. It does not require us to know the 
+true mean and standard deviation for the population.
+
+This test is also not available in base-R, but can be found in
+the `nortest` package:
 
 
 ``` r
 library(nortest)
-lillie.test(test)
+lillie.test(normal_test_data$bill_depth_mm)
 ```
 
 ``` output
 
 	Lilliefors (Kolmogorov-Smirnov) normality test
 
-data:  test
-D = 0.026656, p-value = 0.09102
+data:  normal_test_data$bill_depth_mm
+D = 0.073463, p-value = 0.483
 ```
+Again the p-value is so high, that we cannot reject the null-hypothesis.
 
-Samme null-hypotese som før. Men læg igen mærke til at selvom data er
-designet til at være normalfordelte, så er p-værdien ikke 1.
+### Anderson-Darling test
 
-### Anderson-darling test
+This test is more sensitive for deviations in the tails.
 
-Ikke tilgængelig i R direkte:
+It is not available in base-R, but can be found in the 
+`nortest` package. 
 
 
 ``` r
-library(nortest)
-ad.test(test)
+ad.test(normal_test_data$bill_depth_mm)
 ```
 
 ``` output
 
 	Anderson-Darling normality test
 
-data:  test
-A = 0.64487, p-value = 0.09228
+data:  normal_test_data$bill_depth_mm
+A = 0.44788, p-value = 0.2714
 ```
+In this case the null-hypothesis is also that data is normally
+distributed, and the p-value indicates that we cannot reject
+the null-hypothesis.
 
-Også her er null-hypotesen at data er normaltfordelte.
+
+## And is it actually normally distributed?
+
+Probably not. Except for the excess kurtosis all the tests we have 
+done indicate that the depth of the beaks of chinstrap penguins 
+can be normally distributed. Or rather, that we cannot reject the
+null-hypothesis that they are normally distributed.
+
+But the fact that we cannot reject this hypothesis is not the same
+as concluding that the data actually **is** normally distributed. 
+
+Based on the excess kurtosis and the qq-plot, it would be reasonable to
+conclude that it is not. 
+
+
 
 ::: keypoints
 -   Use `.md` files for episodes when you want static content
