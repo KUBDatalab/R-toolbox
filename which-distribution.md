@@ -19,24 +19,42 @@ exercises: 2
 
 ## Introduction
 
-Certain statistical tests and procedures requires that our data
-is normally distributed. And we have to use other tests if it is
-not normally distributed. In that case we need to figure out which
-statistical distribution best fit our data.
+Your data was not normally distributed. Now what?
 
-We could find that out by guessing at a distribution, fit our data
-to it, and evaluate how good the fit is.
+The process generating your data is probably following some distribution.
+The size distribution of cities appears to follow a Pareto distibution, as is
+wealth. The number of mutations in a string of DNA appears to follow a 
+poisson distribution. And the distribution of wind speeds as well as
+times to failure for technical components both follow the Weibull distribution.
 
-Or we can figure out a way to test at lot of different distributions
-in one go.
+If you have a theoretical foundation for which distribution you data generating
+function follows, that is nice. 
 
-The package `gamlss` and its plugin packages `gamlss.dist` and `gamlss.add`
-can do just that:
+If you do not - we will be interested in figuring out which distribution your
+data actually follow.
 
+## How?
+
+We fit our data to a distribution. Or rather - we fit the data to several
+different distributions and then choose the best.
+
+Let us look at some data. The `faithful` data set contains 272 observations of
+the Old Faithful geyser in Yellowstone National Park in USA. We only look at 
+eruptions that lasts longer than 3 minutes:
 
 
 ``` r
 library(tidyverse)
+eruption_example <- faithful %>% 
+  filter(eruptions > 3) %>% 
+  select(eruptions)
+```
+
+Rather than testing a lot of different distributions, we can use the `gamlss`
+package, and two add-ons to that.
+
+
+``` r
 library(gamlss)
 library(gamlss.dist)
 library(gamlss.add)
@@ -45,35 +63,7 @@ library(gamlss.add)
 `gamlss` has the advantage of implementing a _lot_ of different statistical 
 distributions.
 
-Let us look at some data. The `faithful` data set contains 272 observations of
-the Old Faithful geyser in Yellowstone National Park in USA. We only look at 
-eruptions that lasts longer than 3 seconds:
 
-
-
-``` r
-faithful %>% 
-  filter(eruptions > 3) %>% 
-  ggplot(aes(eruptions)) +
-  geom_histogram(bins=20)
-```
-
-<img src="fig/which-distribution-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
-This does not look very normally distributed, and the fact that eruptions can not
-have negative lengths in it self, indicates that the data is probably not normally
-distributed. This is because the normal distribution would give us non-zero 
-probabilities for negative eruption-lengths.
-
-So - which statistical distribution best matches our data?
-
-We begin by preparing the data.:
-
-
-``` r
-eruption_example <- faithful %>% 
-  filter(eruptions > 3) %>% 
-  select(eruptions)
-```
 
 The function `fitDist()` from `gamlss` will fit the data to a selection of different
 statistical distributions, calculate a measure of the goodness of fit, and return
@@ -95,6 +85,7 @@ fit <- fitDist(eruptions, type = "realplus", data = eruption_example)
   Lapack routine dgesv: system is exactly singular: U[4,4] = 0
   |                                                                              |================================================================      |  91%  |                                                                              |===================================================================   |  96%  |                                                                              |======================================================================| 100%
 ```
+
 If you do this yourself, you will notice a lot of error-messages. It is not 
 possible to fit this particular data to _all_ the distributions, and the ones
 where the fit fails (enough), we will get an error message.
@@ -129,9 +120,9 @@ We are told that the statistical distribution that best fits the data is
 :::: callout
 Is that a good fit? That is a good question. It strongly depends on the 
 values in the dataset. In this dataset, the length of the eruptions are 
-measured in seconds. If we choose to measure that length in another unit, eg
-`wiblies` defined as two seconds - equivalent to dividing the values with 2,
-the distribution should not change. But the AIC will change.
+measured in minutes If we choose to measure that length in another unit, eg
+seconds,
+the distribution should not change. But the AIC will.
 
 We can use the AIC to decide that one distribution fits the data better than 
 another, but not to conclude that that distribution is the correct one.
@@ -215,7 +206,7 @@ And we can get at graphical description as well:
 plot(fit)
 ```
 
-<img src="fig/which-distribution-rendered-unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="fig/which-distribution-rendered-unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 ``` output
 ******************************************************************
@@ -326,7 +317,7 @@ function (mu.link ="log", sigma.link="log")
             class = c("gamlss.family","family")
           )
 }
-<bytecode: 0x55edc220c450>
+<bytecode: 0x55a3e1480148>
 <environment: namespace:gamlss.dist>
 ```
 
@@ -383,7 +374,7 @@ GAMLSS-RS iteration 1: Global Deviance = 194.3047
 GAMLSS-RS iteration 2: Global Deviance = 194.3047 
 ```
 
-<img src="fig/which-distribution-rendered-unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
+<img src="fig/which-distribution-rendered-unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 
 ``` output
 ******************************************************************
