@@ -1,5 +1,5 @@
 ---
-title: 'diagramtest'
+title: 'hypothesis-testing - very basic'
 teaching: 10
 exercises: 2
 ---
@@ -16,19 +16,16 @@ exercises: 2
 - Demonstrate how to include pieces of code, figures, and nested challenge blocks
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-https://github.com/mermaid-js/mermaid#readme
+
 ## Introduction
 
-``` r
-library(DiagrammeR)
-mermaid("
-graph LR
-    A-->B
-")
-```
+Vi skal nok ikke så dybt i konkrete tests. Men mere i konceptet.
 
-<!--html_preserve--><div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-c85e4d3a9bfe81501ff1" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-c85e4d3a9bfe81501ff1">{"x":{"diagram":"\ngraph LR\n    A-->B\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+At clt fortæller os, at middelværdier for stikprøver er normalfordelte.
+Og at vi derfor kan se om det resultat vi får, er realistisk - falder inden
+for "normalområdet". Snarere end anova og andet godt.
+
+og null-hypotesen.
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 

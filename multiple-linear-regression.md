@@ -1,5 +1,5 @@
 ---
-title: 'diagramtest'
+title: 'multiple-linear-regression'
 teaching: 10
 exercises: 2
 ---
@@ -16,19 +16,8 @@ exercises: 2
 - Demonstrate how to include pieces of code, figures, and nested challenge blocks
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-https://github.com/mermaid-js/mermaid#readme
+
 ## Introduction
-
-``` r
-library(DiagrammeR)
-mermaid("
-graph LR
-    A-->B
-")
-```
-
-<!--html_preserve--><div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-c85e4d3a9bfe81501ff1" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-c85e4d3a9bfe81501ff1">{"x":{"diagram":"\ngraph LR\n    A-->B\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 

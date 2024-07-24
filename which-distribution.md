@@ -1,19 +1,18 @@
 ---
-title: 'which-distribution'
+title: 'How is the data distributed?'
 teaching: 10
 exercises: 2
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do you write a lesson using R Markdown and `{sandpaper}`?
+- If my data is not normally distributed - which distribution does it actually follow?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain how to use markdown with the new lesson template
-- Demonstrate how to include pieces of code, figures, and nested challenge blocks
+- Show how to identify possible distributions describing the data
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -47,8 +46,15 @@ eruptions that lasts longer than 3 minutes:
 library(tidyverse)
 eruption_example <- faithful %>% 
   filter(eruptions > 3) %>% 
-  select(eruptions)
+  dplyr::select(eruptions)
 ```
+
+:::: instructor
+
+Det er nødvendigt at specificere at vi bruger `dplyr::select` da den maskeres af
+MASS-pakken
+
+::::
 
 Rather than testing a lot of different distributions, we can use the `gamlss`
 package, and two add-ons to that.
@@ -219,154 +225,97 @@ Filliben correlation coefficient  =  0.9976953
 ******************************************************************
 ```
 
-## Hvordan med de andre muligheder?
+## What about the other options?
 
-Dem kan vi også få: 
+### General comments
 
+Above we got the "best" fit. But we also noted that in order for us to conclude
+that one distribution is a better fit than another, the difference in AIC should
+be at least 2.
 
+What we are looking for might not actually be the probability distribution that
+best fits our data. Our data might be noisy or there might me systematic errors.
+The probability distribution we really want, is the one that best matches 
+the underlying data generating function, the mechanisms in the real world that
+we are studying, that actually is at the hearth of the data we collect.
+
+We might not be able to find that. But we should consider if some of the other
+possibilities provided by `fitDist()` might actually be better.
+
+:::: instructor
+
+Og her er det vi holder dem fast på at det faktisk er dem selv der er de
+bedst kvalificerede til at afgøre det. For det er dem der forstår domænet og data.
+
+::::
+
+First step is to look at the relevant distributions. In the setup with
+`gamlss`, `gamlss.dist` and `gamlss.add` we can test distributions of different
+types. The complete list can be found using the help function for `fitDist()`, but
+falls in the following families:
+
+* realline - continuous distributions for all real values
+* realplus - continuous distributions for positive real values
+* realAll - all continuous distributions - the combination of realline and realplus
+* real0to1 - continuous distributions defined for real values between 0 and 1
+* counts - distributions for counts
+* binom - binomial distributions
+
+Begin by considering which type whatever your data is describing, best matches. 
+
+### Actually looking at the fits
+
+For the selection of eruptions that we fitted, we chose 
+the "realplus" selection of distibutions to test. We did that, because
+the eruption times are all positive, and on the real number line.
+
+:::: instructur
+
+"Real numbers", på dansk reelle tal. Hvis du ved hvad imaginære
+tal er, ved du også hvad reelle tal er. Hvis ikke - så er reelle tal alle de tal
+du vil tænke på som tal.
+
+::::
+
+Behind the scenes `fitDist` fits the data to the chosen selection of distributions,
+and returns the best.
+
+Looking at the result of the fit we see this:
 
 
 ``` r
-fitte <- gamlss(eruptions ~ 1, family = LOGNO, data = test)
+fit
 ```
 
-``` error
-Error in eval(expr, envir, enclos): object 'test' not found
+``` output
+
+Family:  c("WEI2", "Weibull type 2") 
+Fitting method: "nlminb" 
+
+Call:  gamlssML(formula = y, family = DIST[i]) 
+
+Mu Coefficients:
+[1]  -18.69
+Sigma Coefficients:
+[1]  2.524
+
+ Degrees of Freedom for the fit: 2 Residual Deg. of Freedom   173 
+Global Deviance:     175.245 
+            AIC:     179.245 
+            SBC:     185.574 
 ```
 
-``` r
-plot(fitte)
-```
+In the `Call` part of the output, we see this: 
 
-``` error
-Error in eval(expr, envir, enclos): object 'fitte' not found
-```
-Og det var så de fordelinger der er definerede for reelle, positive tal. Vi går efter den mindste "deviance" - afvigelsen fra idealet. Bemærk at jo flere datapunkter vi har, jo større bliver tallene. Det bedste fit er dog stadig det med den laveste værdi.
-
-"realline" dækker kontinuerte fordelingsfunktioner på hele den reelle tallinie
-
-"realplus" dækker kontinuerte fordelingsfunktioner på den positive, reelle tallinie
-
-"realAll" har alle kontinuerte fordelingsfunktioner på hele den relle tallinie, det vil sige alt der er omfattet af "realline" og "realplus"
-
-"real0to1" de kontinuerte fordelingsfunktioner der er defineret for værdier mellem 0 og 1.
-
-"counts" fordelingsfunktioner for tælletal
-
-"binom" fordelingsfunktioner for binomiale data.
-
-Der er mange. Læs mere om dem i [dokumentationen](https://www.gamlss.com/wp-content/uploads/2013/01/gamlss-manual.pdf), særligt appendix A.
-   
-## Hvordan med de andre fordelinger?
-
-Inde bagved er `fitDist` i virkeligheden gentagne kald til den samme funktion.
-Det afsløres i outputtet:
 `Call:  gamlssML(formula = y, family = DIST[i])` 
 
-Så vil vi gerne have estimaterne fra de andre funktioner, kan vi få dem ved
-at lave samme kald - men med en anden `family`:
-
-``` r
-nyt_fit <- gamlssML(formula = y, family = "GG")
-```
-
-``` error
-Error in eval(predvars, data, env): object 'y' not found
-```
-
-``` r
-LOGNO2    
-```
-
-``` output
-function (mu.link ="log", sigma.link="log") 
-{
-    mstats <- checklink("mu.link", "LOGNO2", substitute(mu.link), c("inverse", "log", "identity"))
-    dstats <- checklink("sigma.link", "LOGNO2", substitute(sigma.link), c("inverse", "log", "identity"))        
-    structure(
-          list(family = c("LOGNO2", "Log Normal 2"),
-           parameters = list(mu=TRUE,sigma=TRUE),
-                nopar = 2, 
-                 type = "Continuous",
-              mu.link = as.character(substitute(mu.link)), 
-           sigma.link = as.character(substitute(sigma.link)), 
-           mu.linkfun = mstats$linkfun, 
-        sigma.linkfun = dstats$linkfun, 
-           mu.linkinv = mstats$linkinv, 
-        sigma.linkinv = dstats$linkinv,
-                mu.dr = mstats$mu.eta, 
-             sigma.dr = dstats$mu.eta, 
-                 dldm = function(y, mu, sigma){
-                 	      dldm <- (1/sigma^2)*(log(y)-log(mu))/mu #(log(y)-log(mu))/((sigma^2)*mu) 
-                          dldm
-                           },
-               d2ldm2 = function(mu, sigma) -1/((sigma^2)*(mu^2)),
-                 dldd = function(y,mu,sigma) {
-                 	           dldd <- (1/(sigma^3))*((log(y)-log(mu))^2-sigma^2)
-                              dldd}, 
-               d2ldd2 = function(sigma) -(2/(sigma^2)),
-              d2ldmdd = function(y) rep(0,length(y)),
-          G.dev.incr  = function(y,mu,sigma,...)  -2*dLOGNO2(y,mu,sigma,log=TRUE),                         
-                rqres = expression(rqres(pfun="pLOGNO2", type="Continuous", y=y, mu=mu, sigma=sigma)),
-           mu.initial = expression({   mu <- exp((log(y)+mean(log(y)))/2 ) }),
-        sigma.initial = expression({sigma <- rep(sd(log(y)),length(y))}), 
-             mu.valid = function(mu) all (mu > 0) , 
-          sigma.valid = function(sigma) all(sigma > 0), 
-              y.valid = function(y)  all(y>0)
-          ),
-            class = c("gamlss.family","family")
-          )
-}
-<bytecode: 0x5616cafdefb8>
-<environment: namespace:gamlss.dist>
-```
-
-``` r
-nyt_fit
-```
-
-``` error
-Error in eval(expr, envir, enclos): object 'nyt_fit' not found
-```
-Resultatet kan behandles ganske som tidligere.
+and from that we can deduces that if we want to fit the data to eg the log-normal 
+distribution (in the documentation we find that the abbreviation for that is 
+"LOGNO"), we can do it like this:
 
 
 ``` r
-test <- as_tibble(faithful) %>% 
-select(eruptions) %>% 
-  filter(eruptions > 3)
-
-faithful$eruptions
-```
-
-``` output
-  [1] 3.600 1.800 3.333 2.283 4.533 2.883 4.700 3.600 1.950 4.350 1.833 3.917
- [13] 4.200 1.750 4.700 2.167 1.750 4.800 1.600 4.250 1.800 1.750 3.450 3.067
- [25] 4.533 3.600 1.967 4.083 3.850 4.433 4.300 4.467 3.367 4.033 3.833 2.017
- [37] 1.867 4.833 1.833 4.783 4.350 1.883 4.567 1.750 4.533 3.317 3.833 2.100
- [49] 4.633 2.000 4.800 4.716 1.833 4.833 1.733 4.883 3.717 1.667 4.567 4.317
- [61] 2.233 4.500 1.750 4.800 1.817 4.400 4.167 4.700 2.067 4.700 4.033 1.967
- [73] 4.500 4.000 1.983 5.067 2.017 4.567 3.883 3.600 4.133 4.333 4.100 2.633
- [85] 4.067 4.933 3.950 4.517 2.167 4.000 2.200 4.333 1.867 4.817 1.833 4.300
- [97] 4.667 3.750 1.867 4.900 2.483 4.367 2.100 4.500 4.050 1.867 4.700 1.783
-[109] 4.850 3.683 4.733 2.300 4.900 4.417 1.700 4.633 2.317 4.600 1.817 4.417
-[121] 2.617 4.067 4.250 1.967 4.600 3.767 1.917 4.500 2.267 4.650 1.867 4.167
-[133] 2.800 4.333 1.833 4.383 1.883 4.933 2.033 3.733 4.233 2.233 4.533 4.817
-[145] 4.333 1.983 4.633 2.017 5.100 1.800 5.033 4.000 2.400 4.600 3.567 4.000
-[157] 4.500 4.083 1.800 3.967 2.200 4.150 2.000 3.833 3.500 4.583 2.367 5.000
-[169] 1.933 4.617 1.917 2.083 4.583 3.333 4.167 4.333 4.500 2.417 4.000 4.167
-[181] 1.883 4.583 4.250 3.767 2.033 4.433 4.083 1.833 4.417 2.183 4.800 1.833
-[193] 4.800 4.100 3.966 4.233 3.500 4.366 2.250 4.667 2.100 4.350 4.133 1.867
-[205] 4.600 1.783 4.367 3.850 1.933 4.500 2.383 4.700 1.867 3.833 3.417 4.233
-[217] 2.400 4.800 2.000 4.150 1.867 4.267 1.750 4.483 4.000 4.117 4.083 4.267
-[229] 3.917 4.550 4.083 2.417 4.183 2.217 4.450 1.883 1.850 4.283 3.950 2.333
-[241] 4.150 2.350 4.933 2.900 4.583 3.833 2.083 4.367 2.133 4.350 2.200 4.450
-[253] 3.567 4.500 4.150 3.817 3.917 4.450 2.000 4.283 4.767 4.533 1.850 4.250
-[265] 1.983 2.250 4.750 4.117 2.150 4.417 1.817 4.467
-```
-
-``` r
-gamlss(eruptions ~ 1, family = LOGNO2, data = eruption_example) %>% plot()
+log_norm_fit <- gamlss(eruptions ~ 1, family = LOGNO, data = eruption_example)
 ```
 
 ``` output
@@ -374,23 +323,52 @@ GAMLSS-RS iteration 1: Global Deviance = 194.3047
 GAMLSS-RS iteration 2: Global Deviance = 194.3047 
 ```
 
-<img src="fig/which-distribution-rendered-unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+``` r
+summary(log_norm_fit)
+```
 
 ``` output
 ******************************************************************
-	      Summary of the Quantile Residuals
-                           mean   =  -2.44886e-16 
-                       variance   =  1.005747 
-               coef. of skewness  =  -0.7063289 
-               coef. of kurtosis  =  3.179548 
-Filliben correlation coefficient  =  0.9814924 
+Family:  c("LOGNO", "Log Normal") 
+
+Call:  
+gamlss(formula = eruptions ~ 1, family = LOGNO, data = eruption_example) 
+
+Fitting method: RS() 
+
+------------------------------------------------------------------
+Mu link function:  identity
+Mu Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 1.451832   0.007461   194.6   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+------------------------------------------------------------------
+Sigma link function:  log
+Sigma Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -2.31561    0.05345  -43.32   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+------------------------------------------------------------------
+No. of observations in the fit:  175 
+Degrees of Freedom for the fit:  2
+      Residual Deg. of Freedom:  173 
+                      at cycle:  2 
+ 
+Global Deviance:     194.3047 
+            AIC:     198.3047 
+            SBC:     204.6343 
 ******************************************************************
 ```
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- The data generating function is not neccesarily the same as the distribution that best fit the data.
+- The data generating function is not necessarily the same as the distribution that best fit the data
+- Chose the distribution that best describes your data - not the one that fits best
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
