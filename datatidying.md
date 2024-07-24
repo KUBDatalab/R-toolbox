@@ -31,17 +31,6 @@ fill
 drop_na
 
 
-``` r
-tidyr::
-```
-
-``` error
-Error: <text>:2:0: unexpected end of line
-1: tidyr::
-   ^
-```
-
-
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 

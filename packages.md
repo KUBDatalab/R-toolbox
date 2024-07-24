@@ -1,12 +1,16 @@
 ---
-title: 'packages'
+title: 'Handling packages in R'
 teaching: 10
 exercises: 2
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do you write a lesson using R Markdown and `{sandpaper}`?
+- What are the better ways of handling packages?
+- Whats up with compiling packages?
+- What are those conflicts I sometimes see?
+- How do I load a specific version of a package?
+- How do I find a package that is not on CRAN?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -57,13 +61,6 @@ pacman::p_update(update = F)
 ``` r
 library(pacman)
 pacman::p_update(update = F)
-```
-
-``` output
-[1] "codetools" "foreign"   "lattice"   "Matrix"    "spatial"  
-```
-
-``` r
 p_load(tidyverse)
 ```
 ## Conflicts
@@ -79,12 +76,12 @@ brug :: notationen.
 dplyr::lag(1:5)
 stats::lag(1:5)
 
+devtools og fænomenet kompilering
+
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
 - Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
+
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
