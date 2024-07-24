@@ -45,7 +45,7 @@ mean(random_numbers)
 ```
 
 ``` output
-[1] 0.4985082
+[1] 0.5044393
 ```
 The important point of the Central Limit Theorem is, that if we take a large
 number of random samples, and calculate the mean of each of these samples,
@@ -59,7 +59,7 @@ mean(runif(100))
 ```
 
 ``` output
-[1] 0.4764868
+[1] 0.4839172
 ```
 And we can use the `replicate()` function to repeat that calculation several times, in this case 1000 times:
 
@@ -89,8 +89,9 @@ use the properties we know the normal distribution to have to
 work with them.
 
 The math required for proving this theorem is relatively 
-complicated, but can be found in the (extra material)[https://kubdatalab.github.io/R-toolbox/CLT.html] on
-this page. Note that the proof is in Danish.
+complicated, but can be found in the (extra material)[https://kubdatalab.github.io/R-toolbox/CLT-dk.html] on
+this page. Note that the proof is in Danish, we are working on an english
+version.
 
 
 
