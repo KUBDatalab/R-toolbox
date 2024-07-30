@@ -379,7 +379,55 @@
 <div class="accordion accordion-flush" id="accordionFlush13">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading13">
-        <a href="barcharts.html">12. barcharts</a>
+        <a href="barcharts.html">12. Nicer barcharts</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush14">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading14">
+        <a href="wikidata.html">13. hent data fra wikidata</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush15">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading15">
+        <a href="chi-i-anden.html">14. chi-i-anden</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush16">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading16">
+        <a href="cohens-kappa.html">15. cohens-kappa</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush17">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading17">
+        <a href="pca.html">16. PCA</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -552,42 +600,67 @@ They are relatively close to normal.</p>
 This is definitely not normally distributed.</p>
 <hr>
 <h3 id="clt-figure-2">Figure 2</h3>
-<figure><img src="../fig/clt-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="barcharts"><h2 class="section-heading"><a href="barcharts.html">barcharts</a></h2>
+<figure><img src="../fig/clt-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="barcharts"><h2 class="section-heading"><a href="barcharts.html">Nicer barcharts</a></h2>
 <hr class="half-width">
 <h3 id="barcharts-figure-1">Figure 1</h3>
-<p><img src="../fig/barcharts-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" class="figure">
-Meningsfuld rækkefølge?</p>
-<hr>
+<figure><img src="../fig/barcharts-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
 <h3 id="barcharts-figure-2">Figure 2</h3>
-<p><img src="../fig/barcharts-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" class="figure">
-Det gør det lettere at sammeligne.</p>
+<p><img src="../fig/barcharts-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" class="figure">
+It is not strictly necessary to remove the label of the x-axis, but it
+is superfluous in this case.</p>
 <hr>
 <h3 id="barcharts-figure-3">Figure 3</h3>
-<p><img src="../fig/barcharts-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" class="figure">
-Er teksten stor nok?</p>
+<p><img src="../fig/barcharts-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" class="figure">
+This facilitates the reading of the graph - it becomes very easy to see
+that the most frequent species of penguin is Adelie penguins.</p>
 <hr>
 <h3 id="barcharts-figure-4">Figure 4</h3>
-<p><img src="../fig/barcharts-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" class="figure">
-Der er en del tom plads mellem labels og “søjlern” der jo ikke er søjler
-længere.</p>
-<hr>
+<figure><img src="../fig/barcharts-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
 <h3 id="barcharts-figure-5">Figure 5</h3>
-<p><img src="../fig/barcharts-rendered-unnamed-chunk-7-1.png" style="display: block; margin: auto;" class="figure">
-Fjern clutter - det har tufte holdninger til. Der er i hvert fald
-horisontale linier der er unødvendige. Og den grå baggrund? det er ikke
-kønt.</p>
+<p><img src="../fig/barcharts-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" class="figure">
+We also changed the scaling of the title of the plot. The size of that
+is now 10% larger than the base size. We can do that by specifying a
+specific size, but here we have done it using the <code>rel()</code>
+function which changes the size relative to the base font size in the
+plot.</p>
 <hr>
 <h3 id="barcharts-figure-6">Figure 6</h3>
-<p><img src="../fig/barcharts-rendered-unnamed-chunk-8-1.png" style="display: block; margin: auto;" class="figure">
-Vi behøver ikke. Men - det kan være rart at have de rå tal direkte på
-søjlerne. Det er bibliotekets ledelse særligt glade for…</p>
+<p><img src="../fig/barcharts-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" class="figure">
+We control what is happening on the x-scale by using the family of
+<code>scale_x</code> functions. Because it is a continuous scale, more
+specifically <code>scale_x_continuous()</code>.</p>
 <hr>
 <h3 id="barcharts-figure-7">Figure 7</h3>
-<figure><img src="../fig/barcharts-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<p><img src="../fig/barcharts-rendered-unnamed-chunk-7-1.png" style="display: block; margin: auto;" class="figure">
+First we change the default theme of the plot from
+<code>theme_grey</code> to <code>theme_minimal</code>, which gets rid of
+the grey background. In the additional <code>theme()</code> function we
+remove the gridlines, both major and minor gridlines, on the y-axis, by
+setting them to the speciel plot element
+<code>element_blank()</code></p>
+<hr>
 <h3 id="barcharts-figure-8">Figure 8</h3>
-<figure><img src="../fig/barcharts-rendered-unnamed-chunk-10-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<figure><img src="../fig/barcharts-rendered-count_penguins-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
 <h3 id="barcharts-figure-9">Figure 9</h3>
-<figure><img src="../fig/barcharts-rendered-unnamed-chunk-11-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section>
+<figure><img src="../fig/barcharts-rendered-unnamed-chunk-8-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr>
+<h3 id="barcharts-figure-10">Figure 10</h3>
+<figure><img src="../fig/barcharts-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section><section id="wikidata"><h2 class="section-heading"><a href="wikidata.html">hent data fra wikidata</a></h2>
+<hr class="half-width"></section><section id="chi-i-anden"><h2 class="section-heading"><a href="chi-i-anden.html">chi-i-andenTL;DR<a class="anchor" aria-label="anchor" href="#tldr"></a>Hvornår bruger vi den?<a class="anchor" aria-label="anchor" href="#hvorn%C3%A5r-bruger-vi-den"></a>Test for Uafhængighed<a class="anchor" aria-label="anchor" href="#test-for-uafh%C3%A6ngighed"></a>Hvad får vi ellers:<a class="anchor" aria-label="anchor" href="#hvad-f%C3%A5r-vi-ellers"></a></a></h2>
+<hr class="half-width"></section><section id="cohens-kappa"><h2 class="section-heading"><a href="cohens-kappa.html">cohens-kappa</a></h2>
+<hr class="half-width"></section><section id="pca"><h2 class="section-heading"><a href="pca.html">PCAPrincipal Component Analyse<a class="anchor" aria-label="anchor" href="#principal-component-analyse"></a></a></h2>
+<hr class="half-width">
+<h3 id="pca-figure-1">Figure 1</h3>
+<p>Det er data om pingviners næb. Der er to dimensioner, og vi kan
+plotte dem:
+<img src="../fig/pca-rendered-to-dim-pingvin-plot-1.png" style="display: block; margin: auto;" class="figure">
+Faktisk er der mere end to dimensioner:</p>
+<hr>
+<h3 id="pca-figure-2">Figure 2</h3>
+<p><img src="../fig/pca-rendered-pca-plot-1.png" style="display: block; margin: auto;" class="figure">
+Vi kan sammenligne med et plot af dimensionerne på deres næb:</p>
+<hr>
+<h3 id="pca-figure-3">Figure 3</h3>
+<figure><img src="../fig/pca-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><hr></section>
 </div>
     </main>
 </div>
@@ -635,8 +708,8 @@ søjlerne. Det er bibliotekets ledelse særligt glade for…</p>
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/images.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/images.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2024-07-24",
-  "datePublished": "2024-07-24"
+  "dateModified": "2024-07-30",
+  "datePublished": "2024-07-30"
 }
 
   </script><script>

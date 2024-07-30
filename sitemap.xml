@@ -28,7 +28,13 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/best-noter.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/chi-i-anden.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/clt.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/cohens-kappa.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/data.html</loc>
@@ -91,7 +97,13 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/best-noter.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/chi-i-anden.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/clt.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/cohens-kappa.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/data.html</loc>
@@ -160,6 +172,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/packages.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/pca.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/poster_dk.html</loc>
   </url>
   <url>
@@ -202,6 +217,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/which-distribution.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/wikidata.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor-notes.html</loc>
   </url>
   <url>
@@ -233,6 +251,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/packages.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/pca.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/poster_dk.html</loc>
@@ -275,5 +296,8 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/which-distribution.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/wikidata.html</loc>
   </url>
 </urlset>
