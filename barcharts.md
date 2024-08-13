@@ -396,7 +396,7 @@ penguin_example %>%
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use `.md` files for episodes when you want static content
+- Relatively small changes to a bar chart can make it look much more professional 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 

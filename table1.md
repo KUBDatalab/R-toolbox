@@ -13,6 +13,7 @@ exercises: 2
 ::::::::::::::::::::::::::::::::::::: objectives
 
 - Explain what a Table One is
+- Know how to make a Tabel One and adjust key parameters
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -24,7 +25,7 @@ using data.
 
 It presents the baseline characteristics of the participants
 in a study, and provides a concise overview of the relevant
-demographic and clinical variables. 
+demographic and clinical variables.
 
 It typically compares different groups (male~female, treatment~control), to highlight similarities and differences.
 
@@ -78,15 +79,15 @@ It can look like this:
 </tr>
 <tr>
 <td class='rowlabel'>Mean (SD)</td>
-<td>29.8 (11.5)</td>
-<td>29.1 (12.0)</td>
-<td>29.4 (11.6)</td>
+<td>28.0 (10.9)</td>
+<td>30.1 (12.5)</td>
+<td>29.0 (11.6)</td>
 </tr>
 <tr>
 <td class='rowlabel'>Median [Min, Max]</td>
-<td>26.9 [11.9, 47.8]</td>
-<td>29.5 [10.1, 49.6]</td>
-<td>28.8 [10.1, 49.6]</td>
+<td>24.8 [10.4, 49.8]</td>
+<td>32.2 [10.3, 46.2]</td>
+<td>29.3 [10.3, 49.8]</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Missing</td>
@@ -102,15 +103,15 @@ It can look like this:
 </tr>
 <tr>
 <td class='rowlabel'>Mean (SD)</td>
-<td>69.9 (10.9)</td>
-<td>69.5 (12.9)</td>
-<td>69.7 (11.8)</td>
+<td>70.6 (17.1)</td>
+<td>68.3 (16.1)</td>
+<td>69.4 (16.5)</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Median [Min, Max]</td>
-<td class='lastrow'>72.7 [48.5, 90.4]</td>
-<td class='lastrow'>66.4 [51.7, 98.5]</td>
-<td class='lastrow'>70.5 [48.5, 98.5]</td>
+<td class='lastrow'>71.3 [50.7, 118]</td>
+<td class='lastrow'>65.8 [47.7, 97.7]</td>
+<td class='lastrow'>68.8 [47.7, 118]</td>
 </tr>
 </tbody>
 </table>
@@ -164,8 +165,6 @@ units(dat$weight) <- "kg"
 
 
 ## More advanced stuff
-
-FLYTTES TIL SEPARAT SIDE?
 
 We might want to be able to precisely control the summary
 statistics presented in the table. 
@@ -221,21 +220,21 @@ table1(~sex + age + weight|treatment, data = dat,
 </tr>
 <tr>
 <td class='rowlabel'>Mean (SD%)</td>
-<td>29.8 (11.5%)</td>
-<td>29.1 (12.0%)</td>
-<td>29.4 (11.6%)</td>
+<td>28.0 (10.9%)</td>
+<td>30.1 (12.5%)</td>
+<td>29.0 (11.6%)</td>
 </tr>
 <tr>
 <td class='rowlabel'>Median [Min, Max]</td>
-<td>26.9 [11.9, 47.8]</td>
-<td>29.5 [10.1, 49.6]</td>
-<td>28.8 [10.1, 49.6]</td>
+<td>24.8 [10.4, 49.8]</td>
+<td>32.2 [10.3, 46.2]</td>
+<td>29.3 [10.3, 49.8]</td>
 </tr>
 <tr>
 <td class='rowlabel'>Geom. mean (Geo. SD%)</td>
-<td>27.5 (1.54%)</td>
-<td>26.5 (1.59%)</td>
-<td>27.0 (1.56%)</td>
+<td>25.9 (1.50%)</td>
+<td>27.0 (1.66%)</td>
+<td>26.5 (1.57%)</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Missing</td>
@@ -251,21 +250,21 @@ table1(~sex + age + weight|treatment, data = dat,
 </tr>
 <tr>
 <td class='rowlabel'>Mean (SD%)</td>
-<td>69.9 (10.9%)</td>
-<td>69.5 (12.9%)</td>
-<td>69.7 (11.8%)</td>
+<td>70.6 (17.1%)</td>
+<td>68.3 (16.1%)</td>
+<td>69.4 (16.5%)</td>
 </tr>
 <tr>
 <td class='rowlabel'>Median [Min, Max]</td>
-<td>72.7 [48.5, 90.4]</td>
-<td>66.4 [51.7, 98.5]</td>
-<td>70.5 [48.5, 98.5]</td>
+<td>71.3 [50.7, 118]</td>
+<td>65.8 [47.7, 97.7]</td>
+<td>68.8 [47.7, 118]</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Geom. mean (Geo. SD%)</td>
-<td class='lastrow'>69.0 (1.18%)</td>
-<td class='lastrow'>68.5 (1.19%)</td>
-<td class='lastrow'>68.7 (1.18%)</td>
+<td class='lastrow'>68.9 (1.25%)</td>
+<td class='lastrow'>66.5 (1.26%)</td>
+<td class='lastrow'>67.7 (1.26%)</td>
 </tr>
 </tbody>
 </table>
@@ -285,7 +284,38 @@ as the functions `mean()` and `sd()`, but also that the label shown should be
 
 If we want to specify the label, we can write `"Geom. mean (Geo. SD%)"="GMEAN (GSD%)"`
 
-ØVELSE - ÆNDRE PÅ LABEL ETC.
+
+:::: challenge
+## Change the labels 
+
+We have two unusual values in this table - geometric mean and geometric 
+standard deviation. Change the code to write out "Geom." and "geo." as 
+geometric.
+
+
+:::: solution
+
+``` r
+table1(~sex + age + weight|treatment, data = dat,
+        render.continuous=c(.="Mean (SD%)", .="Median [Min, Max]",
+                           "Geometric mean (Geometric SD%)"="GMEAN (GSD%)"))
+```
+
+The geometric mean of two numbers is the squareroot of the product of the two
+numbers. If we have three numbers, we take the cube root of the product. In general:
+
+$$\left( \prod_{i=1}^{n} x_i \right)^{\frac{1}{n}}$$
+
+The geometric standard deviation is defined by:
+$$ \exp\left(\sqrt{\frac{1}{n} \sum_{i=1}^{n} \left( \log x_i - \frac{1}{n} \sum_{j=1}^{n} \log x_j \right)^2}\right)$$
+
+
+::::
+
+::::
+
+
+
 
 ## Very advanced stuff
 
@@ -296,8 +326,7 @@ define a function ourself:
 ``` r
 my_summary <- function(x){
   c("","Median" = sprintf("%.3f", median(x, na.rm = TRUE)),
-"Variance" = sprintf("%.1f", var(x, na.rm=TRUE))
-)
+"Variance" = sprintf("%.1f", var(x, na.rm=TRUE)))
 }
 table1(~sex + age + weight|treatment, data = dat,
 render.continuous = my_summary)
@@ -339,15 +368,15 @@ render.continuous = my_summary)
 </tr>
 <tr>
 <td class='rowlabel'>Median</td>
-<td>26.900</td>
-<td>29.478</td>
-<td>28.841</td>
+<td>24.787</td>
+<td>32.218</td>
+<td>29.331</td>
 </tr>
 <tr>
 <td class='rowlabel'>Variance</td>
-<td>131.7</td>
-<td>144.7</td>
-<td>134.8</td>
+<td>118.7</td>
+<td>156.1</td>
+<td>135.4</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Missing</td>
@@ -363,31 +392,97 @@ render.continuous = my_summary)
 </tr>
 <tr>
 <td class='rowlabel'>Median</td>
-<td>72.748</td>
-<td>66.400</td>
-<td>70.528</td>
+<td>71.347</td>
+<td>65.815</td>
+<td>68.814</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Variance</td>
-<td class='lastrow'>118.9</td>
-<td class='lastrow'>166.1</td>
-<td class='lastrow'>138.9</td>
+<td class='lastrow'>293.0</td>
+<td class='lastrow'>259.8</td>
+<td class='lastrow'>270.7</td>
 </tr>
 </tbody>
 </table>
 </div><!--/html_preserve-->
 We do not _need_ to use the `sprintf()` function, but it is a very neat way of 
-combining text with numeric variables. 
-
-ØVELSE - HVAD MON .3f GØR?
-
-What we absolutely need to do is adding the empty string in the beginning.
-
-ØVELSE -  HVAD SKER DER HVIS MAN LADER VÆRE?
-
+combining text with numeric variables because it allows us to format 
+them directly.
 
 Summary statistics for categorical data can be adjusted similarly, by specifying
 `render.categorical`.
+
+:::: challenge
+## What does %.3f actually do?
+
+Can you guess what the formatting in ´sprintf´ does? 
+
+Try to change "%.3f" in the function to "%.2f".
+
+:::: solution
+
+
+``` r
+my_summary <- function(x){
+  c("","Median" = sprintf("%.3f", median(x, na.rm = TRUE)),
+"Variance" = sprintf("%.1f", var(x, na.rm=TRUE)))
+}
+```
+
+`sprintf` uses a bit of an arcane way of specifying the way numbers should be
+formatted when we combine them with text. The "%"-sign specifies that "this is
+where we place the number in the function". ".3f" specifies that we are treating
+the number as a floating point number (which is just a fancy way of saying that
+it is a decimal number), and that we would like three digits after the decimal point.
+
+::::
+
+
+
+::::
+
+
+:::: challenge
+
+## Whats up with that blank line?
+
+Note that in the function, we define a vector as output, with three elements:
+
+``` r
+my_summary <- function(x){
+  c("",
+"Median" = sprintf("%.3f", median(x, na.rm = TRUE)),
+"Variance" = sprintf("%.1f", var(x, na.rm=TRUE)))
+}
+```
+
+Calculating and formatting the median and the varianse is pretty straightforward.
+
+But the first element is an empty string. Whats up with that?
+
+:::: solution
+
+Try to remove the empty string from the function, and use it is a table one 
+as previously shown:
+
+
+``` r
+my_summary <- function(x){
+  c("Median" = sprintf("%.3f", median(x, na.rm = TRUE)),
+"Variance" = sprintf("%.1f", var(x, na.rm=TRUE)))
+}
+table1(~sex + age + weight|treatment, data = dat,
+render.continuous = my_summary)
+```
+The line beginning with "Median" does not show up, but the median value is 
+shown next to the "Age" and "Weight" lines. 
+
+::::
+
+::::
+
+
+
 
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
@@ -399,7 +494,8 @@ Primarily of use if there are medical students on the course
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use `.md` files for episodes when you want static content
+- A Table One provides a compact describtion of the data we are working with
+- With a little bit of work we can control the content of the table.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 

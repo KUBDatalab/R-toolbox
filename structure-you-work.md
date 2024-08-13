@@ -1,5 +1,5 @@
 ---
-title: 'Introduction'
+title: 'structure-you-work'
 teaching: 10
 exercises: 2
 ---
@@ -17,21 +17,16 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Introduction
 
+Filstruktur.
 
+kommentarer
 
-:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
+mappestruktur
 
-Dette kursus skal sådan set ikke som udgangspunkt
-køres som et kursus. Det skal danne grundlag
-for andre kurser.
+særskilte scripts
 
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-
+projekter
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
