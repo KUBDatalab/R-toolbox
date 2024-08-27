@@ -354,10 +354,10 @@
               </div>
             </div>
 
-            <hr class="half-width"><div class="accordion accordion-flush resources" id="accordionFlush12">
+            <hr class="half-width"><div class="accordion accordion-flush lesson-resources" id="accordionFlush12">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingTwelve">
-                  <button class="accordion-button collapsed" id="resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
+                  <button class="accordion-button collapsed" id="lesson-resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
                     RESOURCES
                   </button>
                 </h2>
@@ -377,7 +377,7 @@
                 </div>
               </div>
             </div>
-            <hr class="half-width resources"><a href="aio.html">See all in one page</a>
+            <hr class="half-width lesson-resources"><a href="aio.html">See all in one page</a>
 
 
             <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
@@ -408,7 +408,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Linear regression</h1>
-        <p>Last updated on 2024-08-20 |
+        <p>Last updated on 2024-08-27 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/regression.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -442,8 +442,7 @@
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
-<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
+<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
 <hr class="half-width"><p>Here is some data, observations of the distance (in ft) it takes to
 stop a car driving at different speeds (in mph):</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -617,8 +616,7 @@ mph, the stopping distance will increase by 3.932 ft.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-1-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?<a class="anchor" aria-label="anchor" href="#challenge-1-can-you-do-it"></a>
-</h3>
+<h3 class="callout-title">Challenge 1: Can you do it?</h3>
 <div class="callout-content">
 <p>What stopping distance does the model predict if the speed i 12.5
 mph?</p>
@@ -630,7 +628,7 @@ mph?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>3.932*12.5 - 17.579 = 31.571 ft</p>
 </div>
@@ -642,8 +640,7 @@ mph?</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="challenge-2-might-there-be-a-problem-with-that-prediction" class="callout-inner">
-<h3 class="callout-title">Challenge 2: Might there be a problem with that prediction?<a class="anchor" aria-label="anchor" href="#challenge-2-might-there-be-a-problem-with-that-prediction"></a>
-</h3>
+<h3 class="callout-title">Challenge 2: Might there be a problem with that prediction?</h3>
 <div class="callout-content">
 
 </div>
@@ -654,7 +651,7 @@ mph?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Yep. We might be able to measure the speed with the implied
 precision. But the prediction implies a precision on the scale of
@@ -754,8 +751,7 @@ that the speed of the car influences the stopping distance.</p>
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#discussion1"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Make a model, where you describe the length of the flipper of a
 penguin, as a function of its weigth. You find data on penguins in the
@@ -795,8 +791,7 @@ F-statistic:  1071 on 1 and 340 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>::::</p>
-</section><section><h2 class="section-heading" id="testing-the-assumptions">Testing the assumptions<a class="anchor" aria-label="anchor" href="#testing-the-assumptions"></a>
-<a class="anchor" aria-label="anchor" href="#testing-the-assumptions"></a></h2>
+</section><section><h2 class="section-heading" id="testing-the-assumptions">Testing the assumptions<a class="anchor" aria-label="anchor" href="#testing-the-assumptions"></a></h2>
 <hr class="half-width"><p>We can <em>always</em> make a linear model. The questions is: should
 we?</p>
 <p>There are certain assumptions that needs to be met in order to trust
@@ -836,8 +831,7 @@ distributed.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge3"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Test if the residuals in our penguin model from before, are normally
 distributed.</p>
@@ -849,7 +843,7 @@ distributed.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -870,8 +864,7 @@ They are relatively close to normal.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul><li>Use <code>.md</code> files for episodes when you want static
 content</li>
@@ -918,7 +911,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.6" class="external-link">sandpaper (0.16.6)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.4" class="external-link">varnish (1.0.4)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -940,8 +933,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/regression.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/regression.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2024-08-20",
-  "datePublished": "2024-08-20"
+  "dateModified": "2024-08-27",
+  "datePublished": "2024-08-27"
 }
 
   </script><script>
