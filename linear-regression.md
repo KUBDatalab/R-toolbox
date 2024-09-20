@@ -47,7 +47,7 @@ cars %>%
   geom_point()
 ```
 
-<img src="fig/regression-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/linear-regression-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
 
 Not surprisingly the faster the car travels, the longer distance it takes to stop it.
 
@@ -83,7 +83,7 @@ cars %>%
 `geom_smooth()` using formula = 'y ~ x'
 ```
 
-<img src="fig/regression-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="fig/linear-regression-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
 
 The points do not fall precisely on the line, but it's not very bad.
 
@@ -395,7 +395,7 @@ qqnorm(residuals)
 qqline(residuals)
 ```
 
-<img src="fig/regression-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="fig/linear-regression-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
 The points should be (close to be) on the straight line in the plot. In this
 case they are close enough.
@@ -413,7 +413,7 @@ qqnorm(penguin_residuals)
 qqline(penguin_residuals)
 ```
 
-<img src="fig/regression-rendered-unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="fig/linear-regression-rendered-unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
 They are relatively close to normal.
 ::::
 
