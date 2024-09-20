@@ -253,6 +253,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#introduction">Introduction</a></li>
+<li><a href="#an-examples">An examples</a></li>
 <li><a href="#dos-and-donts-in-excel">Do’s and dont’s in Excel</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -485,25 +486,71 @@
 <em>If</em> the data is structured in the right way.</p>
 <p>Working within the paradigm of <code>tidyverse</code> it is
 preferable if the data is <em>tidy</em>.</p>
-<p><img src="../fig/tidy_why.jpg" alt="test" class="figure">{“Illustrations from the
-Openscapes blog Tidy Data for reproducibility, efficiency, and
-collaboration by Julia Lowndes and Allison Horst”}</p>
-<p>Tidy data is not the opposite of messy data. Data can be nice and
+<figure><img src="../fig/tidy_why.jpg" alt="" class="figure mx-auto d-block"></figure><p>Tidy data is not the opposite of messy data. Data can be nice and
 well structured, tidy as in non-messy, without being tidy in the way we
 understand it in this context.</p>
-<p><img src="../fig/tidy_hadley_2.jpg" alt="test2" class="figure">{“Illustrations from
-the Openscapes blog Tidy Data for reproducibility, efficiency, and
-collaboration by Julia Lowndes and Allison Horst”}</p>
-<p>Tidy data in the world of R, especially the dialect of R we call
+<figure><img src="../fig/tidy_hadley_2.jpg" alt="" class="figure mx-auto d-block"></figure><p>Tidy data in the world of R, especially the dialect of R we call
 tidyverse, are characterized by:</p>
 <ul><li>Each variable is a column; each column is a variable.</li>
 <li>Each observation is a row; each row is an observation.</li>
 <li>Each value is a cell; each cell is a single value.</li>
-</ul><p><img src="../fig/tidy_hadley.jpg" alt="ter" class="figure">{“Illustrations from the
-Openscapes blog Tidy Data for reproducibility, efficiency, and
-collaboration by Julia Lowndes and Allison Horst”}</p>
-<p>This way of structuring our data is useful not only in R, but also in
+</ul><figure><img src="../fig/tidy_hadley.jpg" alt="" class="figure mx-auto d-block"></figure><p>This way of structuring our data is useful not only in R, but also in
 other software packages.</p>
+</section><section><h2 class="section-heading" id="an-examples">An examples<a class="anchor" aria-label="anchor" href="#an-examples"></a></h2>
+<hr class="half-width"><p>This is an example of untidy data, on new cases of tubercolosis in
+Afghanistan. It is well structured, however there are information in the
+column names.</p>
+<p>“new_sp_m014” describes “new” cases. Diagnosed with the “sp” method
+(culturing a sample of sputum and identifying the presence of
+Mycobacterium Tuberculosis bacteria). In “m” meaning males, between the
+ages of 0 and 14.</p>
+<p>Picking out information on all new cases eg. distribution between the
+two sexes is difficult. Similar problems arise if we want to follow the
+total number of new cases.</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 10 × 6
+   country      year new_sp_m014 new_sp_m1524 new_sp_m2534 new_sp_m3544
+   &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;
+ 1 Afghanistan  2000          52          228          183          149
+ 2 Afghanistan  2001         129          379          349          274
+ 3 Afghanistan  2002          90          476          481          368
+ 4 Afghanistan  2003         127          511          436          284
+ 5 Afghanistan  2004         139          537          568          360
+ 6 Afghanistan  2005         151          606          560          472
+ 7 Afghanistan  2006         193          837          791          574
+ 8 Afghanistan  2007         186          856          840          597
+ 9 Afghanistan  2008         187          941          773          545
+10 Afghanistan  2009         200          906          705          499</code></pre>
+</div>
+<p>Getting this data on a tidy format is not trivial, but a resulting,
+tidy, organised dataset would look something like this:</p>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 40 × 7
+   country      year new   method sex   age_group cases
+   &lt;fct&gt;       &lt;dbl&gt; &lt;fct&gt; &lt;fct&gt;  &lt;fct&gt; &lt;fct&gt;     &lt;dbl&gt;
+ 1 Afghanistan  2000 new   sp     m     0-14         52
+ 2 Afghanistan  2000 new   sp     m     15-24       228
+ 3 Afghanistan  2000 new   sp     m     25-34       183
+ 4 Afghanistan  2000 new   sp     m     35-44       149
+ 5 Afghanistan  2001 new   sp     m     0-14        129
+ 6 Afghanistan  2001 new   sp     m     15-24       379
+ 7 Afghanistan  2001 new   sp     m     25-34       349
+ 8 Afghanistan  2001 new   sp     m     35-44       274
+ 9 Afghanistan  2002 new   sp     m     0-14         90
+10 Afghanistan  2002 new   sp     m     15-24       476
+# ℹ 30 more rows</code></pre>
+</div>
+<p>The fact that we are recording “new” cases is now a variable in it
+self. The method used is also a variable, and the categorical variabel
+sex is similarly a separate variable as is the age group.</p>
+<p>The variables <code>new</code>, <code>method</code> and
+<code>sex</code> might appear redundant - all values are identical,
+however the entire dataset contains data on non-new cases, other methods
+for diagnosis and the other sex, recorded as “f”.</p>
 </section><section><h2 class="section-heading" id="dos-and-donts-in-excel">Do’s and dont’s in Excel<a class="anchor" aria-label="anchor" href="#dos-and-donts-in-excel"></a></h2>
 <hr class="half-width"><p>Excel is a very useful tool, especially for collecting data.</p>
 <p>But even though we are able to do everything we can do in R, in
@@ -524,7 +571,9 @@ from Excel to R.</p>
 change</li>
 <li>Merge cells</li>
 <li>Use colors for information</li>
-</ul><div id="keypoints1" class="callout keypoints">
+</ul><p>Illustrations from the Openscapes blog Tidy Data for reproducibility,
+efficiency, and collaboration by Julia Lowndes and Allison Horst</p>
+<div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
