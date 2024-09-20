@@ -118,11 +118,11 @@
   R-toolbox
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 33%" class="percentage">
-    33%
+<aside class="col-md-12 lesson-progress"><div style="width: 26%" class="percentage">
+    26%
   </div>
   <div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 33%" aria-valuenow="33" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar library" role="progressbar" style="width: 26%" aria-valuenow="26" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -294,7 +294,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="regression.html">9. Linear regression</a>
+        <a href="linear-regression.html">9. Linear regression</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -303,7 +303,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="clt.html">10. Central Limit Theorem</a>
+        <a href="multiple-linear-regression.html">10. Multiple Linear Regression</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -312,7 +312,7 @@
 <div class="accordion accordion-flush" id="accordionFlush12">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading12">
-        <a href="barcharts.html">11. Nicer barcharts</a>
+        <a href="logistic-regression.html">11. Logistisk regression</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -321,7 +321,7 @@
 <div class="accordion accordion-flush" id="accordionFlush13">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading13">
-        <a href="powerberegninger.html">12. powerberegninger</a>
+        <a href="clt.html">12. Central Limit Theorem</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -330,7 +330,7 @@
 <div class="accordion accordion-flush" id="accordionFlush14">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading14">
-        <a href="kmeans.html">13. k-means</a>
+        <a href="barcharts.html">13. Nicer barcharts</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -339,7 +339,7 @@
 <div class="accordion accordion-flush" id="accordionFlush15">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading15">
-        <a href="factor-analysis.html">14. Factor Analysis</a>
+        <a href="powerberegninger.html">14. powerberegninger</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -348,7 +348,43 @@
 <div class="accordion accordion-flush" id="accordionFlush16">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading16">
-        <a href="structure-you-work.html">15. structure-you-work</a>
+        <a href="kmeans.html">15. k-means</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush17">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading17">
+        <a href="factor-analysis.html">16. Factor Analysis</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush18">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading18">
+        <a href="structure-you-work.html">17. structure-you-work</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush19">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading19">
+        <a href="fence-test.html">18. fence-test</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush20">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading20">
+        <a href="design-principles.html">19. design-principles</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -412,7 +448,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>The normal distribution</h1>
-        <p>Last updated on 2024-09-17 |
+        <p>Last updated on 2024-09-20 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/normal-distribution.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -598,7 +634,7 @@ funktioner.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] -0.1691751  0.5403948  1.8037396  1.1726291  0.2509021</code></pre>
+<pre class="output" tabindex="0"><code>[1]  0.49172151 -0.07495906 -0.24304762 -1.33701007  0.78088887</code></pre>
 </div>
 <p>Den returnerer (her) fem tilfældige værdier fra en normalfordeling
 med (her) middelværdi 0 og standardafvigelse 1.</p>
@@ -743,8 +779,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/normal-distribution.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/normal-distribution.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2024-09-17",
-  "datePublished": "2024-09-17"
+  "dateModified": "2024-09-20",
+  "datePublished": "2024-09-20"
 }
 
   </script><script>
