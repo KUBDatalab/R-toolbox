@@ -43,7 +43,7 @@ library(lavaan)
 ```
 
 ``` output
-This is lavaan 0.6-18
+This is lavaan 0.6-19
 lavaan is FREE software! Please report any bugs.
 ```
 
@@ -410,7 +410,7 @@ fit
 ```
 
 ``` output
-lavaan 0.6-18 ended normally after 35 iterations
+lavaan 0.6-19 ended normally after 35 iterations
 
   Estimator                                         ML
   Optimization method                           NLMINB
@@ -434,7 +434,7 @@ summary(fit, standardized=TRUE, fit.measures=TRUE, rsquare=TRUE)
 ```
 
 ``` output
-lavaan 0.6-18 ended normally after 35 iterations
+lavaan 0.6-19 ended normally after 35 iterations
 
   Estimator                                         ML
   Optimization method                           NLMINB

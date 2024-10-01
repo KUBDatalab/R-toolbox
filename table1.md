@@ -31,93 +31,200 @@ It typically compares different groups (male~female, treatment~control), to high
 
 
 
-``` output
-
-Attaching package: 'table1'
-```
-
-``` output
-The following objects are masked from 'package:base':
-
-    units, units<-
-```
 
 It can look like this:
+
 <!--html_preserve--><div class="Rtable1"><table class="Rtable1">
 <thead>
 <tr>
+<th class="grouplabel"></th>
+<th colspan="2" class="grouplabel"><div>control</div></th>
+<th colspan="2" class="grouplabel"><div>case</div></th>
+<th colspan="2" class="grouplabel"><div>Overall</div></th>
+</tr>
+<tr>
 <th class='rowlabel firstrow lastrow'></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Treated<br><span class='stratn'>(N=20)</span></span></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Placebo<br><span class='stratn'>(N=20)</span></span></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Overall<br><span class='stratn'>(N=40)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>no<br><span class='stratn'>(N=298)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>yes<br><span class='stratn'>(N=48)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>no<br><span class='stratn'>(N=135)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>yes<br><span class='stratn'>(N=29)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>no<br><span class='stratn'>(N=433)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>yes<br><span class='stratn'>(N=77)</span></span></th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td class='rowlabel firstrow'>Sex</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Male</td>
-<td>10 (50.0%)</td>
-<td>10 (50.0%)</td>
-<td>20 (50.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Female</td>
-<td class='lastrow'>10 (50.0%)</td>
-<td class='lastrow'>10 (50.0%)</td>
-<td class='lastrow'>20 (50.0%)</td>
-</tr>
 <tr>
 <td class='rowlabel firstrow'>Age (years)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>29.4 (11.5)</td>
-<td>25.6 (11.6)</td>
-<td>27.4 (11.5)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Median [Min, Max]</td>
-<td>29.2 [10.9, 49.5]</td>
-<td>22.7 [10.6, 47.5]</td>
-<td>25.6 [10.6, 49.5]</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Missing</td>
-<td class='lastrow'>1 (5.0%)</td>
-<td class='lastrow'>0 (0%)</td>
-<td class='lastrow'>1 (2.5%)</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>Weight (kg)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 </tr>
 <tr>
 <td class='rowlabel'>Mean (SD)</td>
-<td>70.5 (14.3)</td>
-<td>75.2 (14.9)</td>
-<td>72.8 (14.6)</td>
+<td>61.3 (4.75)</td>
+<td>58.9 (5.68)</td>
+<td>61.5 (4.85)</td>
+<td>58.1 (5.32)</td>
+<td>61.4 (4.78)</td>
+<td>58.6 (5.53)</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Median [Min, Max]</td>
-<td class='lastrow'>69.1 [48.8, 100]</td>
-<td class='lastrow'>73.7 [42.6, 108]</td>
-<td class='lastrow'>70.9 [42.6, 108]</td>
+<td class='lastrow'>62.0 [46.0, 69.0]</td>
+<td class='lastrow'>59.0 [46.0, 68.0]</td>
+<td class='lastrow'>62.0 [45.0, 69.0]</td>
+<td class='lastrow'>58.0 [49.0, 68.0]</td>
+<td class='lastrow'>62.0 [45.0, 69.0]</td>
+<td class='lastrow'>58.0 [46.0, 68.0]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>estradol (pg/mL)</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>8.05 (5.29)</td>
+<td>8.73 (8.84)</td>
+<td>10.5 (9.72)</td>
+<td>10.6 (13.7)</td>
+<td>8.81 (7.06)</td>
+<td>9.44 (10.9)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>6.00 [2.00, 46.0]</td>
+<td class='lastrow'>6.50 [2.00, 57.0]</td>
+<td class='lastrow'>8.00 [3.00, 85.0]</td>
+<td class='lastrow'>6.00 [3.00, 76.0]</td>
+<td class='lastrow'>7.00 [2.00, 85.0]</td>
+<td class='lastrow'>6.00 [2.00, 76.0]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>estrone (pg/mL)</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>28.7 (15.0)</td>
+<td>26.8 (12.0)</td>
+<td>32.3 (15.7)</td>
+<td>27.7 (13.2)</td>
+<td>29.8 (15.3)</td>
+<td>27.1 (12.3)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Median [Min, Max]</td>
+<td>25.0 [10.0, 131]</td>
+<td>23.0 [13.0, 65.0]</td>
+<td>29.0 [11.0, 119]</td>
+<td>24.0 [12.0, 59.0]</td>
+<td>26.0 [10.0, 131]</td>
+<td>23.0 [12.0, 65.0]</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Missing</td>
+<td class='lastrow'>58 (19.5%)</td>
+<td class='lastrow'>15 (31.3%)</td>
+<td class='lastrow'>30 (22.2%)</td>
+<td class='lastrow'>11 (37.9%)</td>
+<td class='lastrow'>88 (20.3%)</td>
+<td class='lastrow'>26 (33.8%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>testost</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>25.3 (13.2)</td>
+<td>22.2 (10.7)</td>
+<td>27.6 (16.1)</td>
+<td>28.2 (15.6)</td>
+<td>26.0 (14.2)</td>
+<td>24.4 (13.0)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Median [Min, Max]</td>
+<td>23.0 [4.00, 111]</td>
+<td>21.5 [8.00, 63.0]</td>
+<td>25.0 [6.00, 144]</td>
+<td>24.0 [10.0, 69.0]</td>
+<td>23.0 [4.00, 144]</td>
+<td>22.0 [8.00, 69.0]</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Missing</td>
+<td class='lastrow'>6 (2.0%)</td>
+<td class='lastrow'>2 (4.2%)</td>
+<td class='lastrow'>3 (2.2%)</td>
+<td class='lastrow'>1 (3.4%)</td>
+<td class='lastrow'>9 (2.1%)</td>
+<td class='lastrow'>3 (3.9%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>prolactn</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>9.60 (5.10)</td>
+<td>13.7 (12.3)</td>
+<td>10.8 (6.79)</td>
+<td>9.57 (3.29)</td>
+<td>9.99 (5.70)</td>
+<td>12.2 (10.1)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Median [Min, Max]</td>
+<td>8.16 [1.96, 37.3]</td>
+<td>8.81 [3.87, 55.8]</td>
+<td>9.30 [2.66, 59.9]</td>
+<td>8.88 [4.49, 17.6]</td>
+<td>8.64 [1.96, 59.9]</td>
+<td>8.84 [3.87, 55.8]</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Missing</td>
+<td class='lastrow'>14 (4.7%)</td>
+<td class='lastrow'>0 (0%)</td>
+<td class='lastrow'>6 (4.4%)</td>
+<td class='lastrow'>1 (3.4%)</td>
+<td class='lastrow'>20 (4.6%)</td>
+<td class='lastrow'>1 (1.3%)</td>
 </tr>
 </tbody>
 </table>
 </div><!--/html_preserve-->
-We have 40 participants in a study, split into equal control and treatment groups,
-and describe the distribution of Sex, Age and Weight in both the two groups, and overall.
+Please note that the automatic styling of this site results in a table-one
+that is not very nice looking.
+
+We have 510 participants in a study, split into control and case groups, and
+further subdivided into two groups based on Postmenopausal hormone use.
+It describes the distribution of sex and concentration of estradiol, estrone,
+testosterone and prolactin in a blood sample.
 
 A number of packages making it easy to make a Table One exists. Here we look
 at the package `table1`.
@@ -126,42 +233,446 @@ The specific way of doing it depends on the data available. If we do not have
 data on the weight of the participants, we are not able to describe the distribution
 of their weight.
 
-But the table above was made in this way:
+Let us begin by looking at the data. We begin by loading the two packages `tidyverse`
+and `table1`. We then read in the data from the csv-file "BLOOD.csv", which
+we have [downloaded from this link](https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BLOOD.csv).
 
 
 ``` r
+library(tidyverse)
 library(table1)
-table1(~sex + age + weight|treatment, data = dat)
+dat <- read_csv("data/BLOOD.csv")
 ```
-We specify that we would like a table that is a function of `sex`, `age` and
-`wt`, and we would like it split into groups based on the values in the `treatment`
 
-It might be instructive to take a look at how the data was prepared.
-First the data it self:
+``` output
+Rows: 510 Columns: 9
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (9): ID, matchid, case, curpmh, ageblood, estradol, estrone, testost, pr...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+The data contains missing values, coded as "999.0" for estrone and testost, and
+99.99 for prolactin:
 
 ``` r
-dat <- expand.grid(id=1:10, sex=c("Male", "Female"), treatment=c("Treated", "Placebo"))
-dat$age <- runif(nrow(dat), 10, 50)
-dat$age[3] <- NA  # Add a missing value
-dat$weight <- exp(rnorm(nrow(dat), log(70), 0.2))
+dat <- dat %>% 
+  mutate(estrone = na_if(estrone, 999.0)) %>% 
+  mutate(testost = na_if(testost, 999.0)) %>% 
+  mutate(prolactn = na_if(prolactn, 99.99)) 
 ```
 
-The interesting part occurs here, where we add labels to the data. That
-allows us to control the headings in the table:
+
+We then ensure that categorical values are stored as categorical values, and
+adjust the labels of those categorical values:
+
 
 ``` r
-label(dat$sex) <- "Sex"
-label(dat$age) <- "Age"
-label(dat$treatment) <- "Treatment Group"
-label(dat$weight) <- "Weight"
+dat <- dat %>% 
+  mutate(case = factor(case, labels = c("control", "case"))) %>% 
+  mutate(curpmh = factor(curpmh, labels = c("no", "yes")))
 ```
 
-It can be beneficial to add information about units of the data:
+And now we can make our table one like this:
+
 
 ``` r
-units(dat$age) <- "years"
-units(dat$weight) <- "kg"
+table1(~ageblood+estradol+estrone+testost+prolactn|case+curpmh, data = dat)
 ```
+
+<!--html_preserve--><div class="Rtable1"><table class="Rtable1">
+<thead>
+<tr>
+<th class="grouplabel"></th>
+<th colspan="2" class="grouplabel"><div>control</div></th>
+<th colspan="2" class="grouplabel"><div>case</div></th>
+<th colspan="2" class="grouplabel"><div>Overall</div></th>
+</tr>
+<tr>
+<th class='rowlabel firstrow lastrow'></th>
+<th class='firstrow lastrow'><span class='stratlabel'>no<br><span class='stratn'>(N=298)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>yes<br><span class='stratn'>(N=48)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>no<br><span class='stratn'>(N=135)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>yes<br><span class='stratn'>(N=29)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>no<br><span class='stratn'>(N=433)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>yes<br><span class='stratn'>(N=77)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='rowlabel firstrow'>ageblood</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>61.3 (4.75)</td>
+<td>58.9 (5.68)</td>
+<td>61.5 (4.85)</td>
+<td>58.1 (5.32)</td>
+<td>61.4 (4.78)</td>
+<td>58.6 (5.53)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>62.0 [46.0, 69.0]</td>
+<td class='lastrow'>59.0 [46.0, 68.0]</td>
+<td class='lastrow'>62.0 [45.0, 69.0]</td>
+<td class='lastrow'>58.0 [49.0, 68.0]</td>
+<td class='lastrow'>62.0 [45.0, 69.0]</td>
+<td class='lastrow'>58.0 [46.0, 68.0]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>estradol</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>8.05 (5.29)</td>
+<td>8.73 (8.84)</td>
+<td>10.5 (9.72)</td>
+<td>10.6 (13.7)</td>
+<td>8.81 (7.06)</td>
+<td>9.44 (10.9)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>6.00 [2.00, 46.0]</td>
+<td class='lastrow'>6.50 [2.00, 57.0]</td>
+<td class='lastrow'>8.00 [3.00, 85.0]</td>
+<td class='lastrow'>6.00 [3.00, 76.0]</td>
+<td class='lastrow'>7.00 [2.00, 85.0]</td>
+<td class='lastrow'>6.00 [2.00, 76.0]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>estrone</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>28.7 (15.0)</td>
+<td>26.8 (12.0)</td>
+<td>32.3 (15.7)</td>
+<td>27.7 (13.2)</td>
+<td>29.8 (15.3)</td>
+<td>27.1 (12.3)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Median [Min, Max]</td>
+<td>25.0 [10.0, 131]</td>
+<td>23.0 [13.0, 65.0]</td>
+<td>29.0 [11.0, 119]</td>
+<td>24.0 [12.0, 59.0]</td>
+<td>26.0 [10.0, 131]</td>
+<td>23.0 [12.0, 65.0]</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Missing</td>
+<td class='lastrow'>58 (19.5%)</td>
+<td class='lastrow'>15 (31.3%)</td>
+<td class='lastrow'>30 (22.2%)</td>
+<td class='lastrow'>11 (37.9%)</td>
+<td class='lastrow'>88 (20.3%)</td>
+<td class='lastrow'>26 (33.8%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>testost</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>25.3 (13.2)</td>
+<td>22.2 (10.7)</td>
+<td>27.6 (16.1)</td>
+<td>28.2 (15.6)</td>
+<td>26.0 (14.2)</td>
+<td>24.4 (13.0)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Median [Min, Max]</td>
+<td>23.0 [4.00, 111]</td>
+<td>21.5 [8.00, 63.0]</td>
+<td>25.0 [6.00, 144]</td>
+<td>24.0 [10.0, 69.0]</td>
+<td>23.0 [4.00, 144]</td>
+<td>22.0 [8.00, 69.0]</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Missing</td>
+<td class='lastrow'>6 (2.0%)</td>
+<td class='lastrow'>2 (4.2%)</td>
+<td class='lastrow'>3 (2.2%)</td>
+<td class='lastrow'>1 (3.4%)</td>
+<td class='lastrow'>9 (2.1%)</td>
+<td class='lastrow'>3 (3.9%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>prolactn</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>9.60 (5.10)</td>
+<td>13.7 (12.3)</td>
+<td>10.8 (6.79)</td>
+<td>9.57 (3.29)</td>
+<td>9.99 (5.70)</td>
+<td>12.2 (10.1)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Median [Min, Max]</td>
+<td>8.16 [1.96, 37.3]</td>
+<td>8.81 [3.87, 55.8]</td>
+<td>9.30 [2.66, 59.9]</td>
+<td>8.88 [4.49, 17.6]</td>
+<td>8.64 [1.96, 59.9]</td>
+<td>8.84 [3.87, 55.8]</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Missing</td>
+<td class='lastrow'>14 (4.7%)</td>
+<td class='lastrow'>0 (0%)</td>
+<td class='lastrow'>6 (4.4%)</td>
+<td class='lastrow'>1 (3.4%)</td>
+<td class='lastrow'>20 (4.6%)</td>
+<td class='lastrow'>1 (1.3%)</td>
+</tr>
+</tbody>
+</table>
+</div><!--/html_preserve-->
+
+It is a good idea, and increases readability, to add labels and units to
+the variables. The `table1` package provides functions for that:
+
+
+``` r
+label(dat$curpmh) <- "current_pmh"
+label(dat$case) <- "case_control"
+label(dat$ageblood) <- "Age"
+units(dat$ageblood) <- "years"
+units(dat$estradol) <- "pg/mL"
+units(dat$estrone) <- "pg/mL"
+```
+
+Which looks a bit nicer:
+
+
+
+``` r
+table1(~ageblood+estradol+estrone+testost+prolactn|case+curpmh, data = dat)
+```
+
+<!--html_preserve--><div class="Rtable1"><table class="Rtable1">
+<thead>
+<tr>
+<th class="grouplabel"></th>
+<th colspan="2" class="grouplabel"><div>control</div></th>
+<th colspan="2" class="grouplabel"><div>case</div></th>
+<th colspan="2" class="grouplabel"><div>Overall</div></th>
+</tr>
+<tr>
+<th class='rowlabel firstrow lastrow'></th>
+<th class='firstrow lastrow'><span class='stratlabel'>no<br><span class='stratn'>(N=298)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>yes<br><span class='stratn'>(N=48)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>no<br><span class='stratn'>(N=135)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>yes<br><span class='stratn'>(N=29)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>no<br><span class='stratn'>(N=433)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>yes<br><span class='stratn'>(N=77)</span></span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='rowlabel firstrow'>Age (years)</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>61.3 (4.75)</td>
+<td>58.9 (5.68)</td>
+<td>61.5 (4.85)</td>
+<td>58.1 (5.32)</td>
+<td>61.4 (4.78)</td>
+<td>58.6 (5.53)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>62.0 [46.0, 69.0]</td>
+<td class='lastrow'>59.0 [46.0, 68.0]</td>
+<td class='lastrow'>62.0 [45.0, 69.0]</td>
+<td class='lastrow'>58.0 [49.0, 68.0]</td>
+<td class='lastrow'>62.0 [45.0, 69.0]</td>
+<td class='lastrow'>58.0 [46.0, 68.0]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>estradol (pg/mL)</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>8.05 (5.29)</td>
+<td>8.73 (8.84)</td>
+<td>10.5 (9.72)</td>
+<td>10.6 (13.7)</td>
+<td>8.81 (7.06)</td>
+<td>9.44 (10.9)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Median [Min, Max]</td>
+<td class='lastrow'>6.00 [2.00, 46.0]</td>
+<td class='lastrow'>6.50 [2.00, 57.0]</td>
+<td class='lastrow'>8.00 [3.00, 85.0]</td>
+<td class='lastrow'>6.00 [3.00, 76.0]</td>
+<td class='lastrow'>7.00 [2.00, 85.0]</td>
+<td class='lastrow'>6.00 [2.00, 76.0]</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>estrone (pg/mL)</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>28.7 (15.0)</td>
+<td>26.8 (12.0)</td>
+<td>32.3 (15.7)</td>
+<td>27.7 (13.2)</td>
+<td>29.8 (15.3)</td>
+<td>27.1 (12.3)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Median [Min, Max]</td>
+<td>25.0 [10.0, 131]</td>
+<td>23.0 [13.0, 65.0]</td>
+<td>29.0 [11.0, 119]</td>
+<td>24.0 [12.0, 59.0]</td>
+<td>26.0 [10.0, 131]</td>
+<td>23.0 [12.0, 65.0]</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Missing</td>
+<td class='lastrow'>58 (19.5%)</td>
+<td class='lastrow'>15 (31.3%)</td>
+<td class='lastrow'>30 (22.2%)</td>
+<td class='lastrow'>11 (37.9%)</td>
+<td class='lastrow'>88 (20.3%)</td>
+<td class='lastrow'>26 (33.8%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>testost</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>25.3 (13.2)</td>
+<td>22.2 (10.7)</td>
+<td>27.6 (16.1)</td>
+<td>28.2 (15.6)</td>
+<td>26.0 (14.2)</td>
+<td>24.4 (13.0)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Median [Min, Max]</td>
+<td>23.0 [4.00, 111]</td>
+<td>21.5 [8.00, 63.0]</td>
+<td>25.0 [6.00, 144]</td>
+<td>24.0 [10.0, 69.0]</td>
+<td>23.0 [4.00, 144]</td>
+<td>22.0 [8.00, 69.0]</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Missing</td>
+<td class='lastrow'>6 (2.0%)</td>
+<td class='lastrow'>2 (4.2%)</td>
+<td class='lastrow'>3 (2.2%)</td>
+<td class='lastrow'>1 (3.4%)</td>
+<td class='lastrow'>9 (2.1%)</td>
+<td class='lastrow'>3 (3.9%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>prolactn</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD)</td>
+<td>9.60 (5.10)</td>
+<td>13.7 (12.3)</td>
+<td>10.8 (6.79)</td>
+<td>9.57 (3.29)</td>
+<td>9.99 (5.70)</td>
+<td>12.2 (10.1)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Median [Min, Max]</td>
+<td>8.16 [1.96, 37.3]</td>
+<td>8.81 [3.87, 55.8]</td>
+<td>9.30 [2.66, 59.9]</td>
+<td>8.88 [4.49, 17.6]</td>
+<td>8.64 [1.96, 59.9]</td>
+<td>8.84 [3.87, 55.8]</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Missing</td>
+<td class='lastrow'>14 (4.7%)</td>
+<td class='lastrow'>0 (0%)</td>
+<td class='lastrow'>6 (4.4%)</td>
+<td class='lastrow'>1 (3.4%)</td>
+<td class='lastrow'>20 (4.6%)</td>
+<td class='lastrow'>1 (1.3%)</td>
+</tr>
+</tbody>
+</table>
+</div><!--/html_preserve-->
+
 
 
 ## More advanced stuff
@@ -184,91 +695,9 @@ table1(~sex + age + weight|treatment, data = dat,
                            "Geom. mean (Geo. SD%)"="GMEAN (GSD%)"))
 ```
 
-<!--html_preserve--><div class="Rtable1"><table class="Rtable1">
-<thead>
-<tr>
-<th class='rowlabel firstrow lastrow'></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Treated<br><span class='stratn'>(N=20)</span></span></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Placebo<br><span class='stratn'>(N=20)</span></span></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Overall<br><span class='stratn'>(N=40)</span></span></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class='rowlabel firstrow'>Sex</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Male</td>
-<td>10 (50.0%)</td>
-<td>10 (50.0%)</td>
-<td>20 (50.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Female</td>
-<td class='lastrow'>10 (50.0%)</td>
-<td class='lastrow'>10 (50.0%)</td>
-<td class='lastrow'>20 (50.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>Age (years)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD%)</td>
-<td>29.4 (11.5%)</td>
-<td>25.6 (11.6%)</td>
-<td>27.4 (11.5%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Median [Min, Max]</td>
-<td>29.2 [10.9, 49.5]</td>
-<td>22.7 [10.6, 47.5]</td>
-<td>25.6 [10.6, 49.5]</td>
-</tr>
-<tr>
-<td class='rowlabel'>Geom. mean (Geo. SD%)</td>
-<td>27.1 (1.54%)</td>
-<td>23.1 (1.62%)</td>
-<td>24.9 (1.58%)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Missing</td>
-<td class='lastrow'>1 (5.0%)</td>
-<td class='lastrow'>0 (0%)</td>
-<td class='lastrow'>1 (2.5%)</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>Weight (kg)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD%)</td>
-<td>70.5 (14.3%)</td>
-<td>75.2 (14.9%)</td>
-<td>72.8 (14.6%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Median [Min, Max]</td>
-<td>69.1 [48.8, 100]</td>
-<td>73.7 [42.6, 108]</td>
-<td>70.9 [42.6, 108]</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Geom. mean (Geo. SD%)</td>
-<td class='lastrow'>69.2 (1.22%)</td>
-<td class='lastrow'>73.7 (1.23%)</td>
-<td class='lastrow'>71.4 (1.22%)</td>
-</tr>
-</tbody>
-</table>
-</div><!--/html_preserve-->
+``` error
+Error in eval(predvars, data, env): object 'sex' not found
+```
 `table1` recognizes the following summary statisticis:
 N, NMISS, MEAN, SD, CV, GMEAN, GCV, MEDIAN, MIN, MAX, IQR, 
 Q1, Q2, Q3, T1, T2, FREQ, PCT
@@ -332,79 +761,9 @@ table1(~sex + age + weight|treatment, data = dat,
 render.continuous = my_summary)
 ```
 
-<!--html_preserve--><div class="Rtable1"><table class="Rtable1">
-<thead>
-<tr>
-<th class='rowlabel firstrow lastrow'></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Treated<br><span class='stratn'>(N=20)</span></span></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Placebo<br><span class='stratn'>(N=20)</span></span></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Overall<br><span class='stratn'>(N=40)</span></span></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class='rowlabel firstrow'>Sex</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Male</td>
-<td>10 (50.0%)</td>
-<td>10 (50.0%)</td>
-<td>20 (50.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Female</td>
-<td class='lastrow'>10 (50.0%)</td>
-<td class='lastrow'>10 (50.0%)</td>
-<td class='lastrow'>20 (50.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>Age (years)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Median</td>
-<td>29.159</td>
-<td>22.701</td>
-<td>25.607</td>
-</tr>
-<tr>
-<td class='rowlabel'>Variance</td>
-<td>132.8</td>
-<td>133.5</td>
-<td>133.3</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Missing</td>
-<td class='lastrow'>1 (5.0%)</td>
-<td class='lastrow'>0 (0%)</td>
-<td class='lastrow'>1 (2.5%)</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>Weight (kg)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Median</td>
-<td>69.078</td>
-<td>73.650</td>
-<td>70.908</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Variance</td>
-<td class='lastrow'>203.5</td>
-<td class='lastrow'>220.8</td>
-<td class='lastrow'>212.4</td>
-</tr>
-</tbody>
-</table>
-</div><!--/html_preserve-->
+``` error
+Error in eval(predvars, data, env): object 'sex' not found
+```
 We do not _need_ to use the `sprintf()` function, but it is a very neat way of 
 combining text with numeric variables because it allows us to format 
 them directly.
