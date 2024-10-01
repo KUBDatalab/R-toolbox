@@ -391,9 +391,6 @@ penguin_example %>%
 
 <img src="fig/barcharts-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
 
-
-
-
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
 - Relatively small changes to a bar chart can make it look much more professional 
