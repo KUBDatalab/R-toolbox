@@ -467,7 +467,7 @@ Blood samples were drawn after 6, 8, 10 and 12 weeks.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="17%"><col width="71%"><col width="11%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description/Code</th>
@@ -526,7 +526,7 @@ group.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
@@ -590,7 +590,7 @@ well as other factors, details in metadata below.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <p>The data set is rather wide, and the columns are split up in this
 describtion.</p>
@@ -695,7 +695,7 @@ condition in both legs leading to 70 observations in the dataset.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler4" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler4" aria-labelledby="headingSpoiler4">
+<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Code</th>
@@ -752,9 +752,34 @@ condition in both legs leading to 70 observations in the dataset.</p>
 </div>
 <div class="section level3">
 <h3 id="breast">BREAST<a class="anchor" aria-label="anchor" href="#breast"></a></h3>
+<p>A dataset describing 1200 women in the NHS. In 1990 it was confirmed
+that they were postmenopausal and free of any cancer. The selection was
+done so that 200 of the women were using postmenopausal hormones (PMH)
+in 1990, and 1000 had never used PMH. The objective was to identify a
+possible relation between incidence of breast cancer between 1990 to
+2000 with PMH use in 1990.</p>
+<p>The objective was to relate breast cancer incidence from 1990 to 2000
+with PMH use in 1990. Data on PMH use are found in three variables,
+<code>pmh</code> registers PMH use in 1990, where <code>dur3</code> and
+<code>dur4</code> registers length of use of two different PMH. In the
+variable <code>foluptm</code> the time between the first questionnaire
+(in 1990), and a follow up date is recorded in months. If a control that
+follow up date was the date of the last questionnaire in 2000, if a
+case, the date of diagnosis of breast cancer. Other cancer risk factors
+are recorded.</p>
 <p><a href="#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BREAST.csv" class="external-link">Download</a></p>
-<table class="table"><colgroup><col width="12%"><col width="78%"><col width="9%"></colgroup><thead><tr class="header"><th>variable</th>
+<div id="accordionSpoiler5" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler5" aria-expanded="false" aria-controls="collapseSpoiler5">
+  <h3 class="accordion-header" id="headingSpoiler5">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler5" class="accordion-collapse collapse" aria-labelledby="headingSpoiler5" data-bs-parent="#accordionSpoiler5">
+<div class="accordion-body">
+<table class="table"><colgroup><col width="12%"><col width="76%"><col width="12%"></colgroup><thead><tr class="header"><th>variable</th>
 <th>Description</th>
 <th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>Id</td>
@@ -763,10 +788,10 @@ condition in both legs leading to 70 observations in the dataset.</p>
 </tr><tr class="even"><td>case</td>
 <td>case</td>
 <td></td>
-</tr><tr class="odd"><td>case</td>
+</tr><tr class="odd"><td></td>
 <td>1 = case</td>
 <td></td>
-</tr><tr class="even"><td>case</td>
+</tr><tr class="even"><td></td>
 <td>0 = control</td>
 <td></td>
 </tr><tr class="odd"><td>age</td>
@@ -785,22 +810,40 @@ condition in both legs leading to 70 observations in the dataset.</p>
 <td>parity</td>
 <td></td>
 </tr><tr class="even"><td>bbd</td>
-<td>Benign Breast disease 1=yes/0=no</td>
+<td>Benign Breast disease</td>
+<td></td>
+</tr><tr class="odd"><td></td>
+<td>1 = yes</td>
+<td></td>
+</tr><tr class="even"><td></td>
+<td>0 = no</td>
 <td></td>
 </tr><tr class="odd"><td>famhx</td>
-<td>family history breast cancer 1=yes/0=no</td>
+<td>family history breast cancer</td>
+<td></td>
+</tr><tr class="even"><td></td>
+<td>1 = yes</td>
+<td></td>
+</tr><tr class="odd"><td></td>
+<td>0 = no</td>
 <td></td>
 </tr><tr class="even"><td>bmi</td>
-<td>BMI (kg/m**2)</td>
-<td></td>
+<td>BMI</td>
+<td>kg/m<sup>2</sup></td>
 </tr><tr class="odd"><td>hgt</td>
-<td>Height (inches)</td>
+<td>Height</td>
 <td>inches</td>
 </tr><tr class="even"><td>alcohol</td>
 <td>Alcohol use (grams/day)</td>
 <td>g/day</td>
 </tr><tr class="odd"><td>pmh</td>
-<td>PMH status 2=never user/3=current user</td>
+<td>PMH status</td>
+<td></td>
+</tr><tr class="even"><td></td>
+<td>2 = never user</td>
+<td></td>
+</tr><tr class="odd"><td></td>
+<td>3 = current user</td>
 <td></td>
 </tr><tr class="even"><td>dur3</td>
 <td>Duration of Estrogen use (months)</td>
@@ -809,10 +852,22 @@ condition in both legs leading to 70 observations in the dataset.</p>
 <td>Duration of Estrogen + progesterone use (months)</td>
 <td>months</td>
 </tr><tr class="even"><td>csmk</td>
-<td>Current Smoker 1=yes/0=no</td>
+<td>Current Smoker</td>
+<td></td>
+</tr><tr class="odd"><td></td>
+<td>1 = yes</td>
+<td></td>
+</tr><tr class="even"><td></td>
+<td>0 = no</td>
 <td></td>
 </tr><tr class="odd"><td>psmk</td>
-<td>Past smoker 1=yes/0=no</td>
+<td>Past smoker</td>
+<td></td>
+</tr><tr class="even"><td></td>
+<td>1 = yes</td>
+<td></td>
+</tr><tr class="odd"><td></td>
+<td>0 = no</td>
 <td></td>
 </tr><tr class="even"><td>foluptm</td>
 <td>Months of follow up Note: Some subjects provided no</td>
@@ -824,105 +879,226 @@ condition in both legs leading to 70 observations in the dataset.</p>
 <td>these people</td>
 <td></td>
 </tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="corneal">CORNEAL<a class="anchor" aria-label="anchor" href="#corneal"></a></h3>
+<p>Data from a randomized trial of two different active drugs of the
+fluoroquinolone-group, M and G along with a placebo, P. 93 subjects
+placed in one of three groups:</p>
+<table class="table"><thead><tr class="header"><th>Group</th>
+<th>Eye 1</th>
+<th>Eye 2</th>
+</tr></thead><tbody><tr class="odd"><td>A</td>
+<td>G</td>
+<td>P</td>
+</tr><tr class="even"><td>B</td>
+<td>M</td>
+<td>P</td>
+</tr><tr class="odd"><td>C</td>
+<td>G</td>
+<td>M</td>
+</tr></tbody></table><p>Each subject was asked to administer the two assigned preparations
+four times per day for 10 days. The response was measured at baseline
+(without treatment), on visit 1, and again at visit 2 after 7 days, and
+at visit 3, on day 14. Note that at day 14, the subjects had stopped
+administering the preparations. The response was meased as corneal
+sensitivity in five regions of the eyes, central, superior, inferior,
+temporal and nasal. Sensititivy was measured in mm, with a range for
+40-60 mm. High values indicate greater, normal, sensitivity, low values
+lower, abnormal, sensitivity.</p>
+<p><a href="#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/CORNEAL.csv" class="external-link">Download</a></p>
+<div id="accordionSpoiler6" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler6" aria-expanded="false" aria-controls="collapseSpoiler6">
+  <h3 class="accordion-header" id="headingSpoiler6">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler6" class="accordion-collapse collapse" aria-labelledby="headingSpoiler6" data-bs-parent="#accordionSpoiler6">
+<div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Variable label</th>
+<th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>id</td>
 <td>ID</td>
+<td></td>
 </tr><tr class="even"><td>tr</td>
-<td>Treatment 1=M 2=G 3=P</td>
-</tr><tr class="odd"><td>c1</td>
+<td>Treatment</td>
+<td></td>
+</tr><tr class="odd"><td></td>
+<td>1=M</td>
+<td></td>
+</tr><tr class="even"><td></td>
+<td>2=G</td>
+<td></td>
+</tr><tr class="odd"><td></td>
+<td>3=P</td>
+<td></td>
+</tr><tr class="even"><td>c1</td>
 <td>Central visit 1</td>
-</tr><tr class="even"><td>s1</td>
+<td>mm</td>
+</tr><tr class="odd"><td>s1</td>
 <td>Superior visit 1</td>
-</tr><tr class="odd"><td>i1</td>
+<td>mm</td>
+</tr><tr class="even"><td>i1</td>
 <td>Inferior Visit 1</td>
-</tr><tr class="even"><td>t1</td>
+<td>mm</td>
+</tr><tr class="odd"><td>t1</td>
 <td>Temporal visit 1</td>
-</tr><tr class="odd"><td>n1</td>
+<td>mm</td>
+</tr><tr class="even"><td>n1</td>
 <td>Nasal Visit 1</td>
-</tr><tr class="even"><td>c2</td>
+<td>mm</td>
+</tr><tr class="odd"><td>c2</td>
 <td>Central Visit 2(day 7)</td>
-</tr><tr class="odd"><td>s2</td>
+<td>mm</td>
+</tr><tr class="even"><td>s2</td>
 <td>Superior Visit 2</td>
-</tr><tr class="even"><td>i2</td>
+<td>mm</td>
+</tr><tr class="odd"><td>i2</td>
 <td>Inferior Visit 2</td>
-</tr><tr class="odd"><td>t2</td>
+<td>mm</td>
+</tr><tr class="even"><td>t2</td>
 <td>Temporal Visit 2</td>
-</tr><tr class="even"><td>n2</td>
+<td>mm</td>
+</tr><tr class="odd"><td>n2</td>
 <td>Nasal Visit 2</td>
-</tr><tr class="odd"><td>c3</td>
+<td>mm</td>
+</tr><tr class="even"><td>c3</td>
 <td>Central Visit 3(day 14) missing=99</td>
-</tr><tr class="even"><td>s3</td>
+<td>mm</td>
+</tr><tr class="odd"><td>s3</td>
 <td>Superior Visit 3 missing=99</td>
-</tr><tr class="odd"><td>i3</td>
+<td>mm</td>
+</tr><tr class="even"><td>i3</td>
 <td>Inferior Visit 3 missing=99</td>
-</tr><tr class="even"><td>t3</td>
+<td>mm</td>
+</tr><tr class="odd"><td>t3</td>
 <td>Temporal Visit 3 missing=99</td>
-</tr><tr class="odd"><td>n3</td>
+<td>mm</td>
+</tr><tr class="even"><td>n3</td>
 <td>Nasal Visit 3 missing=99</td>
+<td>mm</td>
 </tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="diabetes">DIABETES<a class="anchor" aria-label="anchor" href="#diabetes"></a></h3>
+<p>A study on whether maintaining diabetes control in type I diabetes
+affects growth and development in childhood. 94 boys aged 9-15 where
+examined approx. every 3 months, leading to 910 visits. At each visit
+the degree of diabetes control where assessed by measuring HgbA1c
+(glycosylated hemoglobin). The exact dates of the visits are registered
+in the mon, day and yr_a1c variables, the age, height and weight where
+registered as well ad the HgbA1c measurement.</p>
+<p>The HgbA1c measurement is the percentage of hemoglobin that is
+glycosylated. The normal range is between 4.0 and 5.6%, with values
+larger than 6.5% being indicative of diabetes. The normal range does not
+appear to change by pubertal stage.</p>
+<p><a href="#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/DIABETES.csv" class="external-link">Download</a></p>
+<div id="accordionSpoiler7" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler7" aria-expanded="false" aria-controls="collapseSpoiler7">
+  <h3 class="accordion-header" id="headingSpoiler7">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler7" class="accordion-collapse collapse" aria-labelledby="headingSpoiler7" data-bs-parent="#accordionSpoiler7">
+<div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Code</th>
+<th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>ID</td>
+<td></td>
 <td></td>
 </tr><tr class="even"><td>mon_a1c</td>
 <td>Month</td>
+<td></td>
 </tr><tr class="odd"><td>day_a1c</td>
 <td>Day A1c</td>
+<td></td>
 </tr><tr class="even"><td>yr_a1c</td>
 <td>Yr</td>
+<td></td>
 </tr><tr class="odd"><td>age_yrs</td>
 <td>Age in years</td>
+<td>year</td>
 </tr><tr class="even"><td>gly_a1c</td>
 <td>Hemoglobin A1c</td>
+<td>%</td>
 </tr><tr class="odd"><td>ht_cm</td>
-<td>Height in cm missing=999.9</td>
+<td>Height in missing=999.9</td>
+<td>cm</td>
 </tr><tr class="even"><td>wt_kg</td>
 <td>Weight in</td>
+<td>kg</td>
 </tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="ear">EAR<a class="anchor" aria-label="anchor" href="#ear"></a></h3>
+<p>Data on 214 children with acute otitis media in one or both ears.
+They were randomly assigned 14 days of antibiotic treatment with either
+CEF (cefaclor) or AMO (amoxicillin). Status of their ear infection at a
+follow up visit after 14 days were recorded.</p>
+<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p>Additional <a href="#mandel_3">reference</a></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/EAR.csv" class="external-link">Download</a></p>
+<div id="accordionSpoiler8" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler8" aria-expanded="false" aria-controls="collapseSpoiler8">
+  <h3 class="accordion-header" id="headingSpoiler8">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler8" class="accordion-collapse collapse" aria-labelledby="headingSpoiler8" data-bs-parent="#accordionSpoiler8">
+<div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
-<th>Format or Code</th>
 </tr></thead><tbody><tr class="odd"><td>Id</td>
 <td>ID</td>
-<td></td>
 </tr><tr class="even"><td>Clear</td>
 <td>Clearance by 14 days</td>
-<td>1=yes/0=no</td>
+</tr><tr class="odd"><td></td>
+<td>1 = yes</td>
+</tr><tr class="even"><td></td>
+<td>0 = no</td>
 </tr><tr class="odd"><td>Antibo</td>
 <td>Antibiotic</td>
-<td>1=CEF/2=AMO</td>
+</tr><tr class="even"><td></td>
+<td>1 = CEF</td>
+</tr><tr class="odd"><td></td>
+<td>2 = AMO</td>
 </tr><tr class="even"><td>Age</td>
 <td>Age</td>
-<td>1=&lt;2 yrs/2=2-5 yrs/</td>
 </tr><tr class="odd"><td></td>
-<td></td>
+<td>1=&lt;2 yrs</td>
+</tr><tr class="even"><td></td>
+<td>2=2-5 yrs</td>
+</tr><tr class="odd"><td></td>
 <td>3=6+ yrs</td>
 </tr><tr class="even"><td>Ear</td>
 <td>Ear</td>
-<td>1=1st ear/2=2nd ear</td>
-</tr></tbody></table><p>Data på 214 børn med akut otitis media (OME) der deltog i et
-randomiseret klinisk forsøg. De blev tilfældigt tildelt en 14 dages
-antibiotikabehandling med enten CEF (cefaclor) eller amoxicillin (AMO).
-I datasættet optræder de 203 børn hvor status for deres
-mellemørebetændelse blev afgjort ved en opfølgende undersøgelse.</p>
-<p>Hvis Id optræder mere end en gang, havde de ørebetændelse i begge
-ører.</p>
-<p>Yderligere reference:</p>
-<p>Mandel, E., Bluestone, C.D., Rockette, H.E., Blatter, M.M.,
-Reisinger, K.S., Wucher, E.P. &amp; Harper, J. 1982, Duration of
-effusion after antibiotic treatment for acute otitis media: Comparison
-of cefaclor and amoxicillin. Pediatric Infections Diseases, 1,
-310-316.</p>
+</tr><tr class="odd"><td></td>
+<td>1=1st ear</td>
+</tr><tr class="even"><td></td>
+<td>2=2nd ear</td>
+</tr></tbody></table></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="eff">EFF<a class="anchor" aria-label="anchor" href="#eff"></a></h3>
@@ -2198,6 +2374,11 @@ Biostatistics, 7/e, International Edition, 2011 ISBN: 9780538735896</p>
 <p><a id="hopper_2">2</a>: Hopper, J.H. &amp; Seeman, E (1994). The bone
 density of female twins discordant for tobacco use. New England Journal
 of Medicine, 330, 387-392.</p>
+<p><a id="mandel_3">3</a>: Mandel, E., Bluestone, C.D., Rockette, H.E.,
+Blatter, M.M., Reisinger, K.S., Wucher, E.P. &amp; Harper, J. 1982,
+Duration of effusion after antibiotic treatment for acute otitis media:
+Comparison of cefaclor and amoxicillin. Pediatric Infections Diseases,
+1, 310-316.</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
