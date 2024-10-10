@@ -432,7 +432,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data sets</h1>
-        <p>Last updated on 2024-10-09 |
+        <p>Last updated on 2024-10-10 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/learners/data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -446,7 +446,13 @@
 
         
 <!-- Referencer er lidt bøvlet... Vi laver dem ved at indsætte interne links.
-TJEK at nummereringen er som den skal være hvis du ændrer noget. -->
+TJEK at nummereringen er som den skal være hvis du ændrer noget.
+
+Vi vil gerne have de der "1 er dette præparat, 2 det andet" i
+en celle, snarere end i nye linier - stribningen er forvirrende.
+
+Og vi kunne også godt tænke os dimensionerne angivet i beskrivelsen.
+-->
 <div class="section level3">
 <h3 id="betacar">BETACAR<a class="anchor" aria-label="anchor" href="#betacar"></a></h3>
 <p>Data from a study of bio availability of four different preparations
@@ -459,6 +465,7 @@ of betacarotene:</p>
 consecutive-day fasting blood samples. They were then randomized to one
 of the four preparations, and took 1 pill every other day for 12 weeks.
 Blood samples were drawn after 6, 8, 10 and 12 weeks.</p>
+<p><em>Dimensions</em>: Rows: 23 Columns: 8</p>
 <p><a href="#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BETACAR.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
@@ -475,11 +482,11 @@ Blood samples were drawn after 6, 8, 10 and 12 weeks.</p>
 <th>Description/Code</th>
 <th>Unit</th>
 </tr></thead><tbody><tr class="odd"><td>Prepar</td>
-<td>Preparation 1=SOL/2=ROCHE/3=BASF-30/4=BASF-60</td>
-<td>NULL</td>
+<td>Preparation<br>1=SOL<br>2=ROCHE<br>3=BASF-30<br>4=BASF-60</td>
+<td></td>
 </tr><tr class="even"><td>Id</td>
 <td>Subject #</td>
-<td>NULL</td>
+<td></td>
 </tr><tr class="odd"><td>Base1lvl</td>
 <td>1st Baseline Level</td>
 <td>µmol/L</td>
@@ -513,11 +520,12 @@ cancer) and control (does not have breast cancer). The column matchid
 matches the controls with their respective cases. Cases have identical
 ID and matchid.</p>
 <p>Note the different ways of coding missing values.</p>
-<p>Useful for logistic regression to asscess the association between
+<p>Useful for logistic regression to assess the association between
 testosterone and breast cancer, controlling for age and current PMH use.
 Either with testosterone as a continuous variable or as a categorical
 variabel in quartiles, with the first quartile as the reference
 group.</p>
+<p><em>Dimensions</em>: Rows: 510 Columns: 9</p>
 <p><a href="#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BLOOD.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
@@ -530,7 +538,7 @@ group.</p>
 </button>
 <div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="16%"><col width="33%"><col width="38%"><col width="11%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
 <th>Code</th>
 <th>Unit</th>
@@ -543,12 +551,12 @@ group.</p>
 <td></td>
 <td></td>
 </tr><tr class="odd"><td>case</td>
-<td>Case/control</td>
-<td>1=case/ 0=control</td>
+<td>1 = case <br> 0 = control</td>
+<td></td>
 <td></td>
 </tr><tr class="even"><td>curpmh</td>
-<td>Current PMH use</td>
-<td>1=yes / 0=no</td>
+<td>Current PMH use <br> 1 = yes <br> 0 = no</td>
+<td></td>
 <td></td>
 </tr><tr class="odd"><td>ageblood</td>
 <td>Age at blood draw</td>
@@ -559,16 +567,16 @@ group.</p>
 <td></td>
 <td>pg/mL</td>
 </tr><tr class="odd"><td>estrone</td>
-<td>Estrone</td>
-<td>missing=999</td>
+<td>Estrone <br> missing = 999</td>
+<td></td>
 <td>pg/mL</td>
 </tr><tr class="even"><td>testost</td>
-<td>Testosterone</td>
-<td>missing=999</td>
+<td>Testosterone <br> missing = 999</td>
+<td></td>
 <td>ng/dL</td>
 </tr><tr class="odd"><td>prolactn</td>
-<td>Prolactin</td>
-<td>xx.xx missing=99.99</td>
+<td>Prolactin <br> missing = 99.99</td>
+<td></td>
 <td>ng/L</td>
 </tr></tbody></table></div>
 </div>
@@ -1104,6 +1112,16 @@ follow up visit after 14 days were recorded.</p>
 </div>
 <div class="section level3">
 <h3 id="eff">EFF<a class="anchor" aria-label="anchor" href="#eff"></a></h3>
+<p>Data from a litterature search on the efficacy (that is - is it
+working?) of a number of aminoglycosides for the treatment of infectious
+diseases.</p>
+<p>Note that this dataset is basically the same as the dataset NEPHRO,
+where the nephrotoxicity of the preparations described in the same
+papers is reported.</p>
+<p>We get the sample size of patients in different studies, and the
+number of patients that were cured for their infection. Which antibiotic
+is best?</p>
+<p><em>Dimensions:</em> Rows: 64 Columns: 6</p>
 <p><a href="#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/EFF.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler9" class="accordion spoiler-accordion accordion-flush">
@@ -1116,7 +1134,7 @@ follow up visit after 14 days were recorded.</p>
 </button>
 <div id="collapseSpoiler9" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler9" aria-labelledby="headingSpoiler9">
 <div class="accordion-body">
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="20%"><col width="80%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description/Code</th>
 </tr></thead><tbody><tr class="odd"><td>Name</td>
 <td>Study name</td>
@@ -1127,15 +1145,8 @@ follow up visit after 14 days were recorded.</p>
 </tr><tr class="even"><td>Antibio</td>
 <td>Antibiotic</td>
 </tr><tr class="odd"><td></td>
-<td>1 = Amikacin</td>
-</tr><tr class="even"><td></td>
-<td>2 = Gentamicin</td>
-</tr><tr class="odd"><td></td>
-<td>3 = Netilmicin/</td>
-</tr><tr class="even"><td></td>
-<td>4 = Sisomycin</td>
-</tr><tr class="odd"><td></td>
-<td>5 = Tobramycin</td>
+<td>1 = Amikacin <br> 2 = Gentamicin <br> 3 = Netilmicin <br> 4 =
+Sisomycin <br> 5 = Tobramycin</td>
 </tr><tr class="even"><td>Samp_sz</td>
 <td>Sample Size</td>
 </tr><tr class="odd"><td>Cured</td>
@@ -1813,24 +1824,40 @@ COD)</td>
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
+<th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>Id</td>
 <td>ID</td>
+<td></td>
 </tr><tr class="even"><td>Group</td>
-<td>GROUP 1=RP 2=NORMAL</td>
+<td></td>
+<td></td>
+</tr><tr class="odd"><td></td>
+<td>1 = RP</td>
+<td></td>
+</tr><tr class="even"><td></td>
+<td>2 = NORMAL</td>
+<td></td>
 </tr><tr class="odd"><td>Trtgrp</td>
 <td>TREATMENT GROUP</td>
+<td></td>
 </tr><tr class="even"><td></td>
-<td>A=LIGHT</td>
+<td>A = LIGHT</td>
+<td></td>
 </tr><tr class="odd"><td></td>
-<td>B=DIM</td>
+<td>B = DIM</td>
+<td></td>
 </tr><tr class="even"><td></td>
-<td>C=DARK</td>
+<td>C = DARK</td>
+<td></td>
 </tr><tr class="odd"><td>Age</td>
-<td>AGE (days)</td>
+<td>AGE</td>
+<td>days</td>
 </tr><tr class="even"><td>B_amp</td>
 <td>B AMP 9999=missing</td>
+<td></td>
 </tr><tr class="odd"><td>A_amp</td>
 <td>A AMP 9999=missing</td>
+<td></td>
 </tr></tbody></table></div>
 </div>
 </div>
@@ -1838,9 +1865,16 @@ COD)</td>
 </div>
 <div class="section level3">
 <h3 id="nephro">NEPHRO<a class="anchor" aria-label="anchor" href="#nephro"></a></h3>
+<p>Data from a litterature <a href="#buring_5">study</a><sup>5</sup> on
+nephrotoxicity of of several different aminoclycosides.</p>
+<p>Note that this dataset is closely related to the datasets EFF and
+OTO, where EFF reports efficacy of the preparations, and OTO reports a
+combination of efficacy and side effects.</p>
+<p>We get the sample size of patients in different studies, and the
+number of patients that experienced nephrotoxicity. Which antibiotic is
+best?</p>
+<p><em>Dimensions:</em> Rows: 72 Columns: 6</p>
 <p><a href="#rosner_1">source</a><sup>1</sup></p>
-<p>Data from a litterature search, comparing nephrotoxicity of several
-different aminoclycosides<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Each row co</p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/NEPHRO.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler15" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -1852,7 +1886,7 @@ different aminoclycosides<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1<
 </button>
 <div id="collapseSpoiler15" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler15" aria-labelledby="headingSpoiler15">
 <div class="accordion-body">
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="18%"><col width="81%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description/Code</th>
 </tr></thead><tbody><tr class="odd"><td>name</td>
 <td>Study name</td>
@@ -1861,12 +1895,11 @@ different aminoclycosides<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1<
 </tr><tr class="odd"><td>Endpnt</td>
 <td>Endpoint 2=nephrotoxicity</td>
 </tr><tr class="even"><td>Antibio</td>
-<td>Antibiotic 1=Amikacin/2=Gentamicin/3=Netilmicin/</td>
-</tr><tr class="odd"><td></td>
-<td>4=Sisomycin/5=Tobramycin</td>
-</tr><tr class="even"><td>Samp_sz</td>
+<td>Antibiotic
+<br>1=Amikacin<br>2=Gentamicin<br>3=Netilmicin<br>4=Sisomycin<br>5=Tobramycin</td>
+</tr><tr class="odd"><td>Samp_sz</td>
 <td>Sample size</td>
-</tr><tr class="odd"><td>Side_eff</td>
+</tr><tr class="even"><td>Side_eff</td>
 <td>Number with side effects</td>
 </tr></tbody></table></div>
 </div>
@@ -1937,6 +1970,15 @@ particular piece of data was missing.</p></li>
 </ol></div>
 <div class="section level3">
 <h3 id="oto">OTO<a class="anchor" aria-label="anchor" href="#oto"></a></h3>
+<p>Data from a litterature <a href="#buring_5">study</a><sup>5</sup> on
+nephro- and ototoxicity and efficacy of of several different
+aminoclycosides.</p>
+<p>Note that this dataset is closely related to the datasets EFF and
+NEPHRO, where EFF reports efficacy of the preparations, and NEPHRO
+reports on nephrotoxicity.</p>
+<p>We get the sample size of patients in different studies, and the
+number of patients that experienced sideeffects. Which antibiotic is
+best?</p>
 <p><a href="#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/OTO.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler17" class="accordion spoiler-accordion accordion-flush">
@@ -1949,32 +1991,18 @@ particular piece of data was missing.</p></li>
 </button>
 <div id="collapseSpoiler17" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler17" aria-labelledby="headingSpoiler17">
 <div class="accordion-body">
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="31%"><col width="68%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description/Code</th>
 </tr></thead><tbody><tr class="odd"><td>Name</td>
 <td>Study Name</td>
 </tr><tr class="even"><td>Id</td>
 <td>Study Number</td>
 </tr><tr class="odd"><td>Endpnt</td>
-<td>Endpoint</td>
-</tr><tr class="even"><td></td>
-<td>1 = efficacy</td>
-</tr><tr class="odd"><td></td>
-<td>2 = nephrotoxicity</td>
-</tr><tr class="even"><td></td>
-<td>3 = ototoxicity</td>
-</tr><tr class="odd"><td>Antibio</td>
-<td>Antibiotic</td>
-</tr><tr class="even"><td></td>
-<td>1 = Amikacin</td>
-</tr><tr class="odd"><td></td>
-<td>2 = Gentamicin</td>
-</tr><tr class="even"><td></td>
-<td>3 = Netilmicin</td>
-</tr><tr class="odd"><td></td>
-<td>4 = Sisomycin</td>
-</tr><tr class="even"><td></td>
-<td>5 = Tobramycin</td>
+<td>Endpoint <br> 1 = efficacy <br> 2 = nephrotoxicity <br> 3 =
+ototoxicity</td>
+</tr><tr class="even"><td>Antibio</td>
+<td>Antibiotic <br> 1 = Amikacin <br> 2 = Gentamicin <br> 3 = Netilmicin
+<br> 4 = Sisomycin <br> 5 = Tobramycin</td>
 </tr><tr class="odd"><td>Samp_sz</td>
 <td>Sample Size</td>
 </tr><tr class="even"><td>Side_eff</td>
@@ -2152,39 +2180,32 @@ cigarette smoked.</li>
 <td>age</td>
 <td>years</td>
 </tr><tr class="odd"><td>group</td>
-<td>Group</td>
+<td>Group <br> 1 = High NAPAP <br> 2 = Low NAPAP <br> 3 = control</td>
 <td></td>
-</tr><tr class="even"><td></td>
-<td>1 = High NAPAP</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>2 = Low NAPAP</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>3 = control</td>
-<td></td>
-</tr><tr class="odd"><td>creat_68</td>
-<td>Serum Creatinine 1968 9.99=missing</td>
+</tr><tr class="even"><td>creat_68</td>
+<td>Serum Creatinine 1968</td>
 <td>(mg/dL)</td>
-</tr><tr class="even"><td>creat_69</td>
-<td>Serum Creatinine 1969 9.99=missing</td>
+</tr><tr class="odd"><td>creat_69</td>
+<td>Serum Creatinine 1969</td>
 <td>(mg/dL)</td>
-</tr><tr class="odd"><td>creat_70</td>
-<td>Serum Creatinine 1970 9.99=missing</td>
+</tr><tr class="even"><td>creat_70</td>
+<td>Serum Creatinine 1970</td>
 <td>(mg/dL)</td>
-</tr><tr class="even"><td>creat_71</td>
-<td>Serum Creatinine 1971 9.99=missing</td>
+</tr><tr class="odd"><td>creat_71</td>
+<td>Serum Creatinine 1971</td>
 <td>(mg/dL)</td>
-</tr><tr class="odd"><td>creat_72</td>
-<td>Serum Creatinine 1972 9.99=missing</td>
+</tr><tr class="even"><td>creat_72</td>
+<td>Serum Creatinine 1972</td>
 <td>(mg/dL)</td>
-</tr><tr class="even"><td>creat_75</td>
-<td>Serum Creatinine 1975 9.99=missing</td>
+</tr><tr class="odd"><td>creat_75</td>
+<td>Serum Creatinine 1975</td>
 <td>(mg/dL)</td>
-</tr><tr class="odd"><td>creat_78</td>
-<td>Serum Creatinine 1978 9.99=missing</td>
+</tr><tr class="even"><td>creat_78</td>
+<td>Serum Creatinine 1978</td>
 <td>(mg/dL)</td>
-</tr></tbody></table></div>
+</tr></tbody></table><p>For all <code>creat_xx</code>: 9.99 indicates missing data,
+i.e. NA-values.</p>
+</div>
 </div>
 </div>
 </div>
@@ -2774,6 +2795,19 @@ observations are registered the result of each urine sample.</p>
 <p>The purpose of the study was to determine age of spermache.</p>
 <p>The format of observations is unusual and suitable for cleaning
 exercises.</p>
+<p>Det kan godt være vi lige skal kigge på:For further details about the
+study see Nielsen et al. (1986a, 1986b). mere præcist: Nielsen, C. T.,
+Skakkebxk, N. E., Darling, J. A. B., Hunter, W. M., Richardson, D. W.,
+Jorgensen, M., and Keiding, N. (1986a). Longitudinal study of
+testosterone and luteinizing hormone (LH) in relation to spermarche,
+pubic hair, height and sitting height in normal boys. Acta
+Endocrinologica 113, Supplementum 279, 98-106.</p>
+<p>Nielsen, C. T., Skakkebxk, N. E., Richardson, D. W., Darling, J. A.
+B., Hunter, W. M., J0rgensen, M., Nielsen, A., Ingerslev, O., Keiding,
+N., and Muller, J. (1986b). Onset of the release of spermatozoa
+(spermarche) in boys in relation to age, testicular growth, pubic hair
+and height. Journal of Clinical Endocrinology and Metabolism 62,
+532–535.</p>
 <p><a href="#jorgensen_4">source</a><sup>4</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/spermatozoa.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler26" class="accordion spoiler-accordion accordion-flush">
@@ -2875,20 +2909,16 @@ Comparison of cefaclor and amoxicillin. Pediatric Infections Diseases,
 1, 310-316.</p>
 <p><a id="jorgensen_4">4</a>: Jorgensen, Merete; Keiding, Niels;
 Skakkebaek, Niels Erik. Estimation of Spermarche from Longitudinal
-Spermaturia Data Biometrics, Vol. 47, No. 1 (Mar., 1991), pp. 177-193 <a href="https://doi.org/10.2307/2532505" class="external-link uri">https://doi.org/10.2307/2532505</a> <a href="https://www.jstor.org/stable/2532505" class="external-link uri">https://www.jstor.org/stable/2532505</a> <!--
+Spermaturia Data Biometrics, Vol. 47, No. 1 (Mar., 1991), pp. 177-193 <a href="https://doi.org/10.2307/2532505" class="external-link uri">https://doi.org/10.2307/2532505</a> <a href="https://www.jstor.org/stable/2532505" class="external-link uri">https://www.jstor.org/stable/2532505</a></p>
+<p><a id="buring_5">5</a>: Buring, J.E, Evans, D.A., Mayrent, S.L.
+Rosner, B. Colton, T &amp; Hennekens, C.H. (1988). Randomized trials of
+aminoglycoside antibiotics. Reviews of Infectious Disease, 10(5)
+951-957.</p>
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- --></p>
-</section><div class="footnotes footnotes-end-of-document">
-<hr><ol><li id="fn1"><p>Buring, J.E, Evans, D.A., Mayrent, S.L. Rosner, B.
-Colton, T &amp; Hennekens, C.H. (1988). Randomized trials of
-aminoglycoside antibiotics. Reviews of Infectious Disease, 10(5)
-951-957.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol></div>
-
-
-
-      </div> <!-- / div.lesson-content -->
+ -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -2946,8 +2976,8 @@ aminoglycoside antibiotics. Reviews of Infectious Disease, 10(5)
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/data.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/data.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2024-10-09",
-  "datePublished": "2024-10-09"
+  "dateModified": "2024-10-10",
+  "datePublished": "2024-10-10"
 }
 
   </script><script>
