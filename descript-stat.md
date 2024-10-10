@@ -420,7 +420,7 @@ summarise(antal = n())
 8 (6e+03,6.5e+03]     2
 ```
 
-Typically, rather that counting ourself, we leave the work to R, and
+Typically, rather than counting ourself, we leave the work to R, and
 make a histogram directly:
 
 
