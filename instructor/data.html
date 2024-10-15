@@ -432,7 +432,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data sets</h1>
-        <p>Last updated on 2024-10-10 |
+        <p>Last updated on 2024-10-15 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/learners/data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -465,8 +465,8 @@ of betacarotene:</p>
 consecutive-day fasting blood samples. They were then randomized to one
 of the four preparations, and took 1 pill every other day for 12 weeks.
 Blood samples were drawn after 6, 8, 10 and 12 weeks.</p>
-<p><em>Dimensions</em>: Rows: 23 Columns: 8</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 23 Columns: 8</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BETACAR.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -476,7 +476,7 @@ Blood samples were drawn after 6, 8, 10 and 12 weeks.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="17%"><col width="71%"><col width="11%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description/Code</th>
@@ -526,7 +526,7 @@ Either with testosterone as a continuous variable or as a categorical
 variabel in quartiles, with the first quartile as the reference
 group.</p>
 <p><em>Dimensions</em>: Rows: 510 Columns: 9</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BLOOD.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -536,7 +536,7 @@ group.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="16%"><col width="33%"><col width="38%"><col width="11%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
@@ -586,11 +586,12 @@ group.</p>
 <div class="section level3">
 <h3 id="boneden">BONEDEN<a class="anchor" aria-label="anchor" href="#boneden"></a></h3>
 <p>Data from a twin study on the relationship between bone density and
-cigarette consumption <a href="#hopper_2">source</a><sup>2</sup>. 41
-pairs of middle-aged australian female twins with different smoking
-histories had their bone density measured at a hospital in Victoria, as
-well as other factors, details in metadata below.</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+cigarette consumption <a href="data.html#hopper_2">source</a><sup>2</sup>. 41 pairs of
+middle-aged australian female twins with different smoking histories had
+their bone density measured at a hospital in Victoria, as well as other
+factors, details in metadata below.</p>
+<p><em>Dimensions:</em> Rows: 41 Columns: 25</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BONEDEN.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -600,7 +601,7 @@ well as other factors, details in metadata below.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <p>The data set is rather wide, and the columns are split up in this
 describtion.</p>
@@ -611,17 +612,15 @@ describtion.</p>
 <td></td>
 <td></td>
 </tr><tr class="even"><td>Age</td>
-<td>Age (yrs)</td>
+<td>Age</td>
 <td>years</td>
 </tr><tr class="odd"><td>zyg</td>
-<td>1=mz 2=dz</td>
+<td>Mono- or dizygotic twins<br>1 = mz<br> 2 = dz</td>
 <td></td>
-</tr></tbody></table><p>mz - monozygotic twins</p>
-<p>dz - dizygotic twins</p>
-<p>The following variables are dublicated, in the form of</p>
+</tr></tbody></table><p>The following variables are dublicated, in the form of</p>
 <p>xx1 for the lighter smoking twin and</p>
 <p>xx2 for the heavier smoking twin</p>
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="20%"><col width="49%"><col width="30%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Code</th>
 <th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>ht</td>
@@ -643,27 +642,19 @@ describtion.</p>
 <td>Current Smoking</td>
 <td>(cigarettes/day)</td>
 </tr><tr class="odd"><td>men</td>
-<td>Menopause Status</td>
+<td>Menopause Status<br>0: Premenopausal<br> 1: Postmenopausal<br>2:
+unknown or hysterectomy</td>
 <td></td>
-</tr><tr class="even"><td></td>
-<td>0: Premenopausal</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>1: Postmenopausal</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>2: unknown or hysterectomy</td>
-<td></td>
-</tr><tr class="odd"><td>pyr</td>
+</tr><tr class="even"><td>pyr</td>
 <td>Pack-years smoking</td>
 <td>year</td>
-</tr><tr class="even"><td>ls</td>
+</tr><tr class="odd"><td>ls</td>
 <td>Lumbar spine</td>
 <td>g/cm<sup>2</sup></td>
-</tr><tr class="odd"><td>fn</td>
+</tr><tr class="even"><td>fn</td>
 <td>Femoral neck</td>
 <td>g/cm<sup>2</sup></td>
-</tr><tr class="even"><td>fs</td>
+</tr><tr class="odd"><td>fs</td>
 <td>Femoral shaft</td>
 <td>g/cm<sup>2</sup></td>
 </tr></tbody></table><p>Pack-years are defined as how many years the woman have smoked a pack
@@ -695,7 +686,8 @@ injection. At each visit patients rated their percentage of improvement
 of pain comparied to baseline, on a visual analog scale, with a range of
 -100 to 100%, negative numbers indicating worsening. One patient had the
 condition in both legs leading to 70 observations in the dataset.</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 70 Columns: 24</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BOTOX.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler4" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -705,57 +697,76 @@ condition in both legs leading to 70 observations in the dataset.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler4" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler4" aria-labelledby="headingSpoiler4">
+<div id="collapseSpoiler4" class="accordion-collapse collapse" aria-labelledby="headingSpoiler4" data-bs-parent="#accordionSpoiler4">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Code</th>
+<th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>ID</td>
 <td></td>
+<td></td>
 </tr><tr class="even"><td>group</td>
-<td>1 = TL</td>
-</tr><tr class="odd"><td></td>
-<td>2 = Placebo</td>
-</tr><tr class="even"><td></td>
-<td>3 = Botox</td>
+<td>1 = TL <br> 2 = Placebo <br> 3 = Botox</td>
+<td></td>
 </tr><tr class="odd"><td>pain0</td>
-<td>pain score month 0 missing=999</td>
+<td>pain score month 0</td>
+<td>%</td>
 </tr><tr class="even"><td>pain05</td>
-<td>pain score month 0.5 missing=999</td>
+<td>pain score month 0.5</td>
+<td>%</td>
 </tr><tr class="odd"><td>pain1</td>
-<td>pain score month 1 missing=999</td>
+<td>pain score month 1</td>
+<td>%</td>
 </tr><tr class="even"><td>pain2</td>
-<td>pain score month 2 mising=999</td>
+<td>pain score month 2</td>
+<td>%</td>
 </tr><tr class="odd"><td>pain3</td>
-<td>pain score month 3 missing=999</td>
+<td>pain score month 3</td>
+<td>%</td>
 </tr><tr class="even"><td>pain4</td>
-<td>pain score month 4 missing=999</td>
+<td>pain score month 4</td>
+<td>%</td>
 </tr><tr class="odd"><td>pain5</td>
-<td>pain score month 5 missing=999</td>
+<td>pain score month 5</td>
+<td>%</td>
 </tr><tr class="even"><td>pain6</td>
-<td>pain score month 6 missing=999</td>
+<td>pain score month 6</td>
+<td>%</td>
 </tr><tr class="odd"><td>pain7</td>
-<td>pain score month 7 missing=999</td>
+<td>pain score month 7</td>
+<td>%</td>
 </tr><tr class="even"><td>pain8</td>
-<td>pain score month 8 missing=999</td>
+<td>pain score month 8</td>
+<td>%</td>
 </tr><tr class="odd"><td>pain9</td>
-<td>pain score month 9 missing=999</td>
+<td>pain score month 9</td>
+<td>%</td>
 </tr><tr class="even"><td>pain10</td>
-<td>pain score month 10 missing=999</td>
+<td>pain score month 10</td>
+<td>%</td>
 </tr><tr class="odd"><td>pain11</td>
-<td>pain score month 11 missing=999</td>
+<td>pain score month 11</td>
+<td>%</td>
 </tr><tr class="even"><td>pain12</td>
-<td>pain score month 12 missing=999</td>
+<td>pain score month 12</td>
+<td>%</td>
 </tr><tr class="odd"><td>pain13</td>
-<td>pain score month 13 missing=999</td>
+<td>pain score month 13</td>
+<td>%</td>
 </tr><tr class="even"><td>pain14</td>
-<td>pain score month 14 missing=999</td>
+<td>pain score month 14</td>
+<td>%</td>
 </tr><tr class="odd"><td>pain15</td>
-<td>pain score month 15 missing=999</td>
+<td>pain score month 15</td>
+<td>%</td>
 </tr><tr class="even"><td>pain16</td>
-<td>pain score month 16 missing=999</td>
+<td>pain score month 16</td>
+<td>%</td>
 </tr><tr class="odd"><td>pain17</td>
-<td>pain score month 17 missing=999</td>
-</tr></tbody></table></div>
+<td>pain score month 17</td>
+<td>%</td>
+</tr></tbody></table><p>For all pain scores 999 indicates missing value.</p>
+</div>
 </div>
 </div>
 </div>
@@ -777,7 +788,8 @@ variable <code>foluptm</code> the time between the first questionnaire
 follow up date was the date of the last questionnaire in 2000, if a
 case, the date of diagnosis of breast cancer. Other cancer risk factors
 are recorded.</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 1200 Columns: 18</p>
+<p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BREAST.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler5" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -787,7 +799,7 @@ are recorded.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler5" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler5" aria-labelledby="headingSpoiler5">
+<div id="collapseSpoiler5" class="accordion-collapse collapse" aria-labelledby="headingSpoiler5" data-bs-parent="#accordionSpoiler5">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="12%"><col width="76%"><col width="12%"></colgroup><thead><tr class="header"><th>variable</th>
 <th>Description</th>
@@ -796,13 +808,7 @@ are recorded.</p>
 <td>ID</td>
 <td></td>
 </tr><tr class="even"><td>case</td>
-<td>case</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>1 = case</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>0 = control</td>
+<td>case <br> 1 = case <br> 0 = control</td>
 <td></td>
 </tr><tr class="odd"><td>age</td>
 <td>age</td>
@@ -820,22 +826,10 @@ are recorded.</p>
 <td>parity</td>
 <td></td>
 </tr><tr class="even"><td>bbd</td>
-<td>Benign Breast disease</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>1 = yes</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>0 = no</td>
+<td>Benign Breast disease <br> 1 = yes <br> 0 = no</td>
 <td></td>
 </tr><tr class="odd"><td>famhx</td>
-<td>family history breast cancer</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>1 = yes</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>0 = no</td>
+<td>family history breast cancer <br> 1 = yes <br> 0 = no</td>
 <td></td>
 </tr><tr class="even"><td>bmi</td>
 <td>BMI</td>
@@ -844,16 +838,10 @@ are recorded.</p>
 <td>Height</td>
 <td>inches</td>
 </tr><tr class="even"><td>alcohol</td>
-<td>Alcohol use (grams/day)</td>
+<td>Alcohol use</td>
 <td>g/day</td>
 </tr><tr class="odd"><td>pmh</td>
-<td>PMH status</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>2 = never user</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>3 = current user</td>
+<td>PMH status <br> 2 = never user <br> 3 = current user</td>
 <td></td>
 </tr><tr class="even"><td>dur3</td>
 <td>Duration of Estrogen use (months)</td>
@@ -862,32 +850,15 @@ are recorded.</p>
 <td>Duration of Estrogen + progesterone use (months)</td>
 <td>months</td>
 </tr><tr class="even"><td>csmk</td>
-<td>Current Smoker</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>1 = yes</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>0 = no</td>
+<td>Current Smoker <br> 1 = yes <br> 0 = no</td>
 <td></td>
 </tr><tr class="odd"><td>psmk</td>
-<td>Past smoker</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>1 = yes</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>0 = no</td>
+<td>Past smoker <br> 1 = yes <br> 0 = no</td>
 <td></td>
 </tr><tr class="even"><td>foluptm</td>
-<td>Months of follow up Note: Some subjects provided no</td>
+<td>Months of follow up Note: Some subjects provided no <br> follow up
+after the 1990 questionnaire: foluptm=0 for <br> these people</td>
 <td>months</td>
-</tr><tr class="odd"><td></td>
-<td>follow up after the 1990 questionnaire: foluptm=0 for</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>these people</td>
-<td></td>
 </tr></tbody></table></div>
 </div>
 </div>
@@ -896,7 +867,7 @@ are recorded.</p>
 <div class="section level3">
 <h3 id="corneal">CORNEAL<a class="anchor" aria-label="anchor" href="#corneal"></a></h3>
 <p>Data from a randomized trial of two different active drugs of the
-fluoroquinolone-group, M and G along with a placebo, P. 93 subjects
+fluoroquinolone-group, M and G along with a placebo, P. 93 subjects were
 placed in one of three groups:</p>
 <table class="table"><thead><tr class="header"><th>Group</th>
 <th>Eye 1</th>
@@ -919,7 +890,8 @@ sensitivity in five regions of the eyes, central, superior, inferior,
 temporal and nasal. Sensititivy was measured in mm, with a range for
 40-60 mm. High values indicate greater, normal, sensitivity, low values
 lower, abnormal, sensitivity.</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 186 Columns: 17</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/CORNEAL.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler6" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -929,7 +901,7 @@ lower, abnormal, sensitivity.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler6" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler6" aria-labelledby="headingSpoiler6">
+<div id="collapseSpoiler6" class="accordion-collapse collapse" aria-labelledby="headingSpoiler6" data-bs-parent="#accordionSpoiler6">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Variable label</th>
@@ -938,63 +910,55 @@ lower, abnormal, sensitivity.</p>
 <td>ID</td>
 <td></td>
 </tr><tr class="even"><td>tr</td>
-<td>Treatment</td>
+<td>Treatment <br> 1 = M <br> 2 = G <br> 3 = P</td>
 <td></td>
-</tr><tr class="odd"><td></td>
-<td>1=M</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>2=G</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>3=P</td>
-<td></td>
-</tr><tr class="even"><td>c1</td>
+</tr><tr class="odd"><td>c1</td>
 <td>Central visit 1</td>
 <td>mm</td>
-</tr><tr class="odd"><td>s1</td>
+</tr><tr class="even"><td>s1</td>
 <td>Superior visit 1</td>
 <td>mm</td>
-</tr><tr class="even"><td>i1</td>
+</tr><tr class="odd"><td>i1</td>
 <td>Inferior Visit 1</td>
 <td>mm</td>
-</tr><tr class="odd"><td>t1</td>
+</tr><tr class="even"><td>t1</td>
 <td>Temporal visit 1</td>
 <td>mm</td>
-</tr><tr class="even"><td>n1</td>
+</tr><tr class="odd"><td>n1</td>
 <td>Nasal Visit 1</td>
 <td>mm</td>
-</tr><tr class="odd"><td>c2</td>
+</tr><tr class="even"><td>c2</td>
 <td>Central Visit 2(day 7)</td>
 <td>mm</td>
-</tr><tr class="even"><td>s2</td>
+</tr><tr class="odd"><td>s2</td>
 <td>Superior Visit 2</td>
 <td>mm</td>
-</tr><tr class="odd"><td>i2</td>
+</tr><tr class="even"><td>i2</td>
 <td>Inferior Visit 2</td>
 <td>mm</td>
-</tr><tr class="even"><td>t2</td>
+</tr><tr class="odd"><td>t2</td>
 <td>Temporal Visit 2</td>
 <td>mm</td>
-</tr><tr class="odd"><td>n2</td>
+</tr><tr class="even"><td>n2</td>
 <td>Nasal Visit 2</td>
 <td>mm</td>
-</tr><tr class="even"><td>c3</td>
-<td>Central Visit 3(day 14) missing=99</td>
+</tr><tr class="odd"><td>c3</td>
+<td>Central Visit 3(day 14)</td>
 <td>mm</td>
-</tr><tr class="odd"><td>s3</td>
-<td>Superior Visit 3 missing=99</td>
+</tr><tr class="even"><td>s3</td>
+<td>Superior Visit 3</td>
 <td>mm</td>
-</tr><tr class="even"><td>i3</td>
-<td>Inferior Visit 3 missing=99</td>
+</tr><tr class="odd"><td>i3</td>
+<td>Inferior Visit 3</td>
 <td>mm</td>
-</tr><tr class="odd"><td>t3</td>
-<td>Temporal Visit 3 missing=99</td>
+</tr><tr class="even"><td>t3</td>
+<td>Temporal Visit 3</td>
 <td>mm</td>
-</tr><tr class="even"><td>n3</td>
-<td>Nasal Visit 3 missing=99</td>
+</tr><tr class="odd"><td>n3</td>
+<td>Nasal Visit 3</td>
 <td>mm</td>
-</tr></tbody></table></div>
+</tr></tbody></table><p>99: Missing values</p>
+</div>
 </div>
 </div>
 </div>
@@ -1012,7 +976,8 @@ registered as well ad the HgbA1c measurement.</p>
 glycosylated. The normal range is between 4.0 and 5.6%, with values
 larger than 6.5% being indicative of diabetes. The normal range does not
 appear to change by pubertal stage.</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 910 Columns: 8</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/DIABETES.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler7" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -1022,7 +987,7 @@ appear to change by pubertal stage.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler7" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler7" aria-labelledby="headingSpoiler7">
+<div id="collapseSpoiler7" class="accordion-collapse collapse" aria-labelledby="headingSpoiler7" data-bs-parent="#accordionSpoiler7">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Code</th>
@@ -1046,10 +1011,10 @@ appear to change by pubertal stage.</p>
 <td>Hemoglobin A1c</td>
 <td>%</td>
 </tr><tr class="odd"><td>ht_cm</td>
-<td>Height in missing=999.9</td>
+<td>Height <br> missing=999.9</td>
 <td>cm</td>
 </tr><tr class="even"><td>wt_kg</td>
-<td>Weight in</td>
+<td>Weight</td>
 <td>kg</td>
 </tr></tbody></table></div>
 </div>
@@ -1062,8 +1027,9 @@ appear to change by pubertal stage.</p>
 They were randomly assigned 14 days of antibiotic treatment with either
 CEF (cefaclor) or AMO (amoxicillin). Status of their ear infection at a
 follow up visit after 14 days were recorded.</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
-<p>Additional <a href="#mandel_3">reference</a></p>
+<p><em>Dimensions:</em> Rows: 278 Columns: 5</p>
+<p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
+<p>Additional <a href="data.html#mandel_3">reference</a></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/EAR.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler8" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -1073,38 +1039,20 @@ follow up visit after 14 days were recorded.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler8" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler8" aria-labelledby="headingSpoiler8">
+<div id="collapseSpoiler8" class="accordion-collapse collapse" aria-labelledby="headingSpoiler8" data-bs-parent="#accordionSpoiler8">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
 </tr></thead><tbody><tr class="odd"><td>Id</td>
 <td>ID</td>
 </tr><tr class="even"><td>Clear</td>
-<td>Clearance by 14 days</td>
-</tr><tr class="odd"><td></td>
-<td>1 = yes</td>
-</tr><tr class="even"><td></td>
-<td>0 = no</td>
+<td>Clearance by 14 days <br> 1 = yes <br> 0 = no</td>
 </tr><tr class="odd"><td>Antibo</td>
-<td>Antibiotic</td>
-</tr><tr class="even"><td></td>
-<td>1 = CEF</td>
-</tr><tr class="odd"><td></td>
-<td>2 = AMO</td>
+<td>Antibiotic <br>1 = CEF <br> 2 = AMO</td>
 </tr><tr class="even"><td>Age</td>
-<td>Age</td>
-</tr><tr class="odd"><td></td>
-<td>1=&lt;2 yrs</td>
-</tr><tr class="even"><td></td>
-<td>2=2-5 yrs</td>
-</tr><tr class="odd"><td></td>
-<td>3=6+ yrs</td>
-</tr><tr class="even"><td>Ear</td>
-<td>Ear</td>
-</tr><tr class="odd"><td></td>
-<td>1=1st ear</td>
-</tr><tr class="even"><td></td>
-<td>2=2nd ear</td>
+<td>Age <br> 1 = &lt;2 yrs <br> 2 = 2-5 yrs <br> 3 = 6+ yrs</td>
+</tr><tr class="odd"><td>Ear</td>
+<td>Ear <br> 1 = 1st ear <br> 2 = 2nd ear</td>
 </tr></tbody></table></div>
 </div>
 </div>
@@ -1122,7 +1070,7 @@ papers is reported.</p>
 number of patients that were cured for their infection. Which antibiotic
 is best?</p>
 <p><em>Dimensions:</em> Rows: 64 Columns: 6</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/EFF.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler9" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -1132,7 +1080,7 @@ is best?</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler9" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler9" aria-labelledby="headingSpoiler9">
+<div id="collapseSpoiler9" class="accordion-collapse collapse" aria-labelledby="headingSpoiler9" data-bs-parent="#accordionSpoiler9">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="20%"><col width="80%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description/Code</th>
@@ -1158,7 +1106,11 @@ Sisomycin <br> 5 = Tobramycin</td>
 </div>
 <div class="section level3">
 <h3 id="endocrin">ENDOCRIN<a class="anchor" aria-label="anchor" href="#endocrin"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p>Data for comparison of measurements of four hormones in five
+subjects. Measurements were done twice on blood samples from each
+subject. Are the measurements reproducable?</p>
+<p><em>Dimensions:</em> Rows: 10 Columns: 6</p>
+<p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/ENDOCRIN.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler10" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -1168,7 +1120,7 @@ Sisomycin <br> 5 = Tobramycin</td>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler10" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler10" aria-labelledby="headingSpoiler10">
+<div id="collapseSpoiler10" class="accordion-collapse collapse" aria-labelledby="headingSpoiler10" data-bs-parent="#accordionSpoiler10">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>LABEL</th>
@@ -1181,16 +1133,16 @@ Sisomycin <br> 5 = Tobramycin</td>
 <td></td>
 </tr><tr class="odd"><td>Estrone</td>
 <td>ESTRONE</td>
-<td></td>
+<td>pg/mL</td>
 </tr><tr class="even"><td>Estradol</td>
 <td>ESTRADIOL</td>
-<td></td>
+<td>pg/ml</td>
 </tr><tr class="odd"><td>Androste</td>
 <td>ANDROSTENEDIONE</td>
-<td></td>
+<td>ng/dL</td>
 </tr><tr class="even"><td>Testost</td>
 <td>TESTOSTERONE</td>
-<td></td>
+<td>ng/dL</td>
 </tr></tbody></table></div>
 </div>
 </div>
@@ -1198,7 +1150,10 @@ Sisomycin <br> 5 = Tobramycin</td>
 </div>
 <div class="section level3">
 <h3 id="estradl">ESTRADL<a class="anchor" aria-label="anchor" href="#estradl"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p>Data on 211 women. Measurement of estradiol, ethnicity, number of
+children, BMI and Waist/hip ratio.</p>
+<p><em>Dimensions:</em> Rows: 211 Columns: 10</p>
+<p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/ESTRADL.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler11" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -1208,9 +1163,9 @@ Sisomycin <br> 5 = Tobramycin</td>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler11" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler11" aria-labelledby="headingSpoiler11">
+<div id="collapseSpoiler11" class="accordion-collapse collapse" aria-labelledby="headingSpoiler11" data-bs-parent="#accordionSpoiler11">
 <div class="accordion-body">
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="12%"><col width="76%"><col width="12%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Code</th>
 <th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>Id</td>
@@ -1218,54 +1173,41 @@ Sisomycin <br> 5 = Tobramycin</td>
 <td></td>
 </tr><tr class="even"><td>Estradl</td>
 <td>Estradiol</td>
-<td></td>
+<td>pg/ml</td>
 </tr><tr class="odd"><td>Ethnic</td>
-<td>Ethnicity</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>0 = African-American</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>1 = Caucasian</td>
+<td>Ethnicity <br> 0 = African-American <br> 1 = Caucasian</td>
 <td></td>
 </tr><tr class="even"><td>Entage</td>
 <td>Age</td>
-<td></td>
+<td>year</td>
 </tr><tr class="odd"><td>Numchild</td>
 <td>Parity, number of children 9=missing</td>
 <td></td>
 </tr><tr class="even"><td>Agefbo</td>
-<td>Age at 1st birth (=0 if numchild=0) 99=missing</td>
-<td></td>
+<td>Age at 1st birth (= 0 if numchild = 0) 99 = missing</td>
+<td>year</td>
 </tr><tr class="odd"><td>Anykids</td>
-<td>any children</td>
+<td>Any children <br> 1 = yes <br> 0 = no <br> 9 = missing</td>
 <td></td>
-</tr><tr class="even"><td></td>
-<td>1 = yes</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>0 = no</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>9 = missing</td>
-<td></td>
-</tr><tr class="odd"><td>Agemenar</td>
-<td>age at menarche 99=missing</td>
+</tr><tr class="even"><td>Agemenar</td>
+<td>Age at menarche <br> 99=missing</td>
 <td>years</td>
-</tr><tr class="even"><td>BMI</td>
+</tr><tr class="odd"><td>BMI</td>
 <td>Body Mass Index</td>
-<td></td>
-</tr><tr class="odd"><td>WHR</td>
+<td>kg/<sup>m</sup>^</td>
+</tr><tr class="even"><td>WHR</td>
 <td>waist-hip ratio</td>
 <td></td>
-</tr></tbody></table></div>
+</tr></tbody></table><p>CAVE: Note the coding of Agefbo</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="estrogen">ESTROGEN<a class="anchor" aria-label="anchor" href="#estrogen"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 62 Columns: 22</p>
+<p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/ESTROGEN.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler12" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -1275,124 +1217,88 @@ Sisomycin <br> 5 = Tobramycin</td>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler12" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler12" aria-labelledby="headingSpoiler12">
+<div id="collapseSpoiler12" class="accordion-collapse collapse" aria-labelledby="headingSpoiler12" data-bs-parent="#accordionSpoiler12">
 <div class="accordion-body">
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table style="width:100%;" class="table"><colgroup><col width="21%"><col width="65%"><col width="12%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>LABEL</th>
 <th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>Id</td>
 <td>ID</td>
 <td></td>
 </tr><tr class="even"><td>std_typ</td>
-<td>STUDY TYPE</td>
+<td>STUDY TYPE <br> 1 = 0.625MG VS PLACEBO <br> 2 = 1.25MG VS PLACEBO
+<br> 3 = 1.25MG VS 0.625MG</td>
 <td></td>
-</tr><tr class="odd"><td></td>
-<td>1 = 0.625MG VS PLACEBO</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>2 = 1.25MG VS PLACEBO</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>3 = 1.25MG VS 0.625MG</td>
-<td></td>
-</tr><tr class="even"><td>period</td>
+</tr><tr class="odd"><td>period</td>
 <td>PERIOD</td>
 <td></td>
-</tr><tr class="odd"><td>trtgrp</td>
-<td>TREATMENT</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>1 = PLACEBO</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>2 = 0.625MG</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>3 = 1.25MG</td>
+</tr><tr class="even"><td>trtgrp</td>
+<td>TREATMENT <br> 1 = PLACEBO <br> 2 = 0.625MG <br> 3 = 1.25MG</td>
 <td></td>
 </tr><tr class="odd"><td>sysd1r1</td>
 <td>SYSTOLIC BP DAY 1 READING 1</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>MISSING=999</td>
-<td></td>
-</tr><tr class="odd"><td>diasd1r1</td>
+<td>mmHg</td>
+</tr><tr class="even"><td>diasd1r1</td>
 <td>DIASTOLIC BP DAY 1 READING 1</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>MISSING=999</td>
-<td></td>
+<td>mmHg</td>
 </tr><tr class="odd"><td>sysd1r2</td>
 <td>SYSTOLIC BP DAY 1 READING 2</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>MISSING=999</td>
-<td></td>
-</tr><tr class="odd"><td>diasd1r2</td>
+<td>mmHg</td>
+</tr><tr class="even"><td>diasd1r2</td>
 <td>DIASTOLIC BP DAY 1 READING 2</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>MISSING=999</td>
-<td></td>
+<td>mmHg</td>
 </tr><tr class="odd"><td>sysd1r3</td>
 <td>SYSTOLIC BP DAY 1 READING 3</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>MISSING=999</td>
-<td></td>
-</tr><tr class="odd"><td>diasd1r3</td>
+<td>mmHg</td>
+</tr><tr class="even"><td>diasd1r3</td>
 <td>DIASTOLIC BP DAY 1 READING 3</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>MISSING=999</td>
-<td></td>
+<td>mmHg</td>
 </tr><tr class="odd"><td>sysd2r1</td>
 <td>SYSTOLIC BP DAY 2 READING 1</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>MISSING=999</td>
-<td></td>
-</tr><tr class="odd"><td>diasd2r1</td>
+<td>mmHg</td>
+</tr><tr class="even"><td>diasd2r1</td>
 <td>DIASTOLIC BP DAY 2 READING 1</td>
-<td></td>
-</tr><tr class="even"><td>sysd2r2</td>
+<td>mmHg</td>
+</tr><tr class="odd"><td>sysd2r2</td>
 <td>SYSTOLIC BP DAY 2 READING 2</td>
-<td></td>
-</tr><tr class="odd"><td>diasd2r2</td>
+<td>mmHg</td>
+</tr><tr class="even"><td>diasd2r2</td>
 <td>DIASTOLIC BP DAY 2 READING 2</td>
-<td></td>
-</tr><tr class="even"><td>sysd2r3</td>
+<td>mmHg</td>
+</tr><tr class="odd"><td>sysd2r3</td>
 <td>SYSTOLIC BP DAY 2 READING 3</td>
-<td></td>
-</tr><tr class="odd"><td>diasd2r3</td>
+<td>mmHg</td>
+</tr><tr class="even"><td>diasd2r3</td>
 <td>DIASTOLIC BP DAY 2 READING 3</td>
-<td></td>
-</tr><tr class="even"><td>sysd3r1</td>
+<td>mmHg</td>
+</tr><tr class="odd"><td>sysd3r1</td>
 <td>SYSTOLIC BP DAY 3 READING 1</td>
-<td></td>
-</tr><tr class="odd"><td>diasd3r1</td>
+<td>mmHg</td>
+</tr><tr class="even"><td>diasd3r1</td>
 <td>DIASTOLIC BP DAY 3 READING 1</td>
-<td></td>
-</tr><tr class="even"><td>sysd3r2</td>
+<td>mmHg</td>
+</tr><tr class="odd"><td>sysd3r2</td>
 <td>SYSTOLIC BP DAY 3 READING 2</td>
-<td></td>
-</tr><tr class="odd"><td>diasd3r2</td>
+<td>mmHg</td>
+</tr><tr class="even"><td>diasd3r2</td>
 <td>DIASTOLIC BP DAY 3 READING 2</td>
-<td></td>
-</tr><tr class="even"><td>sysd3r3</td>
+<td>mmHg</td>
+</tr><tr class="odd"><td>sysd3r3</td>
 <td>SYSTOLIC BP DAY 3 READING 3</td>
-<td></td>
-</tr><tr class="odd"><td>diasd3r3</td>
+<td>mmHg</td>
+</tr><tr class="even"><td>diasd3r3</td>
 <td>DIASTOLIC BP DAY 3 READING 3</td>
-<td></td>
-</tr></tbody></table></div>
+<td>mmHg</td>
+</tr></tbody></table><p>999: Missing bloodpressure data.</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="fev">FEV<a class="anchor" aria-label="anchor" href="#fev"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 654 Columns: 6</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p>Yderligere reference: Tage, I.B., Weiss, S.T., Rosner, B. &amp;
 Speizer, F.E. (1979), Effect of parental cigarette smoking on pulmonary
 function in children. American Journal of Epidemiology, 110, 15-26.</p>
@@ -1405,40 +1311,29 @@ function in children. American Journal of Epidemiology, 110, 15-26.</p>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler13" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler13" aria-labelledby="headingSpoiler13">
+<div id="collapseSpoiler13" class="accordion-collapse collapse" aria-labelledby="headingSpoiler13" data-bs-parent="#accordionSpoiler13">
 <div class="accordion-body">
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="10%"><col width="81%"><col width="8%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
 <th>Unit</th>
 </tr></thead><tbody><tr class="odd"><td>Id</td>
 <td>ID number</td>
 <td></td>
 </tr><tr class="even"><td>Age</td>
-<td>Age (yrs)</td>
+<td>Age</td>
 <td>years</td>
 </tr><tr class="odd"><td>FEV</td>
-<td>FEV (liters)</td>
+<td>FEV</td>
 <td>l</td>
 </tr><tr class="even"><td>Hgt</td>
-<td>Height (inches)</td>
+<td>Height</td>
 <td>in</td>
 </tr><tr class="odd"><td>Sex</td>
-<td>Sex</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>0 = female</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>1 = male</td>
+<td>Sex <br> 0 = female <br> 1 = male</td>
 <td></td>
 </tr><tr class="even"><td>Smoke</td>
-<td>Smoking Status</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>0=non-current smoker</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>1=current smoker</td>
+<td>Smoking Status <br> 0 = non-current smoker <br> 1 = current
+smoker</td>
 <td></td>
 </tr></tbody></table></div>
 </div>
@@ -1453,48 +1348,76 @@ Massachusetts, USA.</p>
 </div>
 <div class="section level3">
 <h3 id="field">FIELD<a class="anchor" aria-label="anchor" href="#field"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 1326 Columns: 8</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/FIELD.csv" class="external-link">Download</a></p>
-<table class="table"><colgroup><col width="15%"><col width="84%"></colgroup><thead><tr class="header"><th>Variable</th>
+<div id="accordionSpoiler14" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler14" aria-expanded="false" aria-controls="collapseSpoiler14">
+  <h3 class="accordion-header" id="headingSpoiler14">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler14" class="accordion-collapse collapse" aria-labelledby="headingSpoiler14" data-bs-parent="#accordionSpoiler14">
+<div class="accordion-body">
+<table class="table"><colgroup><col width="14%"><col width="78%"><col width="7%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
+<th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>id</td>
 <td>ID</td>
+<td></td>
 </tr><tr class="even"><td>group</td>
-<td>group (1=RHO/2=RPGR)</td>
+<td>group <br> 1 = RHO <br> 2 = RPGR</td>
+<td></td>
 </tr><tr class="odd"><td>age</td>
 <td>age at visit (XX.X in years)</td>
+<td></td>
 </tr><tr class="even"><td>gender</td>
-<td>gender (1=m/2=f) Note: all RPGR individuals have to be male</td>
+<td>gender <br> 1 = m <br> 2 = f <br> Note: all RPGR individuals have to
+be male</td>
+<td></td>
 </tr><tr class="odd"><td>dtvisit</td>
 <td>date of visit (month/day/year)</td>
+<td></td>
 </tr><tr class="even"><td>folowup</td>
 <td>time from 1st visit in years</td>
+<td></td>
 </tr><tr class="odd"><td>totfldod</td>
 <td>total field area right eye (OD) in degrees²</td>
+<td></td>
 </tr><tr class="even"><td>totfldos</td>
 <td>total field area left eye (OS) in degrees²</td>
+<td></td>
 </tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="heart">HEART<a class="anchor" aria-label="anchor" href="#heart"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 7 Columns: 9</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/HEART.csv" class="external-link">Download</a></p>
+<div id="accordionSpoiler15" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler15" aria-expanded="false" aria-controls="collapseSpoiler15">
+  <h3 class="accordion-header" id="headingSpoiler15">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler15" class="accordion-collapse collapse" aria-labelledby="headingSpoiler15" data-bs-parent="#accordionSpoiler15">
+<div class="accordion-body">
 <table class="table"><colgroup><col width="13%"><col width="86%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>code</th>
 </tr></thead><tbody><tr class="odd"><td>Diagnosis</td>
-<td>Y1=normal</td>
-</tr><tr class="even"><td></td>
-<td>Y2=atrial septal defect without pulmonary stenosis or pulmonary
-hypertension</td>
-</tr><tr class="odd"><td></td>
-<td>Y3=ventricular septal defect with valvular pulmonary stenosis</td>
-</tr><tr class="even"><td></td>
-<td>Y4=isolated pulmonary hypertension</td>
-</tr><tr class="odd"><td></td>
-<td>Y5=transposed great vessels</td>
-</tr><tr class="even"><td></td>
-<td>Y6=ventricular septal defect without pulmonary hypertension</td>
-</tr><tr class="odd"><td></td>
-<td>Y7=ventricular septal defect with pulmonary hypertension</td>
+<td>Y1 = normal <br> Y2 = atrial septal defect without pulmonary
+stenosis or pulmonary hypertension <br> Y3 = ventricular septal defect
+with valvular pulmonary stenosis <br> Y4 = isolated pulmonary
+hypertension <br> Y5 = transposed great vessels <br> Y6 = ventricular
+septal defect without pulmonary hypertension <br> Y7 = ventricular
+septal defect with pulmonary hypertension</td>
 </tr><tr class="even"><td>Prevalence</td>
 <td>Prevalence</td>
 </tr><tr class="odd"><td>X1</td>
@@ -1512,11 +1435,26 @@ hypertension</td>
 </tr><tr class="odd"><td>X7</td>
 <td>EKG axis more than 110</td>
 </tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="hormone">HORMONE<a class="anchor" aria-label="anchor" href="#hormone"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 398 Columns: 11</p>
+<p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/HORMONE.csv" class="external-link">Download</a></p>
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<div id="accordionSpoiler16" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler16" aria-expanded="false" aria-controls="collapseSpoiler16">
+  <h3 class="accordion-header" id="headingSpoiler16">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler16" class="accordion-collapse collapse" aria-labelledby="headingSpoiler16" data-bs-parent="#accordionSpoiler16">
+<div class="accordion-body">
+<table class="table"><colgroup><col width="23%"><col width="76%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description/Code</th>
 </tr></thead><tbody><tr class="odd"><td>ID</td>
 <td>ID</td>
@@ -1539,33 +1477,63 @@ hypertension</td>
 </tr><tr class="even"><td>Panphpt</td>
 <td>Pancreatic pH-post</td>
 </tr><tr class="odd"><td>Hormone</td>
-<td>Hormone 1=SAL/2=APP/3=CCK/4=SEC/5=VIP</td>
+<td>Hormone <br> 1 = SAL <br> 2 = APP <br> 3 = CCK <br> 4=SEC <br>
+5=VIP</td>
 </tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="hospital">HOSPITAL<a class="anchor" aria-label="anchor" href="#hospital"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 25 Columns: 9</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/HOSPITAL.csv" class="external-link">Download</a></p>
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<div id="accordionSpoiler17" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler17" aria-expanded="false" aria-controls="collapseSpoiler17">
+  <h3 class="accordion-header" id="headingSpoiler17">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler17" class="accordion-collapse collapse" aria-labelledby="headingSpoiler17" data-bs-parent="#accordionSpoiler17">
+<div class="accordion-body">
+<table class="table"><colgroup><col width="16%"><col width="75%"><col width="8%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Label</th>
+<th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>Id</td>
 <td>id no.</td>
+<td></td>
 </tr><tr class="even"><td>Dur_stay</td>
 <td>Duration of hospital stay</td>
+<td></td>
 </tr><tr class="odd"><td>Age</td>
 <td>Age</td>
+<td></td>
 </tr><tr class="even"><td>Sex</td>
-<td>Sex 1=male/2=female</td>
+<td>Sex <br> 1 = male <br> 2 = female</td>
+<td></td>
 </tr><tr class="odd"><td>Temp</td>
 <td>First temperature following admission</td>
+<td></td>
 </tr><tr class="even"><td>WBC</td>
 <td>First WBC(x1000) following admission</td>
+<td></td>
 </tr><tr class="odd"><td>Antibio</td>
-<td>Received antibiotic 1=yes/2=no</td>
+<td>Received antibiotic <br> 1 = yes <br> 2 = no</td>
+<td></td>
 </tr><tr class="even"><td>Bact_cul</td>
-<td>Received bacterial culture 1=yes/2=no</td>
+<td>Received bacterial culture <br> 1 = yes <br> 2 = no</td>
+<td></td>
 </tr><tr class="odd"><td>Service</td>
-<td>Service 1=med/2=surg.</td>
-</tr></tbody></table><p>Fra studie af antibiotikabrug på et hospital i Pennsylvania. Baseret
+<td>Service <br> 1 = med <br> 2 = surg.</td>
+<td></td>
+</tr></tbody></table></div>
+</div>
+</div>
+</div>
+<p>Fra studie af antibiotikabrug på et hospital i Pennsylvania. Baseret
 på journaler fra patienter der er udskrevet. WBC er “White Bloodcell
 Count”.</p>
 <p>Det kan have klinisk interesse om længden af indlæggelse er afhængig
@@ -1576,93 +1544,108 @@ Journal of Infectious Diseases, 139(6) 688-697.</p>
 </div>
 <div class="section level3">
 <h3 id="infantbp">INFANTBP<a class="anchor" aria-label="anchor" href="#infantbp"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 100 Columns: 18</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/INFANTBP.csv" class="external-link">Download</a></p>
 <p>Salt Taste Variables</p>
+<div id="accordionSpoiler18" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler18" aria-expanded="false" aria-controls="collapseSpoiler18">
+  <h3 class="accordion-header" id="headingSpoiler18">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler18" class="accordion-collapse collapse" aria-labelledby="headingSpoiler18" data-bs-parent="#accordionSpoiler18">
+<div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
-<th>Format</th>
 <th>Description</th>
+<th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>ID</td>
 <td></td>
 <td></td>
 </tr><tr class="even"><td>Mn_sbp</td>
-<td>xx.xx</td>
 <td>Mean SBP 99.99=missing</td>
+<td></td>
 </tr><tr class="odd"><td>Mn_dbp</td>
-<td>xx.xx</td>
 <td>Mean DBP 99.99=missing</td>
+<td></td>
 </tr><tr class="even"><td>MSB1slt</td>
-<td>xxx.xx</td>
 <td>MSB-trial 1* water</td>
+<td></td>
 </tr><tr class="odd"><td>MSB2slt</td>
-<td>xxx.xx</td>
 <td>MSB-trial 2 water</td>
+<td></td>
 </tr><tr class="even"><td>MSB3slt</td>
-<td>xxx.xx</td>
 <td>MSB-trial 3 0.1 molar salt + water</td>
+<td></td>
 </tr><tr class="odd"><td>MSB4slt</td>
-<td>xxx.xx</td>
 <td>MSB-trial 4 0.1 molar salt + water</td>
+<td></td>
 </tr><tr class="even"><td>MSB5slt</td>
-<td>xxx.xx</td>
 <td>MSB-trial 5 water</td>
+<td></td>
 </tr><tr class="odd"><td>MSB6slt</td>
-<td>xxx.xx</td>
 <td>MSB-trial 6 water</td>
+<td></td>
 </tr><tr class="even"><td>MSB7slt</td>
-<td>xxx.xx</td>
 <td>MSB-trial 7 0.3 molar salt + water</td>
+<td></td>
 </tr><tr class="odd"><td>MSB8slt</td>
-<td>xxx.xx</td>
 <td>MSB-trial 8 0.3 molar salt + water</td>
+<td></td>
 </tr><tr class="even"><td>MSB9slt</td>
-<td>xxx.xx</td>
 <td>MSB-trial 9 water</td>
+<td></td>
 </tr><tr class="odd"><td>MSB10slt</td>
-<td>xxx.xx</td>
 <td>MSB-trial 10 water</td>
+<td></td>
 </tr></tbody></table><p>Sugar Taste Variables</p>
 <table class="table"><thead><tr class="header"><th>Variable</th>
-<th>Format</th>
 <th>Description</th>
 </tr></thead><tbody><tr class="odd"><td>MSB1sug</td>
-<td>xxx.xx</td>
 <td>MSB-trial 1 non-nutritive sucking</td>
 </tr><tr class="even"><td>MSB2sug</td>
-<td>xxx.xx</td>
 <td>MSB-trial 2 water</td>
 </tr><tr class="odd"><td>MSB3sug</td>
-<td>xxx.xx</td>
 <td>MSB-trial 3 5% sucrose + water</td>
 </tr><tr class="even"><td>MSB4sug</td>
-<td>xxx.xx</td>
 <td>MSB-trial 4 15% sucrose + water</td>
 </tr><tr class="odd"><td>MSB5sug</td>
-<td>xxx.xx</td>
 <td>MSB-trial 5 non-nutritive sucking</td>
 </tr></tbody></table><ul><li>for MSB data 999.99 is a missing value; 0 indicates the baby did not
 suck.</li>
 </ul></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="lead">LEAD<a class="anchor" aria-label="anchor" href="#lead"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 124 Columns: 40</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/LEAD.csv" class="external-link">Download</a></p>
-<table class="table"><thead><tr class="header"><th>VARIABLE</th>
+<div id="accordionSpoiler19" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler19" aria-expanded="false" aria-controls="collapseSpoiler19">
+  <h3 class="accordion-header" id="headingSpoiler19">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler19" class="accordion-collapse collapse" aria-labelledby="headingSpoiler19" data-bs-parent="#accordionSpoiler19">
+<div class="accordion-body">
+<table class="table"><colgroup><col width="28%"><col width="71%"></colgroup><thead><tr class="header"><th>VARIABLE</th>
 <th>DESCRIPTION</th>
 </tr></thead><tbody><tr class="odd"><td>id</td>
 <td>IDENTIFICATION NUMBER</td>
 </tr><tr class="even"><td>area</td>
-<td>AREA - RESIDENCE ON AUG’72</td>
-</tr><tr class="odd"><td></td>
-<td>1=0-1 MILES FROM SMELTER</td>
-</tr><tr class="even"><td></td>
-<td>2=1-2.5 MILES</td>
-</tr><tr class="odd"><td></td>
-<td>3=2.5-4.1 MILES</td>
-</tr><tr class="even"><td>ageyrs</td>
-<td>AGE in years xx.xx</td>
-</tr><tr class="odd"><td>sex</td>
-<td>SEX 1=MALE 2=FEMALE</td>
+<td>AREA - RESIDENCE ON AUG’72 <br> 1 = 0-1 MILES FROM SMELTER <br> 2 =
+1-2.5 MILES <br> 3 = 2.5-4.1 MILES</td>
+</tr><tr class="odd"><td>ageyrs</td>
+<td>AGE in years</td>
+</tr><tr class="even"><td>sex</td>
+<td>SEX <br> 1 = MALE <br> 2 = FEMALE</td>
 </tr></tbody></table><p>IQ TEST RESULTS</p>
 <table class="table"><colgroup><col width="14%"><col width="85%"></colgroup><thead><tr class="header"><th>VARIABLE</th>
 <th>DESCRIPTION</th>
@@ -1696,11 +1679,9 @@ COD)</td>
 </tr><tr class="even"><td>iqf</td>
 <td>IQF - FULL SCALE IQ (NOT SUM OR AVERAGE OF IQV D IQP)</td>
 </tr><tr class="odd"><td>iq_type</td>
-<td>TYPE OF IQ TEST 1=WISC 2=WPPSI</td>
-</tr><tr class="even"><td></td>
-<td>(WISC USUALLY GIVEN TO CHILDREN GE 5 YRS 1 MONTH OF AGE</td>
-</tr><tr class="odd"><td></td>
-<td>WPPSI USUALLY GIVEN TO CHILDREN LE 5YRS OF AGE)</td>
+<td>TYPE OF IQ TEST <br> 1 = WISC <br> 2 = WPPSI <br> (WISC USUALLY
+GIVEN TO CHILDREN GE 5 YRS 1 MONTH OF AGE <br> WPPSI USUALLY GIVEN TO
+CHILDREN LE 5YRS OF AGE)</td>
 </tr><tr class="even"><td>lead_grp</td>
 <td>GROUP - BLOOD LEAD LEVEL GROUP</td>
 </tr><tr class="odd"><td></td>
@@ -1747,15 +1728,15 @@ COD)</td>
 <table class="table"><thead><tr class="header"><th>VARIABLE</th>
 <th>DESCRIPTION</th>
 </tr></thead><tbody><tr class="odd"><td>pica</td>
-<td>PICA 1=YES 2=NO</td>
+<td>PICA <br> 1 = YES <br> 2 = NO</td>
 </tr><tr class="even"><td>colic</td>
-<td>COLIC 1=YES 2=NO</td>
+<td>COLIC <br> 1 = YES <br> 2 = NO</td>
 </tr><tr class="odd"><td>clumsi</td>
-<td>CLUMSINESS 1=YES 2=NO</td>
+<td>CLUMSINESS <br> 1 = YES <br> 2 = NO</td>
 </tr><tr class="even"><td>irrit</td>
-<td>IRRITABILITY 1=YES 2=NO</td>
+<td>IRRITABILITY <br> 1 = YES <br> 2 = NO</td>
 </tr><tr class="odd"><td>convul</td>
-<td>CONVULSIONS 1=YES 2=NO</td>
+<td>CONVULSIONS <br> 1 = YES <br> 2 = NO</td>
 </tr></tbody></table><p>CONTAIN NEUROLOGICAL TEST DATA</p>
 <table class="table"><colgroup><col width="15%"><col width="84%"></colgroup><thead><tr class="header"><th>VARIABLE</th>
 <th>DESCRIPTION</th>
@@ -1808,65 +1789,57 @@ COD)</td>
 </tr><tr class="even"><td>maxfwt</td>
 <td>Finger-wrist tapping test in dominant hand(max of fwt_r,fwt_l)</td>
 </tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="mice">MICE<a class="anchor" aria-label="anchor" href="#mice"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 240 Columns: 6</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/MICE.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler14" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler20" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler14" aria-expanded="false" aria-controls="collapseSpoiler14">
-  <h3 class="accordion-header" id="headingSpoiler14">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler20" aria-expanded="false" aria-controls="collapseSpoiler20">
+  <h3 class="accordion-header" id="headingSpoiler20">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler14" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler14" aria-labelledby="headingSpoiler14">
+<div id="collapseSpoiler20" class="accordion-collapse collapse" aria-labelledby="headingSpoiler20" data-bs-parent="#accordionSpoiler20">
 <div class="accordion-body">
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="28%"><col width="57%"><col width="14%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
 <th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>Id</td>
 <td>ID</td>
 <td></td>
 </tr><tr class="even"><td>Group</td>
-<td></td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>1 = RP</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>2 = NORMAL</td>
+<td>
+<br> 1 = RP <br> 2 = NORMAL</td>
 <td></td>
 </tr><tr class="odd"><td>Trtgrp</td>
-<td>TREATMENT GROUP</td>
+<td>TREATMENT GROUP <br> A = LIGHT <br> B = DIM <br> C = DARK</td>
 <td></td>
-</tr><tr class="even"><td></td>
-<td>A = LIGHT</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>B = DIM</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>C = DARK</td>
-<td></td>
-</tr><tr class="odd"><td>Age</td>
+</tr><tr class="even"><td>Age</td>
 <td>AGE</td>
 <td>days</td>
-</tr><tr class="even"><td>B_amp</td>
-<td>B AMP 9999=missing</td>
+</tr><tr class="odd"><td>B_amp</td>
+<td>B AMP</td>
 <td></td>
-</tr><tr class="odd"><td>A_amp</td>
-<td>A AMP 9999=missing</td>
+</tr><tr class="even"><td>A_amp</td>
+<td>A AMP</td>
 <td></td>
-</tr></tbody></table></div>
+</tr></tbody></table><p>9999 = missing.</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="nephro">NEPHRO<a class="anchor" aria-label="anchor" href="#nephro"></a></h3>
-<p>Data from a litterature <a href="#buring_5">study</a><sup>5</sup> on
-nephrotoxicity of of several different aminoclycosides.</p>
+<p>Data from a litterature <a href="data.html#buring_5">study</a><sup>5</sup> on nephrotoxicity of of
+several different aminoclycosides.</p>
 <p>Note that this dataset is closely related to the datasets EFF and
 OTO, where EFF reports efficacy of the preparations, and OTO reports a
 combination of efficacy and side effects.</p>
@@ -1874,17 +1847,17 @@ combination of efficacy and side effects.</p>
 number of patients that experienced nephrotoxicity. Which antibiotic is
 best?</p>
 <p><em>Dimensions:</em> Rows: 72 Columns: 6</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/NEPHRO.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler15" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler21" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler15" aria-expanded="false" aria-controls="collapseSpoiler15">
-  <h3 class="accordion-header" id="headingSpoiler15">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler21" aria-expanded="false" aria-controls="collapseSpoiler21">
+  <h3 class="accordion-header" id="headingSpoiler21">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler15" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler15" aria-labelledby="headingSpoiler15">
+<div id="collapseSpoiler21" class="accordion-collapse collapse" aria-labelledby="headingSpoiler21" data-bs-parent="#accordionSpoiler21">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="18%"><col width="81%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description/Code</th>
@@ -1908,17 +1881,18 @@ best?</p>
 </div>
 <div class="section level3">
 <h3 id="nifed">NIFED<a class="anchor" aria-label="anchor" href="#nifed"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 34 Columns: 10</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/NIFED.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler16" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler22" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler16" aria-expanded="false" aria-controls="collapseSpoiler16">
-  <h3 class="accordion-header" id="headingSpoiler16">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler22" aria-expanded="false" aria-controls="collapseSpoiler22">
+  <h3 class="accordion-header" id="headingSpoiler22">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler16" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler16" aria-labelledby="headingSpoiler16">
+<div id="collapseSpoiler22" class="accordion-collapse collapse" aria-labelledby="headingSpoiler22" data-bs-parent="#accordionSpoiler22">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
@@ -1970,26 +1944,26 @@ particular piece of data was missing.</p></li>
 </ol></div>
 <div class="section level3">
 <h3 id="oto">OTO<a class="anchor" aria-label="anchor" href="#oto"></a></h3>
-<p>Data from a litterature <a href="#buring_5">study</a><sup>5</sup> on
-nephro- and ototoxicity and efficacy of of several different
-aminoclycosides.</p>
+<p>Data from a litterature <a href="data.html#buring_5">study</a><sup>5</sup> on nephro- and
+ototoxicity and efficacy of of several different aminoclycosides.</p>
 <p>Note that this dataset is closely related to the datasets EFF and
 NEPHRO, where EFF reports efficacy of the preparations, and NEPHRO
 reports on nephrotoxicity.</p>
 <p>We get the sample size of patients in different studies, and the
 number of patients that experienced sideeffects. Which antibiotic is
 best?</p>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 50 Columns: 6</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/OTO.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler17" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler23" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler17" aria-expanded="false" aria-controls="collapseSpoiler17">
-  <h3 class="accordion-header" id="headingSpoiler17">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler23" aria-expanded="false" aria-controls="collapseSpoiler23">
+  <h3 class="accordion-header" id="headingSpoiler23">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler17" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler17" aria-labelledby="headingSpoiler17">
+<div id="collapseSpoiler23" class="accordion-collapse collapse" aria-labelledby="headingSpoiler23" data-bs-parent="#accordionSpoiler23">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="31%"><col width="68%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description/Code</th>
@@ -2014,34 +1988,27 @@ ototoxicity</td>
 </div>
 <div class="section level3">
 <h3 id="piriform">PIRIFORM<a class="anchor" aria-label="anchor" href="#piriform"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 631 Columns: 5</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/PIRIFORM.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler18" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler24" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler18" aria-expanded="false" aria-controls="collapseSpoiler18">
-  <h3 class="accordion-header" id="headingSpoiler18">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler24" aria-expanded="false" aria-controls="collapseSpoiler24">
+  <h3 class="accordion-header" id="headingSpoiler24">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler18" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler18" aria-labelledby="headingSpoiler18">
+<div id="collapseSpoiler24" class="accordion-collapse collapse" aria-labelledby="headingSpoiler24" data-bs-parent="#accordionSpoiler24">
 <div class="accordion-body">
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="23%"><col width="76%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Code</th>
 </tr></thead><tbody><tr class="odd"><td>ID</td>
 <td></td>
 </tr><tr class="even"><td>piriform</td>
-<td>Piriformis Syndrome</td>
-</tr><tr class="odd"><td></td>
-<td>1 = Negative</td>
-</tr><tr class="even"><td></td>
-<td>2 = Positive</td>
+<td>Piriformis Syndrome <br> 1 = Negative <br> 2 = Positive</td>
 </tr><tr class="odd"><td>sex</td>
-<td>Sex</td>
-</tr><tr class="even"><td></td>
-<td>1 = Male</td>
-</tr><tr class="odd"><td></td>
-<td>2 = Female</td>
+<td>Sex <br> 1 = Male <br> 2 = Female</td>
 </tr><tr class="even"><td></td>
 <td>Age</td>
 </tr><tr class="odd"><td>maxchg</td>
@@ -2053,17 +2020,18 @@ ototoxicity</td>
 </div>
 <div class="section level3">
 <h3 id="sexrat">SEXRAT<a class="anchor" aria-label="anchor" href="#sexrat"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 60 Columns: 8</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/SEXRAT.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler19" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler25" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler19" aria-expanded="false" aria-controls="collapseSpoiler19">
-  <h3 class="accordion-header" id="headingSpoiler19">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler25" aria-expanded="false" aria-controls="collapseSpoiler25">
+  <h3 class="accordion-header" id="headingSpoiler25">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler19" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler19" aria-labelledby="headingSpoiler19">
+<div id="collapseSpoiler25" class="accordion-collapse collapse" aria-labelledby="headingSpoiler25" data-bs-parent="#accordionSpoiler25">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>code</th>
@@ -2098,17 +2066,18 @@ children</p>
 </div>
 <div class="section level3">
 <h3 id="smoke">SMOKE<a class="anchor" aria-label="anchor" href="#smoke"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 234 Columns: 8</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/SMOKE.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler20" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler26" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler20" aria-expanded="false" aria-controls="collapseSpoiler20">
-  <h3 class="accordion-header" id="headingSpoiler20">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler26" aria-expanded="false" aria-controls="collapseSpoiler26">
+  <h3 class="accordion-header" id="headingSpoiler26">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler20" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler20" aria-labelledby="headingSpoiler20">
+<div id="collapseSpoiler26" class="accordion-collapse collapse" aria-labelledby="headingSpoiler26" data-bs-parent="#accordionSpoiler26">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="16%"><col width="74%"><col width="8%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Code</th>
@@ -2120,33 +2089,26 @@ children</p>
 <td>age</td>
 <td></td>
 </tr><tr class="odd"><td>Gender</td>
-<td>Gender</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>1 = male</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>2 = female</td>
+<td>Gender <br><br> 1 = male <br> 2 = female</td>
 <td></td>
 </tr><tr class="even"><td>Cig_day</td>
 <td>Cigarettes/day</td>
 <td></td>
 </tr><tr class="odd"><td>CO</td>
-<td>Carbon monoxide (CO) (X 10) missing=999</td>
+<td>Carbon monoxide (CO) (X 10)</td>
 <td></td>
 </tr><tr class="even"><td>Min_last</td>
-<td>Minutes elapsed since last cigarette missing=9999</td>
+<td>Minutes elapsed since last cigarette</td>
 <td></td>
 </tr><tr class="odd"><td>LogCOadj</td>
-<td>Log CO Adj * (X 1000) missing=9999</td>
+<td>Log CO Adj * (X 1000)</td>
 <td></td>
 </tr><tr class="even"><td>Day_abs</td>
-<td>Days abstinent Those abstinent less than 1 day</td>
+<td>Days abstinent Those abstinent less than 1 day <br> were given a
+value of zero.</td>
 <td></td>
-</tr><tr class="odd"><td></td>
-<td>were given a value of zero.</td>
-<td></td>
-</tr></tbody></table></div>
+</tr></tbody></table><p>999 and 9999 = missing values</p>
+</div>
 </div>
 </div>
 </div>
@@ -2158,17 +2120,18 @@ cigarette smoked.</li>
 </ul></div>
 <div class="section level3">
 <h3 id="swiss">SWISS<a class="anchor" aria-label="anchor" href="#swiss"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 300 Columns: 10</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/SWISS.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler21" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler27" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler21" aria-expanded="false" aria-controls="collapseSpoiler21">
-  <h3 class="accordion-header" id="headingSpoiler21">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler27" aria-expanded="false" aria-controls="collapseSpoiler27">
+  <h3 class="accordion-header" id="headingSpoiler27">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler21" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler21" aria-labelledby="headingSpoiler21">
+<div id="collapseSpoiler27" class="accordion-collapse collapse" aria-labelledby="headingSpoiler27" data-bs-parent="#accordionSpoiler27">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="17%"><col width="69%"><col width="12%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Codes</th>
@@ -2212,17 +2175,18 @@ i.e. NA-values.</p>
 </div>
 <div class="section level3">
 <h3 id="tear">TEAR<a class="anchor" aria-label="anchor" href="#tear"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 14 Columns: 61</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/TEAR.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler22" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler28" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler22" aria-expanded="false" aria-controls="collapseSpoiler22">
-  <h3 class="accordion-header" id="headingSpoiler22">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler28" aria-expanded="false" aria-controls="collapseSpoiler28">
+  <h3 class="accordion-header" id="headingSpoiler28">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler22" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler22" aria-labelledby="headingSpoiler22">
+<div id="collapseSpoiler28" class="accordion-collapse collapse" aria-labelledby="headingSpoiler28" data-bs-parent="#accordionSpoiler28">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Code</th>
@@ -2355,56 +2319,40 @@ i.e. NA-values.</p>
 </div>
 <div class="section level3">
 <h3 id="temperat">TEMPERAT<a class="anchor" aria-label="anchor" href="#temperat"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 630 Columns: 6</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/TEMPERAT.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler23" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler29" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler23" aria-expanded="false" aria-controls="collapseSpoiler23">
-  <h3 class="accordion-header" id="headingSpoiler23">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler29" aria-expanded="false" aria-controls="collapseSpoiler29">
+  <h3 class="accordion-header" id="headingSpoiler29">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler23" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler23" aria-labelledby="headingSpoiler23">
+<div id="collapseSpoiler29" class="accordion-collapse collapse" aria-labelledby="headingSpoiler29" data-bs-parent="#accordionSpoiler29">
 <div class="accordion-body">
-<table class="table"><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="18%"><col width="72%"><col width="9%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>LABEL</th>
 <th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>Date</td>
 <td>DATE (MDY)</td>
 <td></td>
 </tr><tr class="even"><td>Out_temp</td>
-<td>OUTSIDE TEMERATURE Degrees Fahrenheit</td>
-<td></td>
+<td>OUTSIDE TEMERATURE</td>
+<td>°F</td>
 </tr><tr class="odd"><td>Room</td>
 <td>ROOM LOCATION</td>
 <td></td>
 </tr><tr class="even"><td>In_temp</td>
-<td>INSIDE TEMPERATURE Degrees Fahrenheit</td>
-<td></td>
+<td>INSIDE TEMPERATURE</td>
+<td>°F</td>
 </tr><tr class="odd"><td>Cor_fac</td>
-<td>CORRECTION FACTOR ADDED (1=YES 0=NO)</td>
+<td>CORRECTION FACTOR ADDED<br>1 = YES<br>0 = NO)</td>
 <td></td>
 </tr><tr class="even"><td>Typ_wea</td>
-<td>TYPE OF WEATHER</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>1 = SUNNY</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>2 = PARTLY CLOUDY</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>3 = CLOUDY</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>4 = RAINY</td>
-<td></td>
-</tr><tr class="odd"><td></td>
-<td>5 = FOGGY</td>
-<td></td>
-</tr><tr class="even"><td></td>
-<td>9 = MISSING</td>
+<td>TYPE OF WEATHER<br>1 = SUNNY<br>2 = PARTLY CLOUDY<br>3 = CLOUDY<br>4
+= RAINY<br>5 = FOGGY <br>9 = MISSING</td>
 <td></td>
 </tr></tbody></table></div>
 </div>
@@ -2413,17 +2361,18 @@ i.e. NA-values.</p>
 </div>
 <div class="section level3">
 <h3 id="tennis1">TENNIS1<a class="anchor" aria-label="anchor" href="#tennis1"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 444 Columns: 12</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/TENNIS1.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler24" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler30" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler24" aria-expanded="false" aria-controls="collapseSpoiler24">
-  <h3 class="accordion-header" id="headingSpoiler24">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler30" aria-expanded="false" aria-controls="collapseSpoiler30">
+  <h3 class="accordion-header" id="headingSpoiler30">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler24" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler24" aria-labelledby="headingSpoiler24">
+<div id="collapseSpoiler30" class="accordion-collapse collapse" aria-labelledby="headingSpoiler30" data-bs-parent="#accordionSpoiler30">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="17%"><col width="73%"><col width="8%"></colgroup><thead><tr class="header"><th>VARIABLE</th>
 <th>VARIABLE NAME</th>
@@ -2603,8 +2552,19 @@ i.e. NA-values.</p>
 </div>
 <div class="section level3">
 <h3 id="tennis2">TENNIS2<a class="anchor" aria-label="anchor" href="#tennis2"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 88 Columns: 16</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/TENNIS2.csv" class="external-link">Download</a></p>
+<div id="accordionSpoiler31" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler31" aria-expanded="false" aria-controls="collapseSpoiler31">
+  <h3 class="accordion-header" id="headingSpoiler31">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler31" class="accordion-collapse collapse" aria-labelledby="headingSpoiler31" data-bs-parent="#accordionSpoiler31">
+<div class="accordion-body">
 <table class="table"><colgroup><col width="12%"><col width="11%"><col width="76%"></colgroup><thead><tr class="header"><th>VARIABLE</th>
 <th>PERIOD*</th>
 <th>VARIABLE NAME</th>
@@ -2735,19 +2695,24 @@ BASELINE</p>
 WITH BASELINE</p>
 </li>
 </ul></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="valid">VALID<a class="anchor" aria-label="anchor" href="#valid"></a></h3>
-<p><a href="#rosner_1">source</a><sup>1</sup></p>
+<p><em>Dimensions:</em> Rows: 173 Columns: 9</p>
+<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/VALID.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler25" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler32" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler25" aria-expanded="false" aria-controls="collapseSpoiler25">
-  <h3 class="accordion-header" id="headingSpoiler25">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler32" aria-expanded="false" aria-controls="collapseSpoiler32">
+  <h3 class="accordion-header" id="headingSpoiler32">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler25" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler25" aria-labelledby="headingSpoiler25">
+<div id="collapseSpoiler32" class="accordion-collapse collapse" aria-labelledby="headingSpoiler32" data-bs-parent="#accordionSpoiler32">
 <div class="accordion-body">
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
@@ -2808,17 +2773,19 @@ N., and Muller, J. (1986b). Onset of the release of spermatozoa
 (spermarche) in boys in relation to age, testicular growth, pubic hair
 and height. Journal of Clinical Endocrinology and Metabolism 62,
 532–535.</p>
-<p><a href="#jorgensen_4">source</a><sup>4</sup></p>
+<p><em>Dimensions:</em> Rows: 40 Columns: 5</p>
+<p>Også Rosner…</p>
+<p><a href="data.html#jorgensen_4">source</a><sup>4</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/spermatozoa.csv" class="external-link">Download</a></p>
-<div id="accordionSpoiler26" class="accordion spoiler-accordion accordion-flush">
+<div id="accordionSpoiler33" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler26" aria-expanded="false" aria-controls="collapseSpoiler26">
-  <h3 class="accordion-header" id="headingSpoiler26">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler33" aria-expanded="false" aria-controls="collapseSpoiler33">
+  <h3 class="accordion-header" id="headingSpoiler33">
   <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
   Metadata
   </h3>
 </button>
-<div id="collapseSpoiler26" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler26" aria-labelledby="headingSpoiler26">
+<div id="collapseSpoiler33" class="accordion-collapse collapse" aria-labelledby="headingSpoiler33" data-bs-parent="#accordionSpoiler33">
 <div class="accordion-body">
 <table class="table"><colgroup><col width="22%"><col width="68%"><col width="9%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
@@ -2851,22 +2818,33 @@ and height. Journal of Clinical Endocrinology and Metabolism 62,
 </div>
 <div class="section level3">
 <h3 id="who">who<a class="anchor" aria-label="anchor" href="#who"></a></h3>
+<p><em>Dimensions:</em> Rows: 405440 Columns: 10</p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/who.csv" class="external-link">Download</a></p>
 <p>NB: Filen er semikolon-separeret</p>
+<div id="accordionSpoiler34" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler34" aria-expanded="false" aria-controls="collapseSpoiler34">
+  <h3 class="accordion-header" id="headingSpoiler34">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler34" class="accordion-collapse collapse" aria-labelledby="headingSpoiler34" data-bs-parent="#accordionSpoiler34">
+<div class="accordion-body">
 <table class="table"><colgroup><col width="16%"><col width="46%"><col width="37%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
-<th>Format or Code</th>
+<th>Unit</th>
 </tr></thead><tbody><tr class="odd"><td>country</td>
 <td>Landenavn</td>
 <td></td>
 </tr><tr class="even"><td>iso2</td>
-<td>ISO2 landekode</td>
+<td>ISO2 countrycode</td>
 <td></td>
 </tr><tr class="odd"><td>iso3</td>
-<td>ISO3 landekode</td>
+<td>ISO3 countrycode</td>
 <td></td>
 </tr><tr class="even"><td>year</td>
-<td>År</td>
+<td>year</td>
 <td>XXXX</td>
 </tr><tr class="odd"><td>new</td>
 <td>Artefakt fra databehandling</td>
@@ -2875,30 +2853,33 @@ and height. Journal of Clinical Endocrinology and Metabolism 62,
 <td>Diagnostisk metode</td>
 <td>*</td>
 </tr><tr class="odd"><td>sex</td>
-<td>Køn</td>
-<td>m for male, f for female</td>
+<td>Sex <br> m = male <br> f = female</td>
+<td></td>
 </tr><tr class="even"><td>age_low</td>
 <td>Nedre aldersinterval</td>
-<td>XX</td>
+<td>year</td>
 </tr><tr class="odd"><td>age_high</td>
 <td>Øvre aldersinterval</td>
-<td>XX</td>
+<td>year</td>
 </tr><tr class="even"><td>value</td>
 <td>Antal observerede tilfælde af TB</td>
 <td></td>
 </tr></tbody></table><p><em>) diagnostisk metode </em> sp positive pulmonary smear * ne
 Negative pulmonary smear * ep extrapulmonary * relapse</p>
 </div>
+</div>
+</div>
+</div>
+</div>
 <section><h2 class="section-heading" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
 <hr class="half-width"><p>Bortset fra who-sættet, der er en modificeret udgave af datasættet
 who fra tidyr-pakken.</p>
 <p>Den oprindelige kilde til det datasæt: <a href="https://www.who.int/teams/global-tuberculosis-programme/data" class="external-link uri">https://www.who.int/teams/global-tuberculosis-programme/data</a></p>
-<p><a href="https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&amp;product_isbn_issn=9780538733496&amp;token" class="external-link uri">https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&amp;product_isbn_issn=9780538733496&amp;token</a></p>
 <p><span class="citation">@misc</span>{misc_wine_109, author =
 {Aeberhard,Stefan and Forina,M.}, title = {{Wine}}, year = {1991},
 howpublished = {UCI Machine Learning Repository}, note = {{DOI}: <a href="https://doi.org/10.24432/C5PC7J" class="external-link uri">https://doi.org/10.24432/C5PC7J</a>} }</p>
 <p><a id="rosner_1">1</a>: Rosner, Bernard A. Fundamentals of
-Biostatistics, 7/e, International Edition, 2011 ISBN: 9780538735896</p>
+Biostatistics, 7/e, International Edition, 2011 ISBN: 9780538735896. <a href="https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&amp;product_isbn_issn=9780538733496&amp;token" class="external-link uri">https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&amp;product_isbn_issn=9780538733496&amp;token</a></p>
 <p><a id="hopper_2">2</a>: Hopper, J.H. &amp; Seeman, E (1994). The bone
 density of female twins discordant for tobacco use. New England Journal
 of Medicine, 330, 387-392.</p>
@@ -2914,11 +2895,37 @@ Spermaturia Data Biometrics, Vol. 47, No. 1 (Mar., 1991), pp. 177-193 <a href=
 Rosner, B. Colton, T &amp; Hennekens, C.H. (1988). Randomized trials of
 aminoglycoside antibiotics. Reviews of Infectious Disease, 10(5)
 951-957.</p>
-<!--
+</section><section><h2 class="section-heading" id="listen-over-datasæt-">listen over datasæt.<a class="anchor" aria-label="anchor" href="#listen-over-datas%C3%A6t-"></a></h2>
+<hr class="half-width"><p>Der hakkes af efterhånden som de er færdige - og så er issue 113
+done.</p>
+<ul><li>estrogen</li>
+<li>FEV</li>
+<li>field</li>
+<li>heart</li>
+<li>hormone</li>
+<li>hospital</li>
+<li>infantbp</li>
+<li>lead</li>
+<li>mice</li>
+<li>nephro</li>
+<li>nifed</li>
+<li>oto</li>
+<li>piriform</li>
+<li>sexrat</li>
+<li>smoke</li>
+<li>swiss</li>
+<li>tear</li>
+<li>temperat</li>
+<li>tennis1</li>
+<li>tennis2</li>
+<li>valid</li>
+<li>spermatozoa</li>
+<li>who <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></div> <!-- / div.lesson-content -->
+</li>
+</ul></section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -2954,7 +2961,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.7" class="external-link">sandpaper (0.16.7)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.4" class="external-link">varnish (1.0.4)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.8" class="external-link">sandpaper (0.16.8)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.4" class="external-link">varnish (1.0.4)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -2976,8 +2983,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/data.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/data.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2024-10-10",
-  "datePublished": "2024-10-10"
+  "dateModified": "2024-10-15",
+  "datePublished": "2024-10-15"
 }
 
   </script><script>
