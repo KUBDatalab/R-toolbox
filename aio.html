@@ -2296,46 +2296,35 @@ from this link</a>.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">table1</span><span class="op">)</span></span>
-<span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/BLOOD.csv"</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>Rows: 510 Columns: 9
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-dbl (9): ID, matchid, case, curpmh, ageblood, estradol, estrone, testost, pr...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<span><span class="va">blood</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/BLOOD.csv"</span><span class="op">)</span></span></code></pre>
 </div>
 <p>The data contains missing values, coded as “999.0” for estrone and
 testost, and 99.99 for prolactin:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="va">blood</span> <span class="op">&lt;-</span> <span class="va">blood</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>estrone <span class="op">=</span> <span class="fu">na_if</span><span class="op">(</span><span class="va">estrone</span>, <span class="fl">999.0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>testost <span class="op">=</span> <span class="fu">na_if</span><span class="op">(</span><span class="va">testost</span>, <span class="fl">999.0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>prolactn <span class="op">=</span> <span class="fu">na_if</span><span class="op">(</span><span class="va">prolactn</span>, <span class="fl">99.99</span><span class="op">)</span><span class="op">)</span> </span></code></pre>
 </div>
 <p>We then ensure that categorical values are stored as categorical
 values, and adjust the labels of those categorical values:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="va">blood</span> <span class="op">&lt;-</span> <span class="va">blood</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>case <span class="op">=</span> <span class="fu">factor</span><span class="op">(</span><span class="va">case</span>, labels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"control"</span>, <span class="st">"case"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>curpmh <span class="op">=</span> <span class="fu">factor</span><span class="op">(</span><span class="va">curpmh</span>, labels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"yes"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <p>And now we can make our table one like this:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">ageblood</span><span class="op">+</span><span class="va">estradol</span><span class="op">+</span><span class="va">estrone</span><span class="op">+</span><span class="va">testost</span><span class="op">+</span><span class="va">prolactn</span><span class="op">|</span><span class="va">case</span><span class="op">+</span><span class="va">curpmh</span>, data <span class="op">=</span> <span class="va">dat</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">ageblood</span> <span class="op">+</span> <span class="va">estradol</span> <span class="op">+</span> <span class="va">estrone</span> <span class="op">+</span> <span class="va">testost</span> <span class="op">+</span> <span class="va">prolactn</span><span class="op">|</span><span class="va">case</span> <span class="op">+</span> <span class="va">curpmh</span>, data <span class="op">=</span> <span class="va">blood</span><span class="op">)</span></span></code></pre>
 </div>
 <!--html_preserve-->
 <div class="Rtable1">
@@ -2775,23 +2764,78 @@ Missing
 <p>It is a good idea, and increases readability, to add labels and units
 to the variables. The <code>table1</code> package provides functions for
 that:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">label</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">curpmh</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"current_pmh"</span></span>
-<span><span class="fu">label</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">case</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"case_control"</span></span>
-<span><span class="fu">label</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">ageblood</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Age"</span></span>
-<span><span class="fu">units</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">ageblood</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"years"</span></span>
-<span><span class="fu">units</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">estradol</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"pg/mL"</span></span>
-<span><span class="fu">units</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">estrone</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"pg/mL"</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">label</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">curpmh</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"current_pmh"</span></span></code></pre>
 </div>
-<p>Which looks a bit nicer:</p>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
+</div>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">ageblood</span><span class="op">+</span><span class="va">estradol</span><span class="op">+</span><span class="va">estrone</span><span class="op">+</span><span class="va">testost</span><span class="op">+</span><span class="va">prolactn</span><span class="op">|</span><span class="va">case</span><span class="op">+</span><span class="va">curpmh</span>, data <span class="op">=</span> <span class="va">dat</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">label</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">case</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"case_control"</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">label</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">ageblood</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Age"</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">units</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">ageblood</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"years"</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">units</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">estradol</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"pg/mL"</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">units</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">estrone</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"pg/mL"</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
+</div>
+<p>Which looks a bit nicer:</p>
+<div class="codewrapper sourceCode" id="cb17">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">ageblood</span> <span class="op">+</span> <span class="va">estradol</span> <span class="op">+</span> <span class="va">estrone</span> <span class="op">+</span> <span class="va">testost</span> <span class="op">+</span> <span class="va">prolactn</span><span class="op">|</span><span class="va">case</span> <span class="op">+</span> <span class="va">curpmh</span>, data <span class="op">=</span> <span class="va">blood</span><span class="op">)</span></span></code></pre>
 </div>
 <!--html_preserve-->
 <div class="Rtable1">
@@ -2842,7 +2886,7 @@ Overall
 <tbody>
 <tr>
 <td class="rowlabel firstrow">
-Age (years)
+ageblood
 </td>
 <td class="firstrow">
 </td>
@@ -2905,7 +2949,7 @@ Median [Min, Max]
 </tr>
 <tr>
 <td class="rowlabel firstrow">
-estradol (pg/mL)
+estradol
 </td>
 <td class="firstrow">
 </td>
@@ -2968,7 +3012,7 @@ Median [Min, Max]
 </tr>
 <tr>
 <td class="rowlabel firstrow">
-estrone (pg/mL)
+estrone
 </td>
 <td class="firstrow">
 </td>
@@ -3228,6 +3272,39 @@ Missing
 </table>
 </div>
 <!--/html_preserve-->
+</section><section><h2 class="section-heading" id="structuring-the-data">Structuring the data<a class="anchor" aria-label="anchor" href="#structuring-the-data"></a>
+</h2>
+<hr class="half-width">
+<p>Most things in R are simple to do (but rarely simple to understand)
+when the data has the correct structure.</p>
+<p>If we follow the general rules of thumb for tidy data, we are off to
+a good start. This is the structure of the data set we are working with
+here - after we have made some modifications as described above.</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">head</span><span class="op">(</span><span class="va">blood</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 9
+      ID matchid case    curpmh ageblood estradol estrone testost prolactn
+   &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;   &lt;fct&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+1 100013  164594 control yes          46       57      65      25     11.1
+2 100241  107261 control no           65       11      26      NA      2.8
+3 100696  110294 control yes          66        3      NA       8     38
+4 101266  101266 case    no           57        4      18       6      8.9
+5 101600  101600 case    no           66        6      18      25      6.9
+6 102228  155717 control yes          57       10      NA      31     13.9</code></pre>
+</div>
+<p>The important thing to note is that when we stratify the summary
+statistics by some variable, this variable have to be a categorical
+variable. The variables we want to do summary statistics <em>on</em>
+also have to have the correct type. Are the values categorical, the
+column in the dataframe have to actually be categorical. Are they
+numeric, the data type have to be numeric.</p>
 </section><section><h2 class="section-heading" id="more-advanced-stuff">More advanced stuff<a class="anchor" aria-label="anchor" href="#more-advanced-stuff"></a>
 </h2>
 <hr class="half-width">
@@ -3235,23 +3312,570 @@ Missing
 presented in the table.</p>
 <p>We can do that by specifying input to the arguments
 <code>render.continuous</code> and <code>render.categorical</code> that
-control how continuous and categorical data respecetively, is shown in
+control how continuous and categorical data respectively, is shown in
 the table.</p>
 <p>The simple way of doing that is by using abbrevieated function
 names:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<p>table1(~ageblood + estradol + estrone + testost + prolactn|case +
+curpmh, data = blood)</p>
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">sex</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">weight</span><span class="op">|</span><span class="va">treatment</span>, data <span class="op">=</span> <span class="va">dat</span>,</span>
+<code class="sourceCode R"><span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">ageblood</span> <span class="op">+</span> <span class="va">estradol</span> <span class="op">+</span> <span class="va">estrone</span> <span class="op">+</span> <span class="va">testost</span> <span class="op">+</span> <span class="va">prolactn</span><span class="op">|</span><span class="va">case</span> <span class="op">+</span> <span class="va">curpmh</span>, data <span class="op">=</span> <span class="va">blood</span>,</span>
 <span>        render.continuous<span class="op">=</span><span class="fu">c</span><span class="op">(</span>.<span class="op">=</span><span class="st">"Mean (SD%)"</span>, .<span class="op">=</span><span class="st">"Median [Min, Max]"</span>,</span>
 <span>                           <span class="st">"Geom. mean (Geo. SD%)"</span><span class="op">=</span><span class="st">"GMEAN (GSD%)"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in eval(predvars, data, env): object 'sex' not found</code></pre>
+<!--html_preserve-->
+<div class="Rtable1">
+<table class="table Rtable1">
+<thead>
+<tr>
+<th class="grouplabel">
+</th>
+<th colspan="2" class="grouplabel">
+<div>
+control
 </div>
+</th>
+<th colspan="2" class="grouplabel">
+<div>
+case
+</div>
+</th>
+<th colspan="2" class="grouplabel">
+<div>
+Overall
+</div>
+</th>
+</tr>
+<tr>
+<th class="rowlabel firstrow lastrow">
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">no<br><span class="stratn">(N=298)</span></span>
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">yes<br><span class="stratn">(N=48)</span></span>
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">no<br><span class="stratn">(N=135)</span></span>
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">yes<br><span class="stratn">(N=29)</span></span>
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">no<br><span class="stratn">(N=433)</span></span>
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">yes<br><span class="stratn">(N=77)</span></span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="rowlabel firstrow">
+ageblood
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Mean (SD%)
+</td>
+<td>
+61.3 (4.75%)
+</td>
+<td>
+58.9 (5.68%)
+</td>
+<td>
+61.5 (4.85%)
+</td>
+<td>
+58.1 (5.32%)
+</td>
+<td>
+61.4 (4.78%)
+</td>
+<td>
+58.6 (5.53%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Median [Min, Max]
+</td>
+<td>
+62.0 [46.0, 69.0]
+</td>
+<td>
+59.0 [46.0, 68.0]
+</td>
+<td>
+62.0 [45.0, 69.0]
+</td>
+<td>
+58.0 [49.0, 68.0]
+</td>
+<td>
+62.0 [45.0, 69.0]
+</td>
+<td>
+58.0 [46.0, 68.0]
+</td>
+</tr>
+<tr>
+<td class="rowlabel lastrow">
+Geom. mean (Geo. SD%)
+</td>
+<td class="lastrow">
+61.1 (1.08%)
+</td>
+<td class="lastrow">
+58.7 (1.10%)
+</td>
+<td class="lastrow">
+61.3 (1.08%)
+</td>
+<td class="lastrow">
+57.9 (1.10%)
+</td>
+<td class="lastrow">
+61.2 (1.08%)
+</td>
+<td class="lastrow">
+58.4 (1.10%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel firstrow">
+estradol
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Mean (SD%)
+</td>
+<td>
+8.05 (5.29%)
+</td>
+<td>
+8.73 (8.84%)
+</td>
+<td>
+10.5 (9.72%)
+</td>
+<td>
+10.6 (13.7%)
+</td>
+<td>
+8.81 (7.06%)
+</td>
+<td>
+9.44 (10.9%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Median [Min, Max]
+</td>
+<td>
+6.00 [2.00, 46.0]
+</td>
+<td>
+6.50 [2.00, 57.0]
+</td>
+<td>
+8.00 [3.00, 85.0]
+</td>
+<td>
+6.00 [3.00, 76.0]
+</td>
+<td>
+7.00 [2.00, 85.0]
+</td>
+<td>
+6.00 [2.00, 76.0]
+</td>
+</tr>
+<tr>
+<td class="rowlabel lastrow">
+Geom. mean (Geo. SD%)
+</td>
+<td class="lastrow">
+6.92 (1.69%)
+</td>
+<td class="lastrow">
+6.81 (1.90%)
+</td>
+<td class="lastrow">
+8.53 (1.78%)
+</td>
+<td class="lastrow">
+7.63 (2.03%)
+</td>
+<td class="lastrow">
+7.39 (1.74%)
+</td>
+<td class="lastrow">
+7.11 (1.94%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel firstrow">
+estrone
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Mean (SD%)
+</td>
+<td>
+28.7 (15.0%)
+</td>
+<td>
+26.8 (12.0%)
+</td>
+<td>
+32.3 (15.7%)
+</td>
+<td>
+27.7 (13.2%)
+</td>
+<td>
+29.8 (15.3%)
+</td>
+<td>
+27.1 (12.3%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Median [Min, Max]
+</td>
+<td>
+25.0 [10.0, 131]
+</td>
+<td>
+23.0 [13.0, 65.0]
+</td>
+<td>
+29.0 [11.0, 119]
+</td>
+<td>
+24.0 [12.0, 59.0]
+</td>
+<td>
+26.0 [10.0, 131]
+</td>
+<td>
+23.0 [12.0, 65.0]
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Geom. mean (Geo. SD%)
+</td>
+<td>
+25.9 (1.56%)
+</td>
+<td>
+24.6 (1.50%)
+</td>
+<td>
+29.4 (1.54%)
+</td>
+<td>
+25.0 (1.59%)
+</td>
+<td>
+26.9 (1.56%)
+</td>
+<td>
+24.7 (1.53%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel lastrow">
+Missing
+</td>
+<td class="lastrow">
+58 (19.5%)
+</td>
+<td class="lastrow">
+15 (31.3%)
+</td>
+<td class="lastrow">
+30 (22.2%)
+</td>
+<td class="lastrow">
+11 (37.9%)
+</td>
+<td class="lastrow">
+88 (20.3%)
+</td>
+<td class="lastrow">
+26 (33.8%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel firstrow">
+testost
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Mean (SD%)
+</td>
+<td>
+25.3 (13.2%)
+</td>
+<td>
+22.2 (10.7%)
+</td>
+<td>
+27.6 (16.1%)
+</td>
+<td>
+28.2 (15.6%)
+</td>
+<td>
+26.0 (14.2%)
+</td>
+<td>
+24.4 (13.0%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Median [Min, Max]
+</td>
+<td>
+23.0 [4.00, 111]
+</td>
+<td>
+21.5 [8.00, 63.0]
+</td>
+<td>
+25.0 [6.00, 144]
+</td>
+<td>
+24.0 [10.0, 69.0]
+</td>
+<td>
+23.0 [4.00, 144]
+</td>
+<td>
+22.0 [8.00, 69.0]
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Geom. mean (Geo. SD%)
+</td>
+<td>
+22.4 (1.65%)
+</td>
+<td>
+20.0 (1.58%)
+</td>
+<td>
+24.6 (1.60%)
+</td>
+<td>
+24.6 (1.69%)
+</td>
+<td>
+23.1 (1.64%)
+</td>
+<td>
+21.6 (1.63%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel lastrow">
+Missing
+</td>
+<td class="lastrow">
+6 (2.0%)
+</td>
+<td class="lastrow">
+2 (4.2%)
+</td>
+<td class="lastrow">
+3 (2.2%)
+</td>
+<td class="lastrow">
+1 (3.4%)
+</td>
+<td class="lastrow">
+9 (2.1%)
+</td>
+<td class="lastrow">
+3 (3.9%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel firstrow">
+prolactn
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Mean (SD%)
+</td>
+<td>
+9.60 (5.10%)
+</td>
+<td>
+13.7 (12.3%)
+</td>
+<td>
+10.8 (6.79%)
+</td>
+<td>
+9.57 (3.29%)
+</td>
+<td>
+9.99 (5.70%)
+</td>
+<td>
+12.2 (10.1%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Median [Min, Max]
+</td>
+<td>
+8.16 [1.96, 37.3]
+</td>
+<td>
+8.81 [3.87, 55.8]
+</td>
+<td>
+9.30 [2.66, 59.9]
+</td>
+<td>
+8.88 [4.49, 17.6]
+</td>
+<td>
+8.64 [1.96, 59.9]
+</td>
+<td>
+8.84 [3.87, 55.8]
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Geom. mean (Geo. SD%)
+</td>
+<td>
+8.59 (1.58%)
+</td>
+<td>
+10.7 (1.89%)
+</td>
+<td>
+9.63 (1.58%)
+</td>
+<td>
+9.05 (1.41%)
+</td>
+<td>
+8.90 (1.59%)
+</td>
+<td>
+10.1 (1.73%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel lastrow">
+Missing
+</td>
+<td class="lastrow">
+14 (4.7%)
+</td>
+<td class="lastrow">
+0 (0%)
+</td>
+<td class="lastrow">
+6 (4.4%)
+</td>
+<td class="lastrow">
+1 (3.4%)
+</td>
+<td class="lastrow">
+20 (4.6%)
+</td>
+<td class="lastrow">
+1 (1.3%)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--/html_preserve-->
 <p><code>table1</code> recognizes the following summary statisticis: N,
 NMISS, MEAN, SD, CV, GMEAN, GCV, MEDIAN, MIN, MAX, IQR, Q1, Q2, Q3, T1,
 T2, FREQ, PCT</p>
@@ -3282,13 +3906,13 @@ geometric standard deviation. Change the code to write out “Geom.” and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">sex</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">weight</span><span class="op">|</span><span class="va">treatment</span>, data <span class="op">=</span> <span class="va">dat</span>,</span>
+<code class="sourceCode R"><span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">ageblood</span> <span class="op">+</span> <span class="va">estradol</span> <span class="op">+</span> <span class="va">estrone</span> <span class="op">+</span> <span class="va">testost</span> <span class="op">+</span> <span class="va">prolactn</span><span class="op">|</span><span class="va">case</span> <span class="op">+</span> <span class="va">curpmh</span>, data <span class="op">=</span> <span class="va">blood</span>,</span>
 <span>        render.continuous<span class="op">=</span><span class="fu">c</span><span class="op">(</span>.<span class="op">=</span><span class="st">"Mean (SD%)"</span>, .<span class="op">=</span><span class="st">"Median [Min, Max]"</span>,</span>
 <span>                           <span class="st">"Geometric mean (Geometric SD%)"</span><span class="op">=</span><span class="st">"GMEAN (GSD%)"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
@@ -3309,7 +3933,7 @@ product. In general:</p>
 <hr class="half-width">
 <p>If we want to specify the summary statistics very precisely, we have
 to define a function ourself:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3317,14 +3941,444 @@ to define a function ourself:</p>
 <span>  <span class="fu">c</span><span class="op">(</span><span class="st">""</span>,<span class="st">"Median"</span> <span class="op">=</span> <span class="fu">sprintf</span><span class="op">(</span><span class="st">"%.3f"</span>, <span class="fu">median</span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
 <span><span class="st">"Variance"</span> <span class="op">=</span> <span class="fu">sprintf</span><span class="op">(</span><span class="st">"%.1f"</span>, <span class="fu">var</span><span class="op">(</span><span class="va">x</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">sex</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">weight</span><span class="op">|</span><span class="va">treatment</span>, data <span class="op">=</span> <span class="va">dat</span>,</span>
+<span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">ageblood</span> <span class="op">+</span> <span class="va">estradol</span> <span class="op">+</span> <span class="va">estrone</span> <span class="op">+</span> <span class="va">testost</span> <span class="op">+</span> <span class="va">prolactn</span><span class="op">|</span><span class="va">case</span> <span class="op">+</span> <span class="va">curpmh</span>, data <span class="op">=</span> <span class="va">blood</span>,</span>
 <span>render.continuous <span class="op">=</span> <span class="va">my_summary</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in eval(predvars, data, env): object 'sex' not found</code></pre>
+<!--html_preserve-->
+<div class="Rtable1">
+<table class="table Rtable1">
+<thead>
+<tr>
+<th class="grouplabel">
+</th>
+<th colspan="2" class="grouplabel">
+<div>
+control
 </div>
+</th>
+<th colspan="2" class="grouplabel">
+<div>
+case
+</div>
+</th>
+<th colspan="2" class="grouplabel">
+<div>
+Overall
+</div>
+</th>
+</tr>
+<tr>
+<th class="rowlabel firstrow lastrow">
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">no<br><span class="stratn">(N=298)</span></span>
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">yes<br><span class="stratn">(N=48)</span></span>
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">no<br><span class="stratn">(N=135)</span></span>
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">yes<br><span class="stratn">(N=29)</span></span>
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">no<br><span class="stratn">(N=433)</span></span>
+</th>
+<th class="firstrow lastrow">
+<span class="stratlabel">yes<br><span class="stratn">(N=77)</span></span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="rowlabel firstrow">
+ageblood
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Median
+</td>
+<td>
+62.000
+</td>
+<td>
+59.000
+</td>
+<td>
+62.000
+</td>
+<td>
+58.000
+</td>
+<td>
+62.000
+</td>
+<td>
+58.000
+</td>
+</tr>
+<tr>
+<td class="rowlabel lastrow">
+Variance
+</td>
+<td class="lastrow">
+22.6
+</td>
+<td class="lastrow">
+32.3
+</td>
+<td class="lastrow">
+23.5
+</td>
+<td class="lastrow">
+28.3
+</td>
+<td class="lastrow">
+22.8
+</td>
+<td class="lastrow">
+30.6
+</td>
+</tr>
+<tr>
+<td class="rowlabel firstrow">
+estradol
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Median
+</td>
+<td>
+6.000
+</td>
+<td>
+6.500
+</td>
+<td>
+8.000
+</td>
+<td>
+6.000
+</td>
+<td>
+7.000
+</td>
+<td>
+6.000
+</td>
+</tr>
+<tr>
+<td class="rowlabel lastrow">
+Variance
+</td>
+<td class="lastrow">
+28.0
+</td>
+<td class="lastrow">
+78.1
+</td>
+<td class="lastrow">
+94.5
+</td>
+<td class="lastrow">
+186.8
+</td>
+<td class="lastrow">
+49.8
+</td>
+<td class="lastrow">
+118.0
+</td>
+</tr>
+<tr>
+<td class="rowlabel firstrow">
+estrone
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Median
+</td>
+<td>
+25.000
+</td>
+<td>
+23.000
+</td>
+<td>
+29.000
+</td>
+<td>
+24.000
+</td>
+<td>
+26.000
+</td>
+<td>
+23.000
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Variance
+</td>
+<td>
+223.8
+</td>
+<td>
+143.8
+</td>
+<td>
+246.4
+</td>
+<td>
+174.4
+</td>
+<td>
+232.8
+</td>
+<td>
+151.5
+</td>
+</tr>
+<tr>
+<td class="rowlabel lastrow">
+Missing
+</td>
+<td class="lastrow">
+58 (19.5%)
+</td>
+<td class="lastrow">
+15 (31.3%)
+</td>
+<td class="lastrow">
+30 (22.2%)
+</td>
+<td class="lastrow">
+11 (37.9%)
+</td>
+<td class="lastrow">
+88 (20.3%)
+</td>
+<td class="lastrow">
+26 (33.8%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel firstrow">
+testost
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Median
+</td>
+<td>
+23.000
+</td>
+<td>
+21.500
+</td>
+<td>
+25.000
+</td>
+<td>
+24.000
+</td>
+<td>
+23.000
+</td>
+<td>
+22.000
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Variance
+</td>
+<td>
+173.6
+</td>
+<td>
+115.0
+</td>
+<td>
+257.7
+</td>
+<td>
+241.9
+</td>
+<td>
+200.4
+</td>
+<td>
+169.0
+</td>
+</tr>
+<tr>
+<td class="rowlabel lastrow">
+Missing
+</td>
+<td class="lastrow">
+6 (2.0%)
+</td>
+<td class="lastrow">
+2 (4.2%)
+</td>
+<td class="lastrow">
+3 (2.2%)
+</td>
+<td class="lastrow">
+1 (3.4%)
+</td>
+<td class="lastrow">
+9 (2.1%)
+</td>
+<td class="lastrow">
+3 (3.9%)
+</td>
+</tr>
+<tr>
+<td class="rowlabel firstrow">
+prolactn
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+<td class="firstrow">
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Median
+</td>
+<td>
+8.155
+</td>
+<td>
+8.805
+</td>
+<td>
+9.300
+</td>
+<td>
+8.880
+</td>
+<td>
+8.640
+</td>
+<td>
+8.835
+</td>
+</tr>
+<tr>
+<td class="rowlabel">
+Variance
+</td>
+<td>
+26.1
+</td>
+<td>
+151.3
+</td>
+<td>
+46.1
+</td>
+<td>
+10.8
+</td>
+<td>
+32.5
+</td>
+<td>
+102.8
+</td>
+</tr>
+<tr>
+<td class="rowlabel lastrow">
+Missing
+</td>
+<td class="lastrow">
+14 (4.7%)
+</td>
+<td class="lastrow">
+0 (0%)
+</td>
+<td class="lastrow">
+6 (4.4%)
+</td>
+<td class="lastrow">
+1 (3.4%)
+</td>
+<td class="lastrow">
+20 (4.6%)
+</td>
+<td class="lastrow">
+1 (1.3%)
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--/html_preserve-->
 <p>We do not <em>need</em> to use the <code>sprintf()</code> function,
 but it is a very neat way of combining text with numeric variables
 because it allows us to format them directly.</p>
@@ -3347,9 +4401,9 @@ specifying <code>render.categorical</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3378,7 +4432,7 @@ point.</p>
 <div class="callout-content">
 <p>Note that in the function, we define a vector as output, with three
 elements:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3399,11 +4453,11 @@ straightforward.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Try to remove the empty string from the function, and use it is a
 table one as previously shown:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -3411,7 +4465,7 @@ table one as previously shown:</p>
 <span>  <span class="fu">c</span><span class="op">(</span><span class="st">"Median"</span> <span class="op">=</span> <span class="fu">sprintf</span><span class="op">(</span><span class="st">"%.3f"</span>, <span class="fu">median</span><span class="op">(</span><span class="va">x</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,</span>
 <span><span class="st">"Variance"</span> <span class="op">=</span> <span class="fu">sprintf</span><span class="op">(</span><span class="st">"%.1f"</span>, <span class="fu">var</span><span class="op">(</span><span class="va">x</span>, na.rm<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
-<span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">sex</span> <span class="op">+</span> <span class="va">age</span> <span class="op">+</span> <span class="va">weight</span><span class="op">|</span><span class="va">treatment</span>, data <span class="op">=</span> <span class="va">dat</span>,</span>
+<span><span class="fu">table1</span><span class="op">(</span><span class="op">~</span><span class="va">ageblood</span> <span class="op">+</span> <span class="va">estradol</span> <span class="op">+</span> <span class="va">estrone</span> <span class="op">+</span> <span class="va">testost</span> <span class="op">+</span> <span class="va">prolactn</span><span class="op">|</span><span class="va">case</span> <span class="op">+</span> <span class="va">curpmh</span>, data <span class="op">=</span> <span class="va">blood</span>,</span>
 <span>render.continuous <span class="op">=</span> <span class="va">my_summary</span><span class="op">)</span></span></code></pre>
 </div>
 <p>The line beginning with “Median” does not show up, but the median
@@ -3795,7 +4849,7 @@ funktioner.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] -0.8176437  0.7428996  0.3987722 -1.4243044  0.1651771</code></pre>
+<pre class="output" tabindex="0"><code>[1] -0.4129918  0.2504001 -1.8825389  0.4828346 -1.5095466</code></pre>
 </div>
 <p>Den returnerer (her) fem tilfældige værdier fra en normalfordeling
 med (her) middelværdi 0 og standardafvigelse 1.</p>
@@ -4977,7 +6031,7 @@ mph?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>3.932*12.5 - 17.579 = 31.571 ft</p>
 </div>
@@ -5000,7 +6054,7 @@ mph?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Yep. We might be able to measure the speed with the implied
 precision. But the prediction implies a precision on the scale of
@@ -5113,7 +6167,7 @@ library <code>palmerpenguins</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5206,7 +6260,7 @@ distributed.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6025,7 +7079,7 @@ This is definitely not normally distributed.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.5000659</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.4398468</code></pre>
 </div>
 <p>The important point of the Central Limit Theorem is, that if we take
 a large number of random samples, and calculate the mean of each of
@@ -6041,7 +7095,7 @@ this:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.5828174</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.4844804</code></pre>
 </div>
 <p>And we can use the <code>replicate()</code> function to repeat that
 calculation several times, in this case 1000 times:</p>
@@ -6991,31 +8045,31 @@ work with afterwards:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>K-means clustering with 3 clusters of sizes 62, 47, 69
+<pre class="output" tabindex="0"><code>K-means clustering with 3 clusters of sizes 47, 62, 69
 
 Cluster means:
    Alcohol Malicacid      Ash Alcalinityofash Magnesium Totalphenols Flavanoids
-1 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
-2 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
+1 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
+2 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
 3 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
   Nonflavanoidphenols Proanthocyanins Colorintensity       Hue
-1           0.3883871        1.503387       5.650323 0.8839677
-2           0.2853191        1.910426       5.702553 1.0782979
+1           0.2853191        1.910426       5.702553 1.0782979
+2           0.3883871        1.503387       5.650323 0.8839677
 3           0.3901449        1.451884       4.086957 0.9411594
   OD280OD315ofdilutedwines   Proline
-1                 2.365484  728.3387
-2                 3.114043 1195.1489
+1                 3.114043 1195.1489
+2                 2.365484  728.3387
 3                 2.490725  458.2319
 
 Clustering vector:
-  [1] 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 2 2 1 1 2 2 1 2 2 2 2 2 2 1 1
- [38] 2 2 1 1 2 2 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 1 3 1 3 3 1 3 3 1 1 1 3 3 2
- [75] 1 3 3 3 1 3 3 1 1 3 3 3 3 3 1 1 3 3 3 3 3 1 1 3 1 3 1 3 3 3 1 3 3 3 3 1 3
-[112] 3 1 3 3 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 1 3 3 1 1 1 1 3 3 3 1 1 3 3 1 1 3 1
-[149] 1 3 3 3 3 1 1 1 3 1 1 1 3 1 3 1 1 3 1 1 1 1 3 3 1 1 1 1 1 3
+  [1] 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 2 2 1 1 2 1 1 1 1 1 1 2 2
+ [38] 1 1 2 2 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 2 3 2 3 3 2 3 3 2 2 2 3 3 1
+ [75] 2 3 3 3 2 3 3 2 2 3 3 3 3 3 2 2 3 3 3 3 3 2 2 3 2 3 2 3 3 3 2 3 3 3 3 2 3
+[112] 3 2 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 2 3 3 2 2 2 2 3 3 3 2 2 3 3 2 2 3 2
+[149] 2 3 3 3 3 2 2 2 3 2 2 2 3 2 3 2 2 3 2 2 2 2 3 3 2 2 2 2 2 3
 
 Within cluster sum of squares by cluster:
-[1]  566572.5 1360950.5  443166.7
+[1] 1360950.5  566572.5  443166.7
  (between_SS / total_SS =  86.5 %)
 
 Available components:
@@ -7037,8 +8091,8 @@ found, and match them with the true values, and count the matches:</p>
 </h3>
 <pre class="output" tabindex="0"><code>     true
 quess  1  2  3
-    1 13 20 29
-    2 46  1  0
+    1 46  1  0
+    2 13 20 29
     3  0 50 19</code></pre>
 </div>
 <p>The algorithm have no idea about the numbering, the three groups are
@@ -8140,13 +9194,13 @@ gør vi også.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-Windows">
+<div id="nav-tabpanel-1-Windows" class="tab-pane show active" aria-labelledby="nav-tab-1-Windows" role="tabpanel">
 <p>1</p>
 </div>
-<div id="nav-tabpanel-1-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Mac">
+<div id="nav-tabpanel-1-Mac" class="tab-pane" aria-labelledby="nav-tab-1-Mac" role="tabpanel">
 <p>2</p>
 </div>
-<div id="nav-tabpanel-1-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Linux">
+<div id="nav-tabpanel-1-Linux" class="tab-pane" aria-labelledby="nav-tab-1-Linux" role="tabpanel">
 <p>3</p>
 </div>
 </div>
@@ -8175,16 +9229,16 @@ gør vi også.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-2" class="tab-content">
-<div id="nav-tabpanel-2-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-2-Windows">
+<div id="nav-tabpanel-2-Windows" class="tab-pane show active" aria-labelledby="nav-tab-2-Windows" role="tabpanel">
 <p>4</p>
 </div>
-<div id="nav-tabpanel-2-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Mac">
+<div id="nav-tabpanel-2-Mac" class="tab-pane" aria-labelledby="nav-tab-2-Mac" role="tabpanel">
 <p>5</p>
 </div>
-<div id="nav-tabpanel-2-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Linux">
+<div id="nav-tabpanel-2-Linux" class="tab-pane" aria-labelledby="nav-tab-2-Linux" role="tabpanel">
 <p>6</p>
 </div>
-<div id="nav-tabpanel-2-Windows" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Windows">
+<div id="nav-tabpanel-2-Windows" class="tab-pane" aria-labelledby="nav-tab-2-Windows" role="tabpanel">
 <p>7</p>
 </div>
 </div>
