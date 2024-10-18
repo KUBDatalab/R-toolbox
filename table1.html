@@ -899,11 +899,30 @@ from this link</a>.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">table1</span><span class="op">)</span></span>
-<span><span class="va">blood</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/BLOOD.csv"</span><span class="op">)</span></span></code></pre>
+<span><span class="va">blood</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/BLOOD.csv"</span><span class="op">)</span></span>
+<span><span class="fu">head</span><span class="op">(</span><span class="va">blood</span><span class="op">)</span></span></code></pre>
 </div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 9
+      ID matchid  case curpmh ageblood estradol estrone testost prolactn
+   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+1 100013  164594     0      1       46       57      65      25     11.1
+2 100241  107261     0      0       65       11      26     999      2.8
+3 100696  110294     0      1       66        3     999       8     38
+4 101266  101266     1      0       57        4      18       6      8.9
+5 101600  101600     1      0       66        6      18      25      6.9
+6 102228  155717     0      1       57       10     999      31     13.9</code></pre>
+</div>
+<p>510 rows. Its a case-control study, where the ID represents one
+individual, and matchid gives us the link between cases and controls.
+Ageblood is the age of the individual at the time when the blood sample
+was drawn, and we then have levels of four different hormones.</p>
 <p>The data contains missing values, coded as “999.0” for estrone and
-testost, and 99.99 for prolactin:</p>
-<div class="codewrapper sourceCode" id="cb2">
+testost, and 99.99 for prolactin.</p>
+<p>Let us fix that:</p>
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -914,7 +933,7 @@ testost, and 99.99 for prolactin:</p>
 </div>
 <p>We then ensure that categorical values are stored as categorical
 values, and adjust the labels of those categorical values:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -923,7 +942,7 @@ values, and adjust the labels of those categorical values:</p>
 <span>  <span class="fu">mutate</span><span class="op">(</span>curpmh <span class="op">=</span> <span class="fu">factor</span><span class="op">(</span><span class="va">curpmh</span>, labels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"no"</span>, <span class="st">"yes"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <p>And now we can make our table one like this:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1321,74 +1340,19 @@ Missing
 <p>It is a good idea, and increases readability, to add labels and units
 to the variables. The <code>table1</code> package provides functions for
 that:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">label</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">curpmh</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"current_pmh"</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">label</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">case</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"case_control"</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">label</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">ageblood</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Age"</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">units</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">ageblood</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"years"</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb13">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">units</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">estradol</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"pg/mL"</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb15">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">units</span><span class="op">(</span><span class="va">dat</span><span class="op">$</span><span class="va">estrone</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"pg/mL"</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error: object 'dat' not found</code></pre>
+<code class="sourceCode R"><span><span class="fu">label</span><span class="op">(</span><span class="va">blood</span><span class="op">$</span><span class="va">curpmh</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"current_pmh"</span></span>
+<span><span class="fu">label</span><span class="op">(</span><span class="va">blood</span><span class="op">$</span><span class="va">case</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"case_control"</span></span>
+<span><span class="fu">label</span><span class="op">(</span><span class="va">blood</span><span class="op">$</span><span class="va">ageblood</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Age"</span></span>
+<span><span class="fu">units</span><span class="op">(</span><span class="va">blood</span><span class="op">$</span><span class="va">ageblood</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"years"</span></span>
+<span><span class="fu">units</span><span class="op">(</span><span class="va">blood</span><span class="op">$</span><span class="va">estradol</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"pg/mL"</span></span>
+<span><span class="fu">units</span><span class="op">(</span><span class="va">blood</span><span class="op">$</span><span class="va">estrone</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"pg/mL"</span></span></code></pre>
 </div>
 <p>Which looks a bit nicer:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1434,7 +1398,7 @@ Overall
 <span class="stratlabel">yes<br><span class="stratn">(N=77)</span></span>
 </th>
 </tr></thead><tbody><tr><td class="rowlabel firstrow">
-ageblood
+Age (years)
 </td>
 <td class="firstrow">
 </td>
@@ -1491,7 +1455,7 @@ Median [Min, Max]
 58.0 [46.0, 68.0]
 </td>
 </tr><tr><td class="rowlabel firstrow">
-estradol
+estradol (pg/mL)
 </td>
 <td class="firstrow">
 </td>
@@ -1548,7 +1512,7 @@ Median [Min, Max]
 6.00 [2.00, 76.0]
 </td>
 </tr><tr><td class="rowlabel firstrow">
-estrone
+estrone (pg/mL)
 </td>
 <td class="firstrow">
 </td>
@@ -1789,7 +1753,7 @@ when the data has the correct structure.</p>
 <p>If we follow the general rules of thumb for tidy data, we are off to
 a good start. This is the structure of the data set we are working with
 here - after we have made some modifications as described above.</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1825,7 +1789,7 @@ the table.</p>
 names:</p>
 <p>table1(~ageblood + estradol + estrone + testost + prolactn|case +
 curpmh, data = blood)</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1873,7 +1837,7 @@ Overall
 <span class="stratlabel">yes<br><span class="stratn">(N=77)</span></span>
 </th>
 </tr></thead><tbody><tr><td class="rowlabel firstrow">
-ageblood
+Age (years)
 </td>
 <td class="firstrow">
 </td>
@@ -1951,7 +1915,7 @@ Geom. mean (Geo. SD%)
 58.4 (1.10%)
 </td>
 </tr><tr><td class="rowlabel firstrow">
-estradol
+estradol (pg/mL)
 </td>
 <td class="firstrow">
 </td>
@@ -2029,7 +1993,7 @@ Geom. mean (Geo. SD%)
 7.11 (1.94%)
 </td>
 </tr><tr><td class="rowlabel firstrow">
-estrone
+estrone (pg/mL)
 </td>
 <td class="firstrow">
 </td>
@@ -2357,9 +2321,9 @@ geometric standard deviation. Change the code to write out “Geom.” and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2382,7 +2346,7 @@ product. In general:</p>
 </section><section><h2 class="section-heading" id="very-advanced-stuff">Very advanced stuff<a class="anchor" aria-label="anchor" href="#very-advanced-stuff"></a></h2>
 <hr class="half-width"><p>If we want to specify the summary statistics very precisely, we have
 to define a function ourself:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2433,7 +2397,7 @@ Overall
 <span class="stratlabel">yes<br><span class="stratn">(N=77)</span></span>
 </th>
 </tr></thead><tbody><tr><td class="rowlabel firstrow">
-ageblood
+Age (years)
 </td>
 <td class="firstrow">
 </td>
@@ -2490,7 +2454,7 @@ Variance
 30.6
 </td>
 </tr><tr><td class="rowlabel firstrow">
-estradol
+estradol (pg/mL)
 </td>
 <td class="firstrow">
 </td>
@@ -2547,7 +2511,7 @@ Variance
 118.0
 </td>
 </tr><tr><td class="rowlabel firstrow">
-estrone
+estrone (pg/mL)
 </td>
 <td class="firstrow">
 </td>
@@ -2804,9 +2768,9 @@ specifying <code>render.categorical</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2835,7 +2799,7 @@ point.</p>
 <div class="callout-content">
 <p>Note that in the function, we define a vector as output, with three
 elements:</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2856,11 +2820,11 @@ straightforward.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Try to remove the empty string from the function, and use it is a
 table one as previously shown:</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
