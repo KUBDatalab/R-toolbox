@@ -242,10 +242,30 @@ we have [downloaded from this link](https://raw.githubusercontent.com/KUBDatalab
 library(tidyverse)
 library(table1)
 blood <- read_csv("data/BLOOD.csv")
+head(blood)
 ```
 
+``` output
+# A tibble: 6 × 9
+      ID matchid  case curpmh ageblood estradol estrone testost prolactn
+   <dbl>   <dbl> <dbl>  <dbl>    <dbl>    <dbl>   <dbl>   <dbl>    <dbl>
+1 100013  164594     0      1       46       57      65      25     11.1
+2 100241  107261     0      0       65       11      26     999      2.8
+3 100696  110294     0      1       66        3     999       8     38  
+4 101266  101266     1      0       57        4      18       6      8.9
+5 101600  101600     1      0       66        6      18      25      6.9
+6 102228  155717     0      1       57       10     999      31     13.9
+```
+510 rows. Its a case-control study, where the ID represents one individual, and 
+matchid gives us the link between cases and controls. Ageblood is the age of the
+individual at the time when the blood sample was drawn, and we then have levels 
+of four different hormones.
+
 The data contains missing values, coded as "999.0" for estrone and testost, and
-99.99 for prolactin:
+99.99 for prolactin.
+
+Let us fix that:
+
 
 ``` r
 blood <- blood %>% 
@@ -462,51 +482,12 @@ the variables. The `table1` package provides functions for that:
 
 
 ``` r
-label(dat$curpmh) <- "current_pmh"
-```
-
-``` error
-Error: object 'dat' not found
-```
-
-``` r
-label(dat$case) <- "case_control"
-```
-
-``` error
-Error: object 'dat' not found
-```
-
-``` r
-label(dat$ageblood) <- "Age"
-```
-
-``` error
-Error: object 'dat' not found
-```
-
-``` r
-units(dat$ageblood) <- "years"
-```
-
-``` error
-Error: object 'dat' not found
-```
-
-``` r
-units(dat$estradol) <- "pg/mL"
-```
-
-``` error
-Error: object 'dat' not found
-```
-
-``` r
-units(dat$estrone) <- "pg/mL"
-```
-
-``` error
-Error: object 'dat' not found
+label(blood$curpmh) <- "current_pmh"
+label(blood$case) <- "case_control"
+label(blood$ageblood) <- "Age"
+units(blood$ageblood) <- "years"
+units(blood$estradol) <- "pg/mL"
+units(blood$estrone) <- "pg/mL"
 ```
 
 Which looks a bit nicer:
@@ -537,7 +518,7 @@ table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data =
 </thead>
 <tbody>
 <tr>
-<td class='rowlabel firstrow'>ageblood</td>
+<td class='rowlabel firstrow'>Age (years)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -564,7 +545,7 @@ table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data =
 <td class='lastrow'>58.0 [46.0, 68.0]</td>
 </tr>
 <tr>
-<td class='rowlabel firstrow'>estradol</td>
+<td class='rowlabel firstrow'>estradol (pg/mL)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -591,7 +572,7 @@ table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data =
 <td class='lastrow'>6.00 [2.00, 76.0]</td>
 </tr>
 <tr>
-<td class='rowlabel firstrow'>estrone</td>
+<td class='rowlabel firstrow'>estrone (pg/mL)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -777,7 +758,7 @@ table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data =
 </thead>
 <tbody>
 <tr>
-<td class='rowlabel firstrow'>ageblood</td>
+<td class='rowlabel firstrow'>Age (years)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -813,7 +794,7 @@ table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data =
 <td class='lastrow'>58.4 (1.10%)</td>
 </tr>
 <tr>
-<td class='rowlabel firstrow'>estradol</td>
+<td class='rowlabel firstrow'>estradol (pg/mL)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -849,7 +830,7 @@ table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data =
 <td class='lastrow'>7.11 (1.94%)</td>
 </tr>
 <tr>
-<td class='rowlabel firstrow'>estrone</td>
+<td class='rowlabel firstrow'>estrone (pg/mL)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -1070,7 +1051,7 @@ render.continuous = my_summary)
 </thead>
 <tbody>
 <tr>
-<td class='rowlabel firstrow'>ageblood</td>
+<td class='rowlabel firstrow'>Age (years)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -1097,7 +1078,7 @@ render.continuous = my_summary)
 <td class='lastrow'>30.6</td>
 </tr>
 <tr>
-<td class='rowlabel firstrow'>estradol</td>
+<td class='rowlabel firstrow'>estradol (pg/mL)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -1124,7 +1105,7 @@ render.continuous = my_summary)
 <td class='lastrow'>118.0</td>
 </tr>
 <tr>
-<td class='rowlabel firstrow'>estrone</td>
+<td class='rowlabel firstrow'>estrone (pg/mL)</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>

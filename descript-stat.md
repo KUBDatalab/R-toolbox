@@ -52,14 +52,35 @@ The easiest way to get summary statistics on data is to use the
 library(tidyverse)
 ```
 
-In the following we are working with the `palmerpenguins` dataset:
+In the following we are working with the `palmerpenguins` dataset. Note that
+the actual data is called `penguins` and is part of the package `palmerpenguins`:
 
 
 ``` r
 library(palmerpenguins)
+head(penguins)
 ```
 
-Specifically the weight of the penguins, stored in the variable
+``` output
+# A tibble: 6 × 8
+  species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+  <fct>   <fct>              <dbl>         <dbl>             <int>       <int>
+1 Adelie  Torgersen           39.1          18.7               181        3750
+2 Adelie  Torgersen           39.5          17.4               186        3800
+3 Adelie  Torgersen           40.3          18                 195        3250
+4 Adelie  Torgersen           NA            NA                  NA          NA
+5 Adelie  Torgersen           36.7          19.3               193        3450
+6 Adelie  Torgersen           39.3          20.6               190        3650
+# ℹ 2 more variables: sex <fct>, year <int>
+```
+344 penguins have been recorded at three different islands over three years. 
+Three different penguin species are in the dataset, and we have data on their 
+weight, sex, length of their flippers and two measurements of their bill (beak).
+
+![What is lenght and depth of penguin bills?](../episodes/fig/culmen_depth.png){Copyright Allison Horst}
+
+
+Specifically we are going to work with the weight of the penguins, stored in the variable
 `body_mass_g`:
 
 
@@ -232,28 +253,10 @@ they vary? How can we describe the variation in the data?
 ## Range
 
 The simplest information about the variation is the range. What is the
-smallest and what is the largest value? The `range()` function can find
-it.
+smallest and what is the largest value? Or, what is the spread?
 
-Since this returns more than one value, we use the function reframe
-instead of summarise:
-
-
-``` r
-penguins %>% 
-  reframe(range = range(body_mass_g, na.rm = T))
-```
-
-``` output
-# A tibble: 2 × 1
-  range
-  <int>
-1  2700
-2  6300
-```
-
-However it is typically more usefull to extract the two values to
-separate columns in the output:
+We can get that by using the `min()` and `max()` functions in a `summarise()` 
+function:
 
 
 ``` r
@@ -269,7 +272,35 @@ penguins %>%
 1  2700  6300
 ```
 
-The range informs us of the spread of the observations.
+There is a dedicated function, `range()`, that does the same.
+However it returns two values (for each row), and the summarise function
+expects to get _one_ value. 
+
+If we would like to use the `range()` function, we can add it using the 
+`reframe()` function instead of `summarise()`: 
+
+
+``` r
+penguins %>% 
+  reframe(range = range(body_mass_g, na.rm = T))
+```
+
+``` output
+# A tibble: 2 × 1
+  range
+  <int>
+1  2700
+2  6300
+```
+
+:::: instructor
+
+Hvorfor ikke bare bruge reframe generelt? Kognitivt load. Summarise angiver
+hvad det er vi gør. Vi summariser noget data. Reframe angiver hvordan vi 
+omdanner et output til en dataframe. Resultatet bliver det samme, men 
+vi taler ikke længere om hvad det egentlig er vi er ude efter i operationen.
+
+::::
 
 ## Variance
 
