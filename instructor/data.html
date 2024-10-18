@@ -432,7 +432,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data sets</h1>
-        <p>Last updated on 2024-10-15 |
+        <p>Last updated on 2024-10-18 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/learners/data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -1206,6 +1206,13 @@ children, BMI and Waist/hip ratio.</p>
 </div>
 <div class="section level3">
 <h3 id="estrogen">ESTROGEN<a class="anchor" aria-label="anchor" href="#estrogen"></a></h3>
+<p>The influence on different doses of estrogen on systolic and
+diastolic blood pressure is investigated. 31 subjects are placed into 1
+of three study types, and recives treatment two times for four weeks,
+with a two week washout period between.</p>
+<p>Are there any significant differences between the different
+treatments - or carry over effects on blood pressure in the different
+groups.</p>
 <p><em>Dimensions:</em> Rows: 62 Columns: 22</p>
 <p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/ESTROGEN.csv" class="external-link">Download</a></p>
@@ -1297,11 +1304,17 @@ children, BMI and Waist/hip ratio.</p>
 </div>
 <div class="section level3">
 <h3 id="fev">FEV<a class="anchor" aria-label="anchor" href="#fev"></a></h3>
+<p>Data on 654 children seen in the <a href="#tage_6">Childhood
+Respiratory Disease Study</a><sup>6</sup> in East Boston Massachusetts
+in 1980. Forced Expiratory Volumne (FEF), an index of pulmonary function
+was measured, along with, age, height, sex and smoking status.</p>
+<p>FEV is the volume of air (in liters) that can be expelled from the
+lungs in one second.</p>
+<p>Usefull for demonstrating linear regressions, also multiple linear
+regression with categorical interactions, and change in FEV as a
+function of height and sex.</p>
 <p><em>Dimensions:</em> Rows: 654 Columns: 6</p>
-<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
-<p>Yderligere reference: Tage, I.B., Weiss, S.T., Rosner, B. &amp;
-Speizer, F.E. (1979), Effect of parental cigarette smoking on pulmonary
-function in children. American Journal of Epidemiology, 110, 15-26.</p>
+<p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/FEV.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler13" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -1339,15 +1352,21 @@ smoker</td>
 </div>
 </div>
 </div>
-<p>FEV - Forced Expiratory Volume er et index for lungefunktion, der
-måler det volumen luft (i liter) der kan udstødes af lungerne på et
-sekund.</p>
-<p>Data indeholder data på 654 børn i alderen fra 3 til 19 år i
-“Childhood Respiratory Disease (CRD) Study”, fra 1980 i Øst Boston,
-Massachusetts, USA.</p>
 </div>
 <div class="section level3">
 <h3 id="field">FIELD<a class="anchor" aria-label="anchor" href="#field"></a></h3>
+<p>Data from a study of the ocular disease Retinitis pigmentosoa (RP).
+The condition can result in substantial loss of vision, in some cases
+complete blindness. It has been discovered that this disease is linked
+to two genes. Mutations in the rhodosin gene RHO account for many cases
+that are predominantly inherited, whereas mutations in the RPGR gene
+account for many sex-linked cases; only males can have the RPGR
+mutation. The study measures the visual field of approx. 100 patients in
+each group (RHO and RPGR). The field of vision is measured in
+°<sup>2</sup>.</p>
+<p>Are there differences in the baseline level of visual field between
+the two groups? Does the rate of decline differ between the two
+groups?</p>
 <p><em>Dimensions:</em> Rows: 1326 Columns: 8</p>
 <p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/FIELD.csv" class="external-link">Download</a></p>
@@ -1361,7 +1380,7 @@ Massachusetts, USA.</p>
 </button>
 <div id="collapseSpoiler14" class="accordion-collapse collapse" aria-labelledby="headingSpoiler14" data-bs-parent="#accordionSpoiler14">
 <div class="accordion-body">
-<table class="table"><colgroup><col width="14%"><col width="78%"><col width="7%"></colgroup><thead><tr class="header"><th>Variable</th>
+<table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
 <th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>id</td>
@@ -1371,33 +1390,35 @@ Massachusetts, USA.</p>
 <td>group <br> 1 = RHO <br> 2 = RPGR</td>
 <td></td>
 </tr><tr class="odd"><td>age</td>
-<td>age at visit (XX.X in years)</td>
-<td></td>
+<td>age at visit</td>
+<td>years</td>
 </tr><tr class="even"><td>gender</td>
-<td>gender <br> 1 = m <br> 2 = f <br> Note: all RPGR individuals have to
-be male</td>
+<td>gender <br> 1 = m <br> 2 = f</td>
 <td></td>
 </tr><tr class="odd"><td>dtvisit</td>
 <td>date of visit (month/day/year)</td>
 <td></td>
 </tr><tr class="even"><td>folowup</td>
-<td>time from 1st visit in years</td>
-<td></td>
+<td>time from 1st visit</td>
+<td>years</td>
 </tr><tr class="odd"><td>totfldod</td>
-<td>total field area right eye (OD) in degrees²</td>
-<td></td>
+<td>total field area right eye (OD)</td>
+<td>°<sup>2</sup></td>
 </tr><tr class="even"><td>totfldos</td>
-<td>total field area left eye (OS) in degrees²</td>
-<td></td>
-</tr></tbody></table></div>
+<td>total field area left eye (OS)</td>
+<td>°<sup>2</sup></td>
+</tr></tbody></table><p>Note: all RPGR individuals have to be male</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="heart">HEART<a class="anchor" aria-label="anchor" href="#heart"></a></h3>
+<p>A dataset showing the prevalence of different heart conditions, in
+different populations, and of different symptoms.</p>
 <p><em>Dimensions:</em> Rows: 7 Columns: 9</p>
-<p><a href="data.html#rosner_1">source</a><sup>1</sup></p>
+<p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/HEART.csv" class="external-link">Download</a></p>
 <div id="accordionSpoiler15" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
@@ -1441,6 +1462,14 @@ septal defect with pulmonary hypertension</td>
 </div>
 <div class="section level3">
 <h3 id="hormone">HORMONE<a class="anchor" aria-label="anchor" href="#hormone"></a></h3>
+<p>Data on the influence of four hormones, compared with a saline
+solution on the pancreatic and biliary secretions in laying hens. <a href="https://en.wikipedia.org/wiki/Leghorn_chicken" class="external-link">White leghorn
+hens</a>, aged 14-29 weeks, were fitted with cannulas for collection of
+pancreatic and biliary secretions, and a jugular cannula for infusion of
+the hormones. One trial pr day was performed, until the jugular cannula
+stopped working - therefore there are a different number of observations
+pr. hen.</p>
+<p>Each trial</p>
 <p><em>Dimensions:</em> Rows: 398 Columns: 11</p>
 <p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/HORMONE.csv" class="external-link">Download</a></p>
@@ -1454,32 +1483,50 @@ septal defect with pulmonary hypertension</td>
 </button>
 <div id="collapseSpoiler16" class="accordion-collapse collapse" aria-labelledby="headingSpoiler16" data-bs-parent="#accordionSpoiler16">
 <div class="accordion-body">
-<table class="table"><colgroup><col width="23%"><col width="76%"></colgroup><thead><tr class="header"><th>Variable</th>
+<table class="table"><colgroup><col width="33%"><col width="22%"><col width="44%"></colgroup><thead><tr class="header"><th>Variable</th>
 <th>Description/Code</th>
+<th>unit</th>
 </tr></thead><tbody><tr class="odd"><td>ID</td>
 <td>ID</td>
+<td></td>
 </tr><tr class="even"><td>Bilsecpr</td>
 <td>Biliary secretion-pre</td>
+<td>µl/min</td>
 </tr><tr class="odd"><td>Bilphpr</td>
 <td>Biliary pH-pre</td>
+<td>pH</td>
 </tr><tr class="even"><td>Pansecpr</td>
 <td>Pancreatic secretion-pre</td>
+<td>µl/min</td>
 </tr><tr class="odd"><td>Panphpr</td>
 <td>Pancreatic pH-pre</td>
+<td>pH</td>
 </tr><tr class="even"><td>Dose</td>
 <td>Dose</td>
+<td>APP: ng/mL plasma <br> CKK, VIP, SEC: µg/kg/h</td>
 </tr><tr class="odd"><td>Bilsecpt</td>
 <td>Biliary secretion-post</td>
+<td>µl/min</td>
 </tr><tr class="even"><td>Bilphpt</td>
 <td>Biliary pH-post</td>
+<td>pH</td>
 </tr><tr class="odd"><td>Pansecpt</td>
 <td>Pancreatic secretion-post</td>
+<td>µl/min</td>
 </tr><tr class="even"><td>Panphpt</td>
 <td>Pancreatic pH-post</td>
+<td>pH</td>
 </tr><tr class="odd"><td>Hormone</td>
 <td>Hormone <br> 1 = SAL <br> 2 = APP <br> 3 = CCK <br> 4=SEC <br>
 5=VIP</td>
-</tr></tbody></table></div>
+<td></td>
+</tr></tbody></table><p>A value of 0 for pH indicate missing values.</p>
+<ul><li>SAL: Saline</li>
+<li>APP: Avian pancreatic polypeptide</li>
+<li>CCK: Cholecystokinin</li>
+<li>SEC: Secretine</li>
+<li>VIP: Vasoactive intestinal peptide</li>
+</ul></div>
 </div>
 </div>
 </div>
@@ -2895,14 +2942,13 @@ Spermaturia Data Biometrics, Vol. 47, No. 1 (Mar., 1991), pp. 177-193 <a href=
 Rosner, B. Colton, T &amp; Hennekens, C.H. (1988). Randomized trials of
 aminoglycoside antibiotics. Reviews of Infectious Disease, 10(5)
 951-957.</p>
+<p><a id="tage_6">6</a>: Tage, I.B., Weiss, S.T., Rosner, B. &amp;
+Speizer, F.E. (1979), Effect of parental cigarette smoking on pulmonary
+function in children. American Journal of Epidemiology, 110, 15-26.</p>
 </section><section><h2 class="section-heading" id="listen-over-datasæt-">listen over datasæt.<a class="anchor" aria-label="anchor" href="#listen-over-datas%C3%A6t-"></a></h2>
 <hr class="half-width"><p>Der hakkes af efterhånden som de er færdige - og så er issue 113
 done.</p>
-<ul><li>estrogen</li>
-<li>FEV</li>
-<li>field</li>
-<li>heart</li>
-<li>hormone</li>
+<ul><li>hormone</li>
 <li>hospital</li>
 <li>infantbp</li>
 <li>lead</li>
@@ -2961,7 +3007,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.8" class="external-link">sandpaper (0.16.8)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.4" class="external-link">varnish (1.0.4)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.9" class="external-link">sandpaper (0.16.9)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.4" class="external-link">varnish (1.0.4)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -2983,8 +3029,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/data.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/data.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2024-10-15",
-  "datePublished": "2024-10-15"
+  "dateModified": "2024-10-18",
+  "datePublished": "2024-10-18"
 }
 
   </script><script>
