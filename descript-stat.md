@@ -42,7 +42,7 @@ our data, and includes:
 |                  | Standard deviation   |                  |
 |                  | Percentiles          |                  |
 
-# Central tendency
+## Central tendency
 
 The easiest way to get summary statistics on data is to use the
 `summarise` function from the `tidyverse` package.
@@ -116,7 +116,7 @@ penguins$body_mass_g
 
 How can we describe these values?
 
-## Mean
+### Mean
 
 The mean is the average of all datapoints. We add all values (excluding
 the missing values encoded with `NA`), and divide with the number of
@@ -165,7 +165,7 @@ significant difference in the average weight for the two sexes.
 
 We will get to that at the end of this segment.
 
-## Median
+### Median
 
 Similarly to the average/mean, the `median` is an expression of the
 location of the data. If we order our data by size, from the smallest to
@@ -210,7 +210,7 @@ This illustrates for the learners that we can calculate more than one
 summary statistics in one summarise function.
 :::
 
-## Mode
+### Mode
 
 Mode is the most common, or frequently occurring, observation. R does
 not have a build-in function for this, but we can easily find the mode
@@ -245,12 +245,12 @@ regarding the two sexes.
 
 
 
-# Measures of variance
+## Measures of variance
 
 Knowing where the observations are located is interesting. But how do
 they vary? How can we describe the variation in the data?
 
-## Range
+### Range
 
 The simplest information about the variation is the range. What is the
 smallest and what is the largest value? Or, what is the spread?
@@ -302,7 +302,7 @@ vi taler ikke længere om hvad det egentlig er vi er ude efter i operationen.
 
 ::::
 
-## Variance
+### Variance
 
 The observations varies. They are no all located at the mean (or
 median), but are spread out on both sides of the mean. Can we get a
@@ -391,7 +391,7 @@ kan vi vælge hvad de to af værdierne er, og hvad gennemsnittet er. Helt frit. 
 den tredie værdi er givet. Den kan vi ikke vælge frit. 
 :::::
 
-## Standard deviation
+### Standard deviation
 
 There is a problem with the variance. It is 643131, completely off scale
 from the actual values. There is also a problem with the unit which is in
@@ -622,7 +622,7 @@ Call: ecdf(penguins$body_mass_g)
 
 That was not very informative. Lets plot it:
 
-[NOT QUITE DONE!]
+
 
 
 ``` r
@@ -634,6 +634,10 @@ geom_vline(xintercept = quantiler)
 ```
 
 <img src="fig/descript-stat-rendered-unnamed-chunk-23-1.png" style="display: block; margin: auto;" />
+
+:::: instructor
+
+[NOT QUITE DONE!]
 den skal vi nok have beskrevet lidt mere.
 
 Men pointen er, at vi for enhver værdi kan aflæse ting. Hvor stor en andel
@@ -643,10 +647,12 @@ den matchende værdi på y-aksen.
 Det svarer også til - hvis vi tager en tilfældig pingvin, hvad er så sandsynligheden
 for at den vejer mindre end 3000 gram? Eller for at den vejer mere end 5000 gram?
 
+::::
+
+
 ## Measures of shape
 
-## Skewness
-Vi bliver nok nødt til at lave et histogram...
+### Skewness
 
 We previously saw a histogram of the data, and noted that the
 observations were skewed to the left, and that the "tail" on the right
@@ -669,9 +675,35 @@ The skewness is positive, indicating that the data are skewed to the
 left, just as we saw. A negative skewness would indicate that the data
 skew to the right.
 
-## Kurtosis
 
-Og her skal vi nok lige have styr på den intuitive forståelse af det.
+
+:::: instructor
+
+Nej, det er ikke på nogen måde intuitivt. Vi må nok finde ud af hvorfor
+konventionen er som den er.
+
+::::
+
+### Kurtosis
+
+Another parameter describing the shape of the data is kurtosis. We can think
+of that as either "are there too many observations in the tails?" leading to 
+a relatively low peak. Or, as "how pointy is the peak" - because the majority
+of observations are centered in the peak, rather than appearing in the tails.
+
+We use the `e1071` package again:
+
+
+``` r
+kurtosis(penguins$body_mass_g, na.rm = T)
+```
+
+``` output
+[1] -0.73952
+```
+Kurtosis is defined weirdly, and here we get "excess" kurtosis,
+the actual kurtosis minus 3. We have negative kurtosis, indicating that the peak is flat, and the tails are fat.
+
 
 ## Everything Everywhere All at Once
 
@@ -779,7 +811,7 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_boxplot()`).
 ```
 
-<img src="fig/descript-stat-rendered-unnamed-chunk-28-1.png" style="display: block; margin: auto;" />
+<img src="fig/descript-stat-rendered-unnamed-chunk-29-1.png" style="display: block; margin: auto;" />
 
 The boxplot shows us the median (the fat line in the middel of each
 box), the 1st and 3rd quartiles (the ends of the boxes), and the range,
@@ -790,5 +822,5 @@ individual points in the plot.
 
 
 ::: keypoints
--   Nogen statisktiske pointer om det her
+-   We have access to a lot of summarising descriptive indicators the the location, spread and shape of our data.
 :::

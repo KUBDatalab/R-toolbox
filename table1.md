@@ -226,6 +226,44 @@ further subdivided into two groups based on Postmenopausal hormone use.
 It describes the distribution of sex and concentration of estradiol, estrone,
 testosterone and prolactin in a blood sample.
 
+## How do we make that?
+
+
+### Structuring the data
+
+Most things in R are simple to do (but rarely simple to understand) when the 
+data has the correct structure.
+
+If we follow the general rules of thumb for tidy data, we are off to a good 
+start. This is the structure of the data set we are working with here - after 
+we have made some modifications as described above.
+
+
+``` r
+head(blood)
+```
+
+``` output
+# A tibble: 6 × 9
+      ID matchid case    curpmh ageblood estradol estrone testost prolactn
+   <dbl>   <dbl> <fct>   <fct>     <dbl>    <dbl>   <dbl>   <dbl>    <dbl>
+1 100013  164594 control yes          46       57      65      25     11.1
+2 100241  107261 control no           65       11      26      NA      2.8
+3 100696  110294 control yes          66        3      NA       8     38  
+4 101266  101266 case    no           57        4      18       6      8.9
+5 101600  101600 case    no           66        6      18      25      6.9
+6 102228  155717 control yes          57       10      NA      31     13.9
+```
+
+The important thing to note is that when we stratify the summary statistics by
+some variable, this variable have to be a categorical variable. The variables 
+we want to do summary statistics _on_ also have to have the correct type.
+Are the values categorical, the column in the dataframe have to actually be
+categorical. Are they numeric, the data type have to be numeric.
+
+
+### And having the data - how do we actually do it?
+
 A number of packages making it easy to make a Table One exists. Here we look
 at the package `table1`.
 
@@ -683,38 +721,6 @@ table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data =
 </table>
 </div><!--/html_preserve-->
 
-## Structuring the data
-
-Most things in R are simple to do (but rarely simple to understand) when the 
-data has the correct structure.
-
-If we follow the general rules of thumb for tidy data, we are off to a good 
-start. This is the structure of the data set we are working with here - after 
-we have made some modifications as described above.
-
-
-``` r
-head(blood)
-```
-
-``` output
-# A tibble: 6 × 9
-      ID matchid case    curpmh ageblood estradol estrone testost prolactn
-   <dbl>   <dbl> <fct>   <fct>     <dbl>    <dbl>   <dbl>   <dbl>    <dbl>
-1 100013  164594 control yes          46       57      65      25     11.1
-2 100241  107261 control no           65       11      26      NA      2.8
-3 100696  110294 control yes          66        3      NA       8     38  
-4 101266  101266 case    no           57        4      18       6      8.9
-5 101600  101600 case    no           66        6      18      25      6.9
-6 102228  155717 control yes          57       10      NA      31     13.9
-```
-
-The important thing to note is that when we stratify the summary statistics by
-some variable, this variable have to be a categorical variable. The variables 
-we want to do summary statistics _on_ also have to have the correct type.
-Are the values categorical, the column in the dataframe have to actually be
-categorical. Are they numeric, the data type have to be numeric.
-
 
 ## More advanced stuff
 
@@ -727,13 +733,13 @@ control how continuous and categorical data respectively,
 is shown in the table.
 
 The simple way of doing that is by using abbrevieated
-function names:
+function names. We only include estradiol and estrone in the the table
+to save space:
 
-table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data = blood)
 
 
 ``` r
-table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data = blood,
+table1(~ageblood + estradol + estrone|case + curpmh, data = blood,
         render.continuous=c(.="Mean (SD%)", .="Median [Min, Max]",
                            "Geom. mean (Geo. SD%)"="GMEAN (GSD%)"))
 ```
@@ -874,96 +880,6 @@ table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data =
 <td class='lastrow'>88 (20.3%)</td>
 <td class='lastrow'>26 (33.8%)</td>
 </tr>
-<tr>
-<td class='rowlabel firstrow'>testost</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD%)</td>
-<td>25.3 (13.2%)</td>
-<td>22.2 (10.7%)</td>
-<td>27.6 (16.1%)</td>
-<td>28.2 (15.6%)</td>
-<td>26.0 (14.2%)</td>
-<td>24.4 (13.0%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Median [Min, Max]</td>
-<td>23.0 [4.00, 111]</td>
-<td>21.5 [8.00, 63.0]</td>
-<td>25.0 [6.00, 144]</td>
-<td>24.0 [10.0, 69.0]</td>
-<td>23.0 [4.00, 144]</td>
-<td>22.0 [8.00, 69.0]</td>
-</tr>
-<tr>
-<td class='rowlabel'>Geom. mean (Geo. SD%)</td>
-<td>22.4 (1.65%)</td>
-<td>20.0 (1.58%)</td>
-<td>24.6 (1.60%)</td>
-<td>24.6 (1.69%)</td>
-<td>23.1 (1.64%)</td>
-<td>21.6 (1.63%)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Missing</td>
-<td class='lastrow'>6 (2.0%)</td>
-<td class='lastrow'>2 (4.2%)</td>
-<td class='lastrow'>3 (2.2%)</td>
-<td class='lastrow'>1 (3.4%)</td>
-<td class='lastrow'>9 (2.1%)</td>
-<td class='lastrow'>3 (3.9%)</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>prolactn</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD%)</td>
-<td>9.60 (5.10%)</td>
-<td>13.7 (12.3%)</td>
-<td>10.8 (6.79%)</td>
-<td>9.57 (3.29%)</td>
-<td>9.99 (5.70%)</td>
-<td>12.2 (10.1%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Median [Min, Max]</td>
-<td>8.16 [1.96, 37.3]</td>
-<td>8.81 [3.87, 55.8]</td>
-<td>9.30 [2.66, 59.9]</td>
-<td>8.88 [4.49, 17.6]</td>
-<td>8.64 [1.96, 59.9]</td>
-<td>8.84 [3.87, 55.8]</td>
-</tr>
-<tr>
-<td class='rowlabel'>Geom. mean (Geo. SD%)</td>
-<td>8.59 (1.58%)</td>
-<td>10.7 (1.89%)</td>
-<td>9.63 (1.58%)</td>
-<td>9.05 (1.41%)</td>
-<td>8.90 (1.59%)</td>
-<td>10.1 (1.73%)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Missing</td>
-<td class='lastrow'>14 (4.7%)</td>
-<td class='lastrow'>0 (0%)</td>
-<td class='lastrow'>6 (4.4%)</td>
-<td class='lastrow'>1 (3.4%)</td>
-<td class='lastrow'>20 (4.6%)</td>
-<td class='lastrow'>1 (1.3%)</td>
-</tr>
 </tbody>
 </table>
 </div><!--/html_preserve-->
@@ -995,10 +911,11 @@ geometric.
 :::: solution
 
 ``` r
-table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data = blood,
+table1(~ageblood + estradol + estrone |case + curpmh, data = blood,
         render.continuous=c(.="Mean (SD%)", .="Median [Min, Max]",
                            "Geometric mean (Geometric SD%)"="GMEAN (GSD%)"))
 ```
+
 
 The geometric mean of two numbers is the squareroot of the product of the two
 numbers. If we have three numbers, we take the cube root of the product. In general:
