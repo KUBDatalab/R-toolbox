@@ -329,7 +329,7 @@
 <li><a href="#second-step---the-order-of-the-bars">Second step - the order of the bars</a></li>
 <li><a href="#rotating-the-plot">Rotating the plot</a></li>
 <li><a href="#size-of-text">Size of text</a></li>
-<li><a href="#step-xxx-removing-unnessecary-space">Step xxx removing unnessecary space</a></li>
+<li><a href="#removing-unnecessary-space">Removing unnecessary space</a></li>
 <li><a href="#remove-clutter">Remove clutter</a></li>
 <li><a href="#add-raw-numbers-to-the-plot">Add raw numbers to the plot</a></li>
 <li><a href="#add-labels-to-the-plot">Add labels to the plot</a></li>
@@ -575,7 +575,7 @@ with the data.</p>
 <span><span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">species</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span><span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span> </span></code></pre>
 </div>
-<figure><img src="fig/barcharts-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This barchart is <em>boring</em>. Grey in grey.</p>
+<figure><img src="fig/barcharts-rendered-first-example-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This barchart is <em>boring</em>. Grey in grey.</p>
 </section><section><h2 class="section-heading" id="step-1---colors-and-labels">Step 1 - colors and labels<a class="anchor" aria-label="anchor" href="#step-1---colors-and-labels"></a></h2>
 <hr class="half-width"><p>The first step would be to do something about the colors, and add
 labels and a title to the plot:</p>
@@ -591,7 +591,7 @@ labels and a title to the plot:</p>
 <span>  y <span class="op">=</span> <span class="st">"Number of penguins"</span>,</span>
 <span>  title <span class="op">=</span> <span class="st">"Number of penguins at Palmer Station, Antarctica"</span><span class="op">)</span></span></code></pre>
 </div>
-<p><img src="fig/barcharts-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" class="figure">
+<p><img src="fig/barcharts-rendered-colors-labels-1.png" style="display: block; margin: auto;" class="figure">
 It is not strictly necessary to remove the label of the x-axis, but it
 is superfluous in this case.</p>
 </section><section><h2 class="section-heading" id="second-step---the-order-of-the-bars">Second step - the order of the bars<a class="anchor" aria-label="anchor" href="#second-step---the-order-of-the-bars"></a></h2>
@@ -619,7 +619,7 @@ frequency:</p>
 <span>  y <span class="op">=</span> <span class="st">"Number of penguins"</span>,</span>
 <span>  title <span class="op">=</span> <span class="st">"Number of penguins at Palmer Station, Antarctica"</span><span class="op">)</span></span></code></pre>
 </div>
-<p><img src="fig/barcharts-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" class="figure">
+<p><img src="fig/barcharts-rendered-order-1.png" style="display: block; margin: auto;" class="figure">
 This facilitates the reading of the graph - it becomes very easy to see
 that the most frequent species of penguin is Adelie penguins.</p>
 
@@ -641,7 +641,7 @@ by changing the <code>x</code> in the <code>aes()</code> function to
 <span>  x <span class="op">=</span> <span class="st">"Number of penguins"</span>,</span>
 <span>  title <span class="op">=</span> <span class="st">"Number of penguins at Palmer Station, Antarctica"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/barcharts-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="size-of-text">Size of text<a class="anchor" aria-label="anchor" href="#size-of-text"></a></h2>
+<figure><img src="fig/barcharts-rendered-rotation-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="size-of-text">Size of text<a class="anchor" aria-label="anchor" href="#size-of-text"></a></h2>
 <hr class="half-width"><p>The default size of the text on labels, title etc is a bit to the
 small side. To improve readability, we change the base_size parameter in
 the default theme of ggplot to 14. You might need to play around with
@@ -661,13 +661,13 @@ the value, depending on the number of categories.</p>
 <span>  <span class="fu">theme_grey</span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme</span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fu">rel</span><span class="op">(</span><span class="fl">1.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<p><img src="fig/barcharts-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" class="figure">
+<p><img src="fig/barcharts-rendered-text-size-1.png" style="display: block; margin: auto;" class="figure">
 We also changed the scaling of the title of the plot. The size of that
 is now 10% larger than the base size. We can do that by specifying a
 specific size, but here we have done it using the <code>rel()</code>
 function which changes the size relative to the base font size in the
 plot.</p>
-</section><section><h2 class="section-heading" id="step-xxx-removing-unnessecary-space">Step xxx removing unnessecary space<a class="anchor" aria-label="anchor" href="#step-xxx-removing-unnessecary-space"></a></h2>
+</section><section><h2 class="section-heading" id="removing-unnecessary-space">Removing unnecessary space<a class="anchor" aria-label="anchor" href="#removing-unnecessary-space"></a></h2>
 <hr class="half-width"><p>There is a bit of empty space between the columns and the labels on
 the y-axis.</p>
 <p>Let us get rid of that:</p>
@@ -687,7 +687,7 @@ the y-axis.</p>
 <span>  <span class="fu">theme</span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fu">rel</span><span class="op">(</span><span class="fl">1.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>mult <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<p><img src="fig/barcharts-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" class="figure">
+<p><img src="fig/barcharts-rendered-unnecessary-space-1.png" style="display: block; margin: auto;" class="figure">
 We control what is happening on the x-scale by using the family of
 <code>scale_x</code> functions. Because it is a continuous scale, more
 specifically <code>scale_x_continuous()</code>.</p>
@@ -722,7 +722,7 @@ Remove them:</p>
 <span>    panel.grid.minor.y <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  <span class="op">)</span></span></code></pre>
 </div>
-<p><img src="fig/barcharts-rendered-unnamed-chunk-7-1.png" style="display: block; margin: auto;" class="figure">
+<p><img src="fig/barcharts-rendered-decluttering-1.png" style="display: block; margin: auto;" class="figure">
 First we change the default theme of the plot from
 <code>theme_grey</code> to <code>theme_minimal</code>, which gets rid of
 the grey background. In the additional <code>theme()</code> function we
@@ -807,7 +807,7 @@ the bars and the text!</p>
 <span>    size <span class="op">=</span> <span class="fl">4.5</span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/barcharts-rendered-unnamed-chunk-8-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="slimmer-bars">Slimmer bars<a class="anchor" aria-label="anchor" href="#slimmer-bars"></a></h2>
+<figure><img src="fig/barcharts-rendered-labelling-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="slimmer-bars">Slimmer bars<a class="anchor" aria-label="anchor" href="#slimmer-bars"></a></h2>
 <hr class="half-width"><p>Depending on aspect ratio of the final plot, number of categories
 etc, we might want to adjust the width of the bars:</p>
 <div class="codewrapper sourceCode" id="cb13">
@@ -851,7 +851,7 @@ etc, we might want to adjust the width of the bars:</p>
 <span>    size <span class="op">=</span> <span class="fl">4.5</span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/barcharts-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="keypoints1" class="callout keypoints">
+<figure><img src="fig/barcharts-rendered-slimmer-bars-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
