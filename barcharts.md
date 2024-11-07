@@ -86,7 +86,7 @@ ggplot(aes(x = species)) +
 geom_bar() 
 ```
 
-<img src="fig/barcharts-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/barcharts-rendered-first-example-1.png" style="display: block; margin: auto;" />
 
 This barchart is _boring_. Grey in grey.
 
@@ -106,7 +106,7 @@ labs(
   title = "Number of penguins at Palmer Station, Antarctica")
 ```
 
-<img src="fig/barcharts-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="fig/barcharts-rendered-colors-labels-1.png" style="display: block; margin: auto;" />
 It is not strictly necessary to remove the label of the x-axis, but it is superfluous
 in this case.
 
@@ -135,7 +135,7 @@ labs(
   title = "Number of penguins at Palmer Station, Antarctica")
 ```
 
-<img src="fig/barcharts-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="fig/barcharts-rendered-order-1.png" style="display: block; margin: auto;" />
 This facilitates the reading of the graph - it becomes very easy to see that 
 the most frequent species of penguin is Adelie penguins. 
 
@@ -162,7 +162,7 @@ labs(
   title = "Number of penguins at Palmer Station, Antarctica")
 ```
 
-<img src="fig/barcharts-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="fig/barcharts-rendered-rotation-1.png" style="display: block; margin: auto;" />
 
 ## Size of text
 
@@ -186,13 +186,13 @@ labs(
   theme(plot.title = element_text(size = rel(1.1)))
 ```
 
-<img src="fig/barcharts-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" />
+<img src="fig/barcharts-rendered-text-size-1.png" style="display: block; margin: auto;" />
 We also changed the scaling of the title of the plot. The size of that is now 
 10% larger than the base size. We can do that by specifying a specific size, but
 here we have done it using the `rel()` function which changes the size relative to
 the base font size in the plot.
 
-## Step xxx removing unnessecary space
+## Removing unnecessary space
 
 There is a bit of empty space between the columns and the labels on the y-axis.
 
@@ -213,7 +213,7 @@ labs(
   scale_x_continuous(expand = expansion(mult = c(0, 0.01)))
 ```
 
-<img src="fig/barcharts-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
+<img src="fig/barcharts-rendered-unnecessary-space-1.png" style="display: block; margin: auto;" />
 We control what is happening on the x-scale by using the family of `scale_x` functions.
 Because it is a continuous scale, more specifically `scale_x_continuous()`.
 
@@ -250,7 +250,7 @@ labs(
   )
 ```
 
-<img src="fig/barcharts-rendered-unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
+<img src="fig/barcharts-rendered-decluttering-1.png" style="display: block; margin: auto;" />
 First we change the default theme of the plot from `theme_grey` to `theme_minimal`,
 which gets rid of the grey background. In the additional `theme()` function we 
 remove the gridlines, both major and minor gridlines, on the y-axis, by setting them
@@ -341,7 +341,7 @@ penguin_example %>%
   geom_vline(xintercept = 0)
 ```
 
-<img src="fig/barcharts-rendered-unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
+<img src="fig/barcharts-rendered-labelling-1.png" style="display: block; margin: auto;" />
 
 
 ## Slimmer bars
@@ -389,7 +389,7 @@ penguin_example %>%
   geom_vline(xintercept = 0)
 ```
 
-<img src="fig/barcharts-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="fig/barcharts-rendered-slimmer-bars-1.png" style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
