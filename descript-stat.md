@@ -624,20 +624,11 @@ That was not very informative. Lets plot it:
 
 
 
-
-``` r
-quantiler <- quantile(penguins$body_mass_g, probs = c(0.25, 0.75), na.rm = TRUE)
-ggplot(penguins, aes(body_mass_g)) + 
-  stat_ecdf(geom = "step") +
-  geom_hline(yintercept = c(0.25,0.5,0.75)) +
-geom_vline(xintercept = quantiler)
-```
-
-<img src="fig/descript-stat-rendered-unnamed-chunk-23-1.png" style="display: block; margin: auto;" />
+<img src="fig/descript-stat-rendered-cdf-plot-1.png" style="display: block; margin: auto;" />
 
 :::: instructor
 
-[NOT QUITE DONE!]
+
 den skal vi nok have beskrevet lidt mere.
 
 Men pointen er, at vi for enhver værdi kan aflæse ting. Hvor stor en andel
@@ -811,7 +802,7 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_boxplot()`).
 ```
 
-<img src="fig/descript-stat-rendered-unnamed-chunk-29-1.png" style="display: block; margin: auto;" />
+<img src="fig/descript-stat-rendered-unnamed-chunk-28-1.png" style="display: block; margin: auto;" />
 
 The boxplot shows us the median (the fat line in the middel of each
 box), the 1st and 3rd quartiles (the ends of the boxes), and the range,
