@@ -137,7 +137,7 @@ mean(penguins$body_mass_g, na.rm = TRUE)
 [1] 4201.754
 ```
 
-A slightly more cumbersome way is using the summarise function from
+A slightly more cumbersome way is using the `summarise()` function from
 `tidyverse`:
 
 
@@ -153,7 +153,8 @@ penguins %>%
 1    4202.
 ```
 
-The advantage will be clear below.
+As we will see below, this function streamlines the process of getting multiple
+descriptive values.
 
 Barring significant outliers, `mean` is an expression of position of the
 data. This is the weight we would expect a random penguin in our dataset
@@ -175,26 +176,22 @@ half the observations is larger.
 
 
 ``` r
-penguins %>% 
-  summarise(median = median(body_mass_g, na.rm = T))
+median(penguins$body_mass_g, na.rm = TRUE)
 ```
 
 ``` output
-# A tibble: 1 × 1
-  median
-   <dbl>
-1   4050
+[1] 4050
 ```
 
 We can note that the mean is larger than the median. This indicates that
 the data is skewed, in this case toward the larger penguins.
 
-We can get both `median` and `mean` in one go:
+We can get both `median` and `mean` in one go using the `summarise()` function:
 
 
 ``` r
 penguins %>% 
-  summarise(median = median(body_mass_g, na.rm = T),
+  summarise(median = median(body_mass_g, na.rm = TRUE),
             mean   = mean(body_mass_g, na.rm = TRUE))
 ```
 

@@ -147,7 +147,7 @@ Stata is a proprietary statistical software package, used in a multitude
 of different fields, primarily biomedicine, epidemiololy, sociology and
 economics.
 
-As mentioned above, hte `haven` package provides functions for reading
+As mentioned above, the `haven` package provides functions for reading
 Stata files:
 
 
@@ -168,7 +168,7 @@ formats.
 SAS is a proprietary statistical software suite developed by SAS
 Institute.
 
-As mentioned above the package `haven` can read SAS-files:
+The package `haven` can read SAS-files:
 
 
 ``` r
