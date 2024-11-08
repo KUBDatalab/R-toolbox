@@ -28,7 +28,7 @@ normalfordelingens sammenhæng med statistiske tests.
 
 Descriptive statistic involves summarising or describing a set of data.
 It usually presents quantitative descriptions in a short form, and helps
-to simplify large datasaets.
+to simplify large datasets.
 
 Most descriptive statistical parameters applies to just one variable in
 our data, and includes:
@@ -37,7 +37,7 @@ our data, and includes:
 |------------------|----------------------|------------------|
 | Mean             | Range                | Skewness         |
 | Median           | Quartiles            | Kurtosis         |
-| mode             | Inter Quartile Range |                  |
+| Mode             | Inter Quartile Range |                  |
 |                  | Variance             |                  |
 |                  | Standard deviation   |                  |
 |                  | Percentiles          |                  |
@@ -186,7 +186,7 @@ penguins %>%
 1   4050
 ```
 
-We can note that the mean is larger that the median. This indicates that
+We can note that the mean is larger than the median. This indicates that
 the data is skewed, in this case toward the larger penguins.
 
 We can get both `median` and `mean` in one go:
@@ -304,7 +304,7 @@ vi taler ikke længere om hvad det egentlig er vi er ude efter i operationen.
 
 ### Variance
 
-The observations varies. They are no all located at the mean (or
+The observations varies. They are not all located at the mean (or
 median), but are spread out on both sides of the mean. Can we get a
 numerical value describing that?
 
@@ -339,18 +339,23 @@ by the variance as defined here, and we would really like to get a
 connection between what we observe here, and the normal distribution.
 :::
 
-The mathematical notation would be:
+For the population variance, the mathematical notation would be:
 
 $$
 \sigma^2 = \frac{\sum_{i=1}^N(x_i - \mu)^2}{N}
 $$
 
+:::: callout
+
+## Population or sample?
+
 Why are we suddenly using $\mu$ instead of $\overline{x}$? Because this
 definition uses the population mean. The mean, or average, in the entire
 population of all penguins everywhere in the universe. But we have not
 weighed all those penguins. 
+::::
 
-Instead we will normally look at the sample variance:
+And the sample variance:
 
 $$
 s^2 = \frac{\sum_{i=1}^N(x_i - \overline{x})^2}{N-1}

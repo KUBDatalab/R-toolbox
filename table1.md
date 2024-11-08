@@ -81,69 +81,6 @@ It can look like this:
 <td class='lastrow'>58.0 [46.0, 68.0]</td>
 </tr>
 <tr>
-<td class='rowlabel firstrow'>estradol (pg/mL)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>8.05 (5.29)</td>
-<td>8.73 (8.84)</td>
-<td>10.5 (9.72)</td>
-<td>10.6 (13.7)</td>
-<td>8.81 (7.06)</td>
-<td>9.44 (10.9)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Median [Min, Max]</td>
-<td class='lastrow'>6.00 [2.00, 46.0]</td>
-<td class='lastrow'>6.50 [2.00, 57.0]</td>
-<td class='lastrow'>8.00 [3.00, 85.0]</td>
-<td class='lastrow'>6.00 [3.00, 76.0]</td>
-<td class='lastrow'>7.00 [2.00, 85.0]</td>
-<td class='lastrow'>6.00 [2.00, 76.0]</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>estrone (pg/mL)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>28.7 (15.0)</td>
-<td>26.8 (12.0)</td>
-<td>32.3 (15.7)</td>
-<td>27.7 (13.2)</td>
-<td>29.8 (15.3)</td>
-<td>27.1 (12.3)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Median [Min, Max]</td>
-<td>25.0 [10.0, 131]</td>
-<td>23.0 [13.0, 65.0]</td>
-<td>29.0 [11.0, 119]</td>
-<td>24.0 [12.0, 59.0]</td>
-<td>26.0 [10.0, 131]</td>
-<td>23.0 [12.0, 65.0]</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Missing</td>
-<td class='lastrow'>58 (19.5%)</td>
-<td class='lastrow'>15 (31.3%)</td>
-<td class='lastrow'>30 (22.2%)</td>
-<td class='lastrow'>11 (37.9%)</td>
-<td class='lastrow'>88 (20.3%)</td>
-<td class='lastrow'>26 (33.8%)</td>
-</tr>
-<tr>
 <td class='rowlabel firstrow'>testost</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -222,8 +159,8 @@ Please note that the automatic styling of this site results in a table-one
 that is not very nice looking.
 
 We have 510 participants in a study, split into control and case groups, and
-further subdivided into two groups based on Postmenopausal hormone use.
-It describes the distribution of sex and concentration of estradiol, estrone,
+further subdivided into two groups based on PostMenopausal Hormone use.
+It describes the distribution of sex and concentration of 
 testosterone and prolactin in a blood sample.
 
 ## How do we make that?
@@ -244,15 +181,15 @@ head(blood)
 ```
 
 ``` output
-# A tibble: 6 × 9
-      ID matchid case    curpmh ageblood estradol estrone testost prolactn
-   <dbl>   <dbl> <fct>   <fct>     <dbl>    <dbl>   <dbl>   <dbl>    <dbl>
-1 100013  164594 control yes          46       57      65      25     11.1
-2 100241  107261 control no           65       11      26      NA      2.8
-3 100696  110294 control yes          66        3      NA       8     38  
-4 101266  101266 case    no           57        4      18       6      8.9
-5 101600  101600 case    no           66        6      18      25      6.9
-6 102228  155717 control yes          57       10      NA      31     13.9
+# A tibble: 6 × 8
+      ID matchid case    curpmh ageblood estradol testost prolactn
+   <dbl>   <dbl> <fct>   <fct>     <dbl>    <dbl>   <dbl>    <dbl>
+1 100013  164594 control yes          46       57      25     11.1
+2 100241  107261 control no           65       11      NA      2.8
+3 100696  110294 control yes          66        3       8     38  
+4 101266  101266 case    no           57        4       6      8.9
+5 101600  101600 case    no           66        6      25      6.9
+6 102228  155717 control yes          57       10      31     13.9
 ```
 
 The important thing to note is that when we stratify the summary statistics by
@@ -297,7 +234,7 @@ head(blood)
 510 rows. Its a case-control study, where the ID represents one individual, and 
 matchid gives us the link between cases and controls. Ageblood is the age of the
 individual at the time when the blood sample was drawn, and we then have levels 
-of four different hormones.
+of four different hormones. 
 
 The data contains missing values, coded as "999.0" for estrone and testost, and
 99.99 for prolactin.
@@ -323,11 +260,13 @@ blood <- blood %>%
   mutate(curpmh = factor(curpmh, labels = c("no", "yes")))
 ```
 
-And now we can make our table one like this:
+And now we can make our table one like this. Note that we only include testosterone
+and prolactin, in order to get a more manageble table 1:
+
 
 
 ``` r
-table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data = blood)
+table1(~ageblood + testost + prolactn|case + curpmh, data = blood)
 ```
 
 <!--html_preserve--><div class="Rtable1"><table class="Rtable1">
@@ -375,69 +314,6 @@ table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data =
 <td class='lastrow'>58.0 [49.0, 68.0]</td>
 <td class='lastrow'>62.0 [45.0, 69.0]</td>
 <td class='lastrow'>58.0 [46.0, 68.0]</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>estradol</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>8.05 (5.29)</td>
-<td>8.73 (8.84)</td>
-<td>10.5 (9.72)</td>
-<td>10.6 (13.7)</td>
-<td>8.81 (7.06)</td>
-<td>9.44 (10.9)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Median [Min, Max]</td>
-<td class='lastrow'>6.00 [2.00, 46.0]</td>
-<td class='lastrow'>6.50 [2.00, 57.0]</td>
-<td class='lastrow'>8.00 [3.00, 85.0]</td>
-<td class='lastrow'>6.00 [3.00, 76.0]</td>
-<td class='lastrow'>7.00 [2.00, 85.0]</td>
-<td class='lastrow'>6.00 [2.00, 76.0]</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>estrone</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>28.7 (15.0)</td>
-<td>26.8 (12.0)</td>
-<td>32.3 (15.7)</td>
-<td>27.7 (13.2)</td>
-<td>29.8 (15.3)</td>
-<td>27.1 (12.3)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Median [Min, Max]</td>
-<td>25.0 [10.0, 131]</td>
-<td>23.0 [13.0, 65.0]</td>
-<td>29.0 [11.0, 119]</td>
-<td>24.0 [12.0, 59.0]</td>
-<td>26.0 [10.0, 131]</td>
-<td>23.0 [12.0, 65.0]</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Missing</td>
-<td class='lastrow'>58 (19.5%)</td>
-<td class='lastrow'>15 (31.3%)</td>
-<td class='lastrow'>30 (22.2%)</td>
-<td class='lastrow'>11 (37.9%)</td>
-<td class='lastrow'>88 (20.3%)</td>
-<td class='lastrow'>26 (33.8%)</td>
 </tr>
 <tr>
 <td class='rowlabel firstrow'>testost</td>
@@ -524,8 +400,6 @@ label(blood$curpmh) <- "current_pmh"
 label(blood$case) <- "case_control"
 label(blood$ageblood) <- "Age"
 units(blood$ageblood) <- "years"
-units(blood$estradol) <- "pg/mL"
-units(blood$estrone) <- "pg/mL"
 ```
 
 Which looks a bit nicer:
@@ -533,7 +407,7 @@ Which looks a bit nicer:
 
 
 ``` r
-table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data = blood)
+table1(~ageblood + testost + prolactn|case + curpmh, data = blood)
 ```
 
 <!--html_preserve--><div class="Rtable1"><table class="Rtable1">
@@ -581,69 +455,6 @@ table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data =
 <td class='lastrow'>58.0 [49.0, 68.0]</td>
 <td class='lastrow'>62.0 [45.0, 69.0]</td>
 <td class='lastrow'>58.0 [46.0, 68.0]</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>estradol (pg/mL)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>8.05 (5.29)</td>
-<td>8.73 (8.84)</td>
-<td>10.5 (9.72)</td>
-<td>10.6 (13.7)</td>
-<td>8.81 (7.06)</td>
-<td>9.44 (10.9)</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Median [Min, Max]</td>
-<td class='lastrow'>6.00 [2.00, 46.0]</td>
-<td class='lastrow'>6.50 [2.00, 57.0]</td>
-<td class='lastrow'>8.00 [3.00, 85.0]</td>
-<td class='lastrow'>6.00 [3.00, 76.0]</td>
-<td class='lastrow'>7.00 [2.00, 85.0]</td>
-<td class='lastrow'>6.00 [2.00, 76.0]</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>estrone (pg/mL)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD)</td>
-<td>28.7 (15.0)</td>
-<td>26.8 (12.0)</td>
-<td>32.3 (15.7)</td>
-<td>27.7 (13.2)</td>
-<td>29.8 (15.3)</td>
-<td>27.1 (12.3)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Median [Min, Max]</td>
-<td>25.0 [10.0, 131]</td>
-<td>23.0 [13.0, 65.0]</td>
-<td>29.0 [11.0, 119]</td>
-<td>24.0 [12.0, 59.0]</td>
-<td>26.0 [10.0, 131]</td>
-<td>23.0 [12.0, 65.0]</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Missing</td>
-<td class='lastrow'>58 (19.5%)</td>
-<td class='lastrow'>15 (31.3%)</td>
-<td class='lastrow'>30 (22.2%)</td>
-<td class='lastrow'>11 (37.9%)</td>
-<td class='lastrow'>88 (20.3%)</td>
-<td class='lastrow'>26 (33.8%)</td>
 </tr>
 <tr>
 <td class='rowlabel firstrow'>testost</td>
@@ -733,13 +544,13 @@ control how continuous and categorical data respectively,
 is shown in the table.
 
 The simple way of doing that is by using abbrevieated
-function names. We only include estradiol and estrone in the the table
+function names. We only include testosterone and prolactin in the the table
 to save space:
 
 
 
 ``` r
-table1(~ageblood + estradol + estrone|case + curpmh, data = blood,
+table1(~ageblood + testost + prolactn|case + curpmh, data = blood,
         render.continuous=c(.="Mean (SD%)", .="Median [Min, Max]",
                            "Geom. mean (Geo. SD%)"="GMEAN (GSD%)"))
 ```
@@ -800,7 +611,7 @@ table1(~ageblood + estradol + estrone|case + curpmh, data = blood,
 <td class='lastrow'>58.4 (1.10%)</td>
 </tr>
 <tr>
-<td class='rowlabel firstrow'>estradol (pg/mL)</td>
+<td class='rowlabel firstrow'>testost</td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -810,75 +621,84 @@ table1(~ageblood + estradol + estrone|case + curpmh, data = blood,
 </tr>
 <tr>
 <td class='rowlabel'>Mean (SD%)</td>
-<td>8.05 (5.29%)</td>
-<td>8.73 (8.84%)</td>
-<td>10.5 (9.72%)</td>
-<td>10.6 (13.7%)</td>
-<td>8.81 (7.06%)</td>
-<td>9.44 (10.9%)</td>
+<td>25.3 (13.2%)</td>
+<td>22.2 (10.7%)</td>
+<td>27.6 (16.1%)</td>
+<td>28.2 (15.6%)</td>
+<td>26.0 (14.2%)</td>
+<td>24.4 (13.0%)</td>
 </tr>
 <tr>
 <td class='rowlabel'>Median [Min, Max]</td>
-<td>6.00 [2.00, 46.0]</td>
-<td>6.50 [2.00, 57.0]</td>
-<td>8.00 [3.00, 85.0]</td>
-<td>6.00 [3.00, 76.0]</td>
-<td>7.00 [2.00, 85.0]</td>
-<td>6.00 [2.00, 76.0]</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Geom. mean (Geo. SD%)</td>
-<td class='lastrow'>6.92 (1.69%)</td>
-<td class='lastrow'>6.81 (1.90%)</td>
-<td class='lastrow'>8.53 (1.78%)</td>
-<td class='lastrow'>7.63 (2.03%)</td>
-<td class='lastrow'>7.39 (1.74%)</td>
-<td class='lastrow'>7.11 (1.94%)</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>estrone (pg/mL)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Mean (SD%)</td>
-<td>28.7 (15.0%)</td>
-<td>26.8 (12.0%)</td>
-<td>32.3 (15.7%)</td>
-<td>27.7 (13.2%)</td>
-<td>29.8 (15.3%)</td>
-<td>27.1 (12.3%)</td>
-</tr>
-<tr>
-<td class='rowlabel'>Median [Min, Max]</td>
-<td>25.0 [10.0, 131]</td>
-<td>23.0 [13.0, 65.0]</td>
-<td>29.0 [11.0, 119]</td>
-<td>24.0 [12.0, 59.0]</td>
-<td>26.0 [10.0, 131]</td>
-<td>23.0 [12.0, 65.0]</td>
+<td>23.0 [4.00, 111]</td>
+<td>21.5 [8.00, 63.0]</td>
+<td>25.0 [6.00, 144]</td>
+<td>24.0 [10.0, 69.0]</td>
+<td>23.0 [4.00, 144]</td>
+<td>22.0 [8.00, 69.0]</td>
 </tr>
 <tr>
 <td class='rowlabel'>Geom. mean (Geo. SD%)</td>
-<td>25.9 (1.56%)</td>
-<td>24.6 (1.50%)</td>
-<td>29.4 (1.54%)</td>
-<td>25.0 (1.59%)</td>
-<td>26.9 (1.56%)</td>
-<td>24.7 (1.53%)</td>
+<td>22.4 (1.65%)</td>
+<td>20.0 (1.58%)</td>
+<td>24.6 (1.60%)</td>
+<td>24.6 (1.69%)</td>
+<td>23.1 (1.64%)</td>
+<td>21.6 (1.63%)</td>
 </tr>
 <tr>
 <td class='rowlabel lastrow'>Missing</td>
-<td class='lastrow'>58 (19.5%)</td>
-<td class='lastrow'>15 (31.3%)</td>
-<td class='lastrow'>30 (22.2%)</td>
-<td class='lastrow'>11 (37.9%)</td>
-<td class='lastrow'>88 (20.3%)</td>
-<td class='lastrow'>26 (33.8%)</td>
+<td class='lastrow'>6 (2.0%)</td>
+<td class='lastrow'>2 (4.2%)</td>
+<td class='lastrow'>3 (2.2%)</td>
+<td class='lastrow'>1 (3.4%)</td>
+<td class='lastrow'>9 (2.1%)</td>
+<td class='lastrow'>3 (3.9%)</td>
+</tr>
+<tr>
+<td class='rowlabel firstrow'>prolactn</td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+<td class='firstrow'></td>
+</tr>
+<tr>
+<td class='rowlabel'>Mean (SD%)</td>
+<td>9.60 (5.10%)</td>
+<td>13.7 (12.3%)</td>
+<td>10.8 (6.79%)</td>
+<td>9.57 (3.29%)</td>
+<td>9.99 (5.70%)</td>
+<td>12.2 (10.1%)</td>
+</tr>
+<tr>
+<td class='rowlabel'>Median [Min, Max]</td>
+<td>8.16 [1.96, 37.3]</td>
+<td>8.81 [3.87, 55.8]</td>
+<td>9.30 [2.66, 59.9]</td>
+<td>8.88 [4.49, 17.6]</td>
+<td>8.64 [1.96, 59.9]</td>
+<td>8.84 [3.87, 55.8]</td>
+</tr>
+<tr>
+<td class='rowlabel'>Geom. mean (Geo. SD%)</td>
+<td>8.59 (1.58%)</td>
+<td>10.7 (1.89%)</td>
+<td>9.63 (1.58%)</td>
+<td>9.05 (1.41%)</td>
+<td>8.90 (1.59%)</td>
+<td>10.1 (1.73%)</td>
+</tr>
+<tr>
+<td class='rowlabel lastrow'>Missing</td>
+<td class='lastrow'>14 (4.7%)</td>
+<td class='lastrow'>0 (0%)</td>
+<td class='lastrow'>6 (4.4%)</td>
+<td class='lastrow'>1 (3.4%)</td>
+<td class='lastrow'>20 (4.6%)</td>
+<td class='lastrow'>1 (1.3%)</td>
 </tr>
 </tbody>
 </table>
@@ -911,7 +731,7 @@ geometric.
 :::: solution
 
 ``` r
-table1(~ageblood + estradol + estrone |case + curpmh, data = blood,
+table1(~ageblood + testost + prolactn |case + curpmh, data = blood,
         render.continuous=c(.="Mean (SD%)", .="Median [Min, Max]",
                            "Geometric mean (Geometric SD%)"="GMEAN (GSD%)"))
 ```
@@ -944,7 +764,7 @@ my_summary <- function(x){
   c("","Median" = sprintf("%.3f", median(x, na.rm = TRUE)),
 "Variance" = sprintf("%.1f", var(x, na.rm=TRUE)))
 }
-table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data = blood,
+table1(~ageblood + testost + prolactn|case + curpmh, data = blood,
 render.continuous = my_summary)
 ```
 
@@ -993,69 +813,6 @@ render.continuous = my_summary)
 <td class='lastrow'>28.3</td>
 <td class='lastrow'>22.8</td>
 <td class='lastrow'>30.6</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>estradol (pg/mL)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Median</td>
-<td>6.000</td>
-<td>6.500</td>
-<td>8.000</td>
-<td>6.000</td>
-<td>7.000</td>
-<td>6.000</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Variance</td>
-<td class='lastrow'>28.0</td>
-<td class='lastrow'>78.1</td>
-<td class='lastrow'>94.5</td>
-<td class='lastrow'>186.8</td>
-<td class='lastrow'>49.8</td>
-<td class='lastrow'>118.0</td>
-</tr>
-<tr>
-<td class='rowlabel firstrow'>estrone (pg/mL)</td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-<td class='firstrow'></td>
-</tr>
-<tr>
-<td class='rowlabel'>Median</td>
-<td>25.000</td>
-<td>23.000</td>
-<td>29.000</td>
-<td>24.000</td>
-<td>26.000</td>
-<td>23.000</td>
-</tr>
-<tr>
-<td class='rowlabel'>Variance</td>
-<td>223.8</td>
-<td>143.8</td>
-<td>246.4</td>
-<td>174.4</td>
-<td>232.8</td>
-<td>151.5</td>
-</tr>
-<tr>
-<td class='rowlabel lastrow'>Missing</td>
-<td class='lastrow'>58 (19.5%)</td>
-<td class='lastrow'>15 (31.3%)</td>
-<td class='lastrow'>30 (22.2%)</td>
-<td class='lastrow'>11 (37.9%)</td>
-<td class='lastrow'>88 (20.3%)</td>
-<td class='lastrow'>26 (33.8%)</td>
 </tr>
 <tr>
 <td class='rowlabel firstrow'>testost</td>
@@ -1198,7 +955,7 @@ my_summary <- function(x){
   c("Median" = sprintf("%.3f", median(x, na.rm = TRUE)),
 "Variance" = sprintf("%.1f", var(x, na.rm=TRUE)))
 }
-table1(~ageblood + estradol + estrone + testost + prolactn|case + curpmh, data = blood,
+table1(~ageblood + testost + prolactn|case + curpmh, data = blood,
 render.continuous = my_summary)
 ```
 The line beginning with "Median" does not show up, but the median value is 
