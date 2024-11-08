@@ -468,7 +468,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Descriptive Statistics</h1>
-        <p>Last updated on 2024-11-07 |
+        <p>Last updated on 2024-11-08 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/descript-stat.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -797,16 +797,26 @@ negative, and might cancel each other out.</p>
 <p>We solve that problem by squaring the differences, and calculate the
 mean of those.</p>
 
-<p>The mathematical notation would be:</p>
+<p>For the population variance, the mathematical notation would be:</p>
 <p><span class="math display">\[
 \sigma^2 = \frac{\sum_{i=1}^N(x_i - \mu)^2}{N}
 \]</span></p>
+<div id="population-or-sample" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="population-or-sample" class="callout-inner">
+<h3 class="callout-title">Population or sample?</h3>
+<div class="callout-content">
 <p>Why are we suddenly using <span class="math inline">\(\mu\)</span>
 instead of <span class="math inline">\(\overline{x}\)</span>? Because
 this definition uses the population mean. The mean, or average, in the
 entire population of all penguins everywhere in the universe. But we
 have not weighed all those penguins.</p>
-<p>Instead we will normally look at the sample variance:</p>
+</div>
+</div>
+</div>
+<p>And the sample variance:</p>
 <p><span class="math display">\[
 s^2 = \frac{\sum_{i=1}^N(x_i - \overline{x})^2}{N-1}
 \]</span></p>
@@ -1291,8 +1301,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/descript-stat.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/descript-stat.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2024-11-07",
-  "datePublished": "2024-11-07"
+  "dateModified": "2024-11-08",
+  "datePublished": "2024-11-08"
 }
 
   </script><script>
