@@ -625,8 +625,8 @@ function:</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 4201.754</code></pre>
 </div>
-<p>A slightly more cumbersome way is using the summarise function from
-<code>tidyverse</code>:</p>
+<p>A slightly more cumbersome way is using the <code>summarise()</code>
+function from <code>tidyverse</code>:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -642,7 +642,8 @@ function:</p>
      &lt;dbl&gt;
 1    4202.</code></pre>
 </div>
-<p>The advantage will be clear below.</p>
+<p>As we will see below, this function streamlines the process of
+getting multiple descriptive values.</p>
 <p>Barring significant outliers, <code>mean</code> is an expression of
 position of the data. This is the weight we would expect a random
 penguin in our dataset to have.</p>
@@ -662,27 +663,23 @@ observations is smaller than. And half the observations is larger.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">summarise</span><span class="op">(</span>median <span class="op">=</span> <span class="fu">median</span><span class="op">(</span><span class="va">body_mass_g</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">median</span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">body_mass_g</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 1 × 1
-  median
-   &lt;dbl&gt;
-1   4050</code></pre>
+<pre class="output" tabindex="0"><code>[1] 4050</code></pre>
 </div>
 <p>We can note that the mean is larger than the median. This indicates
 that the data is skewed, in this case toward the larger penguins.</p>
-<p>We can get both <code>median</code> and <code>mean</code> in one
-go:</p>
+<p>We can get both <code>median</code> and <code>mean</code> in one go
+using the <code>summarise()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">summarise</span><span class="op">(</span>median <span class="op">=</span> <span class="fu">median</span><span class="op">(</span><span class="va">body_mass_g</span>, na.rm <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>,</span>
+<span>  <span class="fu">summarise</span><span class="op">(</span>median <span class="op">=</span> <span class="fu">median</span><span class="op">(</span><span class="va">body_mass_g</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>            mean   <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">body_mass_g</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
