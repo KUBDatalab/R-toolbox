@@ -514,9 +514,33 @@ template, you need to edit the “config.yaml” file.</p>
 easier to edit the page in the future.</li>
 <li>episodes - remove all episodes not to be included in your new
 course. Change the order if necessary.</li>
-</ul><p>Når du har committet dine ændringer i config.yaml, går actions igang
-med at lave siden. Hav tålmodighed! Sidst jeg gjorde det tog det 54
-minutter fra initial commit, til actions var færdige.</p>
+</ul><p>Either do this directly on GitHub, or follow the usual process of
+forking to your own GitHub account, and cloning the repo to your
+computer.</p>
+<div id="consider-deleting-stuff" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="consider-deleting-stuff" class="callout-inner">
+<h3 class="callout-title">Consider deleting stuff</h3>
+<div class="callout-content">
+<p>When the page is generated, the scripts identifies all libraries used
+in all episodes. Even if these episodes will not be shown on the
+page.</p>
+<p>This requires the scripts to download and install all these
+libraries. And that takes time!</p>
+<p>If you delete all unused episodes, you will speed up the following
+step considerably.</p>
+</div>
+</div>
+</div>
+<p>After you have committed your changes to config.yaml, actions begins
+building the site. Have patience! The first build of the R-PUFF site
+took 54 minutes.</p>
+<p>Don’t worry, future changes are a lot faster. An update of the page
+you are currently reading, took 6 minutes. The scripts only rebuild Hvis
+du fremadrettet laver tilretninger i kurset, går det noget hurtigere.
+Systemet genbygger kun de sider hvor der sker ændringer.</p>
 <p>Gå herefter til “Settings” og “Pages”. Under “Build and deployment”,
 står der under “Source”, at siden der skal vises skal tages fra en
 bestemt “branch”.</p>

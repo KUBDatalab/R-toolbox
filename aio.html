@@ -3284,7 +3284,7 @@ geometric standard deviation. Change the code to write out “Geom.” and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3630,7 +3630,7 @@ specifying <code>render.categorical</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3682,7 +3682,7 @@ straightforward.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Try to remove the empty string from the function, and use it is a
 table one as previously shown:</p>
@@ -4077,7 +4077,7 @@ funktioner.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] -1.2574216  1.2531337 -0.5249697 -0.1935397 -1.1139879</code></pre>
+<pre class="output" tabindex="0"><code>[1]  0.5560665  0.6271423 -0.7928931  0.4067096  0.1915838</code></pre>
 </div>
 <p>Den returnerer (her) fem tilfældige værdier fra en normalfordeling
 med (her) middelværdi 0 og standardafvigelse 1.</p>
@@ -6740,7 +6740,7 @@ This is definitely not normally distributed.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.5020259</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.4697879</code></pre>
 </div>
 <p>The important point of the Central Limit Theorem is, that if we take
 a large number of random samples, and calculate the mean of each of
@@ -6756,7 +6756,7 @@ this:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.5412293</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.5033846</code></pre>
 </div>
 <p>And we can use the <code>replicate()</code> function to repeat that
 calculation several times, in this case 1000 times:</p>
@@ -7705,31 +7705,31 @@ work with afterwards:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>K-means clustering with 3 clusters of sizes 47, 69, 62
+<pre class="output" tabindex="0"><code>K-means clustering with 3 clusters of sizes 62, 47, 69
 
 Cluster means:
    Alcohol Malicacid      Ash Alcalinityofash Magnesium Totalphenols Flavanoids
-1 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
-2 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
-3 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
+1 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
+2 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
+3 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
   Nonflavanoidphenols Proanthocyanins Colorintensity       Hue
-1           0.2853191        1.910426       5.702553 1.0782979
-2           0.3901449        1.451884       4.086957 0.9411594
-3           0.3883871        1.503387       5.650323 0.8839677
+1           0.3883871        1.503387       5.650323 0.8839677
+2           0.2853191        1.910426       5.702553 1.0782979
+3           0.3901449        1.451884       4.086957 0.9411594
   OD280OD315ofdilutedwines   Proline
-1                 3.114043 1195.1489
-2                 2.490725  458.2319
-3                 2.365484  728.3387
+1                 2.365484  728.3387
+2                 3.114043 1195.1489
+3                 2.490725  458.2319
 
 Clustering vector:
-  [1] 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 1 1 3 3 1 1 3 1 1 1 1 1 1 3 3
- [38] 1 1 3 3 1 1 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 3 2 3 2 2 3 2 2 3 3 3 2 2 1
- [75] 3 2 2 2 3 2 2 3 3 2 2 2 2 2 3 3 2 2 2 2 2 3 3 2 3 2 3 2 2 2 3 2 2 2 2 3 2
-[112] 2 3 2 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 3 2 2 3 3 3 3 2 2 2 3 3 2 2 3 3 2 3
-[149] 3 2 2 2 2 3 3 3 2 3 3 3 2 3 2 3 3 2 3 3 3 3 2 2 3 3 3 3 3 2
+  [1] 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 2 2 1 1 2 2 1 2 2 2 2 2 2 1 1
+ [38] 2 2 1 1 2 2 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 1 3 1 3 3 1 3 3 1 1 1 3 3 2
+ [75] 1 3 3 3 1 3 3 1 1 3 3 3 3 3 1 1 3 3 3 3 3 1 1 3 1 3 1 3 3 3 1 3 3 3 3 1 3
+[112] 3 1 3 3 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 1 3 3 1 1 1 1 3 3 3 1 1 3 3 1 1 3 1
+[149] 1 3 3 3 3 1 1 1 3 1 1 1 3 1 3 1 1 3 1 1 1 1 3 3 1 1 1 1 1 3
 
 Within cluster sum of squares by cluster:
-[1] 1360950.5  443166.7  566572.5
+[1]  566572.5 1360950.5  443166.7
  (between_SS / total_SS =  86.5 %)
 
 Available components:
@@ -7751,9 +7751,9 @@ found, and match them with the true values, and count the matches:</p>
 </h3>
 <pre class="output" tabindex="0"><code>     true
 quess  1  2  3
-    1 46  1  0
-    2  0 50 19
-    3 13 20 29</code></pre>
+    1 13 20 29
+    2 46  1  0
+    3  0 50 19</code></pre>
 </div>
 <p>The algorithm have no idea about the numbering, the three groups are
 numbered 1 to 3 randomly. It appears that cluster 2 from the algorithm
@@ -8782,7 +8782,7 @@ gør vi også.</p>
   dette er en hint fence
   </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
 <div class="accordion-body">
 
 </div>
@@ -8819,7 +8819,7 @@ gør vi også.</p>
   dette er en spoiler fence
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 
 </div>
@@ -8848,13 +8848,13 @@ gør vi også.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-Windows">
+<div id="nav-tabpanel-1-Windows" class="tab-pane show active" aria-labelledby="nav-tab-1-Windows" role="tabpanel">
 <p>1</p>
 </div>
-<div id="nav-tabpanel-1-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Mac">
+<div id="nav-tabpanel-1-Mac" class="tab-pane" aria-labelledby="nav-tab-1-Mac" role="tabpanel">
 <p>2</p>
 </div>
-<div id="nav-tabpanel-1-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Linux">
+<div id="nav-tabpanel-1-Linux" class="tab-pane" aria-labelledby="nav-tab-1-Linux" role="tabpanel">
 <p>3</p>
 </div>
 </div>
@@ -8883,16 +8883,16 @@ gør vi også.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-2" class="tab-content">
-<div id="nav-tabpanel-2-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-2-Windows">
+<div id="nav-tabpanel-2-Windows" class="tab-pane show active" aria-labelledby="nav-tab-2-Windows" role="tabpanel">
 <p>4</p>
 </div>
-<div id="nav-tabpanel-2-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Mac">
+<div id="nav-tabpanel-2-Mac" class="tab-pane" aria-labelledby="nav-tab-2-Mac" role="tabpanel">
 <p>5</p>
 </div>
-<div id="nav-tabpanel-2-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Linux">
+<div id="nav-tabpanel-2-Linux" class="tab-pane" aria-labelledby="nav-tab-2-Linux" role="tabpanel">
 <p>6</p>
 </div>
-<div id="nav-tabpanel-2-Windows" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Windows">
+<div id="nav-tabpanel-2-Windows" class="tab-pane" aria-labelledby="nav-tab-2-Windows" role="tabpanel">
 <p>7</p>
 </div>
 </div>
@@ -9248,9 +9248,33 @@ easier to edit the page in the future.</li>
 <li>episodes - remove all episodes not to be included in your new
 course. Change the order if necessary.</li>
 </ul>
-<p>Når du har committet dine ændringer i config.yaml, går actions igang
-med at lave siden. Hav tålmodighed! Sidst jeg gjorde det tog det 54
-minutter fra initial commit, til actions var færdige.</p>
+<p>Either do this directly on GitHub, or follow the usual process of
+forking to your own GitHub account, and cloning the repo to your
+computer.</p>
+<div id="consider-deleting-stuff" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<div id="consider-deleting-stuff" class="callout-inner">
+<h3 class="callout-title">Consider deleting stuff</h3>
+<div class="callout-content">
+<p>When the page is generated, the scripts identifies all libraries used
+in all episodes. Even if these episodes will not be shown on the
+page.</p>
+<p>This requires the scripts to download and install all these
+libraries. And that takes time!</p>
+<p>If you delete all unused episodes, you will speed up the following
+step considerably.</p>
+</div>
+</div>
+</div>
+<p>After you have committed your changes to config.yaml, actions begins
+building the site. Have patience! The first build of the R-PUFF site
+took 54 minutes.</p>
+<p>Don’t worry, future changes are a lot faster. An update of the page
+you are currently reading, took 6 minutes. The scripts only rebuild Hvis
+du fremadrettet laver tilretninger i kurset, går det noget hurtigere.
+Systemet genbygger kun de sider hvor der sker ændringer.</p>
 <p>Gå herefter til “Settings” og “Pages”. Under “Build and deployment”,
 står der under “Source”, at siden der skal vises skal tages fra en
 bestemt “branch”.</p>
