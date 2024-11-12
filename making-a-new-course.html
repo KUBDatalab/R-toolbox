@@ -538,38 +538,32 @@ step considerably.</p>
 building the site. Have patience! The first build of the R-PUFF site
 took 54 minutes.</p>
 <p>Don’t worry, future changes are a lot faster. An update of the page
-you are currently reading, took 6 minutes. The scripts only rebuild Hvis
-du fremadrettet laver tilretninger i kurset, går det noget hurtigere.
-Systemet genbygger kun de sider hvor der sker ændringer.</p>
-<p>Gå herefter til “Settings” og “Pages”. Under “Build and deployment”,
-står der under “Source”, at siden der skal vises skal tages fra en
-bestemt “branch”.</p>
-<p>lige under, kan du vælge hvilken. Når Actions er færdige, vælger du
-her “gh-pages”, og klikker på save.</p>
-<p>Nu går GitHub actions igang igen. Dont worry - this step is quite
-fast!</p>
-<div id="med-fordel" class="callout">
+you are currently reading, took 6 minutes. The scripts only rebuild the
+pages that are changed.</p>
+<p>You can follow the process under “Actions” on the repo.</p>
+<p>When all actions have run - look for the green checkmarks, go to
+“Settings”, choose “Pages”.</p>
+<p>Under “Build and deployment”, we are told that the page is “deployed
+from a branch”, and below that, you can choose which branch. Chose
+“gh-pages”.</p>
+<p>Click “Save”. GitHub actions begins again, but do not worry, this
+step is very fast (depending on a lot of things, we are not paying
+GitHub, so we depend on shared ressources).</p>
+<div id="changes-are-local" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="med-fordel" class="callout-inner">
-<h3 class="callout-title">Med fordel!</h3>
+<div id="changes-are-local" class="callout-inner">
+<h3 class="callout-title">Changes are local</h3>
 <div class="callout-content">
-<p>Kan du slette de dokumenter under episodes som du ikke bruger. De
-indeholder store mængder kode der trækker på alskens biblioteker. Alle
-disse biblioteker skal installeres i GitHub processen for at siden kan
-genereres. Og det tager tid.</p>
+<p>You have made a new repo based on the master-version of the toolbox.
+Any changes made to R-toolbox, will <em>not</em> affect your new
+page.</p>
+<p>Changes made on your new page are similarly not affecting
+R-toolbox.</p>
 </div>
 </div>
 </div>
-<p>Når GitHub actions er færdig, har du siden, og repoet kan forkes, og
-hentes ned på din computer, så du kan lave evt. rettelser og
-tilpasninger.</p>
-<p>Husk! Sker der rettelser i master-udgaven, altså R-toolbox, så slår
-de ikke igennem på den nye side. Og omvendt.</p>
-<p>Vi kunne formentlig godt lave et eller andet der automatisk
-opdaterede stavefejl. Men så ville dine tilpasninger af det nye kursus
-også forsvinde.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
