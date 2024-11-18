@@ -545,13 +545,15 @@ representing the model.</p>
 <p>But what if we have reason to believe that the dependent variable
 depends on more than one independent variable?</p>
 <p>Let us find some data for illustrating this.</p>
-<p>Before anything else, we load the <code>tidyverse</code> package, and
-then load the data:</p>
+<p>Before anything else, we load the <code>tidyverse</code> package,
+download the data, and read it using <code>read_csv()</code>:</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span>
+<span><span class="fu">download.file</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BONEDEN.csv"</span>,</span>
+<span>              destfile <span class="op">=</span> <span class="st">"data/BONEDEN.csv"</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span></span>
 <span><span class="va">boneden</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/BONEDEN.csv"</span><span class="op">)</span></span></code></pre>
 </div>
 <p>The data records the bonedensity in different parts of the skeleton
@@ -844,18 +846,6 @@ ht1<code>,</code>wt1<code>,</code>tea1<code>,</code>cof1<code>,</code>alc1<code>
 <p>Make sure that only significant (p&lt;0.05) variables are
 included.</p>
 <p>What is the adjusted R squared value?</p>
-</div>
-</div>
-</div>
-<div id="accordionHint1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
-  <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
-</button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
-<div class="accordion-body">
-<p>svaret er 42</p>
-</div>
 </div>
 </div>
 </div>
