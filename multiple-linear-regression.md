@@ -33,12 +33,16 @@ more than one independent variable?
 
 Let us find some data for illustrating this.
 
-Before anything else, we load the `tidyverse` package, and then load the
-data:
+Before anything else, we load the `tidyverse` package, download the data, and
+read it using `read_csv()`: 
+
+
 
 
 ``` r
 library(tidyverse)
+download.file("https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/BONEDEN.csv",
+              destfile = "data/BONEDEN.csv", mode = "wb")
 boneden <- read_csv("data/BONEDEN.csv")
 ```
 
@@ -307,10 +311,6 @@ of the variables `age`, ht1`, `wt1`, `tea1`, `cof1`, `alc1` and `pyr1`.
 Make sure that only significant (p<0.05) variables are included. 
 
 What is the adjusted R squared value?
-
-:::: hint
-svaret er 42
-::::
 
 
 :::: solution

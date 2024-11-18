@@ -150,8 +150,8 @@ Og efter clt videre til hypotesetests
 
 ## CLT
 
-CLT fører til at vi kan betragte middelværdien for vores data som normalfordelt.
-selv når disse data ikke _er_ normalfordelte.
+The Central Limit Theorem allows us to assume that the mean of our data is 
+nromally distributed even when the data itself is _not_ normally distributed.
 
 I praksis bruger vi t-fordelingen, der ser lidt anderledes ud - vi har nemlig 
 ikke kendskab til hele populationens sande middelværdi og varians. t-fordelingen
@@ -196,7 +196,7 @@ rnorm(5, mean = 0, sd = 1 )
 ```
 
 ``` output
-[1] -0.8570113  0.5201216  0.7007828  0.1996490 -1.4541790
+[1] -0.41679882  1.72168060  0.25858090  0.09235465  0.53810403
 ```
 Den returnerer (her) fem tilfældige værdier fra en normalfordeling med (her) 
 middelværdi 0 og standardafvigelse 1.
