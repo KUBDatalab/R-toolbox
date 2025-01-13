@@ -19,6 +19,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/adv-dataviz.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/aio.html</loc>
   </url>
   <url>
@@ -64,6 +67,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/diagramtest.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/digitizing-graphs.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/factor-analysis.html</loc>
   </url>
   <url>
@@ -101,6 +107,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/adv-dataviz.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/aio.html</loc>
@@ -146,6 +155,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/diagramtest.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/digitizing-graphs.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/factor-analysis.html</loc>
@@ -194,6 +206,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/making-a-new-course.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/missing-data.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/multiple-linear-regression.html</loc>
@@ -302,6 +317,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/making-a-new-course.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/missing-data.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/multiple-linear-regression.html</loc>
