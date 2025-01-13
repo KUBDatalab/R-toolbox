@@ -6,7 +6,7 @@ exercises: 2
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do you write a lesson using R Markdown and `{sandpaper}`?
+- What even is a normal distribution?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -16,6 +16,9 @@ exercises: 2
 - Demonstrate how to include pieces of code, figures, and nested challenge blocks
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
 
 ## The Normal Distribution
 
@@ -50,7 +53,7 @@ worse.
 
 4. Many statistical methods and tests are based on assumptions of normality.
 
-## How does it look?
+## How does it look - mathematically?
 The normal distribution follows this formula:
 
 $$
@@ -71,7 +74,7 @@ we do not know what those true values are.
 We have an entire section on that - but in short: The probabilities we get 
 from the formula above should match the frequencies we observe in our data.
 
-## How does it look?
+## How does it look- graphically?
 
 It is useful to be able to compare the distributions of different variables.
 That can be difficult if one have a mean of 1000, and the other have a mean
@@ -87,167 +90,194 @@ The area under the curve is 1, equivalent to 100%.
 The normal distribution have a lot of nice mathematical properties, some of which
 are indicated on the graph. 
 
-CDF-plottet - så vi har forbindelsen til den deskriptive 
-statistik.
+## So - what _is_ the probability?
 
-Konceptet med - hvad er sandsynligheden for at se en observation der ligger
-x standardafvigelser fra middelværdien.
+The normal distribution curve tell what the probability density for a given observation
+is. But in general we are interested in the probability that something is larger,
+or smaller, than something. Or between certain values. 
 
-This allows us to calculate the probability of finding a certain value in the data,
-if the data is normally distributed, if we know the mean and the standard deviation.
+Rather that plotting the probability density, we can plot the cumulative density.
+
+<img src="fig/normal-distribution-rendered-cdf-plot-1.png" style="display: block; margin: auto;" />
+
+Note that we also find the cumulitive probability in the original plot of 
+the normal distribution - now it is a bit more direct.
+
+This allow us to see that the probability of observing a value that is 2 standard
+deviations smaller than the mean is rather small. 
+
+We can also, more indirectly, note that the probability of observing a value that
+is 2 standard deviations larger than the mean is rather small. Note that the
+probability of an observation that is smaller than 2 standard deviations larger
+than the mean is 97.7% (hard to read on the graph, but we will get to that). 
+Since the total probability is 100%, the probability of an observation being larger
+than 2 standard deviations is 100 - 97.7 = 2.3%
+
+
+## Do not read the graph - do the calculation
+
+Instead of trying to measure the values on the graph, we can do the calculations
+directly. 
 
 R provides us with a set of functions:
 
-pnorm the probability of having a smaller value than. 
-qnorm the value corresponding to a given probability
-dnorm the probability density of the norma distribution at a given x.
 
-Og det er for den standardiserede normalfordeling N(0,1)
 
-De har mulighed for at returnere værdier for en hvilken som helst normalfordeling
-med arbitrære middelværdi og standardafvigelse.
+* *pnorm* returns the probability of having a smaller value than x
+* *qnorm* the value x corresponding to a given probability
+* *dnorm* returns the probability density of the normal distribution at a given x.
 
-An example:
+We have an additional *rnorm* that returns a random value, drawn from a normal
+distribution.
 
-If the height of men are normally distributed, with a mean (mu) = 183 cm, and 
-a standarddeviation of 9.7 cm. How probably is it to find a man that is taller
-than 2 meters? 
+:::: challenge
+## Try it your self!
 
-Directly:
+Assuming that our observations are normally distributed with a mean of 0 and
+a standard deviation of 1.
+
+What is the probability of an observation x < 2?
+
+:::: solution
 
 ``` r
-1 - pnorm(200,183,9.7)
+pnorm(2)
+```
+
+``` output
+[1] 0.9772499
+```
+
+About 98% of the observations are smaller than 2
+
+::::
+
+::::
+:::: challenge
+Making the same assumptions, what is the value of the observation, for which
+42% of the observations is smaller?
+
+:::: solution
+
+``` r
+qnorm(0.42)
+```
+
+``` output
+[1] -0.2018935
+```
+
+42% of the observations are smaller than -0.2
+
+::::
+::::
+
+
+## What about other means and standard deviations?
+
+Being able to find out what the probablity of some observation being smaller when
+the mean is 0 and the standard deviation is 1, is nice. But this is not a common
+problem.
+
+Rather we might know that adult men in a given country have an average height
+of 183 cm, and that the standard deviation of their height is 9.7 cm. 
+
+What is the probability to encounter a man that is taller than 2 meters?
+
+The R-functions handle this easily, we "simply" specify the mean and standard 
+deviation in the function:
+
+
+``` r
+1 - pnorm(200, mean = 183, sd = 9.7)
 ```
 
 ``` output
 [1] 0.03983729
 ```
-In this example, pnorm returns the probability of an observation smaller than
-200, if data is normally distributed with mean 183, and standard deviation 9.7.
+The function calculate the probability of a man being shorter than 200 cm,
+if the distribution is normal and the mean and standard devation is 183 and
+9.7 respectively. The probability of the man having a height is 1 (equivalent to 100%).
+So if the probability of the man being shorter than 200 cm is 96%, the probability
+of him being taller than 200 cm is 4%
 
-The probability of finding any observation is 1. So the probability of finding
-an observation larger than 200, is 1 minus the probability of finding an observation 
-smaller than 200.
 
-Manually we could calculate the distance from 200 to 183 = 17. And divide that
-with the standard deviation 9.7: 17/9.7 = 1.752577. 
+:::: spoiler
+## How does that work?
+
+We have a lot of men with an average height of 183. They all have an individual
+heigth. If we subtract 183 from their height, and use that as a measurement of 
+their height, that will have a mean of 0. 
+
+We are not going into the details, but if we divide all the heights with the
+original standard deviation, and do all the math, we will discover that 
+the standard deviation of the new heights will be 1.
+
+Therefore, if we subtract 183 from all the individual heights, and divide them
+by 9.7, the resulting measurements of the heights have a mean of 0 and a standard 
+deviation of 1. Bringing all that together, we get:
 
 
 ``` r
-1 - pnorm(1.752577)
+1 - pnorm((200-183)/9.7)
 ```
 
 ``` output
-[1] 0.03983732
+[1] 0.03983729
+```
+
+::::
+
+:::: challenge
+## How many men are in an interval?
+
+How many men have a height between 170 and 190 cm?
+
+Assume mean = 183 cm and sd = 9.7
+
+:::: spoiler
+## Hint
+What proportion of men are shorter than 190 cm? And what proportion of men
+are shorter than 170 cm?
+::::
+
+:::: solution
+
+
+``` r
+pnorm(190, mean =183, sd = 9.7 )  - pnorm(170, mean = 183, sd = 9.7)
+```
+
+``` output
+[1] 0.6746558
 ```
 
 
+::::
 
-How many men are between 170 and 190 cm tall?
-Lidt før dette punkt skal vi videre til næste lesson.
+::::
 
-Og efter clt videre til hypotesetests
 
 ## CLT
 
-The Central Limit Theorem allows us to assume that the mean of our data is 
-nromally distributed even when the data itself is _not_ normally distributed.
+But my data is not normally distributed? 
 
-I praksis bruger vi t-fordelingen, der ser lidt anderledes ud - vi har nemlig 
-ikke kendskab til hele populationens sande middelværdi og varians. t-fordelingen
-har tykkere haler, der giver os større sikkerhed for vores konklusioner.
+No, it is not. Actually most data is not normally distributed. Often it _cannot_
+be normally distributed. Serum molybdenum, an essential trace metal in human
+physiology has a mean of 1.55 and a standard deviation of 0.74 in normal healthy
+adult humans.
 
-Hvad gør vi så? Hvis vi tager i princippet uendeligt mange stikprøver, samples,
-og beregner middelværdierne, så vil disse middelværdier følge normalfordelingen.
+:::: challenge
+## How many danes have negative serum molybdenum?
 
-hvis vi fremstiller linealer, og har en tese om at de er præcist 20 cm lange,
-som de skal være. det er mu
+Assuming an adult population of 5000000 danes, a mean of 1.55 and a standard
+deviation of 0.74, how many danes have a negative concentration of Molybdenum (Mo)
+in their blood?
 
-Nu tager vi en stikprøve på størrelsen "n" fra produktionen. Måler dem, og beregner gennemsnittet.
+:::: solution
 
-Måler vi præcist nok, vil det gennemsnit formentlig adskille sig fra 20 cm. Det
-gennemsnit er X-bar. 
-
-I dette tilfælde antager vi at vi kender standardafvigelsen for vores produktion.
-
-Hvis vi normerer alle vores målinger, så gennemsnittet er 0. Det gør vi ved at trække
-gennemsnittet fra alle målinger. Og så standardafvigelsen er 1. Det gør vi ved at 
-dividere alle målinger med standardafvigelsen.
-
-Så vil gennemsnittet af vores stikprøve, fordi CLT, følge en normalfordeling.
-Og vi kan se hvor det gennemsnit, denne z-score, placerer sig på den sande normalfordeling.
-
-og ud fra de matematiske egenskaber fra normalfordelingen, kan vi se hvor underlig den
-middelværdi vi måler, er.
-
-og det er stadig ikke en specielt god forklaring...
-
-
-
-### Fordelingsfunktionerne i R.
-
-De hyppigst forekommende fordelinger har hver deres sæt af funktioner.
-
-#### rnorm
-I samme familie finder vi runif, rbeta og en del andre:
-
-``` r
-rnorm(5, mean = 0, sd = 1 )
-```
-
-``` output
-[1]  1.1164374 -1.1967227  0.4946689 -1.0101639 -0.6332367
-```
-Den returnerer (her) fem tilfældige værdier fra en normalfordeling med (her) 
-middelværdi 0 og standardafvigelse 1.
-
-
-
-#### dnorm
-densiteten. I plottet er det værdien på y-aksen af kurven. 
-
-#### pnorm
-Den kumulative fordeling. Hvis x er 0, er arealet fra minus uendelig til 0
-lig pnorm(0). Og hvis vi bruger defaulet mean og sd, er det så 0.5.
-Sandsynligheden for en værdi mindre end x.
-
-#### qnorm
-det er så den omvendte funktion af pnorm. Husk det på at et q er det omvendte af
-et p.
-
-i pnorm finder vi sandsynligheden for at værdien er mindre end x. I qnorm finder
-vi x for en given sandsynlighed.
-
-## Er ting normalfordelte?
-
-Normalfordelingen kaldes normal fordi Karl Pearson og Francis Galton i det 19.
-århundrede observerede at det var en statistisk fordeling der forklarede 
-rigtig mange fænomener i befolkningsdata. Højde, vægt, blodtryk, intelligenskvotienter
-mv. Faktisk var det den der forklarede flest (af de ting de nu undersøgte).
-
-Og så er det i øvrigt den fordeling som middelværdier af stikprøver vil tilnærme sig
-jf. den centrale grænseværdisætning.
-
-Så den er normal fordi det er normen, den hyppigst forekommende. Ikke at forveksle
-med en mere løs, dagligsprogs, normativ (pun intended) anvendelse af ordet norm. Normalen i 
-en statistisk sammenhæng er ganske enkelt den hyppigst forekommende observation.
-
-Det i statistisk forstand normale, normen, er at have brune øjne (>50% af klodens
-befolkning har brune øjne). Det betyder ikke at der er noget galt med at have
-blå øjne.
-
-Og rigtig mange ting er ret tæt på at være normalfordelte. Men i virkeligheden
-er der ikke mange fænomener der følger normalfordelingen fuldstændig. Et eksempel:
-
-Serum (en del af blod) Molybdæn (der er et essentielt sporstof i human fysiologi), har en 
-middelværdi på 1.55 og en standardafvigelse på 0.74 hos normale, raske mennesker.
-
-Rifai, N. (2017). Tietz textbook of clinical chemistry and molecular diagnostics : Tietz textbook of clinical chemistry and molecular diagnostics - e-book. Elsevier - Health Sciences Division.
-
-Hvis vi antager at serum-Molybdæn er normalfordelt i populationen, kan vi 
-beregne hvor stor en andel af den normale raske befolkning i danmark, der har 
-en Molybdæn-koncentration under 0:
-
+We begin by calculating the probability of observing a Mo concentration lower than
+0:
 
 ``` r
 pnorm(0, mean = 1.55, sd = 0.74)
@@ -256,11 +286,77 @@ pnorm(0, mean = 1.55, sd = 0.74)
 ``` output
 [1] 0.01810352
 ```
-Hvilket vil sige at vi forventer at lidt over 100.000 danskere har et negativt 
-indhold af Molybdæn i blodet. Hvilket er fysisk umuligt.
-Hvorfor går det så godt alligevel? Fordi serum molybdæn er normalfordelt _nok_.
+We then multiply by the number of people:
+
+``` r
+5000000*0.01810352
+```
+
+``` output
+[1] 90517.6
+```
+About 90000 adult danes have not only none, but actually negative amounts of
+Molybdenum in their blood. Which is impossible.
+
+::::
+
+::::
+
+So - your data is not normally distributed. But the properties of your samples
+are!
+
+We are not actually measuring the average height of all men in the world
+ever. We are taking a sample, and calculating the mean. And standard deviation. And
+proportion.
+
+And those, the mean etc, _are_ normally distributed, even if the underlying 
+distribution of the population is not. 
+
+The Central Limit Theorem allow us to assume that, if we take enough random samples,
+the mean and standard deviation of these samples, will be normally distributed. 
 
 
+This is what we use when doing statistical tests. We posit a null-hypothesis that
+the "true" mean of some value should be something. We take a sample, and calculate
+the mean. And using the normal distribution, we can look at the CDF-plot above,
+and determine the probability of seeing the value we get.
+
+In practice we are usually not using the normal distribution, buth rather the
+t-distribution, to correct for the fact that we do not actually know the true mean
+and varians/standard deviation of the population. It gives us a more conservative
+estimate taht is more likely to be "true".
+
+
+:::: testimonial
+
+## What is normal?
+
+The normal distribution is normal, because Karl Pearson and Francis Galton in the
+19th century took a lot of samples of different phenomenons in the population data.
+Height, weight, intelligence etc. Calculating the mean (and other descriptive
+statistical parameters) they noted that these means followed
+a specific distribution. This was not the case for every phenomenon. But for a lot.
+
+Looking at the distributions describing a lot of phenomenons, the most common was 
+one specific distribution.
+
+In descriptive statistics, the normal observation is simply the most frequent. 
+In this set of numbers:
+
+
+``` output
+[1] 1 2 3 4 5 5
+```
+
+5 is the normal observation - because it is the most frequent, even if it
+only represents 20% of the observations. In a
+statistical sense normal is not normative. The normal color eye among humans
+is brown. Not because there is anything wrong with other colors, but simply 
+because brown is the most frequent. 
+
+The most frequent, ie normal, distribution found, was named the normal distribution.
+
+::::
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
