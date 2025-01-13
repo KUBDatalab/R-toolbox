@@ -20,8 +20,6 @@ exercises: 2
 
 
 
-## The Normal Distribution
-
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
 Inline instructor notes can help inform instructors of timing challenges
@@ -32,11 +30,14 @@ associated with the lessons. They appear in the "Instructor View"
 ## What is the normal distribution
 
 A probability distribution is a mathematical function, that describes
-the likelyhood of different outcomes in a random experiment. It gives us
+the likelihood of different outcomes in a random experiment. It gives us
 probabilities for all possible outcomes, and is normalised so that the sum
 of all the probabilities is 1. 
 
-Probability distribtutions can be discrete, or they can be continuous. The normal
+<img src="fig/normal-distribution-rendered-4-distibutions-1.png" style="display: block; margin: auto;" />
+
+
+Probability distributions can be discrete, or they can be continuous. The normal
 distribution is just one of several different continuous probability distributions. 
 
 The normal distribution is especially important, for a number of reasons:
@@ -69,10 +70,13 @@ Those are the "true" mean and standard deviation for the _entire_ universe. That
 is signified by using the greek letters $\mu$ and $\sigma$. In practise
 we do not know what those true values are.
 
+:::: callout
 ### What does it mean that our data is normally distributed
 
 We have an entire section on that - but in short: The probabilities we get 
 from the formula above should match the frequencies we observe in our data.
+
+::::
 
 ## How does it look- graphically?
 
