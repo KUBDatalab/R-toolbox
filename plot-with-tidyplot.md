@@ -34,7 +34,14 @@ energy %>%
     add_title("Energy Production Over Time")
 ```
 
-<img src="fig/plot-with-tidyplot-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+``` error
+Error in `dplyr::mutate()`:
+ℹ In argument: `scale_type = my_scale_type(variable)`.
+Caused by error in `purrr::map_chr()` at tidyplots/R/helpers.R:326:5:
+ℹ In index: 2.
+Caused by error in `.f()`:
+! Variable 'power' not found in supplied dataset
+```
 
 plottypes
 
