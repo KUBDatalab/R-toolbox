@@ -533,7 +533,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Plotting with tidyplot</h1>
-        <p>Last updated on 2025-01-14 |
+        <p>Last updated on 2025-01-21 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/plot-with-tidyplot.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -585,7 +585,17 @@ prefer.</p>
 <span>    <span class="fu">adjust_font</span><span class="op">(</span>fontsize <span class="op">=</span> <span class="fl">12</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>    <span class="fu">add_title</span><span class="op">(</span><span class="st">"Energy Production Over Time"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/plot-with-tidyplot-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>plottypes</p>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error in `dplyr::mutate()`:
+ℹ In argument: `scale_type = my_scale_type(variable)`.
+Caused by error in `purrr::map_chr()` at tidyplots/R/helpers.R:326:5:
+ℹ In index: 2.
+Caused by error in `.f()`:
+! Variable 'power' not found in supplied dataset</code></pre>
+</div>
+<p>plottypes</p>
 <p>colors</p>
 <p>adjusting</p>
 <p>titels og labels</p>
@@ -644,10 +654,10 @@ any links that you are not going to use.
 			</div>
 			<div class="col-md-6">
 
-        <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
+        <p>Materials licensed under <a href="LICENSE.html">CC0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.10" class="external-link">sandpaper (0.16.10)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.11" class="external-link">sandpaper (0.16.11)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -669,8 +679,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/plot-with-tidyplot.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/plot-with-tidyplot.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-01-14",
-  "datePublished": "2025-01-14"
+  "dateModified": "2025-01-21",
+  "datePublished": "2025-01-21"
 }
 
   </script><script>
