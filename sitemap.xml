@@ -211,6 +211,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/missing-data.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/model-control.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/multiple-linear-regression.html</loc>
   </url>
   <url>
@@ -233,6 +236,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/pca.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/pipes.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/plot-with-tidyplot.html</loc>
@@ -286,6 +292,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/tidy-data.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/ucloud.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/which-distribution.html</loc>
   </url>
   <url>
@@ -322,6 +331,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/missing-data.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/model-control.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/multiple-linear-regression.html</loc>
   </url>
   <url>
@@ -344,6 +356,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/pca.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/pipes.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/plot-with-tidyplot.html</loc>
@@ -395,6 +410,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/tidy-data.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/ucloud.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/which-distribution.html</loc>
