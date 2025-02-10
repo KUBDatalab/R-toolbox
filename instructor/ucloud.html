@@ -457,7 +457,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>R on Ucloud</h1>
-        <p>Last updated on 2025-02-07 |
+        <p>Last updated on 2025-02-10 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/ucloud.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -803,12 +803,20 @@ know where to continue.</p>
 <span><span class="fu">.rs.restartR</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Create python environment</span></span>
-<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">conda_create</span><span class="op">(</span>envname <span class="op">=</span> <span class="st">"my_project_env"</span>, python_version <span class="op">=</span> <span class="st">"3.10"</span><span class="op">)</span></span>
+<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">conda_create</span><span class="op">(</span></span>
+<span>  envname <span class="op">=</span> <span class="st">"my_project_env"</span>,</span>
+<span>  packages <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"python=3.10"</span>, <span class="st">"openssl=3.3.0"</span><span class="op">)</span>,</span>
+<span>  channels <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"conda-forge"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Install Python packages in the environment</span></span>
-<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">conda_install</span><span class="op">(</span>envname <span class="op">=</span> <span class="st">"my_project_env"</span>, packages <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"numpy&gt;=1.24"</span>, <span class="st">"pandas&gt;=2.1"</span>, <span class="st">"tensorflow&gt;=2.13"</span>, <span class="st">"keras&gt;=2.13"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">conda_install</span><span class="op">(</span>envname <span class="op">=</span> <span class="st">"my_project_env"</span>, </span>
+<span>                          packages <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"numpy&gt;=1.24"</span>, </span>
+<span>                                       <span class="st">"pandas&gt;=2.1"</span>, </span>
+<span>                                       <span class="st">"tensorflow&gt;=2.13"</span>, </span>
+<span>                                       <span class="st">"keras&gt;=2.13"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">conda_install</span><span class="op">(</span>envname <span class="op">=</span> <span class="st">"my_project_env"</span>, packages <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"transformers&gt;=4.30"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">conda_install</span><span class="op">(</span>envname <span class="op">=</span> <span class="st">"my_project_env"</span>, packages <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"torch"</span><span class="op">)</span>, pip <span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">conda_install</span><span class="op">(</span>envname <span class="op">=</span> <span class="st">"my_project_env"</span>, packages <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"pytorch"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Restart R - this might not be necessary - we do it anyway</span></span>
 <span><span class="fu">.rs.restartR</span><span class="op">(</span><span class="op">)</span></span>
@@ -834,7 +842,15 @@ script:</p>
 <span>  <span class="fu">layer_activation</span><span class="op">(</span><span class="st">"relu"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">layer_dense</span><span class="op">(</span>units <span class="op">=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">layer_activation</span><span class="op">(</span><span class="st">"softmax"</span><span class="op">)</span></span>
-<span><span class="fu">summary</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code></pre>
+<span><span class="fu">summary</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#importing the transformers python module</span></span>
+<span><span class="va">transformers</span> <span class="op">&lt;-</span> <span class="fu">reticulate</span><span class="fu">::</span><span class="fu">import</span><span class="op">(</span><span class="st">"transformers"</span><span class="op">)</span> </span>
+<span><span class="va">autotoken</span> <span class="op">&lt;-</span> <span class="va">transformers</span><span class="op">$</span><span class="va">AutoTokenizer</span></span>
+<span><span class="va">autoModelClass</span> <span class="op">&lt;-</span> <span class="va">transformers</span><span class="op">$</span><span class="va">AutoModelForSequenceClassification</span></span>
+<span></span>
+<span><span class="va">modelname</span> <span class="op">&lt;-</span> <span class="st">"distilbert-base-uncased-finetuned-sst-2-english"</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="va">autoModelClass</span><span class="op">$</span><span class="fu">from_pretrained</span><span class="op">(</span><span class="va">modelname</span><span class="op">)</span></span></code></pre>
 </div>
 <p>If you get a nice summary, everything worked. You might get messages
 about “ssl not installed”. Those can be ignored. And you will also get
@@ -861,6 +877,20 @@ we also have to run the</p>
 <span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu">use_condaenv</span><span class="op">(</span><span class="st">"my_project_env"</span>, required <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Before actually doing anything.</p>
+</div>
+<div class="section level4">
+<h4 id="what-about-other-packages">What about other packages?<a class="anchor" aria-label="anchor" href="#what-about-other-packages"></a></h4>
+<p>When you have run the setup above, and opened the project,
+<code>renv</code> is running and keeping track of stuff.</p>
+<p>That also means that if you need another package -
+<code>tidyverse</code> comes to mind as a frequently used set of
+packages, you simply install tidyverse running
+<code>install.packages("tidyverse")</code> just as you would normally
+do. These new packages are now installed in your project and will be
+available without having to install them repeatedly.</p>
+<p>But remember to run <code>revn::snapshot()</code> afterwards to
+update the registration <code>renv</code> keeps of installed
+packages.</p>
 </div>
 <div class="section level4">
 <h4 id="other-issues">Other issues<a class="anchor" aria-label="anchor" href="#other-issues"></a></h4>
@@ -1052,8 +1082,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/ucloud.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/ucloud.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-02-07",
-  "datePublished": "2025-02-07"
+  "dateModified": "2025-02-10",
+  "datePublished": "2025-02-10"
 }
 
   </script><script>
