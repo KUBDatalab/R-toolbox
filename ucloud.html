@@ -826,6 +826,7 @@ know where to continue.</p>
 <span><span class="co"># You might be asked if you want to proceed. You do.</span></span>
 <span><span class="fu">renv</span><span class="fu">::</span><span class="fu">snapshot</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
+
 <p>One way to check that everything worked, is to run the following
 script:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -886,7 +887,7 @@ packages, you simply install tidyverse running
 <code>install.packages("tidyverse")</code> just as you would normally
 do. These new packages are now installed in your project and will be
 available without having to install them repeatedly.</p>
-<p>But remember to run <code>revn::snapshot()</code> afterwards to
+<p>But remember to run <code>renv::snapshot()</code> afterwards to
 update the registration <code>renv</code> keeps of installed
 packages.</p>
 </div>

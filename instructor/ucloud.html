@@ -828,6 +828,21 @@ know where to continue.</p>
 <span><span class="co"># You might be asked if you want to proceed. You do.</span></span>
 <span><span class="fu">renv</span><span class="fu">::</span><span class="fu">snapshot</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div class="accordion-body">
+<p>Det svære her er at få korrekte versioner. Og at få openssl
+installeret med den samme version som der kører på systemet.</p>
+<p>Det betyder også, at hvis systemets python-version ændres - kan vi få
+fejlbeskeder om at ssl ikke kan findes.</p>
+</div>
+</div>
+</div>
+</div>
 <p>One way to check that everything worked, is to run the following
 script:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -888,7 +903,7 @@ packages, you simply install tidyverse running
 <code>install.packages("tidyverse")</code> just as you would normally
 do. These new packages are now installed in your project and will be
 available without having to install them repeatedly.</p>
-<p>But remember to run <code>revn::snapshot()</code> afterwards to
+<p>But remember to run <code>renv::snapshot()</code> afterwards to
 update the registration <code>renv</code> keeps of installed
 packages.</p>
 </div>
