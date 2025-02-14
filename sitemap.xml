@@ -292,6 +292,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/tidy-data.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/tuning-kmeans.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/ucloud.html</loc>
   </url>
   <url>
@@ -410,6 +413,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/tidy-data.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/tuning-kmeans.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/ucloud.html</loc>
