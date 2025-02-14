@@ -12,62 +12,71 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain how to use markdown with the new lesson template
-- Demonstrate how to include pieces of code, figures, and nested challenge blocks
+- Explain how to run a kmeans-clustering on data
+- Demonstrate the importance of scaling
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## What is k-means?
+Imagine we have a set of data. We might have a lot of data
+on the orders from different customers in our bookshop. We would like to target our email-campaigns to 
+them.
 
-k-means is a clustering algorithm. We have some data, and we
-would like to partition that data into a set of distinct, non-overlapping clusters.
+We do not want to go through all our customers manually. We
+want something automated, that partitions all our customers
+into eg. 10 different groups (or clusters) that are similar. Our 
+email-campaign should focus on books about cars and WW2 when
+we target customers in the cluster that tend to buy that kind of books. And on other topics to other clusters.
 
-And we would like those clusters to be based on the similarity
-of the features of the data.
+This is a real example from a major, danish online bookseller.
 
-When we talk about features, we talk about variables, or dimensions
-in the data.
+This is also an example of an unsupervised clustering. We do not
+know the true group any given customer belongs to, and we 
+do not want to predict which group she will end up in. We simply
+want to partition our data/customers into 10 groups.
 
-k-means is an unsupervised machine learning algorithm. We do
-not know the "true" groups, but simply want to group the results.
+:::: spoiler
+## Why 10?
 
-Here we have some data on wine. Different parameters of wine from
-three different grapes (or cultivars) have been measured. 
-Most of them are chemical measurements.
+In the case of the online bookseller the number was chosen
+to get a relatively small number of clusters, in order
+not to have to manage 20 or more different marketing mails. But large enough to have a decent differentation between the groups.
+
+The number is often chose arbitrarily, but methods for 
+choosing an "optimal" number exists.
+
+::::
+
+## kmeans is a way of doing this
+
+Many unsupervised clustering algorithms exist. kmeans is 
+just one. We provide the data, and specify the number
+of clusters we want to get. The algorithm will automatically
+provide us with them. And it will assign the datapoints to
+individual clusters, in a way where the datapoints have
+some sort of similarity of their features.
+
+
+## Wine as an example
+
+We might normally use the kmeans algorithm to cluster data
+where we do not know the "true" clusters the data points 
+belongs to. 
+
+In order to demonstrate the method, it is useful to have a
+dataset where we know the true clusters.
+
+Here we have a dataset, where different variables, have been measured on wine made from three different types of grapes (cultivars). 
+
+The terminology differs. We have a set of columns with 
+variables. But these variables are also often called 
+parameters or features. Or dimensions
+
+The dataset can be [downloaded here](https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/wine.data)
 
 
 ``` r
 library(tidyverse)
-```
-
-``` output
-── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-```
-
-``` r
 vin <- read_csv("data/win/wine.data", col_names = F)
-```
-
-``` output
-Rows: 178 Columns: 14
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-dbl (14): X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, X11, X12, X13, X14
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-``` r
 names(vin) <- c("cultivar",
                 "Alcohol",
                 "Malicacid",
@@ -84,59 +93,66 @@ names(vin) <- c("cultivar",
                 "Proline")
 ```
 
-Here we have chosen a data set where we know the "true" values
-in order to illustrate the process.
-
 ## What does it do?
 
-K-means works by chosing K - the number of clusters we want. That is 
-a choice entirely up to us. 
+Before actually running the algorithm, we should probably take
+a look at what it does. 
+
+K-means works by chosing K - the number of clusters we want. 
+That is a choice entirely up to us. In this example we will
+chose 3. Primarily because we know that there _are_ three 
+different cultivars.
 
 The algorithm then choses K random points, also called centroids.
 In this case these centroids
 are in 13 dimensions, because we have 13 features in the dataset.
 
+That makes it a bit difficult to visualize.
+
 It then calculates the distance from each observation in the data,
-to each of the K centroids. After that each observation is assigned
-to the centroid it is closest to. We are going to set K = 3 
-because we know that there are three clusters in the data. Each
-point will therefore be assigned to a specific cluster, described
-by the relevant centroid. 
+to each of the K centroids. After that, each observation is assigned
+to the centroid it is closest to. Each
+data point will therefore be assigned to a specific cluster, 
+described by the relevant centroid. 
 
 The algorithm then calculates three new centroids. All the observations
 assigned to centroid A are averaged, and we get a new centroid.
 The same calculations are done for the other two centroids, and
 we now have three new centroids. They now actually have a relation
-to the data - before they we assigned randomly, now they are 
+to the data - before they were assigned randomly, now they are 
 based on the data.
 
 Now the algorithm repeats the calculation of distance. For each
-observation in the data, which centroid is it closest to. Since 
-we calculated new centroids, some of the observations will switch 
+observation in the data, which of the new centroids is it closest
+to it. Since we calculated new centroids, some of the observations will switch 
 and will be assigned to a new centroid. 
 
 Again the new assignments of observations are used to calculate
-new centroids for the three clusters, and all calculations repeated
-until no observations swithces between clusters, or we have repeated
-the algorithm a set number of times (by default 10 times).
+new centroids for the three clusters, and all these calculations
+are repeated until no observations swithces between clusters, or
+we have repeated the algorithm a set number of times (by default 10 times).
 
 After that, we have clustered our data in three (or whatever K
 we chose) clusters, based on the features of the data.
 
 ## How do we actually do that?
 
-The algorithm only works with numerical data, and we of course have
-to remove the variable containing the "true" clusters.
+The algorithm only works with numerical data.
 
+Let us begin by removing the variable containing the true answers.
 
 ``` r
 cluster_data <- vin %>% 
   select(-cultivar)
 ```
 
-After that, we run the function `kmeans`, and specify that 
+There are only numerical values in this example, so we 
+do not have to remove other variables.
+
+After that, we can run the function `kmeans`, and specify that 
 we want three centers (K), and save the result to an object,
 that we can work with afterwards:
+
 
 ``` r
 clustering <- kmeans(cluster_data, centers = 3)
@@ -144,31 +160,31 @@ clustering
 ```
 
 ``` output
-K-means clustering with 3 clusters of sizes 47, 69, 62
+K-means clustering with 3 clusters of sizes 62, 69, 47
 
 Cluster means:
    Alcohol Malicacid      Ash Alcalinityofash Magnesium Totalphenols Flavanoids
-1 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
+1 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
 2 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
-3 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
+3 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
   Nonflavanoidphenols Proanthocyanins Colorintensity       Hue
-1           0.2853191        1.910426       5.702553 1.0782979
+1           0.3883871        1.503387       5.650323 0.8839677
 2           0.3901449        1.451884       4.086957 0.9411594
-3           0.3883871        1.503387       5.650323 0.8839677
+3           0.2853191        1.910426       5.702553 1.0782979
   OD280OD315ofdilutedwines   Proline
-1                 3.114043 1195.1489
+1                 2.365484  728.3387
 2                 2.490725  458.2319
-3                 2.365484  728.3387
+3                 3.114043 1195.1489
 
 Clustering vector:
-  [1] 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 1 1 3 3 1 1 3 1 1 1 1 1 1 3 3
- [38] 1 1 3 3 1 1 3 3 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 3 2 3 2 2 3 2 2 3 3 3 2 2 1
- [75] 3 2 2 2 3 2 2 3 3 2 2 2 2 2 3 3 2 2 2 2 2 3 3 2 3 2 3 2 2 2 3 2 2 2 2 3 2
-[112] 2 3 2 2 2 2 2 2 2 3 2 2 2 2 2 2 2 2 2 3 2 2 3 3 3 3 2 2 2 3 3 2 2 3 3 2 3
-[149] 3 2 2 2 2 3 3 3 2 3 3 3 2 3 2 3 3 2 3 3 3 3 2 2 3 3 3 3 3 2
+  [1] 3 3 3 3 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 1 3 3 1 1 3 3 1 3 3 3 3 3 3 1 1
+ [38] 3 3 1 1 3 3 1 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 1 2 1 2 2 1 2 2 1 1 1 2 2 3
+ [75] 1 2 2 2 1 2 2 1 1 2 2 2 2 2 1 1 2 2 2 2 2 1 1 2 1 2 1 2 2 2 1 2 2 2 2 1 2
+[112] 2 1 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 1 2 2 1 1 1 1 2 2 2 1 1 2 2 1 1 2 1
+[149] 1 2 2 2 2 1 1 1 2 1 1 1 2 1 2 1 1 2 1 1 1 1 2 2 1 1 1 1 1 2
 
 Within cluster sum of squares by cluster:
-[1] 1360950.5  443166.7  566572.5
+[1]  566572.5  443166.7 1360950.5
  (between_SS / total_SS =  86.5 %)
 
 Available components:
@@ -176,26 +192,46 @@ Available components:
 [1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
 [6] "betweenss"    "size"         "iter"         "ifault"      
 ```
+
+This is a bit overwhelming. The centroids in the three clusters
+are defined by their mean values of all the dimensions/variables
+in them. We can see that there appears to be a difference between
+the alcohol content between all of the three clusters. Whereas
+the difference between cluster 1 and 3 for malicacid is very 
+close. 
+
+We also get at clustering vector, that gives the number of 
+the cluster each datapoint is assigned to. And we get some 
+values for the variation between the clusters.
+
+### How well did it do?
+
 We know the true values, so we extract the clusters the algorithm found, and
-match them with the true values, and count the matches:
+match them with the true values:
 
 
 ``` r
-tibble(quess = clustering$cluster, true = vin$cultivar) %>% 
-table()
+testing_clusters <- tibble(quess = clustering$cluster, 
+                           true = vin$cultivar)
+```
+
+And count the matches:
+
+``` r
+table(testing_clusters)
 ```
 
 ``` output
      true
 quess  1  2  3
-    1 46  1  0
+    1 13 20 29
     2  0 50 19
-    3 13 20 29
+    3 46  1  0
 ```
 
-The algorithm have no idea about the numbering, the three groups are numbered 
-1 to 3 randomly. It appears that cluster 2 from the algorithm matches cluster 2
-from the data. The two other clusters are a bit more confusing.
+The algorithm have no idea about how the true groups are numbered, so the numbering does not match. But it appears
+that i does a relatively good job on two of the types of grapes.
+and is a bit confused about the third.
 
 Does that mean the algorithm does a bad job?
 
@@ -206,7 +242,22 @@ Looking at the data give a hint about the problems:
 
 
 ``` r
-# head(vin)
+head(vin)
+```
+
+``` output
+# A tibble: 6 × 14
+  cultivar Alcohol Malicacid   Ash Alcalinityofash Magnesium Totalphenols
+     <dbl>   <dbl>     <dbl> <dbl>           <dbl>     <dbl>        <dbl>
+1        1    14.2      1.71  2.43            15.6       127         2.8 
+2        1    13.2      1.78  2.14            11.2       100         2.65
+3        1    13.2      2.36  2.67            18.6       101         2.8 
+4        1    14.4      1.95  2.5             16.8       113         3.85
+5        1    13.2      2.59  2.87            21         118         2.8 
+6        1    14.2      1.76  2.45            15.2       112         3.27
+# ℹ 7 more variables: Flavanoids <dbl>, Nonflavanoidphenols <dbl>,
+#   Proanthocyanins <dbl>, Colorintensity <dbl>, Hue <dbl>,
+#   OD280OD315ofdilutedwines <dbl>, Proline <dbl>
 ```
 Note the differences between the values of "Malicacid" and "Magnesium". One
 have values between 0.74 and 5.8 and the
@@ -214,7 +265,8 @@ other bewtten 70 and 162. The latter
 influences the means much more that the former. 
 
 It is therefore good practice to scale the features to have the same range and 
-standard deviation:
+standard deviation. A function `scale()` that does exactly
+that exists in R:
 
 
 ``` r
@@ -245,6 +297,10 @@ By chance, the numbering of the clusters now matches the "true" cluster numbers.
 
 The clustering is not perfect. 3 observations belonging to cluster 2, are assigned
 to cluster 1 by the algorithm (and 3 more to cluster 3).
+
+In this caase we know the true values. Had we not, we would still
+have gotten the same groups, and could have correctly grouped
+the different data points.
 
 ## What are those distances?
 
@@ -311,6 +367,11 @@ take_one   1   2   3   4   5
 ```
 Two clusterings on the exact same data. And they are pretty different.
 
+Do not be confused by the fact that take_one-group-4 matches
+rather well with take_two-group-1. The numbering is arbitrary.
+
+
+
 Visualizing it makes it even more apparent:
 
 
@@ -322,7 +383,7 @@ ggplot(aes(x,y,color= factor(take_one))) +
 geom_point()
 ```
 
-<img src="fig/kmeans-rendered-unnamed-chunk-11-1.png" style="display: block; margin: auto;" />
+<img src="fig/kmeans-rendered-unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
 
 
 
@@ -334,26 +395,17 @@ ggplot(aes(x,y,color= factor(take_two))) +
 geom_point()
 ```
 
-<img src="fig/kmeans-rendered-unnamed-chunk-12-1.png" style="display: block; margin: auto;" />
+<img src="fig/kmeans-rendered-unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
 
+In other words - the algorithm will find clusters. And 
+the clustering depends, to a certain degree on the random 
+choice of initial centroids.
 
 ## Can it be use on any data?
 
 No. Even though there might actually be clusters in the data, the algorithm
-is not nessecarily able to find them. Consider this data:
-
-``` r
-test_data <- rbind(
-  data.frame(x = rnorm(200, 0,1), y = rnorm(200,0,1), z = rep("A", 200)),
-  data.frame(x = runif(1400, -30,30), y = runif(1400,-30,30), z = rep("B", 1400)) %>% 
-    filter(abs(x)>10 | abs(y)>10)
-  )
-test_data %>% 
-  ggplot(aes(x,y, color = z)) +
-  geom_point()
-```
-
-<img src="fig/kmeans-rendered-unnamed-chunk-13-1.png" style="display: block; margin: auto;" />
+is not necessarily able to find them. Consider this data:
+<img src="fig/kmeans-rendered-unnamed-chunk-14-1.png" style="display: block; margin: auto;" />
 There is obviously a cluster centered around (0,0). And another cluster more
 or lesss evenly spread around it.
 
@@ -361,28 +413,48 @@ The algorithm _will_ find two clusters:
 
 
 ``` r
-kmeans_model3 <- kmeans(test_data[,-3], 2)
-cluster3 <- augment(kmeans_model3, test_data[,-3])
+library(tidymodels)
 ```
 
-``` error
-Error in augment(kmeans_model3, test_data[, -3]): could not find function "augment"
+``` output
+── Attaching packages ────────────────────────────────────── tidymodels 1.2.0 ──
+```
+
+``` output
+✔ broom        1.0.7     ✔ rsample      1.2.1
+✔ dials        1.3.0     ✔ tune         1.2.1
+✔ infer        1.0.7     ✔ workflows    1.1.4
+✔ modeldata    1.4.0     ✔ workflowsets 1.1.0
+✔ parsnip      1.2.1     ✔ yardstick    1.3.2
+✔ recipes      1.1.0     
+```
+
+``` output
+── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
+✖ scales::discard() masks purrr::discard()
+✖ dplyr::filter()   masks stats::filter()
+✖ recipes::fixed()  masks stringr::fixed()
+✖ dplyr::lag()      masks stats::lag()
+✖ yardstick::spec() masks readr::spec()
+✖ recipes::step()   masks stats::step()
+• Learn how to get started at https://www.tidymodels.org/start/
 ```
 
 ``` r
+kmeans_model3 <- kmeans(test_data[,-3], 2)
+cluster3 <- augment(kmeans_model3, test_data[,-3])
 ggplot(cluster3, aes(x,y,color=.cluster)) +
   geom_point()
 ```
 
-``` error
-Error: object 'cluster3' not found
-```
+<img src="fig/kmeans-rendered-unnamed-chunk-15-1.png" style="display: block; margin: auto;" />
 But not the ones we want.
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use `.md` files for episodes when you want static content
+- kmeans is an unsupervised technique, that will find the hidden structure in our data that we do not know about
+- kmeans will find the number of clusters we ask for. Even if there is no structure in the data at all
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
