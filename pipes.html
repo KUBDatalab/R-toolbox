@@ -118,11 +118,11 @@
   R-toolbox
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 61%" class="percentage">
-    61%
+<aside class="col-md-12 lesson-progress"><div style="width: 62%" class="percentage">
+    62%
   </div>
   <div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 61%" aria-valuenow="61" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar library" role="progressbar" style="width: 62%" aria-valuenow="62" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -323,7 +323,7 @@
 <div class="accordion accordion-flush" id="accordionFlush15">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading15">
-        <a href="powerberegninger.html">14. powerberegninger</a>
+        <a href="powerberegninger.html">14. Power Calculations</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -341,7 +341,7 @@
 <div class="accordion accordion-flush" id="accordionFlush17">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading17">
-        <a href="anova.html">16. ANOVA</a>
+        <a href="tuning-kmeans.html">16. Tuning kmeans</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -350,7 +350,16 @@
 <div class="accordion accordion-flush" id="accordionFlush18">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading18">
-        <a href="ucloud.html">17. R on Ucloud</a>
+        <a href="anova.html">17. ANOVA</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush19">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading19">
+        <a href="ucloud.html">18. R on Ucloud</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -362,7 +371,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        18. A deeper dive into pipes
+        19. A deeper dive into pipes
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -374,15 +383,6 @@
 <li><a href="#what-if-i-want-the-other-pipe">What if I want the other pipe?</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
-<div class="accordion accordion-flush" id="accordionFlush20">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading20">
-        <a href="tuning-kmeans.html">19. Tuning kmeans</a>
-    </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -409,6 +409,15 @@
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading23">
         <a href="making-a-new-course.html">22. Make a new course</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush24">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading24">
+        <a href="shinylive.html">23. Shiny without the server</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -457,7 +466,7 @@
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="ucloud.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="tuning-kmeans.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="gis_setup.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -465,8 +474,8 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: R on Ucloud
         </a>
-        <a class="chapter-link float-end" href="tuning-kmeans.html" rel="next">
-          Next: Tuning kmeans...
+        <a class="chapter-link float-end" href="gis_setup.html" rel="next">
+          Next: Setup for GIS...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -629,10 +638,10 @@ have a number of siblings.</p>
 <p>This pipe allow us to inject a function into a longer set of pipes,
 without affecting the rest of the flow.</p>
 <!--html_preserve-->
-<div id="htmlwidget-fad8b2107289bd792675" class="DiagrammeR html-widget html-fill-item" style="width:504px;height:504px;">
+<div id="htmlwidget-eaf33a49c4f7fd880210" class="DiagrammeR html-widget html-fill-item" style="width:504px;height:504px;">
 
 </div>
-<script type="application/json" data-for="htmlwidget-fad8b2107289bd792675">{"x":{"diagram":"\n  graph LR\n    A[Input data] --> B[%T>%]\n    B --> C[Function run for side-effect <br> e.g. print, plot or log]\n    B --> E\n    C --> D[ %>% ]\n    D --> E[Next function in the flow]\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve--><p><img src="fig/tee-pipe.png" class="figure"> The tee-pipe sends data to two
+<script type="application/json" data-for="htmlwidget-eaf33a49c4f7fd880210">{"x":{"diagram":"\n  graph LR\n    A[Input data] --> B[%T>%]\n    B --> C[Function run for side-effect <br> e.g. print, plot or log]\n    B --> E\n    C --> D[ %>% ]\n    D --> E[Next function in the flow]\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve--><p><img src="fig/tee-pipe.png" class="figure"> The tee-pipe sends data to two
 functions. The immediate next, which we want to run for plotting,
 logging or printing data, and to the next function over, which get the
 original input data, rather than what is returned by the intermediate
@@ -968,7 +977,7 @@ any links that you are not going to use.
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="ucloud.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="tuning-kmeans.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="gis_setup.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -976,8 +985,8 @@ any links that you are not going to use.
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: R on Ucloud
         </a>
-        <a class="chapter-link float-end" href="tuning-kmeans.html" rel="next">
-          Next: Tuning kmeans...
+        <a class="chapter-link float-end" href="gis_setup.html" rel="next">
+          Next: Setup for GIS...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
