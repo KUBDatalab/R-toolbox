@@ -22,39 +22,221 @@ We know how to run a kmeans clustering on our data.
 
 But one question remains. What k should we chose? 
 
-det kalder vi også at tune hyperparameteren. 
+k-means is an unsupervised clustering technique, but we do need to chose the 
+number of cluster we want it to categorise our data in.
 
-hvorfor hyper? 
+We might have domain knowledge informing us that there should be three clusters.
 
-Det kræver at vi har et mål for om resultatet er godt.
+But otherwise we are left to our own devices and have to make a choice. 
 
-Hvor kommer det fra når vi ikke kender de sande værdier?
+We can chose several different k, and look at the results in order to make 
+that determination. But we would'nt normally do this kind of thing. It is
+much better to have a numerical indication independent of our own prejudices
+to make the determination.
 
-Undervurder i øvrigt ikke fænomenet domæne viden. Jeg kan
-clustre dine data til perfektion. men hvis du ved at der skal
-være 5 clustre, er der ikke nødvendigvis meget gode grunde til
-at vælge 7 (men prøv lige alligevel, det kunne være at der
-var noget du ikke vidste.)
+We call this Hyperparameter Tuning, and there are automated techniques for this.
+
+:::: callout
+
+### Why hyper?
+
+Normally whe we do machine learning, we do that by adjusting a set of parameters
+in order to get the best possible result. k in kmeans however is not at parameter
+we learn from the data when we train the model. It is a parameter we chose, 
+that is part of the structure of the model rather than something the algorithm 
+optimises automatically.
+
+::::
+
+### What is a good clustering?
+
+One intuitive way of looking at the quality of clusters, would be to look at 
+the distance between all points and the clusters they have been assigned 
+to. A model where all points are close to their centroid, is regarded as a better
+model where the points are a longer way from their centroid.
+
+We can do a k-means clustering for several different k, and calculate the 
+distance. As we often do when we calculate distances, we square them in order
+to handle different directions of the distance. And to penalize models with
+very large outliers. This sum is directly available in the kmeans result, with
+the name `tot.withinss´
+
+Let us look at an example.
+
+We need to generate some data:
 
 
 ``` r
-# Simulerer noget data
 set.seed(123)
 data <- matrix(rnorm(300), ncol = 3)
-
-# Beregn WSS for k = 1 til 10
-wss <- sapply(1:10, function(k){
-  kmeans(data, centers = k, nstart = 20)$tot.withinss
-})
-
-# Plot WSS vs. antal klynger
-plot(1:10, wss, type = "b", pch = 19, frame = FALSE,
-     xlab = "Antal klynger (k)",
-     ylab = "Total within-cluster sum of squares (WSS)")
 ```
 
-<img src="fig/tuning-kmeans-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+This creates 300 random values, and places them into a matrix with three columns.
 
+Running kmeans directly with eg k = 3, can give us the total:
+
+
+``` r
+kmeans(data, centers = 3)$tot.withinss
+```
+
+``` output
+[1] 165.6211
+```
+
+We could do that by hand for multiple values of k, but write a piece of code for it:
+
+
+``` r
+library(purrr)
+wss <- map_dbl(1:10, function(k){
+  kmeans(data, centers = k, nstart = 20)$tot.withinss
+})
+```
+
+We use a slightly advanced technique, where map_dbl is a function that can
+run another function on a sequence of input. That other function is keams, with
+a variable k, using the `$` notation to extract the sum of the squared distances
+from the data points to their cluster centroids.
+
+We can collect that in a dataframe:
+
+
+``` r
+library(tibble)
+wss_df <- tibble(k = 1:10,
+                 wss = wss)
+wss_df
+```
+
+``` output
+# A tibble: 10 × 2
+       k   wss
+   <int> <dbl>
+ 1     1 264. 
+ 2     2 198. 
+ 3     3 147. 
+ 4     4 119. 
+ 5     5 101. 
+ 6     6  88.4
+ 7     7  80.2
+ 8     8  73.2
+ 9     9  66.1
+10    10  61.7
+```
+
+And now we can plot the result:
+
+
+``` r
+wss_df %>%
+  ggplot(aes(x = k, y = wss)) +
+  geom_point() +
+  geom_line() +
+  labs(
+    x = "k (number of clusters)",
+    y = "Total within-cluster sum of squares (WSS)",
+    title = "Elbow-method: WSS vs. k"
+  ) 
+```
+
+``` error
+Error in ggplot(., aes(x = k, y = wss)): could not find function "ggplot"
+```
+It is clear that 10 clusters is better than 5. So, should we use 10? No.
+
+We will be able to get the value down to 0 if we just choose enough clusters. 
+And nothing new is really learnt if 100 datapoints are assigned to 100 clusters,
+one each. The correct choice of k here, is the point where the curve bends. At 
+the hook of the elbow. Somewhere around k = 3 or maybe k = 4. If we chose a larger
+k, we do get better clustering, but we begin to overfit. The addition of an
+extra cluster does not really improve the result.
+
+:::: challenge
+## Try it yourself
+
+Read in the wine dataset we have looked at earlier:
+
+``` r
+library(readr)
+vin <- read_csv("data/win/wine.data", col_names = F)
+```
+
+``` output
+Rows: 178 Columns: 14
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (14): X1, X2, X3, X4, X5, X6, X7, X8, X9, X10, X11, X12, X13, X14
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+```
+
+``` r
+names(vin) <- c("cultivar",
+                "Alcohol",
+                "Malicacid",
+                "Ash",
+                "Alcalinityofash",
+                "Magnesium",
+                "Totalphenols",
+                "Flavanoids",
+                "Nonflavanoidphenols",
+                "Proanthocyanins",
+                "Colorintensity",
+                "Hue",
+                "OD280OD315ofdilutedwines",
+                "Proline")
+```
+
+What is the optimal k for a kmeans clustering on this dataset? Remember to 
+remove the cultivar column. 
+
+:::: solution
+
+``` r
+library(dplyr)
+```
+
+``` output
+
+Attaching package: 'dplyr'
+```
+
+``` output
+The following objects are masked from 'package:stats':
+
+    filter, lag
+```
+
+``` output
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+```
+
+``` r
+vin <- vin %>% select(-cultivar)
+wss <- map_dbl(1:10, function(k){
+  kmeans(vin, centers = k, nstart = 20)$tot.withinss
+})
+tibble(k = 1:10,
+                 wss = wss) %>%
+  ggplot(aes(x = k, y = wss)) +
+  geom_point() +
+  geom_line()
+```
+
+``` error
+Error in ggplot(., aes(x = k, y = wss)): could not find function "ggplot"
+```
+
+::::
+
+::::
+
+
+library(factoextra)
 
 
 ``` r
@@ -91,7 +273,7 @@ plot(k_values, avg_silhouette, type = "b", pch = 19, frame = FALSE,
      main = "Silhouette-metoden til valg af k")
 ```
 
-<img src="fig/tuning-kmeans-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="fig/tuning-kmeans-rendered-unnamed-chunk-7-1.png" style="display: block; margin: auto;" />
 
 ``` r
 # Find det optimale k (hvor gennemsnitlig silhuet er størst)
@@ -146,7 +328,7 @@ B=50 simulated reference sets, k = 1..10; spaceH0="scaledPCA"
 plot(gap_stat, main = "Gap-statistik til valg af antal klynger")
 ```
 
-<img src="fig/tuning-kmeans-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="fig/tuning-kmeans-rendered-unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
