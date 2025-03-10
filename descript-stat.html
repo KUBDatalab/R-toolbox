@@ -941,7 +941,7 @@ make a histogram directly:</p>
 <pre class="warning" tabindex="0"><code>Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
-<figure><img src="fig/descript-stat-rendered-unnamed-chunk-14-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>By default ggplot chooses 30 bins, typically we should chose a
+<figure><img src="fig/descript-stat-rendered-histogram-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>By default ggplot chooses 30 bins, typically we should chose a
 different number:</p>
 <div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -957,7 +957,7 @@ different number:</p>
 <pre class="warning" tabindex="0"><code>Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
-<figure><img src="fig/descript-stat-rendered-unnamed-chunk-15-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Or, ideally, set the widths of them, manually:</p>
+<figure><img src="fig/descript-stat-rendered-change_bin_n-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Or, ideally, set the widths of them, manually:</p>
 <div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -973,7 +973,7 @@ different number:</p>
 <pre class="warning" tabindex="0"><code>Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
-<p><img src="fig/descript-stat-rendered-unnamed-chunk-16-1.png" style="display: block; margin: auto;" class="figure">
+<p><img src="fig/descript-stat-rendered-change_bin_width-1.png" style="display: block; margin: auto;" class="figure">
 Or even specify the exact intervals we want, here intervals from 0 to
 6500 gram in intervals of 250 gram:</p>
 <div class="codewrapper sourceCode" id="cb33">
@@ -991,7 +991,7 @@ Or even specify the exact intervals we want, here intervals from 0 to
 <pre class="warning" tabindex="0"><code>Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
-<p><img src="fig/descript-stat-rendered-unnamed-chunk-17-1.png" style="display: block; margin: auto;" class="figure">
+<p><img src="fig/descript-stat-rendered-bin_breaks-1.png" style="display: block; margin: auto;" class="figure">
 The histogram provides us with a visual indication of both range, the
 variation of the values, and an idea about where the data is
 located.</p>
@@ -1239,7 +1239,7 @@ statistics:</p>
 <pre class="warning" tabindex="0"><code>Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_boxplot()`).</code></pre>
 </div>
-<figure><img src="fig/descript-stat-rendered-unnamed-chunk-28-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The boxplot shows us the median (the fat line in the middel of each
+<figure><img src="fig/descript-stat-rendered-boxplots-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The boxplot shows us the median (the fat line in the middel of each
 box), the 1st and 3rd quartiles (the ends of the boxes), and the range,
 with the whiskers at each end of the boxes, illustrating the minimum and
 maximum. Any observations, more than 1.5 times the IQR from either the
