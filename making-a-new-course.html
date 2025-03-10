@@ -472,7 +472,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Make a new course</h1>
-        <p>Last updated on 2025-03-04 |
+        <p>Last updated on 2025-03-10 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/making-a-new-course.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -516,7 +516,7 @@ you can easily initialize a new repository based on this page.</p>
   How do you make a template-repo?
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Go to the main page of the repo you want to make a template.</p>
 <p>Click “settings”, and, just under the box where you can change the
@@ -571,6 +571,23 @@ pages that are changed.</p>
 <p>You can follow the process under “Actions” on the repo.</p>
 <p>When all actions have run - look for the green checkmarks, go to
 “Settings”, choose “Pages”.</p>
+<div id="renv-messes-things-up" class="callout caution">
+<div class="callout-square">
+<i class="callout-icon" data-feather="alert-triangle"></i>
+</div>
+<div id="renv-messes-things-up" class="callout-inner">
+<h3 class="callout-title">renv messes things up!</h3>
+<div class="callout-content">
+<p>Sandpaper uses the renv environment manager to handle dependencies in
+the packages you use. But that handling appears to be different on a
+windows machine and on the virtual Linux machine that GitHub actions
+uses.</p>
+<p>So: DO NOT COMMIT AND PUSH ANY renv TO GITHUB. IT WILL BREAK THE
+GENERATION OF THE PAGES.</p>
+<p>If you do - delete the renv directory.</p>
+</div>
+</div>
+</div>
 <p>Under “Build and deployment”, we are told that the page is “deployed
 from a branch”, and below that, you can choose which branch. Chose
 “gh-pages”.</p>
@@ -669,8 +686,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/making-a-new-course.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/making-a-new-course.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-03-04",
-  "datePublished": "2025-03-04"
+  "dateModified": "2025-03-10",
+  "datePublished": "2025-03-10"
 }
 
   </script><script>
