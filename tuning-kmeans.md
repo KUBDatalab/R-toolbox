@@ -129,6 +129,22 @@ And now we can plot the result:
 
 
 ``` r
+library(tidyverse)
+```
+
+``` output
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tidyr     1.3.1
+✔ lubridate 1.9.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+```
+
+``` r
 wss_df %>%
   ggplot(aes(x = k, y = wss)) +
   geom_point() +
@@ -140,9 +156,7 @@ wss_df %>%
   ) 
 ```
 
-``` error
-Error in ggplot(., aes(x = k, y = wss)): could not find function "ggplot"
-```
+<img src="fig/tuning-kmeans-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
 It is clear that 10 clusters is better than 5. So, should we use 10? No.
 
 We will be able to get the value down to 0 if we just choose enough clusters. 
@@ -183,7 +197,7 @@ names(vin) <- c("cultivar",
                 "Flavanoids",
                 "Nonflavanoidphenols",
                 "Proanthocyanins",
-                "Colorintensity",
+                "Colourintensity",
                 "Hue",
                 "OD280OD315ofdilutedwines",
                 "Proline")
@@ -196,26 +210,6 @@ remove the cultivar column.
 
 ``` r
 library(dplyr)
-```
-
-``` output
-
-Attaching package: 'dplyr'
-```
-
-``` output
-The following objects are masked from 'package:stats':
-
-    filter, lag
-```
-
-``` output
-The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union
-```
-
-``` r
 vin <- vin %>% select(-cultivar)
 wss <- map_dbl(1:10, function(k){
   kmeans(vin, centers = k, nstart = 20)$tot.withinss
@@ -227,9 +221,7 @@ tibble(k = 1:10,
   geom_line()
 ```
 
-``` error
-Error in ggplot(., aes(x = k, y = wss)): could not find function "ggplot"
-```
+<img src="fig/tuning-kmeans-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
 
 ::::
 

@@ -90,9 +90,9 @@ geom_bar()
 
 This barchart is _boring_. Grey in grey.
 
-## Step 1 - colors and labels
+## Step 1 - colours and labels
 
-The first step would be to do something about the colors, and add labels and
+The first step would be to do something about the colours, and add labels and
 a title to the plot:
 
 
@@ -106,7 +106,7 @@ labs(
   title = "Number of penguins at Palmer Station, Antarctica")
 ```
 
-<img src="fig/barcharts-rendered-colors-labels-1.png" style="display: block; margin: auto;" />
+<img src="fig/barcharts-rendered-colours-labels-1.png" style="display: block; margin: auto;" />
 It is not strictly necessary to remove the label of the x-axis, but it is superfluous
 in this case.
 
@@ -283,7 +283,7 @@ penguin_example %>%
   geom_text(data = penguin_count, mapping = aes(x = n, y = species, label = n),
     hjust = 1,
     nudge_x = -0.25,
-    color = "white") +
+    colour = "white") +
   geom_vline(xintercept = 0) +
   scale_x_continuous(breaks = NULL, expand = expansion(mult = c(0, 0.01))) 
 ```
@@ -297,7 +297,7 @@ when we add the counts directly to the plot, we can get rid of the x-axis entire
 On the other hand, it can be a good idea in this specific example, to add a 
 vertical indication of where the x=0 intercept is: `geom_vline(xintercept = 0)`.
 
-And: Always remember to think about the contrast between the color of the 
+And: Always remember to think about the contrast between the colour of the 
 bars and the text!
 
 ## Add labels to the plot
@@ -329,13 +329,13 @@ penguin_example %>%
     mapping = aes(x = n, y = species, label = n),
     hjust = 1,
     nudge_x = -0.25,
-    color = "white"  ) +
+    colour = "white"  ) +
   geom_text(
     data = penguin_count,
     mapping = aes(x = 0, y = species, label = species),
     hjust = 0,
     nudge_x = 0.25,
-    color = "white",
+    colour = "white",
     fontface = "bold",
     size = 4.5  ) +
   geom_vline(xintercept = 0)
@@ -375,7 +375,7 @@ penguin_example %>%
     mapping = aes(x = n, y = species, label = n),
     hjust = 1,
     nudge_y = 0.1,
-    color = "white",
+    colour = "white",
     size = 5.5  ) +
   geom_text(
     data = penguin_count,
@@ -383,7 +383,7 @@ penguin_example %>%
     hjust = 0, 
     nudge_x = 0.5, 
     nudge_y = 0.1,
-    color = "white", 
+    colour = "white", 
     fontface = "bold", 
     size = 4.5  ) +
   geom_vline(xintercept = 0)

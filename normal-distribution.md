@@ -354,8 +354,8 @@ In this set of numbers:
 
 5 is the normal observation - because it is the most frequent, even if it
 only represents 20% of the observations. In a
-statistical sense normal is not normative. The normal color eye among humans
-is brown. Not because there is anything wrong with other colors, but simply 
+statistical sense normal is not normative. The normal colour eye among humans
+is brown. Not because there is anything wrong with other colours, but simply 
 because brown is the most frequent. 
 
 The most frequent, ie normal, distribution found, was named the normal distribution.
