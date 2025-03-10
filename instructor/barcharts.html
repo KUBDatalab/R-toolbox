@@ -325,7 +325,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#introduction">Introduction</a></li>
-<li><a href="#step-1---colors-and-labels">Step 1 - colors and labels</a></li>
+<li><a href="#step-1---colours-and-labels">Step 1 - colours and labels</a></li>
 <li><a href="#second-step---the-order-of-the-bars">Second step - the order of the bars</a></li>
 <li><a href="#rotating-the-plot">Rotating the plot</a></li>
 <li><a href="#size-of-text">Size of text</a></li>
@@ -608,8 +608,8 @@ barchart til at se pænere ud.</p>
 <span><span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span> </span></code></pre>
 </div>
 <figure><img src="../fig/barcharts-rendered-first-example-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This barchart is <em>boring</em>. Grey in grey.</p>
-</section><section><h2 class="section-heading" id="step-1---colors-and-labels">Step 1 - colors and labels<a class="anchor" aria-label="anchor" href="#step-1---colors-and-labels"></a></h2>
-<hr class="half-width"><p>The first step would be to do something about the colors, and add
+</section><section><h2 class="section-heading" id="step-1---colours-and-labels">Step 1 - colours and labels<a class="anchor" aria-label="anchor" href="#step-1---colours-and-labels"></a></h2>
+<hr class="half-width"><p>The first step would be to do something about the colours, and add
 labels and a title to the plot:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -623,7 +623,7 @@ labels and a title to the plot:</p>
 <span>  y <span class="op">=</span> <span class="st">"Number of penguins"</span>,</span>
 <span>  title <span class="op">=</span> <span class="st">"Number of penguins at Palmer Station, Antarctica"</span><span class="op">)</span></span></code></pre>
 </div>
-<p><img src="../fig/barcharts-rendered-colors-labels-1.png" style="display: block; margin: auto;" class="figure">
+<p><img src="../fig/barcharts-rendered-colours-labels-1.png" style="display: block; margin: auto;" class="figure">
 It is not strictly necessary to remove the label of the x-axis, but it
 is superfluous in this case.</p>
 </section><section><h2 class="section-heading" id="second-step---the-order-of-the-bars">Second step - the order of the bars<a class="anchor" aria-label="anchor" href="#second-step---the-order-of-the-bars"></a></h2>
@@ -799,7 +799,7 @@ understand, approach is to construct a dataframe with the data:</p>
 <span>  <span class="fu">geom_text</span><span class="op">(</span>data <span class="op">=</span> <span class="va">penguin_count</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">n</span>, y <span class="op">=</span> <span class="va">species</span>, label <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span>
 <span>    hjust <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>    nudge_x <span class="op">=</span> <span class="op">-</span><span class="fl">0.25</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    colour <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">scale_x_continuous</span><span class="op">(</span>breaks <span class="op">=</span> <span class="cn">NULL</span>, expand <span class="op">=</span> <span class="fu">expansion</span><span class="op">(</span>mult <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> </span></code></pre>
 </div>
@@ -809,8 +809,8 @@ of the x-axis entirely.</p>
 <p>On the other hand, it can be a good idea in this specific example, to
 add a vertical indication of where the x=0 intercept is:
 <code>geom_vline(xintercept = 0)</code>.</p>
-<p>And: Always remember to think about the contrast between the color of
-the bars and the text!</p>
+<p>And: Always remember to think about the contrast between the colour
+of the bars and the text!</p>
 </section><section><h2 class="section-heading" id="add-labels-to-the-plot">Add labels to the plot<a class="anchor" aria-label="anchor" href="#add-labels-to-the-plot"></a></h2>
 <hr class="half-width"><p>We can do the same with labels if we want:</p>
 <div class="codewrapper sourceCode" id="cb12">
@@ -839,13 +839,13 @@ the bars and the text!</p>
 <span>    mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">n</span>, y <span class="op">=</span> <span class="va">species</span>, label <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span>
 <span>    hjust <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>    nudge_x <span class="op">=</span> <span class="op">-</span><span class="fl">0.25</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"white"</span>  <span class="op">)</span> <span class="op">+</span></span>
+<span>    colour <span class="op">=</span> <span class="st">"white"</span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_text</span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">penguin_count</span>,</span>
 <span>    mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="va">species</span>, label <span class="op">=</span> <span class="va">species</span><span class="op">)</span>,</span>
 <span>    hjust <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>    nudge_x <span class="op">=</span> <span class="fl">0.25</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"white"</span>,</span>
+<span>    colour <span class="op">=</span> <span class="st">"white"</span>,</span>
 <span>    fontface <span class="op">=</span> <span class="st">"bold"</span>,</span>
 <span>    size <span class="op">=</span> <span class="fl">4.5</span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
@@ -881,7 +881,7 @@ etc, we might want to adjust the width of the bars:</p>
 <span>    mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">n</span>, y <span class="op">=</span> <span class="va">species</span>, label <span class="op">=</span> <span class="va">n</span><span class="op">)</span>,</span>
 <span>    hjust <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>    nudge_y <span class="op">=</span> <span class="fl">0.1</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"white"</span>,</span>
+<span>    colour <span class="op">=</span> <span class="st">"white"</span>,</span>
 <span>    size <span class="op">=</span> <span class="fl">5.5</span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_text</span><span class="op">(</span></span>
 <span>    data <span class="op">=</span> <span class="va">penguin_count</span>,</span>
@@ -889,7 +889,7 @@ etc, we might want to adjust the width of the bars:</p>
 <span>    hjust <span class="op">=</span> <span class="fl">0</span>, </span>
 <span>    nudge_x <span class="op">=</span> <span class="fl">0.5</span>, </span>
 <span>    nudge_y <span class="op">=</span> <span class="fl">0.1</span>,</span>
-<span>    color <span class="op">=</span> <span class="st">"white"</span>, </span>
+<span>    colour <span class="op">=</span> <span class="st">"white"</span>, </span>
 <span>    fontface <span class="op">=</span> <span class="st">"bold"</span>, </span>
 <span>    size <span class="op">=</span> <span class="fl">4.5</span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
