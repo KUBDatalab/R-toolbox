@@ -517,6 +517,371 @@ challenge blocks</li>
 </div>
 </div>
 </div>
+<p>Hvad er en choropleth.</p>
+<p>Et choropleth kort er et tematisk kort, hvor vi farvelægger områder
+ud fra data. De viser variationer og mønstre på tværs af regioner, og
+gør det let at sammenligne data og finde mønstre mellem forskellige
+geografiske enheder</p>
+<p>Hvad skal man være opmærksom på`</p>
+<p>Man skal i hvert fald sikre at data normaliseres korrekt. Hvis vi
+ønsker at vise hvor meget vin der fremstilles, skal man være opmærksom
+på at Frankrigs areal og befolkningstal er en del større end Danmarks.
+Og at rå tal derfor naturligt vil vise at der produceres mere vin i
+Frankrig end Danmark. Og er det det man ønsker at vise, eller
+sammenligne er det fint. Men det kan være man kan lære nyt ved at
+farvelægge efter vinproduktionen per kapita. Eller per areal.</p>
+<p>Når man klassificerer data skal man også være opmæksom på hvor man
+lægger breakpoints. Det er samme koncept som når man laver histogrammer.
+Små ændringer i breakpoints kan give store ændringer i kortet. Vælg en
+farvegradient der er intuitiv og let at aflæse. Et godt tip er at bruge
+farver der er venlige overfor farveblinde. De gør det nemlig også
+lettere at skelne for folk med normalt farvesyn. Og så skal man overveje
+hvordan man trækker de geografiske grænser. Fænomenet kaldes i
+GIS-verdenen for MAUP eller “Modifiable Areal Unit Problem”. Men er nok
+i almindelighed bedre kendt under begrebet gerrymandering. Altså bortset
+fra at MAUP er det man kan komme til hvis man ikke tænker sig om. Mens
+gerrymandering er resulatet når man gør det med vilje.</p>
+<div id="accordionHint1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
+  <h4 class="accordion-header" id="headingHint1">
+  maup
+  </h4>
+</button>
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div class="accordion-body">
+<p>Skalafølsomhed: Når data aggregeres på forskellige geografiske
+niveauer (f.eks. postnumre vs. kommuner), kan den observerede
+statistiske sammenhæng ændre sig. Zoneringseffekten: Selv inden for
+samme niveau kan den måde, områderne opdeles på (dvs. hvordan grænserne
+placeres), påvirke resultaterne. Fortolkningsusikkerhed: Fordi de
+aggregerede data er følsomme over for de valgte enheder, skal man være
+forsigtig med at drage generelle konklusioner ud fra resultaterne.
+Analysestrategier: For at minimere MAUP kan man anvende metoder som
+multiple skalaanalyser eller eksperimentere med alternative zoneringer
+for at teste robustheden af resultaterne. Praktisk betydning: MAUP
+understreger vigtigheden af at have en kritisk tilgang til geografiske
+data og visualiseringer, da forskellige opdelinger kan lede til
+forskellige politiske eller økonomiske fortolkninger.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Vi skal bruge to ting for at lave sådan en. Et geospatialt objekt,
+der har data på grænserne på et kort. Det kan være lande grænser,
+bygrænser, kvarterer, regioner whatever. Grænser er her skillelinien
+mellem to geografiske områder, fordi vi skal farvelægge forskellige
+områder efter et eller andet.</p>
+<p>Vi skal også bruge en variabel, numerisk eller kategorisk. Den skal
+vi bruge til at farvelægge områderne i det geografiske objekt. Og vi
+skal have den knyttet til en variabel i det geospatiale objekt, der gør
+at vi kan hægte dem sammen. Det kan også være de er hægtet sammen
+allerede.</p>
+<p>Find og download en geojson fil.</p>
+<p>Pakken <code>maps</code> indeholder en del. Og vi ekstraherer data
+fra den med ggplot2::map_data(), der kan trække data ud af maps pakken i
+et ggplot venligt format.</p>
+<p>Vi skal bruge hele verden</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.4
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">maps</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+Attaching package: 'maps'
+
+The following object is masked from 'package:purrr':
+
+    map</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">world</span> <span class="op">&lt;-</span> <span class="fu">map_data</span><span class="op">(</span><span class="st">"world"</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Hvordan ser det ud?</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">world</span> <span class="op">%&gt;%</span> <span class="fu">filter</span><span class="op">(</span><span class="va">region</span> <span class="op">==</span> <span class="st">"Denmark"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu">head</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>      long      lat group order  region subregion
+1 11.36143 54.89165   473 35199 Denmark   Lolland
+2 11.53838 54.82959   473 35200 Denmark   Lolland
+3 11.65810 54.83316   473 35201 Denmark   Lolland
+4 11.73955 54.80742   473 35202 Denmark   Lolland
+5 11.75898 54.76768   473 35203 Denmark   Lolland
+6 11.76592 54.67944   473 35204 Denmark   Lolland</code></pre>
+</div>
+<p>Whee! Vi har koordinater på Lolland. group variable fortæller hvilke
+koordinater der skal forbindes, og order rækkefølgen. Så
+11.36143,54.89165 skal forbindes med 11.53838,54.82959.</p>
+<p>Det kan vi plotte.</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">world</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_polygon</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
+<figure><img src="fig/choropleths-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>lad os generere noget regionsdata.</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data_til_plot</span> <span class="op">&lt;-</span> <span class="va">world</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">region</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>value <span class="op">=</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
+<p>En række pr region, med navn og en helt tilfældig værdi.</p>
+<p>Det kan vi joine:</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">world</span> <span class="op">%&gt;%</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">data_til_plot</span>, by <span class="op">=</span> <span class="fu">join_by</span><span class="op">(</span><span class="va">region</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>, fill <span class="op">=</span> <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_polygon</span><span class="op">(</span><span class="op">)</span> </span></code></pre>
+</div>
+<figure><img src="fig/choropleths-rendered-unnamed-chunk-5-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Neat. I stedet for helt tilfældige data, ville det være praktisk med
+“rigtige” data.</p>
+<p>Vi indlæser noget data for ligestilling mellem kønnene.</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ligestilling</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/BIGI.csv"</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Rows: 134 Columns: 9
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): country
+dbl (8): rank, overall_rank, BIGI, AADP, basic_education, healthy_life_span,...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">head</span><span class="op">(</span><span class="va">ligestilling</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 6 × 9
+   rank overall_rank country      BIGI    AADP basic_education healthy_life_span
+  &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;
+1     1           12 Bahrain  -0.00794 0.00794        -0.0126             0
+2     2           24 Great B… -0.0146  0.0157         -0.0121            -0.0332
+3     3           27 Netherl… -0.0158  0.0158         -0.0111            -0.0275
+4     4           35 Iceland  -0.0177  0.0168         -0.0110            -0.0244
+5     5           32 New Zea… -0.0171  0.0171         -0.0103            -0.0272
+6     6           30 Serbia   -0.0167  0.0185         -0.00487           -0.0479
+# ℹ 2 more variables: life_satisfaction &lt;dbl&gt;, human_development_index &lt;dbl&gt;</code></pre>
+</div>
+<p>Det joiner vi på samme måde som før, og farvelægger efter
+bigi-scoren. Negative værdier indikerer at drenge og mænd er ringere
+stillet. Positive at piger og kvinder er ringere stillet. Begge relativt
+til 0-punktet der repræsenterer den fuldstændige lige stilling.</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">world</span> <span class="op">%&gt;%</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">ligestilling</span>, by <span class="op">=</span> <span class="fu">join_by</span><span class="op">(</span><span class="st">"region"</span><span class="op">==</span><span class="st">"country"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>, fill <span class="op">=</span> <span class="va">BIGI</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_polygon</span><span class="op">(</span><span class="op">)</span> </span></code></pre>
+</div>
+<p><img src="fig/choropleths-rendered-unnamed-chunk-7-1.png" style="display: block; margin: auto;" class="figure">
+Og her har vi første problem. Det er måske ikke så overraskende at der
+ikke er data for antarktis. Men for USA? Og UK?</p>
+<p>Det handler om forskellige navneformer.</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">world</span> <span class="op">%&gt;%</span> <span class="fu">filter</span><span class="op">(</span><span class="fu">str_detect</span><span class="op">(</span><span class="va">region</span>, <span class="st">"US"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">distinct</span><span class="op">(</span><span class="va">region</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>  region
+1    USA</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ligestilling</span> <span class="op">%&gt;%</span> <span class="fu">filter</span><span class="op">(</span><span class="fu">str_detect</span><span class="op">(</span><span class="va">country</span>, <span class="st">"United"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 3 × 9
+   rank overall_rank country       BIGI   AADP basic_education healthy_life_span
+  &lt;dbl&gt;        &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;  &lt;dbl&gt;           &lt;dbl&gt;             &lt;dbl&gt;
+1    14           45 United Ar… -0.0224 0.0224         -0.0359            0
+2    34           61 United St… -0.0329 0.0329         -0.0201           -0.0476
+3    98           92 Tanzania …  0.0520 0.0716          0.155            -0.0294
+# ℹ 2 more variables: life_satisfaction &lt;dbl&gt;, human_development_index &lt;dbl&gt;</code></pre>
+</div>
+<p>USA hedder USA i kortdata. Og “United States of America” i
+ligestillingsdata.</p>
+<p>Det kan naturligvis ikke hægtes sammen…</p>
+<p>Så vi er nødt til at normalisere navneformerne. Det vil vi komme til
+at støde på ofte…</p>
+<p>Heldigvis er der en pakke der kan hjælpe:</p>
+<div class="codewrapper sourceCode" id="cb20">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">countrycode</span><span class="op">)</span></span></code></pre>
+</div>
+<p>contryname() vil tage noget input, og, efter bedste evne, konvertere
+det til et fælles format. Der er <em>mange</em> formater. kør ?codelist
+for at få en ide.</p>
+<p>Vi konverterer alle navne til engelsk. Og det skal vi huske at gøre
+for begge dataframes.</p>
+<div class="codewrapper sourceCode" id="cb21">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ligestilling</span> <span class="op">&lt;-</span> <span class="va">ligestilling</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>common_name <span class="op">=</span> <span class="fu">countryname</span><span class="op">(</span><span class="va">country</span>, destination <span class="op">=</span> <span class="st">"cldr.name.en"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">world</span> <span class="op">&lt;-</span> <span class="va">world</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>common_name <span class="op">=</span> <span class="fu">countryname</span><span class="op">(</span><span class="va">region</span>, destination <span class="op">=</span> <span class="st">"cldr.name.en"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="warning" tabindex="0"><code>Warning: There was 1 warning in `mutate()`.
+ℹ In argument: `common_name = countryname(region, destination =
+  "cldr.name.en")`.
+Caused by warning:
+! Some values were not matched unambiguously: Ascension Island, Azores, Barbuda, Canary Islands, Chagos Archipelago, Grenadines, Heard Island, Madeira Islands, Micronesia, Saba, Saint Martin, Siachen Glacier, Sint Eustatius, Virgin Islands</code></pre>
+</div>
+<p>Det er ikke helt perfekt. Regionen “Azores” matcher eksempelvis ikke
+at navn. De tilhører Portugal, men det fremgår ikke af vores world
+datasæt.</p>
+<p>Vi er nok tæt nok på til at vi giver det et skud.</p>
+<div class="codewrapper sourceCode" id="cb23">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">world</span> <span class="op">%&gt;%</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">ligestilling</span>, by <span class="op">=</span> <span class="fu">join_by</span><span class="op">(</span><span class="va">common_name</span><span class="op">==</span><span class="va">common_name</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>, fill <span class="op">=</span> <span class="va">BIGI</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_polygon</span><span class="op">(</span><span class="op">)</span> </span></code></pre>
+</div>
+<figure><img src="fig/choropleths-rendered-unnamed-chunk-12-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>der er stadig lande der ikke er med. Men nu skyldes det at der
+eksempelvis ikke er ligestillingsdata for Libyen, og ikke at vi ikke får
+matchet data.</p>
+<p>Mine øjne kan ikke rigtig skelne farverne. Så dem kan vi jo nok med
+fordel gøre noget ved. Her skal vi tage et kig på hvad det faktisk er vi
+illustrerer.</p>
+<p>Vi har en udfordring i at værdierne af indikatoren kan være positive
+og negative. Men det er en numerisk angivelse, ikke en normativ
+angivelse. Så det skal vi have oversat.</p>
+<p>Positive BIGI-scores angiver at piger og kvinder er disadvantaged. Og
+det er negativt. Negative BIGI-socres angiver at drenge og mænd er
+disadvantaged. Og det er positivt. Og så er der det neutrale nulpunkt.
+Så vi har brug for en farveskala der har tre farver, en normativt
+positiv, der matcher de negative BIGI-scores, en normativt negativ, der
+matcher de positive BIGI-scores. Og en neutral farve i midten.</p>
+<p>Negative ting får i almindelighed en advarselsfarve - rød, og ting
+der er ønskelige en anden, ofte grøn.</p>
+<p>Vi går til colorbrewer, og beder om tre farver der er venlige overfor
+farveblinde. For 0 angiver total ligestilling mellem kønnene, og den er
+nok fin at kunne vise også.</p>
+<p>Vi får farverne: #e9a3c9, #f7f7f7 og #a1d76a, der matcher hhv det
+(normativt) negative, det neutrale og det positive udfald.</p>
+<p>og så beder vi om en farveskala i vores plot der matcher det:</p>
+<div class="codewrapper sourceCode" id="cb24">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">world</span> <span class="op">%&gt;%</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">ligestilling</span>, by <span class="op">=</span> <span class="fu">join_by</span><span class="op">(</span><span class="va">common_name</span><span class="op">==</span><span class="va">common_name</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>, fill <span class="op">=</span> <span class="va">BIGI</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_polygon</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_gradient2</span><span class="op">(</span>low <span class="op">=</span> <span class="st">"#a1d76a"</span>, mid <span class="op">=</span> <span class="st">"#f7f7f7"</span>, high <span class="op">=</span> <span class="st">"#e9a3c9"</span>, midpoint <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
+</div>
+<figure><img src="fig/choropleths-rendered-unnamed-chunk-13-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="hvorfor-går-det-så-godt-i-rusland" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<div id="hvorfor-går-det-så-godt-i-rusland" class="callout-inner">
+<h3 class="callout-title">hvorfor går det så godt i Rusland?</h3>
+<div class="callout-content">
+<p>Man kan undre sig over at Rusland er farvet grøn. Ikke ret grøn, men
+dog grøn. Hvorfor er kvinder i denne opgørelse stillet bedre end
+mænd?</p>
+<p>Prøv at lave choroplethen for antallet af sunde leveår i stedet.</p>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1">
+  Løsningsforslag
+  </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb25">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">world</span> <span class="op">%&gt;%</span> <span class="fu">left_join</span><span class="op">(</span><span class="va">ligestilling</span>, by <span class="op">=</span> <span class="fu">join_by</span><span class="op">(</span><span class="va">common_name</span><span class="op">==</span><span class="va">common_name</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">long</span>, y <span class="op">=</span> <span class="va">lat</span>, group <span class="op">=</span> <span class="va">group</span>, fill <span class="op">=</span> <span class="va">healthy_life_span</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_polygon</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">scale_fill_gradient2</span><span class="op">(</span>low <span class="op">=</span> <span class="st">"#a1d76a"</span>, mid <span class="op">=</span> <span class="st">"#f7f7f7"</span>, high <span class="op">=</span> <span class="st">"#e9a3c9"</span>, midpoint <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre>
+</div>
+<p><img src="fig/choropleths-rendered-unnamed-chunk-14-1.png" style="display: block; margin: auto;" class="figure">
+Husk, grøn er stadig godt, altså kvinder klarer sig bedre end mænd. Og
+på levealder klarer de sig virkelig meget bedre i rusland</p>
+</div>
+</div>
+</div>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
