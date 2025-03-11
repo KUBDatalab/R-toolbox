@@ -118,11 +118,11 @@
   R-toolbox
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 62%" class="percentage">
-    62%
+<aside class="col-md-12 lesson-progress"><div style="width: 60%" class="percentage">
+    60%
   </div>
   <div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 62%" aria-valuenow="62" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar library" role="progressbar" style="width: 60%" aria-valuenow="60" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -423,6 +423,15 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush25">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading25">
+        <a href="choropleths.html">24. Choropleths</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -638,10 +647,10 @@ have a number of siblings.</p>
 <p>This pipe allow us to inject a function into a longer set of pipes,
 without affecting the rest of the flow.</p>
 <!--html_preserve-->
-<div id="htmlwidget-a4ffae9e9592d7124467" class="DiagrammeR html-widget html-fill-item" style="width:504px;height:504px;">
+<div id="htmlwidget-70232853922f653f519f" class="DiagrammeR html-widget html-fill-item" style="width:504px;height:504px;">
 
 </div>
-<script type="application/json" data-for="htmlwidget-a4ffae9e9592d7124467">{"x":{"diagram":"\n  graph LR\n    A[Input data] --> B[%T>%]\n    B --> C[Function run for side-effect <br> e.g. print, plot or log]\n    B --> E\n    C --> D[ %>% ]\n    D --> E[Next function in the flow]\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve--><p><img src="fig/tee-pipe.png" class="figure"> The tee-pipe sends data to two
+<script type="application/json" data-for="htmlwidget-70232853922f653f519f">{"x":{"diagram":"\n  graph LR\n    A[Input data] --> B[%T>%]\n    B --> C[Function run for side-effect <br> e.g. print, plot or log]\n    B --> E\n    C --> D[ %>% ]\n    D --> E[Next function in the flow]\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve--><p><img src="fig/tee-pipe.png" class="figure"> The tee-pipe sends data to two
 functions. The immediate next, which we want to run for plotting,
 logging or printing data, and to the next function over, which get the
 original input data, rather than what is returned by the intermediate
