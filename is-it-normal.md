@@ -12,8 +12,27 @@ editor_options:
 :::
 
 ::: objectives
--   Explain how to use markdown with the new lesson template
+- Explain how to visually estimate normality
+- Explain how to get numerical indications of normality
 :::
+
+
+A common question is: Is my data normally distributed?
+
+Before panicking make sure that it actually is a problem that your data might
+not be normally distributed. Making a linear regression eg does not require 
+the data to be normally distributed.
+
+On the other hand, a linear regression requires the residuals to be normally
+distributed. So it is useful to be able to determine if it is.
+
+### What does it mean that it is normally distributed? 
+
+It means that the distribution of our data has the same properties as the normal
+distribution.
+
+Let us get some data that we can test, first by loading the `palmerpenguins` 
+dataset:
 
 
 ``` r
@@ -21,15 +40,7 @@ library(tidyverse)
 library(palmerpenguins)
 ```
 
-## How to test if our data is normally distributed?
-
-Common question - is my data normally distributed?
-
-What does it mean that it is normally distributed? It means that the
-distribution of our data has the same properties as the normal
-distribution.
-
-Let us get some data that we can test:
+And then by extracting the bill depth of chinstrap penguins:
 
 
 ``` r
@@ -77,12 +88,16 @@ normal_test_data %>%
 
 <img src="fig/is-it-normal-rendered-histogram-1.png" style="display: block; margin: auto;" />
 
-This does not really look like a normal distribution. The fact that mean
+A normal distribution would have this shape:
+
+<img src="fig/is-it-normal-rendered-normal_curve-1.png" style="display: block; margin: auto;" />
+Our histogram does not really look like the theoretical curve.
+The fact that mean
 and median are almost identical was not a sufficient criterium for
 normalcy.
 
-The shape of a histogram is heavily dependent on the bins we choose. A
-better way of visualizing often density-plots:
+The shape of a histogram is heavily dependent on the bins we choose. Density plots 
+are often a better way of visualizing the distribution:
 
 
 ``` r
@@ -100,16 +115,16 @@ the degree of normalcy.
 
 ## Percentiels and QQ-plots as a test
 
-The properties of the normal distribution informs us that 50% of the
-observations in the data are smaller than the mean (and conversely 50%
-are larger). We alson know that 50% of the observations should be in the
-interquartile range. And what we also know is that 2.5% of the
-observations (the 2.5 percentile) are smaller than the mean minus 1.96
-times the standard deviation.
+We know a lot about the properties of the normal distribution.
 
-Actually we can calculate exactly which percentile a given observation
-is in. And we we can calculate which value a given percentile should
-have.
+* 50% of the observations in the data are smaller than the mean 
+  - conversely 50% are larger. 
+* We also know that 50% of the observations should be in the interquartile range. 
+* 2.5% of the observations (the 2.5 percentile) are smaller than the mean minus 1.96 times the standard deviation.
+
+And for each of the observations we actually have, we can calculate which 
+quantile, or percentile it _is_ in. And we can calculate what percentile it
+_should_ be in.
 
 Comparing those gives us an indication of how well the data conforms to
 a normal distribution.
@@ -144,7 +159,8 @@ the line, and that there are deviations from the line at both ends. In
 this case the deviations are largish, indicating that the data is not
 normally distributed.
 
-::: callout
+::: spoiler
+## How skewed is the plot?
 We have two tails in the qq-plot, a left and a right. And they can be
 either above or below the qq-line.
 
@@ -158,14 +174,14 @@ wrong with the data - in regards to how it deviates from normalcy.
 | Above     | Above      | Right skewed | A tail that stretches to the higher values - the extreme values are larger. |
 | Below     | Below      | Left skewed  | A tail that stretches to the lower values - the extreme values are smaller. |
 
-<img src="fig/is-it-normal-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/is-it-normal-rendered-different_kurtoses-1.png" style="display: block; margin: auto;" />
 :::
 
 ## Numerical measures rather than graphical
 
 With experience the qq-plots can be used to determine if
 the data is normally distributed - the points are exactly on
-the line. But only rarely the points matches exactly - even
+the line. But only rarely will the points match exactly - even
 if the data is normally distributed *enough*. And how much
 can the tails deviate from the line before the data is not 
 normally distributed *enough*?
@@ -174,13 +190,14 @@ The deviations can be described numerically using two parameters:
 
 Kurtosis and skewness. 
 
-Base-R do not have functions for this, but the package `e1071` does.
-
+Base-R do not have functions for this, but the package `e1071` does:
 
 
 ``` r
 library(e1071)
 ```
+
+#### Skewness
 
 
 ``` r
@@ -191,7 +208,11 @@ skewness(normal_test_data$bill_depth_mm, na.rm = TRUE)
 [1] 0.006578141
 ```
 
-kurtosis
+As a rule of thumb, skewness should be within +/-0.5 if the data is normally distributed. Values between +/-0.5 and +/- 1 
+indicates a moderate skewness, where data *can* still be approximately normally distributed. Values larger that +/-1 indicates a
+significant skewness, and the data is probably not normally distributed.
+
+#### Kurtosis
 
 
 ``` r
@@ -201,28 +222,22 @@ kurtosis(normal_test_data$bill_depth_mm, na.rm = TRUE)
 ``` output
 [1] -0.960087
 ```
-As a rule of thumb, skewness should be within +/-0.5 if the data is normally distributed. Values between +/-0.5 and +/- 1 
-indicates a moderate skewness, where data *can* still be approximately normally distributed. Values larger that +/-1 indicates a
-significant skewness, and the data is probably not normally distributed.
 
-For the kurtosis matters are a bit more complicated as the
+Evaluating the kurtosis is a bit more complicated as the
 kurtosis for a normal distribution is 3. We therefore look at 
-excess kurtosis, where i subtract 3 from the calculated kurtosis.
-An value of +/-1 exces kurtosis indicates that the data has
+excess kurtosis, where we subtract 3 from the calculated kurtosis.
+* An value of +/-1 excess kurtosis indicates that the data has
 a 'tailedness' close to the normal distribution.
-Values between +/-1 and +/-2 indicates a moderate deviation from
+* Values between +/-1 and +/-2 indicates a moderate deviation from
 the normal distribution, but the data can still be approximately
 normally distributed.
-Values larger than +/-2 is in general taken as an indication that the data is not normally distributed.
-
-The absolute value of the excess kurtosis is larger than 2, indicating that
-the data is not normally distributed.
+* Values larger than +/-2 is in general taken as an indication that the data is not normally distributed.
 
 
 
 ## More direct tests
 
-The question of wether or not data is normally distributed is
+The question of whether or not data is normally distributed is
 important in many contexts, and it should come as no surprise
 that a multitude of tests has been devised for testing exactly
 that.
@@ -356,9 +371,9 @@ the null-hypothesis.
 
 ## And is it actually normally distributed?
 
-Probably not. Except for the excess kurtosis all the tests we have 
+Probably not. Except for the excess kurtosis, all the tests we have 
 done indicate that the depth of the beaks of chinstrap penguins 
-can be normally distributed. Or rather, that we cannot reject the
+_can_ be normally distributed. Or rather, that we cannot reject the
 null-hypothesis that they are normally distributed.
 
 But the fact that we cannot reject this hypothesis is not the same
@@ -371,8 +386,5 @@ conclude that it is not.
 
 ::: keypoints
 -   Use `.md` files for episodes when you want static content
--   Use `.Rmd` files for episodes when you need to generate output
--   Run `sandpaper::check_lesson()` to identify any issues with your
-    lesson
--   Run `sandpaper::build_lesson()` to preview your lesson locally
+
 :::
