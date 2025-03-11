@@ -481,7 +481,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>A deeper dive into pipes</h1>
-        <p>Last updated on 2025-03-10 |
+        <p>Last updated on 2025-03-11 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/pipes.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -640,10 +640,10 @@ have a number of siblings.</p>
 <p>This pipe allow us to inject a function into a longer set of pipes,
 without affecting the rest of the flow.</p>
 <!--html_preserve-->
-<div id="htmlwidget-f4ba9a42338b2a3b85e1" class="DiagrammeR html-widget html-fill-item" style="width:504px;height:504px;">
+<div id="htmlwidget-a4ffae9e9592d7124467" class="DiagrammeR html-widget html-fill-item" style="width:504px;height:504px;">
 
 </div>
-<script type="application/json" data-for="htmlwidget-f4ba9a42338b2a3b85e1">{"x":{"diagram":"\n  graph LR\n    A[Input data] --> B[%T>%]\n    B --> C[Function run for side-effect <br> e.g. print, plot or log]\n    B --> E\n    C --> D[ %>% ]\n    D --> E[Next function in the flow]\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve--><p><img src="../fig/tee-pipe.png" class="figure"> The tee-pipe sends data to two
+<script type="application/json" data-for="htmlwidget-a4ffae9e9592d7124467">{"x":{"diagram":"\n  graph LR\n    A[Input data] --> B[%T>%]\n    B --> C[Function run for side-effect <br> e.g. print, plot or log]\n    B --> E\n    C --> D[ %>% ]\n    D --> E[Next function in the flow]\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve--><p><img src="../fig/tee-pipe.png" class="figure"> The tee-pipe sends data to two
 functions. The immediate next, which we want to run for plotting,
 logging or printing data, and to the next function over, which get the
 original input data, rather than what is returned by the intermediate
@@ -1034,8 +1034,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/pipes.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/pipes.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-03-10",
-  "datePublished": "2025-03-10"
+  "dateModified": "2025-03-11",
+  "datePublished": "2025-03-11"
 }
 
   </script><script>
