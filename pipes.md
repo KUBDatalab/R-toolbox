@@ -79,8 +79,8 @@ As indicated in the comparative table, the `magrittr` pipe have a number of sibl
 This pipe allow us to inject a function into a longer set of 
 pipes, without affecting the rest of the flow.
 
-<!--html_preserve--><div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-4ad1634b205e0c6d6356" style="width:504px;height:504px;"></div>
-<script type="application/json" data-for="htmlwidget-4ad1634b205e0c6d6356">{"x":{"diagram":"\n  graph LR\n    A[Input data] --> B[%T>%]\n    B --> C[Function run for side-effect <br> e.g. print, plot or log]\n    B --> E\n    C --> D[ %>% ]\n    D --> E[Next function in the flow]\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+<!--html_preserve--><div class="DiagrammeR html-widget html-fill-item" id="htmlwidget-476d4d2866b23fc0cf4a" style="width:504px;height:504px;"></div>
+<script type="application/json" data-for="htmlwidget-476d4d2866b23fc0cf4a">{"x":{"diagram":"\n  graph LR\n    A[Input data] --> B[%T>%]\n    B --> C[Function run for side-effect <br> e.g. print, plot or log]\n    B --> E\n    C --> D[ %>% ]\n    D --> E[Next function in the flow]\n"},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
 
 ![](fig/tee-pipe.png)
 The tee-pipe sends data to two functions. The immediate next, which
