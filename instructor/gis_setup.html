@@ -118,11 +118,11 @@
   R-toolbox
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 63%" class="percentage">
-    63%
+<aside class="col-md-12 lesson-progress"><div style="width: 61%" class="percentage">
+    61%
   </div>
   <div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 63%" aria-valuenow="63" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar library" role="progressbar" style="width: 61%" aria-valuenow="61" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -431,6 +431,15 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush26">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading26">
+        <a href="un-normal-data.html">25. What to do with data that is not normal</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -489,7 +498,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Setup for GIS</h1>
-        <p>Last updated on 2025-03-11 |
+        <p>Last updated on 2025-03-12 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/gis_setup.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -527,20 +536,12 @@ data</li>
 </div>
 <p>This workshop is designed to be run on your local machine. First, you
 will need to download the data we use in the workshop. Then, you need to
-set up your machine to analyze and process geospatial data. We provide
+set up your machine to analyse and process geospatial data. We provide
 instructions below to install all components manually.</p>
 <section><h2 class="section-heading" id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a></h2>
-<hr class="half-width"><p>NOTE! THIS IS A WORK IN PROGRESS - THESE ARE NOT THE DATAFILES YOU
-ARE LOOKING FOR</p>
-<p>We havent quite found them yet.</p>
-<p>You can download all of the data used in this workshop by clicking <a href="https://ndownloader.figshare.com/articles/2009586/versions/10" class="external-link">this
-download link</a>. The file is 218.2 MB.</p>
-<p>Clicking the download link will automatically download all of the
-files to your default download directory as a single compressed
-(<code>.zip</code>) file. To expand this file, double click the folder
-icon in your file navigator application (for Macs, this is the Finder
-application).</p>
-<p>For a full description of the data used in this workshop see the <a href="data.html">data page</a>.</p>
+<hr class="half-width"><p>For a full description of the data used in this workshop see the <a href="data.html">data page</a>.</p>
+<p>Note that the page includes a lot of other datasets, not just
+GIS-related.</p>
 </section><section><h2 class="section-heading" id="local-installation">Local Installation<a class="anchor" aria-label="anchor" href="#local-installation"></a></h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="software">Software<a class="anchor" aria-label="anchor" href="#software"></a></h3>
@@ -590,10 +591,10 @@ instructions for that software listed in the table above.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-Windows">
+<div id="nav-tabpanel-1-Windows" class="tab-pane show active" aria-labelledby="nav-tab-1-Windows" role="tabpanel">
 <p>To install the geospatial libraries, install the latest version <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link">RTools</a></p>
 </div>
-<div id="nav-tabpanel-1-macOS-one-click" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-macOS-one-click">
+<div id="nav-tabpanel-1-macOS-one-click" class="tab-pane" aria-labelledby="nav-tab-1-macOS-one-click" role="tabpanel">
 <p>The simplest way to install these geospatial libraries is to install
 the latest version of <a href="https://www.kyngchaos.com/software/frameworks" class="external-link">Kyng Chaos’s
 pre-built package</a> for GDAL Complete. Be aware that several other
@@ -606,7 +607,7 @@ Depending on your security settings, you may get an error message about
 <a href="https://kb.wisc.edu/page.php?id=25443" class="external-link">these instructions</a>
 for installing programs from unidentified developers.</p>
 </div>
-<div id="nav-tabpanel-1-macOS-3commands" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-macOS-3commands">
+<div id="nav-tabpanel-1-macOS-3commands" class="tab-pane" aria-labelledby="nav-tab-1-macOS-3commands" role="tabpanel">
 <p>Alternatively, participants who are comfortable with the command line
 can install the geospatial libraries individually using <a href="https://brew.sh" class="external-link">homebrew</a>:</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -617,7 +618,7 @@ can install the geospatial libraries individually using <a href="https://brew.sh
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="ex">$</span> brew install gdal</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-1-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Linux">
+<div id="nav-tabpanel-1-Linux" class="tab-pane" aria-labelledby="nav-tab-1-Linux" role="tabpanel">
 <p>Steps for installing the geospatial libraries will vary based on
 which form of Linux you are using. These instructions are adapted from
 the <a href="https://github.com/r-spatial/sf" class="external-link"><code>sf</code> package’s
@@ -666,7 +667,7 @@ install it using the command line ahead of time.</p>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Steps for installing the geospatial will vary based on which form of
 Linux you are using. These instructions are adapted from the <a href="https://github.com/r-spatial/sf" class="external-link"><code>sf</code> package’s
@@ -716,13 +717,14 @@ have a number of them installed already.</p>
 <li><a href="https://cran.r-project.org/package=sf" class="external-link"><code>sf</code></a></li>
 <li><a href="https://cran.r-project.org/package=terra" class="external-link"><code>terra</code></a></li>
 <li><a href="https://CRAN.R-project.org/package=tidyr" class="external-link"><code>tidyr</code></a></li>
+<li><a href="https://CRAN.R-project.org/package=maps" class="external-link"><code>maps</code></a></li>
 </ul><p>To install these packages in RStudio, copy the following into the
 console and hit enter.</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>, <span class="st">"raster"</span>, <span class="st">"rasterVis"</span>, <span class="st">"RColorBrewer"</span>, <span class="st">"remotes"</span>, <span class="st">"reshape"</span>, <span class="st">"scales"</span>, <span class="st">"sf"</span>, <span class="st">"terra"</span>, <span class="st">"tidyr"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">install.packages</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>, <span class="st">"raster"</span>, <span class="st">"rasterVis"</span>, <span class="st">"RColorBrewer"</span>, <span class="st">"remotes"</span>, <span class="st">"reshape"</span>, <span class="st">"scales"</span>, <span class="st">"sf"</span>, <span class="st">"terra"</span>, <span class="st">"tidyr"</span>, <span class="st">"maps"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <p>You should see a status message starting with:</p>
 <div class="codewrapper">
@@ -821,8 +823,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/gis_setup.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/gis_setup.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-03-11",
-  "datePublished": "2025-03-11"
+  "dateModified": "2025-03-12",
+  "datePublished": "2025-03-12"
 }
 
   </script><script>
