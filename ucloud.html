@@ -118,11 +118,11 @@
   R-toolbox
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 55%" class="percentage">
-    55%
+<aside class="col-md-12 lesson-progress"><div style="width: 52%" class="percentage">
+    52%
   </div>
   <div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 55%" aria-valuenow="55" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar library" role="progressbar" style="width: 52%" aria-valuenow="52" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -374,7 +374,6 @@
 <li><a href="#housekeeping">Housekeeping</a></li>
 <li><a href="#setup-issues">Setup issues</a></li>
 <li><a href="#the-good-solution">The Good Solution</a></li>
-<li><a href="#notes-on-the-good-solution">Notes on the good solution</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -439,6 +438,24 @@
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading26">
         <a href="un-normal-data.html">25. What to do with data that is not normal</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush27">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading27">
+        <a href="building-models.html">26. building-models</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush28">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading28">
+        <a href="lasso-regularisation.html">27. lasso-regularisation</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -1010,9 +1027,14 @@ from here), and run it line by line.</p>
 </div>
 <p>You can check that it is working similarly to the better solution
 above.</p>
-</div>
-</section><section><h2 class="section-heading" id="notes-on-the-good-solution">Notes on the good solution<a class="anchor" aria-label="anchor" href="#notes-on-the-good-solution"></a></h2>
-<hr class="half-width"><p>Data analysis is not worth much, if we are not able to reproduce our
+<div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
+  <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Notes on the good solution </h3>
+</button>
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div class="accordion-body">
+<p>Data analysis is not worth much, if we are not able to reproduce our
 results. A significant amount of work have therefore gone into providing
 infrastructure for exactly that. One issue is the question of which
 libraries are used for the analysis.</p>
@@ -1043,10 +1065,10 @@ make a file .Renviron where we specify where renv should place the
 cache. Having done that we need to restart R, and now we can install
 packages to our hearts delight, and renv will place both the libraries
 and the cache in our local project.</p>
-<p>An example of a script that sets the environemt file, and installs a
-selection of usefull pacakges can be found below. Note that this takes a
-very long time. The alternative to this taking a very long time once, is
-for it to take a very long time every time we open our project.</p>
+</div>
+</div>
+</div>
+</div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -1068,6 +1090,7 @@ lost, unless we take certain precautions.</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="anova.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>

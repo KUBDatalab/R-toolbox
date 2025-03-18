@@ -118,11 +118,11 @@
   R-toolbox
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 94%" class="percentage">
-    94%
+<aside class="col-md-12 lesson-progress"><div style="width: 88%" class="percentage">
+    88%
   </div>
   <div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 94%" aria-valuenow="94" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar library" role="progressbar" style="width: 88%" aria-valuenow="88" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -413,12 +413,19 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         24. Choropleths
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#what-is-a-choropleth">What is a choropleth</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -427,6 +434,24 @@
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading26">
         <a href="un-normal-data.html">25. What to do with data that is not normal</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush27">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading27">
+        <a href="building-models.html">26. building-models</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush28">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading28">
+        <a href="lasso-regularisation.html">27. lasso-regularisation</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -511,8 +536,8 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How do you write a lesson using R Markdown and
-<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+<ul><li>How can we visualise data on a map?</li>
+<li>What is a choropleth?</li>
 </ul></div>
 </div>
 </div>
@@ -520,65 +545,24 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Explain how to use markdown with the new lesson template</li>
-<li>Demonstrate how to include pieces of code, figures, and nested
-challenge blocks</li>
+<ul><li>Explain how to use ggplot to color areas on a map by a numerical
+value</li>
 </ul></div>
 </div>
 </div>
 </div>
 </div>
-<p>Hvad er en choropleth.</p>
-<p>Et choropleth kort er et tematisk kort, hvor vi farvelægger områder
-ud fra data. De viser variationer og mønstre på tværs af regioner, og
-gør det let at sammenligne data og finde mønstre mellem forskellige
-geografiske enheder</p>
-<p>Hvad skal man være opmærksom på`</p>
-<p>Man skal i hvert fald sikre at data normaliseres korrekt. Hvis vi
-ønsker at vise hvor meget vin der fremstilles, skal man være opmærksom
-på at Frankrigs areal og befolkningstal er en del større end Danmarks.
-Og at rå tal derfor naturligt vil vise at der produceres mere vin i
-Frankrig end Danmark. Og er det det man ønsker at vise, eller
-sammenligne er det fint. Men det kan være man kan lære nyt ved at
-farvelægge efter vinproduktionen per kapita. Eller per areal.</p>
-<p>Når man klassificerer data skal man også være opmæksom på hvor man
-lægger breakpoints. Det er samme koncept som når man laver histogrammer.
-Små ændringer i breakpoints kan give store ændringer i kortet. Vælg en
-farvegradient der er intuitiv og let at aflæse. Et godt tip er at bruge
-farver der er venlige overfor farveblinde. De gør det nemlig også
-lettere at skelne for folk med normalt farvesyn. Og så skal man overveje
-hvordan man trækker de geografiske grænser. Fænomenet kaldes i
-GIS-verdenen for MAUP eller “Modifiable Areal Unit Problem”. Men er nok
-i almindelighed bedre kendt under begrebet gerrymandering. Altså bortset
-fra at MAUP er det man kan komme til hvis man ikke tænker sig om. Mens
-gerrymandering er resulatet når man gør det med vilje.</p>
-<div id="accordionHint1" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
-  <h4 class="accordion-header" id="headingHint1">
-  maup
-  </h4>
-</button>
-<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
-<div class="accordion-body">
-<p>Skalafølsomhed: Når data aggregeres på forskellige geografiske
-niveauer (f.eks. postnumre vs. kommuner), kan den observerede
-statistiske sammenhæng ændre sig. Zoneringseffekten: Selv inden for
-samme niveau kan den måde, områderne opdeles på (dvs. hvordan grænserne
-placeres), påvirke resultaterne. Fortolkningsusikkerhed: Fordi de
-aggregerede data er følsomme over for de valgte enheder, skal man være
-forsigtig med at drage generelle konklusioner ud fra resultaterne.
-Analysestrategier: For at minimere MAUP kan man anvende metoder som
-multiple skalaanalyser eller eksperimentere med alternative zoneringer
-for at teste robustheden af resultaterne. Praktisk betydning: MAUP
-understreger vigtigheden af at have en kritisk tilgang til geografiske
-data og visualiseringer, da forskellige opdelinger kan lede til
-forskellige politiske eller økonomiske fortolkninger.</p>
-</div>
-</div>
-</div>
-</div>
-<p>Vi skal bruge to ting for at lave sådan en. Et geospatialt objekt,
+<section><h2 class="section-heading" id="what-is-a-choropleth">What is a choropleth<a class="anchor" aria-label="anchor" href="#what-is-a-choropleth"></a></h2>
+<hr class="half-width"><p>Choropleths are maps displaying statistical information encoded as
+colour. They allow us to display non-geograpphic variables on a
+geographic map. This makes it easier to compare data and identify
+patterns between different geographical units.</p>
+<figure><img src="../fig/statistique-comparee-de-letat-de-linstruction-et-du-nombre-des-crimes-8a282e-1024.jpg" alt="Français : Adriano Balbi et André-Michel Guerry (1829). Statistique comparée de l’état de l’instruction et du nombre des crimes dans les divers arrondissements des académies et des cours royales de France Jules Renouard, Paris. BL:Tab.597.b.(38); BNF: Ge C 9014 ." class="figure mx-auto d-block"><div class="figcaption">Français : Adriano Balbi et André-Michel Guerry
+(1829). Statistique comparée de l’état de l’instruction et du nombre des
+crimes dans les divers arrondissements des académies et des cours
+royales de France Jules Renouard, Paris. BL:Tab.597.b.(38); BNF: Ge C
+9014 .</div>
+</figure><p>Vi skal bruge to ting for at lave sådan en. Et geospatialt objekt,
 der har data på grænserne på et kort. Det kan være lande grænser,
 bygrænser, kvarterer, regioner whatever. Grænser er her skillelinien
 mellem to geografiske områder, fordi vi skal farvelægge forskellige
@@ -875,7 +859,7 @@ mænd?</p>
   Løsningsforslag
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -889,6 +873,51 @@ mænd?</p>
 <p><img src="../fig/choropleths-rendered-unnamed-chunk-14-1.png" style="display: block; margin: auto;" class="figure">
 Husk, grøn er stadig godt, altså kvinder klarer sig bedre end mænd. Og
 på levealder klarer de sig virkelig meget bedre i rusland</p>
+</div>
+</div>
+</div>
+</div>
+<p>Hvad skal man være opmærksom på`</p>
+<p>Man skal i hvert fald sikre at data normaliseres korrekt. Hvis vi
+ønsker at vise hvor meget vin der fremstilles, skal man være opmærksom
+på at Frankrigs areal og befolkningstal er en del større end Danmarks.
+Og at rå tal derfor naturligt vil vise at der produceres mere vin i
+Frankrig end Danmark. Og er det det man ønsker at vise, eller
+sammenligne er det fint. Men det kan være man kan lære nyt ved at
+farvelægge efter vinproduktionen per kapita. Eller per areal.</p>
+<p>Når man klassificerer data skal man også være opmæksom på hvor man
+lægger breakpoints. Det er samme koncept som når man laver histogrammer.
+Små ændringer i breakpoints kan give store ændringer i kortet. Vælg en
+farvegradient der er intuitiv og let at aflæse. Et godt tip er at bruge
+farver der er venlige overfor farveblinde. De gør det nemlig også
+lettere at skelne for folk med normalt farvesyn. Og så skal man overveje
+hvordan man trækker de geografiske grænser. Fænomenet kaldes i
+GIS-verdenen for MAUP eller “Modifiable Areal Unit Problem”. Men er nok
+i almindelighed bedre kendt under begrebet gerrymandering. Altså bortset
+fra at MAUP er det man kan komme til hvis man ikke tænker sig om. Mens
+gerrymandering er resulatet når man gør det med vilje.</p>
+<div id="accordionHint1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
+  <h4 class="accordion-header" id="headingHint1">
+  maup
+  </h4>
+</button>
+<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div class="accordion-body">
+<p>Skalafølsomhed: Når data aggregeres på forskellige geografiske
+niveauer (f.eks. postnumre vs. kommuner), kan den observerede
+statistiske sammenhæng ændre sig. Zoneringseffekten: Selv inden for
+samme niveau kan den måde, områderne opdeles på (dvs. hvordan grænserne
+placeres), påvirke resultaterne. Fortolkningsusikkerhed: Fordi de
+aggregerede data er følsomme over for de valgte enheder, skal man være
+forsigtig med at drage generelle konklusioner ud fra resultaterne.
+Analysestrategier: For at minimere MAUP kan man anvende metoder som
+multiple skalaanalyser eller eksperimentere med alternative zoneringer
+for at teste robustheden af resultaterne. Praktisk betydning: MAUP
+understreger vigtigheden af at have en kritisk tilgang til geografiske
+data og visualiseringer, da forskellige opdelinger kan lede til
+forskellige politiske eller økonomiske fortolkninger.</p>
 </div>
 </div>
 </div>
@@ -915,10 +944,7 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-
-
-
-      </div> <!-- / div.lesson-content -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/shinylive.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/un-normal-data.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
