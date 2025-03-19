@@ -118,11 +118,11 @@
   R-toolbox
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 97%" class="percentage">
-    97%
+<aside class="col-md-12 lesson-progress"><div style="width: 91%" class="percentage">
+    91%
   </div>
   <div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 97%" aria-valuenow="97" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar library" role="progressbar" style="width: 91%" aria-valuenow="91" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -457,6 +457,24 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush29">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading29">
+        <a href="ridge-regularisation.html">28. ridge-regularisation</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush30">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading30">
+        <a href="elastic-net-regularisation.html">29. elastic-net-regularisation</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -500,7 +518,7 @@
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="building-models.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="ridge-regularisation.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -508,14 +526,14 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: building-models
         </a>
-        <a class="chapter-link float-end" href="index.html" rel="next">
-          Home
+        <a class="chapter-link float-end" href="ridge-regularisation.html" rel="next">
+          Next: ridge-regularisation...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>lasso-regularisation</h1>
-        <p>Last updated on 2025-03-18 |
+        <p>Last updated on 2025-03-19 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/lasso-regularisation.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -558,10 +576,26 @@ udtrykket:</p>
 \beta_2*x_2 + \beta_3*x_3 +....\]</span></p>
 <p>Og vi er specifikt ude efter dem der minimerer forskellen på de
 “sande” værdier af y vi kender, og modellens forudsigelse <span class="math inline">\(\hat{y}\)</span></p>
-<p>Det vi typisk gør, er at vi forsøger at minimere dette udtryk: Det er
-typisk RSS (kvadrerede residualer).</p>
-<p><span class="math display">\[RSS = \sum(y_i - \hat{y_i})^2\]</span>
-Jo mindre det tal er, jo bedre er modellen.</p>
+<p>Det vi typisk gør, er at vi forsøger at minimere en såkaldt
+loss-funktion. Det er typisk RSS (kvadrerede residualer).</p>
+<p><span class="math display">\[RSS = \sum(y_i -
+\hat{y_i})^2\]</span></p>
+<p>Algoritmen der klarer beregningerne for os justerer på snedig vis
+<span class="math inline">\(\beta\)</span>’erne så RSS bliver så lille
+som muligt. Vi kan tænke på det som forskellen på de “sande” værdier som
+vi kender, og de forudsagte værdier, baseret på modellen og vors
+uafhængige variable. For alle vores observationer beregner vi
+forskellen, kvadrerer dem og lægger dem alle sammen.</p>
+<p>Når vi bygger modellen, er en af de ting vi skal tage stilling til,
+hvor mange og hvilke variable vi skal have med. Har vi tilstrækkeligt
+mange med kan vi forudsige y meget præcist. Men det fører let til at
+modellen i virkeligheden ikke har fundet sammenhænge mellem den
+afhængige og de uafhængige variable, men i stedet har “lært” datasættet
+uden ad.</p>
+<p>Den bedste model er derfor den hvor vi har så få uafhængige variable
+med som muligt. Men samtidig forklarer mest muligt af variationen</p>
+<p>Og alt det her hører nok hjemme et andet sted end hvor vi specifik
+taler om LASSO.</p>
 <p>Et problem er at vi skal tage stilling til, er hvor mange og hvilke
 variable vi skal have med i modellen. Hvis vi medtager tilstrækkeligt
 mange parametre, skal det nok lykkes at forklare alt.</p>
@@ -569,34 +603,26 @@ mange parametre, skal det nok lykkes at forklare alt.</p>
 optimverer vi på:</p>
 <p><span class="math display">\[\sum_{i=1}^{n}(y_i - \sum_{j}
 x_{ij}\beta_j)^2 + \lambda\sum_{j=1}^p |\beta_j|\]</span></p>
-<p><span class="math display">\[\mathcal{L}(\mathbf{w}) = \frac{1}{2N}
-\sum_{i=1}^{N} (y_i - \mathbf{x}_i^T \mathbf{w})^2 + \alpha
-\sum_{j=1}^{p} |w_j|
-\]</span> Eller, lidt kortere:</p>
-<p><span class="math display">\[RSS + \lambda\sum_{j=1}^\]</span></p>
+<p>Eller, lidt kortere: d <span class="math display">\[RSS +
+\lambda\sum_{j=1}^\]</span></p>
 <p>I lasso, forsøger vi at minimere:</p>
 <p><span class="math inline">\(RSS + lambda * summen af
 beta_j\)</span></p>
-<p>hvor j går fra 1 til p (antallet af variable vi har i vores model),
-og lambda er større end eller lig 0.</p>
-<p>Det svarer til at vi for hvert led i summen for rss, tilføjer et
-lambda*beta_j</p>
-<p>Hvordan finder vi lambda? Vi vælger det der giver os mindst MSE.</p>
-<p>Så vi beder en algoritme om at minimere udtrykket ovenfor - og det er
-lidt mere komplekst.</p>
-<p>Det vi fitter er nemlig ikke blot modellen, det er også:</p>
-<p><span class="math inline">\(\sum_{i=1}^{n}(y_i - \sum_{j}
-x_{ij}\beta_j)^2 + \lambda\sum_{j=1}^p |\beta_j|\)</span></p>
-<p>x’erne er vores prediktive variable. y er hvad vi prøver at fitte -
-det er det “sande” svar, det vi vil forudsige. Hvis vores model - det
-midterste sumtegn - rammer præcis, giver det præcist y, og y minus
-modellen giver så 0. Vi lægger så den absolutte værdi af vores
-koefficienter sammen, og ganger med lambda.</p>
-<p>Vi skal finde den optimale værdi af lambda - og algoritmen vil lade
-nogle af prediktorerne (beta-værdierne) ende på 0, fordi det minimerer
-det samlede udtryk.</p>
-<p>Det er en fiks måde algoritmisk at få pillet prediktorer ud, der ikke
-bidrager.</p>
+<p>Så det udtryk vi nu forsøger at minimere - algoritmen gør det for os
+- er nu tilføjet summen af alle vores koefficienter - i absolutte
+værdier, så de ikke kommer til at udligne hinanden. Og så ganger vi en
+faktor på. Det betyder at hvis der er mange variable med i modellen - så
+bliver straf-leddet større. Og derfor vil algoritmen kunne opnå et bedre
+resultat, ved at lade nogen af koefficienterne blive 0. Så bidrager de
+ikke længere til loss-funktionen, og den bliver mindre.</p>
+<p><span class="math inline">\(\lambda\)</span> styrer hvor hårdt vi
+straffer modellen for at have for mange eller for store koefficienter.
+Det betyder også at der er en parameter som ikke styres af algoritmen,
+men som vi selv skal vælge. Det er en hyperparameter, som vi selv skal
+optimere på.</p>
+<p>Netto resultatet er at vi lader en algoritme styre hvilke variable vi
+skal have med i modellen. Og så kan vi ikke rigtigt beskyldes for at
+være gået på p-fisketur.</p>
 <p>Hvordan gør man så?</p>
 <p>Vi napper mtcars som eksempel. Vi skal nok have fundet et andet på et
 tidspunkt.</p>
@@ -636,8 +662,10 @@ Attaching package: 'Matrix'</code></pre>
 ligger i en vektor, og at prediktor variablene ligger i en matrix.</p>
 <p>Vi vil forudsige antallet af hestekræfter i en bil, baseret på mpg,
 wt, drat og qsec</p>
-<p>Og cyl, og disp - de er ikke med i hvad jeg i skrivende stund følger,
-men lad os prøve</p>
+<p>her skal vi nok lege lidt med data og parametre. For det er et
+dårligt eksempel i x giver det fin mening at drat ikke skal være med.
+Men det er noget snask at z ikke piller nogen ud overhovedet. For den
+feature vil vi gerne vise.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -648,92 +676,118 @@ men lad os prøve</p>
 <span>  <span class="fu">data.matrix</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu">data.matrix</span><span class="op">(</span><span class="va">mtcars</span><span class="op">[</span>, <span class="fu">c</span><span class="op">(</span><span class="st">'mpg'</span>, <span class="st">'wt'</span>, <span class="st">'drat'</span>, <span class="st">'qsec'</span>, <span class="st">'cyl'</span>, <span class="st">'disp'</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre>
 </div>
+<p>Og nu kan vi så lave en Lasso regression. funktionen hedder glmnet.
+Og den kan lave andre former for regression. Hvis det er lasso, skal
+argumentet alpha sættes til 1. Vi skal selv vælge straf termen lambda.
+Vi prøver med 1.5</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
-<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">cv.glmnet</span><span class="op">(</span><span class="va">z</span>, <span class="va">y</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">best_l</span> <span class="op">&lt;-</span> <span class="va">model</span><span class="op">$</span><span class="va">lambda.min</span></span>
-<span><span class="fu">plot</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">47</span><span class="op">)</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">glmnet</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,alpha <span class="op">=</span> <span class="fl">1</span>, lambda <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span></span>
+<span><span class="fu">coef</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code></pre>
 </div>
-<p><img src="fig/lasso-regularisation-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" class="figure">
-Det er ganske mystisk at jeg ikke får samme optimale lambda som det
-eksempel jeg følger. det er ok at der er små forskelle også mellem de
-enkelte kørsler der er et stokastisk element i krydsvalideringen.</p>
-<p>men eksemplet finder lambda 5.616. Det er ret langt fra de 2-3 jeg
-finder.</p>
-<p>Det skal der nok bores lidt i.</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>5 x 1 sparse Matrix of class "dgCMatrix"
+                    s0
+(Intercept) 488.868159
+mpg          -2.851152
+wt           22.951695
+drat          .
+qsec        -20.098919</code></pre>
+</div>
+<p>Og så får vi et resultat for koefficienterne. Bemærk at koefficienten
+fro <code>drat</code> er blevet helt væk. Ved man lidt om biler er det
+ikke meget overraskende (men dog en lille smule).</p>
+<p>Men er det den bedst tænkelige lambda?</p>
+<p>Det betyder at vi har brug for en måde at sammenligne. Hvis vi bygger
+en model med en bestemt lambda - hvor god er den så rent faktisk. Og det
+kan vi sammenligne med en anden model med et andet lambda.</p>
+<p>Så vi krydsvaliderer. Vi tager vores data, og deler det op i
+eksempelvis 10 “folds” eller portioner. Så vælger vi en lambda, og
+fitter modellen på de 9 sidste fold, og ser hvor godt den forudsiger de
+“sande” værdier i den 1. fold. Det gentager vi, hvor vi fitter på alle
+fold, bortset fra den anden. Osv. Når vi er færdige har vi 10
+kvalitetsmål for en bestemt værdi af lambda. Og tager gennemsnittet af
+dem. Så har vi et kvalitetsmål for en bestemt værdi af lambda.</p>
+<p>Gentag processen for en masse forskellige lambda, og vi kan vælge den
+lambda der har det bedste mål for kvaliteten. Det gider vi heller ikke
+gøre i hånden. Så der er heldigvis en funktion der gør det:</p>
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">best_model</span> <span class="op">&lt;-</span> <span class="fu">glmnet</span><span class="op">(</span><span class="va">z</span>,<span class="va">y</span>,aplha <span class="op">=</span> <span class="fl">1</span>, lambda <span class="op">=</span> <span class="va">best_l</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">47</span><span class="op">)</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">cv.glmnet</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Modellen indeholder nu værdier for mange forskellige lambda. Det kan
+vi plotte:</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">plot</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code></pre>
+</div>
+<p><img src="fig/lasso-regularisation-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" class="figure">
+Vi kan kigge på plottet og finde den bedste værdi. Vi kan også trække
+det ud af modellen:</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">best_l</span> <span class="op">&lt;-</span> <span class="va">model</span><span class="op">$</span><span class="va">lambda.min</span></span>
+<span><span class="va">best_l</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] 2.668219</code></pre>
+</div>
+<p>Nu ved vi hvilket lambda vi skal bruge, og så kan vi fitte vores
+lasso model med den:</p>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">best_model</span> <span class="op">&lt;-</span> <span class="fu">glmnet</span><span class="op">(</span><span class="va">x</span>,<span class="va">y</span>,alpha <span class="op">=</span> <span class="fl">1</span>, lambda <span class="op">=</span> <span class="va">best_l</span><span class="op">)</span></span>
 <span><span class="fu">coef</span><span class="op">(</span><span class="va">best_model</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>7 x 1 sparse Matrix of class "dgCMatrix"
-                     s0
-(Intercept) 315.5141283
-mpg          -2.8386873
-wt            7.4066930
-drat         16.3768363
-qsec        -14.8706337
-cyl           5.9732285
-disp          0.1470938</code></pre>
+<pre class="output" tabindex="0"><code>5 x 1 sparse Matrix of class "dgCMatrix"
+                   s0
+(Intercept) 484.20742
+mpg          -2.95796
+wt           21.37988
+drat          .
+qsec        -19.43425</code></pre>
 </div>
-<p>Hvilket får mig til at mene at jeg skal holde mig til de oprindelige
-fire, og pille cyl og disp ud - for her er der ingen parametre der
-pilles ud - og det er en lidt træls pointe at misse.</p>
-<p>Det er nemlig også den primære forskel på lasso og ridge. Ridge
-regressionen kan indskrænke koefficienter mod 0, mens lasso kan
-indskrænke dem til 0. Og altså helt fjerne det - det får vi ved at sætte
-alpha til 0.</p>
-<p>Og så er der en elastic net regularisering der også kommer automatisk
-her - det er når vi sætter alpha til noget mellem 0 og 1.</p>
-<div class="codewrapper sourceCode" id="cb10">
+<p>CAVE. Det kan godt være det er værd at skalere værdierne.</p>
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">best_model</span><span class="op">$</span><span class="va">beta</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">range</span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">mpg</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>6 x 1 sparse Matrix of class "dgCMatrix"
-              s0
-mpg   -2.8386873
-wt     7.4066930
-drat  16.3768363
-qsec -14.8706337
-cyl    5.9732285
-disp   0.1470938</code></pre>
+<pre class="output" tabindex="0"><code>[1] 10.4 33.9</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">summary</span><span class="op">(</span><span class="va">best_model</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">range</span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">wt</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>          Length Class     Mode
-a0        1      -none-    numeric
-beta      6      dgCMatrix S4
-df        1      -none-    numeric
-dim       2      -none-    numeric
-lambda    1      -none-    numeric
-dev.ratio 1      -none-    numeric
-nulldev   1      -none-    numeric
-npasses   1      -none-    numeric
-jerr      1      -none-    numeric
-offset    1      -none-    logical
-call      5      -none-    call
-nobs      1      -none-    numeric</code></pre>
+<pre class="output" tabindex="0"><code>[1] 1.513 5.424</code></pre>
 </div>
 <div id="regularisation" class="callout">
 <div class="callout-square">
@@ -773,7 +827,7 @@ any links that you are not going to use.
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="building-models.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="ridge-regularisation.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -781,8 +835,8 @@ any links that you are not going to use.
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: building-models
         </a>
-        <a class="chapter-link float-end" href="index.html" rel="next">
-          Home
+        <a class="chapter-link float-end" href="ridge-regularisation.html" rel="next">
+          Next: ridge-regularisation...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -828,8 +882,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/lasso-regularisation.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/lasso-regularisation.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-03-18",
-  "datePublished": "2025-03-18"
+  "dateModified": "2025-03-19",
+  "datePublished": "2025-03-19"
 }
 
   </script><script>

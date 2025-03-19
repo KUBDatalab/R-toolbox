@@ -76,6 +76,9 @@
     <loc>https://KUBDatalab.github.io/R-toolbox/digitizing-graphs.html</loc>
   </url>
   <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/elastic-net-regularisation.html</loc>
+  </url>
+  <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/factor-analysis.html</loc>
   </url>
   <url>
@@ -173,6 +176,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/digitizing-graphs.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/elastic-net-regularisation.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/factor-analysis.html</loc>
@@ -299,6 +305,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/reproducible-analysis.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/instructor/ridge-regularisation.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/instructor/rstudio.html</loc>
@@ -431,6 +440,9 @@
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/reproducible-analysis.html</loc>
+  </url>
+  <url>
+    <loc>https://KUBDatalab.github.io/R-toolbox/ridge-regularisation.html</loc>
   </url>
   <url>
     <loc>https://KUBDatalab.github.io/R-toolbox/rstudio.html</loc>
