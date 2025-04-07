@@ -118,11 +118,11 @@
   R-toolbox
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 91%" class="percentage">
-    91%
+<aside class="col-md-12 lesson-progress"><div style="width: 89%" class="percentage">
+    89%
   </div>
   <div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 91%" aria-valuenow="91" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar library" role="progressbar" style="width: 89%" aria-valuenow="89" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -475,6 +475,15 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush31">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading31">
+        <a href="snow-plot.html">30. snow_plot</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -533,7 +542,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>lasso-regularisation</h1>
-        <p>Last updated on 2025-04-06 |
+        <p>Last updated on 2025-04-07 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/lasso-regularisation.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -602,14 +611,11 @@ taler om LASSO.</p>
 variable vi skal have med i modellen. Hvis vi medtager tilstrækkeligt
 mange parametre, skal det nok lykkes at forklare alt.</p>
 <p>En teknik der kan udvælge er lasso. I stedet for at optimere på RSS,
-optimverer vi på:</p>
+optimerer vi på:</p>
 <p><span class="math display">\[\sum_{i=1}^{n}(y_i - \sum_{j}
 x_{ij}\beta_j)^2 + \lambda\sum_{j=1}^p |\beta_j|\]</span></p>
 <p>Eller, lidt kortere: d <span class="math display">\[RSS +
-\lambda\sum_{j=1}^\]</span></p>
-<p>I lasso, forsøger vi at minimere:</p>
-<p><span class="math inline">\(RSS + lambda * summen af
-beta_j\)</span></p>
+\lambda\sum_{j=1}^p |\beta_j|\]</span></p>
 <p>Så det udtryk vi nu forsøger at minimere - algoritmen gør det for os
 - er nu tilføjet summen af alle vores koefficienter - i absolutte
 værdier, så de ikke kommer til at udligne hinanden. Og så ganger vi en
@@ -884,8 +890,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/lasso-regularisation.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/lasso-regularisation.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-04-06",
-  "datePublished": "2025-04-06"
+  "dateModified": "2025-04-07",
+  "datePublished": "2025-04-07"
 }
 
   </script><script>
