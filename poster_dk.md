@@ -42,50 +42,54 @@ knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, encoding = e
 
 # Introduktion
 
+KUB Datalab er Københavns Universitetsbiblioteks tilbud til studerende om 
+vejledning og undervisning i arbejde med data. Vi tilbyder kurser i grundlæggende
+programmering, dataanalyse og -visulisering, blandt meget andet. 
 
-KUB Datalab får regelmæssigt forespørgsler fra studerende med ønske om kurser
-med _meget_ specifikt indhold. Det er for omkostningsfuldt at skulle udvikle
-enkeltstående kurser hvis egentlig indhold er en gentagelse af den undervisning
-de har fået i et kursus på universitetet, men som har voldt dem problemer. 
+Studerende henvender sig regelmæssigt med ønsker om kurser med _meget_ specifikt
+indhold. Dette behov vil vi gerne imødekomme, men det er for ressourcekrævende
+at skulle udvikle enkeltstående kurser for måske kun 5 studerende. 
 
-Vi har derfor udviklet et generelt "værktøjskassekursus", med elementer der hyppigt
-er efterspørgsel på. På baggrund af disse lego-klodser kan vi hurtigt sammensætte
-et tilrettet kursus der matcher de specifikke ønsker i en given situation.
+Vi har derfor udviklet et meget omfattende generelt kursus, der dækker mange, men
+dog ikke alle, de eksempler på konkrete ønsker vi har oplevet. 
+Dog foreløbig kun i programmeringssproget R, omend de fleste af teknikkerne er 
+sprog-agnostiske.
 
 
 
 
 # Infrastruktur
 
-Kurset er opbygget i Workbench infrastrukturen fra Carpentries [@TheCarpentries] 
+Materialet er opbygget i Workbench infrastrukturen fra Carpentries [@TheCarpentries] 
 med brug af sandpaper [@sandpaper] pakken, og tilgængeliggjort på GitHub.
 
+Det indeholder en samling af "episoder", ideelt i en længde svarende til ca.
+25 minutters undervisning. Episoderne kan ikke være fuldstændigt uafhængige;
+nogle emner baserer sig på en forståelse af grundlæggende statistiske begreber
+og kendskab til R, men idealet er at de er så uafhængige af andre som muligt,
+men så afhængige som nødvendigt. 
 
-<!-- pagedown	pagedown::chrome_print("myfile.Rmd") -->
-
-Hvordan bygger vi så hurtigt et kursus?
-
-klon siden, rediger config.yaml, PR - og så er den der.
 
 
-# Methods
 
-Kursets didaktiske tilgang er baseret på teaching tech together. code-along
+
+# Metoder
+
+Kursets didaktiske tilgang er baseret på Teaching Tech Together [@teachingtech]
+og Carpentries [@TheCarpentries] filosofien. Der er fokus på "code-along" hvor
+de studerende forventes og opfordres til at "taste med". Målet er ikke at 
+dække mest mulig teori, men at efterlade de studerende med praktiske færdigheder.
 etc.
 
-I will show here how to include poster elements that may be useful, such as an equation using mathjax:
-
-$$
-E = mc^2
-$$
 
 ``` error
 Error in knitr::include_graphics("kursussiden.png"): Cannot find the file(s): "kursussiden.png"
 ```
 
-
-
-
+Med udgangspunkt i Github-pages, klones den samlede kursusside til et nyt
+repositorie på Github. Baseret på de konkrete behov redigeres en enkelt 
+setup-fil, så kun de ønskede episoder indgår. Redigeringen tager under fem 
+minutter, mens det tager GitHub op til en halv time at "bygge" siden. 
 
 
 To get a better understanding of how to include features like these please refer to the {posterdown} [wiki](https://github.com/posterdown/wiki).
@@ -96,162 +100,50 @@ To get a better understanding of how to include features like these please refer
 
 Tematiseret episodeliste
 
+Reproducible Data Analysis
+Tidy Data
 
-Here you may have some figures to show off, bellow I have made a scatterplot with the infamous Iris dataset and I can even reference to the figure automatically like this, `Figure \@ref(fig:irisfigure)`, Figure \@ref(fig:irisfigure).
-
-<div class="figure" style="text-align: center">
-<img src="fig/poster_dk-rendered-irisfigure-1.png" alt="Here is a caption for the figure. This can be added by using the "fig.cap" option in the r code chunk options, see this [link](https://yihui.name/knitr/options/#plots) from the legend himself, [Yihui Xie](https://twitter.com/xieyihui)." width="80%" />
-<p class="caption">Here is a caption for the figure. This can be added by using the "fig.cap" option in the r code chunk options, see this [link](https://yihui.name/knitr/options/#plots) from the legend himself, [Yihui Xie](https://twitter.com/xieyihui).</p>
-</div>
-
-Maybe you want to show off some of that fancy code you spent so much time on to make that figure, well you can do that too! Just use the `echo=TRUE` option in the r code chunk options, Figure \@ref(fig:myprettycode)!
+Reading data from file
+Descriptive Statistics
+Table One
 
 
-``` r
-#trim whitespace
-par(mar=c(2,2,0,0))
-#plot boxplots
-boxplot(iris$Sepal.Width~iris$Species,
-        col = "#008080", 
-        border = "#0b4545",
-        ylab = "Sepal Width (cm)",
-        xlab = "Species")
-```
 
-<div class="figure" style="text-align: center">
-<img src="fig/poster_dk-rendered-myprettycode-1.png" alt="Boxplots, so hot right now!" width="80%" />
-<p class="caption">Boxplots, so hot right now!</p>
-</div>
+The normal distribution
+Testing for normality
+How is the data distributed?
 
-How about a neat table of data? See, Table \@ref(tab:iristable):
+Linear regression
+Multiple Linear Regression
+Logistic regression
 
-<table>
-<caption>A table made with the **knitr::kable** function.</caption>
- <thead>
-  <tr>
-   <th style="text-align:center;"> Sepal <br> Length </th>
-   <th style="text-align:center;"> Sepal <br> Width </th>
-   <th style="text-align:center;"> Petal <br> Length </th>
-   <th style="text-align:center;"> Petal <br> Width </th>
-   <th style="text-align:center;"> Species </th>
-  </tr>
- </thead>
-<tbody>
-  <tr>
-   <td style="text-align:center;"> 5.1 </td>
-   <td style="text-align:center;"> 3.5 </td>
-   <td style="text-align:center;"> 1.4 </td>
-   <td style="text-align:center;"> 0.2 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.9 </td>
-   <td style="text-align:center;"> 3.0 </td>
-   <td style="text-align:center;"> 1.4 </td>
-   <td style="text-align:center;"> 0.2 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.7 </td>
-   <td style="text-align:center;"> 3.2 </td>
-   <td style="text-align:center;"> 1.3 </td>
-   <td style="text-align:center;"> 0.2 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.6 </td>
-   <td style="text-align:center;"> 3.1 </td>
-   <td style="text-align:center;"> 1.5 </td>
-   <td style="text-align:center;"> 0.2 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 5.0 </td>
-   <td style="text-align:center;"> 3.6 </td>
-   <td style="text-align:center;"> 1.4 </td>
-   <td style="text-align:center;"> 0.2 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 5.4 </td>
-   <td style="text-align:center;"> 3.9 </td>
-   <td style="text-align:center;"> 1.7 </td>
-   <td style="text-align:center;"> 0.4 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.6 </td>
-   <td style="text-align:center;"> 3.4 </td>
-   <td style="text-align:center;"> 1.4 </td>
-   <td style="text-align:center;"> 0.3 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 5.0 </td>
-   <td style="text-align:center;"> 3.4 </td>
-   <td style="text-align:center;"> 1.5 </td>
-   <td style="text-align:center;"> 0.2 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.4 </td>
-   <td style="text-align:center;"> 2.9 </td>
-   <td style="text-align:center;"> 1.4 </td>
-   <td style="text-align:center;"> 0.2 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.9 </td>
-   <td style="text-align:center;"> 3.1 </td>
-   <td style="text-align:center;"> 1.5 </td>
-   <td style="text-align:center;"> 0.1 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 5.4 </td>
-   <td style="text-align:center;"> 3.7 </td>
-   <td style="text-align:center;"> 1.5 </td>
-   <td style="text-align:center;"> 0.2 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.8 </td>
-   <td style="text-align:center;"> 3.4 </td>
-   <td style="text-align:center;"> 1.6 </td>
-   <td style="text-align:center;"> 0.2 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.8 </td>
-   <td style="text-align:center;"> 3.0 </td>
-   <td style="text-align:center;"> 1.4 </td>
-   <td style="text-align:center;"> 0.1 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 4.3 </td>
-   <td style="text-align:center;"> 3.0 </td>
-   <td style="text-align:center;"> 1.1 </td>
-   <td style="text-align:center;"> 0.1 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-  <tr>
-   <td style="text-align:center;"> 5.8 </td>
-   <td style="text-align:center;"> 4.0 </td>
-   <td style="text-align:center;"> 1.2 </td>
-   <td style="text-align:center;"> 0.2 </td>
-   <td style="text-align:center;"> setosa </td>
-  </tr>
-</tbody>
-</table>
+Central Limit Theorem
 
+Nicer barcharts
+
+Power Calculations
+k-means
+Tuning kmeans
+ANOVA
+R on Ucloud
+A deeper dive into pipes
+Setup for GIS
+
+Shiny without the server
+Choropleths
+What to do with data that is not normal
+building-models
+lasso-regularisation
+ridge-regularisation
+elastic-net-regularisation
 
 
 ``` error
-Error in knitr::include_graphics("../figure/palmerpenguins.png"): Cannot find the file(s): "../figure/palmerpenguins.png"
+Error in knitr::include_graphics("horst_new_mat.png"): Cannot find the file(s): "horst_new_mat.png"
 ```
 
-## Et praktisk eksemepel
+
+# Et praktisk eksempel
 
 Panum UngdomsForsker Forening, PUFF, er en studenterforening drevet af frivillige
 medicinstuderende på Københavns Universitet, der arbejder for at forbedre vilkårene
@@ -262,9 +154,17 @@ programmeringssprog R. Kurset blev gennemført over 5 eftermiddage/aftener á 3 
 og med en professor i biomedicinsk statistik som underviser. Efter COVID-19 
 pandemien oplevede de vanskeligheder med at tiltrække deltagere til det relativt
 dyre kursus.
-at tiltrække 
 
-## Hvor finder du den?
+KUB Datalab har siden 2023 overtaget R-delen af kurset, baseret på materiale
+trukket fra vores toolbox.
+
+# Bonus
+
+Ud over at danne grundlag for målsyede kurser, fungerer værktøjskassen også som
+intern videnbank, hvor vi kan finde noter om hvordan man gør specifikke ting. 
+
+
+# Hvor finder du den?
 https://github.com/kubdatalab/R-toolbox
 
 https://kubdatalab.github.io/R-toolbox/
