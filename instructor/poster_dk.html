@@ -350,7 +350,7 @@
 <div class="accordion accordion-flush" id="accordionFlush18">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading18">
-        <a href="ucloud.html">17. R on Ucloud</a>
+        <a href="cohens-kappa.html">17. Cohens Kappa</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -359,7 +359,7 @@
 <div class="accordion accordion-flush" id="accordionFlush19">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading19">
-        <a href="pipes.html">18. A deeper dive into pipes</a>
+        <a href="ucloud.html">18. R on Ucloud</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -368,7 +368,7 @@
 <div class="accordion accordion-flush" id="accordionFlush20">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading20">
-        <a href="gis_setup.html">19. Setup for GIS</a>
+        <a href="pipes.html">19. A deeper dive into pipes</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -377,7 +377,7 @@
 <div class="accordion accordion-flush" id="accordionFlush21">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading21">
-        <a href="fence-test.html">20. Fences på vores undervisningssider</a>
+        <a href="gis_setup.html">20. Setup for GIS</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -386,7 +386,16 @@
 <div class="accordion accordion-flush" id="accordionFlush22">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading22">
-        <a href="making-a-new-course.html">21. Make a new course</a>
+        <a href="fence-test.html">21. Fences på vores undervisningssider</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush23">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading23">
+        <a href="making-a-new-course.html">22. Make a new course</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -468,8 +477,9 @@
 <h1 id="introduktion">Introduktion<a class="anchor" aria-label="anchor" href="#introduktion"></a></h1>
 <p>KUB Datalab er Københavns Universitetsbiblioteks tilbud til
 studerende om vejledning og undervisning i arbejde med data. Vi tilbyder
-kurser i grundlæggende programmering, dataanalyse og -visulisering,
-blandt meget andet.</p>
+kurser i grundlæggende programmering, dataanalyse og -visulisering.
+Undervisningen sker både “indlejret” hvor vi indgår i et egentligt
+kursusforløb på universitetet, og som åbne kurser.</p>
 <p>Studerende henvender sig regelmæssigt med ønsker om kurser med
 <em>meget</em> specifikt indhold. Dette behov vil vi gerne imødekomme,
 men det er for ressourcekrævende at skulle udvikle enkeltstående kurser
@@ -493,10 +503,16 @@ uafhængige af andre som muligt, men så afhængige som nødvendigt.</p>
 </div>
 <div class="section level1">
 <h1 id="metoder">Metoder<a class="anchor" aria-label="anchor" href="#metoder"></a></h1>
-<p>Kursets didaktiske tilgang er baseret på Teaching Tech Together <span class="citation">[@teachingtech]</span> og Carpentries <span class="citation">[@TheCarpentries]</span> filosofien. Der er fokus på
-“code-along” hvor de studerende forventes og opfordres til at “taste
-med”. Målet er ikke at dække mest mulig teori, men at efterlade de
-studerende med praktiske færdigheder. etc.</p>
+<p>Kursets didaktiske tilgang er baseret på Teaching Tech Together <span class="citation">[@teachingtech]</span> og Carpentries <span class="citation">[@TheCarpentries]</span> filosofien.</p>
+<p>Der er fokus på “code-along” hvor de studerende forventes og
+opfordres til at “taste med”. Målet er ikke at dække mest mulig teori,
+men at efterlade de studerende med praktiske færdigheder.</p>
+<div style="break-after: column;">
+
+</div>
+</div>
+<div class="section level1">
+<h1 id="teknik">Teknik<a class="anchor" aria-label="anchor" href="#teknik"></a></h1>
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -507,33 +523,42 @@ nyt repositorie på Github. Baseret på de konkrete behov redigeres en
 enkelt setup-fil, så kun de ønskede episoder indgår. Redigeringen tager
 under fem minutter, mens det tager GitHub op til en halv time at “bygge”
 siden.</p>
-<p>To get a better understanding of how to include features like these
-please refer to the {posterdown} <a href="https://github.com/posterdown/wiki" class="external-link">wiki</a>.</p>
-<p><strong><em>Now on to the results!</em></strong></p>
 </div>
 <div class="section level1">
 <h1 id="indhold">Indhold<a class="anchor" aria-label="anchor" href="#indhold"></a></h1>
-<p>Tematiseret episodeliste</p>
-<p>Reproducible Data Analysis Tidy Data</p>
-<p>Reading data from file Descriptive Statistics Table One</p>
-<p>The normal distribution Testing for normality How is the data
-distributed?</p>
-<p>Linear regression Multiple Linear Regression Logistic regression</p>
-<p>Central Limit Theorem</p>
-<p>Nicer barcharts</p>
-<p>Power Calculations k-means Tuning kmeans ANOVA R on Ucloud A deeper
-dive into pipes Setup for GIS</p>
-<p>Shiny without the server Choropleths What to do with data that is not
-normal building-models lasso-regularisation ridge-regularisation
-elastic-net-regularisation</p>
+<div class="section level3">
+<h3 id="datahåndtering-og-workflow">Datahåndtering og Workflow<a class="anchor" aria-label="anchor" href="#datah%C3%A5ndtering-og-workflow"></a></h3>
+<p>• Reproducible Data Analysis • Reading data from file • Tidy Data • A
+deeper dive into pipes • R on Ucloud • Setup for GIS</p>
+</div>
+<div class="section level3">
+<h3 id="udforskende-dataanalyse-og-visualisering">Udforskende Dataanalyse og Visualisering<a class="anchor" aria-label="anchor" href="#udforskende-dataanalyse-og-visualisering"></a></h3>
+<p>• Descriptive Statistics • Table One • Nicer barcharts • How is the
+data distributed? • The normal distribution • Testing for normality</p>
+</div>
+<div class="section level3">
+<h3 id="statistiske-grundbegreber-og-teori">Statistiske Grundbegreber og Teori<a class="anchor" aria-label="anchor" href="#statistiske-grundbegreber-og-teori"></a></h3>
+<p>• Central Limit Theorem • Power Calculations</p>
+</div>
+<div class="section level3">
+<h3 id="regressionsanalyse">Regressionsanalyse<a class="anchor" aria-label="anchor" href="#regressionsanalyse"></a></h3>
+<p>• Linear regression • Multiple Linear Regression • Logistic
+regression</p>
+</div>
+<div class="section level3">
+<h3 id="avancerede-analyseteknikker">Avancerede Analyseteknikker<a class="anchor" aria-label="anchor" href="#avancerede-analyseteknikker"></a></h3>
+<p>• k-means • ANOVA</p>
 <div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="error" tabindex="0"><code>Error in knitr::include_graphics("horst_new_mat.png"): Cannot find the file(s): "horst_new_mat.png"</code></pre>
 </div>
 </div>
+</div>
 <div class="section level1">
-<h1 id="et-praktisk-eksempel">Et praktisk eksempel<a class="anchor" aria-label="anchor" href="#et-praktisk-eksempel"></a></h1>
+<h1 id="praktiske-eksempler">Praktiske eksempler<a class="anchor" aria-label="anchor" href="#praktiske-eksempler"></a></h1>
+<div class="section level2">
+<h2 id="r-for-studenterforskere">R for studenterforskere<a class="anchor" aria-label="anchor" href="#r-for-studenterforskere"></a></h2>
 <p>Panum UngdomsForsker Forening, PUFF, er en studenterforening drevet
 af frivillige medicinstuderende på Københavns Universitet, der arbejder
 for at forbedre vilkårene for medicinsk studenterforskning.</p>
@@ -545,6 +570,11 @@ vanskeligheder med at tiltrække deltagere til det relativt dyre
 kursus.</p>
 <p>KUB Datalab har siden 2023 overtaget R-delen af kurset, baseret på
 materiale trukket fra vores toolbox.</p>
+</div>
+<div class="section level2">
+<h2 id="introduktion-til-statistik">Introduktion til statistik<a class="anchor" aria-label="anchor" href="#introduktion-til-statistik"></a></h2>
+<p>Noget om noget med Roskilde og statistik</p>
+</div>
 </div>
 <div class="section level1">
 <h1 id="bonus">Bonus<a class="anchor" aria-label="anchor" href="#bonus"></a></h1>

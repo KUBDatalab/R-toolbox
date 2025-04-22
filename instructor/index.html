@@ -354,7 +354,7 @@
 <div class="accordion accordion-flush" id="accordionFlush18">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading18">
-        <a href="ucloud.html">17. R on Ucloud</a>
+        <a href="cohens-kappa.html">17. Cohens Kappa</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -363,7 +363,7 @@
 <div class="accordion accordion-flush" id="accordionFlush19">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading19">
-        <a href="pipes.html">18. A deeper dive into pipes</a>
+        <a href="ucloud.html">18. R on Ucloud</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -372,7 +372,7 @@
 <div class="accordion accordion-flush" id="accordionFlush20">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading20">
-        <a href="gis_setup.html">19. Setup for GIS</a>
+        <a href="pipes.html">19. A deeper dive into pipes</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -381,7 +381,7 @@
 <div class="accordion accordion-flush" id="accordionFlush21">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading21">
-        <a href="fence-test.html">20. Fences på vores undervisningssider</a>
+        <a href="gis_setup.html">20. Setup for GIS</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -390,7 +390,16 @@
 <div class="accordion accordion-flush" id="accordionFlush22">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading22">
-        <a href="making-a-new-course.html">21. Make a new course</a>
+        <a href="fence-test.html">21. Fences på vores undervisningssider</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush23">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading23">
+        <a href="making-a-new-course.html">22. Make a new course</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -618,49 +627,58 @@ How do you perform an ANOVA?<br>What even is ANOVA?
 <span class="visually-hidden">Duration: </span>03h 12m
 </td>
 <td>
-17. <a href="ucloud.html">R on Ucloud</a>
+17. <a href="cohens-kappa.html">Cohens Kappa</a>
 </td>
 <td>
-What is Ucloud?<br>How do we use R and RStudio on Ucloud?
+How can agrement on classification be quantised?<br>How is Cohens <span class="math inline">\(\\Kappa\)</span> calculated?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>03h 24m
 </td>
 <td>
-18. <a href="pipes.html">A deeper dive into pipes</a>
+18. <a href="ucloud.html">R on Ucloud</a>
 </td>
 <td>
-What are the differences between the two pipes?<br>:::
+What is Ucloud?<br>How do we use R and RStudio on Ucloud?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>03h 36m
 </td>
 <td>
-19. <a href="gis_setup.html">Setup for GIS</a>
+19. <a href="pipes.html">A deeper dive into pipes</a>
+</td>
+<td>
+What are the differences between the two pipes?<br>:::
+</td>
+</tr><tr><td>
+<span class="visually-hidden">Duration: </span>03h 48m
+</td>
+<td>
+20. <a href="gis_setup.html">Setup for GIS</a>
 </td>
 <td>
 How do I get ready for working with geospatial data in R?<br>:::
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>05h 00m
+<span class="visually-hidden">Duration: </span>05h 12m
 </td>
 <td>
-20. <a href="fence-test.html">Fences på vores undervisningssider</a>
+21. <a href="fence-test.html">Fences på vores undervisningssider</a>
 </td>
 <td>
 Hvilke fences har vi til rådighed i det her setup?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>05h 12m
+<span class="visually-hidden">Duration: </span>05h 24m
 </td>
 <td>
-21. <a href="making-a-new-course.html">Make a new course</a>
+22. <a href="making-a-new-course.html">Make a new course</a>
 </td>
 <td>
 How do I make a new course-page based on this??
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>05h 24m
+<span class="visually-hidden">Duration: </span>05h 36m
 </td>
 <td>
 Finish
@@ -711,7 +729,7 @@ background. You do not need to run it separately.</p>
   Online
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Rather than installing R and RStudio on your personal computer, <a href="https://posit.cloud//" class="external-link">Posit Cloud</a> offers a free, online
 alternative, where you will be able to run R and RStudio in your
@@ -733,7 +751,7 @@ problems installing R and RStudio on your personal computer.</p>
   Windows
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="if-you-already-have-r-and-rstudio-installed">If you already have R and RStudio installed<a class="anchor" aria-label="anchor" href="#if-you-already-have-r-and-rstudio-installed"></a></h4>
@@ -775,7 +793,7 @@ don’t get any error messages.</li>
   MacOS
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="section level4">
 <h4 id="if-you-already-have-r-and-rstudio-installed-1">If you already have R and RStudio installed<a class="anchor" aria-label="anchor" href="#if-you-already-have-r-and-rstudio-installed-1"></a></h4>
@@ -817,7 +835,7 @@ don’t get any error messages.</li>
   Linux
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <ul><li>Follow the instructions for your distribution from <a href="https://cloud.r-project.org/bin/linux" class="external-link">CRAN</a>, they provide
 information to get the most recent version of R for common
