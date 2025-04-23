@@ -364,7 +364,7 @@
 <li><a href="#where-is-it-used">Where is it used?</a></li>
 <li><a href="#limitations">Limitations</a></li>
 <li><a href="#how-do-we-calculate-it">How do we calculate it?</a></li>
-<li><a href="#how-confident-are-we-in-kappa">How confident are we in <span class="math inline">\(\Kappa\)</span>?</a></li>
+<li><a href="#how-confident-are-we-in-kappa">How confident are we in <span class="math inline">\(\kappa\)</span>?</a></li>
 <li><a href="#interpretation">Interpretation</a></li>
 <li><a href="#assumptions">Assumptions</a></li>
 <li><a href="#the-math">The math</a></li>
@@ -478,7 +478,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Cohens Kappa</h1>
-        <p>Last updated on 2025-04-22 |
+        <p>Last updated on 2025-04-23 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/cohens-kappa.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -498,7 +498,7 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul><li>How can agrement on classification be quantised?</li>
-<li>How is Cohens <span class="math inline">\(\Kappa\)</span>
+<li>How is Cohens <span class="math inline">\(\kappa\)</span>
 calculated?</li>
 </ul></div>
 </div>
@@ -507,11 +507,11 @@ calculated?</li>
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Learn to calculate Cohens <span class="math inline">\(\Kappa\)</span>
+<ul><li>Learn to calculate Cohens <span class="math inline">\(\kappa\)</span>
 </li>
-<li>Become familiar with the usecases for Cohens <span class="math inline">\(\Kappa\)</span>
+<li>Become familiar with the usecases for Cohens <span class="math inline">\(\kappa\)</span>
 </li>
-<li>Know the limitations of Cohens <span class="math inline">\(\Kappa\)</span>
+<li>Know the limitations of Cohens <span class="math inline">\(\kappa\)</span>
 </li>
 </ul></div>
 </div>
@@ -567,7 +567,7 @@ one.</p>
   Constructing the data
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>Ja, dette bør ligge i et datasæt der kan indlæses.</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -712,24 +712,24 @@ Weighted   0.5588 0.1282 4.359 1.304e-05</code></pre>
   Unweighted vs Weighted?
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>For some use cases it does not really matter what kind of
 disagreement the two raters have. They of course should agree, but the
 disagreement of classifying a Golden Retriver as a Labrador Retriver, is
 not as serious as mistaking it for a Chihuahua.</p>
-<p>The Unweighted <span class="math inline">\(\Kappa\)</span> is
+<p>The Unweighted <span class="math inline">\(\kappa\)</span> is
 calculated with the assumption that the different disagreements are of
 equal seriousness.</p>
-<p>The Weighted <span class="math inline">\(\Kappa\)</span> assumes that
+<p>The Weighted <span class="math inline">\(\kappa\)</span> assumes that
 some disagreements are worse than others.</p>
 </div>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="how-confident-are-we-in-kappa">How confident are we in <span class="math inline">\(\Kappa\)</span>?<a class="anchor" aria-label="anchor" href="#how-confident-are-we-in-kappa"></a></h2>
+</section><section><h2 class="section-heading" id="how-confident-are-we-in-kappa">How confident are we in <span class="math inline">\(\kappa\)</span>?<a class="anchor" aria-label="anchor" href="#how-confident-are-we-in-kappa"></a></h2>
 <hr class="half-width"><p>The function <code>confint()</code> will give us the 95% confidence
-interval of the <span class="math inline">\(\Kappa\)</span>
+interval of the <span class="math inline">\(\kappa\)</span>
 calculated:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -746,13 +746,13 @@ Kappa              lwr       upr
   Weighted   0.3075771 0.8100699</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="interpretation">Interpretation<a class="anchor" aria-label="anchor" href="#interpretation"></a></h2>
-<hr class="half-width"><p>Cohens <span class="math inline">\(\Kappa\)</span> takes into account
+<hr class="half-width"><p>Cohens <span class="math inline">\(\kappa\)</span> takes into account
 the possibility that the two raters agree by chance. This makes it a
 more robust measure of agreement than simply looking at the precent
 agreement. It returns a value between -1 and 1, 1 indicating perfect
 agreement, 0 no agreement besides random chance, and negative values
 less agreement than we would expect by chance.</p>
-<p>So. Is an unweighted <span class="math inline">\(\Kappa\)</span> of
+<p>So. Is an unweighted <span class="math inline">\(\kappa\)</span> of
 0.6507 good or bad?</p>
 <p>That depends on what we are actually classifying. Classifying
 psychiatric disorders is obviously more important than classifying dog
@@ -795,7 +795,7 @@ indications:</p>
 distribution of the classifications, and the values in this table should
 be taken with a grain of salt.</p>
 </section><section><h2 class="section-heading" id="assumptions">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions"></a></h2>
-<hr class="half-width"><p>Cohens <span class="math inline">\(\Kappa\)</span> have the following
+<hr class="half-width"><p>Cohens <span class="math inline">\(\kappa\)</span> have the following
 requirements:</p>
 <ul><li><p>Two raters (or coders). No more, no less.</p></li>
 <li><p>Nominal scale – there are no order to the
@@ -807,12 +807,12 @@ other.</p></li>
 <li><p>Mutually exclusive categories – an arbitrary case can only get
 <em>one</em> classification.</p></li>
 </ul></section><section><h2 class="section-heading" id="the-math">The math<a class="anchor" aria-label="anchor" href="#the-math"></a></h2>
-<hr class="half-width"><p>We define <span class="math inline">\(\Kappa\)</span> as:</p>
-<p><span class="math display">\[\Kappa =  \frac{P_0 -
+<hr class="half-width"><p>We define <span class="math inline">\(\kappa\)</span> as:</p>
+<p><span class="math display">\[\kappa =  \frac{P_0 -
 P_e}{1-P_e}\]</span> Where <span class="math inline">\(P_0\)</span> is
 the degree of agreement we observe, and <span class="math inline">\(P_e\)</span> is the degree of agreement that is
 random.</p>
-<p>The null hypothesis declares that any agreement is random, and <span class="math inline">\(\Kappa\)</span> is 0. If <span class="math inline">\(\Kappa\)</span> is different from 0, the agreement
+<p>The null hypothesis declares that any agreement is random, and <span class="math inline">\(\kappa\)</span> is 0. If <span class="math inline">\(\kappa\)</span> is different from 0, the agreement
 is not random.</p>
 <p>If we are looking at two raters, in this example doctors, determining
 if a patient is sick, a simple yes/no question in this case we will get
@@ -833,18 +833,23 @@ divided by the number of patients:</p>
 <p><span class="math display">\[P_0 = \frac{a + d}{N}\]</span></p>
 <p>The random agreement <span class="math inline">\(P_e\)</span> takes a
 bit more math:</p>
-<p>Doctor 1 answers “yes” in <span class="math inline">\(\frac{R_1}{N}\)</span> cases. Doctor 2 answers
-“yes” in <span class="math inline">\(\frac{C_1}{N}\)</span> cases.</p>
-<p>Based on this, the probability that they both, randomly and by
+<ul><li>Doctor 1 answers “yes” in <span class="math inline">\(\frac{R_1}{N}\)</span> cases.</li>
+<li>Doctor 2 answers “yes” in <span class="math inline">\(\frac{C_1}{N}\)</span> cases.</li>
+</ul><p>Based on this, the probability that they both, randomly and by
 chance, answers “yes” is:</p>
-<p><span class="math display">\[\frac{R1}{N}  \frac{C1}{N}\]</span>
-Doctor1 answers “no” in <span class="math inline">\({R2}{N}\)</span>
-cases Doctor2 answers “no” in <span class="math inline">\(\frac{C2}{N}\)</span> cases</p>
+<p><span class="math display">\[\frac{R1}{N}  \frac{C1}{N}\]</span></p>
+<p>And for the random agreement of “no”:</p>
+<p><em>Doctor1 answers “no” in <span class="math inline">\(\frac{R2}{N}\)</span> cases </em> Doctor2 answers
+“no” in <span class="math inline">\(\frac{C2}{N}\)</span> cases</p>
 <p>And the probability that they both, again randomly and by chance,
 answers “no” is:</p>
 <p><span class="math display">\[\frac{R2}{N} \frac{C2}{N}\]</span></p>
+<p>We then calculate the total probability that the two raters agree by
+chance by adding the two ways they can do that:</p>
+<p><span class="math display">\[P_e = \frac{R1}{N}  \frac{C1}{N}+
+\frac{R2}{N} \frac{C2}{N}\]</span></p>
 <p>Now that we have both <span class="math inline">\(P_0\)</span> and
-<span class="math inline">\(P_e\)</span>, we can calculate <span class="math inline">\(\Kappa\)</span>, and confidence intervals: <span class="math inline">\(\Kappa \pm Z_{\alpha/2} SE_\Kappa\)</span> based
+<span class="math inline">\(P_e\)</span>, we can calculate <span class="math inline">\(\kappa\)</span>, and confidence intervals: <span class="math inline">\(\kappa \pm Z_{\alpha/2} SE_\kappa\)</span> based
 on the Z-distribution (if normality is assured, otherwise the
 t-distribution).</p>
 <div id="accordionSpoiler3" class="accordion spoiler-accordion accordion-flush">
@@ -855,11 +860,11 @@ t-distribution).</p>
   This looks like something I have seen before?
   </h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <p>If you have ever looked at how the math in a <span class="math inline">\(\chi^2\)</span> test works, this might look
 familiar. Thats because it actually is.</p>
-<p>With two raters and two categories, that <span class="math inline">\(\Kappa\)</span> statistic is the same. And if you
+<p>With two raters and two categories, that <span class="math inline">\(\kappa\)</span> statistic is the same. And if you
 want to delve deeper into that, you can look up this paper:</p>
 <p>Feingold, Marcia (1992). “The Equivalence of Cohen’s Kappa and
 Pearson’s Chi-Square Statistics in the 2 × 2 Table.” Educational and
@@ -869,18 +874,18 @@ Psychological Measurement 52(1): 57-61. <a href="http://hdl.handle.net/2027.42/6
 </div>
 </div>
 </section><section><h2 class="section-heading" id="alternatives">Alternatives<a class="anchor" aria-label="anchor" href="#alternatives"></a></h2>
-<hr class="half-width"><p>Cohens <span class="math inline">\(\Kappa\)</span> only works
+<hr class="half-width"><p>Cohens <span class="math inline">\(\kappa\)</span> only works
 (directly) for nominal values, and two raters. The option of weighting
 the data give us some options for using it on ordinal values, but more
 direct options exist.</p>
-<ul><li>Weighted <span class="math inline">\(\Kappa\)</span> is used for
+<ul><li>Weighted <span class="math inline">\(\kappa\)</span> is used for
 ordinal values. We use the function <code>kappa2()</code> from the
 <code>irr</code> package.</li>
-<li>Light’s <span class="math inline">\(\Kappa\)</span> is used for
+<li>Light’s <span class="math inline">\(\kappa\)</span> is used for
 studying interrater agreement between more than 2 raters. We use the
 function <code>kappamlight()</code> from the <code>irr</code>
 package.</li>
-<li>Fleiss <span class="math inline">\(\Kappa\)</span> is also used when
+<li>Fleiss <span class="math inline">\(\kappa\)</span> is also used when
 having more than 2 raters. <em>But</em> does <em>not</em> require the
 same raters for each subject.</li>
 </ul><div id="keypoints1" class="callout keypoints">
@@ -890,7 +895,7 @@ same raters for each subject.</li>
 <div class="callout-inner">
 <h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
-<ul><li>With two raters Cohens <span class="math inline">\(\Kappa\)</span>
+<ul><li>With two raters Cohens <span class="math inline">\(\kappa\)</span>
 can be used as a measure of interrater agreement on categorical, nominal
 classes.</li>
 <li>Other methods exists for ordinal classes, and more than two
@@ -960,8 +965,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/cohens-kappa.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/cohens-kappa.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-04-22",
-  "datePublished": "2025-04-22"
+  "dateModified": "2025-04-23",
+  "datePublished": "2025-04-23"
 }
 
   </script><script>
