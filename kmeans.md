@@ -160,31 +160,31 @@ clustering
 ```
 
 ``` output
-K-means clustering with 3 clusters of sizes 69, 62, 47
+K-means clustering with 3 clusters of sizes 47, 62, 69
 
 Cluster means:
    Alcohol Malicacid      Ash Alcalinityofash Magnesium Totalphenols Flavanoids
-1 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
+1 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
 2 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
-3 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
+3 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
   Nonflavanoidphenols Proanthocyanins Colorintensity       Hue
-1           0.3901449        1.451884       4.086957 0.9411594
+1           0.2853191        1.910426       5.702553 1.0782979
 2           0.3883871        1.503387       5.650323 0.8839677
-3           0.2853191        1.910426       5.702553 1.0782979
+3           0.3901449        1.451884       4.086957 0.9411594
   OD280OD315ofdilutedwines   Proline
-1                 2.490725  458.2319
+1                 3.114043 1195.1489
 2                 2.365484  728.3387
-3                 3.114043 1195.1489
+3                 2.490725  458.2319
 
 Clustering vector:
-  [1] 3 3 3 3 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 3 3 2 2 3 3 2 3 3 3 3 3 3 2 2
- [38] 3 3 2 2 3 3 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 2 1 2 1 1 2 1 1 2 2 2 1 1 3
- [75] 2 1 1 1 2 1 1 2 2 1 1 1 1 1 2 2 1 1 1 1 1 2 2 1 2 1 2 1 1 1 2 1 1 1 1 2 1
-[112] 1 2 1 1 1 1 1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 2 2 2 2 1 1 1 2 2 1 1 2 2 1 2
-[149] 2 1 1 1 1 2 2 2 1 2 2 2 1 2 1 2 2 1 2 2 2 2 1 1 2 2 2 2 2 1
+  [1] 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 2 2 1 1 2 1 1 1 1 1 1 2 2
+ [38] 1 1 2 2 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 2 3 2 3 3 2 3 3 2 2 2 3 3 1
+ [75] 2 3 3 3 2 3 3 2 2 3 3 3 3 3 2 2 3 3 3 3 3 2 2 3 2 3 2 3 3 3 2 3 3 3 3 2 3
+[112] 3 2 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 2 3 3 2 2 2 2 3 3 3 2 2 3 3 2 2 3 2
+[149] 2 3 3 3 3 2 2 2 3 2 2 2 3 2 3 2 2 3 2 2 2 2 3 3 2 2 2 2 2 3
 
 Within cluster sum of squares by cluster:
-[1]  443166.7  566572.5 1360950.5
+[1] 1360950.5  566572.5  443166.7
  (between_SS / total_SS =  86.5 %)
 
 Available components:
@@ -224,9 +224,9 @@ table(testing_clusters)
 ``` output
      true
 quess  1  2  3
-    1  0 50 19
+    1 46  1  0
     2 13 20 29
-    3 46  1  0
+    3  0 50 19
 ```
 
 The algorithm have no idea about how the true groups are numbered, so the numbering does not match. But it appears
@@ -309,7 +309,11 @@ two features/dimensions: Plot them on a piece of paper, and bring out the ruler.
 
 But what is the distance between this point:
 
-1, 14.23, 1.71, 2.43, 15.6, 127, 2.8, 3.06, 0.28, 2.29, 5.64, 1.04, 3.92, 1065 and 1, 13.2, 1.78, 2.14, 11.2, 100, 2.65, 2.76, 0.26, 1.28, 4.38, 1.05, 3.4, 1050?
+1, 14.23, 1.71, 2.43, 15.6, 127, 2.8, 3.06, 0.28, 2.29, 5.64, 1.04, 3.92, 1065 
+
+and this one:
+
+1, 13.2, 1.78, 2.14, 11.2, 100, 2.65, 2.76, 0.26, 1.28, 4.38, 1.05, 3.4, 1050?
 
 Rather than plotting and measuring, if we only have two observations with two 
 features, and we call the the observations $(x_1, y_1)$ and $(x_2,y_2)$ 
@@ -414,32 +418,6 @@ The algorithm _will_ find two clusters:
 
 ``` r
 library(tidymodels)
-```
-
-``` output
-── Attaching packages ────────────────────────────────────── tidymodels 1.3.0 ──
-```
-
-``` output
-✔ broom        1.0.8     ✔ rsample      1.3.0
-✔ dials        1.4.0     ✔ tune         1.3.0
-✔ infer        1.0.8     ✔ workflows    1.2.0
-✔ modeldata    1.4.0     ✔ workflowsets 1.1.0
-✔ parsnip      1.3.1     ✔ yardstick    1.3.2
-✔ recipes      1.3.1     
-```
-
-``` output
-── Conflicts ───────────────────────────────────────── tidymodels_conflicts() ──
-✖ scales::discard() masks purrr::discard()
-✖ dplyr::filter()   masks stats::filter()
-✖ recipes::fixed()  masks stringr::fixed()
-✖ dplyr::lag()      masks stats::lag()
-✖ yardstick::spec() masks readr::spec()
-✖ recipes::step()   masks stats::step()
-```
-
-``` r
 kmeans_model3 <- kmeans(test_data[,-3], 2)
 cluster3 <- augment(kmeans_model3, test_data[,-3])
 ggplot(cluster3, aes(x,y,colour=.cluster)) +
