@@ -423,8 +423,7 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#two-sample-f-test-for-variance">Two-sample F-test for variance</a></li>
-<li><a href="#listen-over-tests">listen over tests</a></li>
+        <ul><li><a href="#listen-over-tests">listen over tests</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -489,7 +488,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Statistical tests</h1>
-        <p>Last updated on 2025-05-23 |
+        <p>Last updated on 2025-05-26 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/stat-tests-1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -527,100 +526,225 @@ challenge blocks</li>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="two-sample-f-test-for-variance">Two-sample F-test for variance<a class="anchor" aria-label="anchor" href="#two-sample-f-test-for-variance"></a></h2>
-<hr class="half-width"><p>We use this when we want to determine if two independent samples
-originate from populations with the same variance.</p>
-</section><section><h2 class="section-heading" id="listen-over-tests">listen over tests<a class="anchor" aria-label="anchor" href="#listen-over-tests"></a></h2>
+<section><h2 class="section-heading" id="listen-over-tests">listen over tests<a class="anchor" aria-label="anchor" href="#listen-over-tests"></a></h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="enkeltprøve-tests">Enkeltprøve-tests<a class="anchor" aria-label="anchor" href="#enkeltpr%C3%B8ve-tests"></a></h3>
-<p>One-sample chi-square test</p>
-<p>One-sample z test</p>
-<p>One-sample t test</p>
-<p>One-sample Poisson test</p>
-<p>Shapiro–Wilk test for normalitet</p>
-<p>Kolmogorov–Smirnov én-prøve-test (goodness-of-fit)</p>
-<p>χ² goodness-of-fit test</p>
+<div class="section level4">
+<h4 id="one-sample-chi-square-test">One-sample chi-square test<a class="anchor" aria-label="anchor" href="#one-sample-chi-square-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="one-sample-z-test">One-sample z test<a class="anchor" aria-label="anchor" href="#one-sample-z-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="one-sample-t-test">One-sample t test<a class="anchor" aria-label="anchor" href="#one-sample-t-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="one-sample-poisson-test">One-sample Poisson test<a class="anchor" aria-label="anchor" href="#one-sample-poisson-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="shapirowilk-test-for-normalitet">Shapiro–Wilk test for normalitet<a class="anchor" aria-label="anchor" href="#shapirowilk-test-for-normalitet"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="kolmogorovsmirnov-én-prøve-test-goodness-of-fit">Kolmogorov–Smirnov én-prøve-test (goodness-of-fit)<a class="anchor" aria-label="anchor" href="#kolmogorovsmirnov-%C3%A9n-pr%C3%B8ve-test-goodness-of-fit"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="χ²-goodness-of-fit-test">χ² goodness-of-fit test<a class="anchor" aria-label="anchor" href="#%CF%87%C2%B2-goodness-of-fit-test"></a></h4>
+</div>
 </div>
 <div class="section level3">
 <h3 id="to-prøve-tests-og-parrede-tests">To-prøve-tests og parrede tests<a class="anchor" aria-label="anchor" href="#to-pr%C3%B8ve-tests-og-parrede-tests"></a></h3>
-<p>Two-sample F test</p>
-<p>Paired t-test</p>
-<p>Two-sample t test (equal variances)</p>
-<p>Two-sample t test (unequal variances)</p>
-<p>Mann–Whitney U-test (Wilcoxon rank-sum)</p>
-<p>Wilcoxon signed-rank test</p>
-<p>Kolmogorov–Smirnov to-prøve-test</p>
-<p>Levene’s test for homoskedasticitet</p>
-<p>Bartlett’s test for homoskedasticitet</p>
+<div class="section level4">
+<h4 id="two-sample-f-test">Two-sample F test<a class="anchor" aria-label="anchor" href="#two-sample-f-test"></a></h4>
+<p>er det det samme som Two-sample F-test for variance?</p>
+<p>We use this when we want to determine if two independent samples
+originate from populations with the same variance.</p>
+</div>
+<div class="section level4">
+<h4 id="paired-t-test">Paired t-test<a class="anchor" aria-label="anchor" href="#paired-t-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="two-sample-t-test-equal-variances">Two-sample t test (equal variances)<a class="anchor" aria-label="anchor" href="#two-sample-t-test-equal-variances"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="two-sample-t-test-unequal-variances">Two-sample t test (unequal variances)<a class="anchor" aria-label="anchor" href="#two-sample-t-test-unequal-variances"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="mannwhitney-u-test-wilcoxon-rank-sum">Mann–Whitney U-test (Wilcoxon rank-sum)<a class="anchor" aria-label="anchor" href="#mannwhitney-u-test-wilcoxon-rank-sum"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="wilcoxon-signed-rank-test">Wilcoxon signed-rank test<a class="anchor" aria-label="anchor" href="#wilcoxon-signed-rank-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="kolmogorovsmirnov-to-prøve-test">Kolmogorov–Smirnov to-prøve-test<a class="anchor" aria-label="anchor" href="#kolmogorovsmirnov-to-pr%C3%B8ve-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="levenes-test-for-homoskedasticitet">Levene’s test for homoskedasticitet<a class="anchor" aria-label="anchor" href="#levenes-test-for-homoskedasticitet"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="bartletts-test-for-homoskedasticitet">Bartlett’s test for homoskedasticitet<a class="anchor" aria-label="anchor" href="#bartletts-test-for-homoskedasticitet"></a></h4>
+</div>
 </div>
 <div class="section level3">
 <h3 id="variansanalyse-anovaancova">Variansanalyse (ANOVA/ANCOVA)<a class="anchor" aria-label="anchor" href="#variansanalyse-anovaancova"></a></h3>
-<p>One-way ANOVA</p>
-<p>One-way ANCOVA</p>
-<p>Welch’s ANOVA (uden antagelse om lige varianser)</p>
-<p>Repeated-measures ANOVA</p>
-<p>Friedman test (nonparametrisk gentagne målinger)</p>
-<p>Post-hoc: Tukey HSD</p>
-<p>Post-hoc: Dunnett’s test</p>
-<p>Post-hoc: Bonferroni korrektion</p>
+<div class="section level4">
+<h4 id="one-way-anova">One-way ANOVA<a class="anchor" aria-label="anchor" href="#one-way-anova"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="one-way-ancova">One-way ANCOVA<a class="anchor" aria-label="anchor" href="#one-way-ancova"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="welchs-anova-uden-antagelse-om-lige-varianser">Welch’s ANOVA (uden antagelse om lige varianser)<a class="anchor" aria-label="anchor" href="#welchs-anova-uden-antagelse-om-lige-varianser"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="repeated-measures-anova">Repeated-measures ANOVA<a class="anchor" aria-label="anchor" href="#repeated-measures-anova"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="friedman-test-nonparametrisk-gentagne-målinger">Friedman test (nonparametrisk gentagne målinger)<a class="anchor" aria-label="anchor" href="#friedman-test-nonparametrisk-gentagne-m%C3%A5linger"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="post-hoc-tukey-hsd">Post-hoc: Tukey HSD<a class="anchor" aria-label="anchor" href="#post-hoc-tukey-hsd"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="post-hoc-dunnetts-test">Post-hoc: Dunnett’s test<a class="anchor" aria-label="anchor" href="#post-hoc-dunnetts-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="post-hoc-bonferroni-korrektion">Post-hoc: Bonferroni korrektion<a class="anchor" aria-label="anchor" href="#post-hoc-bonferroni-korrektion"></a></h4>
+</div>
 </div>
 <div class="section level3">
 <h3 id="ikke-parametriske-k-prøve-tests">Ikke-parametriske k-prøve-tests<a class="anchor" aria-label="anchor" href="#ikke-parametriske-k-pr%C3%B8ve-tests"></a></h3>
-<p>Kruskal–Wallis test</p>
-<p>Rank correlation</p>
-<p>Anderson–Darling test</p>
+<div class="section level4">
+<h4 id="kruskalwallis-test">Kruskal–Wallis test<a class="anchor" aria-label="anchor" href="#kruskalwallis-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="rank-correlation">Rank correlation<a class="anchor" aria-label="anchor" href="#rank-correlation"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="andersondarling-test">Anderson–Darling test<a class="anchor" aria-label="anchor" href="#andersondarling-test"></a></h4>
+</div>
 </div>
 <div class="section level3">
 <h3 id="regression-og-korrelation">Regression og korrelation<a class="anchor" aria-label="anchor" href="#regression-og-korrelation"></a></h3>
-<p>Simple linear regression</p>
-<p>Multiple regression</p>
-<p>Pearson correlation</p>
-<p>Spearman’s rank correlation</p>
-<p>Kendall’s tau</p>
-<p>Multiple logistic regression</p>
-<p>Poisson regression</p>
-<p>Negative binomial regression</p>
-<p>Ordinal logistic regression</p>
-<p>Linear mixed-effects modeller (LME)</p>
-<p>Generalized linear mixed-effects modeller (GLMM)</p>
-<p>Generalized Estimating Equations (GEE)</p>
+<div class="section level4">
+<h4 id="simple-linear-regression">Simple linear regression<a class="anchor" aria-label="anchor" href="#simple-linear-regression"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="multiple-regression">Multiple regression<a class="anchor" aria-label="anchor" href="#multiple-regression"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="pearson-correlation">Pearson correlation<a class="anchor" aria-label="anchor" href="#pearson-correlation"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="spearmans-rank-correlation">Spearman’s rank correlation<a class="anchor" aria-label="anchor" href="#spearmans-rank-correlation"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="kendalls-tau">Kendall’s tau<a class="anchor" aria-label="anchor" href="#kendalls-tau"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="multiple-logistic-regression">Multiple logistic regression<a class="anchor" aria-label="anchor" href="#multiple-logistic-regression"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="poisson-regression">Poisson regression<a class="anchor" aria-label="anchor" href="#poisson-regression"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="negative-binomial-regression">Negative binomial regression<a class="anchor" aria-label="anchor" href="#negative-binomial-regression"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="ordinal-logistic-regression">Ordinal logistic regression<a class="anchor" aria-label="anchor" href="#ordinal-logistic-regression"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="linear-mixed-effects-modeller-lme">Linear mixed-effects modeller (LME)<a class="anchor" aria-label="anchor" href="#linear-mixed-effects-modeller-lme"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="generalized-linear-mixed-effects-modeller-glmm">Generalized linear mixed-effects modeller (GLMM)<a class="anchor" aria-label="anchor" href="#generalized-linear-mixed-effects-modeller-glmm"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="generalized-estimating-equations-gee">Generalized Estimating Equations (GEE)<a class="anchor" aria-label="anchor" href="#generalized-estimating-equations-gee"></a></h4>
+</div>
 </div>
 <div class="section level3">
 <h3 id="kontingenstabel--og-proportions-tests">Kontingenstabel- og proportions-tests<a class="anchor" aria-label="anchor" href="#kontingenstabel--og-proportions-tests"></a></h3>
-<p>Contingency-table methods (χ² osv.)</p>
-<p>McNemar’s test</p>
-<p>Fisher’s exact test</p>
-<p>Barnard’s exact test</p>
-<p>Cochran–Armitage trend test (ordinal tabel)</p>
-<p>Cochran’s Q test (≥3 matched proportions)</p>
-<p>Stuart–Maxwell test (marginal homogenitet)</p>
-<p>Two-sample test for binomial proportions / Mantel–Haenszel test</p>
-<p>Chi-square test for R×C-tabeller</p>
-<p>Chi-square test for trend (Mantel-extension)</p>
-<p>Chi-square test for heterogenitet (2×k-tabeller)</p>
+<div class="section level4">
+<h4 id="contingency-table-methods-χ²-osv-">Contingency-table methods (χ² osv.)<a class="anchor" aria-label="anchor" href="#contingency-table-methods-%CF%87%C2%B2-osv-"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="mcnemars-test">McNemar’s test<a class="anchor" aria-label="anchor" href="#mcnemars-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="fishers-exact-test">Fisher’s exact test<a class="anchor" aria-label="anchor" href="#fishers-exact-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="barnards-exact-test">Barnard’s exact test<a class="anchor" aria-label="anchor" href="#barnards-exact-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="cochranarmitage-trend-test-ordinal-tabel">Cochran–Armitage trend test (ordinal tabel)<a class="anchor" aria-label="anchor" href="#cochranarmitage-trend-test-ordinal-tabel"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="cochrans-q-test-3-matched-proportions">Cochran’s Q test (≥3 matched proportions)<a class="anchor" aria-label="anchor" href="#cochrans-q-test-3-matched-proportions"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="stuartmaxwell-test-marginal-homogenitet">Stuart–Maxwell test (marginal homogenitet)<a class="anchor" aria-label="anchor" href="#stuartmaxwell-test-marginal-homogenitet"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="two-sample-test-for-binomial-proportions-mantelhaenszel-test">Two-sample test for binomial proportions / Mantel–Haenszel test<a class="anchor" aria-label="anchor" href="#two-sample-test-for-binomial-proportions-mantelhaenszel-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="chi-square-test-for-rc-tabeller">Chi-square test for R×C-tabeller<a class="anchor" aria-label="anchor" href="#chi-square-test-for-rc-tabeller"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="chi-square-test-for-trend-mantel-extension">Chi-square test for trend (Mantel-extension)<a class="anchor" aria-label="anchor" href="#chi-square-test-for-trend-mantel-extension"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="chi-square-test-for-heterogenitet-2k-tabeller">Chi-square test for heterogenitet (2×k-tabeller)<a class="anchor" aria-label="anchor" href="#chi-square-test-for-heterogenitet-2k-tabeller"></a></h4>
+</div>
 </div>
 <div class="section level3">
 <h3 id="incidens--og-rate-tests">Incidens- og rate-tests<a class="anchor" aria-label="anchor" href="#incidens--og-rate-tests"></a></h3>
-<p>One-sample test for incidence rates</p>
-<p>Two-sample comparison of incidence rates</p>
-<p>Trend-test for incidence rates over flere eksponeringsgrupper</p>
-<p>Exact rate ratio test</p>
+<div class="section level4">
+<h4 id="one-sample-test-for-incidence-rates">One-sample test for incidence rates<a class="anchor" aria-label="anchor" href="#one-sample-test-for-incidence-rates"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="two-sample-comparison-of-incidence-rates">Two-sample comparison of incidence rates<a class="anchor" aria-label="anchor" href="#two-sample-comparison-of-incidence-rates"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="trend-test-for-incidence-rates-over-flere-eksponeringsgrupper">Trend-test for incidence rates over flere eksponeringsgrupper<a class="anchor" aria-label="anchor" href="#trend-test-for-incidence-rates-over-flere-eksponeringsgrupper"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="exact-rate-ratio-test">Exact rate ratio test<a class="anchor" aria-label="anchor" href="#exact-rate-ratio-test"></a></h4>
+</div>
 </div>
 <div class="section level3">
 <h3 id="overlevelsesanalyse">Overlevelsesanalyse<a class="anchor" aria-label="anchor" href="#overlevelsesanalyse"></a></h3>
-<p>Log-rank test</p>
-<p>Parametric survival methods (Weibull)</p>
-<p>Cox proportional hazards model</p>
-<p>Accelerated Failure Time (AFT) modeller (eksponentiel, log-logistisk,
-…)</p>
-<p>Gray’s test for konkurrentrisiko</p>
-<p>Test af proportional hazards-antagelsen (Schoenfeld residualer)</p>
+<div class="section level4">
+<h4 id="log-rank-test">Log-rank test<a class="anchor" aria-label="anchor" href="#log-rank-test"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="parametric-survival-methods-weibull">Parametric survival methods (Weibull)<a class="anchor" aria-label="anchor" href="#parametric-survival-methods-weibull"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="cox-proportional-hazards-model">Cox proportional hazards model<a class="anchor" aria-label="anchor" href="#cox-proportional-hazards-model"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="accelerated-failure-time-aft-modeller-eksponentiel-log-logistisk">Accelerated Failure Time (AFT) modeller (eksponentiel,
+log-logistisk, …)<a class="anchor" aria-label="anchor" href="#accelerated-failure-time-aft-modeller-eksponentiel-log-logistisk"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="grays-test-for-konkurrentrisiko">Gray’s test for konkurrentrisiko<a class="anchor" aria-label="anchor" href="#grays-test-for-konkurrentrisiko"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="test-af-proportional-hazards-antagelsen-schoenfeld-residualer">Test af proportional hazards-antagelsen (Schoenfeld residualer)<a class="anchor" aria-label="anchor" href="#test-af-proportional-hazards-antagelsen-schoenfeld-residualer"></a></h4>
+</div>
 </div>
 <div class="section level3">
 <h3 id="aftale--og-concordance-mål">Aftale- og concordance-mål<a class="anchor" aria-label="anchor" href="#aftale--og-concordance-m%C3%A5l"></a></h3>
-<p>Kappa statistic</p>
-<p>Intraclass Correlation Coefficient (ICC)</p>
-<p>Bland–Altman analyse</p>
+<div class="section level4">
+<h4 id="kappa-statistic">Kappa statistic<a class="anchor" aria-label="anchor" href="#kappa-statistic"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="intraclass-correlation-coefficient-icc">Intraclass Correlation Coefficient (ICC)<a class="anchor" aria-label="anchor" href="#intraclass-correlation-coefficient-icc"></a></h4>
+</div>
+<div class="section level4">
+<h4 id="blandaltman-analyse">Bland–Altman analyse<a class="anchor" aria-label="anchor" href="#blandaltman-analyse"></a></h4>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -643,6 +767,7 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
 </div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
@@ -702,8 +827,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/stat-tests-1.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/stat-tests-1.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-05-23",
-  "datePublished": "2025-05-23"
+  "dateModified": "2025-05-26",
+  "datePublished": "2025-05-26"
 }
 
   </script><script>
