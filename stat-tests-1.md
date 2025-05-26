@@ -17,156 +17,162 @@ exercises: 2
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Two-sample F-test for variance
+Den skal nok deles op. Og overskriftshierarkierne er et bud på hvordan.
+
+
+## Enkeltprøve-tests
+
+### One-sample chi-square test
+
+### One-sample z test
+
+### One-sample t test
+
+### One-sample Poisson test
+
+### Shapiro–Wilk test for normalitet
+
+### Kolmogorov–Smirnov én-prøve-test (goodness-of-fit)
+
+### χ² goodness-of-fit test
+
+## To-prøve-tests og parrede tests
+
+### Two-sample F test
+
+
+er det det samme som Two-sample F-test for variance?
 
 We use this when we want to determine if two independent samples originate
 from populations with the same variance.
 
-## listen over tests
 
-### Enkeltprøve-tests
+### Paired t-test
 
-One-sample chi-square test
 
-One-sample z test
 
-One-sample t test
 
-One-sample Poisson test
+### Two-sample t test (equal variances)
 
-Shapiro–Wilk test for normalitet
+### Two-sample t test (unequal variances)
 
-Kolmogorov–Smirnov én-prøve-test (goodness-of-fit)
+### Mann–Whitney U-test (Wilcoxon rank-sum)
 
-χ² goodness-of-fit test
+### Wilcoxon signed-rank test
 
-### To-prøve-tests og parrede tests
+### Kolmogorov–Smirnov to-prøve-test
 
-Two-sample F test
+### Levene’s test for homoskedasticitet
 
-Paired t-test
+### Bartlett’s test for homoskedasticitet
 
-Two-sample t test (equal variances)
+## Variansanalyse (ANOVA/ANCOVA)
 
-Two-sample t test (unequal variances)
+### One-way ANOVA
 
-Mann–Whitney U-test (Wilcoxon rank-sum)
+### One-way ANCOVA
 
-Wilcoxon signed-rank test
+### Welch’s ANOVA (uden antagelse om lige varianser)
 
-Kolmogorov–Smirnov to-prøve-test
+### Repeated-measures ANOVA
 
-Levene’s test for homoskedasticitet
+### Friedman test (nonparametrisk gentagne målinger)
 
-Bartlett’s test for homoskedasticitet
+### Post-hoc: Tukey HSD
 
-### Variansanalyse (ANOVA/ANCOVA)
+### Post-hoc: Dunnett’s test
 
-One-way ANOVA
+### Post-hoc: Bonferroni korrektion
 
-One-way ANCOVA
+## Ikke-parametriske k-prøve-tests
 
-Welch’s ANOVA (uden antagelse om lige varianser)
+### Kruskal–Wallis test
 
-Repeated-measures ANOVA
+### Rank correlation
 
-Friedman test (nonparametrisk gentagne målinger)
+### Anderson–Darling test
 
-Post-hoc: Tukey HSD
+## Regression og korrelation
 
-Post-hoc: Dunnett’s test
+### Simple linear regression
 
-Post-hoc: Bonferroni korrektion
+### Multiple regression
 
-### Ikke-parametriske k-prøve-tests
+### Pearson correlation
 
-Kruskal–Wallis test
+### Spearman’s rank correlation
 
-Rank correlation
+### Kendall’s tau
 
-Anderson–Darling test
+### Multiple logistic regression
 
-### Regression og korrelation
+### Poisson regression
 
-Simple linear regression
+### Negative binomial regression
 
-Multiple regression
+### Ordinal logistic regression
 
-Pearson correlation
+### Linear mixed-effects modeller (LME)
 
-Spearman’s rank correlation
+### Generalized linear mixed-effects modeller (GLMM)
 
-Kendall’s tau
+### Generalized Estimating Equations (GEE)
 
-Multiple logistic regression
+## Kontingenstabel- og proportions-tests
 
-Poisson regression
+### Contingency-table methods (χ² osv.)
 
-Negative binomial regression
+### McNemar’s test
 
-Ordinal logistic regression
+### Fisher’s exact test
 
-Linear mixed-effects modeller (LME)
+### Barnard’s exact test
 
-Generalized linear mixed-effects modeller (GLMM)
+### Cochran–Armitage trend test (ordinal tabel)
 
-Generalized Estimating Equations (GEE)
+### Cochran’s Q test (≥3 matched proportions)
 
-### Kontingenstabel- og proportions-tests
+### Stuart–Maxwell test (marginal homogenitet)
 
-Contingency-table methods (χ² osv.)
+### Two-sample test for binomial proportions / Mantel–Haenszel test
 
-McNemar’s test
+### Chi-square test for R×C-tabeller
 
-Fisher’s exact test
+### Chi-square test for trend (Mantel-extension)
 
-Barnard’s exact test
+### Chi-square test for heterogenitet (2×k-tabeller)
 
-Cochran–Armitage trend test (ordinal tabel)
+## Incidens- og rate-tests
 
-Cochran’s Q test (≥3 matched proportions)
+### One-sample test for incidence rates
 
-Stuart–Maxwell test (marginal homogenitet)
+### Two-sample comparison of incidence rates
 
-Two-sample test for binomial proportions / Mantel–Haenszel test
+### Trend-test for incidence rates over flere eksponeringsgrupper
 
-Chi-square test for R×C-tabeller
+### Exact rate ratio test
 
-Chi-square test for trend (Mantel-extension)
+## Overlevelsesanalyse
 
-Chi-square test for heterogenitet (2×k-tabeller)
+### Log-rank test
 
-### Incidens- og rate-tests
+### Parametric survival methods (Weibull)
 
-One-sample test for incidence rates
+### Cox proportional hazards model
 
-Two-sample comparison of incidence rates
+### Accelerated Failure Time (AFT) modeller (eksponentiel, log-logistisk, …)
 
-Trend-test for incidence rates over flere eksponeringsgrupper
+### Gray’s test for konkurrentrisiko
 
-Exact rate ratio test
+### Test af proportional hazards-antagelsen (Schoenfeld residualer)
 
-### Overlevelsesanalyse
+## Aftale- og concordance-mål
 
-Log-rank test
+### Kappa statistic
 
-Parametric survival methods (Weibull)
+### Intraclass Correlation Coefficient (ICC)
 
-Cox proportional hazards model
-
-Accelerated Failure Time (AFT) modeller (eksponentiel, log-logistisk, …)
-
-Gray’s test for konkurrentrisiko
-
-Test af proportional hazards-antagelsen (Schoenfeld residualer)
-
-### Aftale- og concordance-mål
-
-Kappa statistic
-
-Intraclass Correlation Coefficient (ICC)
-
-Bland–Altman analyse
+### Bland–Altman analyse
 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
