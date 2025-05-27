@@ -801,7 +801,8 @@ testosterone and prolactin in a blood sample.</p>
 when the data has the correct structure.</p>
 <p>If we follow the general rules of thumb for tidy data, we are off to
 a good start. This is the structure of the data set we are working with
-here - after we have made some modifications as described above.</p>
+here - after we have made some modifications regarding labels, levels
+and units.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1162,7 +1163,9 @@ that:</p>
 <span><span class="fu">label</span><span class="op">(</span><span class="va">blood</span><span class="op">$</span><span class="va">ageblood</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"Age"</span></span>
 <span><span class="fu">units</span><span class="op">(</span><span class="va">blood</span><span class="op">$</span><span class="va">ageblood</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="st">"years"</span></span></code></pre>
 </div>
-<p>Which looks a bit nicer:</p>
+<p>This will add labels to the plot, and allow us to give the data more
+meaningful names and units without changing the date it self. This looks
+nicer, and is easier to read:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1789,7 +1792,7 @@ geometric standard deviation. Change the code to write out “Geom.” and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2101,7 +2104,7 @@ specifying <code>render.categorical</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2153,7 +2156,7 @@ straightforward.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Try to remove the empty string from the function, and use it is a
 table one as previously shown:</p>

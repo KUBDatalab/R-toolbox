@@ -525,26 +525,30 @@
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul><li>Explain how to use markdown with the new lesson template</li>
-<li>Demonstrate how to include pieces of code, figures, and nested
-challenge blocks</li>
 </ul></div>
 </div>
 </div>
 </div>
 </div>
-<p>for dem alle følger vi metoden</p>
-<ol style="list-style-type: decimal"><li>Formulate hypotheses,</li>
-<li>Calculate test statistic,</li>
-<li>Determine p-value,</li>
+
+<p>A collection of statistical tests</p>
+<p>For all tests, the approach is:</p>
+<ol style="list-style-type: decimal"><li>Formulate hypotheses</li>
+<li>Calculate test statistic</li>
+<li>Determine p-value</li>
 <li>Make decision</li>
-</ol><p>Den skal nok deles op. Og overskriftshierarkierne er et bud på
-hvordan.</p>
-<section><h2 class="section-heading" id="enkeltprøve-tests">Enkeltprøve-tests<a class="anchor" aria-label="anchor" href="#enkeltpr%C3%B8ve-tests"></a></h2>
+</ol><section><h2 class="section-heading" id="enkeltprøve-tests">Enkeltprøve-tests<a class="anchor" aria-label="anchor" href="#enkeltpr%C3%B8ve-tests"></a></h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="one-sample-chi-square-test">One-sample chi-square test<a class="anchor" aria-label="anchor" href="#one-sample-chi-square-test"></a></h3>
-<p>EJ KORREKTURLÆST #### Used for Testing whether observed categorical
-frequencies differ from expected frequencies under a specified
+<p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for">Used for<a class="anchor" aria-label="anchor" href="#used-for"></a></h4>
+<p>Testing whether observed categorical frequencies differ from expected
+frequencies under a specified distribution.</p>
+<p><strong>Real-world example:</strong> Checking if the observed M&amp;M
+candy color proportions match the manufacturer’s claimed
 distribution.</p>
+</div>
 <div class="section level4">
 <h4 id="assumptions">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions"></a></h4>
 <ul><li>Observations are independent.<br></li>
@@ -572,25 +576,25 @@ measures.</li>
 <div class="section level5">
 <h5 id="hypothesis">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis"></a></h5>
 <ul><li>
-<strong>Null hypothesis (H₀):</strong> The proportions of outcomes
-equal the specified distribution.<br></li>
+<strong>Null hypothesis (H₀):</strong> The proportions of M&amp;M
+colors equal the manufacturer’s claimed distribution.<br></li>
 <li>
-<strong>Alternative hypothesis (H₁):</strong> At least one
-category’s proportion differs from the specified distribution.</li>
+<strong>Alternative hypothesis (H₁):</strong> At least one color’s
+proportion differs from the claimed distribution.</li>
 </ul><div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Observed counts of die rolls in 60 trials:</span></span>
-<span><span class="va">observed</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">8</span>, <span class="fl">12</span>, <span class="fl">9</span>, <span class="fl">11</span>, <span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Observed counts of M&amp;M colors:</span></span>
+<span><span class="va">observed</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span>red <span class="op">=</span> <span class="fl">20</span>, blue <span class="op">=</span> <span class="fl">25</span>, green <span class="op">=</span> <span class="fl">15</span>, brown <span class="op">=</span> <span class="fl">18</span>, orange <span class="op">=</span> <span class="fl">12</span>, yellow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Expected probabilities for a fair die:</span></span>
-<span><span class="va">p_expected</span> <span class="op">&lt;-</span> <span class="fu">rep</span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">6</span>, <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="co"># Manufacturer's claimed proportions:</span></span>
+<span><span class="va">p_expected</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span>red <span class="op">=</span> <span class="fl">0.20</span>, blue <span class="op">=</span> <span class="fl">0.20</span>, green <span class="op">=</span> <span class="fl">0.20</span>, brown <span class="op">=</span> <span class="fl">0.20</span>, orange <span class="op">=</span> <span class="fl">0.10</span>, yellow <span class="op">=</span> <span class="fl">0.10</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Perform one-sample chi-square goodness-of-fit test:</span></span>
 <span><span class="va">test_result</span> <span class="op">&lt;-</span> <span class="fu">chisq.test</span><span class="op">(</span>x <span class="op">=</span> <span class="va">observed</span>, p <span class="op">=</span> <span class="va">p_expected</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Show results:</span></span>
+<span><span class="co"># Display results:</span></span>
 <span><span class="va">test_result</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -600,22 +604,261 @@ category’s proportion differs from the specified distribution.</li>
 	Chi-squared test for given probabilities
 
 data:  observed
-X-squared = 1, df = 5, p-value = 0.9626</code></pre>
+X-squared = 3.1, df = 5, p-value = 0.6846</code></pre>
 </div>
-<p>Interpretation: With a χ² statistic of 1 and a p-value of 0.963, we
-fail to reject the null hypothesis. This means that, given our data,
-there is no evidence to conclude the die is unfair.</p>
+<p>Interpretation: The test yields χ² = 3.1 with a p-value = 0.685. We
+fail to reject the null hypothesis. Thus, there is no evidence to
+conclude a difference from the claimed distribution..</p>
 </div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="one-sample-z-test">One-sample z test<a class="anchor" aria-label="anchor" href="#one-sample-z-test"></a></h3>
+<p>EJ KORREKTURLÆST!</p>
+<div class="section level4">
+<h4 id="used-for-1">Used for<a class="anchor" aria-label="anchor" href="#used-for-1"></a></h4>
+<ul><li>Testing whether the mean of a single sample differs from a known
+population mean when the population standard deviation is known.<br></li>
+<li>
+<strong>Real-world example:</strong> Checking if the average
+diameter of manufactured ball bearings equals the specified 5.00 cm when
+σ is known.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-1">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-1"></a></h4>
+<ul><li>Sample is a simple random sample from the population.<br></li>
+<li>Observations are independent.<br></li>
+<li>Population standard deviation (σ) is known.<br></li>
+<li>The sampling distribution of the mean is approximately normal
+(either the population is normal or n is large, e.g. ≥ 30).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-1">Strengths<a class="anchor" aria-label="anchor" href="#strengths-1"></a></h4>
+<ul><li>More powerful than the t-test when σ is truly known.<br></li>
+<li>Simple calculation and interpretation.<br></li>
+<li>Relies on the normal distribution, which is well understood.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-1">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-1"></a></h4>
+<ul><li>The true population σ is only very rarely known in practice.<br></li>
+<li>Sensitive to departures from normality for small samples.<br></li>
+<li>Misspecification of σ leads to incorrect inferences.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-1">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-1"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The true mean diameter μ =
+5.00 cm.<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> μ ≠ 5.00 cm.</li>
+</ul><div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Sample of diameters (cm) for 25 ball bearings:</span></span>
+<span><span class="va">diameters</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">5.03</span>, <span class="fl">4.97</span>, <span class="fl">5.01</span>, <span class="fl">5.05</span>, <span class="fl">4.99</span>, <span class="fl">5.02</span>, <span class="fl">5.00</span>, <span class="fl">5.04</span>, <span class="fl">4.96</span>, <span class="fl">5.00</span>,</span>
+<span>               <span class="fl">5.01</span>, <span class="fl">4.98</span>, <span class="fl">5.02</span>, <span class="fl">5.03</span>, <span class="fl">4.94</span>, <span class="fl">5.00</span>, <span class="fl">5.02</span>, <span class="fl">4.99</span>, <span class="fl">5.01</span>, <span class="fl">5.03</span>,</span>
+<span>               <span class="fl">4.98</span>, <span class="fl">5.00</span>, <span class="fl">5.04</span>, <span class="fl">4.97</span>, <span class="fl">5.02</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Known population standard deviation:</span></span>
+<span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fl">0.05</span></span>
+<span></span>
+<span><span class="co"># Hypothesized mean:</span></span>
+<span><span class="va">mu0</span> <span class="op">&lt;-</span> <span class="fl">5.00</span></span>
+<span></span>
+<span><span class="co"># Compute test statistic:</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">length</span><span class="op">(</span><span class="va">diameters</span><span class="op">)</span></span>
+<span><span class="va">xbar</span> <span class="op">&lt;-</span> <span class="fu">mean</span><span class="op">(</span><span class="va">diameters</span><span class="op">)</span></span>
+<span><span class="va">z_stat</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">xbar</span> <span class="op">-</span> <span class="va">mu0</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="va">sigma</span> <span class="op">/</span> <span class="fu">sqrt</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Two-sided p-value:</span></span>
+<span><span class="va">p_value</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span> <span class="op">-</span> <span class="fu">pnorm</span><span class="op">(</span><span class="fu">abs</span><span class="op">(</span><span class="va">z_stat</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Output results:</span></span>
+<span><span class="va">z_stat</span>; <span class="va">p_value</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] 0.44</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] 0.6599371</code></pre>
+</div>
+<p>Interpretation: The sample mean is 5.004 cm. The z-statistic is 0.44
+with a two-sided p-value of 0.66. We fail to reject the null hypothesis.
+Thus, there is no evidence to conclude a difference from the specified
+diameter of 5.00 cm.</p>
+</div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="one-sample-t-test">One-sample t test<a class="anchor" aria-label="anchor" href="#one-sample-t-test"></a></h3>
+<p>EJ KORREKTURLÆST!</p>
+<div class="section level4">
+<h4 id="used-for-2">Used for<a class="anchor" aria-label="anchor" href="#used-for-2"></a></h4>
+<ul><li>Testing whether the mean of a single sample differs from a known or
+hypothesized population mean when the population standard deviation is
+unknown.<br></li>
+<li>
+<strong>Real-world example:</strong> Determining if the average exam
+score of a class differs from the passing threshold of 70%.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-2">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-2"></a></h4>
+<ul><li>Sample is a simple random sample from the population.<br></li>
+<li>Observations are independent.<br></li>
+<li>The data are approximately normally distributed (especially
+important for small samples; n ≥ 30 reduces sensitivity).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-2">Strengths<a class="anchor" aria-label="anchor" href="#strengths-2"></a></h4>
+<ul><li>Does not require knowing the population standard deviation.<br></li>
+<li>Robust to mild departures from normality for moderate-to-large
+sample sizes.<br></li>
+<li>Widely applicable and easily implemented.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-2">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-2"></a></h4>
+<ul><li>Sensitive to outliers in small samples.<br></li>
+<li>Performance degrades if normality assumption is seriously violated
+and n is small.<br></li>
+<li>Degrees of freedom reduce power relative to z-test.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-2">Example<a class="anchor" aria-label="anchor" href="#example-2"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-2">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-2"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The true mean exam score μ =
+70.<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> μ ≠ 70.</li>
+</ul><div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Sample of exam scores for 20 students:</span></span>
+<span><span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">68</span>, <span class="fl">74</span>, <span class="fl">71</span>, <span class="fl">69</span>, <span class="fl">73</span>, <span class="fl">65</span>, <span class="fl">77</span>, <span class="fl">72</span>, <span class="fl">70</span>, <span class="fl">66</span>,</span>
+<span>            <span class="fl">75</span>, <span class="fl">68</span>, <span class="fl">71</span>, <span class="fl">69</span>, <span class="fl">74</span>, <span class="fl">67</span>, <span class="fl">72</span>, <span class="fl">70</span>, <span class="fl">73</span>, <span class="fl">68</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Hypothesized mean:</span></span>
+<span><span class="va">mu0</span> <span class="op">&lt;-</span> <span class="fl">70</span></span>
+<span></span>
+<span><span class="co"># Perform one-sample t-test:</span></span>
+<span><span class="va">test_result</span> <span class="op">&lt;-</span> <span class="fu">t.test</span><span class="op">(</span>x <span class="op">=</span> <span class="va">scores</span>, mu <span class="op">=</span> <span class="va">mu0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">test_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	One Sample t-test
+
+data:  scores
+t = 0.84675, df = 19, p-value = 0.4077
+alternative hypothesis: true mean is not equal to 70
+95 percent confidence interval:
+ 69.1169 72.0831
+sample estimates:
+mean of x
+     70.6 </code></pre>
+</div>
+<p>Interpretation: The sample mean is 70.6. The t-statistic is 0.85 with
+19 degrees of freedom and a two-sided p-value of 0.408. We fail to
+reject the null hypothesis. Thus, there is no evidence to conclude the
+average score differs from the passing threshold of 70.</p>
+</div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="one-sample-poisson-test">One-sample Poisson test<a class="anchor" aria-label="anchor" href="#one-sample-poisson-test"></a></h3>
+<p>EJ KORREKTURLÆST!</p>
+<div class="section level4">
+<h4 id="used-for-3">Used for<a class="anchor" aria-label="anchor" href="#used-for-3"></a></h4>
+<ul><li>Testing whether the observed count of events in a fixed period
+differs from a hypothesized Poisson rate.<br></li>
+<li>
+<strong>Real-world example:</strong> Checking if the number of
+customer arrivals per hour at a call center matches the expected rate of
+30 calls/hour.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-3">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-3"></a></h4>
+<ul><li>Events occur independently.<br></li>
+<li>The rate of occurrence (λ) is constant over the observation
+period.<br></li>
+<li>The count of events in non-overlapping intervals is
+independent.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-3">Strengths<a class="anchor" aria-label="anchor" href="#strengths-3"></a></h4>
+<ul><li>Exact test based on the Poisson distribution (no large-sample
+approximation needed).<br></li>
+<li>Valid for small counts and rare events.<br></li>
+<li>Simple to implement in R via <code>poisson.test()</code>.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-3">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-3"></a></h4>
+<ul><li>Sensitive to violations of the Poisson assumptions (e.g.,
+overdispersion or time-varying rate).<br></li>
+<li>Only assesses the overall rate, not the dispersion or clustering of
+events.<br></li>
+<li>Cannot handle covariates or more complex rate structures.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-3">Example<a class="anchor" aria-label="anchor" href="#example-3"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-3">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-3"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The event rate λ = 30
+calls/hour.<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> λ ≠ 30
+calls/hour.</li>
+</ul><div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Observed number of calls in one hour:</span></span>
+<span><span class="va">observed_calls</span> <span class="op">&lt;-</span> <span class="fl">36</span></span>
+<span></span>
+<span><span class="co"># Hypothesized rate (calls per hour):</span></span>
+<span><span class="va">lambda0</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
+<span></span>
+<span><span class="co"># Perform one-sample Poisson test (two-sided):</span></span>
+<span><span class="va">test_result</span> <span class="op">&lt;-</span> <span class="fu">poisson.test</span><span class="op">(</span>x <span class="op">=</span> <span class="va">observed_calls</span>, T <span class="op">=</span> <span class="fl">1</span>, r <span class="op">=</span> <span class="va">lambda0</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">test_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Exact Poisson test
+
+data:  observed_calls time base: 1
+number of events = 36, time base = 1, p-value = 0.272
+alternative hypothesis: true event rate is not equal to 30
+95 percent confidence interval:
+ 25.21396 49.83917
+sample estimates:
+event rate
+        36 </code></pre>
+</div>
+<p>Interpretation: The test reports an observed count of 36 calls versus
+an expected 30 calls, yielding a p-value of 0.272. We fail to reject the
+null hypothesis. Thus, there is no evidence to conclude the call rate
+differs from 30 calls/hour.</p>
+</div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="shapirowilk-test-for-normalitet">Shapiro–Wilk test for normalitet<a class="anchor" aria-label="anchor" href="#shapirowilk-test-for-normalitet"></a></h3>
@@ -805,11 +1048,19 @@ log-logistisk, …)<a class="anchor" aria-label="anchor" href="#accelerated-fail
 </div>
 <div class="section level3">
 <h3 id="blandaltman-analysis">Bland–Altman analysis<a class="anchor" aria-label="anchor" href="#blandaltman-analysis"></a></h3>
-<p>EJ KORREKTURLÆST #### Used for Assessing agreement between two
-quantitative measurement methods by examining the mean difference (bias)
-and the limits of agreement.</p>
+<p>EJ KORREKTURLÆST</p>
 <div class="section level4">
-<h4 id="assumptions-1">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-1"></a></h4>
+<h4 id="used-for-4">Used for<a class="anchor" aria-label="anchor" href="#used-for-4"></a></h4>
+<p>Assessing agreement between two quantitative measurement methods by
+examining the mean difference (bias) and the limits of agreement. It
+tests if any difference is constant across the range of measurements,
+and if there is heteroskedasticity in the data (are there differences
+that are dependent on measurement levels) <strong>Real-world
+example:</strong> Comparing blood pressure readings from a new wrist
+monitor and a standard sphygmomanometer.</p>
+</div>
+<div class="section level4">
+<h4 id="assumptions-4">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-4"></a></h4>
 <ul><li>Paired measurements on the same subjects.<br></li>
 <li>Differences (method A – method B) are approximately normally
 distributed.<br></li>
@@ -817,7 +1068,7 @@ distributed.<br></li>
 the difference (homoscedasticity).</li>
 </ul></div>
 <div class="section level4">
-<h4 id="strengths-1">Strengths<a class="anchor" aria-label="anchor" href="#strengths-1"></a></h4>
+<h4 id="strengths-4">Strengths<a class="anchor" aria-label="anchor" href="#strengths-4"></a></h4>
 <ul><li>Provides both a visual (Bland–Altman plot) and numerical summary
 (bias and limits) of agreement.<br></li>
 <li>Easy to interpret clinically: shows how far apart two methods can
@@ -826,78 +1077,76 @@ differ for most observations.<br></li>
 agreement.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="weaknesses-1">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-1"></a></h4>
+<h4 id="weaknesses-4">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-4"></a></h4>
 <ul><li>Assumes constant bias across range of measurements.<br></li>
 <li>Sensitive to outliers, which can widen limits of agreement.<br></li>
 <li>Requires adequate sample size (n ≥ 30 preferred) to estimate limits
 reliably.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a></h4>
+<h4 id="example-4">Example<a class="anchor" aria-label="anchor" href="#example-4"></a></h4>
 <div class="section level5">
-<h5 id="hypothesis-1">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-1"></a></h5>
+<h5 id="hypothesis-4">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-4"></a></h5>
 <ul><li>
 <strong>Null hypothesis (H₀):</strong> Mean difference between
 methods A and B is zero (no systematic bias).<br></li>
 <li>
 <strong>Alternative hypothesis (H₁):</strong> Mean difference ≠ 0
 (systematic bias exists).</li>
-</ul><div class="codewrapper sourceCode" id="cb3">
+</ul><div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Simulated paired measurements on 12 subjects:</span></span>
-<span><span class="va">methodA</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">100.5</span>, <span class="fl">102.3</span>,  <span class="fl">99.7</span>, <span class="fl">101.2</span>, <span class="fl">100.9</span>,  <span class="fl">98.4</span>, <span class="fl">102.0</span>, <span class="fl">101.5</span>, <span class="fl">100.2</span>,  <span class="fl">99.9</span>, <span class="fl">101.8</span>, <span class="fl">100.7</span><span class="op">)</span></span>
-<span><span class="va">methodB</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">100.8</span>, <span class="fl">102.0</span>,  <span class="fl">99.9</span>, <span class="fl">101.5</span>, <span class="fl">100.6</span>,  <span class="fl">98.7</span>, <span class="fl">102.2</span>, <span class="fl">101.3</span>, <span class="fl">100.4</span>, <span class="fl">100.1</span>, <span class="fl">101.6</span>, <span class="fl">100.9</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="co"># Simulated paired blood pressure measurements (mmHg) on 12 subjects:</span></span>
+<span><span class="va">wrist</span>   <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">120</span>, <span class="fl">122</span>, <span class="fl">118</span>, <span class="fl">121</span>, <span class="fl">119</span>, <span class="fl">117</span>, <span class="fl">123</span>, <span class="fl">120</span>, <span class="fl">118</span>, <span class="fl">119</span>, <span class="fl">122</span>, <span class="fl">121</span><span class="op">)</span></span>
+<span><span class="va">sphyg</span>   <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">119</span>, <span class="fl">121</span>, <span class="fl">117</span>, <span class="fl">122</span>, <span class="fl">118</span>, <span class="fl">116</span>, <span class="fl">124</span>, <span class="fl">119</span>, <span class="fl">117</span>, <span class="fl">120</span>, <span class="fl">121</span>, <span class="fl">122</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Compute differences and means:</span></span>
-<span><span class="va">diffs</span> <span class="op">&lt;-</span> <span class="va">methodA</span> <span class="op">-</span> <span class="va">methodB</span></span>
-<span><span class="va">means</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">methodA</span> <span class="op">+</span> <span class="va">methodB</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span></span>
+<span><span class="va">diffs</span>    <span class="op">&lt;-</span> <span class="va">wrist</span> <span class="op">-</span> <span class="va">sphyg</span></span>
+<span><span class="va">means</span>    <span class="op">&lt;-</span> <span class="op">(</span><span class="va">wrist</span> <span class="op">+</span> <span class="va">sphyg</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span></span>
 <span></span>
 <span><span class="co"># Calculate bias and limits of agreement:</span></span>
-<span><span class="va">bias</span> <span class="op">&lt;-</span> <span class="fu">mean</span><span class="op">(</span><span class="va">diffs</span><span class="op">)</span></span>
-<span><span class="va">sd_diff</span> <span class="op">&lt;-</span> <span class="fu">sd</span><span class="op">(</span><span class="va">diffs</span><span class="op">)</span></span>
-<span><span class="va">loa_upper</span> <span class="op">&lt;-</span> <span class="va">bias</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sd_diff</span></span>
-<span><span class="va">loa_lower</span> <span class="op">&lt;-</span> <span class="va">bias</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sd_diff</span></span>
+<span><span class="va">bias</span>     <span class="op">&lt;-</span> <span class="fu">mean</span><span class="op">(</span><span class="va">diffs</span><span class="op">)</span></span>
+<span><span class="va">sd_diff</span>  <span class="op">&lt;-</span> <span class="fu">sd</span><span class="op">(</span><span class="va">diffs</span><span class="op">)</span></span>
+<span><span class="va">loa_up</span>   <span class="op">&lt;-</span> <span class="va">bias</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sd_diff</span></span>
+<span><span class="va">loa_low</span>  <span class="op">&lt;-</span> <span class="va">bias</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sd_diff</span></span>
 <span></span>
-<span><span class="co"># Perform t-test on differences:</span></span>
-<span><span class="va">t_result</span> <span class="op">&lt;-</span> <span class="fu">t.test</span><span class="op">(</span><span class="va">diffs</span>, mu <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co"># Test for zero bias:</span></span>
+<span><span class="va">t_test</span>   <span class="op">&lt;-</span> <span class="fu">t.test</span><span class="op">(</span><span class="va">diffs</span>, mu <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Create Bland–Altman plot:</span></span>
+<span><span class="co"># Bland–Altman plot:</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span></span>
-<span><span class="va">ba_data</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>mean <span class="op">=</span> <span class="va">means</span>, diff <span class="op">=</span> <span class="va">diffs</span><span class="op">)</span></span>
-<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">ba_data</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">mean</span>, y <span class="op">=</span> <span class="va">diff</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span><span class="va">ba_df</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>mean <span class="op">=</span> <span class="va">means</span>, diff <span class="op">=</span> <span class="va">diffs</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">ba_df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">mean</span>, y <span class="op">=</span> <span class="va">diff</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">bias</span>,       linetype <span class="op">=</span> <span class="st">"solid"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">loa_upper</span>,  linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">loa_lower</span>,  linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">labs</span><span class="op">(</span></span>
-<span>    title <span class="op">=</span> <span class="st">"Bland–Altman Plot"</span>,</span>
-<span>    x     <span class="op">=</span> <span class="st">"Mean of Method A and B"</span>,</span>
-<span>    y     <span class="op">=</span> <span class="st">"Difference (A – B)"</span></span>
-<span>  <span class="op">)</span></span></code></pre>
+<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">bias</span>,    linetype <span class="op">=</span> <span class="st">"solid"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">loa_up</span>,   linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">loa_low</span>,  linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Bland–Altman Plot"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Mean of Wrist &amp; Sphyg Measurements"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Difference (Wrist – Sphyg)"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/stat-tests-1-rendered-bland_altman-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb4">
+<figure><img src="fig/stat-tests-1-rendered-bland_altman-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Print numerical results:</span></span>
-<span><span class="va">bias</span>; <span class="va">loa_lower</span>; <span class="va">loa_upper</span>; <span class="va">t_result</span></span></code></pre>
+<span><span class="va">bias</span>; <span class="va">loa_low</span>; <span class="va">loa_up</span>; <span class="va">t_test</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] -0.075</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.3333333</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] -0.5560084</code></pre>
+<pre class="output" tabindex="0"><code>[1] -1.596741</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.4060084</code></pre>
+<pre class="output" tabindex="0"><code>[1] 2.263408</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -906,17 +1155,17 @@ methods A and B is zero (no systematic bias).<br></li>
 	One Sample t-test
 
 data:  diffs
-t = -1.0587, df = 11, p-value = 0.3124
+t = 1.1726, df = 11, p-value = 0.2657
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- -0.23092763  0.08092763
+ -0.2923355  0.9590022
 sample estimates:
 mean of x
-   -0.075 </code></pre>
+0.3333333 </code></pre>
 </div>
-<p>The mean difference (bias) is -0.07 units, with 95% limits of
-agreement from -0.56 to 0.41 units. The t-test for zero bias yields a
-p-value of 0.312, so we fail to reject the null hypothesis. This
+<p>The mean difference (bias) is 0.33 units, with 95% limits of
+agreement from -1.6 to 2.26 units. The t-test for zero bias yields a
+p-value of 0.266, so we fail to reject the null hypothesis. This
 indicates that there is no statistically significant bias; the two
 methods agree on average.</p>
 <div id="keypoints1" class="callout keypoints">
@@ -928,12 +1177,6 @@ methods agree on average.</p>
 <div class="callout-content">
 <ul><li>Use <code>.md</code> files for episodes when you want static
 content</li>
-<li>Use <code>.Rmd</code> files for episodes when you need to generate
-output</li>
-<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
-with your lesson</li>
-<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
-locally</li>
 </ul></div>
 </div>
 </div>

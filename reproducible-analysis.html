@@ -547,7 +547,7 @@ structures in academia. But the three areas where R can help us are:</p>
 in a variety of versions. And it happens in an environment on the
 computer that might not be identical from day to day.</p>
 <p>One example of these problems is shown every time we load tidyverse:
-<img src="fig/tidyverse_conflicts.png" alt="Tidyverse conflicts" class="figure"></p>
+<img src="fig/tidyverse_conflicts.png" alt="Screenshot of messages from attaching core tidyverse packages including conflicts" class="figure"></p>
 <p>This message informs us that there is a <code>filter()</code>
 function in the <code>stats</code> packages which is part of the core
 R-installation. That function is masked by the <code>filter()</code>
@@ -557,7 +557,7 @@ works in the <code>tidyverse</code>, we will get errors if
 <code>tidyverse</code> is not loaded.</p>
 <p>We might also have data stored in memory. Every time we close
 RStudio, we are asked if we want to save the environment:</p>
-<figure><img src="fig/save_environment.png" alt="Should we save the environment? No!" class="figure mx-auto d-block"><div class="figcaption">Should we save the environment? No!</div>
+<figure><img src="fig/save_environment.png" alt="Screenshot of dialog box from RStudio asking about saving workspace image" class="figure mx-auto d-block"><div class="figcaption">Should we save the environment? No!</div>
 </figure><p>This will save all the objects we have in our environment, in order
 for RStudio to be able to load them into memory when we open RStudio
 again.</p>
@@ -588,12 +588,12 @@ involve more than one step. Those steps will have to be done in the
 correct order. Calculating a mean of some values, depends heavily on
 whether it happens before or after deleting irrelevant observations.</p>
 </section><section><h2 class="section-heading" id="the-solution-to-all-of-this">The solution to all of this!<a class="anchor" aria-label="anchor" href="#the-solution-to-all-of-this"></a></h2>
-<hr class="half-width"><figure><img src="fig/horstmarkdown.png" alt="The Rmarkdown family. Artwork by @allison_horst, https://twitter.com/allison_horst, CC-BY" class="figure mx-auto d-block"><div class="figcaption">The Rmarkdown family. Artwork by <span class="citation">@allison_horst</span>, <a href="https://twitter.com/allison_horst" class="external-link uri">https://twitter.com/allison_horst</a>, CC-BY</div>
+<hr class="half-width"><figure><img src="fig/horstmarkdown.png" alt="A glam rock band comprised of 3 fuzzy round monsters labeled as “Text”, “Outputs” and “Code” performing together. Stylized title text reads: “R Markdown - we’re getting the band back together." class="figure mx-auto d-block"><div class="figcaption">The Rmarkdown family. Artwork by <span class="citation">@allison_horst</span>, <a href="https://twitter.com/allison_horst" class="external-link uri">https://twitter.com/allison_horst</a>, CC-BY</div>
 </figure><p>Working in RMarkdown allows us to collect the text describing our
 data, what and why we are doing what we do, the code actually doing it,
 and the results of that code - all in one document.</p>
 <p>Open a new file, choose RMarkdown, and give your document a name:</p>
-<figure><img src="fig/rmarkdown.png" alt="An RMarkdown document" class="figure mx-auto d-block"><div class="figcaption">An RMarkdown document</div>
+<figure><img src="fig/rmarkdown.png" alt="Screenshot of initial demo Rmarkdown document in RStudio" class="figure mx-auto d-block"><div class="figcaption">An RMarkdown document</div>
 </figure><p>The code chunks, marked here with a light grey background, contains
 code, in this case not very advanced code. You can run the entire code
 chunk by clicking the green arrow on the right. Or by placing your
@@ -602,7 +602,7 @@ command+enter on a Mac).</p>
 <p>Outside the code chunks we can add our reasons for actually running
 <code>summary</code> on the <code>cars</code> dataframe, and describe
 what it contains.</p>
-<p>You will see a new button in RStudio: <img src="fig/knitr_button.png" alt="The Knit button" class="figure"></p>
+<p>You will see a new button in RStudio: <img src="fig/knitr_button.png" alt="Screenshot of the Knit-button in RStudio" class="figure"></p>
 <p>Clicking this, will “knit” your document; run each chunck of code,
 add the output to your document, and combine your code, the results and
 all your explanatory text to one html-document.</p>
@@ -643,7 +643,7 @@ the first chunk, add your own text, and change the plot to plot the
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Make a new RMarkdown document - File -&gt; New File -&gt; R
 Markdown.</p>
