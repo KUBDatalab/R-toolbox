@@ -496,7 +496,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Statistical tests</h1>
-        <p>Last updated on 2025-05-26 |
+        <p>Last updated on 2025-05-27 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/stat-tests-1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -534,11 +534,81 @@ challenge blocks</li>
 </div>
 </div>
 </div>
-<p>Den skal nok deles op. Og overskriftshierarkierne er et bud på
+<p>for dem alle følger vi metoden</p>
+<ol style="list-style-type: decimal"><li>Formulate hypotheses,</li>
+<li>Calculate test statistic,</li>
+<li>Determine p-value,</li>
+<li>Make decision</li>
+</ol><p>Den skal nok deles op. Og overskriftshierarkierne er et bud på
 hvordan.</p>
 <section><h2 class="section-heading" id="enkeltprøve-tests">Enkeltprøve-tests<a class="anchor" aria-label="anchor" href="#enkeltpr%C3%B8ve-tests"></a></h2>
 <hr class="half-width"><div class="section level3">
 <h3 id="one-sample-chi-square-test">One-sample chi-square test<a class="anchor" aria-label="anchor" href="#one-sample-chi-square-test"></a></h3>
+<p>EJ KORREKTURLÆST #### Used for Testing whether observed categorical
+frequencies differ from expected frequencies under a specified
+distribution.</p>
+<div class="section level4">
+<h4 id="assumptions">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions"></a></h4>
+<ul><li>Observations are independent.<br></li>
+<li>Categories are mutually exclusive and collectively exhaustive.<br></li>
+<li>Expected count in each category is at least 5 (for the chi-square
+approximation to be valid).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths">Strengths<a class="anchor" aria-label="anchor" href="#strengths"></a></h4>
+<ul><li>Simple to compute and interpret.<br></li>
+<li>Does not require the data to be normally distributed.<br></li>
+<li>Applicable to any number of categories.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses"></a></h4>
+<ul><li>Sensitive to small expected counts (violates asymptotic
+approximation).<br></li>
+<li>Does not indicate which categories contribute most to the
+discrepancy without further investigation.<br></li>
+<li>Requires independence; cannot be used for paired or repeated
+measures.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The proportions of outcomes
+equal the specified distribution.<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one
+category’s proportion differs from the specified distribution.</li>
+</ul><div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Observed counts of die rolls in 60 trials:</span></span>
+<span><span class="va">observed</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">8</span>, <span class="fl">12</span>, <span class="fl">9</span>, <span class="fl">11</span>, <span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Expected probabilities for a fair die:</span></span>
+<span><span class="va">p_expected</span> <span class="op">&lt;-</span> <span class="fu">rep</span><span class="op">(</span><span class="fl">1</span><span class="op">/</span><span class="fl">6</span>, <span class="fl">6</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform one-sample chi-square goodness-of-fit test:</span></span>
+<span><span class="va">test_result</span> <span class="op">&lt;-</span> <span class="fu">chisq.test</span><span class="op">(</span>x <span class="op">=</span> <span class="va">observed</span>, p <span class="op">=</span> <span class="va">p_expected</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Show results:</span></span>
+<span><span class="va">test_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Chi-squared test for given probabilities
+
+data:  observed
+X-squared = 1, df = 5, p-value = 0.9626</code></pre>
+</div>
+<p>Interpretation: With a χ² statistic of 1 and a p-value of 0.963, we
+fail to reject the null hypothesis. This means that, given our data,
+there is no evidence to conclude the die is unfair.</p>
+</div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="one-sample-z-test">One-sample z test<a class="anchor" aria-label="anchor" href="#one-sample-z-test"></a></h3>
@@ -736,7 +806,121 @@ log-logistisk, …)<a class="anchor" aria-label="anchor" href="#accelerated-fail
 <h3 id="intraclass-correlation-coefficient-icc">Intraclass Correlation Coefficient (ICC)<a class="anchor" aria-label="anchor" href="#intraclass-correlation-coefficient-icc"></a></h3>
 </div>
 <div class="section level3">
-<h3 id="blandaltman-analyse">Bland–Altman analyse<a class="anchor" aria-label="anchor" href="#blandaltman-analyse"></a></h3>
+<h3 id="blandaltman-analysis">Bland–Altman analysis<a class="anchor" aria-label="anchor" href="#blandaltman-analysis"></a></h3>
+<p>EJ KORREKTURLÆST #### Used for Assessing agreement between two
+quantitative measurement methods by examining the mean difference (bias)
+and the limits of agreement.</p>
+<div class="section level4">
+<h4 id="assumptions-1">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-1"></a></h4>
+<ul><li>Paired measurements on the same subjects.<br></li>
+<li>Differences (method A – method B) are approximately normally
+distributed.<br></li>
+<li>No strong relationship between the magnitude of the measurement and
+the difference (homoscedasticity).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-1">Strengths<a class="anchor" aria-label="anchor" href="#strengths-1"></a></h4>
+<ul><li>Provides both a visual (Bland–Altman plot) and numerical summary
+(bias and limits) of agreement.<br></li>
+<li>Easy to interpret clinically: shows how far apart two methods can
+differ for most observations.<br></li>
+<li>Does not rely on correlation, which can be misleading for
+agreement.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-1">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-1"></a></h4>
+<ul><li>Assumes constant bias across range of measurements.<br></li>
+<li>Sensitive to outliers, which can widen limits of agreement.<br></li>
+<li>Requires adequate sample size (n ≥ 30 preferred) to estimate limits
+reliably.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-1">Example<a class="anchor" aria-label="anchor" href="#example-1"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-1">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-1"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> Mean difference between
+methods A and B is zero (no systematic bias).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> Mean difference ≠ 0
+(systematic bias exists).</li>
+</ul><div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulated paired measurements on 12 subjects:</span></span>
+<span><span class="va">methodA</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">100.5</span>, <span class="fl">102.3</span>,  <span class="fl">99.7</span>, <span class="fl">101.2</span>, <span class="fl">100.9</span>,  <span class="fl">98.4</span>, <span class="fl">102.0</span>, <span class="fl">101.5</span>, <span class="fl">100.2</span>,  <span class="fl">99.9</span>, <span class="fl">101.8</span>, <span class="fl">100.7</span><span class="op">)</span></span>
+<span><span class="va">methodB</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">100.8</span>, <span class="fl">102.0</span>,  <span class="fl">99.9</span>, <span class="fl">101.5</span>, <span class="fl">100.6</span>,  <span class="fl">98.7</span>, <span class="fl">102.2</span>, <span class="fl">101.3</span>, <span class="fl">100.4</span>, <span class="fl">100.1</span>, <span class="fl">101.6</span>, <span class="fl">100.9</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Compute differences and means:</span></span>
+<span><span class="va">diffs</span> <span class="op">&lt;-</span> <span class="va">methodA</span> <span class="op">-</span> <span class="va">methodB</span></span>
+<span><span class="va">means</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">methodA</span> <span class="op">+</span> <span class="va">methodB</span><span class="op">)</span> <span class="op">/</span> <span class="fl">2</span></span>
+<span></span>
+<span><span class="co"># Calculate bias and limits of agreement:</span></span>
+<span><span class="va">bias</span> <span class="op">&lt;-</span> <span class="fu">mean</span><span class="op">(</span><span class="va">diffs</span><span class="op">)</span></span>
+<span><span class="va">sd_diff</span> <span class="op">&lt;-</span> <span class="fu">sd</span><span class="op">(</span><span class="va">diffs</span><span class="op">)</span></span>
+<span><span class="va">loa_upper</span> <span class="op">&lt;-</span> <span class="va">bias</span> <span class="op">+</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sd_diff</span></span>
+<span><span class="va">loa_lower</span> <span class="op">&lt;-</span> <span class="va">bias</span> <span class="op">-</span> <span class="fl">1.96</span> <span class="op">*</span> <span class="va">sd_diff</span></span>
+<span></span>
+<span><span class="co"># Perform t-test on differences:</span></span>
+<span><span class="va">t_result</span> <span class="op">&lt;-</span> <span class="fu">t.test</span><span class="op">(</span><span class="va">diffs</span>, mu <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Create Bland–Altman plot:</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span></span>
+<span><span class="va">ba_data</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>mean <span class="op">=</span> <span class="va">means</span>, diff <span class="op">=</span> <span class="va">diffs</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">ba_data</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">mean</span>, y <span class="op">=</span> <span class="va">diff</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">bias</span>,       linetype <span class="op">=</span> <span class="st">"solid"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">loa_upper</span>,  linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_hline</span><span class="op">(</span>yintercept <span class="op">=</span> <span class="va">loa_lower</span>,  linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span></span>
+<span>    title <span class="op">=</span> <span class="st">"Bland–Altman Plot"</span>,</span>
+<span>    x     <span class="op">=</span> <span class="st">"Mean of Method A and B"</span>,</span>
+<span>    y     <span class="op">=</span> <span class="st">"Difference (A – B)"</span></span>
+<span>  <span class="op">)</span></span></code></pre>
+</div>
+<figure><img src="../fig/stat-tests-1-rendered-bland_altman-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Print numerical results:</span></span>
+<span><span class="va">bias</span>; <span class="va">loa_lower</span>; <span class="va">loa_upper</span>; <span class="va">t_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] -0.075</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] -0.5560084</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>[1] 0.4060084</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	One Sample t-test
+
+data:  diffs
+t = -1.0587, df = 11, p-value = 0.3124
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ -0.23092763  0.08092763
+sample estimates:
+mean of x
+   -0.075 </code></pre>
+</div>
+<p>The mean difference (bias) is -0.07 units, with 95% limits of
+agreement from -0.56 to 0.41 units. The t-test for zero bias yields a
+p-value of 0.312, so we fail to reject the null hypothesis. This
+indicates that there is no statistically significant bias; the two
+methods agree on average.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -759,6 +943,8 @@ locally</li>
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
+</div>
+</div>
 </div>
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
@@ -818,8 +1004,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/stat-tests-1.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/stat-tests-1.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-05-26",
-  "datePublished": "2025-05-26"
+  "dateModified": "2025-05-27",
+  "datePublished": "2025-05-27"
 }
 
   </script><script>
