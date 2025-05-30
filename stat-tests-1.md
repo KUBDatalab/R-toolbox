@@ -2005,7 +2005,8 @@ evidence that at least one treatment group’s median pain score differs.
 
 ### Rank correlation
 
-EJ KORREKTURLÆST
+EJ KORREKTURLÆST HAV SÆRLIGT FOKUS PÅ OM DER ER FORSKEL PÅ DENNE OG
+SPEARMAN-RANK CORRELATION SENERE
 
 #### Used for
 - Assessing the strength and direction of a monotonic association between two variables using their ranks.  
@@ -2337,6 +2338,69 @@ Similar interpretation applies to bedrooms and neighborhood indicators.
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Assessing the strength and direction of a linear relationship between two continuous variables.  
+- **Real-world example:** Examining whether students’ hours of study correlate with their exam scores.
+
+#### Assumptions
+- Observations are independent pairs.  
+- Both variables are approximately normally distributed (bivariate normality).  
+- Relationship is linear.  
+- No extreme outliers.
+
+#### Strengths
+- Provides both a correlation coefficient (r) and hypothesis test (t‐statistic, p‐value).  
+- Confidence interval for the true correlation can be obtained.  
+- Well understood and widely used.
+
+#### Weaknesses
+- Sensitive to outliers, which can distort r.  
+- Only measures linear association—will miss non‐linear relationships.  
+- Reliant on normality; departures can affect Type I/II error rates.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The true Pearson correlation ρ = 0 (no linear association).  
+- **Alternative hypothesis (H₁):** ρ ≠ 0 (a linear association exists).
+
+
+``` r
+set.seed(2025)
+# Simulate data:
+n <- 30
+hours_studied <- runif(n, min = 0, max = 20)
+# Make exam_scores roughly increase with hours_studied + noise:
+exam_scores   <- 50 + 2.5 * hours_studied + rnorm(n, sd = 5)
+
+# Perform Pearson correlation test:
+pearson_result <- cor.test(hours_studied, exam_scores, method = "pearson")
+
+# Display results:
+pearson_result
+```
+
+``` output
+
+	Pearson's product-moment correlation
+
+data:  hours_studied and exam_scores
+t = 14.086, df = 28, p-value = 3.108e-14
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.8689058 0.9694448
+sample estimates:
+      cor 
+0.9361291 
+```
+
+Interpretation:
+The sample Pearson correlation is 0.936, with t = 14.09 on df = 28 and p-value = 3.11\times 10^{-14}. We
+reject the null hypothesis,
+indicating that there is
+evidence of a significant linear association between hours studied and exam scores.
+
+
 ::::
 
 ::::spoiler
@@ -2345,6 +2409,62 @@ EJ KORREKTURLÆST
 ### Spearman’s rank correlation
 
 EJ KORREKTURLÆST
+#### Used for
+- Assessing the strength and direction of a monotonic association between two variables using their ranks.  
+- **Real-world example:** Evaluating whether patients’ pain rankings correlate with their anxiety rankings.
+
+#### Assumptions
+- Observations are independent pairs.  
+- Variables are at least ordinal.  
+- The relationship is monotonic (consistently increasing or decreasing).
+
+#### Strengths
+- Nonparametric: does not require normality of the underlying data.  
+- Robust to outliers in the original measurements.  
+- Captures any monotonic relationship, not limited to linear.
+
+#### Weaknesses
+- Less powerful than Pearson’s correlation when the true relationship is linear and data are bivariate normal.  
+- Does not distinguish between different monotonic shapes (e.g. concave vs. convex).  
+- Tied ranks reduce effective sample size and can complicate exact p-value calculation.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The true Spearman rank correlation ρ = 0 (no monotonic association).  
+- **Alternative hypothesis (H₁):** ρ ≠ 0 (a monotonic association exists).
+
+
+``` r
+# Simulate two variables with a monotonic relationship:
+set.seed(2025)
+x <- sample(1:100, 30)                   # e.g., anxiety scores ranked
+y <- x + rnorm(30, sd = 15)              # roughly increasing with x, plus noise
+
+# Perform Spearman rank correlation test:
+spearman_result <- cor.test(x, y, method = "spearman", exact = FALSE)
+
+# Display results:
+spearman_result
+```
+
+``` output
+
+	Spearman's rank correlation rho
+
+data:  x and y
+S = 486, p-value = 3.73e-11
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.8918799 
+```
+
+Interpretation:
+Spearman’s rho = 0.892 with p-value = 3.73\times 10^{-11}. We
+reject the null hypothesis.
+This indicates that there is
+evidence of a significant monotonic association between the two variables.
 
 ::::
 
@@ -2355,6 +2475,65 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Assessing the strength and direction of a monotonic association between two variables based on concordant and discordant pairs.  
+- **Real-world example:** Evaluating whether the ranking of students by homework completion correlates with their ranking by final exam performance.
+
+#### Assumptions
+- Observations are independent pairs.  
+- Variables are measured on at least an ordinal scale.  
+- The relationship is monotonic (but not necessarily linear).
+
+#### Strengths
+- Nonparametric: does not require any distributional assumptions.  
+- Robust to outliers and tied values (with appropriate corrections).  
+- Directly interprets probability of concordance vs. discordance.
+
+#### Weaknesses
+- Less powerful than Spearman’s rho when the relationship is strictly monotonic and no ties.  
+- Tied ranks reduce effective sample size and require tie corrections.  
+- Only measures monotonic association, not form or magnitude of change.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** Kendall’s τ = 0 (no association between the two rankings).  
+- **Alternative hypothesis (H₁):** τ ≠ 0 (a monotonic association exists).
+
+
+``` r
+# Simulate two sets of rankings for 25 students:
+set.seed(2025)
+homework_rank <- sample(1:25, 25)                  # ranking by homework completion
+exam_rank     <- homework_rank + rpois(25, lambda=2) - 1  # roughly related with some noise
+
+# Perform Kendall’s tau test:
+kendall_result <- cor.test(homework_rank, exam_rank,
+                          method  = "kendall",
+                          exact   = FALSE)
+
+# Display results:
+kendall_result
+```
+
+``` output
+
+	Kendall's rank correlation tau
+
+data:  homework_rank and exam_rank
+z = 6.3518, p-value = 2.129e-10
+alternative hypothesis: true tau is not equal to 0
+sample estimates:
+      tau 
+0.9203643 
+```
+
+Interpretation:
+Kendall’s τ = 0.92 with a two-sided p-value = 2.13\times 10^{-10}. We
+reject the null hypothesis.
+Thus, there is
+evidence of a significant monotonic association between homework and exam rankings.
+
 ::::
 
 ::::spoiler
@@ -2363,6 +2542,127 @@ EJ KORREKTURLÆST
 ### Multiple logistic regression
 
 EJ KORREKTURLÆST
+
+
+#### Used for
+- Modeling the probability of a binary outcome as a function of two or more predictors.  
+- **Real-world example:** Predicting whether a patient has heart disease (yes/no) based on age, cholesterol level, and smoking status.
+
+#### Assumptions
+- Outcome is binary (0/1) and observations are independent.  
+- Log-odds of the outcome are a linear function of the predictors (linearity in the logit).  
+- No perfect multicollinearity among predictors.  
+- Large enough sample so that maximum likelihood estimates are stable (rule of thumb: ≥10 events per predictor).
+
+#### Strengths
+- Adjusts for multiple confounders simultaneously.  
+- Coefficients have clear interpretation as log‐odds (or odds ratios).  
+- Flexible: handles continuous, categorical, and interaction terms.
+
+#### Weaknesses
+- Sensitive to complete or quasi‐complete separation (can prevent convergence).  
+- Assumes linearity in the logit—requires transformation or splines if violated.  
+- Interpretation of interactions and higher‐order terms can be complex.  
+- Requires adequate sample size, especially when events are rare.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** All predictor coefficients β₁ = β₂ = β₃ = 0 (none of the variables affect disease odds).  
+- **Alternative hypothesis (H₁):** At least one βᵢ ≠ 0 (at least one predictor affects odds).
+
+
+``` r
+set.seed(2025)
+n <- 200
+# Simulate predictors:
+age          <- rnorm(n, mean = 60, sd = 10)
+cholesterol  <- rnorm(n, mean = 200, sd = 30)
+smoker       <- factor(rbinom(n, 1, 0.3), labels = c("No", "Yes"))
+
+# Simulate binary outcome via logistic model:
+logit_p <- -5 + 0.04 * age + 0.01 * cholesterol + 1.2 * (smoker=="Yes")
+p        <- 1 / (1 + exp(-logit_p))
+disease  <- rbinom(n, 1, p)
+
+df <- data.frame(disease = factor(disease, labels = c("No","Yes")),
+                 age, cholesterol, smoker)
+
+# Fit multiple logistic regression:
+model <- glm(disease ~ age + cholesterol + smoker,
+             data = df,
+             family = binomial)
+
+# Show summary and odds ratios:
+summary(model)
+```
+
+``` output
+
+Call:
+glm(formula = disease ~ age + cholesterol + smoker, family = binomial, 
+    data = df)
+
+Coefficients:
+             Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -7.016100   1.712922  -4.096 4.20e-05 ***
+age          0.075418   0.017734   4.253 2.11e-05 ***
+cholesterol  0.008465   0.005440   1.556  0.11971    
+smokerYes    0.998927   0.360721   2.769  0.00562 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 265.63  on 199  degrees of freedom
+Residual deviance: 237.72  on 196  degrees of freedom
+AIC: 245.72
+
+Number of Fisher Scoring iterations: 3
+```
+
+``` r
+exp(coef(model))
+```
+
+``` output
+(Intercept)         age cholesterol   smokerYes 
+0.000897318 1.078334765 1.008500725 2.715367476 
+```
+
+``` r
+exp(confint(model))
+```
+
+``` output
+Waiting for profiling to be done...
+```
+
+``` output
+                   2.5 %     97.5 %
+(Intercept) 2.650867e-05 0.02260073
+age         1.042852e+00 1.11825331
+cholesterol 9.979236e-01 1.01955252
+smokerYes   1.347682e+00 5.57661867
+```
+
+Interpretation:
+
+The Wald test for each coefficient (from summary(model)) gives a z-statistic and p-value. For example, if the coefficient for age is β̂ = 0.04 (p = 0.01), its odds ratio is exp(0.04) ≈ 1.04 (95% CI from exp(confint(model))), meaning each additional year of age multiplies the odds of disease by about 1.04.
+
+A significant p-value (e.g., p < 0.05) for cholesterol indicates that higher cholesterol is associated with increased odds (OR = exp(β̂_cholesterol)).
+
+A significant positive coefficient for smoker (β̂ ≈ 1.2, OR ≈ 3.3) implies smokers have about 3.3 times the odds of disease compared to non-smokers, adjusting for age and cholesterol.
+
+You would reject the null hypothesis overall, concluding that at least one predictor is significantly associated with the outcome.
+
+
+
+
+
+
+
+
 
 ::::
 
@@ -2373,6 +2673,82 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Modeling count data (events per unit time or space) as a function of one or more predictors.  
+- **Real-world example:** Predicting the number of daily emergency room visits based on average daily temperature.
+
+#### Assumptions
+- Counts follow a Poisson distribution (mean = variance).  
+- Events occur independently.  
+- The log of the expected count is a linear function of the predictors.  
+- No excessive zero‐inflation (if present, consider zero‐inflated models).
+
+#### Strengths
+- Naturally handles non‐negative integer outcomes.  
+- Estimates incidence rate ratios (IRRs) that are easy to interpret.  
+- Can include both categorical and continuous predictors.
+
+#### Weaknesses
+- Sensitive to overdispersion (variance > mean); may need quasi‐Poisson or negative binomial.  
+- Assumes log‐linear relationship—misspecification leads to bias.  
+- Influential observations (e.g., days with extreme counts) can distort estimates.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** Temperature has no effect on the expected number of ER visits (β₁ = 0).  
+- **Alternative hypothesis (H₁):** Temperature affects the expected number of ER visits (β₁ ≠ 0).
+
+
+``` r
+set.seed(2025)
+# Simulate 100 days of data:
+n_days      <- 100
+temp        <- runif(n_days, min = 0,  max = 30)              # average daily temperature (°C)
+# True model: log(rate) = 1 + 0.05 * temp
+log_rate    <- 1 + 0.05 * temp
+expected    <- exp(log_rate)
+er_visits   <- rpois(n_days, lambda = expected)              # simulated counts
+
+df <- data.frame(er_visits, temp)
+
+# Fit Poisson regression:
+pois_fit <- glm(er_visits ~ temp, family = poisson(link = "log"), data = df)
+
+# Display summary:
+summary(pois_fit)
+```
+
+``` output
+
+Call:
+glm(formula = er_visits ~ temp, family = poisson(link = "log"), 
+    data = df)
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) 0.982531   0.101027   9.725   <2e-16 ***
+temp        0.052793   0.004823  10.945   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 233.15  on 99  degrees of freedom
+Residual deviance: 104.41  on 98  degrees of freedom
+AIC: 463.81
+
+Number of Fisher Scoring iterations: 4
+```
+
+Interpretation:
+The estimated coefficient for temperature is 0.053, giving an incidence rate ratio IRR = 1.054. With a p-value = 7.01\times 10^{-28}, we
+reject the null hypothesis.
+This means each 1 °C increase in average daily temperature is associated with a multiplicative change of approximately 1.054 in the expected number of ER visits.
+
+
+
+
 ::::
 
 ::::spoiler
@@ -2381,6 +2757,87 @@ EJ KORREKTURLÆST
 ### Negative binomial regression
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Modeling overdispersed count data (variance > mean) as a function of one or more predictors.  
+- **Real-world example:** Predicting the number of daily asthma attacks per patient based on air pollution level when counts show extra-Poisson variation.
+
+#### Assumptions
+- Counts follow a negative binomial distribution (allows variance > mean).  
+- Events occur independently.  
+- The log of the expected count is a linear function of the predictors.  
+- Overdispersion parameter is constant across observations.
+
+#### Strengths
+- Handles overdispersion naturally without biasing standard errors.  
+- Estimates incidence rate ratios (IRRs) with correct inference.  
+- Can include both continuous and categorical predictors.
+
+#### Weaknesses
+- Requires estimation of an extra dispersion parameter, which may be unstable in small samples.  
+- Sensitive to model misspecification (link function, omitted covariates).  
+- Influential observations can still distort estimates if extreme.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** Air pollution level has no effect on the expected number of asthma attacks (β₁ = 0).  
+- **Alternative hypothesis (H₁):** Air pollution level affects the expected number of asthma attacks (β₁ ≠ 0).
+
+
+``` r
+# install.packages("MASS")  # if necessary
+library(MASS)
+
+set.seed(2025)
+n_patients <- 150
+# Simulate predictor: average daily PM2.5 level (µg/m³)
+pm25       <- runif(n_patients, min = 5, max = 50)
+# True model: log(µ) = 0.5 + 0.04 * pm25, dispersion theta = 2
+log_mu     <- 0.5 + 0.04 * pm25
+mu         <- exp(log_mu)
+attacks    <- rnbinom(n_patients, mu = mu, size = 2)
+
+df_nb <- data.frame(attacks, pm25)
+
+# Fit negative binomial regression:
+nb_fit <- glm.nb(attacks ~ pm25, data = df_nb)
+
+# Display summary:
+summary(nb_fit)
+```
+
+``` output
+
+Call:
+glm.nb(formula = attacks ~ pm25, data = df_nb, init.theta = 2.392967844, 
+    link = log)
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept) 0.418832   0.170421   2.458    0.014 *  
+pm25        0.045102   0.005085   8.869   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for Negative Binomial(2.393) family taken to be 1)
+
+    Null deviance: 250.51  on 149  degrees of freedom
+Residual deviance: 167.61  on 148  degrees of freedom
+AIC: 823.46
+
+Number of Fisher Scoring iterations: 1
+
+              Theta:  2.393 
+          Std. Err.:  0.410 
+
+ 2 x log-likelihood:  -817.455 
+```
+
+Interpretation:
+The estimated coefficient for PM2.5 is 0.045, giving an incidence rate ratio IRR = 1.046. With p-value = 7.38\times 10^{-19}, we
+reject the null hypothesis.
+This means each 1 µg/m³ increase in PM2.5 is associated with a multiplicative change of approximately 1.046 in the expected number of asthma attacks, accounting for overdispersion.
 
 ::::
 
@@ -2391,6 +2848,85 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Modeling an ordinal outcome (with more than two ordered categories) as a function of one or more predictors.  
+- **Real-world example:** Predicting customer satisfaction levels (Low, Medium, High) based on service wait time and price.
+
+#### Assumptions
+- The dependent variable is ordinal with a meaningful order.  
+- **Proportional odds (parallel lines):** the effect of each predictor is the same across all thresholds between outcome categories.  
+- Observations are independent.  
+- No multicollinearity among predictors.
+
+#### Strengths
+- Makes efficient use of the ordering information in the outcome.  
+- Provides interpretable odds‐ratios for cumulative probabilities.  
+- More powerful than nominal models (e.g., multinomial logit) when the order matters.
+
+#### Weaknesses
+- Relies on the proportional‐odds assumption; violation can bias estimates.  
+- Interpretation can be less intuitive than linear regression.  
+- Cannot easily accommodate non‐proportional effects without extension.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** Waiting time has no effect on the odds of higher satisfaction (\(\beta_{\text{wait}} = 0\)).  
+- **Alternative hypothesis (H₁):** Waiting time affects the odds of higher satisfaction (\(\beta_{\text{wait}} \neq 0\)).
+
+
+``` r
+# Load data and package
+library(MASS)
+
+set.seed(2025)
+n <- 120
+# Simulate predictors:
+wait_time <- runif(n,  5, 60)      # waiting time in minutes
+price     <- runif(n, 10, 100)     # price in dollars
+
+# Simulate an ordinal outcome via latent variable:
+latent   <- 2 - 0.03 * wait_time - 0.01 * price + rnorm(n)
+# Define thresholds for three satisfaction levels:
+# latent ≤ 0: Low; 0 < latent ≤ 1: Medium; latent > 1: High
+satisfaction <- cut(latent,
+                    breaks = c(-Inf, 0, 1, Inf),
+                    labels = c("Low","Medium","High"),
+                    ordered_result = TRUE)
+
+df <- data.frame(satisfaction, wait_time, price)
+
+# Fit proportional‐odds (ordinal logistic) model:
+model_polr <- polr(satisfaction ~ wait_time + price, data = df, Hess = TRUE)
+
+# Summarize coefficients and compute p‐values:
+ctable <- coef(summary(model_polr))
+pvals  <- pnorm(abs(ctable[,"t value"]), lower.tail = FALSE) * 2
+results <- cbind(ctable, "p value" = round(pvals, 3))
+
+# Display thresholds and predictor effects:
+results
+```
+
+``` output
+                  Value  Std. Error   t value p value
+wait_time   -0.04036665 0.011844352 -3.408093   0.001
+price       -0.02267858 0.006578292 -3.447488   0.001
+Low|Medium  -3.34230915 0.625031561 -5.347425   0.000
+Medium|High -1.78229869 0.564771833 -3.155785   0.002
+```
+
+Interpretation:
+
+The estimated coefficient for wait_time is -0.04.
+
+The odds‐ratio is 0.96, meaning each additional minute of wait changes the odds of being in a higher satisfaction category by that factor.
+
+A p‐value of 0.001 for wait_time indicates
+rejecting H₀: wait time significantly affects satisfaction odds.
+
+Similar interpretation applies to price.
+
 ::::
 
 ::::spoiler
@@ -2398,6 +2934,128 @@ EJ KORREKTURLÆST
 ### Linear mixed-effects modeller (LME)
 
 EJ KORREKTURLÆST
+#### Used for
+- Modeling continuous outcomes with both fixed effects (predictors of interest) and random effects (to account for grouped or repeated measures).  
+- **Real-world example:** Evaluating the effect of a new teaching method on student test scores, while accounting for variability between classrooms and schools.
+
+#### Assumptions
+- Linear relationship between predictors and outcome.  
+- Residuals are independent and normally distributed with mean zero.  
+- Random effects are normally distributed.  
+- Homoscedasticity: constant variance of residuals.  
+- Random effects structure correctly specified (e.g., intercepts and/or slopes).
+
+#### Strengths
+- Accounts for correlation within clusters (e.g., pupils within the same classroom).  
+- Can handle unbalanced data and missing observations within clusters.  
+- Flexibly models complex hierarchical or longitudinal data structures.
+
+#### Weaknesses
+- Model specification (random effects structure) can be challenging.  
+- Parameter estimation can be computationally intensive and may fail to converge.  
+- Inference (p-values) often relies on approximations or additional packages.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The new teaching method has no effect on student test scores (fixed effect β_method = 0).  
+- **Alternative hypothesis (H₁):** The new teaching method affects student test scores (β_method ≠ 0).
+
+
+``` r
+# Install/load necessary packages
+# install.packages("lme4"); install.packages("lmerTest")
+library(lme4)
+```
+
+``` output
+Loading required package: Matrix
+```
+
+``` r
+library(lmerTest)
+```
+
+``` output
+
+Attaching package: 'lmerTest'
+```
+
+``` output
+The following object is masked from 'package:lme4':
+
+    lmer
+```
+
+``` output
+The following object is masked from 'package:stats':
+
+    step
+```
+
+``` r
+set.seed(2025)
+# Simulate data: 100 students in 10 classrooms within 3 schools
+n_schools   <-  3
+n_classes   <- 10
+students_pc <- 10
+
+school      <- factor(rep(1:n_schools, each = n_classes * students_pc))
+class       <- factor(rep(1:(n_schools * n_classes), each = students_pc))
+method      <- factor(rep(rep(c("Control","NewMethod"), each = students_pc/2), times = n_schools * n_classes))
+# True model: intercept = 70, method effect = 5 points, random intercepts for class & school, residual sd = 8
+score <- 70 +
+         ifelse(method=="NewMethod", 5, 0) +
+         rnorm(n_schools * n_classes * students_pc, sd = 8) +
+         rep(rnorm(n_schools * n_classes, sd = 4), each = students_pc) +
+         rep(rnorm(n_schools,            sd = 6), each = n_classes * students_pc)
+
+df <- data.frame(score, method, class, school)
+
+# Fit linear mixed-effects model with random intercepts for school and class:
+lme_fit <- lmer(score ~ method + (1 | school/class), data = df)
+
+# Summarize model (includes p-values via lmerTest):
+summary(lme_fit)
+```
+
+``` output
+Linear mixed model fit by REML. t-tests use Satterthwaite's method [
+lmerModLmerTest]
+Formula: score ~ method + (1 | school/class)
+   Data: df
+
+REML criterion at convergence: 2132.4
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.69138 -0.67244  0.04868  0.66053  2.86344 
+
+Random effects:
+ Groups       Name        Variance Std.Dev.
+ class:school (Intercept) 20.88    4.570   
+ school       (Intercept) 91.42    9.561   
+ Residual                 61.31    7.830   
+Number of obs: 300, groups:  class:school, 30; school, 3
+
+Fixed effects:
+                Estimate Std. Error       df t value Pr(>|t|)    
+(Intercept)      64.6076     5.6194   2.0276  11.497  0.00712 ** 
+methodNewMethod   5.9555     0.9042 268.9993   6.587 2.35e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr)
+methdNwMthd -0.080
+```
+
+Interpretation:
+The fixed-effect estimate for NewMethod is 5.96 points (SE = 0.9), with p = 2.35\times 10^{-10}. We
+reject the null hypothesis.
+Thus, there is
+evidence that the new teaching method significantly changes test scores, accounting for classroom and school variability.
+
 
 ::::
 
@@ -2406,6 +3064,100 @@ EJ KORREKTURLÆST
 ### Generalized linear mixed-effects modeller (GLMM)
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Modeling non-normal outcomes (e.g. binary, counts) with both fixed effects and random effects.  
+- **Real-world example:** Predicting whether patients are readmitted (yes/no) based on age and comorbidity score, with random intercepts for each hospital.
+
+#### Assumptions
+- Observations within each cluster (e.g. hospital) are correlated, but clusters are independent.  
+- The conditional distribution of the outcome given predictors and random effects follows a specified exponential‐family distribution (e.g. binomial, Poisson).  
+- The link function (e.g. logit, log) correctly relates the linear predictor to the mean of the outcome.  
+- Random effects are normally distributed.
+
+#### Strengths
+- Can accommodate hierarchical or longitudinal data and non-Gaussian outcomes.  
+- Estimates both population‐level (fixed) effects and cluster‐specific (random) variation.  
+- Flexible: supports a variety of link functions and distributions.
+
+#### Weaknesses
+- Computationally intensive; convergence can fail with complex random‐effects structures.  
+- Inference (especially p-values for fixed effects) relies on approximations.  
+- Model specification (random slopes, link choice) can be challenging.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The log-odds of readmission do not depend on age (β_age = 0).  
+- **Alternative hypothesis (H₁):** Age affects the log-odds of readmission (β_age ≠ 0).
+
+
+``` r
+# Load packages
+library(lme4)
+
+set.seed(2025)
+# Simulate data for 2000 patients in 20 hospitals:
+n_hospitals <- 20
+patients_per <- 100
+hospital   <- factor(rep(1:n_hospitals, each = patients_per))
+age        <- rnorm(n_hospitals * patients_per, mean = 65, sd = 10)
+comorbidity<- rpois(n_hospitals * patients_per, lambda = 2)
+
+# True model: logit(p) = -2 + 0.03*age + 0.5*comorbidity + random intercept by hospital
+logit_p    <- -2 + 0.03 * age + 0.5 * comorbidity + rnorm(n_hospitals, 0, 0.5)[hospital]
+p_readmit  <- plogis(logit_p)
+readmit    <- rbinom(n_hospitals * patients_per, size = 1, prob = p_readmit)
+
+df_glmm <- data.frame(readmit = factor(readmit, levels = c(0,1)),
+                      age, comorbidity, hospital)
+
+# Fit a binomial GLMM with random intercepts for hospital:
+glmm_fit <- glmer(readmit ~ age + comorbidity + (1 | hospital),
+                  data = df_glmm, family = binomial(link = "logit"))
+
+# Display summary:
+summary(glmm_fit)
+```
+
+``` output
+Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: readmit ~ age + comorbidity + (1 | hospital)
+   Data: df_glmm
+
+      AIC       BIC    logLik -2*log(L)  df.resid 
+   2200.4    2222.8   -1096.2    2192.4      1996 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.9499 -0.9147  0.4555  0.6420  1.7336 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ hospital (Intercept) 0.1931   0.4395  
+Number of obs: 2000, groups:  hospital, 20
+
+Fixed effects:
+             Estimate Std. Error z value Pr(>|z|)    
+(Intercept) -2.132901   0.370427  -5.758 8.51e-09 ***
+age          0.035056   0.005317   6.593 4.30e-11 ***
+comorbidity  0.457562   0.044238  10.343  < 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation of Fixed Effects:
+            (Intr) age   
+age         -0.932       
+comorbidity -0.293  0.101
+```
+
+Interpretation:
+The fixed‐effect estimate for age is 0.035 (SE = 0.005), giving an odds ratio of 1.036 per year of age. With a z‐value = 6.59 and p ≈ 4.3\times 10^{-11}, we
+reject the null hypothesis.
+This indicates that age
+is significantly associated with higher odds of readmission, accounting for hospital clustering.
 
 ::::
 
