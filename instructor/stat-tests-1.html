@@ -1359,6 +1359,83 @@ changed blood pressure.</p>
 <div id="collapseSpoiler10" class="accordion-collapse collapse" aria-labelledby="headingSpoiler10" data-bs-parent="#accordionSpoiler10">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-8">Used for<a class="anchor" aria-label="anchor" href="#used-for-8"></a></h4>
+<ul><li>Testing whether the means of two independent samples differ,
+assuming equal variances.<br></li>
+<li>
+<strong>Real-world example:</strong> Comparing average systolic
+blood pressure between male and female patients when variability is
+similar.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-9">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-9"></a></h4>
+<ul><li>Observations in each group are independent.<br></li>
+<li>Both populations are normally distributed (especially important for
+small samples).<br></li>
+<li>The two populations have equal variances (homoscedasticity).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-9">Strengths<a class="anchor" aria-label="anchor" href="#strengths-9"></a></h4>
+<ul><li>More powerful than Welch’s t-test when variances truly are
+equal.<br></li>
+<li>Simple computation and interpretation via pooled variance.<br></li>
+<li>Widely implemented and familiar to practitioners.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-9">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-9"></a></h4>
+<ul><li>Sensitive to violations of normality in small samples.<br></li>
+<li>Incorrect if variances differ substantially—can inflate Type I
+error.<br></li>
+<li>Assumes homogeneity of variance, which may not hold in
+practice.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-9">Example<a class="anchor" aria-label="anchor" href="#example-9"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-9">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-9"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> μ₁ = μ₂ (the two population
+means are equal).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> μ₁ ≠ μ₂ (the means
+differ).</li>
+</ul><div class="codewrapper sourceCode" id="cb22">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="co"># Simulate systolic BP (mmHg):</span></span>
+<span><span class="va">groupA</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">25</span>, mean <span class="op">=</span> <span class="fl">122</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>  <span class="co"># e.g., males</span></span>
+<span><span class="va">groupB</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">25</span>, mean <span class="op">=</span> <span class="fl">118</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>  <span class="co"># e.g., females</span></span>
+<span></span>
+<span><span class="co"># Perform two-sample t-test with equal variances:</span></span>
+<span><span class="va">test_result</span> <span class="op">&lt;-</span> <span class="fu">t.test</span><span class="op">(</span><span class="va">groupA</span>, <span class="va">groupB</span>, var.equal <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">test_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Two Sample t-test
+
+data:  groupA and groupB
+t = 2.6245, df = 48, p-value = 0.0116
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  1.733091 13.086377
+sample estimates:
+mean of x mean of y
+ 125.2119  117.8021 </code></pre>
+</div>
+<p>Interpretation: The pooled estimate of the difference in means is
+7.41 mmHg. The t-statistic is 2.62 with df = 48 and p-value = 0.0116. We
+reject the null hypothesis. Thus, there is evidence that the average
+systolic blood pressure differs between the two groups.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1371,6 +1448,86 @@ changed blood pressure.</p>
 <div id="collapseSpoiler11" class="accordion-collapse collapse" aria-labelledby="headingSpoiler11" data-bs-parent="#accordionSpoiler11">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-9">Used for<a class="anchor" aria-label="anchor" href="#used-for-9"></a></h4>
+<ul><li>Testing whether the means of two independent samples differ when
+variances are unequal.<br></li>
+<li>
+<strong>Real-world example:</strong> Comparing average recovery
+times for two different therapies when one therapy shows more variable
+outcomes.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-10">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-10"></a></h4>
+<ul><li>Observations in each group are independent.<br></li>
+<li>Each population is approximately normally distributed (especially
+important for small samples).<br></li>
+<li>Does <strong>not</strong> assume equal variances across groups.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-10">Strengths<a class="anchor" aria-label="anchor" href="#strengths-10"></a></h4>
+<ul><li>Controls Type I error when variances differ.<br></li>
+<li>More reliable than the pooled‐variance t‐test under
+heteroskedasticity.<br></li>
+<li>Simple to implement via <code>t.test(..., var.equal = FALSE)</code>
+in R.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-10">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-10"></a></h4>
+<ul><li>Slight loss of power compared to equal-variance t‐test when
+variances truly are equal.<br></li>
+<li>Sensitive to departures from normality in small samples.<br></li>
+<li>Degrees of freedom are approximated (Welch–Satterthwaite), which can
+reduce interpretability.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-10">Example<a class="anchor" aria-label="anchor" href="#example-10"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-10">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-10"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> μ₁ = μ₂ (the two population
+means are equal).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> μ₁ ≠ μ₂ (the means
+differ).</li>
+</ul><div class="codewrapper sourceCode" id="cb24">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="co"># Simulate recovery times (days) for two therapies:</span></span>
+<span><span class="va">therapyA</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">10</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>   <span class="co"># Therapy A</span></span>
+<span><span class="va">therapyB</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">25</span>, mean <span class="op">=</span> <span class="fl">12</span>, sd <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>   <span class="co"># Therapy B (more variable)</span></span>
+<span></span>
+<span><span class="co"># Perform two-sample t-test with unequal variances:</span></span>
+<span><span class="va">test_result</span> <span class="op">&lt;-</span> <span class="fu">t.test</span><span class="op">(</span><span class="va">therapyA</span>, <span class="va">therapyB</span>, var.equal <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">test_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Welch Two Sample t-test
+
+data:  therapyA and therapyB
+t = -1.7792, df = 32.794, p-value = 0.08449
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.8148079  0.2558875
+sample estimates:
+mean of x mean of y
+ 10.41320  12.19266 </code></pre>
+</div>
+<p>Interpretation: The estimated difference in means is -1.78 days. The
+Welch t‐statistic is<code>r round(test_result$statistic, 2)</code> with
+df ≈ 32.8 and two‐sided p‐value
+=<code>r signif(test_result$p.value, 3</code>). We fail to reject the
+null hypothesis. Thus, there is no evidence of a difference in average
+recovery times..</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1383,6 +1540,77 @@ changed blood pressure.</p>
 <div id="collapseSpoiler12" class="accordion-collapse collapse" aria-labelledby="headingSpoiler12" data-bs-parent="#accordionSpoiler12">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-10">Used for<a class="anchor" aria-label="anchor" href="#used-for-10"></a></h4>
+<ul><li>Comparing the central tendencies of two independent samples when the
+data are ordinal or not normally distributed.<br></li>
+<li>
+<strong>Real-world example:</strong> Testing whether pain scores
+(0–10) differ between patients receiving Drug A versus Drug B when
+scores are skewed.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-11">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-11"></a></h4>
+<ul><li>Observations are independent both within and between groups.<br></li>
+<li>The response variable is at least ordinal.<br></li>
+<li>The two distributions have the same shape (so that differences
+reflect location shifts).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-11">Strengths<a class="anchor" aria-label="anchor" href="#strengths-11"></a></h4>
+<ul><li>Nonparametric: does not require normality or equal variances.<br></li>
+<li>Robust to outliers and skewed data.<br></li>
+<li>Simple rank-based calculation.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-11">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-11"></a></h4>
+<ul><li>Less powerful than t-test when data are truly normal.<br></li>
+<li>If distributions differ in shape as well as location, interpretation
+becomes ambiguous.<br></li>
+<li>Only tests for location shift, not differences in dispersion.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-11">Example<a class="anchor" aria-label="anchor" href="#example-11"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-11">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-11"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The distributions of pain
+scores are identical for Drug A and Drug B.<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> The distributions
+differ in location (median pain differs between drugs).</li>
+</ul><div class="codewrapper sourceCode" id="cb26">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulate pain scores (0–10) for two independent groups:</span></span>
+<span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="va">drugA</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">6</span>,<span class="fl">5</span>,<span class="fl">4</span>,  <span class="co"># skewed lower</span></span>
+<span>           <span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">4</span>,<span class="fl">3</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">3</span><span class="op">)</span></span>
+<span><span class="va">drugB</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">6</span>,<span class="fl">5</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">6</span>,<span class="fl">7</span>,  <span class="co"># skewed higher</span></span>
+<span>           <span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">6</span>,<span class="fl">8</span>,<span class="fl">7</span>,<span class="fl">6</span>,<span class="fl">7</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform Mann–Whitney U test (Wilcoxon rank-sum):</span></span>
+<span><span class="va">mw_result</span> <span class="op">&lt;-</span> <span class="fu">wilcox.test</span><span class="op">(</span><span class="va">drugA</span>, <span class="va">drugB</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, exact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">mw_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Wilcoxon rank sum test with continuity correction
+
+data:  drugA and drugB
+W = 20.5, p-value = 9.123e-07
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<p>Interpretation: The Wilcoxon rank-sum statistic W = 20.5 with p-value
+= 9.12^{-7}. We reject the null hypothesis. Thus, there is evidence that
+median pain scores differ between Drug A and Drug B.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1395,6 +1623,77 @@ changed blood pressure.</p>
 <div id="collapseSpoiler13" class="accordion-collapse collapse" aria-labelledby="headingSpoiler13" data-bs-parent="#accordionSpoiler13">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-11">Used for<a class="anchor" aria-label="anchor" href="#used-for-11"></a></h4>
+<ul><li>Testing whether the median difference between paired observations is
+zero.<br></li>
+<li>
+<strong>Real-world example:</strong> Comparing patients’ pain scores
+before and after a new analgesic treatment when differences may not be
+normally distributed.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-12">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-12"></a></h4>
+<ul><li>Observations are paired and the pairs are independent.<br></li>
+<li>Differences are at least ordinal and symmetrically distributed
+around the median.<br></li>
+<li>No large number of exact zero differences (ties).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-12">Strengths<a class="anchor" aria-label="anchor" href="#strengths-12"></a></h4>
+<ul><li>Nonparametric: does not require normality of differences.<br></li>
+<li>Controls for within‐subject variability by using paired
+design.<br></li>
+<li>Robust to outliers in the paired differences.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-12">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-12"></a></h4>
+<ul><li>Less powerful than the paired t-test when differences are truly
+normal.<br></li>
+<li>Requires symmetry of the distribution of differences.<br></li>
+<li>Cannot easily handle many tied differences.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-12">Example<a class="anchor" aria-label="anchor" href="#example-12"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-12">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-12"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The median difference in pain
+score (before – after) = 0 (no change).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> The median difference
+≠ 0 (pain changes after treatment).</li>
+</ul><div class="codewrapper sourceCode" id="cb28">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulated pain scores (0–10) for 12 patients:</span></span>
+<span><span class="va">before</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">5</span>, <span class="fl">8</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">9</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">7</span>, <span class="fl">6</span><span class="op">)</span></span>
+<span><span class="va">after</span>  <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">5</span>, <span class="fl">6</span>, <span class="fl">8</span>, <span class="fl">4</span>, <span class="fl">5</span>, <span class="fl">7</span>, <span class="fl">6</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform Wilcoxon signed-rank test:</span></span>
+<span><span class="va">wsr_result</span> <span class="op">&lt;-</span> <span class="fu">wilcox.test</span><span class="op">(</span><span class="va">before</span>, <span class="va">after</span>, paired <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                          alternative <span class="op">=</span> <span class="st">"two.sided"</span>, exact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">wsr_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Wilcoxon signed rank test with continuity correction
+
+data:  before and after
+V = 66, p-value = 0.001586
+alternative hypothesis: true location shift is not equal to 0</code></pre>
+</div>
+<p>Interpretation: The Wilcoxon signed‐rank test statistic V =66 with
+p-value =<code>r signif(wsr_result$p.value, 3)</code>. We reject the
+null hypothesis. Thus, there is evidence that median pain scores change
+after treatment..</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1402,11 +1701,81 @@ changed blood pressure.</p>
 <div id="accordionSpoiler14" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler14" aria-expanded="false" aria-controls="collapseSpoiler14">
-  <h3 class="accordion-header" id="headingSpoiler14">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Kolmogorov–Smirnov to-prøve-test </h3>
+  <h3 class="accordion-header" id="headingSpoiler14">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Kolmogorov–Smirnov two-sample-test </h3>
 </button>
 <div id="collapseSpoiler14" class="accordion-collapse collapse" aria-labelledby="headingSpoiler14" data-bs-parent="#accordionSpoiler14">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-12">Used for<a class="anchor" aria-label="anchor" href="#used-for-12"></a></h4>
+<ul><li>Testing whether two independent samples come from the same
+continuous distribution.<br></li>
+<li>
+<strong>Real-world example:</strong> Comparing the distribution of
+recovery times for patients receiving Drug A versus Drug B.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-13">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-13"></a></h4>
+<ul><li>Observations in each sample are independent.<br></li>
+<li>Data are continuous with no ties.<br></li>
+<li>The two samples are drawn from fully specified continuous
+distributions (no parameters estimated from the same data).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-13">Strengths<a class="anchor" aria-label="anchor" href="#strengths-13"></a></h4>
+<ul><li>Nonparametric: makes no assumption about the shape of the
+distribution.<br></li>
+<li>Sensitive to differences in location, scale, or overall shape.<br></li>
+<li>Exact distribution under the null when samples are not too
+large.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-13">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-13"></a></h4>
+<ul><li>Less powerful than parametric alternatives if the true form is known
+(e.g., t-test for normal data).<br></li>
+<li>Invalid p-values if there are ties or discrete data.<br></li>
+<li>Does not indicate how distributions differ—only that they do.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-13">Example<a class="anchor" aria-label="anchor" href="#example-13"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-13">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-13"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The two samples come from the
+same distribution.<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> The two samples come
+from different distributions.</li>
+</ul><div class="codewrapper sourceCode" id="cb30">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulate recovery times (days) for two therapies:</span></span>
+<span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="va">therapyA</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">30</span>, mean <span class="op">=</span> <span class="fl">10</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>   <span class="co"># Therapy A</span></span>
+<span><span class="va">therapyB</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">30</span>, mean <span class="op">=</span> <span class="fl">12</span>, sd <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>   <span class="co"># Therapy B</span></span>
+<span></span>
+<span><span class="co"># Perform two-sample Kolmogorov–Smirnov test:</span></span>
+<span><span class="va">ks_result</span> <span class="op">&lt;-</span> <span class="fu">ks.test</span><span class="op">(</span><span class="va">therapyA</span>, <span class="va">therapyB</span>, alternative <span class="op">=</span> <span class="st">"two.sided"</span>, exact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">ks_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Asymptotic two-sample Kolmogorov-Smirnov test
+
+data:  therapyA and therapyB
+D = 0.43333, p-value = 0.007153
+alternative hypothesis: two-sided</code></pre>
+</div>
+<p>Interpretation: The KS statistic D = 0.433 with p-value = 0.00715. We
+reject the null hypothesis. Thus, there is evidence that the
+distribution of recovery times differs between therapies.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1420,27 +1789,27 @@ changed blood pressure.</p>
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
 <div class="section level4">
-<h4 id="used-for-8">Used for<a class="anchor" aria-label="anchor" href="#used-for-8"></a></h4>
+<h4 id="used-for-13">Used for<a class="anchor" aria-label="anchor" href="#used-for-13"></a></h4>
 <ul><li>Testing whether multiple groups have equal variances.<br></li>
 <li>
 <strong>Real-world example:</strong> Checking if the variability in
 patient blood pressure differs between three different clinics.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="assumptions-9">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-9"></a></h4>
+<h4 id="assumptions-14">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-14"></a></h4>
 <ul><li>Observations are independent.<br></li>
 <li>The underlying distributions within each group are approximately
 symmetric (Levene’s test is robust to non-normality but assumes no
 extreme skew).</li>
 </ul></div>
 <div class="section level4">
-<h4 id="strengths-9">Strengths<a class="anchor" aria-label="anchor" href="#strengths-9"></a></h4>
+<h4 id="strengths-14">Strengths<a class="anchor" aria-label="anchor" href="#strengths-14"></a></h4>
 <ul><li>More robust to departures from normality than Bartlett’s test.<br></li>
 <li>Applicable to two or more groups.<br></li>
 <li>Simple to implement and interpret.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="weaknesses-9">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-9"></a></h4>
+<h4 id="weaknesses-14">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-14"></a></h4>
 <ul><li>Less powerful than tests that assume normality when data truly are
 normal.<br></li>
 <li>Can be sensitive to extreme outliers despite its robustness.<br></li>
@@ -1448,16 +1817,16 @@ normal.<br></li>
 comparisons.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="example-9">Example<a class="anchor" aria-label="anchor" href="#example-9"></a></h4>
+<h4 id="example-14">Example<a class="anchor" aria-label="anchor" href="#example-14"></a></h4>
 <div class="section level5">
-<h5 id="hypothesis-9">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-9"></a></h5>
+<h5 id="hypothesis-14">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-14"></a></h5>
 <ul><li>
 <strong>Null hypothesis (H₀):</strong> All groups have equal
 variances (σ₁² = σ₂² = … = σₖ²).<br></li>
 <li>
 <strong>Alternative hypothesis (H₁):</strong> At least one group’s
 variance differs.</li>
-</ul><div class="codewrapper sourceCode" id="cb22">
+</ul><div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1477,7 +1846,7 @@ variance differs.</li>
 </h3>
 <pre class="output" tabindex="0"><code>Loading required package: carData</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1511,6 +1880,77 @@ is no evidence of differing variances across clinics.</p>
 <div id="collapseSpoiler16" class="accordion-collapse collapse" aria-labelledby="headingSpoiler16" data-bs-parent="#accordionSpoiler16">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-14">Used for<a class="anchor" aria-label="anchor" href="#used-for-14"></a></h4>
+<ul><li>Testing whether multiple groups have equal variances under the
+assumption of normality.<br></li>
+<li>
+<strong>Real-world example:</strong> Checking if the variability in
+laboratory test results differs across three different
+laboratories.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-15">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-15"></a></h4>
+<ul><li>Observations within each group are independent.<br></li>
+<li>Each group is drawn from a normally distributed population.<br></li>
+<li>Groups are independent of one another.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-15">Strengths<a class="anchor" aria-label="anchor" href="#strengths-15"></a></h4>
+<ul><li>More powerful than Levene’s test when normality holds.<br></li>
+<li>Directly targets equality of variances under the normal model.<br></li>
+<li>Simple to compute in R via <code>bartlett.test()</code>.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-15">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-15"></a></h4>
+<ul><li>Highly sensitive to departures from normality—small deviations can
+inflate Type I error.<br></li>
+<li>Does not indicate which groups differ without further pairwise
+testing.<br></li>
+<li>Not robust to outliers.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-15">Example<a class="anchor" aria-label="anchor" href="#example-15"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-15">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-15"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> All group variances are equal
+(σ₁² = σ₂² = σ₃²).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one group
+variance differs.</li>
+</ul><div class="codewrapper sourceCode" id="cb36">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulate data for three laboratories (n = 12 each):</span></span>
+<span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">456</span><span class="op">)</span></span>
+<span><span class="va">lab</span>      <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"LabA"</span>, <span class="st">"LabB"</span>, <span class="st">"LabC"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">values</span>   <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fu">rnorm</span><span class="op">(</span><span class="fl">12</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>              <span class="fu">rnorm</span><span class="op">(</span><span class="fl">12</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>              <span class="fu">rnorm</span><span class="op">(</span><span class="fl">12</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span>       <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">lab</span>, <span class="va">values</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform Bartlett’s test for homogeneity of variances:</span></span>
+<span><span class="va">bartlett_result</span> <span class="op">&lt;-</span> <span class="fu">bartlett.test</span><span class="op">(</span><span class="va">values</span> <span class="op">~</span> <span class="va">lab</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">bartlett_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Bartlett test of homogeneity of variances
+
+data:  values by lab
+Bartlett's K-squared = 10.387, df = 2, p-value = 0.005552</code></pre>
+</div>
+<p>Interpretation: Bartlett’s K-squared = 10.39 with df = 2 and p-value
+= 0.00555. We reject the null hypothesis. Thus, there is evidence that
+at least one laboratory’s variance differs from the others.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1524,6 +1964,79 @@ is no evidence of differing variances across clinics.</p>
 <div id="collapseSpoiler17" class="accordion-collapse collapse" aria-labelledby="headingSpoiler17" data-bs-parent="#accordionSpoiler17">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-15">Used for<a class="anchor" aria-label="anchor" href="#used-for-15"></a></h4>
+<ul><li>Testing whether the means of three or more independent groups
+differ.<br></li>
+<li>
+<strong>Real-world example:</strong> Comparing average test scores
+among students taught by three different teaching methods.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-16">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-16"></a></h4>
+<ul><li>Observations are independent.<br></li>
+<li>Each group’s residuals are approximately normally distributed.<br></li>
+<li>Homogeneity of variances across groups.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-16">Strengths<a class="anchor" aria-label="anchor" href="#strengths-16"></a></h4>
+<ul><li>Controls Type I error rate when comparing multiple groups.<br></li>
+<li>Simple to compute and interpret via F-statistic.<br></li>
+<li>Foundation for many extensions (e.g., factorial ANOVA, mixed
+models).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-16">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-16"></a></h4>
+<ul><li>Sensitive to heterogeneity of variances, especially with unequal
+group sizes.<br></li>
+<li>Only tells you that at least one mean differs—does not indicate
+which groups differ without post-hoc tests.<br></li>
+<li>Assumes normality; moderately robust for large samples, but small
+samples can be problematic.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-16">Example<a class="anchor" aria-label="anchor" href="#example-16"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-16">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-16"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> μ₁ = μ₂ = μ₃ (all three group
+means are equal).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one group
+mean differs.</li>
+</ul><div class="codewrapper sourceCode" id="cb38">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulate exam scores for three teaching methods (n = 20 each):</span></span>
+<span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="va">method</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"Lecture"</span>, <span class="st">"Online"</span>, <span class="st">"Hybrid"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">75</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>            <span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">80</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>            <span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">78</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span>     <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">method</span>, <span class="va">scores</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit one-way ANOVA:</span></span>
+<span><span class="va">anova_fit</span> <span class="op">&lt;-</span> <span class="fu">aov</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">method</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Summarize ANOVA table:</span></span>
+<span><span class="va">anova_summary</span> <span class="op">&lt;-</span> <span class="fu">summary</span><span class="op">(</span><span class="va">anova_fit</span><span class="op">)</span></span>
+<span><span class="va">anova_summary</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)
+method       2    146   72.79   1.184  0.314
+Residuals   57   3505   61.48               </code></pre>
+</div>
+<p>Interpretation: The ANOVA yields F = 1.18 with df₁
+=<code>r anova_summary[[1]]["method","Df"]</code> and df₂
+=<code>r anova_summary[[1]]["Residuals","Df"]</code>, and p-value =
+0.314. We fail to reject the null hypothesis. Thus, there is no evidence
+of a difference in mean scores among methods.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1536,6 +2049,97 @@ is no evidence of differing variances across clinics.</p>
 <div id="collapseSpoiler18" class="accordion-collapse collapse" aria-labelledby="headingSpoiler18" data-bs-parent="#accordionSpoiler18">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-16">Used for<a class="anchor" aria-label="anchor" href="#used-for-16"></a></h4>
+<ul><li>Comparing group means on a continuous outcome while adjusting for
+one continuous covariate.<br></li>
+<li>
+<strong>Real-world example:</strong> Evaluating whether three
+different teaching methods lead to different final exam scores after
+accounting for students’ prior GPA.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-17">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-17"></a></h4>
+<ul><li>Observations are independent.<br></li>
+<li>The relationship between the covariate and the outcome is linear and
+the same across groups (homogeneity of regression slopes).<br></li>
+<li>Residuals are normally distributed with equal variances across
+groups.<br></li>
+<li>Covariate is measured without error and is independent of group
+assignment.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-17">Strengths<a class="anchor" aria-label="anchor" href="#strengths-17"></a></h4>
+<ul><li>Removes variability due to the covariate, increasing power to detect
+group differences.<br></li>
+<li>Controls for confounding by the covariate.<br></li>
+<li>Simple extension of one-way ANOVA with interpretation familiar to
+ANOVA users.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-17">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-17"></a></h4>
+<ul><li>Sensitive to violation of homogeneity of regression slopes.<br></li>
+<li>Mis‐specification of the covariate‐outcome relationship biases
+results.<br></li>
+<li>Requires accurate measurement of the covariate.<br></li>
+<li>Does not accommodate multiple covariates without extension to
+factorial ANCOVA or regression.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-17">Example<a class="anchor" aria-label="anchor" href="#example-17"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-17">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-17"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> After adjusting for prior
+GPA, the mean final exam scores are equal across the three teaching
+methods (μ_Lecture = μ_Online = μ_Hybrid).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one adjusted
+group mean differs.</li>
+</ul><div class="codewrapper sourceCode" id="cb40">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">20</span></span>
+<span><span class="va">method</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"Lecture"</span>,<span class="st">"Online"</span>,<span class="st">"Hybrid"</span><span class="op">)</span>, each <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">prior_gpa</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">3</span><span class="op">*</span><span class="va">n</span>, mean <span class="op">=</span> <span class="fl">3.0</span>, sd <span class="op">=</span> <span class="fl">0.3</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Simulate final exam scores with a covariate effect:</span></span>
+<span><span class="co"># true intercepts 75, 78, 80; slope = 5 points per GPA unit; noise sd = 5</span></span>
+<span><span class="va">final_score</span> <span class="op">&lt;-</span> <span class="fl">75</span> <span class="op">+</span> </span>
+<span>               <span class="fu">ifelse</span><span class="op">(</span><span class="va">method</span><span class="op">==</span><span class="st">"Online"</span>, <span class="fl">3</span>, <span class="fl">0</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>               <span class="fu">ifelse</span><span class="op">(</span><span class="va">method</span><span class="op">==</span><span class="st">"Hybrid"</span>, <span class="fl">5</span>, <span class="fl">0</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>               <span class="fl">5</span> <span class="op">*</span> <span class="va">prior_gpa</span> <span class="op">+</span> </span>
+<span>               <span class="fu">rnorm</span><span class="op">(</span><span class="fl">3</span><span class="op">*</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">method</span>, <span class="va">prior_gpa</span>, <span class="va">final_score</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit one-way ANCOVA:</span></span>
+<span><span class="va">ancova_fit</span> <span class="op">&lt;-</span> <span class="fu">aov</span><span class="op">(</span><span class="va">final_score</span> <span class="op">~</span> <span class="va">prior_gpa</span> <span class="op">+</span> <span class="va">method</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span><span class="va">ancova_summary</span> <span class="op">&lt;-</span> <span class="fu">summary</span><span class="op">(</span><span class="va">ancova_fit</span><span class="op">)</span></span>
+<span><span class="va">ancova_summary</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)
+prior_gpa    1  166.5   166.5   5.967 0.01775 *
+method       2  296.8   148.4   5.320 0.00767 **
+Residuals   56 1562.4    27.9
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<p>Interpretation: After adjusting for prior GPA, the effect of teaching
+method yields F = 5.32 (df₁
+=<code>r ancova_summary[[1]]["method","Df"]</code>, df₂
+=<code>r ancova_summary[[1]]["Residuals","Df"]</code>) with p
+=<code>r signif(ancova_summary[[1]]["method","Pr(&gt;F)"], 3</code>). We
+reject the null hypothesis. Thus, there is evidence that, controlling
+for prior GPA, at least one teaching method leads to a different average
+final score..</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1548,6 +2152,84 @@ is no evidence of differing variances across clinics.</p>
 <div id="collapseSpoiler19" class="accordion-collapse collapse" aria-labelledby="headingSpoiler19" data-bs-parent="#accordionSpoiler19">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-17">Used for<a class="anchor" aria-label="anchor" href="#used-for-17"></a></h4>
+<ul><li>Testing whether the means of three or more independent groups differ
+when variances are unequal.<br></li>
+<li>
+<strong>Real-world example:</strong> Comparing average systolic
+blood pressure across three clinics known to have different measurement
+variability.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-18">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-18"></a></h4>
+<ul><li>Observations are independent.<br></li>
+<li>Each group’s residuals are approximately normally distributed.<br></li>
+<li>Does <strong>not</strong> assume equal variances across groups.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-18">Strengths<a class="anchor" aria-label="anchor" href="#strengths-18"></a></h4>
+<ul><li>Controls Type I error under heteroskedasticity better than ordinary
+ANOVA.<br></li>
+<li>Simple to implement via
+<code>oneway.test(..., var.equal = FALSE)</code>.<br></li>
+<li>More powerful than nonparametric alternatives when normality
+holds.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-18">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-18"></a></h4>
+<ul><li>Sensitive to departures from normality, especially with small sample
+sizes.<br></li>
+<li>Does not provide post-hoc comparisons by default; requires
+additional tests.<br></li>
+<li>Still assumes independence and approximate normality within each
+group.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-18">Example<a class="anchor" aria-label="anchor" href="#example-18"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-18">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-18"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> All group means are equal (μ₁
+= μ₂ = μ₃).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one group
+mean differs.</li>
+</ul><div class="codewrapper sourceCode" id="cb42">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="co"># Simulate systolic BP (mmHg) for three clinics with unequal variances:</span></span>
+<span><span class="va">clinic</span>   <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span><span class="op">)</span>, times <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="fl">15</span>, <span class="fl">20</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">bp_values</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span></span>
+<span>  <span class="fu">rnorm</span><span class="op">(</span><span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">120</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,</span>
+<span>  <span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">125</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>,</span>
+<span>  <span class="fu">rnorm</span><span class="op">(</span><span class="fl">12</span>, mean <span class="op">=</span> <span class="fl">118</span>, sd <span class="op">=</span> <span class="fl">7</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">clinic</span>, <span class="va">bp_values</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform Welch’s one-way ANOVA:</span></span>
+<span><span class="va">welch_result</span> <span class="op">&lt;-</span> <span class="fu">oneway.test</span><span class="op">(</span><span class="va">bp_values</span> <span class="op">~</span> <span class="va">clinic</span>, data <span class="op">=</span> <span class="va">df</span>, var.equal <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">welch_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	One-way analysis of means (not assuming equal variances)
+
+data:  bp_values and clinic
+F = 2.7802, num df = 2.000, denom df = 23.528, p-value = 0.08244</code></pre>
+</div>
+<p>Interpretation: The Welch statistic = 2.78 with df ≈ 2, 23.53, and
+p-value = 0.0824. We fail to reject the null hypothesis. Thus, there is
+no evidence of a difference in mean blood pressure among the
+clinics.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1560,6 +2242,92 @@ is no evidence of differing variances across clinics.</p>
 <div id="collapseSpoiler20" class="accordion-collapse collapse" aria-labelledby="headingSpoiler20" data-bs-parent="#accordionSpoiler20">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-18">Used for<a class="anchor" aria-label="anchor" href="#used-for-18"></a></h4>
+<ul><li>Testing whether the means of three or more related (within‐subject)
+conditions differ.<br></li>
+<li>
+<strong>Real-world example:</strong> Assessing whether students’
+reaction times change across three levels of sleep deprivation (0 h, 12
+h, 24 h) measured on the same individuals.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-19">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-19"></a></h4>
+<ul><li>Observations (subjects) are independent.<br></li>
+<li>The dependent variable is approximately normally distributed in each
+condition.<br></li>
+<li>
+<strong>Sphericity:</strong> variances of the pairwise differences
+between conditions are equal.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-19">Strengths<a class="anchor" aria-label="anchor" href="#strengths-19"></a></h4>
+<ul><li>Controls for between‐subject variability by using each subject as
+their own control.<br></li>
+<li>More powerful than independent‐groups ANOVA when measures are
+correlated.<br></li>
+<li>Can model complex within‐subject designs (e.g. time × treatment
+interactions).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-19">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-19"></a></h4>
+<ul><li>Sensitive to violations of sphericity (inflates Type I error).<br></li>
+<li>Missing data in any condition drops the entire subject (unless using
+more advanced mixed‐model methods).<br></li>
+<li>Interpretation can be complex when there are many levels or
+interactions.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-19">Example<a class="anchor" aria-label="anchor" href="#example-19"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-19">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-19"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The mean reaction time is the
+same across 0 h, 12 h, and 24 h sleep deprivation.<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one
+condition’s mean reaction time differs.</li>
+</ul><div class="codewrapper sourceCode" id="cb44">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="va">n_subj</span> <span class="op">&lt;-</span> <span class="fl">12</span></span>
+<span><span class="va">subject</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="va">n_subj</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">condition</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"0h"</span>,<span class="st">"12h"</span>,<span class="st">"24h"</span><span class="op">)</span>, times <span class="op">=</span> <span class="va">n_subj</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Simulate reaction times (ms):</span></span>
+<span><span class="va">rt</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fu">rnorm</span><span class="op">(</span><span class="va">n_subj</span>, mean <span class="op">=</span> <span class="fl">300</span>, sd <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>,</span>
+<span>        <span class="fu">rnorm</span><span class="op">(</span><span class="va">n_subj</span>, mean <span class="op">=</span> <span class="fl">320</span>, sd <span class="op">=</span> <span class="fl">20</span><span class="op">)</span>,</span>
+<span>        <span class="fu">rnorm</span><span class="op">(</span><span class="va">n_subj</span>, mean <span class="op">=</span> <span class="fl">340</span>, sd <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">subject</span>, <span class="va">condition</span>, <span class="va">rt</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit repeated-measures ANOVA:</span></span>
+<span><span class="va">rm_fit</span> <span class="op">&lt;-</span> <span class="fu">aov</span><span class="op">(</span><span class="va">rt</span> <span class="op">~</span> <span class="va">condition</span> <span class="op">+</span> <span class="fu">Error</span><span class="op">(</span><span class="va">subject</span><span class="op">/</span><span class="va">condition</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span><span class="va">rm_summary</span> <span class="op">&lt;-</span> <span class="fu">summary</span><span class="op">(</span><span class="va">rm_fit</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">rm_summary</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+Error: subject
+          Df Sum Sq Mean Sq F value Pr(&gt;F)
+Residuals 11   9892   899.3
+
+Error: subject:condition
+          Df Sum Sq Mean Sq F value Pr(&gt;F)
+condition  2   1000     500   1.188  0.324
+Residuals 22   9262     421               </code></pre>
+</div>
+<p>Interpretation: The within‐subjects effect of sleep deprivation
+yields F = 1.19 with df₁ = 2 and df₂ =
+<code>r rm_summary[[2]][[1]]["Residuals","Df"]</code>, p = 0.324. We
+fail to reject the null hypothesis. Thus, there is no evidence that
+reaction times differ across sleep deprivation conditions.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1573,7 +2341,7 @@ is no evidence of differing variances across clinics.</p>
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
 <div class="section level4">
-<h4 id="used-for-9">Used for<a class="anchor" aria-label="anchor" href="#used-for-9"></a></h4>
+<h4 id="used-for-19">Used for<a class="anchor" aria-label="anchor" href="#used-for-19"></a></h4>
 <ul><li>Testing for differences on multiple continuous dependent variables
 across one or more grouping factors simultaneously.<br></li>
 <li>
@@ -1582,7 +2350,7 @@ different diets lead to different patterns of weight loss and
 cholesterol reduction.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="assumptions-10">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-10"></a></h4>
+<h4 id="assumptions-20">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-20"></a></h4>
 <ul><li>Multivariate normality of the dependent variables within each
 group.<br></li>
 <li>Homogeneity of covariance matrices across groups.<br></li>
@@ -1590,14 +2358,14 @@ group.<br></li>
 <li>Linear relationships among dependent variables.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="strengths-10">Strengths<a class="anchor" aria-label="anchor" href="#strengths-10"></a></h4>
+<h4 id="strengths-20">Strengths<a class="anchor" aria-label="anchor" href="#strengths-20"></a></h4>
 <ul><li>Controls family-wise Type I error by testing all DVs together.<br></li>
 <li>Can detect patterns that univariate ANOVAs might miss.<br></li>
 <li>Provides multiple test statistics (Pillai, Wilks, Hotelling–Lawley,
 Roy) for flexibility.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="weaknesses-10">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-10"></a></h4>
+<h4 id="weaknesses-20">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-20"></a></h4>
 <ul><li>Sensitive to violations of multivariate normality and homogeneity of
 covariances.<br></li>
 <li>Requires larger sample sizes as the number of DVs increases.<br></li>
@@ -1605,9 +2373,9 @@ covariances.<br></li>
 determine which DVs drive effects.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="example-10">Example<a class="anchor" aria-label="anchor" href="#example-10"></a></h4>
+<h4 id="example-20">Example<a class="anchor" aria-label="anchor" href="#example-20"></a></h4>
 <div class="section level5">
-<h5 id="hypothesis-10">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-10"></a></h5>
+<h5 id="hypothesis-20">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-20"></a></h5>
 <ul><li>
 <strong>Null hypothesis (H₀):</strong> The vector of means for
 weight loss and cholesterol change is equal across the three diet
@@ -1616,7 +2384,7 @@ groups.<br></li>
 <strong>Alternative hypothesis (H₁):</strong> At least one diet
 group differs on the combination of weight loss and cholesterol
 change.</li>
-</ul><div class="codewrapper sourceCode" id="cb26">
+</ul><div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1811,6 +2579,83 @@ når én dimension dominerer.</p>
 <div id="collapseSpoiler22" class="accordion-collapse collapse" aria-labelledby="headingSpoiler22" data-bs-parent="#accordionSpoiler22">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-20">Used for<a class="anchor" aria-label="anchor" href="#used-for-20"></a></h4>
+<ul><li>Testing for differences in central tendency across three or more
+related (paired) groups when assumptions of repeated‐measures ANOVA are
+violated.<br></li>
+<li>
+<strong>Real-world example:</strong> Comparing median pain scores at
+baseline, 1 hour, and 24 hours after surgery in the same patients.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-21">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-21"></a></h4>
+<ul><li>Observations are paired and the sets of scores for each condition
+are related (e.g., repeated measures on the same subjects).<br></li>
+<li>Data are at least ordinal.<br></li>
+<li>The distribution of differences across pairs need not be
+normal.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-21">Strengths<a class="anchor" aria-label="anchor" href="#strengths-21"></a></h4>
+<ul><li>Nonparametric: does not require normality or sphericity.<br></li>
+<li>Controls for between‐subject variability by using each subject as
+their own block.<br></li>
+<li>Robust to outliers and skewed data.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-21">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-21"></a></h4>
+<ul><li>Less powerful than repeated‐measures ANOVA when normality and
+sphericity hold.<br></li>
+<li>Only indicates that at least one condition differs—post‐hoc tests
+are needed to locate differences.<br></li>
+<li>Assumes similar shaped distributions across conditions.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-21">Example<a class="anchor" aria-label="anchor" href="#example-21"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-21">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-21"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The distributions of scores
+are the same across all conditions (no median differences).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one
+condition’s distribution (median) differs.</li>
+</ul><div class="codewrapper sourceCode" id="cb48">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulate pain scores (0–10) for 12 patients at 3 time points:</span></span>
+<span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="va">patient</span>   <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">12</span>, each <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">timepoint</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"Baseline"</span>,<span class="st">"1hr"</span>,<span class="st">"24hr"</span><span class="op">)</span>, times <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">scores</span>    <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span></span>
+<span>  <span class="fu">rpois</span><span class="op">(</span><span class="fl">12</span>, lambda <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,   <span class="co"># Baseline</span></span>
+<span>  <span class="fu">rpois</span><span class="op">(</span><span class="fl">12</span>, lambda <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,   <span class="co"># 1 hour post-op</span></span>
+<span>  <span class="fu">rpois</span><span class="op">(</span><span class="fl">12</span>, lambda <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>    <span class="co"># 24 hours post-op</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">patient</span>, <span class="va">timepoint</span>, <span class="va">scores</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform Friedman test:</span></span>
+<span><span class="va">friedman_result</span> <span class="op">&lt;-</span> <span class="fu">friedman.test</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">timepoint</span> <span class="op">|</span> <span class="va">patient</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">friedman_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Friedman rank sum test
+
+data:  scores and timepoint and patient
+Friedman chi-squared = 1.6364, df = 2, p-value = 0.4412</code></pre>
+</div>
+<p>Interpretation: The Friedman chi-squared = 1.64 with df = 2 and
+p-value = 0.441. We fail to reject the null hypothesis. Thus, there is
+no evidence that pain scores differ across time points.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1823,6 +2668,93 @@ når én dimension dominerer.</p>
 <div id="collapseSpoiler23" class="accordion-collapse collapse" aria-labelledby="headingSpoiler23" data-bs-parent="#accordionSpoiler23">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-21">Used for<a class="anchor" aria-label="anchor" href="#used-for-21"></a></h4>
+<ul><li>Performing pairwise comparisons of group means after a significant
+one‐way ANOVA to identify which groups differ.<br></li>
+<li>
+<strong>Real-world example:</strong> Determining which teaching
+methods (Lecture, Online, Hybrid) differ in average exam scores after
+finding an overall effect.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-22">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-22"></a></h4>
+<ul><li>A significant one‐way ANOVA has been obtained.<br></li>
+<li>Observations are independent.<br></li>
+<li>Residuals from the ANOVA are approximately normally
+distributed.<br></li>
+<li>Homogeneity of variances across groups (though Tukey’s HSD is fairly
+robust).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-22">Strengths<a class="anchor" aria-label="anchor" href="#strengths-22"></a></h4>
+<ul><li>Controls the family‐wise error rate across all pairwise tests.<br></li>
+<li>Provides confidence intervals for each mean difference.<br></li>
+<li>Widely available and simple to interpret.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-22">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-22"></a></h4>
+<ul><li>Requires balanced or nearly balanced designs for optimal
+power.<br></li>
+<li>Less powerful than some alternatives if variances are highly
+unequal.<br></li>
+<li>Only applies after a significant omnibus ANOVA.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-22">Example<a class="anchor" aria-label="anchor" href="#example-22"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-22">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-22"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> All pairwise mean differences
+between teaching methods are zero (e.g., μ_Lecture – μ_Online = 0,
+etc.).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one pairwise
+mean difference ≠ 0.</li>
+</ul><div class="codewrapper sourceCode" id="cb50">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="co"># Simulate exam scores for three teaching methods (n = 20 each):</span></span>
+<span><span class="va">method</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"Lecture"</span>, <span class="st">"Online"</span>, <span class="st">"Hybrid"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">75</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>            <span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">80</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>            <span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">78</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">df</span>     <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">method</span>, <span class="va">scores</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit one-way ANOVA:</span></span>
+<span><span class="va">anova_fit</span> <span class="op">&lt;-</span> <span class="fu">aov</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">method</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform Tukey HSD post-hoc:</span></span>
+<span><span class="va">tukey_result</span> <span class="op">&lt;-</span> <span class="fu">TukeyHSD</span><span class="op">(</span><span class="va">anova_fit</span>, <span class="st">"method"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">tukey_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = scores ~ method, data = df)
+
+$method
+                    diff       lwr      upr     p adj
+Lecture-Hybrid -2.542511 -8.509478 3.424457 0.5640694
+Online-Hybrid   1.192499 -4.774468 7.159467 0.8805866
+Online-Lecture  3.735010 -2.231958 9.701978 0.2956108</code></pre>
+</div>
+<p>Interpretation: Each row of the output gives the estimated difference
+in means, a 95% confidence interval, and an adjusted p‐value. For
+example, if the Lecture–Online comparison shows a mean difference of
+–5.0 (95% CI: –8.0 to –2.0, p adj = 0.002), we conclude that the Online
+method yields significantly higher scores than Lecture. Comparisons with
+p adj &lt; 0.05 indicate significant mean differences between those
+teaching methods.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1835,6 +2767,183 @@ når én dimension dominerer.</p>
 <div id="collapseSpoiler24" class="accordion-collapse collapse" aria-labelledby="headingSpoiler24" data-bs-parent="#accordionSpoiler24">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-22">Used for<a class="anchor" aria-label="anchor" href="#used-for-22"></a></h4>
+<ul><li>Comparing multiple treatment groups to a single control while
+controlling the family‐wise error rate.<br></li>
+<li>
+<strong>Real-world example:</strong> Testing whether two new
+fertilizers (Fertilizer A, Fertilizer B) improve crop yield compared to
+the standard fertilizer (Control).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-23">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-23"></a></h4>
+<ul><li>Observations are independent.<br></li>
+<li>Residuals from the ANOVA are approximately normally
+distributed.<br></li>
+<li>Homogeneity of variances across groups.<br></li>
+<li>A significant overall ANOVA (omnibus F-test) has been observed or
+intended.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-23">Strengths<a class="anchor" aria-label="anchor" href="#strengths-23"></a></h4>
+<ul><li>Controls the family-wise error rate when making multiple comparisons
+to a control.<br></li>
+<li>More powerful than Tukey HSD when only control comparisons are of
+interest.<br></li>
+<li>Provides simultaneous confidence intervals and adjusted
+p-values.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-23">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-23"></a></h4>
+<ul><li>Only compares each group to the control; does not test all pairwise
+contrasts.<br></li>
+<li>Sensitive to violations of normality and homogeneity of
+variances.<br></li>
+<li>Requires a pre-specified control group.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-23">Example<a class="anchor" aria-label="anchor" href="#example-23"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-23">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-23"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> Each treatment mean equals
+the control mean (e.g., μ_A = μ_Control, μ_B = μ_Control).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one treatment
+mean differs from the control mean (e.g., μ_A ≠ μ_Control, μ_B ≠
+μ_Control).</li>
+</ul><div class="codewrapper sourceCode" id="cb52">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulate crop yields (kg/plot) for Control and two new fertilizers:</span></span>
+<span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="va">treatment</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"Control"</span>, <span class="st">"FertilizerA"</span>, <span class="st">"FertilizerB"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">20</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">yield</span>     <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span></span>
+<span>  <span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">50</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,   <span class="co"># Control</span></span>
+<span>  <span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">55</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,   <span class="co"># Fertilizer A</span></span>
+<span>  <span class="fu">rnorm</span><span class="op">(</span><span class="fl">20</span>, mean <span class="op">=</span> <span class="fl">53</span>, sd <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>    <span class="co"># Fertilizer B</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">treatment</span>, <span class="va">yield</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit one-way ANOVA:</span></span>
+<span><span class="va">fit_anova</span> <span class="op">&lt;-</span> <span class="fu">aov</span><span class="op">(</span><span class="va">yield</span> <span class="op">~</span> <span class="va">treatment</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform Dunnett's test (each treatment vs. Control):</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">multcomp</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Loading required package: mvtnorm</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Loading required package: survival</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Loading required package: TH.data</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Loading required package: MASS</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+Attaching package: 'TH.data'</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>The following object is masked from 'package:MASS':
+
+    geyser</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+Attaching package: 'multcomp'</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>The following object is masked _by_ '.GlobalEnv':
+
+    cholesterol</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb61">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">dunnett_result</span> <span class="op">&lt;-</span> <span class="fu">glht</span><span class="op">(</span><span class="va">fit_anova</span>, linfct <span class="op">=</span> <span class="fu">mcp</span><span class="op">(</span>treatment <span class="op">=</span> <span class="st">"Dunnett"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Summary with adjusted p-values:</span></span>
+<span><span class="fu">summary</span><span class="op">(</span><span class="va">dunnett_result</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Dunnett Contrasts
+
+
+Fit: aov(formula = yield ~ treatment, data = df)
+
+Linear Hypotheses:
+                           Estimate Std. Error t value Pr(&gt;|t|)
+FertilizerA - Control == 0    4.209      1.550   2.716   0.0165 *
+FertilizerB - Control == 0    2.714      1.550   1.751   0.1503
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+(Adjusted p values reported -- single-step method)</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb63">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">confint</span><span class="op">(</span><span class="va">dunnett_result</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	 Simultaneous Confidence Intervals
+
+Multiple Comparisons of Means: Dunnett Contrasts
+
+
+Fit: aov(formula = yield ~ treatment, data = df)
+
+Quantile = 2.2682
+95% family-wise confidence level
+
+
+Linear Hypotheses:
+                           Estimate lwr     upr
+FertilizerA - Control == 0  4.2094   0.6942  7.7246
+FertilizerB - Control == 0  2.7141  -0.8011  6.2292</code></pre>
+</div>
+<p>Interpretation: The Dunnett contrasts compare each fertilizer to
+Control. For example, if the contrast FertilizerA–Control shows an
+estimate of r round(coef(dunnett_result)[1], 2) kg with a 95%
+simultaneous CI [4.21, 0.69] and adjusted p-value = 0.0165, we reject
+the null for Fertilizer A vs. Control—i.e., Fertilizer A yields
+significantly different crop output. Similarly, for FertilizerB
+vs. Control (contrast index 2), the estimate is 2.71 kg (CI [2.71,
+-0.8], p-value = 0.15, so we fail to reject the null for Fertilizer B
+vs. Control.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1847,6 +2956,92 @@ når én dimension dominerer.</p>
 <div id="collapseSpoiler25" class="accordion-collapse collapse" aria-labelledby="headingSpoiler25" data-bs-parent="#accordionSpoiler25">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-23">Used for<a class="anchor" aria-label="anchor" href="#used-for-23"></a></h4>
+<ul><li>Adjusting p-values when performing multiple hypothesis tests to
+control the family-wise error rate.<br></li>
+<li>
+<strong>Real-world example:</strong> Comparing mean blood pressure
+between four different diets with all six pairwise t-tests, using
+Bonferroni to adjust for multiple comparisons.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-24">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-24"></a></h4>
+<ul><li>The individual tests (e.g., pairwise t-tests) satisfy their own
+assumptions (independence, normality, equal variances if
+applicable).<br></li>
+<li>Tests are independent or positively dependent (Bonferroni remains
+valid under any dependency but can be conservative).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-24">Strengths<a class="anchor" aria-label="anchor" href="#strengths-24"></a></h4>
+<ul><li>Simple to calculate: multiply each p-value by the number of
+comparisons.<br></li>
+<li>Guarantees control of the family-wise error rate at the chosen α
+level.<br></li>
+<li>Applicable to any set of p-values regardless of test type.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-24">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-24"></a></h4>
+<ul><li>Very conservative when many comparisons are made, reducing
+power.<br></li>
+<li>Can inflate Type II error (miss true effects), especially with large
+numbers of tests.<br></li>
+<li>Does not take into account the magnitude of dependency among
+tests.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-24">Example<a class="anchor" aria-label="anchor" href="#example-24"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-24">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-24"></a></h5>
+<ul><li>
+<strong>Null hypotheses (H₀):</strong> For each pair of diets, the
+mean blood pressure is equal (e.g., μ_A = μ_B, μ_A = μ_C, …).<br></li>
+<li>
+<strong>Alternative hypotheses (H₁):</strong> For at least one pair,
+the means differ.</li>
+</ul><div class="codewrapper sourceCode" id="cb65">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="co"># Simulate blood pressure for four diet groups (n = 15 each):</span></span>
+<span><span class="va">diet</span>  <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"A"</span>,<span class="st">"B"</span>,<span class="st">"C"</span>,<span class="st">"D"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">bp</span>    <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span></span>
+<span>  <span class="fu">rnorm</span><span class="op">(</span><span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">120</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>  <span class="fu">rnorm</span><span class="op">(</span><span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">125</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>  <span class="fu">rnorm</span><span class="op">(</span><span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">130</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
+<span>  <span class="fu">rnorm</span><span class="op">(</span><span class="fl">15</span>, mean <span class="op">=</span> <span class="fl">135</span>, sd <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform all pairwise t-tests with Bonferroni adjustment:</span></span>
+<span><span class="va">pairwise_result</span> <span class="op">&lt;-</span> <span class="fu">pairwise.t.test</span><span class="op">(</span><span class="va">bp</span>, <span class="va">diet</span>, p.adjust.method <span class="op">=</span> <span class="st">"bonferroni"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">pairwise_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Pairwise comparisons using t tests with pooled SD
+
+data:  bp and diet
+
+  A       B      C
+B 0.4313  -      -
+C 0.0432  1.0000 -
+D 1.7e-05 0.0083 0.1154
+
+P value adjustment method: bonferroni </code></pre>
+</div>
+<p>Interpretation: The output shows adjusted p-values for each pair of
+diets. For example, if the A vs D comparison has p adj = 0.004 (&lt;
+0.05), we reject H₀ for that pair and conclude a significant mean
+difference. Comparisons with p adj ≥ 0.05 fail to reject H₀, indicating
+no evidence of difference after correction.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1860,6 +3055,83 @@ når én dimension dominerer.</p>
 <div id="collapseSpoiler26" class="accordion-collapse collapse" aria-labelledby="headingSpoiler26" data-bs-parent="#accordionSpoiler26">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-24">Used for<a class="anchor" aria-label="anchor" href="#used-for-24"></a></h4>
+<ul><li>Comparing the central tendency of three or more independent groups
+when the outcome is ordinal or not normally distributed.<br></li>
+<li>
+<strong>Real-world example:</strong> Testing whether median pain
+scores differ across four treatment groups in a clinical trial when
+scores are skewed.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-25">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-25"></a></h4>
+<ul><li>Observations are independent both within and between groups.<br></li>
+<li>The response variable is at least ordinal.<br></li>
+<li>The distributions of the groups have the same shape (so differences
+reflect shifts in location).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-25">Strengths<a class="anchor" aria-label="anchor" href="#strengths-25"></a></h4>
+<ul><li>Nonparametric: does not require normality or equal variances.<br></li>
+<li>Handles ordinal data and skewed continuous data.<br></li>
+<li>Controls Type I error when comparing multiple groups without
+assuming normality.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-25">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-25"></a></h4>
+<ul><li>Less powerful than one-way ANOVA when normality holds.<br></li>
+<li>If group distributions differ in shape, interpretation of a location
+shift is ambiguous.<br></li>
+<li>Only indicates that at least one group differs—post-hoc tests needed
+to identify which.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-25">Example<a class="anchor" aria-label="anchor" href="#example-25"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-25">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-25"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The distributions (medians)
+of the four treatment groups are equal.<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one group’s
+median pain score differs.</li>
+</ul><div class="codewrapper sourceCode" id="cb67">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulate pain scores (0–10) for four treatment groups (n = 15 each):</span></span>
+<span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="va">group</span> <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">rep</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"Placebo"</span>,<span class="st">"DrugA"</span>,<span class="st">"DrugB"</span>,<span class="st">"DrugC"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">15</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span></span>
+<span>  <span class="fu">rpois</span><span class="op">(</span><span class="fl">15</span>, lambda <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>,   <span class="co"># Placebo</span></span>
+<span>  <span class="fu">rpois</span><span class="op">(</span><span class="fl">15</span>, lambda <span class="op">=</span> <span class="fl">4</span><span class="op">)</span>,   <span class="co"># Drug A</span></span>
+<span>  <span class="fu">rpois</span><span class="op">(</span><span class="fl">15</span>, lambda <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>,   <span class="co"># Drug B</span></span>
+<span>  <span class="fu">rpois</span><span class="op">(</span><span class="fl">15</span>, lambda <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>    <span class="co"># Drug C</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">group</span>, <span class="va">scores</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform Kruskal–Wallis rank‐sum test:</span></span>
+<span><span class="va">kw_result</span> <span class="op">&lt;-</span> <span class="fu">kruskal.test</span><span class="op">(</span><span class="va">scores</span> <span class="op">~</span> <span class="va">group</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">kw_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Kruskal-Wallis rank sum test
+
+data:  scores by group
+Kruskal-Wallis chi-squared = 21.621, df = 3, p-value = 7.82e-05</code></pre>
+</div>
+<p>Interpretation: The Kruskal–Wallis chi-squared = 21.62 with df = 3
+and p-value = 7.82^{-5}. We reject the null hypothesis. Thus, there is
+evidence that at least one treatment group’s median pain score
+differs.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1872,6 +3144,76 @@ når én dimension dominerer.</p>
 <div id="collapseSpoiler27" class="accordion-collapse collapse" aria-labelledby="headingSpoiler27" data-bs-parent="#accordionSpoiler27">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-25">Used for<a class="anchor" aria-label="anchor" href="#used-for-25"></a></h4>
+<ul><li>Assessing the strength and direction of a monotonic association
+between two variables using their ranks.<br></li>
+<li>
+<strong>Real-world example:</strong> Evaluating whether patients’
+pain rankings correlate with their anxiety rankings.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-26">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-26"></a></h4>
+<ul><li>Observations are independent.<br></li>
+<li>Variables are at least ordinal.<br></li>
+<li>The relationship is monotonic (but not necessarily linear).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-26">Strengths<a class="anchor" aria-label="anchor" href="#strengths-26"></a></h4>
+<ul><li>Nonparametric: does not require normality.<br></li>
+<li>Robust to outliers in the original measurements.<br></li>
+<li>Captures any monotonic relationship, not limited to linear.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-26">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-26"></a></h4>
+<ul><li>Less powerful than Pearson’s correlation when data are bivariate
+normal and relationship is linear.<br></li>
+<li>Does not distinguish between different monotonic shapes (e.g.,
+concave vs. convex).<br></li>
+<li>Ties reduce the effective sample size and complicate exact p-value
+calculation.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-26">Example<a class="anchor" aria-label="anchor" href="#example-26"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-26">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-26"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> There is no monotonic
+association between X and Y (ρ = 0).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> There is a nonzero
+monotonic association (ρ ≠ 0).</li>
+</ul><div class="codewrapper sourceCode" id="cb69">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Simulate two variables with a monotonic relationship:</span></span>
+<span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">sample</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">30</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">+</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">30</span>, sd <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>               <span class="co"># roughly increasing with x</span></span>
+<span><span class="co"># Perform Spearman rank correlation test:</span></span>
+<span><span class="va">spearman_result</span> <span class="op">&lt;-</span> <span class="fu">cor.test</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, method <span class="op">=</span> <span class="st">"spearman"</span>, exact <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">spearman_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Spearman's rank correlation rho
+
+data:  x and y
+S = 300, p-value = 5.648e-14
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho
+0.9332592 </code></pre>
+</div>
+<p>Interpretation: Spearman’s ρ = 0.933 with p-value = 5.65^{-14}. We
+reject the null hypothesis. Thus, there is evidence of a monotonic
+association between X and Y.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1884,6 +3226,80 @@ når én dimension dominerer.</p>
 <div id="collapseSpoiler28" class="accordion-collapse collapse" aria-labelledby="headingSpoiler28" data-bs-parent="#accordionSpoiler28">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-26">Used for<a class="anchor" aria-label="anchor" href="#used-for-26"></a></h4>
+<ul><li>Testing whether a sample comes from a specified continuous
+distribution (most commonly normal).<br></li>
+<li>
+<strong>Real-world example:</strong> Checking if daily measurement
+errors from a laboratory instrument follow a normal distribution.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-27">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-27"></a></h4>
+<ul><li>Observations are independent.<br></li>
+<li>Data are continuous (no excessive ties).<br></li>
+<li>For goodness‐of‐fit to a non‐normal distribution (e.g. exponential),
+the distribution’s parameters must be fully specified a priori.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-27">Strengths<a class="anchor" aria-label="anchor" href="#strengths-27"></a></h4>
+<ul><li>More sensitive than the Shapiro–Wilk test to departures in the tails
+of the distribution.<br></li>
+<li>Applicable to a wide range of target distributions (with the
+appropriate implementation).<br></li>
+<li>Provides both a test statistic (A²) and p-value.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-27">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-27"></a></h4>
+<ul><li>Very sensitive in large samples—small deviations can yield
+significant results.<br></li>
+<li>If parameters are estimated from the data (e.g. normal mean/SD),
+p-values may be conservative.<br></li>
+<li>Does not indicate the form of the departure (e.g. skew
+vs. kurtosis).</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-27">Example<a class="anchor" aria-label="anchor" href="#example-27"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-27">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-27"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The sample is drawn from a
+Normal distribution.<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> The sample is not
+drawn from a Normal distribution.</li>
+</ul><div class="codewrapper sourceCode" id="cb71">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install and load nortest if necessary:</span></span>
+<span><span class="co"># install.packages("nortest")</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">nortest</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Simulate a sample of 40 observations:</span></span>
+<span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">sample_data</span> <span class="op">&lt;-</span> <span class="fu">rnorm</span><span class="op">(</span><span class="fl">40</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Perform Anderson–Darling test for normality:</span></span>
+<span><span class="va">ad_result</span> <span class="op">&lt;-</span> <span class="fu">ad.test</span><span class="op">(</span><span class="va">sample_data</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Display results:</span></span>
+<span><span class="va">ad_result</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+	Anderson-Darling normality test
+
+data:  sample_data
+A = 0.13614, p-value = 0.9754</code></pre>
+</div>
+<p>Interpretation: The Anderson–Darling statistic A² = 0.136 with
+p-value = 0.975. We fail to reject the null hypothesis. Thus, there is
+no evidence to conclude a departure from normality.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1897,6 +3313,111 @@ når én dimension dominerer.</p>
 <div id="collapseSpoiler29" class="accordion-collapse collapse" aria-labelledby="headingSpoiler29" data-bs-parent="#accordionSpoiler29">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-27">Used for<a class="anchor" aria-label="anchor" href="#used-for-27"></a></h4>
+<ul><li>Modeling and quantifying the linear relationship between a
+continuous predictor and a continuous outcome.<br></li>
+<li>
+<strong>Real-world example:</strong> Predicting house sale price
+based on living area in square feet.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-28">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-28"></a></h4>
+<ul><li>A linear relationship between predictor and outcome.<br></li>
+<li>Residuals are independent and normally distributed with mean
+zero.<br></li>
+<li>Homoscedasticity: constant variance of residuals across values of
+the predictor.<br></li>
+<li>No influential outliers or high-leverage points.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-28">Strengths<a class="anchor" aria-label="anchor" href="#strengths-28"></a></h4>
+<ul><li>Provides an interpretable estimate of the change in outcome per unit
+change in predictor.<br></li>
+<li>Inference on slope and intercept via hypothesis tests and confidence
+intervals.<br></li>
+<li>Basis for more complex regression models and diagnostics.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-28">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-28"></a></h4>
+<ul><li>Only captures linear patterns; will miss nonlinear
+relationships.<br></li>
+<li>Sensitive to outliers, which can distort estimates and
+inference.<br></li>
+<li>Extrapolation beyond observed predictor range is unreliable.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-28">Example<a class="anchor" aria-label="anchor" href="#example-28"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-28">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-28"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> The slope β₁ = 0 (no linear
+association between x and y).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> β₁ ≠ 0 (a linear
+association exists).</li>
+</ul><div class="codewrapper sourceCode" id="cb73">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="co"># Simulate data:</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">50</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu">runif</span><span class="op">(</span><span class="va">n</span>, min <span class="op">=</span> <span class="fl">0</span>, max <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">+</span> <span class="fl">1.5</span> <span class="op">*</span> <span class="va">x</span> <span class="op">+</span> <span class="fu">rnorm</span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit simple linear regression:</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu">lm</span><span class="op">(</span><span class="va">y</span> <span class="op">~</span> <span class="va">x</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Show summary of model:</span></span>
+<span><span class="fu">summary</span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+Call:
+lm(formula = y ~ x, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max
+-4.6258 -1.4244 -0.0462  1.6635  3.6410
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)   1.5009     0.6267   2.395   0.0206 *
+x             1.5554     0.1023  15.210   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.057 on 48 degrees of freedom
+Multiple R-squared:  0.8282,	Adjusted R-squared:  0.8246
+F-statistic: 231.3 on 1 and 48 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb75">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Plot data with regression line:</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="va">df</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">x</span>, y <span class="op">=</span> <span class="va">y</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">labs</span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Simple Linear Regression of y on x"</span>,</span>
+<span>       x <span class="op">=</span> <span class="st">"Predictor (x)"</span>,</span>
+<span>       y <span class="op">=</span> <span class="st">"Outcome (y)"</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<figure><img src="../fig/stat-tests-1-rendered-simple_linear_regression-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Interpretation: The estimated slope is 1.555, with a p-value of
+5.51^{-20}. We reject the null hypothesis, indicating that there is
+evidence of a significant linear association between x and y.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1909,6 +3430,115 @@ når én dimension dominerer.</p>
 <div id="collapseSpoiler30" class="accordion-collapse collapse" aria-labelledby="headingSpoiler30" data-bs-parent="#accordionSpoiler30">
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
+<div class="section level4">
+<h4 id="used-for-28">Used for<a class="anchor" aria-label="anchor" href="#used-for-28"></a></h4>
+<ul><li>Modeling the relationship between one continuous outcome and two or
+more predictors (continuous or categorical).<br></li>
+<li>
+<strong>Real-world example:</strong> Predicting house sale price
+based on living area, number of bedrooms, and neighborhood quality.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="assumptions-29">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-29"></a></h4>
+<ul><li>Correct specification: linear relationship between each predictor
+and the outcome (additivity).<br></li>
+<li>Residuals are independent and normally distributed with mean
+zero.<br></li>
+<li>Homoscedasticity: constant variance of residuals for all predictor
+values.<br></li>
+<li>No perfect multicollinearity among predictors.<br></li>
+<li>No influential outliers unduly affecting the model.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="strengths-29">Strengths<a class="anchor" aria-label="anchor" href="#strengths-29"></a></h4>
+<ul><li>Can adjust for multiple confounders or risk factors
+simultaneously.<br></li>
+<li>Provides estimates and inference (CI, p-values) for each predictor’s
+unique association with the outcome.<br></li>
+<li>Basis for variable selection, prediction, and causal modeling in
+observational data.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="weaknesses-29">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-29"></a></h4>
+<ul><li>Sensitive to multicollinearity, which inflates variances of
+coefficient estimates.<br></li>
+<li>Assumes a linear, additive form; interactions or nonlinearity
+require extension.<br></li>
+<li>Outliers and high-leverage points can distort estimates and
+inference.<br></li>
+<li>Interpretation can be complex when including many predictors or
+interactions.</li>
+</ul></div>
+<div class="section level4">
+<h4 id="example-29">Example<a class="anchor" aria-label="anchor" href="#example-29"></a></h4>
+<div class="section level5">
+<h5 id="hypothesis-29">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-29"></a></h5>
+<ul><li>
+<strong>Null hypothesis (H₀):</strong> All regression coefficients
+for predictors (β₁, β₂, β₃) are zero (no association).<br></li>
+<li>
+<strong>Alternative hypothesis (H₁):</strong> At least one βᵢ ≠
+0.</li>
+</ul><div class="codewrapper sourceCode" id="cb77">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">set.seed</span><span class="op">(</span><span class="fl">2025</span><span class="op">)</span></span>
+<span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">100</span></span>
+<span><span class="co"># Simulate predictors:</span></span>
+<span><span class="va">living_area</span>     <span class="op">&lt;-</span> <span class="fu">runif</span><span class="op">(</span><span class="va">n</span>, <span class="fl">800</span>, <span class="fl">3500</span><span class="op">)</span>        <span class="co"># in square feet</span></span>
+<span><span class="va">bedrooms</span>        <span class="op">&lt;-</span> <span class="fu">sample</span><span class="op">(</span><span class="fl">2</span><span class="op">:</span><span class="fl">6</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">neighborhood</span>    <span class="op">&lt;-</span> <span class="fu">factor</span><span class="op">(</span><span class="fu">sample</span><span class="op">(</span><span class="fu">c</span><span class="op">(</span><span class="st">"Low"</span>,<span class="st">"Medium"</span>,<span class="st">"High"</span><span class="op">)</span>, <span class="va">n</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Simulate price with true model:</span></span>
+<span><span class="va">price</span> <span class="op">&lt;-</span> <span class="fl">50000</span> <span class="op">+</span></span>
+<span>         <span class="fl">30</span> <span class="op">*</span> <span class="va">living_area</span> <span class="op">+</span> </span>
+<span>         <span class="fl">10000</span> <span class="op">*</span> <span class="va">bedrooms</span> <span class="op">+</span> </span>
+<span>         <span class="fu">ifelse</span><span class="op">(</span><span class="va">neighborhood</span><span class="op">==</span><span class="st">"Medium"</span>, <span class="fl">20000</span>, </span>
+<span>                <span class="fu">ifelse</span><span class="op">(</span><span class="va">neighborhood</span><span class="op">==</span><span class="st">"High"</span>, <span class="fl">50000</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>         <span class="fu">rnorm</span><span class="op">(</span><span class="va">n</span>, sd <span class="op">=</span> <span class="fl">30000</span><span class="op">)</span></span>
+<span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span><span class="va">price</span>, <span class="va">living_area</span>, <span class="va">bedrooms</span>, <span class="va">neighborhood</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit multiple linear regression:</span></span>
+<span><span class="va">model_mlr</span> <span class="op">&lt;-</span> <span class="fu">lm</span><span class="op">(</span><span class="va">price</span> <span class="op">~</span> <span class="va">living_area</span> <span class="op">+</span> <span class="va">bedrooms</span> <span class="op">+</span> <span class="va">neighborhood</span>, data <span class="op">=</span> <span class="va">df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Show model summary:</span></span>
+<span><span class="fu">summary</span><span class="op">(</span><span class="va">model_mlr</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+Call:
+lm(formula = price ~ living_area + bedrooms + neighborhood, data = df)
+
+Residuals:
+   Min     1Q Median     3Q    Max
+-76016 -17437   1258  20097  72437
+
+Coefficients:
+                     Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)        119719.729  12445.109   9.620 1.07e-15 ***
+living_area            26.498      3.685   7.190 1.47e-10 ***
+bedrooms             8292.136   2147.637   3.861 0.000206 ***
+neighborhoodLow    -59241.209   7084.797  -8.362 5.18e-13 ***
+neighborhoodMedium -34072.271   6927.394  -4.918 3.65e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 28490 on 95 degrees of freedom
+Multiple R-squared:  0.5891,	Adjusted R-squared:  0.5718
+F-statistic: 34.05 on 4 and 95 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<p>Interpretation:</p>
+<p>The overall F-test (in 34.05 on df₁ = 4, df₂ = 95 has p-value =
+1.3^{-17}, so reject the null hypothesis.</p>
+<p>Individual coefficients: for example, living_area’s estimate is 26.5
+(p = 1.47^{-10}), indicating a significant positive association: each
+additional square foot increases price by about $30 on average.</p>
+<p>Similar interpretation applies to bedrooms and neighborhood
+indicators.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2176,7 +3806,7 @@ når én dimension dominerer.</p>
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
 <div class="section level4">
-<h4 id="used-for-10">Used for<a class="anchor" aria-label="anchor" href="#used-for-10"></a></h4>
+<h4 id="used-for-29">Used for<a class="anchor" aria-label="anchor" href="#used-for-29"></a></h4>
 <ul><li>Testing whether an observed incidence rate (events per unit
 person‐time) differs from a specified rate.<br></li>
 <li>
@@ -2185,13 +3815,13 @@ rate of catheter‐associated infections (per 1,000 patient‐days) equals
 the national benchmark.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="assumptions-11">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-11"></a></h4>
+<h4 id="assumptions-30">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-30"></a></h4>
 <ul><li>Events occur independently and follow a Poisson process.<br></li>
 <li>The incidence rate is constant over the observation period.<br></li>
 <li>Person‐time is measured accurately and non‐overlapping.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="strengths-11">Strengths<a class="anchor" aria-label="anchor" href="#strengths-11"></a></h4>
+<h4 id="strengths-30">Strengths<a class="anchor" aria-label="anchor" href="#strengths-30"></a></h4>
 <ul><li>Exact test based on the Poisson distribution—no large‐sample
 approximation needed.<br></li>
 <li>Naturally accounts for differing follow‐up times via
@@ -2199,23 +3829,23 @@ person‐time.<br></li>
 <li>Valid for rare events and small counts.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="weaknesses-11">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-11"></a></h4>
+<h4 id="weaknesses-30">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-30"></a></h4>
 <ul><li>Sensitive to overdispersion (variance &gt; mean) and violation of
 Poisson assumptions.<br></li>
 <li>Cannot adjust for covariates or time‐varying rates.<br></li>
 <li>Assumes homogeneity of the rate across the period.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="example-11">Example<a class="anchor" aria-label="anchor" href="#example-11"></a></h4>
+<h4 id="example-30">Example<a class="anchor" aria-label="anchor" href="#example-30"></a></h4>
 <div class="section level5">
-<h5 id="hypothesis-11">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-11"></a></h5>
+<h5 id="hypothesis-30">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-30"></a></h5>
 <ul><li>
 <strong>Null hypothesis (H₀):</strong> The true incidence rate λ = 2
 infections per 1,000 patient‐days.<br></li>
 <li>
 <strong>Alternative hypothesis (H₁):</strong> λ ≠ 2 infections per
 1,000 patient‐days.</li>
-</ul><div class="codewrapper sourceCode" id="cb28">
+</ul><div class="codewrapper sourceCode" id="cb79">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2396,7 +4026,7 @@ that the infection rate differs from the benchmark.”</p>
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
 <div class="section level4">
-<h4 id="used-for-11">Used for<a class="anchor" aria-label="anchor" href="#used-for-11"></a></h4>
+<h4 id="used-for-30">Used for<a class="anchor" aria-label="anchor" href="#used-for-30"></a></h4>
 <ul><li>Assessing the reliability or agreement of quantitative measurements
 made by two or more raters.<br></li>
 <li>
@@ -2404,7 +4034,7 @@ made by two or more raters.<br></li>
 three radiologists measure tumor size on MRI scans.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="assumptions-12">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-12"></a></h4>
+<h4 id="assumptions-31">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-31"></a></h4>
 <ul><li>Measurements are continuous and approximately normally
 distributed.<br></li>
 <li>Raters are randomly selected (for the “random‐effects” model) or
@@ -2415,14 +4045,14 @@ consistent across subjects).<br></li>
 raters.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="strengths-12">Strengths<a class="anchor" aria-label="anchor" href="#strengths-12"></a></h4>
+<h4 id="strengths-31">Strengths<a class="anchor" aria-label="anchor" href="#strengths-31"></a></h4>
 <ul><li>Quantifies both consistency and absolute agreement, with different
 model/type options.<br></li>
 <li>Can accommodate any number of raters and subjects.<br></li>
 <li>Provides confidence intervals and tests for ICC.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="weaknesses-12">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-12"></a></h4>
+<h4 id="weaknesses-31">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-31"></a></h4>
 <ul><li>Sensitive to violations of normality and homogeneity of
 variance.<br></li>
 <li>Choice of model (one‐way vs. two‐way) and type (consistency
@@ -2430,16 +4060,16 @@ vs. agreement) affects results.<br></li>
 <li>Requires balanced data; missing ratings complicate estimation.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="example-12">Example<a class="anchor" aria-label="anchor" href="#example-12"></a></h4>
+<h4 id="example-31">Example<a class="anchor" aria-label="anchor" href="#example-31"></a></h4>
 <div class="section level5">
-<h5 id="hypothesis-12">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-12"></a></h5>
+<h5 id="hypothesis-31">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-31"></a></h5>
 <ul><li>
 <strong>Null hypothesis (H₀):</strong> The intraclass correlation
 coefficient ICC = 0 (no reliability beyond chance).<br></li>
 <li>
 <strong>Alternative hypothesis (H₁):</strong> ICC &gt; 0
 (measurements are more reliable than chance).</li>
-</ul><div class="codewrapper sourceCode" id="cb30">
+</ul><div class="codewrapper sourceCode" id="cb81">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2450,7 +4080,7 @@ coefficient ICC = 0 (no reliability beyond chance).<br></li>
 </h3>
 <pre class="output" tabindex="0"><code>Loading required package: lpSolve</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb83">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2508,7 +4138,7 @@ the raters.</p>
 <div class="accordion-body">
 <p>EJ KORREKTURLÆST</p>
 <div class="section level4">
-<h4 id="used-for-12">Used for<a class="anchor" aria-label="anchor" href="#used-for-12"></a></h4>
+<h4 id="used-for-31">Used for<a class="anchor" aria-label="anchor" href="#used-for-31"></a></h4>
 <p>Assessing agreement between two quantitative measurement methods by
 examining the mean difference (bias) and the limits of agreement. It
 tests if any difference is constant across the range of measurements,
@@ -2518,7 +4148,7 @@ example:</strong> Comparing blood pressure readings from a new wrist
 monitor and a standard sphygmomanometer.</p>
 </div>
 <div class="section level4">
-<h4 id="assumptions-13">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-13"></a></h4>
+<h4 id="assumptions-32">Assumptions<a class="anchor" aria-label="anchor" href="#assumptions-32"></a></h4>
 <ul><li>Paired measurements on the same subjects.<br></li>
 <li>Differences (method A – method B) are approximately normally
 distributed.<br></li>
@@ -2526,7 +4156,7 @@ distributed.<br></li>
 the difference (homoscedasticity).</li>
 </ul></div>
 <div class="section level4">
-<h4 id="strengths-13">Strengths<a class="anchor" aria-label="anchor" href="#strengths-13"></a></h4>
+<h4 id="strengths-32">Strengths<a class="anchor" aria-label="anchor" href="#strengths-32"></a></h4>
 <ul><li>Provides both a visual (Bland–Altman plot) and numerical summary
 (bias and limits) of agreement.<br></li>
 <li>Easy to interpret clinically: shows how far apart two methods can
@@ -2535,23 +4165,23 @@ differ for most observations.<br></li>
 agreement.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="weaknesses-13">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-13"></a></h4>
+<h4 id="weaknesses-32">Weaknesses<a class="anchor" aria-label="anchor" href="#weaknesses-32"></a></h4>
 <ul><li>Assumes constant bias across range of measurements.<br></li>
 <li>Sensitive to outliers, which can widen limits of agreement.<br></li>
 <li>Requires adequate sample size (n ≥ 30 preferred) to estimate limits
 reliably.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="example-13">Example<a class="anchor" aria-label="anchor" href="#example-13"></a></h4>
+<h4 id="example-32">Example<a class="anchor" aria-label="anchor" href="#example-32"></a></h4>
 <div class="section level5">
-<h5 id="hypothesis-13">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-13"></a></h5>
+<h5 id="hypothesis-32">Hypothesis<a class="anchor" aria-label="anchor" href="#hypothesis-32"></a></h5>
 <ul><li>
 <strong>Null hypothesis (H₀):</strong> Mean difference between
 methods A and B is zero (no systematic bias).<br></li>
 <li>
 <strong>Alternative hypothesis (H₁):</strong> Mean difference ≠ 0
 (systematic bias exists).</li>
-</ul><div class="codewrapper sourceCode" id="cb34">
+</ul><div class="codewrapper sourceCode" id="cb85">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -2584,7 +4214,7 @@ methods A and B is zero (no systematic bias).<br></li>
 <span>       x <span class="op">=</span> <span class="st">"Mean of Wrist &amp; Sphyg Measurements"</span>,</span>
 <span>       y <span class="op">=</span> <span class="st">"Difference (Wrist – Sphyg)"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="../fig/stat-tests-1-rendered-bland_altman-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb35">
+<figure><img src="../fig/stat-tests-1-rendered-bland_altman-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="codewrapper sourceCode" id="cb86">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
