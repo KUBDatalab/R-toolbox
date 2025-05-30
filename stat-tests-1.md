@@ -670,6 +670,66 @@ evidence that the medication significantly changed blood pressure.
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing whether the means of two independent samples differ, assuming equal variances.  
+- **Real-world example:** Comparing average systolic blood pressure between male and female patients when variability is similar.
+
+#### Assumptions
+- Observations in each group are independent.  
+- Both populations are normally distributed (especially important for small samples).  
+- The two populations have equal variances (homoscedasticity).
+
+#### Strengths
+- More powerful than Welch’s t-test when variances truly are equal.  
+- Simple computation and interpretation via pooled variance.  
+- Widely implemented and familiar to practitioners.
+
+#### Weaknesses
+- Sensitive to violations of normality in small samples.  
+- Incorrect if variances differ substantially—can inflate Type I error.  
+- Assumes homogeneity of variance, which may not hold in practice.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** μ₁ = μ₂ (the two population means are equal).  
+- **Alternative hypothesis (H₁):** μ₁ ≠ μ₂ (the means differ).
+
+
+``` r
+set.seed(2025)
+# Simulate systolic BP (mmHg):
+groupA <- rnorm(25, mean = 122, sd = 10)  # e.g., males
+groupB <- rnorm(25, mean = 118, sd = 10)  # e.g., females
+
+# Perform two-sample t-test with equal variances:
+test_result <- t.test(groupA, groupB, var.equal = TRUE)
+
+# Display results:
+test_result
+```
+
+``` output
+
+	Two Sample t-test
+
+data:  groupA and groupB
+t = 2.6245, df = 48, p-value = 0.0116
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+  1.733091 13.086377
+sample estimates:
+mean of x mean of y 
+ 125.2119  117.8021 
+```
+
+Interpretation:
+The pooled estimate of the difference in means is 7.41 mmHg. The t-statistic is 2.62 with df = 48 and p-value = 0.0116. We
+reject the null hypothesis.
+Thus, there is
+evidence that the average systolic blood pressure differs between the two groups.
+
+
 ::::
 
 ::::spoiler
@@ -677,6 +737,65 @@ EJ KORREKTURLÆST
 ### Two-sample t test (unequal variances)
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Testing whether the means of two independent samples differ when variances are unequal.  
+- **Real-world example:** Comparing average recovery times for two different therapies when one therapy shows more variable outcomes.
+
+#### Assumptions
+- Observations in each group are independent.  
+- Each population is approximately normally distributed (especially important for small samples).  
+- Does **not** assume equal variances across groups.
+
+#### Strengths
+- Controls Type I error when variances differ.  
+- More reliable than the pooled‐variance t‐test under heteroskedasticity.  
+- Simple to implement via `t.test(..., var.equal = FALSE)` in R.
+
+#### Weaknesses
+- Slight loss of power compared to equal-variance t‐test when variances truly are equal.  
+- Sensitive to departures from normality in small samples.  
+- Degrees of freedom are approximated (Welch–Satterthwaite), which can reduce interpretability.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** μ₁ = μ₂ (the two population means are equal).  
+- **Alternative hypothesis (H₁):** μ₁ ≠ μ₂ (the means differ).
+
+
+``` r
+set.seed(2025)
+# Simulate recovery times (days) for two therapies:
+therapyA <- rnorm(20, mean = 10, sd = 2)   # Therapy A
+therapyB <- rnorm(25, mean = 12, sd = 4)   # Therapy B (more variable)
+
+# Perform two-sample t-test with unequal variances:
+test_result <- t.test(therapyA, therapyB, var.equal = FALSE)
+
+# Display results:
+test_result
+```
+
+``` output
+
+	Welch Two Sample t-test
+
+data:  therapyA and therapyB
+t = -1.7792, df = 32.794, p-value = 0.08449
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.8148079  0.2558875
+sample estimates:
+mean of x mean of y 
+ 10.41320  12.19266 
+```
+
+Interpretation:
+The estimated difference in means is -1.78 days. The Welch t‐statistic is` r round(test_result$statistic, 2)` with df ≈ 32.8 and two‐sided p‐value =` r signif(test_result$p.value, 3`). We
+fail to reject the null hypothesis.
+Thus, there is
+no evidence of a difference in average recovery times..
 
 ::::
 
@@ -686,6 +805,63 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Comparing the central tendencies of two independent samples when the data are ordinal or not normally distributed.  
+- **Real-world example:** Testing whether pain scores (0–10) differ between patients receiving Drug A versus Drug B when scores are skewed.
+
+#### Assumptions
+- Observations are independent both within and between groups.  
+- The response variable is at least ordinal.  
+- The two distributions have the same shape (so that differences reflect location shifts).
+
+#### Strengths
+- Nonparametric: does not require normality or equal variances.  
+- Robust to outliers and skewed data.  
+- Simple rank-based calculation.
+
+#### Weaknesses
+- Less powerful than t-test when data are truly normal.  
+- If distributions differ in shape as well as location, interpretation becomes ambiguous.  
+- Only tests for location shift, not differences in dispersion.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The distributions of pain scores are identical for Drug A and Drug B.  
+- **Alternative hypothesis (H₁):** The distributions differ in location (median pain differs between drugs).
+
+
+``` r
+# Simulate pain scores (0–10) for two independent groups:
+set.seed(2025)
+drugA <- c(2,3,4,5,4,3,2,6,5,4,  # skewed lower
+           3,4,5,4,3,2,3,4,5,3)
+drugB <- c(4,5,6,7,6,5,7,8,6,7,  # skewed higher
+           6,7,5,6,7,6,8,7,6,7)
+
+# Perform Mann–Whitney U test (Wilcoxon rank-sum):
+mw_result <- wilcox.test(drugA, drugB, alternative = "two.sided", exact = FALSE)
+
+# Display results:
+mw_result
+```
+
+``` output
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  drugA and drugB
+W = 20.5, p-value = 9.123e-07
+alternative hypothesis: true location shift is not equal to 0
+```
+
+
+Interpretation:
+The Wilcoxon rank-sum statistic W = 20.5 with p-value = 9.12\times 10^{-7}. We
+reject the null hypothesis.
+Thus, there is
+evidence that median pain scores differ between Drug A and Drug B.
+
 ::::
 
 ::::spoiler
@@ -694,14 +870,121 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing whether the median difference between paired observations is zero.  
+- **Real-world example:** Comparing patients’ pain scores before and after a new analgesic treatment when differences may not be normally distributed.
+
+#### Assumptions
+- Observations are paired and the pairs are independent.  
+- Differences are at least ordinal and symmetrically distributed around the median.  
+- No large number of exact zero differences (ties).
+
+#### Strengths
+- Nonparametric: does not require normality of differences.  
+- Controls for within‐subject variability by using paired design.  
+- Robust to outliers in the paired differences.
+
+#### Weaknesses
+- Less powerful than the paired t-test when differences are truly normal.  
+- Requires symmetry of the distribution of differences.  
+- Cannot easily handle many tied differences.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The median difference in pain score (before – after) = 0 (no change).  
+- **Alternative hypothesis (H₁):** The median difference ≠ 0 (pain changes after treatment).
+
+
+``` r
+# Simulated pain scores (0–10) for 12 patients:
+before <- c(6, 7, 5, 8, 6, 7, 9, 5, 6, 8, 7, 6)
+after  <- c(4, 6, 5, 7, 5, 6, 8, 4, 5, 7, 6, 5)
+
+# Perform Wilcoxon signed-rank test:
+wsr_result <- wilcox.test(before, after, paired = TRUE, 
+                          alternative = "two.sided", exact = FALSE)
+
+# Display results:
+wsr_result
+```
+
+``` output
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  before and after
+V = 66, p-value = 0.001586
+alternative hypothesis: true location shift is not equal to 0
+```
+
+Interpretation:
+The Wilcoxon signed‐rank test statistic V =66 with p-value =` r signif(wsr_result$p.value, 3)`. We
+reject the null hypothesis.
+Thus, there is
+evidence that median pain scores change after treatment..
+
 ::::
 
 ::::spoiler
 
-### Kolmogorov–Smirnov to-prøve-test
+### Kolmogorov–Smirnov two-sample-test
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing whether two independent samples come from the same continuous distribution.  
+- **Real-world example:** Comparing the distribution of recovery times for patients receiving Drug A versus Drug B.
+
+#### Assumptions
+- Observations in each sample are independent.  
+- Data are continuous with no ties.  
+- The two samples are drawn from fully specified continuous distributions (no parameters estimated from the same data).
+
+#### Strengths
+- Nonparametric: makes no assumption about the shape of the distribution.  
+- Sensitive to differences in location, scale, or overall shape.  
+- Exact distribution under the null when samples are not too large.
+
+#### Weaknesses
+- Less powerful than parametric alternatives if the true form is known (e.g., t-test for normal data).  
+- Invalid p-values if there are ties or discrete data.  
+- Does not indicate how distributions differ—only that they do.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The two samples come from the same distribution.  
+- **Alternative hypothesis (H₁):** The two samples come from different distributions.
+
+
+``` r
+# Simulate recovery times (days) for two therapies:
+set.seed(2025)
+therapyA <- rnorm(30, mean = 10, sd = 2)   # Therapy A
+therapyB <- rnorm(30, mean = 12, sd = 3)   # Therapy B
+
+# Perform two-sample Kolmogorov–Smirnov test:
+ks_result <- ks.test(therapyA, therapyB, alternative = "two.sided", exact = FALSE)
+
+# Display results:
+ks_result
+```
+
+``` output
+
+	Asymptotic two-sample Kolmogorov-Smirnov test
+
+data:  therapyA and therapyB
+D = 0.43333, p-value = 0.007153
+alternative hypothesis: two-sided
+```
+
+Interpretation:
+The KS statistic D = 0.433 with p-value = 0.00715. We
+reject the null hypothesis.
+Thus, there is
+evidence that the distribution of recovery times differs between therapies.
 
 ::::
 
@@ -787,6 +1070,64 @@ no evidence of differing variances across clinics.
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing whether multiple groups have equal variances under the assumption of normality.  
+- **Real-world example:** Checking if the variability in laboratory test results differs across three different laboratories.
+
+#### Assumptions
+- Observations within each group are independent.  
+- Each group is drawn from a normally distributed population.  
+- Groups are independent of one another.
+
+#### Strengths
+- More powerful than Levene’s test when normality holds.  
+- Directly targets equality of variances under the normal model.  
+- Simple to compute in R via `bartlett.test()`.
+
+#### Weaknesses
+- Highly sensitive to departures from normality—small deviations can inflate Type I error.  
+- Does not indicate which groups differ without further pairwise testing.  
+- Not robust to outliers.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** All group variances are equal (σ₁² = σ₂² = σ₃²).  
+- **Alternative hypothesis (H₁):** At least one group variance differs.
+
+
+``` r
+# Simulate data for three laboratories (n = 12 each):
+set.seed(456)
+lab      <- factor(rep(c("LabA", "LabB", "LabC"), each = 12))
+values   <- c(rnorm(12, mean = 100, sd = 5),
+              rnorm(12, mean = 100, sd = 8),
+              rnorm(12, mean = 100, sd = 5))
+df       <- data.frame(lab, values)
+
+# Perform Bartlett’s test for homogeneity of variances:
+bartlett_result <- bartlett.test(values ~ lab, data = df)
+
+# Display results:
+bartlett_result
+```
+
+``` output
+
+	Bartlett test of homogeneity of variances
+
+data:  values by lab
+Bartlett's K-squared = 10.387, df = 2, p-value = 0.005552
+```
+
+
+Interpretation:
+Bartlett’s K-squared = 10.39 with df = 2 and p-value = 0.00555. We
+reject the null hypothesis.
+Thus, there is
+evidence that at least one laboratory’s variance differs from the others.
+
+
 ::::
 
 
@@ -798,6 +1139,60 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing whether the means of three or more independent groups differ.  
+- **Real-world example:** Comparing average test scores among students taught by three different teaching methods.
+
+#### Assumptions
+- Observations are independent.  
+- Each group’s residuals are approximately normally distributed.  
+- Homogeneity of variances across groups.
+
+#### Strengths
+- Controls Type I error rate when comparing multiple groups.  
+- Simple to compute and interpret via F-statistic.  
+- Foundation for many extensions (e.g., factorial ANOVA, mixed models).
+
+#### Weaknesses
+- Sensitive to heterogeneity of variances, especially with unequal group sizes.  
+- Only tells you that at least one mean differs—does not indicate which groups differ without post-hoc tests.  
+- Assumes normality; moderately robust for large samples, but small samples can be problematic.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** μ₁ = μ₂ = μ₃ (all three group means are equal).  
+- **Alternative hypothesis (H₁):** At least one group mean differs.
+
+
+``` r
+# Simulate exam scores for three teaching methods (n = 20 each):
+set.seed(2025)
+method <- factor(rep(c("Lecture", "Online", "Hybrid"), each = 20))
+scores <- c(rnorm(20, mean = 75, sd = 8),
+            rnorm(20, mean = 80, sd = 8),
+            rnorm(20, mean = 78, sd = 8))
+df     <- data.frame(method, scores)
+
+# Fit one-way ANOVA:
+anova_fit <- aov(scores ~ method, data = df)
+
+# Summarize ANOVA table:
+anova_summary <- summary(anova_fit)
+anova_summary
+```
+
+``` output
+            Df Sum Sq Mean Sq F value Pr(>F)
+method       2    146   72.79   1.184  0.314
+Residuals   57   3505   61.48               
+```
+
+Interpretation:
+The ANOVA yields F = 1.18 with df₁ =` r anova_summary[[1]]["method","Df"]` and df₂ =` r anova_summary[[1]]["Residuals","Df"]`, and p-value = 0.314. We
+fail to reject the null hypothesis.
+Thus, there is
+no evidence of a difference in mean scores among methods.
 
 ::::
 
@@ -805,6 +1200,72 @@ EJ KORREKTURLÆST
 ### One-way ANCOVA
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Comparing group means on a continuous outcome while adjusting for one continuous covariate.  
+- **Real-world example:** Evaluating whether three different teaching methods lead to different final exam scores after accounting for students’ prior GPA.
+
+#### Assumptions
+- Observations are independent.  
+- The relationship between the covariate and the outcome is linear and the same across groups (homogeneity of regression slopes).  
+- Residuals are normally distributed with equal variances across groups.  
+- Covariate is measured without error and is independent of group assignment.
+
+#### Strengths
+- Removes variability due to the covariate, increasing power to detect group differences.  
+- Controls for confounding by the covariate.  
+- Simple extension of one-way ANOVA with interpretation familiar to ANOVA users.
+
+#### Weaknesses
+- Sensitive to violation of homogeneity of regression slopes.  
+- Mis‐specification of the covariate‐outcome relationship biases results.  
+- Requires accurate measurement of the covariate.  
+- Does not accommodate multiple covariates without extension to factorial ANCOVA or regression.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** After adjusting for prior GPA, the mean final exam scores are equal across the three teaching methods (μ_Lecture = μ_Online = μ_Hybrid).  
+- **Alternative hypothesis (H₁):** At least one adjusted group mean differs.
+
+
+``` r
+set.seed(2025)
+n <- 20
+method <- factor(rep(c("Lecture","Online","Hybrid"), each = n))
+prior_gpa <- rnorm(3*n, mean = 3.0, sd = 0.3)
+
+# Simulate final exam scores with a covariate effect:
+# true intercepts 75, 78, 80; slope = 5 points per GPA unit; noise sd = 5
+final_score <- 75 + 
+               ifelse(method=="Online", 3, 0) + 
+               ifelse(method=="Hybrid", 5, 0) + 
+               5 * prior_gpa + 
+               rnorm(3*n, sd = 5)
+
+df <- data.frame(method, prior_gpa, final_score)
+
+# Fit one-way ANCOVA:
+ancova_fit <- aov(final_score ~ prior_gpa + method, data = df)
+ancova_summary <- summary(ancova_fit)
+ancova_summary
+```
+
+``` output
+            Df Sum Sq Mean Sq F value  Pr(>F)   
+prior_gpa    1  166.5   166.5   5.967 0.01775 * 
+method       2  296.8   148.4   5.320 0.00767 **
+Residuals   56 1562.4    27.9                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+```
+
+Interpretation:
+After adjusting for prior GPA, the effect of teaching method yields F = 5.32 (df₁ =` r ancova_summary[[1]]["method","Df"]`, df₂ =` r ancova_summary[[1]]["Residuals","Df"]`) with p =` r signif(ancova_summary[[1]]["method","Pr(>F)"], 3`). We
+reject the null hypothesis.
+Thus, there is
+evidence that, controlling for prior GPA, at least one teaching method leads to a different average final score..
+
 
 
 ::::
@@ -814,6 +1275,64 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing whether the means of three or more independent groups differ when variances are unequal.  
+- **Real-world example:** Comparing average systolic blood pressure across three clinics known to have different measurement variability.
+
+#### Assumptions
+- Observations are independent.  
+- Each group’s residuals are approximately normally distributed.  
+- Does **not** assume equal variances across groups.
+
+#### Strengths
+- Controls Type I error under heteroskedasticity better than ordinary ANOVA.  
+- Simple to implement via `oneway.test(..., var.equal = FALSE)`.  
+- More powerful than nonparametric alternatives when normality holds.
+
+#### Weaknesses
+- Sensitive to departures from normality, especially with small sample sizes.  
+- Does not provide post-hoc comparisons by default; requires additional tests.  
+- Still assumes independence and approximate normality within each group.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** All group means are equal (μ₁ = μ₂ = μ₃).  
+- **Alternative hypothesis (H₁):** At least one group mean differs.
+
+
+``` r
+set.seed(2025)
+# Simulate systolic BP (mmHg) for three clinics with unequal variances:
+clinic   <- factor(rep(c("A","B","C"), times = c(15, 20, 12)))
+bp_values <- c(
+  rnorm(15, mean = 120, sd = 5),
+  rnorm(20, mean = 125, sd = 10),
+  rnorm(12, mean = 118, sd = 7)
+)
+df <- data.frame(clinic, bp_values)
+
+# Perform Welch’s one-way ANOVA:
+welch_result <- oneway.test(bp_values ~ clinic, data = df, var.equal = FALSE)
+
+# Display results:
+welch_result
+```
+
+``` output
+
+	One-way analysis of means (not assuming equal variances)
+
+data:  bp_values and clinic
+F = 2.7802, num df = 2.000, denom df = 23.528, p-value = 0.08244
+```
+
+Interpretation:
+The Welch statistic = 2.78 with df ≈ 2, 23.53, and p-value = 0.0824. We
+fail to reject the null hypothesis.
+Thus, there is
+no evidence of a difference in mean blood pressure among the clinics.
+
 ::::
 
 ::::spoiler
@@ -821,6 +1340,71 @@ EJ KORREKTURLÆST
 ### Repeated-measures ANOVA
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Testing whether the means of three or more related (within‐subject) conditions differ.  
+- **Real-world example:** Assessing whether students’ reaction times change across three levels of sleep deprivation (0 h, 12 h, 24 h) measured on the same individuals.
+
+#### Assumptions
+- Observations (subjects) are independent.  
+- The dependent variable is approximately normally distributed in each condition.  
+- **Sphericity:** variances of the pairwise differences between conditions are equal.
+
+#### Strengths
+- Controls for between‐subject variability by using each subject as their own control.  
+- More powerful than independent‐groups ANOVA when measures are correlated.  
+- Can model complex within‐subject designs (e.g. time × treatment interactions).
+
+#### Weaknesses
+- Sensitive to violations of sphericity (inflates Type I error).  
+- Missing data in any condition drops the entire subject (unless using more advanced mixed‐model methods).  
+- Interpretation can be complex when there are many levels or interactions.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The mean reaction time is the same across 0 h, 12 h, and 24 h sleep deprivation.  
+- **Alternative hypothesis (H₁):** At least one condition’s mean reaction time differs.
+
+
+``` r
+set.seed(2025)
+n_subj <- 12
+subject <- factor(rep(1:n_subj, each = 3))
+condition <- factor(rep(c("0h","12h","24h"), times = n_subj))
+# Simulate reaction times (ms):
+rt <- c(rnorm(n_subj, mean = 300, sd = 20),
+        rnorm(n_subj, mean = 320, sd = 20),
+        rnorm(n_subj, mean = 340, sd = 20))
+df <- data.frame(subject, condition, rt)
+
+# Fit repeated-measures ANOVA:
+rm_fit <- aov(rt ~ condition + Error(subject/condition), data = df)
+rm_summary <- summary(rm_fit)
+
+# Display results:
+rm_summary
+```
+
+``` output
+
+Error: subject
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 11   9892   899.3               
+
+Error: subject:condition
+          Df Sum Sq Mean Sq F value Pr(>F)
+condition  2   1000     500   1.188  0.324
+Residuals 22   9262     421               
+```
+
+Interpretation:
+The within‐subjects effect of sleep deprivation yields F =  1.19 with df₁ = 2 and df₂ = `r
+rm_summary[[2]][[1]]["Residuals","Df"]`, p = 0.324. We
+fail to reject the null hypothesis.
+Thus, there is
+no evidence that reaction times differ across sleep deprivation conditions.
+
 
 ::::
 
@@ -996,6 +1580,65 @@ Tjek altid flere tests; hvis de konkluderer ens, styrker det din konklusion.
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing for differences in central tendency across three or more related (paired) groups when assumptions of repeated‐measures ANOVA are violated.  
+- **Real-world example:** Comparing median pain scores at baseline, 1 hour, and 24 hours after surgery in the same patients.
+
+#### Assumptions
+- Observations are paired and the sets of scores for each condition are related (e.g., repeated measures on the same subjects).  
+- Data are at least ordinal.  
+- The distribution of differences across pairs need not be normal.
+
+#### Strengths
+- Nonparametric: does not require normality or sphericity.  
+- Controls for between‐subject variability by using each subject as their own block.  
+- Robust to outliers and skewed data.
+
+#### Weaknesses
+- Less powerful than repeated‐measures ANOVA when normality and sphericity hold.  
+- Only indicates that at least one condition differs—post‐hoc tests are needed to locate differences.  
+- Assumes similar shaped distributions across conditions.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The distributions of scores are the same across all conditions (no median differences).  
+- **Alternative hypothesis (H₁):** At least one condition’s distribution (median) differs.
+
+
+``` r
+# Simulate pain scores (0–10) for 12 patients at 3 time points:
+set.seed(2025)
+patient   <- factor(rep(1:12, each = 3))
+timepoint <- factor(rep(c("Baseline","1hr","24hr"), times = 12))
+scores    <- c(
+  rpois(12, lambda = 5),   # Baseline
+  rpois(12, lambda = 3),   # 1 hour post-op
+  rpois(12, lambda = 4)    # 24 hours post-op
+)
+df <- data.frame(patient, timepoint, scores)
+
+# Perform Friedman test:
+friedman_result <- friedman.test(scores ~ timepoint | patient, data = df)
+
+# Display results:
+friedman_result
+```
+
+``` output
+
+	Friedman rank sum test
+
+data:  scores and timepoint and patient
+Friedman chi-squared = 1.6364, df = 2, p-value = 0.4412
+```
+
+Interpretation:
+The Friedman chi-squared = 1.64 with df = 2 and p-value = 0.441. We
+fail to reject the null hypothesis.
+Thus, there is
+no evidence that pain scores differ across time points.
+
 ::::
 
 ::::spoiler
@@ -1003,6 +1646,69 @@ EJ KORREKTURLÆST
 ### Post-hoc: Tukey HSD
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Performing pairwise comparisons of group means after a significant one‐way ANOVA to identify which groups differ.  
+- **Real-world example:** Determining which teaching methods (Lecture, Online, Hybrid) differ in average exam scores after finding an overall effect.
+
+#### Assumptions
+- A significant one‐way ANOVA has been obtained.  
+- Observations are independent.  
+- Residuals from the ANOVA are approximately normally distributed.  
+- Homogeneity of variances across groups (though Tukey’s HSD is fairly robust).
+
+#### Strengths
+- Controls the family‐wise error rate across all pairwise tests.  
+- Provides confidence intervals for each mean difference.  
+- Widely available and simple to interpret.
+
+#### Weaknesses
+- Requires balanced or nearly balanced designs for optimal power.  
+- Less powerful than some alternatives if variances are highly unequal.  
+- Only applies after a significant omnibus ANOVA.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** All pairwise mean differences between teaching methods are zero (e.g., μ_Lecture – μ_Online = 0, etc.).  
+- **Alternative hypothesis (H₁):** At least one pairwise mean difference ≠ 0.
+
+
+``` r
+set.seed(2025)
+# Simulate exam scores for three teaching methods (n = 20 each):
+method <- factor(rep(c("Lecture", "Online", "Hybrid"), each = 20))
+scores <- c(rnorm(20, mean = 75, sd = 8),
+            rnorm(20, mean = 80, sd = 8),
+            rnorm(20, mean = 78, sd = 8))
+df     <- data.frame(method, scores)
+
+# Fit one-way ANOVA:
+anova_fit <- aov(scores ~ method, data = df)
+
+# Perform Tukey HSD post-hoc:
+tukey_result <- TukeyHSD(anova_fit, "method")
+
+# Display results:
+tukey_result
+```
+
+``` output
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = scores ~ method, data = df)
+
+$method
+                    diff       lwr      upr     p adj
+Lecture-Hybrid -2.542511 -8.509478 3.424457 0.5640694
+Online-Hybrid   1.192499 -4.774468 7.159467 0.8805866
+Online-Lecture  3.735010 -2.231958 9.701978 0.2956108
+```
+
+Interpretation:
+Each row of the output gives the estimated difference in means, a 95% confidence 
+interval, and an adjusted p‐value. For example, if the Lecture–Online comparison shows a mean difference of –5.0 (95% CI: –8.0 to –2.0, p adj = 0.002), we conclude that the Online method yields significantly higher scores than Lecture. Comparisons with p adj < 0.05 indicate significant mean differences between those teaching methods.
 
 ::::
 
@@ -1012,6 +1718,143 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Comparing multiple treatment groups to a single control while controlling the family‐wise error rate.  
+- **Real-world example:** Testing whether two new fertilizers (Fertilizer A, Fertilizer B) improve crop yield compared to the standard fertilizer (Control).
+
+#### Assumptions
+- Observations are independent.  
+- Residuals from the ANOVA are approximately normally distributed.  
+- Homogeneity of variances across groups.  
+- A significant overall ANOVA (omnibus F-test) has been observed or intended.
+
+#### Strengths
+- Controls the family-wise error rate when making multiple comparisons to a control.  
+- More powerful than Tukey HSD when only control comparisons are of interest.  
+- Provides simultaneous confidence intervals and adjusted p-values.
+
+#### Weaknesses
+- Only compares each group to the control; does not test all pairwise contrasts.  
+- Sensitive to violations of normality and homogeneity of variances.  
+- Requires a pre-specified control group.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** Each treatment mean equals the control mean (e.g., μ_A = μ_Control, μ_B = μ_Control).  
+- **Alternative hypothesis (H₁):** At least one treatment mean differs from the control mean (e.g., μ_A ≠ μ_Control, μ_B ≠ μ_Control).
+
+
+``` r
+# Simulate crop yields (kg/plot) for Control and two new fertilizers:
+set.seed(2025)
+treatment <- factor(rep(c("Control", "FertilizerA", "FertilizerB"), each = 20))
+yield     <- c(
+  rnorm(20, mean = 50, sd = 5),   # Control
+  rnorm(20, mean = 55, sd = 5),   # Fertilizer A
+  rnorm(20, mean = 53, sd = 5)    # Fertilizer B
+)
+df <- data.frame(treatment, yield)
+
+# Fit one-way ANOVA:
+fit_anova <- aov(yield ~ treatment, data = df)
+
+# Perform Dunnett's test (each treatment vs. Control):
+library(multcomp)
+```
+
+``` output
+Loading required package: mvtnorm
+```
+
+``` output
+Loading required package: survival
+```
+
+``` output
+Loading required package: TH.data
+```
+
+``` output
+Loading required package: MASS
+```
+
+``` output
+
+Attaching package: 'TH.data'
+```
+
+``` output
+The following object is masked from 'package:MASS':
+
+    geyser
+```
+
+``` output
+
+Attaching package: 'multcomp'
+```
+
+``` output
+The following object is masked _by_ '.GlobalEnv':
+
+    cholesterol
+```
+
+``` r
+dunnett_result <- glht(fit_anova, linfct = mcp(treatment = "Dunnett"))
+
+# Summary with adjusted p-values:
+summary(dunnett_result)
+```
+
+``` output
+
+	 Simultaneous Tests for General Linear Hypotheses
+
+Multiple Comparisons of Means: Dunnett Contrasts
+
+
+Fit: aov(formula = yield ~ treatment, data = df)
+
+Linear Hypotheses:
+                           Estimate Std. Error t value Pr(>|t|)  
+FertilizerA - Control == 0    4.209      1.550   2.716   0.0165 *
+FertilizerB - Control == 0    2.714      1.550   1.751   0.1503  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+(Adjusted p values reported -- single-step method)
+```
+
+``` r
+confint(dunnett_result)
+```
+
+``` output
+
+	 Simultaneous Confidence Intervals
+
+Multiple Comparisons of Means: Dunnett Contrasts
+
+
+Fit: aov(formula = yield ~ treatment, data = df)
+
+Quantile = 2.2682
+95% family-wise confidence level
+ 
+
+Linear Hypotheses:
+                           Estimate lwr     upr    
+FertilizerA - Control == 0  4.2094   0.6942  7.7246
+FertilizerB - Control == 0  2.7141  -0.8011  6.2292
+```
+
+Interpretation:
+The Dunnett contrasts compare each fertilizer to Control. For example, if the contrast FertilizerA–Control shows an estimate of r round(coef(dunnett_result)[1], 2) kg with a 95% simultaneous CI [4.21, 0.69] and adjusted p-value = 0.0165, we
+reject the null for Fertilizer A vs. Control—i.e., Fertilizer A yields significantly different crop output.
+Similarly, for FertilizerB vs. Control (contrast index 2), the estimate is 2.71 kg (CI [2.71, -0.8], p-value = 0.15, so we
+fail to reject the null for Fertilizer B vs. Control.
+
 ::::
 
 ::::spoiler
@@ -1020,6 +1863,66 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+
+#### Used for
+- Adjusting p-values when performing multiple hypothesis tests to control the family-wise error rate.  
+- **Real-world example:** Comparing mean blood pressure between four different diets with all six pairwise t-tests, using Bonferroni to adjust for multiple comparisons.
+
+#### Assumptions
+- The individual tests (e.g., pairwise t-tests) satisfy their own assumptions (independence, normality, equal variances if applicable).  
+- Tests are independent or positively dependent (Bonferroni remains valid under any dependency but can be conservative).
+
+#### Strengths
+- Simple to calculate: multiply each p-value by the number of comparisons.  
+- Guarantees control of the family-wise error rate at the chosen α level.  
+- Applicable to any set of p-values regardless of test type.
+
+#### Weaknesses
+- Very conservative when many comparisons are made, reducing power.  
+- Can inflate Type II error (miss true effects), especially with large numbers of tests.  
+- Does not take into account the magnitude of dependency among tests.
+
+#### Example
+
+##### Hypothesis
+- **Null hypotheses (H₀):** For each pair of diets, the mean blood pressure is equal (e.g., μ_A = μ_B, μ_A = μ_C, …).  
+- **Alternative hypotheses (H₁):** For at least one pair, the means differ.
+
+
+``` r
+set.seed(2025)
+# Simulate blood pressure for four diet groups (n = 15 each):
+diet  <- factor(rep(c("A","B","C","D"), each = 15))
+bp    <- c(
+  rnorm(15, mean = 120, sd = 8),
+  rnorm(15, mean = 125, sd = 8),
+  rnorm(15, mean = 130, sd = 8),
+  rnorm(15, mean = 135, sd = 8)
+)
+
+# Perform all pairwise t-tests with Bonferroni adjustment:
+pairwise_result <- pairwise.t.test(bp, diet, p.adjust.method = "bonferroni")
+
+# Display results:
+pairwise_result
+```
+
+``` output
+
+	Pairwise comparisons using t tests with pooled SD 
+
+data:  bp and diet 
+
+  A       B      C     
+B 0.4313  -      -     
+C 0.0432  1.0000 -     
+D 1.7e-05 0.0083 0.1154
+
+P value adjustment method: bonferroni 
+```
+
+Interpretation:
+The output shows adjusted p-values for each pair of diets. For example, if the A vs D comparison has p adj = 0.004 (< 0.05), we reject H₀ for that pair and conclude a significant mean difference. Comparisons with p adj ≥ 0.05 fail to reject H₀, indicating no evidence of difference after correction.
 
 ::::
 
@@ -1035,6 +1938,66 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Comparing the central tendency of three or more independent groups when the outcome is ordinal or not normally distributed.  
+- **Real-world example:** Testing whether median pain scores differ across four treatment groups in a clinical trial when scores are skewed.
+
+#### Assumptions
+- Observations are independent both within and between groups.  
+- The response variable is at least ordinal.  
+- The distributions of the groups have the same shape (so differences reflect shifts in location).
+
+#### Strengths
+- Nonparametric: does not require normality or equal variances.  
+- Handles ordinal data and skewed continuous data.  
+- Controls Type I error when comparing multiple groups without assuming normality.
+
+#### Weaknesses
+- Less powerful than one-way ANOVA when normality holds.  
+- If group distributions differ in shape, interpretation of a location shift is ambiguous.  
+- Only indicates that at least one group differs—post-hoc tests needed to identify which.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The distributions (medians) of the four treatment groups are equal.  
+- **Alternative hypothesis (H₁):** At least one group’s median pain score differs.
+
+
+``` r
+# Simulate pain scores (0–10) for four treatment groups (n = 15 each):
+set.seed(2025)
+group <- factor(rep(c("Placebo","DrugA","DrugB","DrugC"), each = 15))
+scores <- c(
+  rpois(15, lambda = 5),   # Placebo
+  rpois(15, lambda = 4),   # Drug A
+  rpois(15, lambda = 3),   # Drug B
+  rpois(15, lambda = 2)    # Drug C
+)
+df <- data.frame(group, scores)
+
+# Perform Kruskal–Wallis rank‐sum test:
+kw_result <- kruskal.test(scores ~ group, data = df)
+
+# Display results:
+kw_result
+```
+
+``` output
+
+	Kruskal-Wallis rank sum test
+
+data:  scores by group
+Kruskal-Wallis chi-squared = 21.621, df = 3, p-value = 7.82e-05
+```
+
+Interpretation:
+The Kruskal–Wallis chi-squared = 21.62 with df = 3 and p-value = 7.82\times 10^{-5}. We
+reject the null hypothesis.
+Thus, there is
+evidence that at least one treatment group’s median pain score differs.
+
+
 ::::
 
 ::::spoiler
@@ -1044,6 +2007,61 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Assessing the strength and direction of a monotonic association between two variables using their ranks.  
+- **Real-world example:** Evaluating whether patients’ pain rankings correlate with their anxiety rankings.
+
+#### Assumptions
+- Observations are independent.  
+- Variables are at least ordinal.  
+- The relationship is monotonic (but not necessarily linear).
+
+#### Strengths
+- Nonparametric: does not require normality.  
+- Robust to outliers in the original measurements.  
+- Captures any monotonic relationship, not limited to linear.
+
+#### Weaknesses
+- Less powerful than Pearson’s correlation when data are bivariate normal and relationship is linear.  
+- Does not distinguish between different monotonic shapes (e.g., concave vs. convex).  
+- Ties reduce the effective sample size and complicate exact p-value calculation.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** There is no monotonic association between X and Y (ρ = 0).  
+- **Alternative hypothesis (H₁):** There is a nonzero monotonic association (ρ ≠ 0).
+
+
+``` r
+# Simulate two variables with a monotonic relationship:
+set.seed(2025)
+x <- sample(1:100, 30)
+y <- x + rnorm(30, sd = 10)               # roughly increasing with x
+# Perform Spearman rank correlation test:
+spearman_result <- cor.test(x, y, method = "spearman", exact = FALSE)
+# Display results:
+spearman_result
+```
+
+``` output
+
+	Spearman's rank correlation rho
+
+data:  x and y
+S = 300, p-value = 5.648e-14
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho 
+0.9332592 
+```
+
+Interpretation:
+Spearman’s ρ = 0.933 with p-value = 5.65\times 10^{-14}. We
+reject the null hypothesis.
+Thus, there is
+evidence of a monotonic association between X and Y.
+
 ::::
 
 ::::spoiler
@@ -1052,6 +2070,63 @@ EJ KORREKTURLÆST
 ### Anderson–Darling test
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Testing whether a sample comes from a specified continuous distribution (most commonly normal).  
+- **Real-world example:** Checking if daily measurement errors from a laboratory instrument follow a normal distribution.
+
+#### Assumptions
+- Observations are independent.  
+- Data are continuous (no excessive ties).  
+- For goodness‐of‐fit to a non‐normal distribution (e.g. exponential), the distribution’s parameters must be fully specified a priori.
+
+#### Strengths
+- More sensitive than the Shapiro–Wilk test to departures in the tails of the distribution.  
+- Applicable to a wide range of target distributions (with the appropriate implementation).  
+- Provides both a test statistic (A²) and p-value.
+
+#### Weaknesses
+- Very sensitive in large samples—small deviations can yield significant results.  
+- If parameters are estimated from the data (e.g. normal mean/SD), p-values may be conservative.  
+- Does not indicate the form of the departure (e.g. skew vs. kurtosis).
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The sample is drawn from a Normal distribution.  
+- **Alternative hypothesis (H₁):** The sample is not drawn from a Normal distribution.
+
+
+``` r
+# Install and load nortest if necessary:
+# install.packages("nortest")
+library(nortest)
+
+# Simulate a sample of 40 observations:
+set.seed(123)
+sample_data <- rnorm(40, mean = 100, sd = 15)
+
+# Perform Anderson–Darling test for normality:
+ad_result <- ad.test(sample_data)
+
+# Display results:
+ad_result
+```
+
+``` output
+
+	Anderson-Darling normality test
+
+data:  sample_data
+A = 0.13614, p-value = 0.9754
+```
+
+Interpretation:
+The Anderson–Darling statistic A² = 0.136 with p-value = 0.975. We
+fail to reject the null hypothesis.
+Thus, there is
+no evidence to conclude a departure from normality.
+
 
 ::::
 
@@ -1068,6 +2143,92 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Modeling and quantifying the linear relationship between a continuous predictor and a continuous outcome.  
+- **Real-world example:** Predicting house sale price based on living area in square feet.
+
+#### Assumptions
+- A linear relationship between predictor and outcome.  
+- Residuals are independent and normally distributed with mean zero.  
+- Homoscedasticity: constant variance of residuals across values of the predictor.  
+- No influential outliers or high-leverage points.
+
+#### Strengths
+- Provides an interpretable estimate of the change in outcome per unit change in predictor.  
+- Inference on slope and intercept via hypothesis tests and confidence intervals.  
+- Basis for more complex regression models and diagnostics.
+
+#### Weaknesses
+- Only captures linear patterns; will miss nonlinear relationships.  
+- Sensitive to outliers, which can distort estimates and inference.  
+- Extrapolation beyond observed predictor range is unreliable.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The slope β₁ = 0 (no linear association between x and y).  
+- **Alternative hypothesis (H₁):** β₁ ≠ 0 (a linear association exists).
+
+
+``` r
+set.seed(2025)
+# Simulate data:
+n <- 50
+x <- runif(n, min = 0, max = 10)
+y <- 2 + 1.5 * x + rnorm(n, sd = 2)
+df <- data.frame(x, y)
+
+# Fit simple linear regression:
+model <- lm(y ~ x, data = df)
+
+# Show summary of model:
+summary(model)
+```
+
+``` output
+
+Call:
+lm(formula = y ~ x, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.6258 -1.4244 -0.0462  1.6635  3.6410 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   1.5009     0.6267   2.395   0.0206 *  
+x             1.5554     0.1023  15.210   <2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 2.057 on 48 degrees of freedom
+Multiple R-squared:  0.8282,	Adjusted R-squared:  0.8246 
+F-statistic: 231.3 on 1 and 48 DF,  p-value: < 2.2e-16
+```
+
+``` r
+# Plot data with regression line:
+library(ggplot2)
+ggplot(df, aes(x = x, y = y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Simple Linear Regression of y on x",
+       x = "Predictor (x)",
+       y = "Outcome (y)")
+```
+
+``` output
+`geom_smooth()` using formula = 'y ~ x'
+```
+
+<img src="fig/stat-tests-1-rendered-simple_linear_regression-1.png" style="display: block; margin: auto;" />
+
+Interpretation:
+The estimated slope is 1.555, with a p-value of 5.51\times 10^{-20}. We
+reject the null hypothesis,
+indicating that there is
+evidence of a significant linear association between x and y.
+
 ::::
 
 ::::spoiler
@@ -1075,6 +2236,97 @@ EJ KORREKTURLÆST
 ### Multiple regression
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Modeling the relationship between one continuous outcome and two or more predictors (continuous or categorical).  
+- **Real-world example:** Predicting house sale price based on living area, number of bedrooms, and neighborhood quality.
+
+#### Assumptions
+- Correct specification: linear relationship between each predictor and the outcome (additivity).  
+- Residuals are independent and normally distributed with mean zero.  
+- Homoscedasticity: constant variance of residuals for all predictor values.  
+- No perfect multicollinearity among predictors.  
+- No influential outliers unduly affecting the model.
+
+#### Strengths
+- Can adjust for multiple confounders or risk factors simultaneously.  
+- Provides estimates and inference (CI, p-values) for each predictor’s unique association with the outcome.  
+- Basis for variable selection, prediction, and causal modeling in observational data.
+
+#### Weaknesses
+- Sensitive to multicollinearity, which inflates variances of coefficient estimates.  
+- Assumes a linear, additive form; interactions or nonlinearity require extension.  
+- Outliers and high-leverage points can distort estimates and inference.  
+- Interpretation can be complex when including many predictors or interactions.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** All regression coefficients for predictors (β₁, β₂, β₃) are zero (no association).  
+- **Alternative hypothesis (H₁):** At least one βᵢ ≠ 0.
+
+
+``` r
+set.seed(2025)
+n <- 100
+# Simulate predictors:
+living_area     <- runif(n, 800, 3500)        # in square feet
+bedrooms        <- sample(2:6, n, replace = TRUE)
+neighborhood    <- factor(sample(c("Low","Medium","High"), n, replace = TRUE))
+# Simulate price with true model:
+price <- 50000 +
+         30 * living_area + 
+         10000 * bedrooms + 
+         ifelse(neighborhood=="Medium", 20000, 
+                ifelse(neighborhood=="High", 50000, 0)) +
+         rnorm(n, sd = 30000)
+df <- data.frame(price, living_area, bedrooms, neighborhood)
+
+# Fit multiple linear regression:
+model_mlr <- lm(price ~ living_area + bedrooms + neighborhood, data = df)
+
+# Show model summary:
+summary(model_mlr)
+```
+
+``` output
+
+Call:
+lm(formula = price ~ living_area + bedrooms + neighborhood, data = df)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-76016 -17437   1258  20097  72437 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(>|t|)    
+(Intercept)        119719.729  12445.109   9.620 1.07e-15 ***
+living_area            26.498      3.685   7.190 1.47e-10 ***
+bedrooms             8292.136   2147.637   3.861 0.000206 ***
+neighborhoodLow    -59241.209   7084.797  -8.362 5.18e-13 ***
+neighborhoodMedium -34072.271   6927.394  -4.918 3.65e-06 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 28490 on 95 degrees of freedom
+Multiple R-squared:  0.5891,	Adjusted R-squared:  0.5718 
+F-statistic: 34.05 on 4 and 95 DF,  p-value: < 2.2e-16
+```
+
+Interpretation:
+
+The overall F-test (in 34.05 on df₁ = 4, df₂ = 95 has p-value = 1.3\times 10^{-17}, so
+reject the null hypothesis.
+
+Individual coefficients: for example, living_area’s estimate is 26.5 (p = 1.47\times 10^{-10}), indicating
+a significant positive association: each additional square foot increases price by about \$30 on average.
+
+Similar interpretation applies to bedrooms and neighborhood indicators.
+
+
+
+
+
 
 ::::
 
