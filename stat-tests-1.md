@@ -3167,6 +3167,130 @@ is significantly associated with higher odds of readmission, accounting for hosp
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Modeling correlated or clustered data (e.g., repeated measures, longitudinal, or clustered observations) when interest lies in population‐averaged effects rather than subject‐specific effects.  
+- **Real-world example:** Estimating the effect of a diabetes education program on the probability of glycemic control (A1C < 7%) over multiple clinic visits per patient.
+
+#### Assumptions
+- Clustered or repeated observations per subject/cluster with some “working” correlation structure (e.g., exchangeable, autoregressive).  
+- Correct specification of the link function and the mean model (e.g., logit link for binary outcomes).  
+- Missing data are missing completely at random (MCAR) or missing at random (MAR), assuming missingness only depends on observed covariates.  
+- Large‐sample inference: GEE relies on asymptotic properties (number of clusters ≫ 1).
+
+#### Strengths
+- Robust (“sandwich”) standard errors even if the working correlation structure is mis‐specified.  
+- Provides marginal (population‐averaged) estimates, often of direct interest in public health/epidemiology.  
+- Accommodates a variety of outcomes (binary, count, continuous) via appropriate link and family.
+
+#### Weaknesses
+- Efficiency can be lost if the working correlation is far from the truth (though estimates remain consistent).  
+- Inference is asymptotic—small numbers of clusters can lead to biased standard errors.  
+- Does not model subject‐specific trajectories; cannot estimate random‐effects variance components.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The education program has no effect on odds of glycemic control over time (β_edu = 0).  
+- **Alternative hypothesis (H₁):** The education program changes the odds of glycemic control over time (β_edu ≠ 0).
+
+
+``` r
+# Install/load necessary package:
+# install.packages("geepack")
+library(geepack)
+
+set.seed(2025)
+# Simulate data: 100 patients (clusters), each with 4 visits
+n_patients   <- 100
+visits_per   <- 4
+patient_id   <- rep(1:n_patients, each = visits_per)
+visit_number <- rep(1:visits_per, times = n_patients)
+
+# Simulate a binary program indicator (0=no program, 1=received education), randomly assigned at baseline
+edu_program  <- rbinom(n_patients, 1, 0.5)
+edu          <- rep(edu_program, each = visits_per)
+
+# Simulate time effect (visits 1–4 coded 0–3) and baseline covariate (e.g., age)
+age_cont     <- rnorm(n_patients, mean = 60, sd = 10)
+age          <- rep(age_cont, each = visits_per)
+
+# True population‐averaged logistic model:
+# logit(p_ij) = -1 + 0.4 * edu_i - 0.02 * age_i + 0.3 * visit_number_j
+# For simplicity, ignore cluster‐specific random effect; correlation introduced via GEE working structure.
+lin_pred     <- -1 +
+                0.4 * edu +
+               -0.02 * age +
+                0.3 * visit_number
+prob         <- plogis(lin_pred)
+
+# Simulate binary outcome: glycemic control (1=yes, 0=no)
+gly_control  <- rbinom(n_patients * visits_per, 1, prob)
+
+df_gee <- data.frame(
+  patient_id   = factor(patient_id),
+  visit_number = visit_number,
+  edu          = factor(edu, labels = c("NoEdu","Edu")),
+  age          = age,
+  gly_control  = gly_control
+)
+
+# Fit GEE with exchangeable working correlation:
+gee_fit <- geeglm(
+  gly_control ~ edu + age + visit_number,
+  id            = patient_id,
+  family        = binomial(link = "logit"),
+  corstr        = "exchangeable",
+  data          = df_gee
+)
+
+# Display summary:
+summary(gee_fit)
+```
+
+``` output
+
+Call:
+geeglm(formula = gly_control ~ edu + age + visit_number, family = binomial(link = "logit"), 
+    data = df_gee, id = patient_id, corstr = "exchangeable")
+
+ Coefficients:
+             Estimate  Std.err   Wald Pr(>|W|)    
+(Intercept)  -1.84098  0.87073  4.470   0.0345 *  
+eduEdu        0.55189  0.24796  4.954   0.0260 *  
+age          -0.01791  0.01287  1.934   0.1643    
+visit_number  0.55376  0.10903 25.795  3.8e-07 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Correlation structure = exchangeable 
+Estimated Scale Parameters:
+
+            Estimate Std.err
+(Intercept)   0.9761  0.1171
+  Link = identity 
+
+Estimated Correlation Parameters:
+      Estimate Std.err
+alpha  0.00166 0.03069
+Number of clusters:   100  Maximum cluster size: 4 
+```
+
+Interpretation:
+
+The estimated coefficient for edu (Edu vs. NoEdu) is 0.552
+. Its robust (“sandwich”) standard error is 0.248
+
+, yielding a Wald‐type z = 2.23, with p = 0.026. We
+reject the null hypothesis.
+This indicates that, across all visits and patients, those in the education program have significantly difference in odds of glycemic control compared to those without education.
+
+The coefficient for age equals -0.0179 (p = 0.164), indicating each additional year of age multiplies the odds of control by exp(-0.0179).
+
+The visit_number effect is 0.554 per visit (p = 3.8\times 10^{-7}), showing whether odds of control change over successive visits.
+
+Because GEE uses a sandwich estimator, these inferences remain valid even if “exchangeable” correlation is not exactly correct, provided we have a sufficiently large number of patients.
+
+
 ::::
 
 
@@ -3179,6 +3303,9 @@ EJ KORREKTURLÆST
 ### Contingency-table methods (χ² osv.)
 
 EJ KORREKTURLÆST
+HVOR KATTEN KOMMER DET HER EGENTLIG FRA?
+
+
 
 ::::
 
@@ -3188,6 +3315,69 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing whether the proportions of paired binary outcomes differ (i.e., detecting marginal changes in a 2×2 paired table).  
+- **Real-world example:** Determining if a new diagnostic test classification (Positive/Negative) differs from an existing “gold standard” classification on the same patients.
+
+#### Assumptions
+- Data consist of paired binary observations (e.g., before/after, test1/test2) on the same subjects.  
+- Discordant cell counts (subjects where Test A=Positive & Test B=Negative or vice versa) are sufficiently large (≥ 10) for the χ² approximation; otherwise use exact McNemar.  
+- Each pair is independent of all other pairs.
+
+#### Strengths
+- Simple to implement for paired binary data.  
+- Specifically tests for a change in proportion rather than overall association.  
+- Does not require marginal homogeneity for concordant pairs (only discordant pairs matter).
+
+#### Weaknesses
+- Ignores concordant pairs (those where both methods agree), focusing only on discordant counts.  
+- χ² approximation can be invalid if discordant counts are small—requires exact test.  
+- Only applicable to 2×2 paired tables (binary outcomes).
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The probability of discordant outcomes is the same in both directions (b = c).  
+- **Alternative hypothesis (H₁):** The probability of discordant outcomes differs (b ≠ c).
+
+
+``` r
+# Simulated paired binary data: OldTest vs. NewTest (n = 100 patients)
+#      NewTest
+# OldTest  Positive  Negative
+# Positive      30        20   (b = 20)
+# Negative      10        40   (c = 10)
+
+ctab <- matrix(c(30, 20,
+                 10, 40),
+               nrow = 2,
+               byrow = TRUE,
+               dimnames = list(
+                 OldTest = c("Positive","Negative"),
+                 NewTest = c("Positive","Negative")
+               ))
+
+# Perform McNemar’s test (χ² approximation):
+mcnemar_result <- mcnemar.test(ctab, correct = FALSE)
+
+# Display results:
+mcnemar_result
+```
+
+``` output
+
+	McNemar's Chi-squared test
+
+data:  ctab
+McNemar's chi-squared = 3.3, df = 1, p-value = 0.07
+```
+
+Interpretation:
+The McNemar χ² statistic is 3.33 with p-value = 0.0679. We
+fail to reject the null hypothesis.
+Since b (OldTest Positive, NewTest Negative) = 20 and c (OldTest Negative, NewTest Positive) = 10, a significant result would indicate that the switch in classifications is not symmetric—i.e., the new test’s positive/negative calls differ from the old test more often in one direction than the other.
+
+
 ::::
 
 ::::spoiler
@@ -3196,6 +3386,77 @@ EJ KORREKTURLÆST
 ### Fisher’s exact test
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Testing independence between two categorical variables in a small-sample 2×2 contingency table.  
+- **Real-world example:** Examining whether a new antibiotic leads to cure versus failure in 15 patients (small sample where χ² might be invalid).
+
+#### Assumptions
+- Observations are independent.  
+- Data form a 2×2 table (binary outcome × binary exposure).  
+- Marginal totals are fixed (conditional inference on margins).
+
+#### Strengths
+- Exact p-value without relying on large-sample approximations.  
+- Valid even when expected cell counts are very small or zero.  
+- Simple to implement in R via `fisher.test()`.
+
+#### Weaknesses
+- Only directly applies to 2×2 tables; extensions to larger tables exist but are computationally intensive.  
+- Does not provide an effect-size estimate beyond the odds ratio (which must be computed separately).  
+- Can be conservative (lower power) compared to asymptotic tests with moderate sample sizes.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** Treatment and outcome are independent (odds ratio = 1).  
+- **Alternative hypothesis (H₁):** Treatment and outcome are not independent (odds ratio ≠ 1).
+
+
+``` r
+# Construct a 2×2 contingency table:
+#               Outcome
+# Treatment   Cure  Failure
+#   New        7      3
+#   Standard   2      3
+
+ctab <- matrix(c(7, 3,
+                 2, 3),
+               nrow = 2,
+               byrow = TRUE,
+               dimnames = list(
+                 Treatment = c("New", "Standard"),
+                 Outcome   = c("Cure", "Failure")
+               ))
+
+# Perform Fisher’s exact test:
+fisher_result <- fisher.test(ctab, alternative = "two.sided")
+
+# Display results:
+fisher_result
+```
+
+``` output
+
+	Fisher's Exact Test for Count Data
+
+data:  ctab
+p-value = 0.3
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+  0.2329 59.0957
+sample estimates:
+odds ratio 
+     3.196 
+```
+
+Interpretation:
+Fisher’s exact test yields an odds ratio estimate of 3.2 with a two-sided p-value = 0.329. We
+fail to reject the null hypothesis.
+Thus, there is
+no evidence of a difference in cure rates between the two treatments.
+
+
 ::::
 
 ::::spoiler
@@ -3203,7 +3464,1241 @@ EJ KORREKTURLÆST
 ### Barnard’s exact test
 
 EJ KORREKTURLÆST
+VÆR SÆRLIGT OPMÆRKSOM HER - DER VAR STORE UDFORDRINGER...
+#### Used for
+- Testing independence in a 2×2 contingency table via an unconditional exact test.  
+- **Real-world example:** Determining if a new pain medication and placebo differ in adverse event rates when sample sizes are small.
 
+#### Assumptions
+- Observations are independent and each subject contributes exactly one cell in the 2×2 table.  
+- Only one margin (row or column totals) is fixed; the other margin is free.  
+- Binary outcome (e.g., “Adverse Event: Yes/No”) and binary grouping (“Medication vs. Placebo”).
+
+#### Strengths
+- More powerful than Fisher’s exact test because it does not condition on both margins.  
+- Provides an exact p-value without relying on large‐sample approximations.  
+- Particularly advantageous when margins are not fixed by design.
+
+#### Weaknesses
+- Computationally slower than Fisher’s exact test for larger sample sizes.  
+- Only applies to 2×2 tables (binary × binary).  
+- Requires installation of the **Barnard** package (not in base R).
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The probability of an adverse event is the same in the Medication and Placebo groups (no association).  
+- **Alternative hypothesis (H₁):** The probability of an adverse event differs between Medication and Placebo.
+
+
+``` r
+# Install and load the Barnard package (only once if not already installed):
+# install.packages("Barnard")
+library(Barnard)
+
+# Define the 2×2 counts:
+#              AdverseEvent
+# Treatment   Yes   No
+#   Medication  2     8
+#   Placebo     7     3
+n1 <- 2   # Medication & Yes
+n2 <- 8   # Medication & No
+n3 <- 7   # Placebo    & Yes
+n4 <- 3   # Placebo    & No
+
+# Run Barnard's unconditional exact test:
+barnard_result <- barnard.test(n1, n2, n3, n4, pooled = TRUE)
+```
+
+``` output
+
+Barnard's Unconditional Test
+
+           Treatment I Treatment II
+Outcome I            2            8
+Outcome II           7            3
+
+Null hypothesis: Treatments have no effect on the outcomes
+Score statistic = 2.24733
+Nuisance parameter = 0.666 (One sided), 0.5 (Two sided)
+P-value = 0.0167869 (One sided), 0.0334587 (Two sided)
+```
+
+``` r
+# Display the test result:
+barnard_result
+```
+
+``` output
+$statistic.table
+       n1 n2 statistic include.in.p.value
+  [1,]  0  1   0.92803                  0
+  [2,]  0  2   1.34840                  0
+  [3,]  0  3   1.69932                  0
+  [4,]  0  4   2.02260                  0
+  [5,]  0  5   2.33550                  1
+  [6,]  0  6   2.64820                  1
+  [7,]  0  7   2.96836                  1
+  [8,]  0  8   3.30289                  1
+  [9,]  0  9   3.65902                  1
+ [10,]  0 10   4.04520                  1
+ [11,]  0 11   4.47214                  1
+ [12,]  1  0  -1.13426                  0
+ [13,]  1  1  -0.14982                  0
+ [14,]  1  2   0.44057                  0
+ [15,]  1  3   0.89893                  0
+ [16,]  1  4   1.29750                  0
+ [17,]  1  5   1.66739                  0
+ [18,]  1  6   2.02603                  0
+ [19,]  1  7   2.38542                  1
+ [20,]  1  8   2.75556                  1
+ [21,]  1  9   3.14627                  1
+ [22,]  1 10   3.56867                  1
+ [23,]  1 11   4.03687                  1
+ [24,]  2  0  -1.64804                  0
+ [25,]  2  1  -0.81819                  0
+ [26,]  2  2  -0.22473                  0
+ [27,]  2  3   0.25950                  0
+ [28,]  2  4   0.68657                  0
+ [29,]  2  5   1.08369                  0
+ [30,]  2  6   1.46795                  0
+ [31,]  2  7   1.85210                  0
+ [32,]  2  8   2.24733                  1
+ [33,]  2  9   2.66521                  1
+ [34,]  2 10   3.11940                  1
+ [35,]  2 11   3.62800                  1
+ [36,]  3  0  -2.07695                  0
+ [37,]  3  1  -1.34840                  0
+ [38,]  3  2  -0.77850                  0
+ [39,]  3  3  -0.29424                  0
+ [40,]  3  4   0.14135                  0
+ [41,]  3  5   0.55048                  0
+ [42,]  3  6   0.94863                  0
+ [43,]  3  7   1.34840                  0
+ [44,]  3  8   1.76175                  0
+ [45,]  3  9   2.20193                  0
+ [46,]  3 10   2.68566                  1
+ [47,]  3 11   3.23669                  1
+ [48,]  4  0  -2.47207                  2
+ [49,]  4  1  -1.81650                  0
+ [50,]  4  2  -1.27506                  0
+ [51,]  4  3  -0.80099                  0
+ [52,]  4  4  -0.36699                  0
+ [53,]  4  5   0.04517                  0
+ [54,]  4  6   0.44947                  0
+ [55,]  4  7   0.85829                  0
+ [56,]  4  8   1.28446                  0
+ [57,]  4  9   1.74333                  0
+ [58,]  4 10   2.25588                  1
+ [59,]  4 11   2.85450                  1
+ [60,]  5  0  -2.85450                  2
+ [61,]  5  1  -2.25588                  2
+ [62,]  5  2  -1.74333                  0
+ [63,]  5  3  -1.28446                  0
+ [64,]  5  4  -0.85829                  0
+ [65,]  5  5  -0.44947                  0
+ [66,]  5  6  -0.04517                  0
+ [67,]  5  7   0.36699                  0
+ [68,]  5  8   0.80099                  0
+ [69,]  5  9   1.27506                  0
+ [70,]  5 10   1.81650                  0
+ [71,]  5 11   2.47207                  1
+ [72,]  6  0  -3.23669                  2
+ [73,]  6  1  -2.68566                  2
+ [74,]  6  2  -2.20193                  0
+ [75,]  6  3  -1.76175                  0
+ [76,]  6  4  -1.34840                  0
+ [77,]  6  5  -0.94863                  0
+ [78,]  6  6  -0.55048                  0
+ [79,]  6  7  -0.14135                  0
+ [80,]  6  8   0.29424                  0
+ [81,]  6  9   0.77850                  0
+ [82,]  6 10   1.34840                  0
+ [83,]  6 11   2.07695                  0
+ [84,]  7  0  -3.62800                  2
+ [85,]  7  1  -3.11940                  2
+ [86,]  7  2  -2.66521                  2
+ [87,]  7  3  -2.24733                  2
+ [88,]  7  4  -1.85210                  0
+ [89,]  7  5  -1.46795                  0
+ [90,]  7  6  -1.08369                  0
+ [91,]  7  7  -0.68657                  0
+ [92,]  7  8  -0.25950                  0
+ [93,]  7  9   0.22473                  0
+ [94,]  7 10   0.81819                  0
+ [95,]  7 11   1.64804                  0
+ [96,]  8  0  -4.03687                  2
+ [97,]  8  1  -3.56867                  2
+ [98,]  8  2  -3.14627                  2
+ [99,]  8  3  -2.75556                  2
+[100,]  8  4  -2.38542                  2
+[101,]  8  5  -2.02603                  0
+[102,]  8  6  -1.66739                  0
+[103,]  8  7  -1.29750                  0
+[104,]  8  8  -0.89893                  0
+[105,]  8  9  -0.44057                  0
+[106,]  8 10   0.14982                  0
+[107,]  8 11   1.13426                  0
+[108,]  9  0  -4.47214                  2
+[109,]  9  1  -4.04520                  2
+[110,]  9  2  -3.65902                  2
+[111,]  9  3  -3.30289                  2
+[112,]  9  4  -2.96836                  2
+[113,]  9  5  -2.64820                  2
+[114,]  9  6  -2.33550                  2
+[115,]  9  7  -2.02260                  0
+[116,]  9  8  -1.69932                  0
+[117,]  9  9  -1.34840                  0
+[118,]  9 10  -0.92803                  0
+
+$nuisance.matrix
+         [,1]      [,2]      [,3]
+   [1,] 0.000 0.000e+00 0.000e+00
+   [2,] 0.001 4.556e-13 1.246e-10
+   [3,] 0.002 1.438e-11 1.971e-09
+   [4,] 0.003 1.076e-10 9.865e-09
+   [5,] 0.004 4.473e-10 3.083e-08
+   [6,] 0.005 1.346e-09 7.441e-08
+   [7,] 0.006 3.302e-09 1.526e-07
+   [8,] 0.007 7.038e-09 2.795e-07
+   [9,] 0.008 1.353e-08 4.714e-07
+  [10,] 0.009 2.404e-08 7.466e-07
+  [11,] 0.010 4.014e-08 1.125e-06
+  [12,] 0.011 6.374e-08 1.629e-06
+  [13,] 0.012 9.709e-08 2.281e-06
+  [14,] 0.013 1.428e-07 3.106e-06
+  [15,] 0.014 2.040e-07 4.131e-06
+  [16,] 0.015 2.840e-07 5.383e-06
+  [17,] 0.016 3.866e-07 6.890e-06
+  [18,] 0.017 5.161e-07 8.681e-06
+  [19,] 0.018 6.772e-07 1.079e-05
+  [20,] 0.019 8.748e-07 1.324e-05
+  [21,] 0.020 1.115e-06 1.608e-05
+  [22,] 0.021 1.402e-06 1.932e-05
+  [23,] 0.022 1.745e-06 2.301e-05
+  [24,] 0.023 2.148e-06 2.718e-05
+  [25,] 0.024 2.620e-06 3.186e-05
+  [26,] 0.025 3.167e-06 3.709e-05
+  [27,] 0.026 3.798e-06 4.290e-05
+  [28,] 0.027 4.522e-06 4.933e-05
+  [29,] 0.028 5.347e-06 5.641e-05
+  [30,] 0.029 6.281e-06 6.418e-05
+  [31,] 0.030 7.335e-06 7.268e-05
+  [32,] 0.031 8.519e-06 8.193e-05
+  [33,] 0.032 9.842e-06 9.198e-05
+  [34,] 0.033 1.131e-05 1.029e-04
+  [35,] 0.034 1.295e-05 1.146e-04
+  [36,] 0.035 1.475e-05 1.272e-04
+  [37,] 0.036 1.674e-05 1.408e-04
+  [38,] 0.037 1.892e-05 1.554e-04
+  [39,] 0.038 2.131e-05 1.709e-04
+  [40,] 0.039 2.392e-05 1.875e-04
+  [41,] 0.040 2.676e-05 2.051e-04
+  [42,] 0.041 2.984e-05 2.238e-04
+  [43,] 0.042 3.318e-05 2.437e-04
+  [44,] 0.043 3.678e-05 2.648e-04
+  [45,] 0.044 4.067e-05 2.870e-04
+  [46,] 0.045 4.484e-05 3.104e-04
+  [47,] 0.046 4.933e-05 3.351e-04
+  [48,] 0.047 5.414e-05 3.611e-04
+  [49,] 0.048 5.928e-05 3.884e-04
+  [50,] 0.049 6.476e-05 4.171e-04
+  [51,] 0.050 7.061e-05 4.470e-04
+  [52,] 0.051 7.683e-05 4.784e-04
+  [53,] 0.052 8.343e-05 5.112e-04
+  [54,] 0.053 9.044e-05 5.455e-04
+  [55,] 0.054 9.785e-05 5.812e-04
+  [56,] 0.055 1.057e-04 6.184e-04
+  [57,] 0.056 1.140e-04 6.571e-04
+  [58,] 0.057 1.227e-04 6.973e-04
+  [59,] 0.058 1.319e-04 7.391e-04
+  [60,] 0.059 1.416e-04 7.824e-04
+  [61,] 0.060 1.517e-04 8.273e-04
+  [62,] 0.061 1.624e-04 8.739e-04
+  [63,] 0.062 1.736e-04 9.220e-04
+  [64,] 0.063 1.853e-04 9.718e-04
+  [65,] 0.064 1.975e-04 1.023e-03
+  [66,] 0.065 2.103e-04 1.076e-03
+  [67,] 0.066 2.237e-04 1.131e-03
+  [68,] 0.067 2.376e-04 1.188e-03
+  [69,] 0.068 2.521e-04 1.246e-03
+  [70,] 0.069 2.673e-04 1.306e-03
+  [71,] 0.070 2.830e-04 1.367e-03
+  [72,] 0.071 2.993e-04 1.431e-03
+  [73,] 0.072 3.163e-04 1.496e-03
+  [74,] 0.073 3.338e-04 1.563e-03
+  [75,] 0.074 3.521e-04 1.631e-03
+  [76,] 0.075 3.710e-04 1.702e-03
+  [77,] 0.076 3.905e-04 1.774e-03
+  [78,] 0.077 4.107e-04 1.848e-03
+  [79,] 0.078 4.316e-04 1.923e-03
+  [80,] 0.079 4.532e-04 2.001e-03
+  [81,] 0.080 4.755e-04 2.080e-03
+  [82,] 0.081 4.985e-04 2.161e-03
+  [83,] 0.082 5.222e-04 2.244e-03
+  [84,] 0.083 5.466e-04 2.329e-03
+  [85,] 0.084 5.717e-04 2.415e-03
+  [86,] 0.085 5.975e-04 2.503e-03
+  [87,] 0.086 6.241e-04 2.593e-03
+  [88,] 0.087 6.514e-04 2.684e-03
+  [89,] 0.088 6.795e-04 2.778e-03
+  [90,] 0.089 7.083e-04 2.873e-03
+  [91,] 0.090 7.378e-04 2.970e-03
+  [92,] 0.091 7.681e-04 3.068e-03
+  [93,] 0.092 7.991e-04 3.169e-03
+  [94,] 0.093 8.309e-04 3.271e-03
+  [95,] 0.094 8.635e-04 3.374e-03
+  [96,] 0.095 8.968e-04 3.480e-03
+  [97,] 0.096 9.309e-04 3.587e-03
+  [98,] 0.097 9.657e-04 3.696e-03
+  [99,] 0.098 1.001e-03 3.806e-03
+ [100,] 0.099 1.038e-03 3.918e-03
+ [101,] 0.100 1.075e-03 4.032e-03
+ [102,] 0.101 1.113e-03 4.147e-03
+ [103,] 0.102 1.151e-03 4.264e-03
+ [104,] 0.103 1.191e-03 4.383e-03
+ [105,] 0.104 1.231e-03 4.503e-03
+ [106,] 0.105 1.272e-03 4.624e-03
+ [107,] 0.106 1.314e-03 4.747e-03
+ [108,] 0.107 1.356e-03 4.872e-03
+ [109,] 0.108 1.399e-03 4.998e-03
+ [110,] 0.109 1.443e-03 5.126e-03
+ [111,] 0.110 1.488e-03 5.255e-03
+ [112,] 0.111 1.533e-03 5.385e-03
+ [113,] 0.112 1.580e-03 5.517e-03
+ [114,] 0.113 1.626e-03 5.650e-03
+ [115,] 0.114 1.674e-03 5.785e-03
+ [116,] 0.115 1.722e-03 5.921e-03
+ [117,] 0.116 1.771e-03 6.058e-03
+ [118,] 0.117 1.821e-03 6.197e-03
+ [119,] 0.118 1.872e-03 6.337e-03
+ [120,] 0.119 1.923e-03 6.478e-03
+ [121,] 0.120 1.975e-03 6.621e-03
+ [122,] 0.121 2.027e-03 6.764e-03
+ [123,] 0.122 2.080e-03 6.909e-03
+ [124,] 0.123 2.134e-03 7.055e-03
+ [125,] 0.124 2.189e-03 7.202e-03
+ [126,] 0.125 2.244e-03 7.350e-03
+ [127,] 0.126 2.300e-03 7.499e-03
+ [128,] 0.127 2.356e-03 7.650e-03
+ [129,] 0.128 2.413e-03 7.801e-03
+ [130,] 0.129 2.471e-03 7.953e-03
+ [131,] 0.130 2.529e-03 8.107e-03
+ [132,] 0.131 2.588e-03 8.261e-03
+ [133,] 0.132 2.647e-03 8.416e-03
+ [134,] 0.133 2.708e-03 8.572e-03
+ [135,] 0.134 2.768e-03 8.729e-03
+ [136,] 0.135 2.829e-03 8.887e-03
+ [137,] 0.136 2.891e-03 9.045e-03
+ [138,] 0.137 2.953e-03 9.205e-03
+ [139,] 0.138 3.016e-03 9.365e-03
+ [140,] 0.139 3.079e-03 9.525e-03
+ [141,] 0.140 3.143e-03 9.687e-03
+ [142,] 0.141 3.207e-03 9.849e-03
+ [143,] 0.142 3.272e-03 1.001e-02
+ [144,] 0.143 3.337e-03 1.017e-02
+ [145,] 0.144 3.403e-03 1.034e-02
+ [146,] 0.145 3.469e-03 1.050e-02
+ [147,] 0.146 3.535e-03 1.067e-02
+ [148,] 0.147 3.602e-03 1.083e-02
+ [149,] 0.148 3.670e-03 1.100e-02
+ [150,] 0.149 3.737e-03 1.117e-02
+ [151,] 0.150 3.806e-03 1.133e-02
+ [152,] 0.151 3.874e-03 1.150e-02
+ [153,] 0.152 3.943e-03 1.167e-02
+ [154,] 0.153 4.012e-03 1.184e-02
+ [155,] 0.154 4.082e-03 1.200e-02
+ [156,] 0.155 4.152e-03 1.217e-02
+ [157,] 0.156 4.222e-03 1.234e-02
+ [158,] 0.157 4.292e-03 1.251e-02
+ [159,] 0.158 4.363e-03 1.268e-02
+ [160,] 0.159 4.434e-03 1.285e-02
+ [161,] 0.160 4.505e-03 1.302e-02
+ [162,] 0.161 4.577e-03 1.318e-02
+ [163,] 0.162 4.648e-03 1.335e-02
+ [164,] 0.163 4.720e-03 1.352e-02
+ [165,] 0.164 4.793e-03 1.369e-02
+ [166,] 0.165 4.865e-03 1.386e-02
+ [167,] 0.166 4.938e-03 1.403e-02
+ [168,] 0.167 5.010e-03 1.420e-02
+ [169,] 0.168 5.083e-03 1.437e-02
+ [170,] 0.169 5.156e-03 1.454e-02
+ [171,] 0.170 5.229e-03 1.471e-02
+ [172,] 0.171 5.303e-03 1.488e-02
+ [173,] 0.172 5.376e-03 1.504e-02
+ [174,] 0.173 5.450e-03 1.521e-02
+ [175,] 0.174 5.523e-03 1.538e-02
+ [176,] 0.175 5.597e-03 1.555e-02
+ [177,] 0.176 5.671e-03 1.571e-02
+ [178,] 0.177 5.744e-03 1.588e-02
+ [179,] 0.178 5.818e-03 1.605e-02
+ [180,] 0.179 5.892e-03 1.621e-02
+ [181,] 0.180 5.966e-03 1.638e-02
+ [182,] 0.181 6.040e-03 1.655e-02
+ [183,] 0.182 6.114e-03 1.671e-02
+ [184,] 0.183 6.187e-03 1.687e-02
+ [185,] 0.184 6.261e-03 1.704e-02
+ [186,] 0.185 6.335e-03 1.720e-02
+ [187,] 0.186 6.409e-03 1.737e-02
+ [188,] 0.187 6.482e-03 1.753e-02
+ [189,] 0.188 6.556e-03 1.769e-02
+ [190,] 0.189 6.630e-03 1.785e-02
+ [191,] 0.190 6.703e-03 1.801e-02
+ [192,] 0.191 6.776e-03 1.817e-02
+ [193,] 0.192 6.850e-03 1.833e-02
+ [194,] 0.193 6.923e-03 1.849e-02
+ [195,] 0.194 6.996e-03 1.865e-02
+ [196,] 0.195 7.069e-03 1.880e-02
+ [197,] 0.196 7.141e-03 1.896e-02
+ [198,] 0.197 7.214e-03 1.912e-02
+ [199,] 0.198 7.286e-03 1.927e-02
+ [200,] 0.199 7.359e-03 1.942e-02
+ [201,] 0.200 7.431e-03 1.958e-02
+ [202,] 0.201 7.502e-03 1.973e-02
+ [203,] 0.202 7.574e-03 1.988e-02
+ [204,] 0.203 7.646e-03 2.003e-02
+ [205,] 0.204 7.717e-03 2.018e-02
+ [206,] 0.205 7.788e-03 2.033e-02
+ [207,] 0.206 7.859e-03 2.048e-02
+ [208,] 0.207 7.929e-03 2.063e-02
+ [209,] 0.208 8.000e-03 2.077e-02
+ [210,] 0.209 8.070e-03 2.092e-02
+ [211,] 0.210 8.140e-03 2.106e-02
+ [212,] 0.211 8.209e-03 2.120e-02
+ [213,] 0.212 8.278e-03 2.135e-02
+ [214,] 0.213 8.347e-03 2.149e-02
+ [215,] 0.214 8.416e-03 2.163e-02
+ [216,] 0.215 8.485e-03 2.177e-02
+ [217,] 0.216 8.553e-03 2.191e-02
+ [218,] 0.217 8.621e-03 2.204e-02
+ [219,] 0.218 8.688e-03 2.218e-02
+ [220,] 0.219 8.756e-03 2.232e-02
+ [221,] 0.220 8.823e-03 2.245e-02
+ [222,] 0.221 8.889e-03 2.258e-02
+ [223,] 0.222 8.956e-03 2.272e-02
+ [224,] 0.223 9.022e-03 2.285e-02
+ [225,] 0.224 9.087e-03 2.298e-02
+ [226,] 0.225 9.153e-03 2.311e-02
+ [227,] 0.226 9.218e-03 2.323e-02
+ [228,] 0.227 9.282e-03 2.336e-02
+ [229,] 0.228 9.347e-03 2.348e-02
+ [230,] 0.229 9.411e-03 2.361e-02
+ [231,] 0.230 9.474e-03 2.373e-02
+ [232,] 0.231 9.537e-03 2.385e-02
+ [233,] 0.232 9.600e-03 2.398e-02
+ [234,] 0.233 9.663e-03 2.410e-02
+ [235,] 0.234 9.725e-03 2.421e-02
+ [236,] 0.235 9.787e-03 2.433e-02
+ [237,] 0.236 9.848e-03 2.445e-02
+ [238,] 0.237 9.909e-03 2.456e-02
+ [239,] 0.238 9.970e-03 2.468e-02
+ [240,] 0.239 1.003e-02 2.479e-02
+ [241,] 0.240 1.009e-02 2.490e-02
+ [242,] 0.241 1.015e-02 2.501e-02
+ [243,] 0.242 1.021e-02 2.512e-02
+ [244,] 0.243 1.027e-02 2.523e-02
+ [245,] 0.244 1.033e-02 2.534e-02
+ [246,] 0.245 1.038e-02 2.544e-02
+ [247,] 0.246 1.044e-02 2.555e-02
+ [248,] 0.247 1.050e-02 2.565e-02
+ [249,] 0.248 1.056e-02 2.576e-02
+ [250,] 0.249 1.061e-02 2.586e-02
+ [251,] 0.250 1.067e-02 2.596e-02
+ [252,] 0.251 1.073e-02 2.606e-02
+ [253,] 0.252 1.078e-02 2.616e-02
+ [254,] 0.253 1.084e-02 2.625e-02
+ [255,] 0.254 1.089e-02 2.635e-02
+ [256,] 0.255 1.094e-02 2.644e-02
+ [257,] 0.256 1.100e-02 2.654e-02
+ [258,] 0.257 1.105e-02 2.663e-02
+ [259,] 0.258 1.111e-02 2.672e-02
+ [260,] 0.259 1.116e-02 2.681e-02
+ [261,] 0.260 1.121e-02 2.690e-02
+ [262,] 0.261 1.126e-02 2.699e-02
+ [263,] 0.262 1.131e-02 2.707e-02
+ [264,] 0.263 1.137e-02 2.716e-02
+ [265,] 0.264 1.142e-02 2.724e-02
+ [266,] 0.265 1.147e-02 2.733e-02
+ [267,] 0.266 1.152e-02 2.741e-02
+ [268,] 0.267 1.157e-02 2.749e-02
+ [269,] 0.268 1.162e-02 2.757e-02
+ [270,] 0.269 1.167e-02 2.765e-02
+ [271,] 0.270 1.171e-02 2.773e-02
+ [272,] 0.271 1.176e-02 2.781e-02
+ [273,] 0.272 1.181e-02 2.788e-02
+ [274,] 0.273 1.186e-02 2.796e-02
+ [275,] 0.274 1.191e-02 2.803e-02
+ [276,] 0.275 1.195e-02 2.811e-02
+ [277,] 0.276 1.200e-02 2.818e-02
+ [278,] 0.277 1.204e-02 2.825e-02
+ [279,] 0.278 1.209e-02 2.832e-02
+ [280,] 0.279 1.214e-02 2.839e-02
+ [281,] 0.280 1.218e-02 2.846e-02
+ [282,] 0.281 1.223e-02 2.852e-02
+ [283,] 0.282 1.227e-02 2.859e-02
+ [284,] 0.283 1.232e-02 2.866e-02
+ [285,] 0.284 1.236e-02 2.872e-02
+ [286,] 0.285 1.240e-02 2.878e-02
+ [287,] 0.286 1.245e-02 2.885e-02
+ [288,] 0.287 1.249e-02 2.891e-02
+ [289,] 0.288 1.253e-02 2.897e-02
+ [290,] 0.289 1.257e-02 2.903e-02
+ [291,] 0.290 1.262e-02 2.909e-02
+ [292,] 0.291 1.266e-02 2.915e-02
+ [293,] 0.292 1.270e-02 2.920e-02
+ [294,] 0.293 1.274e-02 2.926e-02
+ [295,] 0.294 1.278e-02 2.931e-02
+ [296,] 0.295 1.282e-02 2.937e-02
+ [297,] 0.296 1.286e-02 2.942e-02
+ [298,] 0.297 1.290e-02 2.948e-02
+ [299,] 0.298 1.294e-02 2.953e-02
+ [300,] 0.299 1.298e-02 2.958e-02
+ [301,] 0.300 1.302e-02 2.963e-02
+ [302,] 0.301 1.306e-02 2.968e-02
+ [303,] 0.302 1.309e-02 2.973e-02
+ [304,] 0.303 1.313e-02 2.978e-02
+ [305,] 0.304 1.317e-02 2.983e-02
+ [306,] 0.305 1.321e-02 2.987e-02
+ [307,] 0.306 1.324e-02 2.992e-02
+ [308,] 0.307 1.328e-02 2.997e-02
+ [309,] 0.308 1.332e-02 3.001e-02
+ [310,] 0.309 1.335e-02 3.006e-02
+ [311,] 0.310 1.339e-02 3.010e-02
+ [312,] 0.311 1.343e-02 3.014e-02
+ [313,] 0.312 1.346e-02 3.018e-02
+ [314,] 0.313 1.350e-02 3.023e-02
+ [315,] 0.314 1.353e-02 3.027e-02
+ [316,] 0.315 1.357e-02 3.031e-02
+ [317,] 0.316 1.360e-02 3.035e-02
+ [318,] 0.317 1.364e-02 3.039e-02
+ [319,] 0.318 1.367e-02 3.043e-02
+ [320,] 0.319 1.371e-02 3.046e-02
+ [321,] 0.320 1.374e-02 3.050e-02
+ [322,] 0.321 1.377e-02 3.054e-02
+ [323,] 0.322 1.381e-02 3.058e-02
+ [324,] 0.323 1.384e-02 3.061e-02
+ [325,] 0.324 1.387e-02 3.065e-02
+ [326,] 0.325 1.390e-02 3.068e-02
+ [327,] 0.326 1.394e-02 3.072e-02
+ [328,] 0.327 1.397e-02 3.075e-02
+ [329,] 0.328 1.400e-02 3.078e-02
+ [330,] 0.329 1.403e-02 3.082e-02
+ [331,] 0.330 1.406e-02 3.085e-02
+ [332,] 0.331 1.410e-02 3.088e-02
+ [333,] 0.332 1.413e-02 3.091e-02
+ [334,] 0.333 1.416e-02 3.094e-02
+ [335,] 0.334 1.419e-02 3.097e-02
+ [336,] 0.335 1.422e-02 3.101e-02
+ [337,] 0.336 1.425e-02 3.104e-02
+ [338,] 0.337 1.428e-02 3.106e-02
+ [339,] 0.338 1.431e-02 3.109e-02
+ [340,] 0.339 1.434e-02 3.112e-02
+ [341,] 0.340 1.437e-02 3.115e-02
+ [342,] 0.341 1.440e-02 3.118e-02
+ [343,] 0.342 1.443e-02 3.121e-02
+ [344,] 0.343 1.446e-02 3.123e-02
+ [345,] 0.344 1.448e-02 3.126e-02
+ [346,] 0.345 1.451e-02 3.129e-02
+ [347,] 0.346 1.454e-02 3.131e-02
+ [348,] 0.347 1.457e-02 3.134e-02
+ [349,] 0.348 1.460e-02 3.137e-02
+ [350,] 0.349 1.462e-02 3.139e-02
+ [351,] 0.350 1.465e-02 3.142e-02
+ [352,] 0.351 1.468e-02 3.144e-02
+ [353,] 0.352 1.471e-02 3.147e-02
+ [354,] 0.353 1.473e-02 3.149e-02
+ [355,] 0.354 1.476e-02 3.152e-02
+ [356,] 0.355 1.479e-02 3.154e-02
+ [357,] 0.356 1.481e-02 3.156e-02
+ [358,] 0.357 1.484e-02 3.159e-02
+ [359,] 0.358 1.487e-02 3.161e-02
+ [360,] 0.359 1.489e-02 3.163e-02
+ [361,] 0.360 1.492e-02 3.166e-02
+ [362,] 0.361 1.494e-02 3.168e-02
+ [363,] 0.362 1.497e-02 3.170e-02
+ [364,] 0.363 1.500e-02 3.172e-02
+ [365,] 0.364 1.502e-02 3.174e-02
+ [366,] 0.365 1.505e-02 3.177e-02
+ [367,] 0.366 1.507e-02 3.179e-02
+ [368,] 0.367 1.509e-02 3.181e-02
+ [369,] 0.368 1.512e-02 3.183e-02
+ [370,] 0.369 1.514e-02 3.185e-02
+ [371,] 0.370 1.517e-02 3.187e-02
+ [372,] 0.371 1.519e-02 3.189e-02
+ [373,] 0.372 1.522e-02 3.191e-02
+ [374,] 0.373 1.524e-02 3.193e-02
+ [375,] 0.374 1.526e-02 3.195e-02
+ [376,] 0.375 1.529e-02 3.197e-02
+ [377,] 0.376 1.531e-02 3.199e-02
+ [378,] 0.377 1.533e-02 3.201e-02
+ [379,] 0.378 1.536e-02 3.203e-02
+ [380,] 0.379 1.538e-02 3.205e-02
+ [381,] 0.380 1.540e-02 3.207e-02
+ [382,] 0.381 1.542e-02 3.209e-02
+ [383,] 0.382 1.544e-02 3.211e-02
+ [384,] 0.383 1.547e-02 3.213e-02
+ [385,] 0.384 1.549e-02 3.215e-02
+ [386,] 0.385 1.551e-02 3.217e-02
+ [387,] 0.386 1.553e-02 3.219e-02
+ [388,] 0.387 1.555e-02 3.221e-02
+ [389,] 0.388 1.557e-02 3.222e-02
+ [390,] 0.389 1.559e-02 3.224e-02
+ [391,] 0.390 1.562e-02 3.226e-02
+ [392,] 0.391 1.564e-02 3.228e-02
+ [393,] 0.392 1.566e-02 3.230e-02
+ [394,] 0.393 1.568e-02 3.231e-02
+ [395,] 0.394 1.570e-02 3.233e-02
+ [396,] 0.395 1.572e-02 3.235e-02
+ [397,] 0.396 1.574e-02 3.237e-02
+ [398,] 0.397 1.576e-02 3.239e-02
+ [399,] 0.398 1.577e-02 3.240e-02
+ [400,] 0.399 1.579e-02 3.242e-02
+ [401,] 0.400 1.581e-02 3.244e-02
+ [402,] 0.401 1.583e-02 3.245e-02
+ [403,] 0.402 1.585e-02 3.247e-02
+ [404,] 0.403 1.587e-02 3.249e-02
+ [405,] 0.404 1.589e-02 3.251e-02
+ [406,] 0.405 1.590e-02 3.252e-02
+ [407,] 0.406 1.592e-02 3.254e-02
+ [408,] 0.407 1.594e-02 3.256e-02
+ [409,] 0.408 1.596e-02 3.257e-02
+ [410,] 0.409 1.597e-02 3.259e-02
+ [411,] 0.410 1.599e-02 3.261e-02
+ [412,] 0.411 1.601e-02 3.262e-02
+ [413,] 0.412 1.603e-02 3.264e-02
+ [414,] 0.413 1.604e-02 3.265e-02
+ [415,] 0.414 1.606e-02 3.267e-02
+ [416,] 0.415 1.607e-02 3.269e-02
+ [417,] 0.416 1.609e-02 3.270e-02
+ [418,] 0.417 1.611e-02 3.272e-02
+ [419,] 0.418 1.612e-02 3.273e-02
+ [420,] 0.419 1.614e-02 3.275e-02
+ [421,] 0.420 1.615e-02 3.276e-02
+ [422,] 0.421 1.617e-02 3.278e-02
+ [423,] 0.422 1.618e-02 3.279e-02
+ [424,] 0.423 1.620e-02 3.281e-02
+ [425,] 0.424 1.621e-02 3.282e-02
+ [426,] 0.425 1.623e-02 3.284e-02
+ [427,] 0.426 1.624e-02 3.285e-02
+ [428,] 0.427 1.625e-02 3.287e-02
+ [429,] 0.428 1.627e-02 3.288e-02
+ [430,] 0.429 1.628e-02 3.290e-02
+ [431,] 0.430 1.629e-02 3.291e-02
+ [432,] 0.431 1.631e-02 3.292e-02
+ [433,] 0.432 1.632e-02 3.294e-02
+ [434,] 0.433 1.633e-02 3.295e-02
+ [435,] 0.434 1.634e-02 3.297e-02
+ [436,] 0.435 1.636e-02 3.298e-02
+ [437,] 0.436 1.637e-02 3.299e-02
+ [438,] 0.437 1.638e-02 3.301e-02
+ [439,] 0.438 1.639e-02 3.302e-02
+ [440,] 0.439 1.640e-02 3.303e-02
+ [441,] 0.440 1.641e-02 3.304e-02
+ [442,] 0.441 1.642e-02 3.306e-02
+ [443,] 0.442 1.644e-02 3.307e-02
+ [444,] 0.443 1.645e-02 3.308e-02
+ [445,] 0.444 1.646e-02 3.309e-02
+ [446,] 0.445 1.647e-02 3.311e-02
+ [447,] 0.446 1.648e-02 3.312e-02
+ [448,] 0.447 1.649e-02 3.313e-02
+ [449,] 0.448 1.650e-02 3.314e-02
+ [450,] 0.449 1.650e-02 3.315e-02
+ [451,] 0.450 1.651e-02 3.316e-02
+ [452,] 0.451 1.652e-02 3.318e-02
+ [453,] 0.452 1.653e-02 3.319e-02
+ [454,] 0.453 1.654e-02 3.320e-02
+ [455,] 0.454 1.655e-02 3.321e-02
+ [456,] 0.455 1.656e-02 3.322e-02
+ [457,] 0.456 1.656e-02 3.323e-02
+ [458,] 0.457 1.657e-02 3.324e-02
+ [459,] 0.458 1.658e-02 3.325e-02
+ [460,] 0.459 1.659e-02 3.326e-02
+ [461,] 0.460 1.659e-02 3.327e-02
+ [462,] 0.461 1.660e-02 3.328e-02
+ [463,] 0.462 1.661e-02 3.328e-02
+ [464,] 0.463 1.661e-02 3.329e-02
+ [465,] 0.464 1.662e-02 3.330e-02
+ [466,] 0.465 1.663e-02 3.331e-02
+ [467,] 0.466 1.663e-02 3.332e-02
+ [468,] 0.467 1.664e-02 3.333e-02
+ [469,] 0.468 1.664e-02 3.333e-02
+ [470,] 0.469 1.665e-02 3.334e-02
+ [471,] 0.470 1.665e-02 3.335e-02
+ [472,] 0.471 1.666e-02 3.336e-02
+ [473,] 0.472 1.666e-02 3.336e-02
+ [474,] 0.473 1.667e-02 3.337e-02
+ [475,] 0.474 1.667e-02 3.338e-02
+ [476,] 0.475 1.668e-02 3.338e-02
+ [477,] 0.476 1.668e-02 3.339e-02
+ [478,] 0.477 1.668e-02 3.339e-02
+ [479,] 0.478 1.669e-02 3.340e-02
+ [480,] 0.479 1.669e-02 3.340e-02
+ [481,] 0.480 1.670e-02 3.341e-02
+ [482,] 0.481 1.670e-02 3.341e-02
+ [483,] 0.482 1.670e-02 3.342e-02
+ [484,] 0.483 1.670e-02 3.342e-02
+ [485,] 0.484 1.671e-02 3.343e-02
+ [486,] 0.485 1.671e-02 3.343e-02
+ [487,] 0.486 1.671e-02 3.343e-02
+ [488,] 0.487 1.671e-02 3.344e-02
+ [489,] 0.488 1.672e-02 3.344e-02
+ [490,] 0.489 1.672e-02 3.344e-02
+ [491,] 0.490 1.672e-02 3.345e-02
+ [492,] 0.491 1.672e-02 3.345e-02
+ [493,] 0.492 1.672e-02 3.345e-02
+ [494,] 0.493 1.672e-02 3.345e-02
+ [495,] 0.494 1.673e-02 3.345e-02
+ [496,] 0.495 1.673e-02 3.346e-02
+ [497,] 0.496 1.673e-02 3.346e-02
+ [498,] 0.497 1.673e-02 3.346e-02
+ [499,] 0.498 1.673e-02 3.346e-02
+ [500,] 0.499 1.673e-02 3.346e-02
+ [501,] 0.500 1.673e-02 3.346e-02
+ [502,] 0.501 1.673e-02 3.346e-02
+ [503,] 0.502 1.673e-02 3.346e-02
+ [504,] 0.503 1.673e-02 3.346e-02
+ [505,] 0.504 1.673e-02 3.346e-02
+ [506,] 0.505 1.673e-02 3.346e-02
+ [507,] 0.506 1.673e-02 3.345e-02
+ [508,] 0.507 1.673e-02 3.345e-02
+ [509,] 0.508 1.673e-02 3.345e-02
+ [510,] 0.509 1.673e-02 3.345e-02
+ [511,] 0.510 1.673e-02 3.345e-02
+ [512,] 0.511 1.673e-02 3.344e-02
+ [513,] 0.512 1.672e-02 3.344e-02
+ [514,] 0.513 1.672e-02 3.344e-02
+ [515,] 0.514 1.672e-02 3.343e-02
+ [516,] 0.515 1.672e-02 3.343e-02
+ [517,] 0.516 1.672e-02 3.343e-02
+ [518,] 0.517 1.672e-02 3.342e-02
+ [519,] 0.518 1.672e-02 3.342e-02
+ [520,] 0.519 1.672e-02 3.341e-02
+ [521,] 0.520 1.671e-02 3.341e-02
+ [522,] 0.521 1.671e-02 3.340e-02
+ [523,] 0.522 1.671e-02 3.340e-02
+ [524,] 0.523 1.671e-02 3.339e-02
+ [525,] 0.524 1.671e-02 3.339e-02
+ [526,] 0.525 1.671e-02 3.338e-02
+ [527,] 0.526 1.670e-02 3.338e-02
+ [528,] 0.527 1.670e-02 3.337e-02
+ [529,] 0.528 1.670e-02 3.336e-02
+ [530,] 0.529 1.670e-02 3.336e-02
+ [531,] 0.530 1.670e-02 3.335e-02
+ [532,] 0.531 1.669e-02 3.334e-02
+ [533,] 0.532 1.669e-02 3.333e-02
+ [534,] 0.533 1.669e-02 3.333e-02
+ [535,] 0.534 1.669e-02 3.332e-02
+ [536,] 0.535 1.668e-02 3.331e-02
+ [537,] 0.536 1.668e-02 3.330e-02
+ [538,] 0.537 1.668e-02 3.329e-02
+ [539,] 0.538 1.668e-02 3.328e-02
+ [540,] 0.539 1.668e-02 3.328e-02
+ [541,] 0.540 1.667e-02 3.327e-02
+ [542,] 0.541 1.667e-02 3.326e-02
+ [543,] 0.542 1.667e-02 3.325e-02
+ [544,] 0.543 1.667e-02 3.324e-02
+ [545,] 0.544 1.666e-02 3.323e-02
+ [546,] 0.545 1.666e-02 3.322e-02
+ [547,] 0.546 1.666e-02 3.321e-02
+ [548,] 0.547 1.666e-02 3.320e-02
+ [549,] 0.548 1.666e-02 3.319e-02
+ [550,] 0.549 1.665e-02 3.318e-02
+ [551,] 0.550 1.665e-02 3.316e-02
+ [552,] 0.551 1.665e-02 3.315e-02
+ [553,] 0.552 1.665e-02 3.314e-02
+ [554,] 0.553 1.664e-02 3.313e-02
+ [555,] 0.554 1.664e-02 3.312e-02
+ [556,] 0.555 1.664e-02 3.311e-02
+ [557,] 0.556 1.664e-02 3.309e-02
+ [558,] 0.557 1.664e-02 3.308e-02
+ [559,] 0.558 1.664e-02 3.307e-02
+ [560,] 0.559 1.663e-02 3.306e-02
+ [561,] 0.560 1.663e-02 3.304e-02
+ [562,] 0.561 1.663e-02 3.303e-02
+ [563,] 0.562 1.663e-02 3.302e-02
+ [564,] 0.563 1.663e-02 3.301e-02
+ [565,] 0.564 1.663e-02 3.299e-02
+ [566,] 0.565 1.662e-02 3.298e-02
+ [567,] 0.566 1.662e-02 3.297e-02
+ [568,] 0.567 1.662e-02 3.295e-02
+ [569,] 0.568 1.662e-02 3.294e-02
+ [570,] 0.569 1.662e-02 3.292e-02
+ [571,] 0.570 1.662e-02 3.291e-02
+ [572,] 0.571 1.662e-02 3.290e-02
+ [573,] 0.572 1.662e-02 3.288e-02
+ [574,] 0.573 1.661e-02 3.287e-02
+ [575,] 0.574 1.661e-02 3.285e-02
+ [576,] 0.575 1.661e-02 3.284e-02
+ [577,] 0.576 1.661e-02 3.282e-02
+ [578,] 0.577 1.661e-02 3.281e-02
+ [579,] 0.578 1.661e-02 3.279e-02
+ [580,] 0.579 1.661e-02 3.278e-02
+ [581,] 0.580 1.661e-02 3.276e-02
+ [582,] 0.581 1.661e-02 3.275e-02
+ [583,] 0.582 1.661e-02 3.273e-02
+ [584,] 0.583 1.661e-02 3.272e-02
+ [585,] 0.584 1.661e-02 3.270e-02
+ [586,] 0.585 1.661e-02 3.269e-02
+ [587,] 0.586 1.661e-02 3.267e-02
+ [588,] 0.587 1.661e-02 3.265e-02
+ [589,] 0.588 1.661e-02 3.264e-02
+ [590,] 0.589 1.661e-02 3.262e-02
+ [591,] 0.590 1.661e-02 3.261e-02
+ [592,] 0.591 1.661e-02 3.259e-02
+ [593,] 0.592 1.662e-02 3.257e-02
+ [594,] 0.593 1.662e-02 3.256e-02
+ [595,] 0.594 1.662e-02 3.254e-02
+ [596,] 0.595 1.662e-02 3.252e-02
+ [597,] 0.596 1.662e-02 3.251e-02
+ [598,] 0.597 1.662e-02 3.249e-02
+ [599,] 0.598 1.662e-02 3.247e-02
+ [600,] 0.599 1.662e-02 3.245e-02
+ [601,] 0.600 1.663e-02 3.244e-02
+ [602,] 0.601 1.663e-02 3.242e-02
+ [603,] 0.602 1.663e-02 3.240e-02
+ [604,] 0.603 1.663e-02 3.239e-02
+ [605,] 0.604 1.663e-02 3.237e-02
+ [606,] 0.605 1.663e-02 3.235e-02
+ [607,] 0.606 1.664e-02 3.233e-02
+ [608,] 0.607 1.664e-02 3.231e-02
+ [609,] 0.608 1.664e-02 3.230e-02
+ [610,] 0.609 1.664e-02 3.228e-02
+ [611,] 0.610 1.665e-02 3.226e-02
+ [612,] 0.611 1.665e-02 3.224e-02
+ [613,] 0.612 1.665e-02 3.222e-02
+ [614,] 0.613 1.665e-02 3.221e-02
+ [615,] 0.614 1.666e-02 3.219e-02
+ [616,] 0.615 1.666e-02 3.217e-02
+ [617,] 0.616 1.666e-02 3.215e-02
+ [618,] 0.617 1.666e-02 3.213e-02
+ [619,] 0.618 1.667e-02 3.211e-02
+ [620,] 0.619 1.667e-02 3.209e-02
+ [621,] 0.620 1.667e-02 3.207e-02
+ [622,] 0.621 1.668e-02 3.205e-02
+ [623,] 0.622 1.668e-02 3.203e-02
+ [624,] 0.623 1.668e-02 3.201e-02
+ [625,] 0.624 1.668e-02 3.199e-02
+ [626,] 0.625 1.669e-02 3.197e-02
+ [627,] 0.626 1.669e-02 3.195e-02
+ [628,] 0.627 1.669e-02 3.193e-02
+ [629,] 0.628 1.670e-02 3.191e-02
+ [630,] 0.629 1.670e-02 3.189e-02
+ [631,] 0.630 1.670e-02 3.187e-02
+ [632,] 0.631 1.671e-02 3.185e-02
+ [633,] 0.632 1.671e-02 3.183e-02
+ [634,] 0.633 1.671e-02 3.181e-02
+ [635,] 0.634 1.672e-02 3.179e-02
+ [636,] 0.635 1.672e-02 3.177e-02
+ [637,] 0.636 1.672e-02 3.174e-02
+ [638,] 0.637 1.673e-02 3.172e-02
+ [639,] 0.638 1.673e-02 3.170e-02
+ [640,] 0.639 1.673e-02 3.168e-02
+ [641,] 0.640 1.674e-02 3.166e-02
+ [642,] 0.641 1.674e-02 3.163e-02
+ [643,] 0.642 1.674e-02 3.161e-02
+ [644,] 0.643 1.675e-02 3.159e-02
+ [645,] 0.644 1.675e-02 3.156e-02
+ [646,] 0.645 1.675e-02 3.154e-02
+ [647,] 0.646 1.675e-02 3.152e-02
+ [648,] 0.647 1.676e-02 3.149e-02
+ [649,] 0.648 1.676e-02 3.147e-02
+ [650,] 0.649 1.676e-02 3.144e-02
+ [651,] 0.650 1.677e-02 3.142e-02
+ [652,] 0.651 1.677e-02 3.139e-02
+ [653,] 0.652 1.677e-02 3.137e-02
+ [654,] 0.653 1.677e-02 3.134e-02
+ [655,] 0.654 1.677e-02 3.131e-02
+ [656,] 0.655 1.678e-02 3.129e-02
+ [657,] 0.656 1.678e-02 3.126e-02
+ [658,] 0.657 1.678e-02 3.123e-02
+ [659,] 0.658 1.678e-02 3.121e-02
+ [660,] 0.659 1.678e-02 3.118e-02
+ [661,] 0.660 1.678e-02 3.115e-02
+ [662,] 0.661 1.678e-02 3.112e-02
+ [663,] 0.662 1.679e-02 3.109e-02
+ [664,] 0.663 1.679e-02 3.106e-02
+ [665,] 0.664 1.679e-02 3.104e-02
+ [666,] 0.665 1.679e-02 3.101e-02
+ [667,] 0.666 1.679e-02 3.097e-02
+ [668,] 0.667 1.679e-02 3.094e-02
+ [669,] 0.668 1.679e-02 3.091e-02
+ [670,] 0.669 1.679e-02 3.088e-02
+ [671,] 0.670 1.679e-02 3.085e-02
+ [672,] 0.671 1.678e-02 3.082e-02
+ [673,] 0.672 1.678e-02 3.078e-02
+ [674,] 0.673 1.678e-02 3.075e-02
+ [675,] 0.674 1.678e-02 3.072e-02
+ [676,] 0.675 1.678e-02 3.068e-02
+ [677,] 0.676 1.678e-02 3.065e-02
+ [678,] 0.677 1.677e-02 3.061e-02
+ [679,] 0.678 1.677e-02 3.058e-02
+ [680,] 0.679 1.677e-02 3.054e-02
+ [681,] 0.680 1.676e-02 3.050e-02
+ [682,] 0.681 1.676e-02 3.046e-02
+ [683,] 0.682 1.675e-02 3.043e-02
+ [684,] 0.683 1.675e-02 3.039e-02
+ [685,] 0.684 1.675e-02 3.035e-02
+ [686,] 0.685 1.674e-02 3.031e-02
+ [687,] 0.686 1.673e-02 3.027e-02
+ [688,] 0.687 1.673e-02 3.023e-02
+ [689,] 0.688 1.672e-02 3.018e-02
+ [690,] 0.689 1.672e-02 3.014e-02
+ [691,] 0.690 1.671e-02 3.010e-02
+ [692,] 0.691 1.670e-02 3.006e-02
+ [693,] 0.692 1.669e-02 3.001e-02
+ [694,] 0.693 1.668e-02 2.997e-02
+ [695,] 0.694 1.668e-02 2.992e-02
+ [696,] 0.695 1.667e-02 2.987e-02
+ [697,] 0.696 1.666e-02 2.983e-02
+ [698,] 0.697 1.665e-02 2.978e-02
+ [699,] 0.698 1.664e-02 2.973e-02
+ [700,] 0.699 1.663e-02 2.968e-02
+ [701,] 0.700 1.661e-02 2.963e-02
+ [702,] 0.701 1.660e-02 2.958e-02
+ [703,] 0.702 1.659e-02 2.953e-02
+ [704,] 0.703 1.658e-02 2.948e-02
+ [705,] 0.704 1.656e-02 2.942e-02
+ [706,] 0.705 1.655e-02 2.937e-02
+ [707,] 0.706 1.654e-02 2.931e-02
+ [708,] 0.707 1.652e-02 2.926e-02
+ [709,] 0.708 1.651e-02 2.920e-02
+ [710,] 0.709 1.649e-02 2.915e-02
+ [711,] 0.710 1.647e-02 2.909e-02
+ [712,] 0.711 1.646e-02 2.903e-02
+ [713,] 0.712 1.644e-02 2.897e-02
+ [714,] 0.713 1.642e-02 2.891e-02
+ [715,] 0.714 1.640e-02 2.885e-02
+ [716,] 0.715 1.638e-02 2.878e-02
+ [717,] 0.716 1.636e-02 2.872e-02
+ [718,] 0.717 1.634e-02 2.866e-02
+ [719,] 0.718 1.632e-02 2.859e-02
+ [720,] 0.719 1.630e-02 2.852e-02
+ [721,] 0.720 1.628e-02 2.846e-02
+ [722,] 0.721 1.625e-02 2.839e-02
+ [723,] 0.722 1.623e-02 2.832e-02
+ [724,] 0.723 1.620e-02 2.825e-02
+ [725,] 0.724 1.618e-02 2.818e-02
+ [726,] 0.725 1.615e-02 2.811e-02
+ [727,] 0.726 1.613e-02 2.803e-02
+ [728,] 0.727 1.610e-02 2.796e-02
+ [729,] 0.728 1.607e-02 2.788e-02
+ [730,] 0.729 1.604e-02 2.781e-02
+ [731,] 0.730 1.602e-02 2.773e-02
+ [732,] 0.731 1.599e-02 2.765e-02
+ [733,] 0.732 1.596e-02 2.757e-02
+ [734,] 0.733 1.593e-02 2.749e-02
+ [735,] 0.734 1.589e-02 2.741e-02
+ [736,] 0.735 1.586e-02 2.733e-02
+ [737,] 0.736 1.583e-02 2.724e-02
+ [738,] 0.737 1.579e-02 2.716e-02
+ [739,] 0.738 1.576e-02 2.707e-02
+ [740,] 0.739 1.572e-02 2.699e-02
+ [741,] 0.740 1.569e-02 2.690e-02
+ [742,] 0.741 1.565e-02 2.681e-02
+ [743,] 0.742 1.561e-02 2.672e-02
+ [744,] 0.743 1.558e-02 2.663e-02
+ [745,] 0.744 1.554e-02 2.654e-02
+ [746,] 0.745 1.550e-02 2.644e-02
+ [747,] 0.746 1.546e-02 2.635e-02
+ [748,] 0.747 1.542e-02 2.625e-02
+ [749,] 0.748 1.537e-02 2.616e-02
+ [750,] 0.749 1.533e-02 2.606e-02
+ [751,] 0.750 1.529e-02 2.596e-02
+ [752,] 0.751 1.524e-02 2.586e-02
+ [753,] 0.752 1.520e-02 2.576e-02
+ [754,] 0.753 1.515e-02 2.565e-02
+ [755,] 0.754 1.511e-02 2.555e-02
+ [756,] 0.755 1.506e-02 2.544e-02
+ [757,] 0.756 1.501e-02 2.534e-02
+ [758,] 0.757 1.496e-02 2.523e-02
+ [759,] 0.758 1.491e-02 2.512e-02
+ [760,] 0.759 1.486e-02 2.501e-02
+ [761,] 0.760 1.481e-02 2.490e-02
+ [762,] 0.761 1.476e-02 2.479e-02
+ [763,] 0.762 1.471e-02 2.468e-02
+ [764,] 0.763 1.465e-02 2.456e-02
+ [765,] 0.764 1.460e-02 2.445e-02
+ [766,] 0.765 1.454e-02 2.433e-02
+ [767,] 0.766 1.449e-02 2.421e-02
+ [768,] 0.767 1.443e-02 2.410e-02
+ [769,] 0.768 1.438e-02 2.398e-02
+ [770,] 0.769 1.432e-02 2.385e-02
+ [771,] 0.770 1.426e-02 2.373e-02
+ [772,] 0.771 1.420e-02 2.361e-02
+ [773,] 0.772 1.414e-02 2.348e-02
+ [774,] 0.773 1.408e-02 2.336e-02
+ [775,] 0.774 1.402e-02 2.323e-02
+ [776,] 0.775 1.395e-02 2.311e-02
+ [777,] 0.776 1.389e-02 2.298e-02
+ [778,] 0.777 1.382e-02 2.285e-02
+ [779,] 0.778 1.376e-02 2.272e-02
+ [780,] 0.779 1.369e-02 2.258e-02
+ [781,] 0.780 1.363e-02 2.245e-02
+ [782,] 0.781 1.356e-02 2.232e-02
+ [783,] 0.782 1.349e-02 2.218e-02
+ [784,] 0.783 1.342e-02 2.204e-02
+ [785,] 0.784 1.335e-02 2.191e-02
+ [786,] 0.785 1.328e-02 2.177e-02
+ [787,] 0.786 1.321e-02 2.163e-02
+ [788,] 0.787 1.314e-02 2.149e-02
+ [789,] 0.788 1.307e-02 2.135e-02
+ [790,] 0.789 1.300e-02 2.120e-02
+ [791,] 0.790 1.292e-02 2.106e-02
+ [792,] 0.791 1.285e-02 2.092e-02
+ [793,] 0.792 1.277e-02 2.077e-02
+ [794,] 0.793 1.270e-02 2.063e-02
+ [795,] 0.794 1.262e-02 2.048e-02
+ [796,] 0.795 1.254e-02 2.033e-02
+ [797,] 0.796 1.246e-02 2.018e-02
+ [798,] 0.797 1.239e-02 2.003e-02
+ [799,] 0.798 1.231e-02 1.988e-02
+ [800,] 0.799 1.223e-02 1.973e-02
+ [801,] 0.800 1.215e-02 1.958e-02
+ [802,] 0.801 1.207e-02 1.942e-02
+ [803,] 0.802 1.198e-02 1.927e-02
+ [804,] 0.803 1.190e-02 1.912e-02
+ [805,] 0.804 1.182e-02 1.896e-02
+ [806,] 0.805 1.173e-02 1.880e-02
+ [807,] 0.806 1.165e-02 1.865e-02
+ [808,] 0.807 1.157e-02 1.849e-02
+ [809,] 0.808 1.148e-02 1.833e-02
+ [810,] 0.809 1.139e-02 1.817e-02
+ [811,] 0.810 1.131e-02 1.801e-02
+ [812,] 0.811 1.122e-02 1.785e-02
+ [813,] 0.812 1.113e-02 1.769e-02
+ [814,] 0.813 1.104e-02 1.753e-02
+ [815,] 0.814 1.096e-02 1.737e-02
+ [816,] 0.815 1.087e-02 1.720e-02
+ [817,] 0.816 1.078e-02 1.704e-02
+ [818,] 0.817 1.069e-02 1.687e-02
+ [819,] 0.818 1.060e-02 1.671e-02
+ [820,] 0.819 1.051e-02 1.655e-02
+ [821,] 0.820 1.041e-02 1.638e-02
+ [822,] 0.821 1.032e-02 1.621e-02
+ [823,] 0.822 1.023e-02 1.605e-02
+ [824,] 0.823 1.014e-02 1.588e-02
+ [825,] 0.824 1.004e-02 1.571e-02
+ [826,] 0.825 9.951e-03 1.555e-02
+ [827,] 0.826 9.857e-03 1.538e-02
+ [828,] 0.827 9.763e-03 1.521e-02
+ [829,] 0.828 9.668e-03 1.504e-02
+ [830,] 0.829 9.573e-03 1.488e-02
+ [831,] 0.830 9.478e-03 1.471e-02
+ [832,] 0.831 9.382e-03 1.454e-02
+ [833,] 0.832 9.286e-03 1.437e-02
+ [834,] 0.833 9.190e-03 1.420e-02
+ [835,] 0.834 9.094e-03 1.403e-02
+ [836,] 0.835 8.997e-03 1.386e-02
+ [837,] 0.836 8.900e-03 1.369e-02
+ [838,] 0.837 8.803e-03 1.352e-02
+ [839,] 0.838 8.706e-03 1.335e-02
+ [840,] 0.839 8.608e-03 1.318e-02
+ [841,] 0.840 8.510e-03 1.302e-02
+ [842,] 0.841 8.413e-03 1.285e-02
+ [843,] 0.842 8.315e-03 1.268e-02
+ [844,] 0.843 8.216e-03 1.251e-02
+ [845,] 0.844 8.118e-03 1.234e-02
+ [846,] 0.845 8.020e-03 1.217e-02
+ [847,] 0.846 7.921e-03 1.200e-02
+ [848,] 0.847 7.823e-03 1.184e-02
+ [849,] 0.848 7.724e-03 1.167e-02
+ [850,] 0.849 7.626e-03 1.150e-02
+ [851,] 0.850 7.527e-03 1.133e-02
+ [852,] 0.851 7.429e-03 1.117e-02
+ [853,] 0.852 7.330e-03 1.100e-02
+ [854,] 0.853 7.231e-03 1.083e-02
+ [855,] 0.854 7.133e-03 1.067e-02
+ [856,] 0.855 7.034e-03 1.050e-02
+ [857,] 0.856 6.936e-03 1.034e-02
+ [858,] 0.857 6.838e-03 1.017e-02
+ [859,] 0.858 6.740e-03 1.001e-02
+ [860,] 0.859 6.642e-03 9.849e-03
+ [861,] 0.860 6.544e-03 9.687e-03
+ [862,] 0.861 6.446e-03 9.525e-03
+ [863,] 0.862 6.349e-03 9.365e-03
+ [864,] 0.863 6.251e-03 9.205e-03
+ [865,] 0.864 6.154e-03 9.045e-03
+ [866,] 0.865 6.057e-03 8.887e-03
+ [867,] 0.866 5.961e-03 8.729e-03
+ [868,] 0.867 5.865e-03 8.572e-03
+ [869,] 0.868 5.769e-03 8.416e-03
+ [870,] 0.869 5.673e-03 8.261e-03
+ [871,] 0.870 5.578e-03 8.107e-03
+ [872,] 0.871 5.483e-03 7.953e-03
+ [873,] 0.872 5.388e-03 7.801e-03
+ [874,] 0.873 5.294e-03 7.650e-03
+ [875,] 0.874 5.200e-03 7.499e-03
+ [876,] 0.875 5.106e-03 7.350e-03
+ [877,] 0.876 5.013e-03 7.202e-03
+ [878,] 0.877 4.921e-03 7.055e-03
+ [879,] 0.878 4.829e-03 6.909e-03
+ [880,] 0.879 4.737e-03 6.764e-03
+ [881,] 0.880 4.646e-03 6.621e-03
+ [882,] 0.881 4.555e-03 6.478e-03
+ [883,] 0.882 4.465e-03 6.337e-03
+ [884,] 0.883 4.376e-03 6.197e-03
+ [885,] 0.884 4.287e-03 6.058e-03
+ [886,] 0.885 4.199e-03 5.921e-03
+ [887,] 0.886 4.111e-03 5.785e-03
+ [888,] 0.887 4.024e-03 5.650e-03
+ [889,] 0.888 3.938e-03 5.517e-03
+ [890,] 0.889 3.852e-03 5.385e-03
+ [891,] 0.890 3.767e-03 5.255e-03
+ [892,] 0.891 3.682e-03 5.126e-03
+ [893,] 0.892 3.599e-03 4.998e-03
+ [894,] 0.893 3.516e-03 4.872e-03
+ [895,] 0.894 3.434e-03 4.747e-03
+ [896,] 0.895 3.352e-03 4.624e-03
+ [897,] 0.896 3.272e-03 4.503e-03
+ [898,] 0.897 3.192e-03 4.383e-03
+ [899,] 0.898 3.113e-03 4.264e-03
+ [900,] 0.899 3.034e-03 4.147e-03
+ [901,] 0.900 2.957e-03 4.032e-03
+ [902,] 0.901 2.880e-03 3.918e-03
+ [903,] 0.902 2.805e-03 3.806e-03
+ [904,] 0.903 2.730e-03 3.696e-03
+ [905,] 0.904 2.656e-03 3.587e-03
+ [906,] 0.905 2.583e-03 3.480e-03
+ [907,] 0.906 2.511e-03 3.374e-03
+ [908,] 0.907 2.440e-03 3.271e-03
+ [909,] 0.908 2.369e-03 3.169e-03
+ [910,] 0.909 2.300e-03 3.068e-03
+ [911,] 0.910 2.232e-03 2.970e-03
+ [912,] 0.911 2.165e-03 2.873e-03
+ [913,] 0.912 2.098e-03 2.778e-03
+ [914,] 0.913 2.033e-03 2.684e-03
+ [915,] 0.914 1.969e-03 2.593e-03
+ [916,] 0.915 1.905e-03 2.503e-03
+ [917,] 0.916 1.843e-03 2.415e-03
+ [918,] 0.917 1.782e-03 2.329e-03
+ [919,] 0.918 1.722e-03 2.244e-03
+ [920,] 0.919 1.663e-03 2.161e-03
+ [921,] 0.920 1.605e-03 2.080e-03
+ [922,] 0.921 1.548e-03 2.001e-03
+ [923,] 0.922 1.492e-03 1.923e-03
+ [924,] 0.923 1.437e-03 1.848e-03
+ [925,] 0.924 1.383e-03 1.774e-03
+ [926,] 0.925 1.331e-03 1.702e-03
+ [927,] 0.926 1.279e-03 1.631e-03
+ [928,] 0.927 1.229e-03 1.563e-03
+ [929,] 0.928 1.180e-03 1.496e-03
+ [930,] 0.929 1.131e-03 1.431e-03
+ [931,] 0.930 1.084e-03 1.367e-03
+ [932,] 0.931 1.039e-03 1.306e-03
+ [933,] 0.932 9.937e-04 1.246e-03
+ [934,] 0.933 9.500e-04 1.188e-03
+ [935,] 0.934 9.075e-04 1.131e-03
+ [936,] 0.935 8.660e-04 1.076e-03
+ [937,] 0.936 8.257e-04 1.023e-03
+ [938,] 0.937 7.865e-04 9.718e-04
+ [939,] 0.938 7.484e-04 9.220e-04
+ [940,] 0.939 7.115e-04 8.739e-04
+ [941,] 0.940 6.756e-04 8.273e-04
+ [942,] 0.941 6.408e-04 7.824e-04
+ [943,] 0.942 6.072e-04 7.391e-04
+ [944,] 0.943 5.746e-04 6.973e-04
+ [945,] 0.944 5.431e-04 6.571e-04
+ [946,] 0.945 5.127e-04 6.184e-04
+ [947,] 0.946 4.833e-04 5.812e-04
+ [948,] 0.947 4.550e-04 5.455e-04
+ [949,] 0.948 4.278e-04 5.112e-04
+ [950,] 0.949 4.016e-04 4.784e-04
+ [951,] 0.950 3.764e-04 4.470e-04
+ [952,] 0.951 3.523e-04 4.171e-04
+ [953,] 0.952 3.291e-04 3.884e-04
+ [954,] 0.953 3.070e-04 3.611e-04
+ [955,] 0.954 2.858e-04 3.351e-04
+ [956,] 0.955 2.656e-04 3.104e-04
+ [957,] 0.956 2.463e-04 2.870e-04
+ [958,] 0.957 2.280e-04 2.648e-04
+ [959,] 0.958 2.105e-04 2.437e-04
+ [960,] 0.959 1.940e-04 2.238e-04
+ [961,] 0.960 1.783e-04 2.051e-04
+ [962,] 0.961 1.635e-04 1.875e-04
+ [963,] 0.962 1.496e-04 1.709e-04
+ [964,] 0.963 1.364e-04 1.554e-04
+ [965,] 0.964 1.241e-04 1.408e-04
+ [966,] 0.965 1.125e-04 1.272e-04
+ [967,] 0.966 1.016e-04 1.146e-04
+ [968,] 0.967 9.154e-05 1.029e-04
+ [969,] 0.968 8.214e-05 9.198e-05
+ [970,] 0.969 7.341e-05 8.193e-05
+ [971,] 0.970 6.534e-05 7.268e-05
+ [972,] 0.971 5.790e-05 6.418e-05
+ [973,] 0.972 5.107e-05 5.641e-05
+ [974,] 0.973 4.481e-05 4.933e-05
+ [975,] 0.974 3.910e-05 4.290e-05
+ [976,] 0.975 3.392e-05 3.709e-05
+ [977,] 0.976 2.924e-05 3.186e-05
+ [978,] 0.977 2.503e-05 2.718e-05
+ [979,] 0.978 2.127e-05 2.301e-05
+ [980,] 0.979 1.792e-05 1.932e-05
+ [981,] 0.980 1.496e-05 1.608e-05
+ [982,] 0.981 1.237e-05 1.324e-05
+ [983,] 0.982 1.011e-05 1.079e-05
+ [984,] 0.983 8.165e-06 8.681e-06
+ [985,] 0.984 6.503e-06 6.890e-06
+ [986,] 0.985 5.099e-06 5.383e-06
+ [987,] 0.986 3.927e-06 4.131e-06
+ [988,] 0.987 2.963e-06 3.106e-06
+ [989,] 0.988 2.184e-06 2.281e-06
+ [990,] 0.989 1.565e-06 1.629e-06
+ [991,] 0.990 1.085e-06 1.125e-06
+ [992,] 0.991 7.225e-07 7.466e-07
+ [993,] 0.992 4.579e-07 4.714e-07
+ [994,] 0.993 2.724e-07 2.795e-07
+ [995,] 0.994 1.493e-07 1.526e-07
+ [996,] 0.995 7.307e-08 7.441e-08
+ [997,] 0.996 3.038e-08 3.083e-08
+ [998,] 0.997 9.757e-09 9.865e-09
+ [999,] 0.998 1.956e-09 1.971e-09
+[1000,] 0.999 1.241e-10 1.246e-10
+[1001,] 1.000 0.000e+00 0.000e+00
+
+$dp
+[1] 0.001
+
+$contingency.matrix
+           Treatment I Treatment II
+Outcome I            2            8
+Outcome II           7            3
+
+$alternative
+[1] "One sided" "Two sided"
+
+$statistic
+[1] 2.247
+
+$nuisance.parameter
+[1] 0.666 0.500
+
+$p.value
+[1] 0.01679 0.03346
+
+$pooled
+[1] TRUE
+```
+
+Interpretation:
+The output includes:
+
+A score statistic (here ≈ 2.24733).
+
+Two nuisance parameter estimates (0.666 for one-sided, 0.500 for two-sided).
+
+Two p-values in $p.value:
+
+barnard_result$p.value[1] = 0.0167869 (one‐sided)
+
+barnard_result$p.value[2] = 0.0334587 (two‐sided)
+
+Two‐sided p‐value (0.0335): Tests whether the adverse‐event probabilities differ in either direction. Since 0.0335 < 0.05, we reject 
+H0
+
+
+  and conclude there is a significant difference in adverse‐event rates between Medication and Placebo.
+
+One‐sided p‐value (0.0168): Tests specifically whether the Medication adverse‐event rate is greater than the Placebo rate. Because 0.0168 < 0.05, we also conclude that Medication has a higher adverse‐event probability than Placebo.
 ::::
 
 ::::spoiler
@@ -3212,6 +4707,65 @@ EJ KORREKTURLÆST
 ### Cochran–Armitage trend test (ordinal tabel)
 
 EJ KORREKTURLÆST
+#### Used for
+- Testing for a linear trend in proportions across ordered categories in a 2×k contingency table.  
+- **Real-world example:** Assessing whether increasing levels of prenatal vitamin dose (Low, Medium, High) correspond to higher rates of healthy birth outcomes (Yes/No).
+
+#### Assumptions
+- Observations are independent.  
+- Categories of the ordinal predictor have a natural order (e.g., Low < Medium < High).  
+- The response is binary within each category (success/failure).  
+- Expected counts for successes and failures in each category are sufficiently large for the χ² approximation (generally ≥ 5).
+
+#### Strengths
+- Specifically targets a monotonic (linear) increase or decrease in the success probability across ordered groups.  
+- More powerful than a general χ² test of independence when a linear trend is present.  
+- Straightforward to compute via `prop.trend.test()` in R.
+
+#### Weaknesses
+- Only detects a linear trend; non-monotonic patterns (e.g., U-shaped) will be missed.  
+- Requires correct ordering and spacing of category scores; misordering invalidates the test.  
+- Sensitive to small expected counts in any group, which can distort the chi-square approximation.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** No linear trend in the probability of a healthy birth outcome across dose levels (slope = 0).  
+- **Alternative hypothesis (H₁):** A positive linear trend exists: higher dose levels correspond to higher healthy birth rates (slope > 0).
+
+
+``` r
+# Define counts of healthy outcomes by dose:
+#   Low:    30 healthy, 20 unhealthy
+#   Medium: 40 healthy, 10 unhealthy
+#   High:   45 healthy, 5  unhealthy
+
+successes <- c(30, 40, 45)   # number of healthy births in Low, Medium, High
+totals    <- c(50, 50, 50)   # total births in each dose group
+scores    <- c(1, 2, 3)      # equally spaced scores for Low, Medium, High
+
+# Perform Cochran–Armitage trend test via prop.trend.test:
+trend_result <- prop.trend.test(successes, totals, score = scores)
+
+# Display results:
+trend_result
+```
+
+``` output
+
+	Chi-squared Test for Trend in Proportions
+
+data:  successes out of totals ,
+ using scores: 1 2 3
+X-squared = 13, df = 1, p-value = 4e-04
+```
+
+Interpretation:
+The Cochran–Armitage test statistic χ² = 12.578 with p-value = 3.9\times 10^{-4}. Because the p-value is < 0.05, we
+reject the null hypothesis.
+Thus, there is
+evidence of a positive linear trend: higher prenatal vitamin doses are associated with higher healthy birth rates.
+
 
 ::::
 
@@ -3220,6 +4774,80 @@ EJ KORREKTURLÆST
 ### Cochran’s Q test (≥3 matched proportions)
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Testing whether proportions of a binary outcome differ across three or more related (matched) groups.  
+- **Real-world example:** Checking if three different allergy medications have different proportions of symptom relief in the same set of patients.
+
+#### Assumptions
+- Each subject is measured on the same binary outcome under each condition (matched/paired design).  
+- Observations (subjects) are independent of one another.  
+- The outcome for each subject in each group is binary (e.g., “relief” vs. “no relief”).  
+
+#### Strengths
+- Extends McNemar’s test to more than two matched proportions.  
+- Controls for subject‐level variability by using each subject as their own block.  
+- Simple test statistic and interpretation via χ² distribution.
+
+#### Weaknesses
+- Only addresses overall difference; does not indicate which pairs of groups differ (post‐hoc tests required).  
+- Sensitive to missing data: any subject missing a response in one condition must be excluded.  
+- Assumes no interactions or clustering beyond the matched sets.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The proportion of patients experiencing symptom relief is the same across all three medications (p₁ = p₂ = p₃).  
+- **Alternative hypothesis (H₁):** At least one medication’s relief proportion differs from the others.
+
+
+``` r
+# Install and load DescTools if not already installed:
+# install.packages("DescTools")
+library(DescTools)
+```
+
+``` output
+
+Attaching package: 'DescTools'
+```
+
+``` output
+The following object is masked from 'package:car':
+
+    Recode
+```
+
+``` r
+# Simulate binary relief outcomes for 12 patients on three medications:
+# 1 = relief, 0 = no relief
+set.seed(2025)
+relief_med1 <- c(1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1)
+relief_med2 <- c(1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1)
+relief_med3 <- c(1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1)
+
+# Combine into a matrix: rows = subjects, columns = medications
+relief_matrix <- cbind(relief_med1, relief_med2, relief_med3)
+
+# Perform Cochran’s Q test:
+cq_result <- CochranQTest(relief_matrix)
+
+# Display results:
+cq_result
+```
+
+``` output
+
+	Cochran's Q test
+
+data:  y
+Q = 0.29, df = 2, p-value = 0.9
+```
+Interpretation:
+Cochran’s Q statistic = 0.286 with df = 2 and p-value = 0.867. We
+fail to reject the null hypothesis.
+Thus, there is
+no evidence that relief proportions differ across the three medications.
 
 ::::
 
@@ -3230,6 +4858,87 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing marginal homogeneity in a square contingency table of paired categorical outcomes (k ≥ 3 categories).  
+- **Real-world example:** Assessing whether patients’ self‐rated pain levels (None, Mild, Moderate, Severe) before and after a new analgesic are distributed the same way.
+
+#### Assumptions
+- Data consist of paired observations on the same subjects, each classified into one of k categories at two time points or under two conditions.  
+- The contingency table is square (same set of k categories for “before” and “after”).  
+- Observations (pairs) are independent of one another.  
+- No cell has zero counts that prevent the necessary sums for the test (ideally none of the off‐diagonal cell sums are zero across all pairs).
+
+#### Strengths
+- Generalizes McNemar’s test to k > 2 categories.  
+- Specifically tests whether the overall marginal (row vs. column) distributions are the same.  
+- Computes a χ²‐statistic based on off‐diagonal discordances, summarizing all category shifts.
+
+#### Weaknesses
+- Only detects overall marginal changes; does not indicate which category pairs drive the difference (post‐hoc needed).  
+- Sensitive to small sample sizes or sparse off‐diagonal entries (may lack power or violate asymptotic χ² approximation).  
+- Assumes symmetry under the null; if many pairs move in one direction but not the reverse, marginal sums can still balance, potentially masking certain shifts.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The marginal distribution of pain levels is the same before and after treatment.  
+- **Alternative hypothesis (H₁):** The marginal distributions differ (some shifts in categories occurred).
+
+
+``` r
+# Install and load DescTools if not already installed:
+# install.packages("DescTools")
+library(DescTools)
+
+# Simulate paired pain ratings for 50 patients:
+# Categories: 1=None, 2=Mild, 3=Moderate, 4=Severe
+set.seed(123)
+before <- sample(1:4, 50, replace = TRUE, prob = c(0.10, 0.30, 0.40, 0.20))
+# After treatment: some improvement for many, some unchanged or worse
+after  <- pmin(pmax(before + sample(c(-1, 0, 1), 50, replace = TRUE, prob = c(0.4, 0.4, 0.2)), 1), 4)
+
+# Create a square contingency table of before vs. after:
+pain_table <- table(factor(before, levels = 1:4),
+                    factor(after,  levels = 1:4))
+dimnames(pain_table) <- list(
+  Before = c("None", "Mild", "Moderate", "Severe"),
+  After  = c("None", "Mild", "Moderate", "Severe")
+)
+
+# Perform Stuart–Maxwell test for marginal homogeneity:
+stuart_result <- StuartMaxwellTest(pain_table)
+
+# Display the table and test result:
+pain_table
+```
+
+``` output
+          After
+Before     None Mild Moderate Severe
+  None        6    0        0      0
+  Mild        8    8        1      0
+  Moderate    0    4        9      5
+  Severe      0    0        6      3
+```
+
+``` r
+stuart_result
+```
+
+``` output
+
+	Stuart-Maxwell test
+
+data:  pain_table
+chi-squared = 9.9, df = 3, p-value = 0.02
+```
+
+Interpretation:
+The Stuart–Maxwell χ² statistic = 9.89 with df = 3 and p-value = 0.0195. We
+reject the null hypothesis.
+Since the p-value is r round(stuart_result$p.value, 3), we
+conclude that the marginal distribution of pain levels differs before vs. after treatment (some patients shifted categories).
+
 ::::
 
 ::::spoiler
@@ -3237,6 +4946,80 @@ EJ KORREKTURLÆST
 ### Two-sample test for binomial proportions / Mantel–Haenszel test
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Comparing two independent binomial proportions, possibly stratified by a third variable (Mantel–Haenszel).  
+- **Real-world example:** Assessing whether a new vaccine reduces infection rates compared to placebo across multiple clinics.
+
+#### Assumptions
+- Observations within each group (and stratum, if stratified) are independent.  
+- Each observation has a binary outcome (success/failure).  
+- In the unstratified case, the two groups are independent and sample sizes are sufficiently large for the normal approximation (if using a z-test or `prop.test()`).  
+- For the Mantel–Haenszel test: effects are assumed homogeneous across strata (common odds ratio).
+
+#### Strengths
+- Simple two‐sample z‐test or χ²‐based test (`prop.test()`) for unstratified comparisons.  
+- Mantel–Haenszel test controls for confounding by stratification, providing an overall test of association and a pooled odds ratio.  
+- Exact or asymptotic inference available (Fisher’s exact for small counts, Mantel–Haenszel χ² for larger).
+
+#### Weaknesses
+- The unstratified z‐test/χ² test can give misleading results if confounders are present.  
+- Mantel–Haenszel requires the common‐odds‐ratio assumption; if this fails (effect modification), the pooled estimate may be invalid.  
+- Both methods rely on adequate sample sizes in each cell (especially for asymptotic approximations).
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The infection rates in Vaccine and Placebo groups are equal across clinics (common odds ratio = 1).  
+- **Alternative hypothesis (H₁):** The infection rates differ between Vaccine and Placebo groups (common odds ratio ≠ 1).
+
+
+``` r
+# Simulated data from two clinics (strata):
+# Clinic A: Vaccine (5 infections / 100), Placebo (15 infections / 100)
+# Clinic B: Vaccine (8 infections / 120), Placebo (20 infections / 120)
+
+# Create a 3‐dimensional array: 2 × 2 × 2 (Treatment × Outcome × Clinic)
+# Dimension names: Treatment = Vaccine, Placebo; Outcome = Infected, NotInfected; Clinic = A, B
+mh_table <- array(
+  c(  5,  95,   # Clinic A, Vaccine
+     15,  85,   # Clinic A, Placebo
+      8, 112,   # Clinic B, Vaccine
+     20, 100 ), # Clinic B, Placebo
+  dim = c(2, 2, 2),
+  dimnames = list(
+    Treatment = c("Vaccine", "Placebo"),
+    Outcome   = c("Infected", "NotInfected"),
+    Clinic    = c("A", "B")
+  )
+)
+
+# Perform Mantel–Haenszel test:
+mh_result <- mantelhaen.test(mh_table, correct = FALSE)
+
+# Display results:
+mh_result
+```
+
+``` output
+
+	Mantel-Haenszel chi-squared test without continuity correction
+
+data:  mh_table
+Mantel-Haenszel X-squared = 11, df = 1, p-value = 8e-04
+alternative hypothesis: true common odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.1702 0.6463
+sample estimates:
+common odds ratio 
+           0.3316 
+```
+
+Interpretation:
+The Mantel–Haenszel χ² statistic = 11.275 with df = 1 and p‐value = 7.86\times 10^{-4}. We
+reject the null hypothesis.
+Thus, since the p‐value is 0.001, we
+conclude there is a significant difference in infection rates between Vaccine and Placebo after controlling for clinic.
 
 ::::
 
@@ -3327,13 +5110,13 @@ test_result
 	Exact Poisson test
 
 data:  events time base: patient_days
-number of events = 8, time base = 3500, p-value = 0.702
+number of events = 8, time base = 3500, p-value = 0.7
 alternative hypothesis: true event rate is not equal to 0.002
 95 percent confidence interval:
- 0.0009868092 0.0045037683
+ 0.0009868 0.0045038
 sample estimates:
- event rate 
-0.002285714 
+event rate 
+  0.002286 
 ```
 
 Interpretation:
@@ -3592,15 +5375,15 @@ bias; loa_low; loa_up; t_test
 ```
 
 ``` output
-[1] 0.3333333
+[1] 0.3333
 ```
 
 ``` output
-[1] -1.596741
+[1] -1.597
 ```
 
 ``` output
-[1] 2.263408
+[1] 2.263
 ```
 
 ``` output
@@ -3608,13 +5391,13 @@ bias; loa_low; loa_up; t_test
 	One Sample t-test
 
 data:  diffs
-t = 1.1726, df = 11, p-value = 0.2657
+t = 1.2, df = 11, p-value = 0.3
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- -0.2923355  0.9590022
+ -0.2923  0.9590
 sample estimates:
 mean of x 
-0.3333333 
+   0.3333 
 ```
 
 The mean difference (bias) is 0.33 units, with 95% limits of 
