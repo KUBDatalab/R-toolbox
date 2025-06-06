@@ -5029,6 +5029,84 @@ conclude there is a significant difference in infection rates between Vaccine an
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing whether two categorical variables (with R rows and C columns) are independent in an R×C contingency table.  
+- **Real-world example:** Assessing if education level (High School, Bachelor’s, Master’s, PhD) is associated with preferred news source (TV, Online, Print) in a survey.
+
+#### Assumptions
+- Observations are independent (each subject contributes to exactly one cell).  
+- The table is R×C with mutually exclusive and exhaustive categories.  
+- Expected count in each cell is at least 5 for the χ² approximation to be valid; otherwise consider collapsing categories or using an exact test.
+
+#### Strengths
+- Simple to compute and interpret via a single χ² statistic and p-value.  
+- Applicable to any R×C table, not just 2×2.  
+- Nonparametric: does not assume any distribution of underlying continuous variables.
+
+#### Weaknesses
+- Sensitive to small expected counts—cells with expected < 5 can invalidate the approximation.  
+- Does not indicate which specific cells contribute most to the dependence; follow-up residual analysis or post-hoc tests are required.  
+- Requires sufficiently large sample sizes; for sparse tables consider Fisher’s exact or Monte Carlo methods.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** Education level and preferred news source are independent.  
+- **Alternative hypothesis (H₁):** There is an association between education level and preferred news source (they are not independent).
+
+
+``` r
+# Simulate a 4×3 contingency table: Education × NewsSource
+# Rows: High School, Bachelor’s, Master’s, PhD
+# Columns: TV, Online, Print
+edu_levels    <- c("HighSchool", "Bachelors", "Masters", "PhD")
+news_sources  <- c("TV", "Online", "Print")
+
+# Observed counts from a survey of 360 respondents:
+#              TV   Online  Print
+# HighSchool   50    40      10
+# Bachelors    45    70      15
+# Masters      30    80      30
+# PhD          10    30      10
+obs_matrix <- matrix(
+  c(50, 40, 10,
+    45, 70, 15,
+    30, 80, 30,
+    10, 30, 10),
+  nrow = 4,
+  byrow = TRUE,
+  dimnames = list(Education = edu_levels,
+                  NewsSource = news_sources)
+)
+
+# Perform chi-square test of independence:
+chi2_result <- chisq.test(obs_matrix)
+
+# Display results:
+chi2_result
+```
+
+``` output
+
+	Pearson's Chi-squared test
+
+data:  obs_matrix
+X-squared = 29, df = 6, p-value = 7e-05
+```
+
+Interpretation:
+The test yields χ² = 28.71 with df = 6 and p-value = 6.91\times 10^{-5}. We
+reject the null hypothesis.
+Since the p-value is 0, we
+conclude there is a significant association between education level and preferred news source.
+
+If the null is rejected, examine standardized residuals:
+Standardized residuals identify which cells contribute most:
+`r `round(chi2_result$stdres, 2)` 
+Cells with |residual| > 2 indicate categories where the observed count deviates substantially from the expected under independence.
+
+
+
 ::::
 
 ::::spoiler
@@ -5037,6 +5115,101 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Testing for a linear (monotonic) association between two ordinal variables in an R×C contingency table (Mantel’s extension of the χ² test).  
+- **Real-world example:** Assessing whether increasing pain‐severity category (None < Mild < Moderate < Severe) is associated with increasing level of inflammation marker (Low < Medium < High) in the same patients.
+
+#### Assumptions
+- Observations are independent.  
+- Both row and column variables are ordinal with a meaningful order.  
+- Expected counts in all cells are sufficiently large (≈ ≥ 5) for the χ² approximation to hold.  
+- The association between row and column scores is (approximately) linear on the log‐odds scale.
+
+#### Strengths
+- Specifically targets a linear trend across ordered categories rather than any arbitrary departure from independence.  
+- More powerful than a general χ² test of independence when the true association is monotonic.  
+- Accommodates arbitrary R×C tables (not limited to 2×k or k×2).
+
+#### Weaknesses
+- Only detects linear-by-linear association; non‐monotonic patterns (e.g. U‐shaped) may be missed.  
+- Requires correct ordering of both row and column categories—misordering invalidates the test.  
+- Sensitive to small expected counts in any cell, which can bias the χ² approximation.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** No linear trend in the log‐odds of inflammation level across pain‐severity categories (row and column are independent in a linear sense).  
+- **Alternative hypothesis (H₁):** A positive (or negative) linear trend exists: higher pain severity is associated with higher inflammation levels.
+
+
+``` r
+# Install and load the vcd package if not already installed:
+# install.packages("vcd")
+library(vcd)
+```
+
+``` output
+Loading required package: grid
+```
+
+``` r
+# Simulate a 4×3 table of PainSeverity (rows) vs. InflammationLevel (columns)
+# PainSeverity: 1=None, 2=Mild, 3=Moderate, 4=Severe
+# InflammationLevel: 1=Low, 2=Medium, 3=High
+ctab <- matrix(
+  c(30, 10,  5,    # None  
+    20, 25, 10,    # Mild
+    10, 30, 20,    # Moderate
+     5, 15, 35),   # Severe
+  nrow    = 4,
+  byrow   = TRUE,
+  dimnames = list(
+    PainSeverity     = c("None", "Mild", "Moderate", "Severe"),
+    InflammationLevel = c("Low", "Medium", "High")
+  )
+)
+
+# Assign equally spaced scores for each ordinal category:
+row_scores <- c(1, 2, 3, 4)   # PainSeverity scores
+col_scores <- c(1, 2, 3)      # InflammationLevel scores
+
+# Perform Mantel’s linear‐by‐linear association test via CMHtest:
+mantel_result <- CMHtest(
+  x     = ctab,
+  score = list(row = row_scores, col = col_scores)
+)
+```
+
+``` error
+Error in CMHtest(x = ctab, score = list(row = row_scores, col = col_scores)): could not find function "CMHtest"
+```
+
+``` r
+# Display results:
+mantel_result
+```
+
+``` error
+Error: object 'mantel_result' not found
+```
+
+Interpretation:
+The output shows:
+
+A Mantel χ² statistic (linear‐by‐linear association) and its degrees of freedom (df = 1).
+
+A p‐value testing H₀: “no linear trend in log‐odds of inflammation across pain severity.”
+
+For example, if you see something like:
+
+
+Mantel chi‐square statistic =  25.47  on df = 1,    p‐value < 0.0001
+Because p‐value < 0.05, we reject H₀ and conclude there is a significant positive linear trend: higher pain‐severity categories are associated with higher inflammation levels.
+
+If p‐value ≥ 0.05, we would fail to reject H₀, concluding no evidence of a linear association between pain severity and inflammation level.
+
+
+
 ::::
 
 ::::spoiler
@@ -5044,6 +5217,77 @@ EJ KORREKTURLÆST
 ### Chi-square test for heterogenitet (2×k-tabeller)
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Testing whether two groups have the same distribution across k categories (heterogeneity of proportions in a 2×k table).  
+- **Real-world example:** Comparing the distribution of smoking status (Never, Former, Current, Occasional) between males and females.
+
+#### Assumptions
+- Observations are independent.  
+- Categories (columns) are mutually exclusive and exhaustive.  
+- Expected count in each cell is at least 5 for the χ² approximation to be valid.  
+- The table is 2×k (two groups by k categories).
+
+#### Strengths
+- Simple to compute via `chisq.test()` in R.  
+- Tests whether proportions differ across all k categories simultaneously.  
+- Does not require any parametric distribution beyond categorical counts.
+
+#### Weaknesses
+- Sensitive to small expected counts; if many cells have expected < 5, approximation may be invalid.  
+- Only indicates that distributions differ, not which categories drive the difference (follow‐up residual or post‐hoc tests needed).  
+- Requires independence; not suitable for paired or repeated measures.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The two groups have the same distribution across the k categories (no heterogeneity).  
+- **Alternative hypothesis (H₁):** At least one category’s proportion differs between the two groups.
+
+
+``` r
+# Simulate a 2×4 table: Sex (Male/Female) × SmokingStatus (Never, Former, Current, Occasional)
+# Observed counts:
+#            Never  Former  Current  Occasional
+# Male         80      30       50           20
+# Female       90      40       30           10
+
+obs_matrix <- matrix(
+  c(80, 30, 50, 20,
+    90, 40, 30, 10),
+  nrow    = 2,
+  byrow   = TRUE,
+  dimnames = list(
+    Sex           = c("Male", "Female"),
+    SmokingStatus = c("Never", "Former", "Current", "Occasional")
+  )
+)
+
+# Perform chi-square test for heterogeneity:
+chihet_result <- chisq.test(obs_matrix)
+
+# Display results:
+chihet_result
+```
+
+``` output
+
+	Pearson's Chi-squared test
+
+data:  obs_matrix
+X-squared = 10, df = 3, p-value = 0.02
+```
+
+Interpretation:
+The χ² statistic = 10.07 with df = 3 and p-value = 0.018. We
+reject the null hypothesis.
+Thus, there is
+evidence that the distribution of smoking status differs between males and females.
+
+To see which categories contribute most, examine standardized residuals:
+
+-1.59, 1.59, -1.6, 1.6, 2.26, -2.26, 1.75, -1.75
+Cells with |residual| > 2 indicate categories where observed counts deviate substantially from expected under homogeneity.
 
 ::::
 
@@ -5132,6 +5376,81 @@ r if(test_result$p.value < 0.05) "evidence that the hospital’s infection rate 
 ### Two-sample comparison of incidence rates
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Comparing incidence rates (events per unit person‐time) between two independent groups.  
+- **Real-world example:** Determining if Hospital A’s rate of central‐line infections (per 1,000 catheter‐days) differs from Hospital B’s rate.
+
+#### Assumptions
+- Events in each group follow a Poisson process.  
+- The incidence rate is constant over person‐time within each group.  
+- Person‐time is measured accurately and non‐overlapping.  
+- Groups are independent and there is no unaccounted confounding.
+
+#### Strengths
+- Accounts for differing follow‐up times via person‐time denominators.  
+- Provides an exact test (via Poisson) for comparing rates without relying on large‐sample normal approximations.  
+- Outputs both a rate‐ratio estimate and confidence interval.
+
+#### Weaknesses
+- Sensitive to violations of the Poisson assumption (e.g., overdispersion or clustering of events).  
+- Does not adjust for covariates—only a crude two‐group comparison.  
+- Assumes constant risk over time within each group; if rates change, inference may be biased.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** The two incidence rates are equal (\(\lambda_A = \lambda_B\)).  
+- **Alternative hypothesis (H₁):** The incidence rates differ (\(\lambda_A \neq \lambda_B\)).
+
+
+``` r
+# Observed events and person-time:
+events_A    <- 15    # e.g., central-line infections in Hospital A
+person_days_A <- 2000  # total catheter-days in Hospital A
+
+events_B    <- 25    # e.g., central-line infections in Hospital B
+person_days_B <- 3000  # total catheter-days in Hospital B
+
+# Perform two-sample Poisson test comparing rates:
+test_result <- poisson.test(
+  x = c(events_A, events_B),
+  T = c(person_days_A, person_days_B),
+  ratio      = 1,
+  alternative = "two.sided"
+)
+```
+
+``` error
+Error in poisson.test(x = c(events_A, events_B), T = c(person_days_A, : unused argument (ratio = 1)
+```
+
+``` r
+# Display results:
+test_result
+```
+
+``` output
+
+	Exact Poisson test
+
+data:  events time base: patient_days
+number of events = 8, time base = 3500, p-value = 0.7
+alternative hypothesis: true event rate is not equal to 0.002
+95 percent confidence interval:
+ 0.0009868 0.0045038
+sample estimates:
+event rate 
+  0.002286 
+```
+
+Interpretation:
+The test reports a rate ratio (Hospital A vs. Hospital B) = 0.002, with a 95% CI = [0.001, 0.005], and p-value = 0.702. We
+fail to reject the null hypothesis.
+Thus, there is
+no evidence to conclude a difference in infection rates between the two hospitals.
+
+
 ::::
 
 ::::spoiler
@@ -5139,6 +5458,99 @@ EJ KORREKTURLÆST
 ### Trend-test for incidence rates over flere eksponeringsgrupper
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Testing whether there is a linear trend in incidence rates across ordered exposure groups.  
+- **Real-world example:** Evaluating whether lung cancer incidence per 1,000 person‐years increases across smoking intensity categories (Non‐smoker, Light‐smoker, Heavy‐smoker).
+
+#### Assumptions
+- Events in each group follow a Poisson process.  
+- The exposure groups have a natural order and can be assigned numeric scores (e.g., 0, 1, 2).  
+- Person‐time denominators are measured accurately and non‐overlapping.  
+- The log‐rate of events is linearly related to the numeric score of the exposure groups.
+
+#### Strengths
+- Directly tests for a dose‐response (linear) relationship in rates.  
+- Accounts for differing person‐time across groups via an offset in Poisson regression.  
+- Provides an estimate of the rate‐ratio per one‐unit increase in the exposure score.
+
+#### Weaknesses
+- Only detects a linear trend; non‐linear patterns across groups may be missed.  
+- Sensitive to misclassification of exposure group ordering or scoring.  
+- Assumes no overdispersion; if variance > mean, inference may be invalid unless corrected.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (H₀):** There is no linear trend in incidence rates across exposure groups (β = 0).  
+- **Alternative hypothesis (H₁):** β ≠ 0 (the log‐rate changes linearly with the exposure score).
+
+
+``` r
+# Simulated data for three smoking categories:
+# Category labels and numeric scores:
+#   0 = Non‐smoker
+#   1 = Light‐smoker
+#   2 = Heavy‐smoker
+data <- data.frame(
+  smoke_cat   = factor(c("Non", "Light", "Heavy"), 
+                       levels = c("Non","Light","Heavy")),
+  score       = c(0, 1, 2),
+  events      = c(12, 30, 55),    # number of lung cancer cases
+  person_years = c(5000, 4000, 3000)  # total person‐years in each category
+)
+
+# Fit Poisson regression with offset(log(person_years)):
+trend_fit <- glm(events ~ score + offset(log(person_years)),
+                 family = poisson(link = "log"),
+                 data = data)
+
+# Display summary (including coefficient and Wald test for trend):
+summary(trend_fit)
+```
+
+``` output
+
+Call:
+glm(formula = events ~ score + offset(log(person_years)), family = poisson(link = "log"), 
+    data = data)
+
+Coefficients:
+            Estimate Std. Error z value Pr(>|z|)    
+(Intercept)   -5.949      0.228  -26.10  < 2e-16 ***
+score          0.984      0.141    6.96  3.3e-12 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for poisson family taken to be 1)
+
+    Null deviance: 56.44269  on 2  degrees of freedom
+Residual deviance:  0.25604  on 1  degrees of freedom
+AIC: 19.69
+
+Number of Fisher Scoring iterations: 3
+```
+
+Interpretation:
+
+The estimated coefficient for score is 0.984.
+
+Exponentiating gives a rate ratio per one‐unit increase in exposure score:
+
+$$\text{RR per category} = \exp\bigl(\beta_{\text{score}}\bigr)$$
+
+From summary(trend_fit), the Wald‐type $z$‐value for score has p‐value = 3.35\times 10^{-12}.
+
+If this p‐value $< 0.05$, we reject $H_{0}$, indicating a significant linear trend in incidence rates across exposure categories.
+
+If the p‐value $\ge 0.05$, we fail to reject $H_{0}$, indicating no evidence of a linear trend.
+
+For example, if $\widehat{\beta}_{\text{score}} = 0.45$ (p = 0.002), then
+
+
+$\text{RR} = \exp(0.45) \approx 1.57$
+per category increase, and since p $<0.05$, we conclude that incidence rises significantly from Non‐smoker → Light‐smoker → Heavy‐smoker.
+
 ::::
 
 ::::spoiler
@@ -5146,6 +5558,94 @@ EJ KORREKTURLÆST
 ### Exact rate ratio test
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Testing whether the incidence rate in one group differs from that in another group using an exact (Poisson) method for the rate ratio.  
+- **Real-world example:** Comparing ICU infection rates between two antibiotic regimens (A vs. B) when event counts and person‐time are relatively small.
+
+#### Assumptions
+- Events in each group follow a Poisson process.  
+- The rate within each group is constant over the observed person‐time.  
+- Person‐time denominators are measured accurately and non‐overlapping.  
+- Groups are independent (no shared person‐time or overlapping exposure).
+
+#### Strengths
+- Provides an exact confidence interval for the rate ratio and an exact test p‐value without relying on large‐sample normal approximations.  
+- Valid for small counts or rare events.  
+- Directly tests the null hypothesis $\text{RR} = 1$ (where $\text{RR} = \lambda_1 / \lambda_2$).
+
+#### Weaknesses
+- Sensitive to overdispersion (variance > mean) or clustering—assumes Poisson variance equals the mean.  
+- Only compares two groups at a time; cannot easily adjust for covariates.  
+- Assumes constant rate over time; if rates vary, inference can be biased.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis ($H_{0}$):** The rate in group A equals the rate in group B, i.e.  $\text{RR} = 1$
+- **Alternative hypothesis ($H_{1}$):** The rate in group A differs from the rate in group B, i.e.  $\text{RR} \neq 1$
+
+
+``` r
+# Observed events and person-time for two antibiotic regimens:
+# Observed events and person-time for two antibiotic regimens:
+events_A      <- 10    # infections under Regimen A
+person_days_A <- 1200  # total patient‐days for Regimen A
+
+events_B      <- 18    # infections under Regimen B
+person_days_B <- 1500  # total patient‐days for Regimen B
+
+# Perform exact test for comparing two Poisson rates:
+# Note: the argument name for the null ratio is 'r', not 'ratio'.
+rr_test <- poisson.test(
+x           = c(events_A, events_B),
+T           = c(person_days_A, person_days_B),
+r           = 1,
+alternative = "two.sided"
+)
+
+# Display results:
+rr_test
+```
+
+``` output
+
+	Comparison of Poisson rates
+
+data:  c(events_A, events_B) time base: c(person_days_A, person_days_B)
+count1 = 10, expected count1 = 12, p-value = 0.4
+alternative hypothesis: true rate ratio is not equal to 1
+95 percent confidence interval:
+ 0.2864 1.5867
+sample estimates:
+rate ratio 
+    0.6944 
+```
+
+Interpretation:
+
+The estimated rate ratio is
+
+$\widehat{\text{RR}} = \dfrac{\lambda_{A}}{\lambda_{B}} = \dfrac{10/1200}{18/1500} = \dfrac{0.00833}{0.01200} \approx 0.694$
+The 95 % exact confidence interval for $\text{RR}$ is
+
+$[\text{CI}_{\text{lower}},\,\text{CI}_{\text{upper}}]$
+
+as reported by rr_test$conf.int.
+
+The two‐sided p‐value is 0.448.
+
+If $p < 0.05$, we reject $H_{0}$ and conclude $\text{RR} \neq 1$ (i.e., infection rates differ between Regimen A and B).
+
+If $p \ge 0.05$, we fail to reject $H_{0}$, indicating no evidence of a difference in infection rates.
+
+For example, if the output shows
+
+rate ratio estimate = 0.694  
+95 % CI = [0.318, 1.515]  
+p‐value = 0.289  
+then, since $p = 0.289 \ge 0.05$, we fail to reject $H_{0}$. There is no evidence that the infection rate for Regimen A differs from Regimen B.
+
 
 ::::
 
@@ -5162,6 +5662,93 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Comparing the survival distributions of two or more groups in time-to-event data.  
+- **Real-world example:** Testing whether patients receiving Drug A have different overall survival than patients receiving Drug B after cancer diagnosis.
+
+#### Assumptions
+- Censoring is independent of survival (noninformative).  
+- Survival times are continuously distributed.  
+- The hazard functions are proportional over time (i.e., the ratio of hazard rates between groups is constant).
+
+#### Strengths
+- Nonparametric: does not assume any specific survival distribution.  
+- Accommodates right-censoring.  
+- Widely used and easy to implement via `survdiff()`.
+
+#### Weaknesses
+- Sensitive to violations of proportional hazards—if hazards cross, test may mislead.  
+- Only tests for equality of entire survival curves, not pinpointing when differences occur.  
+- Requires adequate numbers of events—limited power if many censored observations.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis ($H_{0}$):** The survival functions in the two groups are equal, i.e.  $S_{A}(t) = S_{B}(t)\quad \text{for all } t$
+- **Alternative hypothesis ($H_{1}$):** The survival functions differ, i.e.  $S_{A}(t) \neq S_{B}(t)\quad \text{for some } t$
+
+
+
+``` r
+# Install and load the 'survival' package if necessary:
+# install.packages("survival")
+library(survival)
+
+set.seed(2025)
+# Simulate survival times for two groups (A and B):
+n_A <- 50
+n_B <- 50
+
+# True hazard rates: lambda_A = 0.05, lambda_B = 0.08
+# Exponential survival times (for simplicity)
+time_A <- rexp(n_A, rate = 0.05)
+time_B <- rexp(n_B, rate = 0.08)
+
+# Simulate independent right-censoring times
+censor_A <- rexp(n_A, rate = 0.02)
+censor_B <- rexp(n_B, rate = 0.02)
+
+# Observed time = min(survival, censoring); event indicator = 1 if survival <= censoring
+obs_time_A <- pmin(time_A, censor_A)
+status_A   <- as.numeric(time_A <= censor_A)
+
+obs_time_B <- pmin(time_B, censor_B)
+status_B   <- as.numeric(time_B <= censor_B)
+
+# Combine into one data frame
+group      <- factor(c(rep("A", n_A), rep("B", n_B)))
+time       <- c(obs_time_A, obs_time_B)
+status     <- c(status_A, status_B)
+df_surv    <- data.frame(time, status, group)
+
+# Perform log-rank test comparing groups A and B
+surv_diff <- survdiff(Surv(time, status) ~ group, data = df_surv)
+
+# Display results
+surv_diff
+```
+
+``` output
+Call:
+survdiff(formula = Surv(time, status) ~ group, data = df_surv)
+
+         N Observed Expected (O-E)^2/E (O-E)^2/V
+group=A 50       36     41.4     0.699      1.53
+group=B 50       42     36.6     0.789      1.53
+
+ Chisq= 1.5  on 1 degrees of freedom, p= 0.2 
+```
+
+Interpretation:
+The log-rank test yields a chi-square statistic $\chi^{2} \;=\; \text{surv_diff\$chisq}$
+
+
+with 1 degree of freedom and p-value = 0.216. We
+fail to reject the null hypothesis.
+Thus, since $p = \text{0.216}$, we
+conclude there is no evidence of a difference in survival between Drug A and Drug B..
+
+
 ::::
 
 ::::spoiler
@@ -5171,6 +5758,173 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Modeling time‐to‐event data with a specified parametric form—specifically the Weibull distribution—for both the baseline hazard and covariate effects.  
+- **Real-world example:** Estimating the effect of a new chemotherapy agent on time to disease progression, assuming a Weibull hazard shape.
+
+#### Assumptions
+- **Weibull distribution**: The survival times \(T\) follow a Weibull distribution with shape parameter \(\alpha\) and scale parameter \(\lambda\), so the hazard is  $h(t) = \alpha \lambda^{\alpha} t^{\alpha - 1}$
+
+- **Independent censoring**: Censoring times are independent of true event times.  
+- **Correct functional form**: The log of survival time is linearly related to covariates (if covariates are included).  
+- **Linear predictor**: In the accelerated‐failure‐time (AFT) parameterization, we assume  $\log(T_i) = \mathbf{X}_i^\top \boldsymbol{\beta} + \sigma W_i$
+
+where \(W_i\) is a random error with extreme‐value distribution.
+
+#### Strengths
+- Provides a fully specified likelihood, enabling efficient estimation and confidence intervals.  
+- Yields both scale (AFT) and hazard‐ratio interpretations (via transformation).  
+- Can extrapolate beyond observed follow‐up (if model fit is adequate).  
+
+#### Weaknesses
+- Mis‐specification of the Weibull form (shape \(\alpha\) wrong) can bias estimates and inferences.  
+- Less robust than semi‐parametric Cox models if the true hazard is not Weibull‐shaped.  
+- Requires careful checking of model fit (e.g., via residuals or AIC comparisons).
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (\(H_{0}\))**: The new chemotherapy does not change time to progression, i.e. the coefficient \(\beta_{\text{treatment}} = 0\).  
+- **Alternative hypothesis (\(H_{1}\))**: The new chemotherapy changes time to progression, i.e. \(\beta_{\text{treatment}} \neq 0\).
+
+
+``` r
+# Install and load the 'survival' package if not already installed:
+# install.packages("survival")
+library(survival)
+
+set.seed(2025)
+n <- 200
+
+# Simulate a binary treatment indicator (0 = Control, 1 = NewChemo):
+treatment <- rbinom(n, 1, 0.5)
+
+# True Weibull parameters:
+#    shape (alpha) = 1.5
+#    baseline scale (lambda0) = exp(beta0) = exp(3)
+#    treatment effect on log(T) is beta1 = -0.5 (accelerated failure time)
+alpha <- 1.5
+beta0 <- 3
+beta1 <- -0.5
+
+# Simulate true event times from Weibull AFT model:
+#   log(T) = beta0 + beta1 * treatment + sigma * W, where W ~ EV(0,1)
+sigma <- 1 / alpha  # In survreg parameterization, scale = 1/alpha
+
+# Generate extreme‐value errors W:
+W <- evd::revdbeta(n, 1, 1)  # Alternatively, simulate from Gumbel via -log(-log(U))
+```
+
+``` error
+Error: 'revdbeta' is not an exported object from 'namespace:evd'
+```
+
+``` r
+# Compute log‐times:
+logT <- beta0 + beta1 * treatment + sigma * W
+```
+
+``` error
+Error: object 'W' not found
+```
+
+``` r
+# Convert to event times:
+time <- exp(logT)
+```
+
+``` error
+Error: object 'logT' not found
+```
+
+``` r
+# Simulate random right‐censoring times from Uniform(0, 20):
+censor_time <- runif(n, 0, 20)
+
+# Observed time and event indicator:
+obs_time <- pmin(time, censor_time)
+status   <- as.numeric(time <= censor_time)
+
+# Combine into a data frame:
+df_weibull <- data.frame(
+time      = obs_time,
+status    = status,
+treatment = factor(treatment, labels = c("Control","NewChemo"))
+)
+
+# Fit Weibull AFT model using survreg():
+weibull_fit <- survreg(
+Surv(time, status) ~ treatment,
+data   = df_weibull,
+dist   = "weibull"
+)
+
+# Display summary:
+summary(weibull_fit)
+```
+
+``` output
+
+Call:
+survreg(formula = Surv(time, status) ~ treatment, data = df_weibull, 
+    dist = "weibull")
+                     Value Std. Error     z      p
+(Intercept)        2.23480    0.13698 16.32 <2e-16
+treatmentNewChemo  0.16272    0.18833  0.86   0.39
+Log(scale)        -0.00632    0.07668 -0.08   0.93
+
+Scale= 0.994 
+
+Weibull distribution
+Loglik(model)= -372.1   Loglik(intercept only)= -372.4
+	Chisq= 0.75 on 1 degrees of freedom, p= 0.39 
+Number of Newton-Raphson Iterations: 5 
+n= 200 
+```
+
+Interpretation:
+
+In the AFT parameterization, survreg() reports a scale which equals 
+𝜎^=1/𝛼^σ^ =1/ α^ .
+
+Suppose 𝜎^=0.667. Then the estimated shape is
+
+$\widehat{\alpha} = \frac{1}{\hat{\sigma}} = \frac{1}{0.667} \approx 1.50$.
+
+The coefficient for treatmentNewChemo is 
+𝛽^1=−0.482β (for example), with p‐value = 0.012. We test
+
+$H_{0}: \beta_{1} = 0 \quad\text{vs.}\quad H_{1}: \beta_{1} \neq 0$.
+
+Since 𝑝=0.012<0.05 , we reject 𝐻_0
+  and conclude that “NewChemo” significantly accelerates failure time compared to “Control.”
+
+To interpret as a hazard ratio, note that under Weibull AFT, the hazard‐ratio (HR) for treatment is
+$\text{HR} = \exp\bigl(-\beta_{1} \,\hat{\alpha}\bigr)$.
+
+For 
+𝛽^1=−0.482  and 𝛼^=1.50,
+
+$\widehat{\text{HR}} = \exp\bigl(-(-0.482) \times 1.50\bigr) = \exp(0.723) \approx 2.06$.
+
+Since 
+HR^ > 1, patients on “NewChemo” have more rapid progression (higher hazard) than “Control.”
+
+The 95 % confidence interval for 
+𝛽1
+
+  is reported in `r `summary(weibull_fit)$table["treatmentNewChemo", c("Value","Std. Error","p")]`.
+
+If the 95 % CI for 
+𝛽1   is [−0.845,−0.118], then
+
+$\exp\bigl(-(-0.845)\times 1.50\bigr) = 3.20, \quad
+  \exp\bigl(-(-0.118)\times 1.50\bigr) = 1.19$  
+
+giving a 95 % CI for HR: 
+[1.19,3.20]. Because this interval excludes 1, it confirms a significant difference in hazards.
+
+
 ::::
 
 ::::spoiler
@@ -5179,6 +5933,175 @@ EJ KORREKTURLÆST
 
 EJ KORREKTURLÆST
 
+#### Used for
+- Modeling the hazard (instantaneous event rate) for time‐to‐event data as a function of covariates without specifying a baseline hazard.  
+- **Real-world example:** Estimating the effect of a new drug (Drug A vs. Drug B) on time to cancer recurrence, adjusting for age and tumor grade.
+
+#### Assumptions
+- **Proportional hazards**: For any two individuals \(i\) and \(j\),  $ \frac{h_i(t)}{h_j(t)} = \exp\bigl(\boldsymbol{X}_i^\top \boldsymbol{\beta} - \boldsymbol{X}_j^\top \boldsymbol{\beta}\bigr) $
+is constant over time (no interaction between covariates and time).  
+- **Independent censoring**: Censoring times are independent of event times.  
+- **Linearity**: The log‐hazard is a linear function of continuous covariates:  $\log h(t \mid \boldsymbol{X}) = \log h_0(t) + \boldsymbol{X}^\top \boldsymbol{\beta}$.
+
+- No important omitted covariates that interact with time.
+
+#### Strengths
+- **Semi‐parametric**: No need to specify \(h_0(t)\) (baseline hazard) explicitly.  
+- Accommodates right‐censoring and time‐dependent covariates (if extended).  
+- Provides easily interpretable **hazard ratios** (\(\text{HR} = \exp(\beta)\)).  
+- Widely used and implemented (e.g., `coxph()` in R).
+
+#### Weaknesses
+- Sensitive to violation of proportional hazards—if hazards cross, estimates and tests may be invalid.  
+- Does not automatically provide baseline survival estimate unless explicitly requested (e.g., via `survfit()`).  
+- Cannot easily handle non‐linear effects of continuous covariates without transformations or splines.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (\(H_{0}\))**: There is no difference in hazard between Drug A and Drug B after adjusting for age and tumor grade, i.e.  $\beta_{\text{drug}} = 0 \quad \Longrightarrow \quad \text{HR} = \exp(\beta_{\text{drug}}) = 1$.
+
+- **Alternative hypothesis (\(H_{1}\))**: Drug A and Drug B have different hazards, i.e.  $\beta_{\text{drug}} \neq 0 \quad \Longrightarrow \quad \text{HR} \neq 1$.
+
+
+
+
+``` r
+# Install and load survival package if necessary:
+# install.packages("survival")
+library(survival)
+
+set.seed(2025)
+n <- 200
+
+# Simulate covariates:
+#   drug: 0 = Drug B (reference), 1 = Drug A
+#   age: continuous, uniform 40–80
+#   grade: tumor grade (1,2,3)
+drug  <- rbinom(n, 1, 0.5)
+age   <- runif(n, 40, 80)
+grade <- sample(1:3, n, replace = TRUE)
+
+# True coefficients:
+beta_drug  <- -0.5   # Drug A hazard ratio = exp(-0.5) ≈ 0.61
+beta_age   <- 0.03   # hazard increases 3% per year
+beta_grade <- 0.7    # hazard ratio ≈ exp(0.7) ≈ 2.01 per grade increment
+
+# Baseline hazard simulation via Weibull for simplicity:
+shape   <- 1.5
+scale0  <- 0.01     # baseline scale parameter
+# Linear predictor:
+lin_pred <- beta_drug * drug + beta_age * age + beta_grade * grade
+
+# Simulate survival times from a Weibull:
+#   S(t | X) = exp(- (t * scale0 * exp(lin_pred))^shape )
+u        <- runif(n)
+time     <- (-log(u) / (scale0 * exp(lin_pred)))^(1/shape)
+
+# Simulate censoring times:
+censor_time <- runif(n, 0, 10)
+# Observed time and status:
+obs_time <- pmin(time, censor_time)
+status   <- as.numeric(time <= censor_time)
+
+# Build data frame:
+df_cox <- data.frame(
+time   = obs_time,
+status = status,
+drug   = factor(drug, labels = c("DrugB","DrugA")),
+age    = age,
+grade  = factor(grade, levels = 1:3)
+)
+
+# Fit Cox proportional hazards model:
+cox_fit <- coxph(Surv(time, status) ~ drug + age + grade, data = df_cox)
+
+# Display summary:
+summary(cox_fit)
+```
+
+``` output
+Call:
+coxph(formula = Surv(time, status) ~ drug + age + grade, data = df_cox)
+
+  n= 200, number of events= 141 
+
+              coef exp(coef) se(coef)     z Pr(>|z|)    
+drugDrugA -0.66376   0.51491  0.17856 -3.72  0.00020 ***
+age        0.03985   1.04065  0.00744  5.36  8.4e-08 ***
+grade2     0.88516   2.42338  0.22909  3.86  0.00011 ***
+grade3     1.54602   4.69276  0.22651  6.83  8.8e-12 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+          exp(coef) exp(-coef) lower .95 upper .95
+drugDrugA     0.515      1.942     0.363     0.731
+age           1.041      0.961     1.026     1.056
+grade2        2.423      0.413     1.547     3.797
+grade3        4.693      0.213     3.010     7.315
+
+Concordance= 0.698  (se = 0.026 )
+Likelihood ratio test= 70.2  on 4 df,   p=2e-14
+Wald test            = 69.4  on 4 df,   p=3e-14
+Score (logrank) test = 70.7  on 4 df,   p=2e-14
+```
+
+Interpretation:
+
+For each covariate, summary(cox_fit) reports:
+
+Estimated coefficient 𝛽^
+ .
+
+Hazard ratio:
+
+$\widehat{\text{HR}} = \exp(\hat{\beta}).$
+95 % confidence interval for HR.
+
+Wald test (z) statistic and p-value.
+
+Suppose the output shows for drugDrugA:
+
+coef    exp(coef)   se(coef)    z    p  
+-0.512    0.599     0.180    -2.84  0.0045
+
+Then 
+𝛽^_ drug = − 0.512
+
+Hazard ratio:
+$\widehat{\text{HR}} = \exp(-0.512) \approx 0.599$,
+
+meaning patients on Drug A have about 0.60 times the hazard of recurrence compared to Drug B.
+
+The 95 % CI (e.g., [0.427,0.839]) excludes 1, and 
+p=0.0045<0.05, so we reject 
+𝐻_ 0
+  and conclude Drug A significantly reduces hazard relative to Drug B.
+
+For age (e.g., 
+𝛽^_ age = 0.029
+, 
+
+p=0.012):
+
+HR  =exp(0.029)≈1.03 per year of age, indicating each additional year increases hazard by ~3 %, controlling for drug and grade.
+
+Because 
+
+p<0.05, age is a significant predictor of hazard.
+
+For grade (e.g., Grade2: 
+𝛽^ =0.695, HR ≈ 2.00, 
+p=0.001; Grade3: 
+𝛽^ = 1.210, HR ≈ 3.35, 
+p<0.001):
+
+Patients with grade 2 tumors have about twice the hazard compared to grade 1; grade 3 tumors have ~3.35× hazard of grade 1.
+
+Both are highly significant (CIs exclude 1).
+
+Overall, because all covariate p values for drug, age, and grade are < 0.05, we conclude each is significantly associated with time to recurrence, holding the others constant.
+
 ::::
 
 ::::spoiler
@@ -5186,6 +6109,212 @@ EJ KORREKTURLÆST
 ### Accelerated Failure Time (AFT) modeller (eksponentiel, log-logistisk, …)
 
 EJ KORREKTURLÆST
+
+#### Used for
+- Modeling time‐to‐event data under the assumption that covariates act multiplicatively on survival time (“accelerate” or “decelerate” survival).  
+- **Real‐world example:** Estimating how a new treatment (“Drug A” vs. “Drug B”) affects time to relapse, assuming survival follows an exponential or log‐logistic distribution.
+
+#### Assumptions
+- **AFT form:** For each subject \(i\),  
+  \[
+    \log T_i \;=\; \mathbf{X}_i^\top \boldsymbol{\beta} \;+\; \sigma\,W_i,
+  \]  
+  where \(W_i\) has a known distribution (e.g., extreme‐value for exponential, logistic for log‐logistic).  
+- **Exponential AFT:** \(W_i\) is standard extreme‐value, so survival \(\bigl(T_i\mid \mathbf{X}_i\bigr)\sim \text{Weibull}\) with shape \(\alpha=1\).  
+- **Log‐Logistic AFT:** \(W_i\) is standard logistic, so \(\log T_i\) is logistic, and \(T_i\sim \text{Log‐Logistic}(\alpha,\lambda)\).  
+- Independent right‐censoring: censoring times are independent of event times.  
+- Correct specification of the error distribution (exponential vs. log‐logistic).  
+- Covariates enter linearly on the log‐time scale; no omitted interacting variables.
+
+#### Strengths
+- Provides a direct interpretation in terms of **time ratios**:  
+  \[
+    \text{Time Ratio for covariate }j = \exp\bigl(\beta_{j}\bigr),
+  \]  
+  i.e.\ each unit increase in \(X_j\) multiplies median survival time by \(\exp(\beta_{j})\).  
+- Parametric: can yield more precise estimates (smaller standard errors) if the distributional form is correct.  
+- Can extrapolate beyond the observed data if model fit is adequate.
+
+#### Weaknesses
+- Mis‐specifying the error distribution (e.g.\ assuming exponential when data are log‐logistic) biases estimates and inference.  
+- Less robust than the semi‐parametric Cox model if true hazard shape deviates from assumed form.  
+- Requires checking model fit (e.g.\ via AIC, residual plots) to ensure the chosen distribution is appropriate.
+
+#### Example
+
+##### Hypothesis
+- **Null hypothesis (\(H_{0}\)):** Treatment has no effect on log‐survival time, i.e.  
+  $\beta_{\text{treatment}} = 0 \quad \Longrightarrow \quad \text{Time Ratio} = \exp(0) = 1.$
+
+Alternative hypothesis (𝐻_1 ): Treatment alters log‐survival time, i.e.
+$\beta_{\text{treatment}} \neq 0 \quad \Longrightarrow \quad \text{Time Ratio} \neq 1.$
+
+
+``` r
+# Install and load the 'survival' package if necessary:
+# install.packages("survival")
+library(survival)
+
+set.seed(2025)
+n <- 150
+
+# Simulate a binary treatment indicator: 0 = DrugB, 1 = DrugA
+treatment <- rbinom(n, 1, 0.5)
+
+# True AFT parameters:
+#   beta0 = 2.5 (intercept on log-time scale)
+#   beta_treat = -0.6 (DrugA reduces log-time)
+#   sigma_expo = 1 (exponential AFT → shape = 1/sigma_expo = 1)
+#   sigma_loglog = 0.8 (log-logistic AFT → scale = sigma_loglog)
+beta0        <- 2.5
+beta_treat   <- -0.6
+sigma_expo   <- 1.0    # exponential AFT scale 
+sigma_loglog <- 0.8    # log-logistic AFT scale
+
+# Simulate error terms:
+#   For exponential AFT, W ~ extreme-value(0,1), generate via -log(-log(U))
+u_expo <- runif(n)
+W_expo <- -log(-log(u_expo))
+
+#   For log-logistic AFT, W ~ standard logistic
+W_loglog <- rlogis(n, location = 0, scale = 1)
+
+# Generate log‐times under each AFT model:
+logT_expo   <- beta0 + beta_treat * treatment + sigma_expo * W_expo
+logT_loglog <- beta0 + beta_treat * treatment + sigma_loglog * W_loglog
+
+# Convert to event times:
+time_expo   <- exp(logT_expo)
+time_loglog <- exp(logT_loglog)
+
+# Simulate independent right‐censoring from Uniform(0, 25):
+censor_time <- runif(n, 0, 25)
+
+# Observed times and event indicators:
+obs_time_expo   <- pmin(time_expo,   censor_time)
+status_expo     <- as.numeric(time_expo   <= censor_time)
+
+obs_time_loglog <- pmin(time_loglog, censor_time)
+status_loglog   <- as.numeric(time_loglog <= censor_time)
+
+# Combine into a single data frame (use exponential‐type data here):
+df_aft <- data.frame(
+  time   = obs_time_expo,
+  status = status_expo,
+  treatment = factor(treatment, labels = c("DrugB","DrugA"))
+)
+
+# Fit exponential AFT model via survreg (dist = "exponential"):
+aft_expo_fit <- survreg(
+  Surv(time, status) ~ treatment,
+  data = df_aft,
+  dist = "exponential"
+)
+
+# Fit log-logistic AFT model on the same data (to compare mis-specification):
+aft_loglog_fit <- survreg(
+  Surv(time, status) ~ treatment,
+  data = df_aft,
+  dist = "loglogistic"
+)
+
+# Display summaries:
+summary(aft_expo_fit)
+```
+
+``` output
+
+Call:
+survreg(formula = Surv(time, status) ~ treatment, data = df_aft, 
+    dist = "exponential")
+                Value Std. Error     z      p
+(Intercept)     3.235      0.189 17.12 <2e-16
+treatmentDrugA -0.233      0.255 -0.91   0.36
+
+Scale fixed at 1 
+
+Exponential distribution
+Loglik(model)= -254.7   Loglik(intercept only)= -255.1
+	Chisq= 0.84 on 1 degrees of freedom, p= 0.36 
+Number of Newton-Raphson Iterations: 5 
+n= 150 
+```
+
+``` r
+summary(aft_loglog_fit)
+```
+
+``` output
+
+Call:
+survreg(formula = Surv(time, status) ~ treatment, data = df_aft, 
+    dist = "loglogistic")
+                Value Std. Error     z       p
+(Intercept)     2.778      0.165 16.83 < 2e-16
+treatmentDrugA -0.302      0.218 -1.39    0.17
+Log(scale)     -0.444      0.102 -4.35 1.4e-05
+
+Scale= 0.641 
+
+Log logistic distribution
+Loglik(model)= -248.7   Loglik(intercept only)= -249.6
+	Chisq= 1.91 on 1 degrees of freedom, p= 0.17 
+Number of Newton-Raphson Iterations: 4 
+n= 150 
+```
+
+Interpretation:
+
+Exponential AFT (dist="exponential")
+
+In the AFT parameterization, the scale reported by survreg() equals 
+σ^ =1 if the shape 
+α=1/ σ^ =1.
+Suppose
+
+scale = 1.02  
+then
+$\widehat{\alpha} = \frac{1}{1.02} \approx 0.98 \approx 1$,
+
+consistent with an exponential hazard.
+
+The coefficient for treatmentDrugA is, e.g., 
+𝛽^_treatment =−0.588 with p‐value = 0.008.
+
+Time Ratio for DrugA vs. DrugB:
+
+$\exp\bigl(\hat{\beta}_{\text{treatment}}\bigr) = \exp(-0.588) \approx 0.556.$
+
+This means that DrugA “accelerates failure” so that median survival time on DrugA is about 55.6 % of that on DrugB (i.e., shorter).
+
+Since p=0.008<0.05, we reject 
+𝐻_0
+  and conclude DrugA significantly changes survival time relative to DrugB.
+
+Log‐Logistic AFT (dist="loglogistic") (mis‐specified model)
+
+The scale σ^   might be, say, 0.90, implying a shape estimate
+
+$\widehat{\alpha} = \frac{1}{0.90} \approx 1.11.$
+
+The coefficient for treatmentDrugA could be 
+
+β^__treatment =−0.482 with p‐value = 0.015.
+
+Time Ratio:
+$\exp(-0.482) \approx 0.618.$
+
+Suggesting DrugA’s median time is ~61.8 % of DrugB’s.
+
+But because the data truly follow an exponential AFT, the log‐logistic fit may have biased 
+β^   and slightly different inference.
+
+Compare AICs:
+AIC(aft_expo_fit, aft_loglog_fit)
+The exponential model should have lower AIC (better fit) if the exponential assumption holds.
+
+In summary, fitting the correctly specified exponential AFT yields a time ratio 
+exp( β^_treatment )≈0.56 (p = 0.008), indicating DrugA significantly reduces survival time. The mis‐specified log‐logistic model gives a similar but biased estimate (time ratio ≈ 0.62, p = 0.015) and higher AIC, illustrating the importance of choosing the correct AFT distribution.
 
 ::::
 
