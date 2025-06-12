@@ -16,11 +16,37 @@ exercises: 2
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
+  padding-left: 1.5em;          /* plads til marker + hul */
+
+<!-- Hyper-lokal css -->
+<style>
+/* Kun på denne side: sæt accordion-item til 1rem */
+.spoiler-accordion li {
+  font-size: 1rem !important;
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+  list-style-position: outside !important; /* markør udenfor boksen */
+
+
+}
+</style>
+
+
 
 :::: instructor
 Den her side er virkelig ikke egnet til undervisningsbrug. Det er oversigten
 med eksempler og ret korte forklaringer.
 Hele siden kan nok med fordel deles ret meget op.
+
+Der skal læses korrektur på ALT. Så brug intet i en undervisningssituation 
+før markeringen af manglende korrektur er fjernet.
+
+Samtlige eksempler bør omlægges til noget der bruger datasæt enten fra denne
+side selv, eller fra https://vincentarelbundock.github.io/Rdatasets/
+
+skal indsættes:
+<a id = "test-navn"></a>
+
 ::::
 
 A collection of statistical tests
@@ -42,41 +68,40 @@ have not been checked.
 ## One sample tests
 
 
+<a id = "one_sample_chi_square_test"></a>
+::::spoiler
 ### One-sample chi-square test
 
-::::spoiler
-### Details
 
-#### Used for
-
-Testing whether observed categorical frequencies differ from expected 
+**Used for:** Testing whether observed categorical frequencies differ from expected 
 frequencies under a specified distribution.
-
 **Real-world example:** Mars Inc. claims a specific distribution of colours in
 their M&M bags. Does the observed proportions in a given bag match their claim?
 
 
-#### Assumptions
+**Assumptions**
 
-- Observations are independent.  
-- Categories are mutually exclusive and collectively exhaustive.
-- _Expected_ count in each category is at least 5 (for the chi-square approximation to be valid). The observed counts can be smaller.
+* Observations are independent.  
+* Categories are mutually exclusive and collectively exhaustive.
+* _Expected_ count in each category is at least 5 (for the chi-square approximation to be valid). The observed counts can be smaller.
 
-#### Strengths
-- Simple to compute and interpret.
-- Does not require the data to be normally distributed.
-- Applicable to any number of categories.
+**Strengths**
 
-#### Weaknesses
-- Sensitive to small expected counts.  
-- Does not indicate which categories contribute most to the discrepancy without further investigation.
-- Requires independence; cannot be used for paired or repeated measures.
+* Simple to compute and interpret.
+* Does not require the data to be normally distributed.
+* Applicable to any number of categories.
 
-#### Example
+**Weaknesses**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The proportions of M&M colours equal the manufacturer’s claimed distribution.  
-- **Alternative hypothesis (H₁):** The proportion of at least one colour differs from the claimed distribution.
+* Sensitive to small expected counts.  
+* Does not indicate which categories contribute most to the discrepancy without further investigation.
+* Requires independence; cannot be used for paired or repeated measures.
+
+**Example**
+
+
+* **Null hypothesis (H₀):** The proportions of M&M colours equal the manufacturer’s claimed distribution.  
+* **Alternative hypothesis (H₁):** The proportion of at least one colour differs from the claimed distribution.
 
 
 
@@ -102,13 +127,14 @@ data:  observed
 X-squared = 3.1, df = 5, p-value = 0.6846
 ```
 
-*Interpretation*: The test yields χ² = 3.1 with a p-value = 0.685. We
+**Interpretation**: The test yields χ² = 3.1 with a p-value = 0.685. We
 fail to reject the null hypothesis", and there is no evidence to conclude a 
 difference from the claimed distribution.
 
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### One-sample z test
@@ -200,6 +226,7 @@ or that it is smaller (p = 0.6700314)
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### One-sample t test
@@ -272,6 +299,7 @@ no evidence to conclude the average score differs from the passing threshold of 
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### One-sample Poisson test
@@ -340,6 +368,7 @@ no evidence to conclude the call rate differs from 30 calls/hour.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Shapiro–Wilk test for normality
@@ -400,6 +429,7 @@ no evidence to conclude a departure from normality.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Kolmogorov–Smirnov én-prøve-test (goodness-of-fit)
@@ -461,6 +491,7 @@ no evidence to conclude deviation from Normal(120,15).
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### χ² goodness-of-fit test
@@ -527,7 +558,7 @@ no evidence to conclude the sample proportions differ from the population.
 ## To-prøve-tests og parrede tests
 
 
-
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Two-sample F test for variance
@@ -599,6 +630,7 @@ evidence that the variability in blood pressure differs between the two clinics.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Paired t-test
@@ -664,6 +696,7 @@ evidence that the medication significantly changed blood pressure.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Two-sample t test (equal variances)
@@ -732,6 +765,7 @@ evidence that the average systolic blood pressure differs between the two groups
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Two-sample t test (unequal variances)
@@ -799,6 +833,7 @@ no evidence of a difference in average recovery times..
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Mann–Whitney U-test (Wilcoxon rank-sum)
@@ -864,6 +899,7 @@ evidence that median pain scores differ between Drug A and Drug B.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Wilcoxon signed-rank test
@@ -926,6 +962,7 @@ evidence that median pain scores change after treatment..
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Kolmogorov–Smirnov two-sample-test
@@ -988,6 +1025,7 @@ evidence that the distribution of recovery times differs between therapies.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 ### Levene’s test for homoskedasticitet
 
@@ -1064,6 +1102,7 @@ no evidence of differing variances across clinics.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Bartlett’s test for homoskedasticitet
@@ -1134,6 +1173,7 @@ evidence that at least one laboratory’s variance differs from the others.
 
 ## Variansanalyse (ANOVA/ANCOVA)
 
+<a id = "test-navn"></a>
 ::::spoiler
 ### One-way ANOVA
 
@@ -1196,6 +1236,7 @@ no evidence of a difference in mean scores among methods.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 ### One-way ANCOVA
 
@@ -1270,6 +1311,7 @@ evidence that, controlling for prior GPA, at least one teaching method leads to 
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 ### Welch’s ANOVA (uden antagelse om lige varianser)
 
@@ -1335,6 +1377,7 @@ no evidence of a difference in mean blood pressure among the clinics.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Repeated-measures ANOVA
@@ -1408,6 +1451,7 @@ no evidence that reaction times differ across sleep deprivation conditions.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### MANOVA
@@ -1564,18 +1608,13 @@ Tjek altid flere tests; hvis de konkluderer ens, styrker det din konklusion.
 - **Anbefaling:**  
   - Brug Roy’s largest root, når du har en stærk a priori mistanke om én dominerende kanonisk dimension og er komfortabel med forudsætningerne.
 
-> **Tips:** Sammenlign altid flere test‐statistikker – hvis de peger i samme retning, styrker det din konklusion. Pillai’s trace er generelt mest robust, Wilks’ lambda mest almindelig, Hotelling–Lawley god til flere dimensioner, og Roy’s largest root bedst, når én dimension dominerer.  
-
-
-
-
+**Tips:** Sammenlign altid flere test‐statistikker – hvis de peger i samme retning, styrker det din konklusion. Pillai’s trace er generelt mest robust, Wilks’ lambda mest almindelig, Hotelling–Lawley god til flere dimensioner, og Roy’s largest root bedst, når én dimension dominerer.  
 
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Friedman test (nonparametrisk gentagne målinger)
 
 EJ KORREKTURLÆST
@@ -1641,8 +1680,8 @@ no evidence that pain scores differ across time points.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Post-hoc: Tukey HSD
 
 EJ KORREKTURLÆST
@@ -1712,6 +1751,7 @@ interval, and an adjusted p‐value. For example, if the Lecture–Online compar
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Post-hoc: Dunnett’s test
@@ -1857,6 +1897,7 @@ fail to reject the null for Fertilizer B vs. Control.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Post-hoc: Bonferroni korrektion
@@ -1933,7 +1974,7 @@ The output shows adjusted p-values for each pair of diets. For example, if the A
 
 ::::spoiler
 
-
+<a id = "test-navn"></a>
 ### Kruskal–Wallis test
 
 EJ KORREKTURLÆST
@@ -2000,9 +2041,9 @@ evidence that at least one treatment group’s median pain score differs.
 
 ::::
 
+
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Rank correlation
 
 EJ KORREKTURLÆST HAV SÆRLIGT FOKUS PÅ OM DER ER FORSKEL PÅ DENNE OG
@@ -2065,9 +2106,8 @@ evidence of a monotonic association between X and Y.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Anderson–Darling test
 
 EJ KORREKTURLÆST
@@ -2137,9 +2177,8 @@ no evidence to conclude a departure from normality.
 ## Regression og korrelation
 
 
-
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Simple linear regression
 
 EJ KORREKTURLÆST
@@ -2232,6 +2271,7 @@ evidence of a significant linear association between x and y.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Multiple regression
@@ -2325,15 +2365,10 @@ a significant positive association: each additional square foot increases price 
 Similar interpretation applies to bedrooms and neighborhood indicators.
 
 
-
-
-
-
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Pearson correlation
 
 EJ KORREKTURLÆST
@@ -2403,9 +2438,8 @@ evidence of a significant linear association between hours studied and exam scor
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Spearman’s rank correlation
 
 EJ KORREKTURLÆST
@@ -2468,9 +2502,8 @@ evidence of a significant monotonic association between the two variables.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Kendall’s tau
 
 EJ KORREKTURLÆST
@@ -2536,9 +2569,8 @@ evidence of a significant monotonic association between homework and exam rankin
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Multiple logistic regression
 
 EJ KORREKTURLÆST
@@ -2656,19 +2688,10 @@ A significant positive coefficient for smoker (β̂ ≈ 1.2, OR ≈ 3.3) implies
 
 You would reject the null hypothesis overall, concluding that at least one predictor is significantly associated with the outcome.
 
-
-
-
-
-
-
-
-
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Poisson regression
 
 EJ KORREKTURLÆST
@@ -2751,9 +2774,9 @@ This means each 1 °C increase in average daily temperature is associated with a
 
 ::::
 
+
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Negative binomial regression
 
 EJ KORREKTURLÆST
@@ -2841,9 +2864,8 @@ This means each 1 µg/m³ increase in PM2.5 is associated with a multiplicative 
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Ordinal logistic regression
 
 EJ KORREKTURLÆST
@@ -2929,8 +2951,8 @@ Similar interpretation applies to price.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Linear mixed-effects modeller (LME)
 
 EJ KORREKTURLÆST
@@ -3059,6 +3081,7 @@ evidence that the new teaching method significantly changes test scores, account
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
 
 ### Generalized linear mixed-effects modeller (GLMM)
@@ -3161,8 +3184,9 @@ is significantly associated with higher odds of readmission, accounting for hosp
 
 ::::
 
-::::spoiler
 
+<a id = "test-navn"></a>
+::::spoiler
 ### Generalized Estimating Equations (GEE)
 
 EJ KORREKTURLÆST
@@ -3297,9 +3321,8 @@ Because GEE uses a sandwich estimator, these inferences remain valid even if “
 
 ## Kontingenstabel- og proportions-tests
 
-
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Contingency-table methods (χ² osv.)
 
 EJ KORREKTURLÆST
@@ -3309,8 +3332,8 @@ HVOR KATTEN KOMMER DET HER EGENTLIG FRA?
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### McNemar’s test
 
 EJ KORREKTURLÆST
@@ -3380,9 +3403,8 @@ Since b (OldTest Positive, NewTest Negative) = 20 and c (OldTest Negative, NewTe
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Fisher’s exact test
 
 EJ KORREKTURLÆST
@@ -3459,8 +3481,8 @@ no evidence of a difference in cure rates between the two treatments.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Barnard’s exact test
 
 EJ KORREKTURLÆST
@@ -4701,9 +4723,9 @@ H0
 One‐sided p‐value (0.0168): Tests specifically whether the Medication adverse‐event rate is greater than the Placebo rate. Because 0.0168 < 0.05, we also conclude that Medication has a higher adverse‐event probability than Placebo.
 ::::
 
+
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Cochran–Armitage trend test (ordinal tabel)
 
 EJ KORREKTURLÆST
@@ -4769,8 +4791,8 @@ evidence of a positive linear trend: higher prenatal vitamin doses are associate
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Cochran’s Q test (≥3 matched proportions)
 
 EJ KORREKTURLÆST
@@ -4851,9 +4873,8 @@ no evidence that relief proportions differ across the three medications.
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Stuart–Maxwell test (marginal homogenitet)
 
 EJ KORREKTURLÆST
@@ -4941,8 +4962,8 @@ conclude that the marginal distribution of pain levels differs before vs. after 
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Two-sample test for binomial proportions / Mantel–Haenszel test
 
 EJ KORREKTURLÆST
@@ -5023,8 +5044,8 @@ conclude there is a significant difference in infection rates between Vaccine an
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Chi-square test for R×C-tabeller
 
 EJ KORREKTURLÆST
@@ -5109,8 +5130,8 @@ Cells with |residual| > 2 indicate categories where the observed count deviates 
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Chi-square test for trend (Mantel-extension)
 
 EJ KORREKTURLÆST
@@ -5212,8 +5233,8 @@ If p‐value ≥ 0.05, we would fail to reject H₀, concluding no evidence of a
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Chi-square test for heterogenitet (2×k-tabeller)
 
 EJ KORREKTURLÆST
@@ -5296,10 +5317,8 @@ Cells with |residual| > 2 indicate categories where observed counts deviate subs
 ## Incidens- og rate-tests
 
 
-
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### One-sample test for incidence rates
 
 EJ KORREKTURLÆST
@@ -5371,8 +5390,8 @@ r if(test_result$p.value < 0.05) "evidence that the hospital’s infection rate 
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Two-sample comparison of incidence rates
 
 EJ KORREKTURLÆST
@@ -5453,8 +5472,8 @@ no evidence to conclude a difference in infection rates between the two hospital
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Trend-test for incidence rates over flere eksponeringsgrupper
 
 EJ KORREKTURLÆST
@@ -5553,8 +5572,8 @@ per category increase, and since p $<0.05$, we conclude that incidence rises sig
 
 ::::
 
+<a id = "test-navn"></a>
 ::::spoiler
-
 ### Exact rate ratio test
 
 EJ KORREKTURLÆST
@@ -5654,10 +5673,8 @@ then, since $p = 0.289 \ge 0.05$, we fail to reject $H_{0}$. There is no evidenc
 ## Overlevelsesanalyse
 
 
-
+<a id = "test-navn"></a>
 ::::spoiler
-
-
 ### Log-rank test
 
 EJ KORREKTURLÆST
@@ -5751,9 +5768,8 @@ conclude there is no evidence of a difference in survival between Drug A and Dru
 
 ::::
 
+<a id="default-anchor"></a>
 ::::spoiler
-
-
 ### Parametric survival methods (Weibull)
 
 EJ KORREKTURLÆST
@@ -5927,8 +5943,10 @@ giving a 95 % CI for HR:
 
 ::::
 
-::::spoiler
+<a id="default-anchor"></a>
 
+<a id = "test-navn"></a>
+::::spoiler
 ### Cox proportional hazards model
 
 EJ KORREKTURLÆST
@@ -6104,8 +6122,8 @@ Overall, because all covariate p values for drug, age, and grade are < 0.05, we 
 
 ::::
 
+<a id="default-anchor"></a>
 ::::spoiler
-
 ### Accelerated Failure Time (AFT) modeller (eksponentiel, log-logistisk, …)
 
 EJ KORREKTURLÆST
@@ -6318,8 +6336,8 @@ exp( β^_treatment )≈0.56 (p = 0.008), indicating DrugA significantly reduces 
 
 ::::
 
+<a id="grays-test"></a>
 ::::spoiler
-
 ### Gray’s test for konkurrentrisiko
 
 EJ KORREKTURLÆST
@@ -6411,8 +6429,8 @@ If $p \ge 0.05$, we fail to reject $H_{0}$, indicating no evidence of a differen
 
 ::::
 
+<a id="default-anchor"></a>
 ::::spoiler
-
 ### Test af proportional hazards-antagelsen (Schoenfeld residualer)
 
 EJ KORREKTURLÆST
@@ -6515,8 +6533,7 @@ If all p‐values $\ge 0.05$, we fail to reject $H_0$ and conclude the proportio
 ## Aftale- og concordance-mål
 
 
-
-
+<a id="default-anchor"></a>
 ::::spoiler
 ### Kappa statistic
 
@@ -6524,20 +6541,24 @@ EJ KORREKTURLÆST
 MON IKKE DENNE SNARERE SKAL KONSOLIDERES MED DEN COHENS VI ALLEREDE HAR?
 
 #### Used for
+
 - Quantifying agreement between two raters classifying the same subjects into categories, beyond chance.  
 - **Real-world example:** Assessing whether two pathologists agree on “Benign” vs. “Malignant” diagnoses.
 
 #### Assumptions
+
 - Each subject is independently rated by both raters.  
 - Ratings are categorical (nominal or ordinal).  
 - The marginal distributions of categories need not be equal.
 
 #### Strengths
+
 - Corrects for agreement expected by chance.  
 - Provides an interpretable coefficient, $\kappa$, ranging from –1 to 1.  
 - Can be weighted for ordinal categories.
 
 #### Weaknesses
+
 - Sensitive to prevalence and marginal imbalances (“paradox”).  
 - Doesn’t distinguish systematic bias from random disagreement.  
 - Requires at least two raters and non‐sparse tables for stable estimates.
@@ -6608,15 +6629,13 @@ weighted kappa   0.077     0.34   0.6
 
 The estimated Cohen’s $\kappa$ is
 
-$\widehat{\kappa} = \texttt{kappa_result\$kappa[1]}$
+$\widehat{\kappa}$ = 0.3377
 
-The test statistic (z) =
+The test statistic (z) = kappa_result$z[1] DETTE FUNGERER IKKE - Z ER IKKE I OBJEKTET.
 
-$\texttt{kappa_result\$z[1]}$
+with p-value =$\texttt{signif(kappa_result\$p.value[1], 3)}$. DET HER FUNGERER VIST HELLER IKKE...
 
-with p-value =$\texttt{signif(kappa_result\$p.value[1], 3)}$.
-
-Since p = r signif(kappa_result$p.value[1], 3)
+Since p = r signif(kappa_result$p.value[1], 3) EJ HELLER DETTE
 
 If p < 0.05, we reject $H_{0}$ and conclude there is agreement beyond chance.
 
@@ -6640,48 +6659,43 @@ Conventionally, $\kappa$ values are interpreted as:
 
 ::::
 
+<a id="intraclass-correlation-coefficient"></a>
 ::::spoiler
-
 ### Intraclass Correlation Coefficient (ICC)
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Assessing the reliability or agreement of quantitative measurements made by two or more raters.  
-- **Real-world example:** Determining how consistently three radiologists measure tumor size on MRI scans.
+* **Used for** Assessing the reliability or agreement of quantitative measurements made by two or more raters.  
+* **Real-world example:** Determining how consistently three radiologists measure tumor size on MRI scans.
 
-#### Assumptions
-- Measurements are continuous and approximately normally distributed.  
-- Raters are randomly selected (for the “random‐effects” model) or fixed (for the “fixed‐effects” model), depending on choice.  
-- No interaction between subjects and raters (i.e., rater effects are consistent across subjects).  
-- Balanced design: each subject is rated by the same set of raters.
+**Assumptions**:
 
-#### Strengths
-- Quantifies both consistency and absolute agreement, with different model/type options.  
-- Can accommodate any number of raters and subjects.  
-- Provides confidence intervals and tests for ICC.
+* Measurements are continuous and approximately normally distributed.  
+* Raters are randomly selected (for the “random‐effects” model) or fixed (for the “fixed‐effects” model), depending on choice.
+* No interaction between subjects and raters (i.e., rater effects are consistent across subjects).
+* Balanced design: each subject is rated by the same set of raters.
 
-#### Weaknesses
-- Sensitive to violations of normality and homogeneity of variance.  
-- Choice of model (one‐way vs. two‐way) and type (consistency vs. agreement) affects results.  
-- Requires balanced data; missing ratings complicate estimation.
+**Strengths**
 
-#### Example
+* Quantifies both consistency and absolute agreement, with different model/type options.  
+* Can accommodate any number of raters and subjects.  
+* Provides confidence intervals and tests for ICC.
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The intraclass correlation coefficient ICC = 0 (no reliability beyond chance).  
-- **Alternative hypothesis (H₁):** ICC > 0 (measurements are more reliable than chance).
+**Weaknesses**
+
+* Sensitive to violations of normality and homogeneity of variance.  
+* Choice of model (one‐way vs. two‐way) and type (consistency vs. agreement) affects results.  
+* Requires balanced data; missing ratings complicate estimation.
+
+**Example**
+
+* *Null hypothesis (H₀)*: The intraclass correlation coefficient ICC = 0 (no reliability beyond chance).  
+* *Alternative hypothesis (H₁)*: ICC > 0 (measurements are more reliable than chance).
 
 
 ``` r
 library(irr)
-```
 
-``` output
-Loading required package: lpSolve
-```
-
-``` r
 # Simulate ratings of 10 subjects by 3 raters:
 set.seed(42)
 ratings <- data.frame(
@@ -6716,15 +6730,17 @@ icc_result
  95%-Confidence Interval for ICC Population Values:
   -0.326 < ICC < 0.382
 ```
-Interpretation:
+
+**Interpretation:**
+
 The estimated ICC is -0.08 with a 95% CI [-0.33, 0.38] and p-value = 0.645. We
 fail to reject the null hypothesis.
 This indicates that
 there is no evidence of reliability beyond chance among the raters.
 
-
 ::::
 
+<a id="default-anchor"></a>
 ::::spoiler
 ### Bland–Altman analysis
 
@@ -6834,10 +6850,21 @@ no statistically significant bias; the two methods agree on average.
 ::::
 
 
+Der skal nok suppleres med:
+Weighted κ
+ is used for ordinal values. We use the function kappa2() from the irr package.
+Light’s κ
+ is used for studying interrater agreement between more than 2 raters. We use the function kappamlight() from the irr package.
+Fleiss κ
+ is also used when having more than 2 raters. But does not require the same raters for each subject.
+
+
+
+
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use `.md` files for episodes when you want static content
-
+- Use an appropriate statistical test
+- Make sure you understand the assumptions underlying the test
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
