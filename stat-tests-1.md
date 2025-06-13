@@ -70,6 +70,7 @@ have not been checked.
 
 <a id = "one_sample_chi_square_test"></a>
 ::::spoiler
+
 ### One-sample chi-square test
 
 
@@ -1027,6 +1028,7 @@ evidence that the distribution of recovery times differs between therapies.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Levene’s test for homoskedasticitet
 
 EJ KORREKTURLÆST
@@ -1175,6 +1177,7 @@ evidence that at least one laboratory’s variance differs from the others.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### One-way ANOVA
 
 EJ KORREKTURLÆST
@@ -1313,6 +1316,7 @@ evidence that, controlling for prior GPA, at least one teaching method leads to 
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Welch’s ANOVA (uden antagelse om lige varianser)
 
 EJ KORREKTURLÆST
@@ -1615,6 +1619,7 @@ Tjek altid flere tests; hvis de konkluderer ens, styrker det din konklusion.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Friedman test (nonparametrisk gentagne målinger)
 
 EJ KORREKTURLÆST
@@ -1682,6 +1687,7 @@ no evidence that pain scores differ across time points.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Post-hoc: Tukey HSD
 
 EJ KORREKTURLÆST
@@ -1971,10 +1977,9 @@ The output shows adjusted p-values for each pair of diets. For example, if the A
 
 ## Ikke-parametriske k-prøve-tests
 
-
+<a id = "test-navn"></a>
 ::::spoiler
 
-<a id = "test-navn"></a>
 ### Kruskal–Wallis test
 
 EJ KORREKTURLÆST
@@ -2044,6 +2049,7 @@ evidence that at least one treatment group’s median pain score differs.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Rank correlation
 
 EJ KORREKTURLÆST HAV SÆRLIGT FOKUS PÅ OM DER ER FORSKEL PÅ DENNE OG
@@ -2108,6 +2114,7 @@ evidence of a monotonic association between X and Y.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Anderson–Darling test
 
 EJ KORREKTURLÆST
@@ -2179,6 +2186,7 @@ no evidence to conclude a departure from normality.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Simple linear regression
 
 EJ KORREKTURLÆST
@@ -2369,6 +2377,7 @@ Similar interpretation applies to bedrooms and neighborhood indicators.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Pearson correlation
 
 EJ KORREKTURLÆST
@@ -2440,6 +2449,7 @@ evidence of a significant linear association between hours studied and exam scor
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Spearman’s rank correlation
 
 EJ KORREKTURLÆST
@@ -2504,6 +2514,7 @@ evidence of a significant monotonic association between the two variables.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Kendall’s tau
 
 EJ KORREKTURLÆST
@@ -2571,6 +2582,7 @@ evidence of a significant monotonic association between homework and exam rankin
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Multiple logistic regression
 
 EJ KORREKTURLÆST
@@ -2692,6 +2704,7 @@ You would reject the null hypothesis overall, concluding that at least one predi
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Poisson regression
 
 EJ KORREKTURLÆST
@@ -2777,6 +2790,7 @@ This means each 1 °C increase in average daily temperature is associated with a
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Negative binomial regression
 
 EJ KORREKTURLÆST
@@ -2866,6 +2880,7 @@ This means each 1 µg/m³ increase in PM2.5 is associated with a multiplicative 
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Ordinal logistic regression
 
 EJ KORREKTURLÆST
@@ -2953,6 +2968,7 @@ Similar interpretation applies to price.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Linear mixed-effects modeller (LME)
 
 EJ KORREKTURLÆST
@@ -3187,6 +3203,7 @@ is significantly associated with higher odds of readmission, accounting for hosp
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Generalized Estimating Equations (GEE)
 
 EJ KORREKTURLÆST
@@ -3323,6 +3340,7 @@ Because GEE uses a sandwich estimator, these inferences remain valid even if “
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Contingency-table methods (χ² osv.)
 
 EJ KORREKTURLÆST
@@ -3334,6 +3352,7 @@ HVOR KATTEN KOMMER DET HER EGENTLIG FRA?
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### McNemar’s test
 
 EJ KORREKTURLÆST
@@ -3405,6 +3424,7 @@ Since b (OldTest Positive, NewTest Negative) = 20 and c (OldTest Negative, NewTe
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Fisher’s exact test
 
 EJ KORREKTURLÆST
@@ -3483,6 +3503,7 @@ no evidence of a difference in cure rates between the two treatments.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Barnard’s exact test
 
 EJ KORREKTURLÆST
@@ -4726,6 +4747,7 @@ One‐sided p‐value (0.0168): Tests specifically whether the Medication advers
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Cochran–Armitage trend test (ordinal tabel)
 
 EJ KORREKTURLÆST
@@ -4793,6 +4815,7 @@ evidence of a positive linear trend: higher prenatal vitamin doses are associate
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Cochran’s Q test (≥3 matched proportions)
 
 EJ KORREKTURLÆST
@@ -4875,6 +4898,7 @@ no evidence that relief proportions differ across the three medications.
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Stuart–Maxwell test (marginal homogenitet)
 
 EJ KORREKTURLÆST
@@ -4964,6 +4988,7 @@ conclude that the marginal distribution of pain levels differs before vs. after 
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Two-sample test for binomial proportions / Mantel–Haenszel test
 
 EJ KORREKTURLÆST
@@ -5046,6 +5071,7 @@ conclude there is a significant difference in infection rates between Vaccine an
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Chi-square test for R×C-tabeller
 
 EJ KORREKTURLÆST
@@ -5132,6 +5158,7 @@ Cells with |residual| > 2 indicate categories where the observed count deviates 
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Chi-square test for trend (Mantel-extension)
 
 EJ KORREKTURLÆST
@@ -5235,6 +5262,7 @@ If p‐value ≥ 0.05, we would fail to reject H₀, concluding no evidence of a
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Chi-square test for heterogenitet (2×k-tabeller)
 
 EJ KORREKTURLÆST
@@ -5319,6 +5347,7 @@ Cells with |residual| > 2 indicate categories where observed counts deviate subs
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### One-sample test for incidence rates
 
 EJ KORREKTURLÆST
@@ -5392,6 +5421,7 @@ r if(test_result$p.value < 0.05) "evidence that the hospital’s infection rate 
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Two-sample comparison of incidence rates
 
 EJ KORREKTURLÆST
@@ -5474,6 +5504,7 @@ no evidence to conclude a difference in infection rates between the two hospital
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Trend-test for incidence rates over flere eksponeringsgrupper
 
 EJ KORREKTURLÆST
@@ -5574,6 +5605,7 @@ per category increase, and since p $<0.05$, we conclude that incidence rises sig
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Exact rate ratio test
 
 EJ KORREKTURLÆST
@@ -5675,6 +5707,7 @@ then, since $p = 0.289 \ge 0.05$, we fail to reject $H_{0}$. There is no evidenc
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Log-rank test
 
 EJ KORREKTURLÆST
@@ -5770,6 +5803,7 @@ conclude there is no evidence of a difference in survival between Drug A and Dru
 
 <a id="default-anchor"></a>
 ::::spoiler
+
 ### Parametric survival methods (Weibull)
 
 EJ KORREKTURLÆST
@@ -5947,6 +5981,7 @@ giving a 95 % CI for HR:
 
 <a id = "test-navn"></a>
 ::::spoiler
+
 ### Cox proportional hazards model
 
 EJ KORREKTURLÆST
@@ -6124,6 +6159,7 @@ Overall, because all covariate p values for drug, age, and grade are < 0.05, we 
 
 <a id="default-anchor"></a>
 ::::spoiler
+
 ### Accelerated Failure Time (AFT) modeller (eksponentiel, log-logistisk, …)
 
 EJ KORREKTURLÆST
@@ -6338,6 +6374,7 @@ exp( β^_treatment )≈0.56 (p = 0.008), indicating DrugA significantly reduces 
 
 <a id="grays-test"></a>
 ::::spoiler
+
 ### Gray’s test for konkurrentrisiko
 
 EJ KORREKTURLÆST
@@ -6431,6 +6468,7 @@ If $p \ge 0.05$, we fail to reject $H_{0}$, indicating no evidence of a differen
 
 <a id="default-anchor"></a>
 ::::spoiler
+
 ### Test af proportional hazards-antagelsen (Schoenfeld residualer)
 
 EJ KORREKTURLÆST
@@ -6535,6 +6573,7 @@ If all p‐values $\ge 0.05$, we fail to reject $H_0$ and conclude the proportio
 
 <a id="default-anchor"></a>
 ::::spoiler
+
 ### Kappa statistic
 
 EJ KORREKTURLÆST
@@ -6661,6 +6700,7 @@ Conventionally, $\kappa$ values are interpreted as:
 
 <a id="intraclass-correlation-coefficient"></a>
 ::::spoiler
+
 ### Intraclass Correlation Coefficient (ICC)
 
 EJ KORREKTURLÆST
@@ -6742,6 +6782,7 @@ there is no evidence of reliability beyond chance among the raters.
 
 <a id="default-anchor"></a>
 ::::spoiler
+
 ### Bland–Altman analysis
 
 EJ KORREKTURLÆST
