@@ -69,14 +69,16 @@ have not been checked.
 
 
 <a id = "one_sample_chi_square_test"></a>
+
 ::::spoiler
 
 ### One-sample chi-square test
 
+EJ KORREKTURLÆST
 
-**Used for:** Testing whether observed categorical frequencies differ from expected 
+* **Used for:** Testing whether observed categorical frequencies differ from expected 
 frequencies under a specified distribution.
-**Real-world example:** Mars Inc. claims a specific distribution of colours in
+* **Real-world example:** Mars Inc. claims a specific distribution of colours in
 their M&M bags. Does the observed proportions in a given bag match their claim?
 
 
@@ -136,36 +138,39 @@ difference from the claimed distribution.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### One-sample z test
 
-#### Used for
+EJ KORREKTURLÆST
 
-- Testing whether the mean of a single sample differs from a known population mean when the population standard deviation is known.  
-- **Real-world example:** Checking if the average diameter of manufactured ball bearings equals the specified 5.00 cm when σ is known. This checks if the average is different, ie either smaller _or_ larger. We can also test if it _is_ smaller or larger.
+* **Used for:** Testing whether the mean of a single sample differs from a known population mean when the population standard deviation is known.  
+* **Real-world example:** Checking if the average diameter of manufactured ball bearings equals the specified 5.00 cm when σ is known. This checks if the average is different, ie either smaller _or_ larger. We can also test if it _is_ smaller or larger.
 
-#### Assumptions
-- Sample is a simple random sample from the population.  
-- Observations are independent.  
-- Population standard deviation (σ) is known.  
-- The sampling distribution of the mean is approximately normal (either the population is normal or n is large, e.g. ≥ 30).
+**Assumptions**
 
-#### Strengths
-- More powerful than the t-test when σ is truly known.  
-- Simple calculation and interpretation.  
-- Relies on the normal distribution, which is well understood.
+* Sample is a simple random sample from the population.  
+* Observations are independent.  
+* Population standard deviation (σ) is known.  
+* The sampling distribution of the mean is approximately normal (either the population is normal or n is large, e.g. ≥ 30).
 
-#### Weaknesses
-- The true population σ is only very rarely known in practice.  
-- Sensitive to departures from normality for small samples.  
-- Misspecification of σ leads to incorrect inferences.
+**Strengths**
 
-#### Example
+* More powerful than the t-test when σ is truly known.  
+* Simple calculation and interpretation.  
+* Relies on the normal distribution, which is well understood.
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The true mean diameter μ = 5.00 cm.  
-- **Alternative hypothesis (H₁):** μ ≠ 5.00 cm.
+**Weaknesses**
+
+* The true population σ is only very rarely known in practice.  
+* Sensitive to departures from normality for small samples.  
+* Misspecification of σ leads to incorrect inferences.
+
+**Example**
+
+* **Null hypothesis (H₀):** The true mean diameter μ = 5.00 cm.  
+* **Alternative hypothesis (H₁):** μ ≠ 5.00 cm.
 
 
 ``` r
@@ -215,7 +220,8 @@ z_stat; p_value; larger_p_value; smaller_p_value
 ```
 
 
-Interpretation:
+**Interpretation:**
+
 The sample mean is 5.004 cm. The z-statistic is 0.44 
 with a two-sided p-value of 0.66. We
 fail to reject the null hypothesis.
@@ -228,6 +234,7 @@ or that it is smaller (p = 0.6700314)
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### One-sample t test
@@ -236,31 +243,29 @@ EJ KORREKTURLÆST!
 
 Her kan vi nok med fordel bruge samme eksempel som i z-testen.
 
-#### Used for
-- Testing whether the mean of a single sample differs from a known or hypothesized population mean when the population standard deviation is unknown.  
-- **Real-world example:** Determining if the average exam score of a class differs from the passing threshold of 70%.
+* **Used for: ** Testing whether the mean of a single sample differs from a known or hypothesized population mean when the population standard deviation is unknown.  
+* **Real-world example:** Determining if the average exam score of a class differs from the passing threshold of 70%.
 
-#### Assumptions
-- Sample is a simple random sample from the population.  
-- Observations are independent.  
-- The data are approximately normally distributed (especially important for small samples; n ≥ 30 reduces sensitivity).
+**Assumptions:**
 
-#### Strengths
-- Does not require knowing the population standard deviation.  
-- Robust to mild departures from normality for moderate-to-large sample sizes.  
-- Widely applicable and easily implemented.
+* Sample is a simple random sample from the population.  
+* Observations are independent.  
+* The data are approximately normally distributed (especially important for small samples; n ≥ 30 reduces sensitivity).
 
-#### Weaknesses
-- Sensitive to outliers in small samples.  
-- Performance degrades if normality assumption is seriously violated and n is small.  
-- Degrees of freedom reduce power relative to z-test.
+**Strengths:** 
+* Does not require knowing the population standard deviation.  
+* Robust to mild departures from normality for moderate-to-large sample sizes.  
+* Widely applicable and easily implemented.
 
-#### Example
+**Weaknesses**
+* Sensitive to outliers in small samples.  
+* Performance degrades if normality assumption is seriously violated and n is small.  
+* Degrees of freedom reduce power relative to z-test.
 
-##### Hypothesis
+**Example**
 
-- **Null hypothesis (H₀):** The true mean exam score μ = 70.  
-- **Alternative hypothesis (H₁):** μ ≠ 70.
+* **Null hypothesis (H₀):** The true mean exam score μ = 70.  
+* **Alternative hypothesis (H₁):** μ ≠ 70.
 
 
 ``` r
@@ -292,7 +297,8 @@ mean of x
      70.6 
 ```
 
-Interpretation:
+**Interpretation:**
+
 The sample mean is 70.6. The t-statistic is 0.85 with 19 degrees of freedom and a two-sided p-value of 0.408. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -301,36 +307,35 @@ no evidence to conclude the average score differs from the passing threshold of 
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### One-sample Poisson test
 
 EJ KORREKTURLÆST!
 
-#### Used for
-- Testing whether the observed count of events in a fixed period differs from a hypothesized Poisson rate.  
-- **Real-world example:** Checking if the number of customer arrivals per hour at a call center matches the expected rate of 30 calls/hour.
+* **Used for**  Testing whether the observed count of events in a fixed period differs from a hypothesized Poisson rate.  
+* **Real-world example:** Checking if the number of customer arrivals per hour at a call center matches the expected rate of 30 calls/hour.
 
-#### Assumptions
-- Events occur independently.  
-- The rate of occurrence (λ) is constant over the observation period.  
-- The count of events in non-overlapping intervals is independent.
+**Assumptions**
+* Events occur independently.  
+* The rate of occurrence (λ) is constant over the observation period.  
+* The count of events in non-overlapping intervals is independent.
 
-#### Strengths
-- Exact test based on the Poisson distribution (no large-sample approximation needed).  
-- Valid for small counts and rare events.  
-- Simple to implement in R via `poisson.test()`.
+**Strengths**
+* Exact test based on the Poisson distribution (no large-sample approximation needed).  
+* Valid for small counts and rare events.  
+* Simple to implement in R via `poisson.test()`.
 
-#### Weaknesses
-- Sensitive to violations of the Poisson assumptions (e.g., overdispersion or time-varying rate).  
-- Only assesses the overall rate, not the dispersion or clustering of events.  
-- Cannot handle covariates or more complex rate structures.
+**Weaknesses**
+* Sensitive to violations of the Poisson assumptions (e.g., overdispersion or time-varying rate).  
+* Only assesses the overall rate, not the dispersion or clustering of events.  
+* Cannot handle covariates or more complex rate structures.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The event rate λ = 30 calls/hour.  
-- **Alternative hypothesis (H₁):** λ ≠ 30 calls/hour.
+* **Null hypothesis (H₀):** The event rate λ = 30 calls/hour.  
+* **Alternative hypothesis (H₁):** λ ≠ 30 calls/hour.
 
 
 ``` r
@@ -361,7 +366,8 @@ event rate
         36 
 ```
 
-Interpretation:
+**Interpretation:**
+
 The test reports an observed count of 36 calls versus an expected 30 calls, yielding a p-value of 0.272. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -370,36 +376,35 @@ no evidence to conclude the call rate differs from 30 calls/hour.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Shapiro–Wilk test for normality
 
-EJ KORREKTURLÆST
+EJ KORREKTURLÆST. DEN HAR VI NOGET UNDERVISNINGSMATERIALE OM I "ER DET NORMALT?"
 
-#### Used for
-- Testing whether a sample comes from a normally distributed population.  
-- **Real-world example:** Checking if the distribution of daily blood glucose measurements in a patient cohort is approximately normal.
+* **Used for** Testing whether a sample comes from a normally distributed population.  
+* **Real-world example:** Checking if the distribution of daily blood glucose measurements in a patient cohort is approximately normal.
 
-#### Assumptions
-- Observations are independent.  
-- Data are continuous.  
-- No extreme ties or many identical values.
+**Assumptions**
+* Observations are independent.  
+* Data are continuous.  
+* No extreme ties or many identical values.
 
-#### Strengths
-- Good power for detecting departures from normality in small to moderate samples (n ≤ 50).  
-- Widely implemented and easy to run in R.  
-- Provides both a test statistic (W) and p-value.
+**Strengths**
+* Good power for detecting departures from normality in small to moderate samples (n ≤ 50).  
+* Widely implemented and easy to run in R.  
+* Provides both a test statistic (W) and p-value.
 
-#### Weaknesses
-- Very sensitive to even slight deviations from normality in large samples (n > 2000).  
-- Does not indicate the nature of the departure (e.g., skewness vs. kurtosis).  
-- Ties or repeated values can invalidate the test.
+**Weaknesses**
+* Very sensitive to even slight deviations from normality in large samples (n > 2000).  
+* Does not indicate the nature of the departure (e.g., skewness vs. kurtosis).  
+* Ties or repeated values can invalidate the test.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The sample is drawn from a normal distribution.  
-- **Alternative hypothesis (H₁):** The sample is not drawn from a normal distribution.
+* **Null hypothesis (H₀):** The sample is drawn from a normal distribution.  
+* **Alternative hypothesis (H₁):** The sample is not drawn from a normal distribution.
 
 
 ``` r
@@ -422,7 +427,8 @@ data:  sample_data
 W = 0.97894, p-value = 0.7966
 ```
 
-Interpretation:
+**Interpretation:**
+
 The Shapiro–Wilk statistic W = 0.979 with p-value = 0.797. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -431,36 +437,36 @@ no evidence to conclude a departure from normality.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Kolmogorov–Smirnov én-prøve-test (goodness-of-fit)
 
-EJ KORREKTURLÆST
+EJ KORREKTURLÆST. DENNE HAR VI OGSÅ UNDERVISNINGSMATERIALE OM I "ER DET NORMALT"
 
-#### Used for
-- Testing whether a sample comes from a specified continuous distribution.  
-- **Real-world example:** Checking if patient systolic blood pressures follow a normal distribution with mean 120 mmHg and SD 15 mmHg.
+* **Used for** Testing whether a sample comes from a specified continuous distribution.  
+* **Real-world example:** Checking if patient systolic blood pressures follow a normal distribution with mean 120 mmHg and SD 15 mmHg.
 
-#### Assumptions
-- Observations are independent.  
-- Data are continuous (no ties).  
-- The null distribution is fully specified (parameters known, not estimated from the data).
+**Assumptions**
+* Observations are independent.  
+* Data are continuous (no ties).  
+* The null distribution is fully specified (parameters known, not estimated from the data).
 
-#### Strengths
-- Nonparametric: makes no assumption about distribution shape beyond continuity.  
-- Sensitive to any kind of departure (location, scale, shape).  
-- Exact distribution of the test statistic under H₀.
+**Strengths**
+* Nonparametric: makes no assumption about distribution shape beyond continuity.  
+* Sensitive to any kind of departure (location, scale, shape).  
+* Exact distribution of the test statistic under H₀.
 
-#### Weaknesses
-- Requires that distribution parameters (e.g., mean, SD) are known a priori; if estimated from data, p-values are invalid.  
-- Less powerful than parametric tests when the parametric form is correct.  
-- Sensitive to ties and discrete data.
+**Weaknesses**
+* Requires that distribution parameters (e.g., mean, SD) are known a priori; if estimated from data, p-values are invalid.  
+* Less powerful than parametric tests when the parametric form is correct.  
+* Sensitive to ties and discrete data.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The blood pressure values follow a Normal(μ = 120, σ = 15) distribution.  
-- **Alternative hypothesis (H₁):** The blood pressure values do not follow Normal(120, 15).
+
+* **Null hypothesis (H₀):** The blood pressure values follow a Normal(μ = 120, σ = 15) distribution.  
+* **Alternative hypothesis (H₁):** The blood pressure values do not follow Normal(120, 15).
 
 
 ``` r
@@ -484,7 +490,8 @@ D = 0.11189, p-value = 0.6573
 alternative hypothesis: two-sided
 ```
 
-Interpretation:
+**Interpretation:**
+
 The KS statistic D = 0.112 with p-value = 0.657. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -492,38 +499,39 @@ no evidence to conclude deviation from Normal(120,15).
 
 ::::
 
+
+
 <a id = "test-navn"></a>
+
 ::::spoiler
+
 
 ### χ² goodness-of-fit test
 
 EJ KORREKTURLÆST
 
+* **Used for** Testing whether observed categorical frequencies differ from expected categorical proportions.  
+* **Real-world example:** Comparing the distribution of blood types in a sample of donors to known population proportions.
 
-#### Used for
-- Testing whether observed categorical frequencies differ from expected categorical proportions.  
-- **Real-world example:** Comparing the distribution of blood types in a sample of donors to known population proportions.
+**Assumptions**
+* Observations are independent.  
+* Categories are mutually exclusive and exhaustive.  
+* Expected count in each category is at least 5 for the chi-square approximation to hold.
 
-#### Assumptions
-- Observations are independent.  
-- Categories are mutually exclusive and exhaustive.  
-- Expected count in each category is at least 5 for the chi-square approximation to hold.
+**Strengths**
+* Simple to compute and interpret.  
+* Nonparametric: no requirement of normality.  
+* Flexible for any number of categories.
 
-#### Strengths
-- Simple to compute and interpret.  
-- Nonparametric: no requirement of normality.  
-- Flexible for any number of categories.
+**Weaknesses**
+* Sensitive to small expected counts (invalidates approximation).  
+* Doesn’t identify which categories drive the discrepancy without further post-hoc tests.  
+* Requires independence—unsuitable for paired or repeated measures.
 
-#### Weaknesses
-- Sensitive to small expected counts (invalidates approximation).  
-- Doesn’t identify which categories drive the discrepancy without further post-hoc tests.  
-- Requires independence—unsuitable for paired or repeated measures.
+**Example**
 
-#### Example
-
-##### Hypothesis
-- **Null hypothesis (H₀):** The sample blood type proportions equal the known population proportions (A=0.42, B=0.10, AB=0.04, O=0.44).  
-- **Alternative hypothesis (H₁):** At least one blood type proportion differs from its known value.
+* **Null hypothesis (H₀):** The sample blood type proportions equal the known population proportions (A=0.42, B=0.10, AB=0.04, O=0.44).  
+* **Alternative hypothesis (H₁):** At least one blood type proportion differs from its known value.
 
 
 ``` r
@@ -548,7 +556,8 @@ data:  observed
 X-squared = 0.81418, df = 3, p-value = 0.8461
 ```
 
-Interpretation:
+**Interpretation:** 
+
 The test yields χ² = 0.81 with p-value = 0.846. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -560,6 +569,7 @@ no evidence to conclude the sample proportions differ from the population.
 
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Two-sample F test for variance
@@ -569,30 +579,28 @@ EJ KORREKTURLÆST
 We use this when we want to determine if two independent samples originate
 from populations with the same variance.
 
-#### Used for
-- Testing whether two independent samples have equal variances.  
-- **Real-world example:** Comparing the variability in systolic blood pressure measurements between two clinics.
+* **Used for** Testing whether two independent samples have equal variances.  
+* **Real-world example:** Comparing the variability in systolic blood pressure measurements between two clinics.
 
-#### Assumptions
-- Both samples consist of independent observations.  
-- Each sample is drawn from a normally distributed population.  
-- Samples are independent of one another.
+**Assumptions**
+* Both samples consist of independent observations.  
+* Each sample is drawn from a normally distributed population.  
+* Samples are independent of one another.
 
-#### Strengths
-- Simple calculation and interpretation.  
-- Directly targets variance equality, a key assumption in many downstream tests (e.g., t-test).  
-- Exact inference under normality.
+**Strengths**
+* Simple calculation and interpretation.  
+* Directly targets variance equality, a key assumption in many downstream tests (e.g., t-test).  
+* Exact inference under normality.
 
-#### Weaknesses
-- Highly sensitive to departures from normality.  
-- Only compares variance—doesn’t assess other distributional differences.  
-- Not robust to outliers.
+**Weaknesses**
+* Highly sensitive to departures from normality.  
+* Only compares variance—doesn’t assess other distributional differences.  
+* Not robust to outliers.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** σ₁² = σ₂² (the two population variances are equal).  
-- **Alternative hypothesis (H₁):** σ₁² ≠ σ₂² (the variances differ).
+* **Null hypothesis (H₀):** σ₁² = σ₂² (the two population variances are equal).  
+* **Alternative hypothesis (H₁):** σ₁² ≠ σ₂² (the variances differ).
 
 
 ``` r
@@ -622,8 +630,10 @@ ratio of variances
          0.4174837 
 ```
 
-The F statistic is 0.417 with numerator df = 29 and denominator df = 24, and p-value = 0.0261. We
 
+**Interpretation** 
+
+The F statistic is 0.417 with numerator df = 29 and denominator df = 24, and p-value = 0.0261. We
 
 reject the null hypothesis.
 Thus, there is
@@ -632,35 +642,36 @@ evidence that the variability in blood pressure differs between the two clinics.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Paired t-test
 
 EJ KORREKTURLÆST
-#### Used for
-- Testing whether the mean difference between two related (paired) samples differs from zero.  
-- **Real-world example:** Comparing patients’ blood pressure before and after administering a new medication.
 
-#### Assumptions
-- Paired observations are independent of other pairs.  
-- Differences between pairs are approximately normally distributed.  
-- The scale of measurement is continuous (interval or ratio).
+* **Used for** Testing whether the mean difference between two related (paired) samples differs from zero.  
+* **Real-world example:** Comparing patients’ blood pressure before and after administering a new medication.
 
-#### Strengths
-- Controls for between‐subject variability by using each subject as their own control.  
-- More powerful than unpaired tests when pairs are truly dependent.  
-- Easy to implement and interpret.
+**Assumptions**
+* Paired observations are independent of other pairs.  
+* Differences between pairs are approximately normally distributed.  
+* The scale of measurement is continuous (interval or ratio).
 
-#### Weaknesses
-- Sensitive to outliers in the difference scores.  
-- Requires that differences be approximately normal, especially for small samples.  
-- Not appropriate if pairing is not justified or if missing data break pairs.
+**Strengths**
+* Controls for between‐subject variability by using each subject as their own control.  
+* More powerful than unpaired tests when pairs are truly dependent.  
+* Easy to implement and interpret.
 
-#### Example
+**Weaknesses**
+* Sensitive to outliers in the difference scores.  
+* Requires that differences be approximately normal, especially for small samples.  
+* Not appropriate if pairing is not justified or if missing data break pairs.
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The mean difference Δ = 0 (no change in blood pressure).  
-- **Alternative hypothesis (H₁):** Δ ≠ 0 (blood pressure changes after medication).
+**Example**
+
+
+* **Null hypothesis (H₀):** The mean difference Δ = 0 (no change in blood pressure).  
+* **Alternative hypothesis (H₁):** Δ ≠ 0 (blood pressure changes after medication).
 
 
 ``` r
@@ -689,7 +700,8 @@ mean difference
             5.6 
 ```
 
-Interpretation:
+**Interpretation:**
+
 The mean difference (before – after) is 5.6 mmHg. The t‐statistic is 29.44 with 14 degrees of freedom and a two‐sided p‐value of` r signif(test_result$p.value, 3)`. We
 reject the null hypothesis.
 Thus, there is
@@ -698,36 +710,35 @@ evidence that the medication significantly changed blood pressure.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Two-sample t test (equal variances)
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether the means of two independent samples differ, assuming equal variances.  
-- **Real-world example:** Comparing average systolic blood pressure between male and female patients when variability is similar.
+* **Used for** Testing whether the means of two independent samples differ, assuming equal variances. 
+* **Real-world example:** Comparing average systolic blood pressure between male and female patients when variability is similar.
 
-#### Assumptions
-- Observations in each group are independent.  
-- Both populations are normally distributed (especially important for small samples).  
-- The two populations have equal variances (homoscedasticity).
+**Assumptions**
+* Observations in each group are independent.  
+* Both populations are normally distributed (especially important for small samples).  
+* The two populations have equal variances (homoscedasticity).
 
-#### Strengths
-- More powerful than Welch’s t-test when variances truly are equal.  
-- Simple computation and interpretation via pooled variance.  
-- Widely implemented and familiar to practitioners.
+**Strengths**
+* More powerful than Welch’s t-test when variances truly are equal.  
+* Simple computation and interpretation via pooled variance.  
+* Widely implemented and familiar to practitioners.
 
-#### Weaknesses
-- Sensitive to violations of normality in small samples.  
-- Incorrect if variances differ substantially—can inflate Type I error.  
-- Assumes homogeneity of variance, which may not hold in practice.
+**Weaknesses**
+* Sensitive to violations of normality in small samples.  
+* Incorrect if variances differ substantially—can inflate Type I error.  
+* Assumes homogeneity of variance, which may not hold in practice.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** μ₁ = μ₂ (the two population means are equal).  
-- **Alternative hypothesis (H₁):** μ₁ ≠ μ₂ (the means differ).
+* **Null hypothesis (H₀):** μ₁ = μ₂ (the two population means are equal).  
+* **Alternative hypothesis (H₁):** μ₁ ≠ μ₂ (the means differ).
 
 
 ``` r
@@ -757,7 +768,8 @@ mean of x mean of y
  125.2119  117.8021 
 ```
 
-Interpretation:
+**Interpretation:**
+
 The pooled estimate of the difference in means is 7.41 mmHg. The t-statistic is 2.62 with df = 48 and p-value = 0.0116. We
 reject the null hypothesis.
 Thus, there is
@@ -767,36 +779,35 @@ evidence that the average systolic blood pressure differs between the two groups
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Two-sample t test (unequal variances)
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether the means of two independent samples differ when variances are unequal.  
-- **Real-world example:** Comparing average recovery times for two different therapies when one therapy shows more variable outcomes.
+**Used for** Testing whether the means of two independent samples differ when variances are unequal.  
+* **Real-world example:** Comparing average recovery times for two different therapies when one therapy shows more variable outcomes.
 
-#### Assumptions
-- Observations in each group are independent.  
-- Each population is approximately normally distributed (especially important for small samples).  
-- Does **not** assume equal variances across groups.
+**Assumptions**
+* Observations in each group are independent.  
+* Each population is approximately normally distributed (especially important for small samples).  
+* Does **not** assume equal variances across groups.
 
-#### Strengths
-- Controls Type I error when variances differ.  
-- More reliable than the pooled‐variance t‐test under heteroskedasticity.  
-- Simple to implement via `t.test(..., var.equal = FALSE)` in R.
+**Strengths**
+* Controls Type I error when variances differ.  
+* More reliable than the pooled‐variance t‐test under heteroskedasticity.  
+* Simple to implement via `t.test(..., var.equal = FALSE)` in R.
 
-#### Weaknesses
-- Slight loss of power compared to equal-variance t‐test when variances truly are equal.  
-- Sensitive to departures from normality in small samples.  
-- Degrees of freedom are approximated (Welch–Satterthwaite), which can reduce interpretability.
+**Weaknesses**
+* Slight loss of power compared to equal-variance t‐test when variances truly are equal.  
+* Sensitive to departures from normality in small samples.  
+* Degrees of freedom are approximated (Welch–Satterthwaite), which can reduce interpretability.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** μ₁ = μ₂ (the two population means are equal).  
-- **Alternative hypothesis (H₁):** μ₁ ≠ μ₂ (the means differ).
+* **Null hypothesis (H₀):** μ₁ = μ₂ (the two population means are equal).  
+* **Alternative hypothesis (H₁):** μ₁ ≠ μ₂ (the means differ).
 
 
 ``` r
@@ -826,7 +837,8 @@ mean of x mean of y
  10.41320  12.19266 
 ```
 
-Interpretation:
+**Interpretation:**
+
 The estimated difference in means is -1.78 days. The Welch t‐statistic is` r round(test_result$statistic, 2)` with df ≈ 32.8 and two‐sided p‐value =` r signif(test_result$p.value, 3`). We
 fail to reject the null hypothesis.
 Thus, there is
@@ -835,36 +847,35 @@ no evidence of a difference in average recovery times..
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Mann–Whitney U-test (Wilcoxon rank-sum)
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Comparing the central tendencies of two independent samples when the data are ordinal or not normally distributed.  
-- **Real-world example:** Testing whether pain scores (0–10) differ between patients receiving Drug A versus Drug B when scores are skewed.
+* **Used for** Comparing the central tendencies of two independent samples when the data are ordinal or not normally distributed.  
+* **Real-world example:** Testing whether pain scores (0–10) differ between patients receiving Drug A versus Drug B when scores are skewed.
 
-#### Assumptions
-- Observations are independent both within and between groups.  
-- The response variable is at least ordinal.  
-- The two distributions have the same shape (so that differences reflect location shifts).
+**Assumptions**
+* Observations are independent both within and between groups.  
+* The response variable is at least ordinal.  
+* The two distributions have the same shape (so that differences reflect location shifts).
 
-#### Strengths
-- Nonparametric: does not require normality or equal variances.  
-- Robust to outliers and skewed data.  
-- Simple rank-based calculation.
+**Strengths**
+* Nonparametric: does not require normality or equal variances.  
+* Robust to outliers and skewed data.  
+* Simple rank-based calculation.
 
-#### Weaknesses
-- Less powerful than t-test when data are truly normal.  
-- If distributions differ in shape as well as location, interpretation becomes ambiguous.  
-- Only tests for location shift, not differences in dispersion.
+**Weaknesses**
+* Less powerful than t-test when data are truly normal.  
+* If distributions differ in shape as well as location, interpretation becomes ambiguous.  
+* Only tests for location shift, not differences in dispersion.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The distributions of pain scores are identical for Drug A and Drug B.  
-- **Alternative hypothesis (H₁):** The distributions differ in location (median pain differs between drugs).
+* **Null hypothesis (H₀):** The distributions of pain scores are identical for Drug A and Drug B.  
+* **Alternative hypothesis (H₁):** The distributions differ in location (median pain differs between drugs).
 
 
 ``` r
@@ -892,7 +903,8 @@ alternative hypothesis: true location shift is not equal to 0
 ```
 
 
-Interpretation:
+**Interpretation:**
+
 The Wilcoxon rank-sum statistic W = 20.5 with p-value = 9.12\times 10^{-7}. We
 reject the null hypothesis.
 Thus, there is
@@ -901,36 +913,35 @@ evidence that median pain scores differ between Drug A and Drug B.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Wilcoxon signed-rank test
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether the median difference between paired observations is zero.  
-- **Real-world example:** Comparing patients’ pain scores before and after a new analgesic treatment when differences may not be normally distributed.
+* **Used for** Testing whether the median difference between paired observations is zero.  
+* **Real-world example:** Comparing patients’ pain scores before and after a new analgesic treatment when differences may not be normally distributed.
 
-#### Assumptions
-- Observations are paired and the pairs are independent.  
-- Differences are at least ordinal and symmetrically distributed around the median.  
-- No large number of exact zero differences (ties).
+**Assumptions**
+* Observations are paired and the pairs are independent.  
+* Differences are at least ordinal and symmetrically distributed around the median.  
+* No large number of exact zero differences (ties).
 
-#### Strengths
-- Nonparametric: does not require normality of differences.  
-- Controls for within‐subject variability by using paired design.  
-- Robust to outliers in the paired differences.
+**Strengths**
+* Nonparametric: does not require normality of differences.  
+* Controls for within‐subject variability by using paired design.  
+* Robust to outliers in the paired differences.
 
-#### Weaknesses
-- Less powerful than the paired t-test when differences are truly normal.  
-- Requires symmetry of the distribution of differences.  
-- Cannot easily handle many tied differences.
+**Weaknesses**
+* Less powerful than the paired t-test when differences are truly normal.  
+* Requires symmetry of the distribution of differences.  
+* Cannot easily handle many tied differences.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The median difference in pain score (before – after) = 0 (no change).  
-- **Alternative hypothesis (H₁):** The median difference ≠ 0 (pain changes after treatment).
+* **Null hypothesis (H₀):** The median difference in pain score (before – after) = 0 (no change).  
+* **Alternative hypothesis (H₁):** The median difference ≠ 0 (pain changes after treatment).
 
 
 ``` r
@@ -955,7 +966,8 @@ V = 66, p-value = 0.001586
 alternative hypothesis: true location shift is not equal to 0
 ```
 
-Interpretation:
+**Interpretation:**
+
 The Wilcoxon signed‐rank test statistic V =66 with p-value =` r signif(wsr_result$p.value, 3)`. We
 reject the null hypothesis.
 Thus, there is
@@ -964,36 +976,35 @@ evidence that median pain scores change after treatment..
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Kolmogorov–Smirnov two-sample-test
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether two independent samples come from the same continuous distribution.  
-- **Real-world example:** Comparing the distribution of recovery times for patients receiving Drug A versus Drug B.
+* **Used for** Testing whether two independent samples come from the same continuous distribution.  
+* **Real-world example:** Comparing the distribution of recovery times for patients receiving Drug A versus Drug B.
 
-#### Assumptions
-- Observations in each sample are independent.  
-- Data are continuous with no ties.  
-- The two samples are drawn from fully specified continuous distributions (no parameters estimated from the same data).
+**Assumptions**
+* Observations in each sample are independent.  
+* Data are continuous with no ties.  
+* The two samples are drawn from fully specified continuous distributions (no parameters estimated from the same data).
 
-#### Strengths
-- Nonparametric: makes no assumption about the shape of the distribution.  
-- Sensitive to differences in location, scale, or overall shape.  
-- Exact distribution under the null when samples are not too large.
+**Strengths**
+* Nonparametric: makes no assumption about the shape of the distribution.  
+* Sensitive to differences in location, scale, or overall shape.  
+* Exact distribution under the null when samples are not too large.
 
-#### Weaknesses
-- Less powerful than parametric alternatives if the true form is known (e.g., t-test for normal data).  
-- Invalid p-values if there are ties or discrete data.  
-- Does not indicate how distributions differ—only that they do.
+**Weaknesses**
+* Less powerful than parametric alternatives if the true form is known (e.g., t-test for normal data).  
+* Invalid p-values if there are ties or discrete data.  
+* Does not indicate how distributions differ—only that they do.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The two samples come from the same distribution.  
-- **Alternative hypothesis (H₁):** The two samples come from different distributions.
+* **Null hypothesis (H₀):** The two samples come from the same distribution.  
+* **Alternative hypothesis (H₁):** The two samples come from different distributions.
 
 
 ``` r
@@ -1018,7 +1029,8 @@ D = 0.43333, p-value = 0.007153
 alternative hypothesis: two-sided
 ```
 
-Interpretation:
+**Interpretation:**
+
 The KS statistic D = 0.433 with p-value = 0.00715. We
 reject the null hypothesis.
 Thus, there is
@@ -1027,35 +1039,35 @@ evidence that the distribution of recovery times differs between therapies.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Levene’s test for homoskedasticitet
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether multiple groups have equal variances.  
-- **Real-world example:** Checking if the variability in patient blood pressure differs between three different clinics.
+* **Used for** Testing whether multiple groups have equal variances.  
+* **Real-world example:** Checking if the variability in patient blood pressure differs between three different clinics.
 
-#### Assumptions
-- Observations are independent.  
-- The underlying distributions within each group are approximately symmetric (Levene’s test is robust to non-normality but assumes no extreme skew).
+**Assumptions**
 
-#### Strengths
-- More robust to departures from normality than Bartlett’s test.  
-- Applicable to two or more groups.  
-- Simple to implement and interpret.
+* Observations are independent.  
+* The underlying distributions within each group are approximately symmetric (Levene’s test is robust to non-normality but assumes no extreme skew).
 
-#### Weaknesses
-- Less powerful than tests that assume normality when data truly are normal.  
-- Can be sensitive to extreme outliers despite its robustness.  
-- Does not indicate which groups differ in variance without follow-up comparisons.
+**Strengths**
+* More robust to departures from normality than Bartlett’s test.  
+* Applicable to two or more groups.  
+* Simple to implement and interpret.
 
-#### Example
+**Weaknesses**
+* Less powerful than tests that assume normality when data truly are normal.  
+* Can be sensitive to extreme outliers despite its robustness.  
+* Does not indicate which groups differ in variance without follow-up comparisons.
 
-##### Hypothesis
-- **Null hypothesis (H₀):** All groups have equal variances (σ₁² = σ₂² = … = σₖ²).  
-- **Alternative hypothesis (H₁):** At least one group’s variance differs.
+**Example**
+
+* **Null hypothesis (H₀):** All groups have equal variances (σ₁² = σ₂² = … = σₖ²).  
+* **Alternative hypothesis (H₁):** At least one group’s variance differs.
 
 
 ``` r
@@ -1089,52 +1101,46 @@ group  2   0.872 0.4296
       27               
 ```
 
-Interpretation:
+**Interpretation:**
+
 Levene’s test yields an F-statistic of 0.87 
 with a p-value of 0.43. We
 fail to reject the null hypothesis.
 This means there is
 no evidence of differing variances across clinics.
 
-
-
-
-
-
-
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Bartlett’s test for homoskedasticitet
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether multiple groups have equal variances under the assumption of normality.  
-- **Real-world example:** Checking if the variability in laboratory test results differs across three different laboratories.
+* **Used for** Testing whether multiple groups have equal variances under the assumption of normality.  
+* **Real-world example:** Checking if the variability in laboratory test results differs across three different laboratories.
 
-#### Assumptions
-- Observations within each group are independent.  
-- Each group is drawn from a normally distributed population.  
-- Groups are independent of one another.
+**Assumptions**
+* Observations within each group are independent.  
+* Each group is drawn from a normally distributed population.  
+* Groups are independent of one another.
 
-#### Strengths
-- More powerful than Levene’s test when normality holds.  
-- Directly targets equality of variances under the normal model.  
-- Simple to compute in R via `bartlett.test()`.
+**Strengths**
+* More powerful than Levene’s test when normality holds.  
+* Directly targets equality of variances under the normal model.  
+* Simple to compute in R via `bartlett.test()`.
 
-#### Weaknesses
-- Highly sensitive to departures from normality—small deviations can inflate Type I error.  
-- Does not indicate which groups differ without further pairwise testing.  
-- Not robust to outliers.
+**Weaknesses**
+* Highly sensitive to departures from normality—small deviations can inflate Type I error.  
+* Does not indicate which groups differ without further pairwise testing.  
+* Not robust to outliers.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** All group variances are equal (σ₁² = σ₂² = σ₃²).  
-- **Alternative hypothesis (H₁):** At least one group variance differs.
+* **Null hypothesis (H₀):** All group variances are equal (σ₁² = σ₂² = σ₃²).  
+* **Alternative hypothesis (H₁):** At least one group variance differs.
 
 
 ``` r
@@ -1162,7 +1168,8 @@ Bartlett's K-squared = 10.387, df = 2, p-value = 0.005552
 ```
 
 
-Interpretation:
+**Interpretation:**
+
 Bartlett’s K-squared = 10.39 with df = 2 and p-value = 0.00555. We
 reject the null hypothesis.
 Thus, there is
@@ -1176,36 +1183,37 @@ evidence that at least one laboratory’s variance differs from the others.
 ## Variansanalyse (ANOVA/ANCOVA)
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### One-way ANOVA
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether the means of three or more independent groups differ.  
-- **Real-world example:** Comparing average test scores among students taught by three different teaching methods.
+SAMMENHOLD MED [undervisningsudgaven](anova.Rmd)
 
-#### Assumptions
-- Observations are independent.  
-- Each group’s residuals are approximately normally distributed.  
-- Homogeneity of variances across groups.
+* **Used for** Testing whether the means of three or more independent groups differ.  
+* **Real-world example:** Comparing average test scores among students taught by three different teaching methods.
 
-#### Strengths
-- Controls Type I error rate when comparing multiple groups.  
-- Simple to compute and interpret via F-statistic.  
-- Foundation for many extensions (e.g., factorial ANOVA, mixed models).
+**Assumptions**
+* Observations are independent.  
+* Each group’s residuals are approximately normally distributed.  
+* Homogeneity of variances across groups.
 
-#### Weaknesses
-- Sensitive to heterogeneity of variances, especially with unequal group sizes.  
-- Only tells you that at least one mean differs—does not indicate which groups differ without post-hoc tests.  
-- Assumes normality; moderately robust for large samples, but small samples can be problematic.
+**Strengths**
+* Controls Type I error rate when comparing multiple groups.  
+* Simple to compute and interpret via F-statistic.  
+* Foundation for many extensions (e.g., factorial ANOVA, mixed models).
 
-#### Example
+**Weaknesses**
+* Sensitive to heterogeneity of variances, especially with unequal group sizes.  
+* Only tells you that at least one mean differs—does not indicate which groups differ without post-hoc tests.  
+* Assumes normality; moderately robust for large samples, but small samples can be problematic.
 
-##### Hypothesis
-- **Null hypothesis (H₀):** μ₁ = μ₂ = μ₃ (all three group means are equal).  
-- **Alternative hypothesis (H₁):** At least one group mean differs.
+**Example**
+
+* **Null hypothesis (H₀):** μ₁ = μ₂ = μ₃ (all three group means are equal).  
+* **Alternative hypothesis (H₁):** At least one group mean differs.
 
 
 ``` r
@@ -1231,7 +1239,8 @@ method       2    146   72.79   1.184  0.314
 Residuals   57   3505   61.48               
 ```
 
-Interpretation:
+**Interpretation:**
+
 The ANOVA yields F = 1.18 with df₁ =` r anova_summary[[1]]["method","Df"]` and df₂ =` r anova_summary[[1]]["Residuals","Df"]`, and p-value = 0.314. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -1240,37 +1249,36 @@ no evidence of a difference in mean scores among methods.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 ### One-way ANCOVA
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Comparing group means on a continuous outcome while adjusting for one continuous covariate.  
-- **Real-world example:** Evaluating whether three different teaching methods lead to different final exam scores after accounting for students’ prior GPA.
+* **Used for** Comparing group means on a continuous outcome while adjusting for one continuous covariate.  
+* **Real-world example:** Evaluating whether three different teaching methods lead to different final exam scores after accounting for students’ prior GPA.
 
-#### Assumptions
-- Observations are independent.  
-- The relationship between the covariate and the outcome is linear and the same across groups (homogeneity of regression slopes).  
-- Residuals are normally distributed with equal variances across groups.  
-- Covariate is measured without error and is independent of group assignment.
+**Assumptions**
+* Observations are independent.  
+* The relationship between the covariate and the outcome is linear and the same across groups (homogeneity of regression slopes).  
+* Residuals are normally distributed with equal variances across groups.  
+* Covariate is measured without error and is independent of group assignment.
 
-#### Strengths
-- Removes variability due to the covariate, increasing power to detect group differences.  
-- Controls for confounding by the covariate.  
-- Simple extension of one-way ANOVA with interpretation familiar to ANOVA users.
+**Strengths**
+* Removes variability due to the covariate, increasing power to detect group differences.  
+* Controls for confounding by the covariate.  
+* Simple extension of one-way ANOVA with interpretation familiar to ANOVA users.
 
-#### Weaknesses
-- Sensitive to violation of homogeneity of regression slopes.  
-- Mis‐specification of the covariate‐outcome relationship biases results.  
-- Requires accurate measurement of the covariate.  
-- Does not accommodate multiple covariates without extension to factorial ANCOVA or regression.
+**Weaknesses**
+* Sensitive to violation of homogeneity of regression slopes.  
+* Mis‐specification of the covariate‐outcome relationship biases results.  
+* Requires accurate measurement of the covariate.  
+* Does not accommodate multiple covariates without extension to factorial ANCOVA or regression.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** After adjusting for prior GPA, the mean final exam scores are equal across the three teaching methods (μ_Lecture = μ_Online = μ_Hybrid).  
-- **Alternative hypothesis (H₁):** At least one adjusted group mean differs.
+* **Null hypothesis (H₀):** After adjusting for prior GPA, the mean final exam scores are equal across the three teaching methods (μ_Lecture = μ_Online = μ_Hybrid).  
+* **Alternative hypothesis (H₁):** At least one adjusted group mean differs.
 
 
 ``` r
@@ -1304,7 +1312,8 @@ Residuals   56 1562.4    27.9
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
-Interpretation:
+**Interpretation:**
+
 After adjusting for prior GPA, the effect of teaching method yields F = 5.32 (df₁ =` r ancova_summary[[1]]["method","Df"]`, df₂ =` r ancova_summary[[1]]["Residuals","Df"]`) with p =` r signif(ancova_summary[[1]]["method","Pr(>F)"], 3`). We
 reject the null hypothesis.
 Thus, there is
@@ -1315,36 +1324,35 @@ evidence that, controlling for prior GPA, at least one teaching method leads to 
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Welch’s ANOVA (uden antagelse om lige varianser)
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether the means of three or more independent groups differ when variances are unequal.  
-- **Real-world example:** Comparing average systolic blood pressure across three clinics known to have different measurement variability.
+* **Used for** Testing whether the means of three or more independent groups differ when variances are unequal.  
+* **Real-world example:** Comparing average systolic blood pressure across three clinics known to have different measurement variability.
 
-#### Assumptions
-- Observations are independent.  
-- Each group’s residuals are approximately normally distributed.  
-- Does **not** assume equal variances across groups.
+**Assumptions**
+* Observations are independent.  
+* Each group’s residuals are approximately normally distributed.  
+* Does **not** assume equal variances across groups.
 
-#### Strengths
-- Controls Type I error under heteroskedasticity better than ordinary ANOVA.  
-- Simple to implement via `oneway.test(..., var.equal = FALSE)`.  
-- More powerful than nonparametric alternatives when normality holds.
+**Strengths**
+* Controls Type I error under heteroskedasticity better than ordinary ANOVA.  
+* Simple to implement via `oneway.test(..., var.equal = FALSE)`.  
+* More powerful than nonparametric alternatives when normality holds.
 
-#### Weaknesses
-- Sensitive to departures from normality, especially with small sample sizes.  
-- Does not provide post-hoc comparisons by default; requires additional tests.  
-- Still assumes independence and approximate normality within each group.
+**Weaknesses**
+* Sensitive to departures from normality, especially with small sample sizes.  
+* Does not provide post-hoc comparisons by default; requires additional tests.  
+* Still assumes independence and approximate normality within each group.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** All group means are equal (μ₁ = μ₂ = μ₃).  
-- **Alternative hypothesis (H₁):** At least one group mean differs.
+* **Null hypothesis (H₀):** All group means are equal (μ₁ = μ₂ = μ₃).  
+* **Alternative hypothesis (H₁):** At least one group mean differs.
 
 
 ``` r
@@ -1373,7 +1381,8 @@ data:  bp_values and clinic
 F = 2.7802, num df = 2.000, denom df = 23.528, p-value = 0.08244
 ```
 
-Interpretation:
+**Interpretation:**
+
 The Welch statistic = 2.78 with df ≈ 2, 23.53, and p-value = 0.0824. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -1382,36 +1391,35 @@ no evidence of a difference in mean blood pressure among the clinics.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Repeated-measures ANOVA
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether the means of three or more related (within‐subject) conditions differ.  
-- **Real-world example:** Assessing whether students’ reaction times change across three levels of sleep deprivation (0 h, 12 h, 24 h) measured on the same individuals.
+* **Used for** Testing whether the means of three or more related (within‐subject) conditions differ.  
+* **Real-world example:** Assessing whether students’ reaction times change across three levels of sleep deprivation (0 h, 12 h, 24 h) measured on the same individuals.
 
-#### Assumptions
-- Observations (subjects) are independent.  
-- The dependent variable is approximately normally distributed in each condition.  
-- **Sphericity:** variances of the pairwise differences between conditions are equal.
+**Assumptions**
+* Observations (subjects) are independent.  
+* The dependent variable is approximately normally distributed in each condition.  
+* **Sphericity:** variances of the pairwise differences between conditions are equal.
 
-#### Strengths
-- Controls for between‐subject variability by using each subject as their own control.  
-- More powerful than independent‐groups ANOVA when measures are correlated.  
-- Can model complex within‐subject designs (e.g. time × treatment interactions).
+**Strengths**
+* Controls for between‐subject variability by using each subject as their own control.  
+* More powerful than independent‐groups ANOVA when measures are correlated.  
+* Can model complex within‐subject designs (e.g. time × treatment interactions).
 
-#### Weaknesses
-- Sensitive to violations of sphericity (inflates Type I error).  
-- Missing data in any condition drops the entire subject (unless using more advanced mixed‐model methods).  
-- Interpretation can be complex when there are many levels or interactions.
+**Weaknesses**
+* Sensitive to violations of sphericity (inflates Type I error).  
+* Missing data in any condition drops the entire subject (unless using more advanced mixed‐model methods).  
+* Interpretation can be complex when there are many levels or interactions.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The mean reaction time is the same across 0 h, 12 h, and 24 h sleep deprivation.  
-- **Alternative hypothesis (H₁):** At least one condition’s mean reaction time differs.
+* **Null hypothesis (H₀):** The mean reaction time is the same across 0 h, 12 h, and 24 h sleep deprivation.  
+* **Alternative hypothesis (H₁):** At least one condition’s mean reaction time differs.
 
 
 ``` r
@@ -1445,7 +1453,8 @@ condition  2   1000     500   1.188  0.324
 Residuals 22   9262     421               
 ```
 
-Interpretation:
+**Interpretation:**
+
 The within‐subjects effect of sleep deprivation yields F =  1.19 with df₁ = 2 and df₂ = `r
 rm_summary[[2]][[1]]["Residuals","Df"]`, p = 0.324. We
 fail to reject the null hypothesis.
@@ -1456,37 +1465,36 @@ no evidence that reaction times differ across sleep deprivation conditions.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### MANOVA
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing for differences on multiple continuous dependent variables across one or more grouping factors simultaneously.  
-- **Real-world example:** Evaluating whether three different diets lead to different patterns of weight loss and cholesterol reduction.
+* **Used for** Testing for differences on multiple continuous dependent variables across one or more grouping factors simultaneously.  
+* **Real-world example:** Evaluating whether three different diets lead to different patterns of weight loss and cholesterol reduction.
 
-#### Assumptions
-- Multivariate normality of the dependent variables within each group.  
-- Homogeneity of covariance matrices across groups.  
-- Observations are independent.  
-- Linear relationships among dependent variables.
+**Assumptions**
+* Multivariate normality of the dependent variables within each group.  
+* Homogeneity of covariance matrices across groups.  
+* Observations are independent.  
+* Linear relationships among dependent variables.
 
-#### Strengths
-- Controls family-wise Type I error by testing all DVs together.  
-- Can detect patterns that univariate ANOVAs might miss.  
-- Provides multiple test statistics (Pillai, Wilks, Hotelling–Lawley, Roy) for flexibility.
+**Strengths**
+* Controls family-wise Type I error by testing all DVs together.  
+* Can detect patterns that univariate ANOVAs might miss.  
+* Provides multiple test statistics (Pillai, Wilks, Hotelling–Lawley, Roy) for flexibility.
 
-#### Weaknesses
-- Sensitive to violations of multivariate normality and homogeneity of covariances.  
-- Requires larger sample sizes as the number of DVs increases.  
-- Interpretation can be complex; follow-up analyses often needed to determine which DVs drive effects.
+**Weaknesses**
+* Sensitive to violations of multivariate normality and homogeneity of covariances.  
+* Requires larger sample sizes as the number of DVs increases.  
+* Interpretation can be complex; follow-up analyses often needed to determine which DVs drive effects.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The vector of means for weight loss and cholesterol change is equal across the three diet groups.  
-- **Alternative hypothesis (H₁):** At least one diet group differs on the combination of weight loss and cholesterol change.
+* **Null hypothesis (H₀):** The vector of means for weight loss and cholesterol change is equal across the three diet groups.  
+* **Alternative hypothesis (H₁):** At least one diet group differs on the combination of weight loss and cholesterol change.
 
 
 ``` r
@@ -1520,7 +1528,8 @@ Residuals 42
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ```
 
-Interpretation:
+**Interpretation:**
+
 Pillai’s trace = 0.59, F = 8.78 with df = 42, and p-value = 5.71\times 10^{-6}. We
 reject the null hypothesis.
 This indicates that there is
@@ -1618,36 +1627,35 @@ Tjek altid flere tests; hvis de konkluderer ens, styrker det din konklusion.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Friedman test (nonparametrisk gentagne målinger)
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing for differences in central tendency across three or more related (paired) groups when assumptions of repeated‐measures ANOVA are violated.  
-- **Real-world example:** Comparing median pain scores at baseline, 1 hour, and 24 hours after surgery in the same patients.
+* **Used for** Testing for differences in central tendency across three or more related (paired) groups when assumptions of repeated‐measures ANOVA are violated.  
+* **Real-world example:** Comparing median pain scores at baseline, 1 hour, and 24 hours after surgery in the same patients.
 
-#### Assumptions
-- Observations are paired and the sets of scores for each condition are related (e.g., repeated measures on the same subjects).  
-- Data are at least ordinal.  
-- The distribution of differences across pairs need not be normal.
+**Assumptions**
+* Observations are paired and the sets of scores for each condition are related (e.g., repeated measures on the same subjects).  
+* Data are at least ordinal.  
+* The distribution of differences across pairs need not be normal.
 
-#### Strengths
-- Nonparametric: does not require normality or sphericity.  
-- Controls for between‐subject variability by using each subject as their own block.  
-- Robust to outliers and skewed data.
+**Strengths**
+* Nonparametric: does not require normality or sphericity.  
+* Controls for between‐subject variability by using each subject as their own block.  
+* Robust to outliers and skewed data.
 
-#### Weaknesses
-- Less powerful than repeated‐measures ANOVA when normality and sphericity hold.  
-- Only indicates that at least one condition differs—post‐hoc tests are needed to locate differences.  
-- Assumes similar shaped distributions across conditions.
+**Weaknesses**
+* Less powerful than repeated‐measures ANOVA when normality and sphericity hold.  
+* Only indicates that at least one condition differs—post‐hoc tests are needed to locate differences.  
+* Assumes similar shaped distributions across conditions.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The distributions of scores are the same across all conditions (no median differences).  
-- **Alternative hypothesis (H₁):** At least one condition’s distribution (median) differs.
+* **Null hypothesis (H₀):** The distributions of scores are the same across all conditions (no median differences).  
+* **Alternative hypothesis (H₁):** At least one condition’s distribution (median) differs.
 
 
 ``` r
@@ -1677,7 +1685,8 @@ data:  scores and timepoint and patient
 Friedman chi-squared = 1.6364, df = 2, p-value = 0.4412
 ```
 
-Interpretation:
+**Interpretation:**
+
 The Friedman chi-squared = 1.64 with df = 2 and p-value = 0.441. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -1686,37 +1695,36 @@ no evidence that pain scores differ across time points.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Post-hoc: Tukey HSD
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Performing pairwise comparisons of group means after a significant one‐way ANOVA to identify which groups differ.  
-- **Real-world example:** Determining which teaching methods (Lecture, Online, Hybrid) differ in average exam scores after finding an overall effect.
+* **Used for** Performing pairwise comparisons of group means after a significant one‐way ANOVA to identify which *roups differ.  
+* **Real-world example:** Determining which teaching methods (Lecture, Online, Hybrid) differ in average exam scores after finding an overall effect.
 
-#### Assumptions
-- A significant one‐way ANOVA has been obtained.  
-- Observations are independent.  
-- Residuals from the ANOVA are approximately normally distributed.  
-- Homogeneity of variances across groups (though Tukey’s HSD is fairly robust).
+**Assumptions**
+* A significant one‐way ANOVA has been obtained.  
+* Observations are independent.  
+* Residuals from the ANOVA are approximately normally distributed.  
+* Homogeneity of variances across groups (though Tukey’s HSD is fairly robust).
 
-#### Strengths
-- Controls the family‐wise error rate across all pairwise tests.  
-- Provides confidence intervals for each mean difference.  
-- Widely available and simple to interpret.
+**Strengths**
+* Controls the family‐wise error rate across all pairwise tests.  
+* Provides confidence intervals for each mean difference.  
+* Widely available and simple to interpret.
 
-#### Weaknesses
-- Requires balanced or nearly balanced designs for optimal power.  
-- Less powerful than some alternatives if variances are highly unequal.  
-- Only applies after a significant omnibus ANOVA.
+**Weaknesses**
+* Requires balanced or nearly balanced designs for optimal power.  
+* Less powerful than some alternatives if variances are highly unequal.  
+* Only applies after a significant omnibus ANOVA.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** All pairwise mean differences between teaching methods are zero (e.g., μ_Lecture – μ_Online = 0, etc.).  
-- **Alternative hypothesis (H₁):** At least one pairwise mean difference ≠ 0.
+* **Null hypothesis (H₀):** All pairwise mean differences between teaching methods are zero (e.g., μ_Lecture – μ_Online = 0, etc.).  
+* **Alternative hypothesis (H₁):** At least one pairwise mean difference ≠ 0.
 
 
 ``` r
@@ -1751,44 +1759,44 @@ Online-Hybrid   1.192499 -4.774468 7.159467 0.8805866
 Online-Lecture  3.735010 -2.231958 9.701978 0.2956108
 ```
 
-Interpretation:
+**Interpretation:**
+
 Each row of the output gives the estimated difference in means, a 95% confidence 
 interval, and an adjusted p‐value. For example, if the Lecture–Online comparison shows a mean difference of –5.0 (95% CI: –8.0 to –2.0, p adj = 0.002), we conclude that the Online method yields significantly higher scores than Lecture. Comparisons with p adj < 0.05 indicate significant mean differences between those teaching methods.
 
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Post-hoc: Dunnett’s test
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Comparing multiple treatment groups to a single control while controlling the family‐wise error rate.  
-- **Real-world example:** Testing whether two new fertilizers (Fertilizer A, Fertilizer B) improve crop yield compared to the standard fertilizer (Control).
+* **Used for** Comparing multiple treatment groups to a single control while controlling the family‐wise error rate.  
+* **Real-world example:** Testing whether two new fertilizers (Fertilizer A, Fertilizer B) improve crop yield compared to the standard fertilizer (Control).
 
-#### Assumptions
-- Observations are independent.  
-- Residuals from the ANOVA are approximately normally distributed.  
-- Homogeneity of variances across groups.  
-- A significant overall ANOVA (omnibus F-test) has been observed or intended.
+**Assumptions**
+* Observations are independent.  
+* Residuals from the ANOVA are approximately normally distributed.  
+* Homogeneity of variances across groups.  
+* A significant overall ANOVA (omnibus F-test) has been observed or intended.
 
-#### Strengths
-- Controls the family-wise error rate when making multiple comparisons to a control.  
-- More powerful than Tukey HSD when only control comparisons are of interest.  
-- Provides simultaneous confidence intervals and adjusted p-values.
+**Strengths**
+* Controls the family-wise error rate when making multiple comparisons to a control.  
+* More powerful than Tukey HSD when only control comparisons are of interest.  
+* Provides simultaneous confidence intervals and adjusted p-values.
 
-#### Weaknesses
-- Only compares each group to the control; does not test all pairwise contrasts.  
-- Sensitive to violations of normality and homogeneity of variances.  
-- Requires a pre-specified control group.
+**Weaknesses**
+* Only compares each group to the control; does not test all pairwise contrasts.  
+* Sensitive to violations of normality and homogeneity of variances.  
+* Requires a pre-specified control group.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** Each treatment mean equals the control mean (e.g., μ_A = μ_Control, μ_B = μ_Control).  
-- **Alternative hypothesis (H₁):** At least one treatment mean differs from the control mean (e.g., μ_A ≠ μ_Control, μ_B ≠ μ_Control).
+* **Null hypothesis (H₀):** Each treatment mean equals the control mean (e.g., μ_A = μ_Control, μ_B = μ_Control).  
+* **Alternative hypothesis (H₁):** At least one treatment mean differs from the control mean (e.g., μ_A ≠ μ_Control, μ_B ≠ μ_Control).
 
 
 ``` r
@@ -1895,7 +1903,7 @@ FertilizerA - Control == 0  4.2094   0.6942  7.7246
 FertilizerB - Control == 0  2.7141  -0.8011  6.2292
 ```
 
-Interpretation:
+**Interpretation:**
 The Dunnett contrasts compare each fertilizer to Control. For example, if the contrast FertilizerA–Control shows an estimate of r round(coef(dunnett_result)[1], 2) kg with a 95% simultaneous CI [4.21, 0.69] and adjusted p-value = 0.0165, we
 reject the null for Fertilizer A vs. Control—i.e., Fertilizer A yields significantly different crop output.
 Similarly, for FertilizerB vs. Control (contrast index 2), the estimate is 2.71 kg (CI [2.71, -0.8], p-value = 0.15, so we
@@ -1904,36 +1912,34 @@ fail to reject the null for Fertilizer B vs. Control.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Post-hoc: Bonferroni korrektion
 
 EJ KORREKTURLÆST
 
+* **Used for** Adjusting p-values when performing multiple hypothesis tests to control the family-wise error rate.  
+* **Real-world example:** Comparing mean blood pressure between four different diets with all six pairwise t-tests, using Bonferroni to adjust for multiple comparisons.
 
-#### Used for
-- Adjusting p-values when performing multiple hypothesis tests to control the family-wise error rate.  
-- **Real-world example:** Comparing mean blood pressure between four different diets with all six pairwise t-tests, using Bonferroni to adjust for multiple comparisons.
+**Assumptions**
+* The individual tests (e.g., pairwise t-tests) satisfy their own assumptions (independence, normality, equal variances if applicable).  
+* Tests are independent or positively dependent (Bonferroni remains valid under any dependency but can be conservative).
 
-#### Assumptions
-- The individual tests (e.g., pairwise t-tests) satisfy their own assumptions (independence, normality, equal variances if applicable).  
-- Tests are independent or positively dependent (Bonferroni remains valid under any dependency but can be conservative).
+**Strengths**
+* Simple to calculate: multiply each p-value by the number of comparisons.  
+* Guarantees control of the family-wise error rate at the chosen α level.  
+* Applicable to any set of p-values regardless of test type.
 
-#### Strengths
-- Simple to calculate: multiply each p-value by the number of comparisons.  
-- Guarantees control of the family-wise error rate at the chosen α level.  
-- Applicable to any set of p-values regardless of test type.
+**Weaknesses**
+* Very conservative when many comparisons are made, reducing power.  
+* Can inflate Type II error (miss true effects), especially with large numbers of tests.  
+* Does not take into account the magnitude of dependency among tests.
 
-#### Weaknesses
-- Very conservative when many comparisons are made, reducing power.  
-- Can inflate Type II error (miss true effects), especially with large numbers of tests.  
-- Does not take into account the magnitude of dependency among tests.
+**Example**
 
-#### Example
-
-##### Hypothesis
-- **Null hypotheses (H₀):** For each pair of diets, the mean blood pressure is equal (e.g., μ_A = μ_B, μ_A = μ_C, …).  
-- **Alternative hypotheses (H₁):** For at least one pair, the means differ.
+* **Null hypotheses (H₀):** For each pair of diets, the mean blood pressure is equal (e.g., μ_A = μ_B, μ_A = μ_C, …).  
+* **Alternative hypotheses (H₁):** For at least one pair, the means differ.
 
 
 ``` r
@@ -1968,7 +1974,8 @@ D 1.7e-05 0.0083 0.1154
 P value adjustment method: bonferroni 
 ```
 
-Interpretation:
+**Interpretation:**
+
 The output shows adjusted p-values for each pair of diets. For example, if the A vs D comparison has p adj = 0.004 (< 0.05), we reject H₀ for that pair and conclude a significant mean difference. Comparisons with p adj ≥ 0.05 fail to reject H₀, indicating no evidence of difference after correction.
 
 ::::
@@ -1978,36 +1985,35 @@ The output shows adjusted p-values for each pair of diets. For example, if the A
 ## Ikke-parametriske k-prøve-tests
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Kruskal–Wallis test
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Comparing the central tendency of three or more independent groups when the outcome is ordinal or not normally distributed.  
-- **Real-world example:** Testing whether median pain scores differ across four treatment groups in a clinical trial when scores are skewed.
+* **Used for** Comparing the central tendency of three or more independent groups when the outcome is ordinal or not normally distributed.  
+* **Real-world example:** Testing whether median pain scores differ across four treatment groups in a clinical trial when scores are skewed.
 
-#### Assumptions
-- Observations are independent both within and between groups.  
-- The response variable is at least ordinal.  
-- The distributions of the groups have the same shape (so differences reflect shifts in location).
+**Assumptions**
+* Observations are independent both within and between groups.  
+* The response variable is at least ordinal.  
+* The distributions of the groups have the same shape (so differences reflect shifts in location).
 
-#### Strengths
-- Nonparametric: does not require normality or equal variances.  
-- Handles ordinal data and skewed continuous data.  
-- Controls Type I error when comparing multiple groups without assuming normality.
+**Strengths**
+* Nonparametric: does not require normality or equal variances.  
+* Handles ordinal data and skewed continuous data.  
+* Controls Type I error when comparing multiple groups without assuming normality.
 
-#### Weaknesses
-- Less powerful than one-way ANOVA when normality holds.  
-- If group distributions differ in shape, interpretation of a location shift is ambiguous.  
-- Only indicates that at least one group differs—post-hoc tests needed to identify which.
+**Weaknesses**
+* Less powerful than one-way ANOVA when normality holds.  
+* If group distributions differ in shape, interpretation of a location shift is ambiguous.  
+* Only indicates that at least one group differs—post-hoc tests needed to identify which.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The distributions (medians) of the four treatment groups are equal.  
-- **Alternative hypothesis (H₁):** At least one group’s median pain score differs.
+* **Null hypothesis (H₀):** The distributions (medians) of the four treatment groups are equal.  
+* **Alternative hypothesis (H₁):** At least one group’s median pain score differs.
 
 
 ``` r
@@ -2037,7 +2043,8 @@ data:  scores by group
 Kruskal-Wallis chi-squared = 21.621, df = 3, p-value = 7.82e-05
 ```
 
-Interpretation:
+**Interpretation:**
+
 The Kruskal–Wallis chi-squared = 21.62 with df = 3 and p-value = 7.82\times 10^{-5}. We
 reject the null hypothesis.
 Thus, there is
@@ -2048,6 +2055,7 @@ evidence that at least one treatment group’s median pain score differs.
 
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Rank correlation
@@ -2055,30 +2063,29 @@ evidence that at least one treatment group’s median pain score differs.
 EJ KORREKTURLÆST HAV SÆRLIGT FOKUS PÅ OM DER ER FORSKEL PÅ DENNE OG
 SPEARMAN-RANK CORRELATION SENERE
 
-#### Used for
-- Assessing the strength and direction of a monotonic association between two variables using their ranks.  
-- **Real-world example:** Evaluating whether patients’ pain rankings correlate with their anxiety rankings.
+* **Used for** Assessing the strength and direction of a monotonic association between two variables using their ranks.  
+* **Real-world example:** Evaluating whether patients’ pain rankings correlate with their anxiety rankings.
 
-#### Assumptions
-- Observations are independent.  
-- Variables are at least ordinal.  
-- The relationship is monotonic (but not necessarily linear).
+**Assumptions**
+* Observations are independent.  
+* Variables are at least ordinal.  
+* The relationship is monotonic (but not necessarily linear).
 
-#### Strengths
-- Nonparametric: does not require normality.  
-- Robust to outliers in the original measurements.  
-- Captures any monotonic relationship, not limited to linear.
+**Strengths**
+* Nonparametric: does not require normality.  
+* Robust to outliers in the original measurements.  
+* Captures any monotonic relationship, not limited to linear.
 
-#### Weaknesses
-- Less powerful than Pearson’s correlation when data are bivariate normal and relationship is linear.  
-- Does not distinguish between different monotonic shapes (e.g., concave vs. convex).  
-- Ties reduce the effective sample size and complicate exact p-value calculation.
+**Weaknesses**
+* Less powerful than Pearson’s correlation when data are bivariate normal and relationship is linear.  
+* Does not distinguish between different monotonic shapes (e.g., concave vs. convex).  
+* Ties reduce the effective sample size and complicate exact p-value calculation.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** There is no monotonic association between X and Y (ρ = 0).  
-- **Alternative hypothesis (H₁):** There is a nonzero monotonic association (ρ ≠ 0).
+
+* **Null hypothesis (H₀):** There is no monotonic association between X and Y (ρ = 0).  
+* **Alternative hypothesis (H₁):** There is a nonzero monotonic association (ρ ≠ 0).
 
 
 ``` r
@@ -2104,7 +2111,8 @@ sample estimates:
 0.9332592 
 ```
 
-Interpretation:
+**Interpretation:**
+
 Spearman’s ρ = 0.933 with p-value = 5.65\times 10^{-14}. We
 reject the null hypothesis.
 Thus, there is
@@ -2113,36 +2121,35 @@ evidence of a monotonic association between X and Y.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Anderson–Darling test
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether a sample comes from a specified continuous distribution (most commonly normal).  
-- **Real-world example:** Checking if daily measurement errors from a laboratory instrument follow a normal distribution.
+* **Used for** Testing whether a sample comes from a specified continuous distribution (most commonly normal).  
+* **Real-world example:** Checking if daily measurement errors from a laboratory instrument follow a normal distribution.
 
-#### Assumptions
-- Observations are independent.  
-- Data are continuous (no excessive ties).  
-- For goodness‐of‐fit to a non‐normal distribution (e.g. exponential), the distribution’s parameters must be fully specified a priori.
+**Assumptions**
+* Observations are independent.  
+* Data are continuous (no excessive ties).  
+* For goodness‐of‐fit to a non‐normal distribution (e.g. exponential), the distribution’s parameters must be fully specified a priori.
 
-#### Strengths
-- More sensitive than the Shapiro–Wilk test to departures in the tails of the distribution.  
-- Applicable to a wide range of target distributions (with the appropriate implementation).  
-- Provides both a test statistic (A²) and p-value.
+**Strengths**
+* More sensitive than the Shapiro–Wilk test to departures in the tails of the distribution.  
+* Applicable to a wide range of target distributions (with the appropriate implementation).  
+* Provides both a test statistic (A²) and p-value.
 
-#### Weaknesses
-- Very sensitive in large samples—small deviations can yield significant results.  
-- If parameters are estimated from the data (e.g. normal mean/SD), p-values may be conservative.  
-- Does not indicate the form of the departure (e.g. skew vs. kurtosis).
+**Weaknesses**
+* Very sensitive in large samples—small deviations can yield significant results.  
+* If parameters are estimated from the data (e.g. normal mean/SD), p-values may be conservative.  
+* Does not indicate the form of the departure (e.g. skew vs. kurtosis).
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The sample is drawn from a Normal distribution.  
-- **Alternative hypothesis (H₁):** The sample is not drawn from a Normal distribution.
+* **Null hypothesis (H₀):** The sample is drawn from a Normal distribution.  
+* **Alternative hypothesis (H₁):** The sample is not drawn from a Normal distribution.
 
 
 ``` r
@@ -2169,7 +2176,8 @@ data:  sample_data
 A = 0.13614, p-value = 0.9754
 ```
 
-Interpretation:
+**Interpretation:**
+
 The Anderson–Darling statistic A² = 0.136 with p-value = 0.975. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -2185,37 +2193,38 @@ no evidence to conclude a departure from normality.
 
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Simple linear regression
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Modeling and quantifying the linear relationship between a continuous predictor and a continuous outcome.  
-- **Real-world example:** Predicting house sale price based on living area in square feet.
+* **Used for**
+* Modeling and quantifying the linear relationship between a continuous predictor and a continuous outcome.  
+* **Real-world example:** Predicting house sale price based on living area in square feet.
 
-#### Assumptions
-- A linear relationship between predictor and outcome.  
-- Residuals are independent and normally distributed with mean zero.  
-- Homoscedasticity: constant variance of residuals across values of the predictor.  
-- No influential outliers or high-leverage points.
+**Assumptions**
+* A linear relationship between predictor and outcome.  
+* Residuals are independent and normally distributed with mean zero.  
+* Homoscedasticity: constant variance of residuals across values of the predictor.  
+* No influential outliers or high-leverage points.
 
-#### Strengths
-- Provides an interpretable estimate of the change in outcome per unit change in predictor.  
-- Inference on slope and intercept via hypothesis tests and confidence intervals.  
-- Basis for more complex regression models and diagnostics.
+**Strengths**
+* Provides an interpretable estimate of the change in outcome per unit change in predictor.  
+* Inference on slope and intercept via hypothesis tests and confidence intervals.  
+* Basis for more complex regression models and diagnostics.
 
-#### Weaknesses
-- Only captures linear patterns; will miss nonlinear relationships.  
-- Sensitive to outliers, which can distort estimates and inference.  
-- Extrapolation beyond observed predictor range is unreliable.
+**Weaknesses**
+* Only captures linear patterns; will miss nonlinear relationships.  
+* Sensitive to outliers, which can distort estimates and inference.  
+* Extrapolation beyond observed predictor range is unreliable.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The slope β₁ = 0 (no linear association between x and y).  
-- **Alternative hypothesis (H₁):** β₁ ≠ 0 (a linear association exists).
+
+* **Null hypothesis (H₀):** The slope β₁ = 0 (no linear association between x and y).  
+* **Alternative hypothesis (H₁):** β₁ ≠ 0 (a linear association exists).
 
 
 ``` r
@@ -2271,7 +2280,7 @@ ggplot(df, aes(x = x, y = y)) +
 
 <img src="fig/stat-tests-1-rendered-simple_linear_regression-1.png" style="display: block; margin: auto;" />
 
-Interpretation:
+**Interpretation:**
 The estimated slope is 1.555, with a p-value of 5.51\times 10^{-20}. We
 reject the null hypothesis,
 indicating that there is
@@ -2280,39 +2289,38 @@ evidence of a significant linear association between x and y.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Multiple regression
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Modeling the relationship between one continuous outcome and two or more predictors (continuous or categorical).  
-- **Real-world example:** Predicting house sale price based on living area, number of bedrooms, and neighborhood quality.
+* **Used for** Modeling the relationship between one continuous outcome and two or more predictors (continuous or categorical).  
+* **Real-world example:** Predicting house sale price based on living area, number of bedrooms, and neighborhood quality.
 
-#### Assumptions
-- Correct specification: linear relationship between each predictor and the outcome (additivity).  
-- Residuals are independent and normally distributed with mean zero.  
-- Homoscedasticity: constant variance of residuals for all predictor values.  
-- No perfect multicollinearity among predictors.  
-- No influential outliers unduly affecting the model.
+**Assumptions**
+* Correct specification: linear relationship between each predictor and the outcome (additivity).  
+* Residuals are independent and normally distributed with mean zero.  
+* Homoscedasticity: constant variance of residuals for all predictor values.  
+* No perfect multicollinearity among predictors.  
+* No influential outliers unduly affecting the model.
 
-#### Strengths
-- Can adjust for multiple confounders or risk factors simultaneously.  
-- Provides estimates and inference (CI, p-values) for each predictor’s unique association with the outcome.  
-- Basis for variable selection, prediction, and causal modeling in observational data.
+**Strengths**
+* Can adjust for multiple confounders or risk factors simultaneously.  
+* Provides estimates and inference (CI, p-values) for each predictor’s unique association with the outcome.  
+* Basis for variable selection, prediction, and causal modeling in observational data.
 
-#### Weaknesses
-- Sensitive to multicollinearity, which inflates variances of coefficient estimates.  
-- Assumes a linear, additive form; interactions or nonlinearity require extension.  
-- Outliers and high-leverage points can distort estimates and inference.  
-- Interpretation can be complex when including many predictors or interactions.
+**Weaknesses**
+* Sensitive to multicollinearity, which inflates variances of coefficient estimates.  
+* Assumes a linear, additive form; interactions or nonlinearity require extension.  
+* Outliers and high-leverage points can distort estimates and inference.  
+* Interpretation can be complex when including many predictors or interactions.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** All regression coefficients for predictors (β₁, β₂, β₃) are zero (no association).  
-- **Alternative hypothesis (H₁):** At least one βᵢ ≠ 0.
+* **Null hypothesis (H₀):** All regression coefficients for predictors (β₁, β₂, β₃) are zero (no association).  
+* **Alternative hypothesis (H₁):** At least one βᵢ ≠ 0.
 
 
 ``` r
@@ -2362,7 +2370,7 @@ Multiple R-squared:  0.5891,	Adjusted R-squared:  0.5718
 F-statistic: 34.05 on 4 and 95 DF,  p-value: < 2.2e-16
 ```
 
-Interpretation:
+**Interpretation:**
 
 The overall F-test (in 34.05 on df₁ = 4, df₂ = 95 has p-value = 1.3\times 10^{-17}, so
 reject the null hypothesis.
@@ -2376,37 +2384,37 @@ Similar interpretation applies to bedrooms and neighborhood indicators.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Pearson correlation
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Assessing the strength and direction of a linear relationship between two continuous variables.  
-- **Real-world example:** Examining whether students’ hours of study correlate with their exam scores.
+* **Used for**  Assessing the strength and direction of a linear relationship between two continuous variables.  
+* **Real-world example:** Examining whether students’ hours of study correlate with their exam scores.
 
-#### Assumptions
-- Observations are independent pairs.  
-- Both variables are approximately normally distributed (bivariate normality).  
-- Relationship is linear.  
-- No extreme outliers.
+**Assumptions**
+* Observations are independent pairs.  
+* Both variables are approximately normally distributed (bivariate normality).  
+* Relationship is linear.  
+* No extreme outliers.
 
-#### Strengths
-- Provides both a correlation coefficient (r) and hypothesis test (t‐statistic, p‐value).  
-- Confidence interval for the true correlation can be obtained.  
-- Well understood and widely used.
+**Strengths**
+* Provides both a correlation coefficient (r) and hypothesis test (t‐statistic, p‐value).  
+* Confidence interval for the true correlation can be obtained.  
+* Well understood and widely used.
 
-#### Weaknesses
-- Sensitive to outliers, which can distort r.  
-- Only measures linear association—will miss non‐linear relationships.  
-- Reliant on normality; departures can affect Type I/II error rates.
+**Weaknesses**
+* Sensitive to outliers, which can distort r.  
+* Only measures linear association—will miss non‐linear relationships.  
+* Reliant on normality; departures can affect Type I/II error rates.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The true Pearson correlation ρ = 0 (no linear association).  
-- **Alternative hypothesis (H₁):** ρ ≠ 0 (a linear association exists).
+
+* **Null hypothesis (H₀):** The true Pearson correlation ρ = 0 (no linear association).  
+* **Alternative hypothesis (H₁):** ρ ≠ 0 (a linear association exists).
 
 
 ``` r
@@ -2438,7 +2446,7 @@ sample estimates:
 0.9361291 
 ```
 
-Interpretation:
+**Interpretation:**
 The sample Pearson correlation is 0.936, with t = 14.09 on df = 28 and p-value = 3.11\times 10^{-14}. We
 reject the null hypothesis,
 indicating that there is
@@ -2448,35 +2456,34 @@ evidence of a significant linear association between hours studied and exam scor
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Spearman’s rank correlation
 
 EJ KORREKTURLÆST
-#### Used for
-- Assessing the strength and direction of a monotonic association between two variables using their ranks.  
-- **Real-world example:** Evaluating whether patients’ pain rankings correlate with their anxiety rankings.
+**Used for** Assessing the strength and direction of a monotonic association between two variables using their ranks.  
+* **Real-world example:** Evaluating whether patients’ pain rankings correlate with their anxiety rankings.
 
-#### Assumptions
-- Observations are independent pairs.  
-- Variables are at least ordinal.  
-- The relationship is monotonic (consistently increasing or decreasing).
+**Assumptions**
+* Observations are independent pairs.  
+* Variables are at least ordinal.  
+* The relationship is monotonic (consistently increasing or decreasing).
 
-#### Strengths
-- Nonparametric: does not require normality of the underlying data.  
-- Robust to outliers in the original measurements.  
-- Captures any monotonic relationship, not limited to linear.
+**Strengths**
+* Nonparametric: does not require normality of the underlying data.  
+* Robust to outliers in the original measurements.  
+* Captures any monotonic relationship, not limited to linear.
 
-#### Weaknesses
-- Less powerful than Pearson’s correlation when the true relationship is linear and data are bivariate normal.  
-- Does not distinguish between different monotonic shapes (e.g. concave vs. convex).  
-- Tied ranks reduce effective sample size and can complicate exact p-value calculation.
+**Weaknesses**
+* Less powerful than Pearson’s correlation when the true relationship is linear and data are bivariate normal.  
+* Does not distinguish between different monotonic shapes (e.g. concave vs. convex).  
+* Tied ranks reduce effective sample size and can complicate exact p-value calculation.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The true Spearman rank correlation ρ = 0 (no monotonic association).  
-- **Alternative hypothesis (H₁):** ρ ≠ 0 (a monotonic association exists).
+* **Null hypothesis (H₀):** The true Spearman rank correlation ρ = 0 (no monotonic association).  
+* **Alternative hypothesis (H₁):** ρ ≠ 0 (a monotonic association exists).
 
 
 ``` r
@@ -2513,6 +2520,7 @@ evidence of a significant monotonic association between the two variables.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Kendall’s tau
@@ -2581,6 +2589,7 @@ evidence of a significant monotonic association between homework and exam rankin
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Multiple logistic regression
@@ -2703,15 +2712,15 @@ You would reject the null hypothesis overall, concluding that at least one predi
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Poisson regression
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Modeling count data (events per unit time or space) as a function of one or more predictors.  
-- **Real-world example:** Predicting the number of daily emergency room visits based on average daily temperature.
+* **Used for** Modeling count data (events per unit time or space) as a function of one or more predictors.  
+* **Real-world example:** Predicting the number of daily emergency room visits based on average daily temperature.
 
 #### Assumptions
 - Counts follow a Poisson distribution (mean = variance).  
@@ -2789,6 +2798,7 @@ This means each 1 °C increase in average daily temperature is associated with a
 
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Negative binomial regression
@@ -2879,6 +2889,7 @@ This means each 1 µg/m³ increase in PM2.5 is associated with a multiplicative 
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Ordinal logistic regression
@@ -2967,6 +2978,7 @@ Similar interpretation applies to price.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Linear mixed-effects modeller (LME)
@@ -3098,6 +3110,7 @@ evidence that the new teaching method significantly changes test scores, account
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Generalized linear mixed-effects modeller (GLMM)
@@ -3202,6 +3215,7 @@ is significantly associated with higher odds of readmission, accounting for hosp
 
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Generalized Estimating Equations (GEE)
@@ -3339,6 +3353,7 @@ Because GEE uses a sandwich estimator, these inferences remain valid even if “
 ## Kontingenstabel- og proportions-tests
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Contingency-table methods (χ² osv.)
@@ -3351,6 +3366,7 @@ HVOR KATTEN KOMMER DET HER EGENTLIG FRA?
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### McNemar’s test
@@ -3423,6 +3439,7 @@ Since b (OldTest Positive, NewTest Negative) = 20 and c (OldTest Negative, NewTe
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Fisher’s exact test
@@ -3502,6 +3519,7 @@ no evidence of a difference in cure rates between the two treatments.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Barnard’s exact test
@@ -4746,6 +4764,7 @@ One‐sided p‐value (0.0168): Tests specifically whether the Medication advers
 
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Cochran–Armitage trend test (ordinal tabel)
@@ -4814,6 +4833,7 @@ evidence of a positive linear trend: higher prenatal vitamin doses are associate
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Cochran’s Q test (≥3 matched proportions)
@@ -4897,6 +4917,7 @@ no evidence that relief proportions differ across the three medications.
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Stuart–Maxwell test (marginal homogenitet)
@@ -4987,6 +5008,7 @@ conclude that the marginal distribution of pain levels differs before vs. after 
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Two-sample test for binomial proportions / Mantel–Haenszel test
@@ -5070,6 +5092,7 @@ conclude there is a significant difference in infection rates between Vaccine an
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Chi-square test for R×C-tabeller
@@ -5157,6 +5180,7 @@ Cells with |residual| > 2 indicate categories where the observed count deviates 
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Chi-square test for trend (Mantel-extension)
@@ -5261,6 +5285,7 @@ If p‐value ≥ 0.05, we would fail to reject H₀, concluding no evidence of a
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Chi-square test for heterogenitet (2×k-tabeller)
@@ -5346,6 +5371,7 @@ Cells with |residual| > 2 indicate categories where observed counts deviate subs
 
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### One-sample test for incidence rates
@@ -5420,6 +5446,7 @@ r if(test_result$p.value < 0.05) "evidence that the hospital’s infection rate 
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Two-sample comparison of incidence rates
@@ -5503,6 +5530,7 @@ no evidence to conclude a difference in infection rates between the two hospital
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Trend-test for incidence rates over flere eksponeringsgrupper
@@ -5604,6 +5632,7 @@ per category increase, and since p $<0.05$, we conclude that incidence rises sig
 ::::
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Exact rate ratio test
@@ -5706,6 +5735,7 @@ then, since $p = 0.289 \ge 0.05$, we fail to reject $H_{0}$. There is no evidenc
 
 
 <a id = "test-navn"></a>
+
 ::::spoiler
 
 ### Log-rank test
@@ -5802,6 +5832,7 @@ conclude there is no evidence of a difference in survival between Drug A and Dru
 ::::
 
 <a id="default-anchor"></a>
+
 ::::spoiler
 
 ### Parametric survival methods (Weibull)
@@ -5979,7 +6010,6 @@ giving a 95 % CI for HR:
 
 <a id="default-anchor"></a>
 
-<a id = "test-navn"></a>
 ::::spoiler
 
 ### Cox proportional hazards model
@@ -6158,6 +6188,7 @@ Overall, because all covariate p values for drug, age, and grade are < 0.05, we 
 ::::
 
 <a id="default-anchor"></a>
+
 ::::spoiler
 
 ### Accelerated Failure Time (AFT) modeller (eksponentiel, log-logistisk, …)
@@ -6373,6 +6404,7 @@ exp( β^_treatment )≈0.56 (p = 0.008), indicating DrugA significantly reduces 
 ::::
 
 <a id="grays-test"></a>
+
 ::::spoiler
 
 ### Gray’s test for konkurrentrisiko
@@ -6467,6 +6499,7 @@ If $p \ge 0.05$, we fail to reject $H_{0}$, indicating no evidence of a differen
 ::::
 
 <a id="default-anchor"></a>
+
 ::::spoiler
 
 ### Test af proportional hazards-antagelsen (Schoenfeld residualer)
@@ -6572,6 +6605,7 @@ If all p‐values $\ge 0.05$, we fail to reject $H_0$ and conclude the proportio
 
 
 <a id="default-anchor"></a>
+
 ::::spoiler
 
 ### Kappa statistic
@@ -6699,6 +6733,7 @@ Conventionally, $\kappa$ values are interpreted as:
 ::::
 
 <a id="intraclass-correlation-coefficient"></a>
+
 ::::spoiler
 
 ### Intraclass Correlation Coefficient (ICC)
@@ -6781,6 +6816,7 @@ there is no evidence of reliability beyond chance among the raters.
 ::::
 
 <a id="default-anchor"></a>
+
 ::::spoiler
 
 ### Bland–Altman analysis
