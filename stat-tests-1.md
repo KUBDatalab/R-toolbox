@@ -6,7 +6,7 @@ exercises: 2
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do you write a lesson using R Markdown and `{sandpaper}`?
+- How do I run X statistical test?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -16,7 +16,7 @@ exercises: 2
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
-  padding-left: 1.5em;          /* plads til marker + hul */
+
 
 <!-- Hyper-lokal css -->
 <style>
@@ -137,7 +137,7 @@ difference from the claimed distribution.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "one_sample_z_test"></a>
 
 ::::spoiler
 
@@ -233,7 +233,7 @@ or that it is smaller (p = 0.6700314)
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "one_sample_t_test"></a>
 
 ::::spoiler
 
@@ -306,7 +306,7 @@ no evidence to conclude the average score differs from the passing threshold of 
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "one_sample_poisson_test"></a>
 
 ::::spoiler
 
@@ -375,7 +375,7 @@ no evidence to conclude the call rate differs from 30 calls/hour.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "shapiro_wilk_test"></a>
 
 ::::spoiler
 
@@ -436,7 +436,7 @@ no evidence to conclude a departure from normality.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "ks_one_sample"></a>
 
 ::::spoiler
 
@@ -501,7 +501,7 @@ no evidence to conclude deviation from Normal(120,15).
 
 
 
-<a id = "test-navn"></a>
+<a id = "chi_square_gof"></a>
 
 ::::spoiler
 
@@ -568,7 +568,7 @@ no evidence to conclude the sample proportions differ from the population.
 ## To-prøve-tests og parrede tests
 
 
-<a id = "test-navn"></a>
+<a id = "two_sample_f_test"></a>
 
 ::::spoiler
 
@@ -641,7 +641,7 @@ evidence that the variability in blood pressure differs between the two clinics.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "paired_t_test"></a>
 
 ::::spoiler
 
@@ -709,7 +709,7 @@ evidence that the medication significantly changed blood pressure.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "two_sample_t_test_equal_var"></a>
 
 ::::spoiler
 
@@ -778,7 +778,7 @@ evidence that the average systolic blood pressure differs between the two groups
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "two_sample_t_test_unequal_var"></a>
 
 ::::spoiler
 
@@ -846,7 +846,7 @@ no evidence of a difference in average recovery times..
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "mann_whitney_u_test"></a>
 
 ::::spoiler
 
@@ -912,7 +912,7 @@ evidence that median pain scores differ between Drug A and Drug B.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "wilcoxon_signed_rank_test"></a>
 
 ::::spoiler
 
@@ -975,7 +975,7 @@ evidence that median pain scores change after treatment..
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "ks_two_sample"></a>
 
 ::::spoiler
 
@@ -1038,7 +1038,7 @@ evidence that the distribution of recovery times differs between therapies.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "levene_test"></a>
 
 ::::spoiler
 
@@ -1111,7 +1111,7 @@ no evidence of differing variances across clinics.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "bartlett_test"></a>
 
 ::::spoiler
 
@@ -1182,7 +1182,7 @@ evidence that at least one laboratory’s variance differs from the others.
 
 ## Variansanalyse (ANOVA/ANCOVA)
 
-<a id = "test-navn"></a>
+<a id = "one_way_anova"></a>
 
 ::::spoiler
 
@@ -1248,7 +1248,7 @@ no evidence of a difference in mean scores among methods.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "one_way_ancova"></a>
 
 ::::spoiler
 ### One-way ANCOVA
@@ -1323,7 +1323,7 @@ evidence that, controlling for prior GPA, at least one teaching method leads to 
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "welchs_anova"></a>
 
 ::::spoiler
 
@@ -1390,7 +1390,7 @@ no evidence of a difference in mean blood pressure among the clinics.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "repeated_measures_anova"></a>
 
 ::::spoiler
 
@@ -1464,7 +1464,7 @@ no evidence that reaction times differ across sleep deprivation conditions.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "manova"></a>
 
 ::::spoiler
 
@@ -1626,7 +1626,7 @@ Tjek altid flere tests; hvis de konkluderer ens, styrker det din konklusion.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "friedman_test"></a>
 
 ::::spoiler
 
@@ -1694,7 +1694,7 @@ no evidence that pain scores differ across time points.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "tukey_hsd"></a>
 
 ::::spoiler
 
@@ -1766,7 +1766,7 @@ interval, and an adjusted p‐value. For example, if the Lecture–Online compar
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "dunnett_test"></a>
 
 ::::spoiler
 
@@ -1911,7 +1911,7 @@ fail to reject the null for Fertilizer B vs. Control.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "bonferroni_correction"></a>
 
 ::::spoiler
 
@@ -1984,7 +1984,7 @@ The output shows adjusted p-values for each pair of diets. For example, if the A
 
 ## Ikke-parametriske k-prøve-tests
 
-<a id = "test-navn"></a>
+<a id = "kruskal_wallis_test"></a>
 
 ::::spoiler
 
@@ -2054,7 +2054,7 @@ evidence that at least one treatment group’s median pain score differs.
 ::::
 
 
-<a id = "test-navn"></a>
+<a id = "rank_correlation"></a>
 
 ::::spoiler
 
@@ -2120,7 +2120,7 @@ evidence of a monotonic association between X and Y.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "anderson_darling_test"></a>
 
 ::::spoiler
 
@@ -2192,7 +2192,7 @@ no evidence to conclude a departure from normality.
 ## Regression og korrelation
 
 
-<a id = "test-navn"></a>
+<a id = "simple_linear_regression"></a>
 
 ::::spoiler
 
@@ -2288,7 +2288,7 @@ evidence of a significant linear association between x and y.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "multiple_regression"></a>
 
 ::::spoiler
 
@@ -2383,7 +2383,7 @@ Similar interpretation applies to bedrooms and neighborhood indicators.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "pearson_correlation"></a>
 
 ::::spoiler
 
@@ -2455,7 +2455,7 @@ evidence of a significant linear association between hours studied and exam scor
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "spearman_rank_correlation"></a>
 
 ::::spoiler
 
@@ -2519,7 +2519,7 @@ evidence of a significant monotonic association between the two variables.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "kendall_tau"></a>
 
 ::::spoiler
 
@@ -2527,30 +2527,28 @@ evidence of a significant monotonic association between the two variables.
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Assessing the strength and direction of a monotonic association between two variables based on concordant and discordant pairs.  
-- **Real-world example:** Evaluating whether the ranking of students by homework completion correlates with their ranking by final exam performance.
+* **Used for** Assessing the strength and direction of a monotonic association between two variables based on concordant and discordant pairs.  
+* **Real-world example:** Evaluating whether the ranking of students by homework completion correlates with their ranking by final exam performance.
 
-#### Assumptions
-- Observations are independent pairs.  
-- Variables are measured on at least an ordinal scale.  
-- The relationship is monotonic (but not necessarily linear).
+**Assumptions**
+* Observations are independent pairs.  
+* Variables are measured on at least an ordinal scale.  
+* The relationship is monotonic (but not necessarily linear).
 
-#### Strengths
-- Nonparametric: does not require any distributional assumptions.  
-- Robust to outliers and tied values (with appropriate corrections).  
-- Directly interprets probability of concordance vs. discordance.
+**Strengths**
+* Nonparametric: does not require any distributional assumptions.  
+* Robust to outliers and tied values (with appropriate corrections).  
+* Directly interprets probability of concordance vs. discordance.
 
-#### Weaknesses
-- Less powerful than Spearman’s rho when the relationship is strictly monotonic and no ties.  
-- Tied ranks reduce effective sample size and require tie corrections.  
-- Only measures monotonic association, not form or magnitude of change.
+**Weaknesses**
+* Less powerful than Spearman’s rho when the relationship is strictly monotonic and no ties.  
+* Tied ranks reduce effective sample size and require tie corrections.  
+* Only measures monotonic association, not form or magnitude of change.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** Kendall’s τ = 0 (no association between the two rankings).  
-- **Alternative hypothesis (H₁):** τ ≠ 0 (a monotonic association exists).
+* **Null hypothesis (H₀):** Kendall’s τ = 0 (no association between the two rankings).  
+* **Alternative hypothesis (H₁):** τ ≠ 0 (a monotonic association exists).
 
 
 ``` r
@@ -2580,7 +2578,7 @@ sample estimates:
 0.9203643 
 ```
 
-Interpretation:
+**Interpretation:**
 Kendall’s τ = 0.92 with a two-sided p-value = 2.13\times 10^{-10}. We
 reject the null hypothesis.
 Thus, there is
@@ -2588,7 +2586,7 @@ evidence of a significant monotonic association between homework and exam rankin
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "multiple_logistic_regression"></a>
 
 ::::spoiler
 
@@ -2597,32 +2595,30 @@ evidence of a significant monotonic association between homework and exam rankin
 EJ KORREKTURLÆST
 
 
-#### Used for
-- Modeling the probability of a binary outcome as a function of two or more predictors.  
-- **Real-world example:** Predicting whether a patient has heart disease (yes/no) based on age, cholesterol level, and smoking status.
+* **Used for** Modeling the probability of a binary outcome as a function of two or more predictors.  
+* **Real-world example:** Predicting whether a patient has heart disease (yes/no) based on age, cholesterol level, and smoking status.
 
-#### Assumptions
-- Outcome is binary (0/1) and observations are independent.  
-- Log-odds of the outcome are a linear function of the predictors (linearity in the logit).  
-- No perfect multicollinearity among predictors.  
-- Large enough sample so that maximum likelihood estimates are stable (rule of thumb: ≥10 events per predictor).
+**Assumptions**
+* Outcome is binary (0/1) and observations are independent.  
+* Log-odds of the outcome are a linear function of the predictors (linearity in the logit).  
+* No perfect multicollinearity among predictors.  
+* Large enough sample so that maximum likelihood estimates are stable (rule of thumb: ≥10 events per predictor).
 
-#### Strengths
-- Adjusts for multiple confounders simultaneously.  
-- Coefficients have clear interpretation as log‐odds (or odds ratios).  
-- Flexible: handles continuous, categorical, and interaction terms.
+**Strengths**
+* Adjusts for multiple confounders simultaneously.  
+* Coefficients have clear interpretation as log‐odds (or odds ratios).  
+* Flexible: handles continuous, categorical, and interaction terms.
 
-#### Weaknesses
-- Sensitive to complete or quasi‐complete separation (can prevent convergence).  
-- Assumes linearity in the logit—requires transformation or splines if violated.  
-- Interpretation of interactions and higher‐order terms can be complex.  
-- Requires adequate sample size, especially when events are rare.
+**Weaknesses**
+* Sensitive to complete or quasi‐complete separation (can prevent convergence).  
+* Assumes linearity in the logit—requires transformation or splines if violated.  
+* Interpretation of interactions and higher‐order terms can be complex.  
+* Requires adequate sample size, especially when events are rare.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** All predictor coefficients β₁ = β₂ = β₃ = 0 (none of the variables affect disease odds).  
-- **Alternative hypothesis (H₁):** At least one βᵢ ≠ 0 (at least one predictor affects odds).
+* **Null hypothesis (H₀):** All predictor coefficients β₁ = β₂ = β₃ = 0 (none of the variables affect disease odds).  
+* **Alternative hypothesis (H₁):** At least one βᵢ ≠ 0 (at least one predictor affects odds).
 
 
 ``` r
@@ -2699,7 +2695,7 @@ cholesterol 9.979236e-01 1.01955252
 smokerYes   1.347682e+00 5.57661867
 ```
 
-Interpretation:
+**Interpretation:**
 
 The Wald test for each coefficient (from summary(model)) gives a z-statistic and p-value. For example, if the coefficient for age is β̂ = 0.04 (p = 0.01), its odds ratio is exp(0.04) ≈ 1.04 (95% CI from exp(confint(model))), meaning each additional year of age multiplies the odds of disease by about 1.04.
 
@@ -2711,7 +2707,7 @@ You would reject the null hypothesis overall, concluding that at least one predi
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "poisson_regression"></a>
 
 ::::spoiler
 
@@ -2722,27 +2718,26 @@ EJ KORREKTURLÆST
 * **Used for** Modeling count data (events per unit time or space) as a function of one or more predictors.  
 * **Real-world example:** Predicting the number of daily emergency room visits based on average daily temperature.
 
-#### Assumptions
-- Counts follow a Poisson distribution (mean = variance).  
-- Events occur independently.  
-- The log of the expected count is a linear function of the predictors.  
-- No excessive zero‐inflation (if present, consider zero‐inflated models).
+**Assumptions**
+* Counts follow a Poisson distribution (mean = variance).  
+* Events occur independently.  
+* The log of the expected count is a linear function of the predictors.  
+* No excessive zero‐inflation (if present, consider zero‐inflated models).
 
-#### Strengths
-- Naturally handles non‐negative integer outcomes.  
-- Estimates incidence rate ratios (IRRs) that are easy to interpret.  
-- Can include both categorical and continuous predictors.
+**Strengths**
+* Naturally handles non‐negative integer outcomes.  
+* Estimates incidence rate ratios (IRRs) that are easy to interpret.  
+* Can include both categorical and continuous predictors.
 
-#### Weaknesses
-- Sensitive to overdispersion (variance > mean); may need quasi‐Poisson or negative binomial.  
-- Assumes log‐linear relationship—misspecification leads to bias.  
-- Influential observations (e.g., days with extreme counts) can distort estimates.
+**Weaknesses**
+* Sensitive to overdispersion (variance > mean); may need quasi‐Poisson or negative binomial.  
+* Assumes log‐linear relationship—misspecification leads to bias.  
+* Influential observations (e.g., days with extreme counts) can distort estimates.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** Temperature has no effect on the expected number of ER visits (β₁ = 0).  
-- **Alternative hypothesis (H₁):** Temperature affects the expected number of ER visits (β₁ ≠ 0).
+* **Null hypothesis (H₀):** Temperature has no effect on the expected number of ER visits (β₁ = 0).  
+* **Alternative hypothesis (H₁):** Temperature affects the expected number of ER visits (β₁ ≠ 0).
 
 
 ``` r
@@ -2786,7 +2781,7 @@ AIC: 463.81
 Number of Fisher Scoring iterations: 4
 ```
 
-Interpretation:
+**Interpretation:**
 The estimated coefficient for temperature is 0.053, giving an incidence rate ratio IRR = 1.054. With a p-value = 7.01\times 10^{-28}, we
 reject the null hypothesis.
 This means each 1 °C increase in average daily temperature is associated with a multiplicative change of approximately 1.054 in the expected number of ER visits.
@@ -2797,7 +2792,7 @@ This means each 1 °C increase in average daily temperature is associated with a
 ::::
 
 
-<a id = "test-navn"></a>
+<a id = "negative_binomial_regression"></a>
 
 ::::spoiler
 
@@ -2805,31 +2800,29 @@ This means each 1 °C increase in average daily temperature is associated with a
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Modeling overdispersed count data (variance > mean) as a function of one or more predictors.  
-- **Real-world example:** Predicting the number of daily asthma attacks per patient based on air pollution level when counts show extra-Poisson variation.
+* **Used for** Modeling overdispersed count data (variance > mean) as a function of one or more predictors.  
+* **Real-world example:** Predicting the number of daily asthma attacks per patient based on air pollution level when counts show extra-Poisson variation.
 
-#### Assumptions
-- Counts follow a negative binomial distribution (allows variance > mean).  
-- Events occur independently.  
-- The log of the expected count is a linear function of the predictors.  
-- Overdispersion parameter is constant across observations.
+**Assumptions**
+* Counts follow a negative binomial distribution (allows variance > mean).  
+* Events occur independently.  
+* The log of the expected count is a linear function of the predictors.  
+* Overdispersion parameter is constant across observations.
 
-#### Strengths
-- Handles overdispersion naturally without biasing standard errors.  
-- Estimates incidence rate ratios (IRRs) with correct inference.  
-- Can include both continuous and categorical predictors.
+**Strengths**
+* Handles overdispersion naturally without biasing standard errors.  
+* Estimates incidence rate ratios (IRRs) with correct inference.  
+* Can include both continuous and categorical predictors.
 
-#### Weaknesses
-- Requires estimation of an extra dispersion parameter, which may be unstable in small samples.  
-- Sensitive to model misspecification (link function, omitted covariates).  
-- Influential observations can still distort estimates if extreme.
+**Weaknesses**
+* Requires estimation of an extra dispersion parameter, which may be unstable in small samples.  
+* Sensitive to model misspecification (link function, omitted covariates).  
+* Influential observations can still distort estimates if extreme.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** Air pollution level has no effect on the expected number of asthma attacks (β₁ = 0).  
-- **Alternative hypothesis (H₁):** Air pollution level affects the expected number of asthma attacks (β₁ ≠ 0).
+* **Null hypothesis (H₀):** Air pollution level has no effect on the expected number of asthma attacks (β₁ = 0).  
+* **Alternative hypothesis (H₁):** Air pollution level affects the expected number of asthma attacks (β₁ ≠ 0).
 
 
 ``` r
@@ -2881,14 +2874,14 @@ Number of Fisher Scoring iterations: 1
  2 x log-likelihood:  -817.455 
 ```
 
-Interpretation:
+**Interpretation:**
 The estimated coefficient for PM2.5 is 0.045, giving an incidence rate ratio IRR = 1.046. With p-value = 7.38\times 10^{-19}, we
 reject the null hypothesis.
 This means each 1 µg/m³ increase in PM2.5 is associated with a multiplicative change of approximately 1.046 in the expected number of asthma attacks, accounting for overdispersion.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "ordinal_logistic_regression"></a>
 
 ::::spoiler
 
@@ -2896,31 +2889,30 @@ This means each 1 µg/m³ increase in PM2.5 is associated with a multiplicative 
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Modeling an ordinal outcome (with more than two ordered categories) as a function of one or more predictors.  
-- **Real-world example:** Predicting customer satisfaction levels (Low, Medium, High) based on service wait time and price.
+**Used for**
+* Modeling an ordinal outcome (with more than two ordered categories) as a function of one or more predictors.  
+* **Real-world example:** Predicting customer satisfaction levels (Low, Medium, High) based on service wait time and price.
 
-#### Assumptions
-- The dependent variable is ordinal with a meaningful order.  
-- **Proportional odds (parallel lines):** the effect of each predictor is the same across all thresholds between outcome categories.  
-- Observations are independent.  
-- No multicollinearity among predictors.
+**Assumptions**
+* The dependent variable is ordinal with a meaningful order.  
+* **Proportional odds (parallel lines):** the effect of each predictor is the same across all thresholds between outcome categories.  
+* Observations are independent.  
+* No multicollinearity among predictors.
 
-#### Strengths
-- Makes efficient use of the ordering information in the outcome.  
-- Provides interpretable odds‐ratios for cumulative probabilities.  
-- More powerful than nominal models (e.g., multinomial logit) when the order matters.
+**Strengths**
+* Makes efficient use of the ordering information in the outcome.  
+* Provides interpretable odds‐ratios for cumulative probabilities.  
+* More powerful than nominal models (e.g., multinomial logit) when the order matters.
 
-#### Weaknesses
-- Relies on the proportional‐odds assumption; violation can bias estimates.  
-- Interpretation can be less intuitive than linear regression.  
-- Cannot easily accommodate non‐proportional effects without extension.
+**Weaknesses**
+* Relies on the proportional‐odds assumption; violation can bias estimates.  
+* Interpretation can be less intuitive than linear regression.  
+* Cannot easily accommodate non‐proportional effects without extension.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** Waiting time has no effect on the odds of higher satisfaction (\(\beta_{\text{wait}} = 0\)).  
-- **Alternative hypothesis (H₁):** Waiting time affects the odds of higher satisfaction (\(\beta_{\text{wait}} \neq 0\)).
+* **Null hypothesis (H₀):** Waiting time has no effect on the odds of higher satisfaction (\(\beta_{\text{wait}} = 0\)).  
+* **Alternative hypothesis (H₁):** Waiting time affects the odds of higher satisfaction (\(\beta_{\text{wait}} \neq 0\)).
 
 
 ``` r
@@ -2964,8 +2956,7 @@ Low|Medium  -3.34230915 0.625031561 -5.347425   0.000
 Medium|High -1.78229869 0.564771833 -3.155785   0.002
 ```
 
-Interpretation:
-
+**Interpretation:**
 The estimated coefficient for wait_time is -0.04.
 
 The odds‐ratio is 0.96, meaning each additional minute of wait changes the odds of being in a higher satisfaction category by that factor.
@@ -2977,39 +2968,36 @@ Similar interpretation applies to price.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "linear_mixed_effects_model"></a>
 
 ::::spoiler
 
 ### Linear mixed-effects modeller (LME)
 
 EJ KORREKTURLÆST
-#### Used for
-- Modeling continuous outcomes with both fixed effects (predictors of interest) and random effects (to account for grouped or repeated measures).  
-- **Real-world example:** Evaluating the effect of a new teaching method on student test scores, while accounting for variability between classrooms and schools.
+* **Used for** Modeling continuous outcomes with both fixed effects (predictors of interest) and random effects (to account for grouped or repeated measures).  
+* **Real-world example:** Evaluating the effect of a new teaching method on student test scores, while accounting for variability between classrooms and schools.
 
-#### Assumptions
-- Linear relationship between predictors and outcome.  
-- Residuals are independent and normally distributed with mean zero.  
-- Random effects are normally distributed.  
-- Homoscedasticity: constant variance of residuals.  
-- Random effects structure correctly specified (e.g., intercepts and/or slopes).
+**Assumptions**
+* Linear relationship between predictors and outcome.  
+* Residuals are independent and normally distributed with mean zero.  
+* Random effects are normally distributed.  
+* Homoscedasticity: constant variance of residuals.  
+* Random effects structure correctly specified (e.g., intercepts and/or slopes).
 
-#### Strengths
-- Accounts for correlation within clusters (e.g., pupils within the same classroom).  
-- Can handle unbalanced data and missing observations within clusters.  
-- Flexibly models complex hierarchical or longitudinal data structures.
+**Strengths**
+* Accounts for correlation within clusters (e.g., pupils within the same classroom).  
+* Can handle unbalanced data and missing observations within clusters.  
+* Flexibly models complex hierarchical or longitudinal data structures.
 
-#### Weaknesses
-- Model specification (random effects structure) can be challenging.  
-- Parameter estimation can be computationally intensive and may fail to converge.  
-- Inference (p-values) often relies on approximations or additional packages.
+**Weaknesses**
+* Model specification (random effects structure) can be challenging.  
+* Parameter estimation can be computationally intensive and may fail to converge.  
+* Inference (p-values) often relies on approximations or additional packages.
 
-#### Example
-
-##### Hypothesis
-- **Null hypothesis (H₀):** The new teaching method has no effect on student test scores (fixed effect β_method = 0).  
-- **Alternative hypothesis (H₁):** The new teaching method affects student test scores (β_method ≠ 0).
+**Example**
+* **Null hypothesis (H₀):** The new teaching method has no effect on student test scores (fixed effect β_method = 0).  
+* **Alternative hypothesis (H₁):** The new teaching method affects student test scores (β_method ≠ 0).
 
 
 ``` r
@@ -3100,7 +3088,7 @@ Correlation of Fixed Effects:
 methdNwMthd -0.080
 ```
 
-Interpretation:
+**Interpretation:**
 The fixed-effect estimate for NewMethod is 5.96 points (SE = 0.9), with p = 2.35\times 10^{-10}. We
 reject the null hypothesis.
 Thus, there is
@@ -3109,7 +3097,7 @@ evidence that the new teaching method significantly changes test scores, account
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "generalized_linear_mixed_effects_model"></a>
 
 ::::spoiler
 
@@ -3117,31 +3105,29 @@ evidence that the new teaching method significantly changes test scores, account
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Modeling non-normal outcomes (e.g. binary, counts) with both fixed effects and random effects.  
-- **Real-world example:** Predicting whether patients are readmitted (yes/no) based on age and comorbidity score, with random intercepts for each hospital.
+* **Used for** Modeling non-normal outcomes (e.g. binary, counts) with both fixed effects and random effects.  
+* **Real-world example:** Predicting whether patients are readmitted (yes/no) based on age and comorbidity score, with random intercepts for each hospital.
 
-#### Assumptions
-- Observations within each cluster (e.g. hospital) are correlated, but clusters are independent.  
-- The conditional distribution of the outcome given predictors and random effects follows a specified exponential‐family distribution (e.g. binomial, Poisson).  
-- The link function (e.g. logit, log) correctly relates the linear predictor to the mean of the outcome.  
-- Random effects are normally distributed.
+**Assumptions**
+* Observations within each cluster (e.g. hospital) are correlated, but clusters are independent.  
+* The conditional distribution of the outcome given predictors and random effects follows a specified exponential‐family distribution (e.g. binomial, Poisson).  
+* The link function (e.g. logit, log) correctly relates the linear predictor to the mean of the outcome.  
+* Random effects are normally distributed.
 
-#### Strengths
-- Can accommodate hierarchical or longitudinal data and non-Gaussian outcomes.  
-- Estimates both population‐level (fixed) effects and cluster‐specific (random) variation.  
-- Flexible: supports a variety of link functions and distributions.
+**Strengths**
+* Can accommodate hierarchical or longitudinal data and non-Gaussian outcomes.  
+* Estimates both population‐level (fixed) effects and cluster‐specific (random) variation.  
+* Flexible: supports a variety of link functions and distributions.
 
-#### Weaknesses
-- Computationally intensive; convergence can fail with complex random‐effects structures.  
-- Inference (especially p-values for fixed effects) relies on approximations.  
-- Model specification (random slopes, link choice) can be challenging.
+**Weaknesses**
+* Computationally intensive; convergence can fail with complex random‐effects structures.  
+* Inference (especially p-values for fixed effects) relies on approximations.  
+* Model specification (random slopes, link choice) can be challenging.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The log-odds of readmission do not depend on age (β_age = 0).  
-- **Alternative hypothesis (H₁):** Age affects the log-odds of readmission (β_age ≠ 0).
+* **Null hypothesis (H₀):** The log-odds of readmission do not depend on age (β_age = 0).  
+* **Alternative hypothesis (H₁):** Age affects the log-odds of readmission (β_age ≠ 0).
 
 
 ``` r
@@ -3205,7 +3191,7 @@ age         -0.932
 comorbidity -0.293  0.101
 ```
 
-Interpretation:
+**Interpretation:**
 The fixed‐effect estimate for age is 0.035 (SE = 0.005), giving an odds ratio of 1.036 per year of age. With a z‐value = 6.59 and p ≈ 4.3\times 10^{-11}, we
 reject the null hypothesis.
 This indicates that age
@@ -3214,7 +3200,7 @@ is significantly associated with higher odds of readmission, accounting for hosp
 ::::
 
 
-<a id = "test-navn"></a>
+<a id = "gee_logistic"></a>
 
 ::::spoiler
 
@@ -3222,31 +3208,29 @@ is significantly associated with higher odds of readmission, accounting for hosp
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Modeling correlated or clustered data (e.g., repeated measures, longitudinal, or clustered observations) when interest lies in population‐averaged effects rather than subject‐specific effects.  
-- **Real-world example:** Estimating the effect of a diabetes education program on the probability of glycemic control (A1C < 7%) over multiple clinic visits per patient.
+* **Used for** Modeling correlated or clustered data (e.g., repeated measures, longitudinal, or clustered observations) when interest lies in population‐averaged effects rather than subject‐specific effects.  
+* **Real-world example:** Estimating the effect of a diabetes education program on the probability of glycemic control (A1C < 7%) over multiple clinic visits per patient.
 
-#### Assumptions
-- Clustered or repeated observations per subject/cluster with some “working” correlation structure (e.g., exchangeable, autoregressive).  
-- Correct specification of the link function and the mean model (e.g., logit link for binary outcomes).  
-- Missing data are missing completely at random (MCAR) or missing at random (MAR), assuming missingness only depends on observed covariates.  
-- Large‐sample inference: GEE relies on asymptotic properties (number of clusters ≫ 1).
+**Assumptions**
+* Clustered or repeated observations per subject/cluster with some “working” correlation structure (e.g., exchangeable, autoregressive).  
+* Correct specification of the link function and the mean model (e.g., logit link for binary outcomes).  
+* Missing data are missing completely at random (MCAR) or missing at random (MAR), assuming missingness only depends on observed covariates.  
+* Large‐sample inference: GEE relies on asymptotic properties (number of clusters ≫ 1).
 
-#### Strengths
-- Robust (“sandwich”) standard errors even if the working correlation structure is mis‐specified.  
-- Provides marginal (population‐averaged) estimates, often of direct interest in public health/epidemiology.  
-- Accommodates a variety of outcomes (binary, count, continuous) via appropriate link and family.
+**Strengths**
+* Robust (“sandwich”) standard errors even if the working correlation structure is mis‐specified.  
+* Provides marginal (population‐averaged) estimates, often of direct interest in public health/epidemiology.  
+* Accommodates a variety of outcomes (binary, count, continuous) via appropriate link and family.
 
-#### Weaknesses
-- Efficiency can be lost if the working correlation is far from the truth (though estimates remain consistent).  
-- Inference is asymptotic—small numbers of clusters can lead to biased standard errors.  
-- Does not model subject‐specific trajectories; cannot estimate random‐effects variance components.
+**Weaknesses**
+* Efficiency can be lost if the working correlation is far from the truth (though estimates remain consistent).  
+* Inference is asymptotic—small numbers of clusters can lead to biased standard errors.  
+* Does not model subject‐specific trajectories; cannot estimate random‐effects variance components.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The education program has no effect on odds of glycemic control over time (β_edu = 0).  
-- **Alternative hypothesis (H₁):** The education program changes the odds of glycemic control over time (β_edu ≠ 0).
+* **Null hypothesis (H₀):** The education program has no effect on odds of glycemic control over time (β_edu = 0).  
+* **Alternative hypothesis (H₁):** The education program changes the odds of glycemic control over time (β_edu ≠ 0).
 
 
 ``` r
@@ -3330,7 +3314,7 @@ alpha  0.00166 0.03069
 Number of clusters:   100  Maximum cluster size: 4 
 ```
 
-Interpretation:
+**Interpretation:*'
 
 The estimated coefficient for edu (Edu vs. NoEdu) is 0.552
 . Its robust (“sandwich”) standard error is 0.248
@@ -3352,20 +3336,8 @@ Because GEE uses a sandwich estimator, these inferences remain valid even if “
 
 ## Kontingenstabel- og proportions-tests
 
-<a id = "test-navn"></a>
 
-::::spoiler
-
-### Contingency-table methods (χ² osv.)
-
-EJ KORREKTURLÆST
-HVOR KATTEN KOMMER DET HER EGENTLIG FRA?
-
-
-
-::::
-
-<a id = "test-navn"></a>
+<a id = "mcnemar_test"></a>
 
 ::::spoiler
 
@@ -3373,30 +3345,28 @@ HVOR KATTEN KOMMER DET HER EGENTLIG FRA?
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether the proportions of paired binary outcomes differ (i.e., detecting marginal changes in a 2×2 paired table).  
-- **Real-world example:** Determining if a new diagnostic test classification (Positive/Negative) differs from an existing “gold standard” classification on the same patients.
+* **Used for** Testing whether the proportions of paired binary outcomes differ (i.e., detecting marginal changes in a 2×2 paired table).  
+* **Real-world example:** Determining if a new diagnostic test classification (Positive/Negative) differs from an existing “gold standard” classification on the same patients.
 
-#### Assumptions
-- Data consist of paired binary observations (e.g., before/after, test1/test2) on the same subjects.  
-- Discordant cell counts (subjects where Test A=Positive & Test B=Negative or vice versa) are sufficiently large (≥ 10) for the χ² approximation; otherwise use exact McNemar.  
-- Each pair is independent of all other pairs.
+**Assumptions**
+* Data consist of paired binary observations (e.g., before/after, test1/test2) on the same subjects.  
+* Discordant cell counts (subjects where Test A=Positive & Test B=Negative or vice versa) are sufficiently large (≥ 10) for the χ² approximation; otherwise use exact McNemar.  
+* Each pair is independent of all other pairs.
 
-#### Strengths
-- Simple to implement for paired binary data.  
-- Specifically tests for a change in proportion rather than overall association.  
-- Does not require marginal homogeneity for concordant pairs (only discordant pairs matter).
+**Strengths**
+* Simple to implement for paired binary data.  
+* Specifically tests for a change in proportion rather than overall association.  
+* Does not require marginal homogeneity for concordant pairs (only discordant pairs matter).
 
-#### Weaknesses
-- Ignores concordant pairs (those where both methods agree), focusing only on discordant counts.  
-- χ² approximation can be invalid if discordant counts are small—requires exact test.  
-- Only applicable to 2×2 paired tables (binary outcomes).
+**Weaknesses**
+* Ignores concordant pairs (those where both methods agree), focusing only on discordant counts.  
+* χ² approximation can be invalid if discordant counts are small—requires exact test.  
+* Only applicable to 2×2 paired tables (binary outcomes).
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The probability of discordant outcomes is the same in both directions (b = c).  
-- **Alternative hypothesis (H₁):** The probability of discordant outcomes differs (b ≠ c).
+* **Null hypothesis (H₀):** The probability of discordant outcomes is the same in both directions (b = c).  
+* **Alternative hypothesis (H₁):** The probability of discordant outcomes differs (b ≠ c).
 
 
 ``` r
@@ -3430,7 +3400,7 @@ data:  ctab
 McNemar's chi-squared = 3.3, df = 1, p-value = 0.07
 ```
 
-Interpretation:
+**Interpretation:**
 The McNemar χ² statistic is 3.33 with p-value = 0.0679. We
 fail to reject the null hypothesis.
 Since b (OldTest Positive, NewTest Negative) = 20 and c (OldTest Negative, NewTest Positive) = 10, a significant result would indicate that the switch in classifications is not symmetric—i.e., the new test’s positive/negative calls differ from the old test more often in one direction than the other.
@@ -3438,7 +3408,7 @@ Since b (OldTest Positive, NewTest Negative) = 20 and c (OldTest Negative, NewTe
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "fishers_exact_test"></a>
 
 ::::spoiler
 
@@ -3446,30 +3416,28 @@ Since b (OldTest Positive, NewTest Negative) = 20 and c (OldTest Negative, NewTe
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing independence between two categorical variables in a small-sample 2×2 contingency table.  
-- **Real-world example:** Examining whether a new antibiotic leads to cure versus failure in 15 patients (small sample where χ² might be invalid).
+* **Used for** Testing independence between two categorical variables in a small-sample 2×2 contingency table.  
+* **Real-world example:** Examining whether a new antibiotic leads to cure versus failure in 15 patients (small sample where χ² might be invalid).
 
-#### Assumptions
-- Observations are independent.  
-- Data form a 2×2 table (binary outcome × binary exposure).  
-- Marginal totals are fixed (conditional inference on margins).
+**Assumptions**
+* Observations are independent.  
+* Data form a 2×2 table (binary outcome × binary exposure).  
+* Marginal totals are fixed (conditional inference on margins).
 
-#### Strengths
-- Exact p-value without relying on large-sample approximations.  
-- Valid even when expected cell counts are very small or zero.  
-- Simple to implement in R via `fisher.test()`.
+**Strengths**
+* Exact p-value without relying on large-sample approximations.  
+* Valid even when expected cell counts are very small or zero.  
+* Simple to implement in R via `fisher.test()`.
 
-#### Weaknesses
-- Only directly applies to 2×2 tables; extensions to larger tables exist but are computationally intensive.  
-- Does not provide an effect-size estimate beyond the odds ratio (which must be computed separately).  
-- Can be conservative (lower power) compared to asymptotic tests with moderate sample sizes.
+**Weaknesses**
+* Only directly applies to 2×2 tables; extensions to larger tables exist but are computationally intensive.  
+* Does not provide an effect-size estimate beyond the odds ratio (which must be computed separately).  
+* Can be conservative (lower power) compared to asymptotic tests with moderate sample sizes.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** Treatment and outcome are independent (odds ratio = 1).  
-- **Alternative hypothesis (H₁):** Treatment and outcome are not independent (odds ratio ≠ 1).
+* **Null hypothesis (H₀):** Treatment and outcome are independent (odds ratio = 1).  
+* **Alternative hypothesis (H₁):** Treatment and outcome are not independent (odds ratio ≠ 1).
 
 
 ``` r
@@ -3509,7 +3477,7 @@ odds ratio
      3.196 
 ```
 
-Interpretation:
+**Interpretation:**
 Fisher’s exact test yields an odds ratio estimate of 3.2 with a two-sided p-value = 0.329. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -3518,7 +3486,7 @@ no evidence of a difference in cure rates between the two treatments.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "barnard_exact_test"></a>
 
 ::::spoiler
 
@@ -3526,30 +3494,29 @@ no evidence of a difference in cure rates between the two treatments.
 
 EJ KORREKTURLÆST
 VÆR SÆRLIGT OPMÆRKSOM HER - DER VAR STORE UDFORDRINGER...
-#### Used for
-- Testing independence in a 2×2 contingency table via an unconditional exact test.  
-- **Real-world example:** Determining if a new pain medication and placebo differ in adverse event rates when sample sizes are small.
 
-#### Assumptions
-- Observations are independent and each subject contributes exactly one cell in the 2×2 table.  
-- Only one margin (row or column totals) is fixed; the other margin is free.  
-- Binary outcome (e.g., “Adverse Event: Yes/No”) and binary grouping (“Medication vs. Placebo”).
+* **Used for** Testing independence in a 2×2 contingency table via an unconditional exact test.  
+* **Real-world example:** Determining if a new pain medication and placebo differ in adverse event rates when sample sizes are small.
 
-#### Strengths
-- More powerful than Fisher’s exact test because it does not condition on both margins.  
-- Provides an exact p-value without relying on large‐sample approximations.  
-- Particularly advantageous when margins are not fixed by design.
+**Assumptions**
+* Observations are independent and each subject contributes exactly one cell in the 2×2 table.  
+* Only one margin (row or column totals) is fixed; the other margin is free.  
+* Binary outcome (e.g., “Adverse Event: Yes/No”) and binary grouping (“Medication vs. Placebo”).
 
-#### Weaknesses
-- Computationally slower than Fisher’s exact test for larger sample sizes.  
-- Only applies to 2×2 tables (binary × binary).  
-- Requires installation of the **Barnard** package (not in base R).
+**Strengths**
+* More powerful than Fisher’s exact test because it does not condition on both margins.  
+* Provides an exact p-value without relying on large‐sample approximations.  
+* Particularly advantageous when margins are not fixed by design.
 
-#### Example
+**Weaknesses**
+* Computationally slower than Fisher’s exact test for larger sample sizes.  
+* Only applies to 2×2 tables (binary × binary).  
+* Requires installation of the **Barnard** package (not in base R).
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The probability of an adverse event is the same in the Medication and Placebo groups (no association).  
-- **Alternative hypothesis (H₁):** The probability of an adverse event differs between Medication and Placebo.
+**Example**
+
+* **Null hypothesis (H₀):** The probability of an adverse event is the same in the Medication and Placebo groups (no association).  
+* **Alternative hypothesis (H₁):** The probability of an adverse event differs between Medication and Placebo.
 
 
 ``` r
@@ -4740,7 +4707,7 @@ $pooled
 [1] TRUE
 ```
 
-Interpretation:
+**Interpretation:**
 The output includes:
 
 A score statistic (here ≈ 2.24733).
@@ -4763,38 +4730,36 @@ One‐sided p‐value (0.0168): Tests specifically whether the Medication advers
 ::::
 
 
-<a id = "test-navn"></a>
+<a id = "cochran_armitage_trend_test"></a>
 
 ::::spoiler
 
 ### Cochran–Armitage trend test (ordinal tabel)
 
 EJ KORREKTURLÆST
-#### Used for
-- Testing for a linear trend in proportions across ordered categories in a 2×k contingency table.  
-- **Real-world example:** Assessing whether increasing levels of prenatal vitamin dose (Low, Medium, High) correspond to higher rates of healthy birth outcomes (Yes/No).
+* **Used for** Testing for a linear trend in proportions across ordered categories in a 2×k contingency table.  
+* **Real-world example:** Assessing whether increasing levels of prenatal vitamin dose (Low, Medium, High) correspond to higher rates of healthy birth outcomes (Yes/No).
 
-#### Assumptions
-- Observations are independent.  
-- Categories of the ordinal predictor have a natural order (e.g., Low < Medium < High).  
-- The response is binary within each category (success/failure).  
-- Expected counts for successes and failures in each category are sufficiently large for the χ² approximation (generally ≥ 5).
+**Assumptions**
+* Observations are independent.  
+* Categories of the ordinal predictor have a natural order (e.g., Low < Medium < High).  
+* The response is binary within each category (success/failure).  
+* Expected counts for successes and failures in each category are sufficiently large for the χ² approximation (generally ≥ 5).
 
-#### Strengths
-- Specifically targets a monotonic (linear) increase or decrease in the success probability across ordered groups.  
-- More powerful than a general χ² test of independence when a linear trend is present.  
-- Straightforward to compute via `prop.trend.test()` in R.
+**Strengths**
+* Specifically targets a monotonic (linear) increase or decrease in the success probability across ordered groups.  
+* More powerful than a general χ² test of independence when a linear trend is present.  
+* Straightforward to compute via `prop.trend.test()` in R.
 
-#### Weaknesses
-- Only detects a linear trend; non-monotonic patterns (e.g., U-shaped) will be missed.  
-- Requires correct ordering and spacing of category scores; misordering invalidates the test.  
-- Sensitive to small expected counts in any group, which can distort the chi-square approximation.
+**Weaknesses**
+* Only detects a linear trend; non-monotonic patterns (e.g., U-shaped) will be missed.  
+* Requires correct ordering and spacing of category scores; misordering invalidates the test.  
+* Sensitive to small expected counts in any group, which can distort the chi-square approximation.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** No linear trend in the probability of a healthy birth outcome across dose levels (slope = 0).  
-- **Alternative hypothesis (H₁):** A positive linear trend exists: higher dose levels correspond to higher healthy birth rates (slope > 0).
+* **Null hypothesis (H₀):** No linear trend in the probability of a healthy birth outcome across dose levels (slope = 0).  
+* **Alternative hypothesis (H₁):** A positive linear trend exists: higher dose levels correspond to higher healthy birth rates (slope > 0).
 
 
 ``` r
@@ -4823,7 +4788,7 @@ data:  successes out of totals ,
 X-squared = 13, df = 1, p-value = 4e-04
 ```
 
-Interpretation:
+**Interpretation:**
 The Cochran–Armitage test statistic χ² = 12.578 with p-value = 3.9\times 10^{-4}. Because the p-value is < 0.05, we
 reject the null hypothesis.
 Thus, there is
@@ -4832,7 +4797,7 @@ evidence of a positive linear trend: higher prenatal vitamin doses are associate
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "cochran_q_test"></a>
 
 ::::spoiler
 
@@ -4840,30 +4805,28 @@ evidence of a positive linear trend: higher prenatal vitamin doses are associate
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether proportions of a binary outcome differ across three or more related (matched) groups.  
-- **Real-world example:** Checking if three different allergy medications have different proportions of symptom relief in the same set of patients.
+* **Used for** Testing whether proportions of a binary outcome differ across three or more related (matched) groups.  
+* **Real-world example:** Checking if three different allergy medications have different proportions of symptom relief in the same set of patients.
 
-#### Assumptions
-- Each subject is measured on the same binary outcome under each condition (matched/paired design).  
-- Observations (subjects) are independent of one another.  
-- The outcome for each subject in each group is binary (e.g., “relief” vs. “no relief”).  
+**Assumptions**
+* Each subject is measured on the same binary outcome under each condition (matched/paired design).  
+* Observations (subjects) are independent of one another.  
+* The outcome for each subject in each group is binary (e.g., “relief” vs. “no relief”).  
 
-#### Strengths
-- Extends McNemar’s test to more than two matched proportions.  
-- Controls for subject‐level variability by using each subject as their own block.  
-- Simple test statistic and interpretation via χ² distribution.
+**Strengths**
+* Extends McNemar’s test to more than two matched proportions.  
+* Controls for subject‐level variability by using each subject as their own block.  
+* Simple test statistic and interpretation via χ² distribution.
 
-#### Weaknesses
-- Only addresses overall difference; does not indicate which pairs of groups differ (post‐hoc tests required).  
-- Sensitive to missing data: any subject missing a response in one condition must be excluded.  
-- Assumes no interactions or clustering beyond the matched sets.
+**Weaknesses**
+* Only addresses overall difference; does not indicate which pairs of groups differ (post‐hoc tests required).  
+* Sensitive to missing data: any subject missing a response in one condition must be excluded.  
+* Assumes no interactions or clustering beyond the matched sets.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The proportion of patients experiencing symptom relief is the same across all three medications (p₁ = p₂ = p₃).  
-- **Alternative hypothesis (H₁):** At least one medication’s relief proportion differs from the others.
+* **Null hypothesis (H₀):** The proportion of patients experiencing symptom relief is the same across all three medications (p₁ = p₂ = p₃).  
+* **Alternative hypothesis (H₁):** At least one medication’s relief proportion differs from the others.
 
 
 ``` r
@@ -4908,7 +4871,7 @@ cq_result
 data:  y
 Q = 0.29, df = 2, p-value = 0.9
 ```
-Interpretation:
+**Interpretation:**
 Cochran’s Q statistic = 0.286 with df = 2 and p-value = 0.867. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -4916,7 +4879,7 @@ no evidence that relief proportions differ across the three medications.
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "stuart_maxwell_test"></a>
 
 ::::spoiler
 
@@ -4924,31 +4887,29 @@ no evidence that relief proportions differ across the three medications.
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing marginal homogeneity in a square contingency table of paired categorical outcomes (k ≥ 3 categories).  
-- **Real-world example:** Assessing whether patients’ self‐rated pain levels (None, Mild, Moderate, Severe) before and after a new analgesic are distributed the same way.
+* **Used for** Testing marginal homogeneity in a square contingency table of paired categorical outcomes (k ≥ 3 categories).  
+* **Real-world example:** Assessing whether patients’ self‐rated pain levels (None, Mild, Moderate, Severe) before and after a new analgesic are distributed the same way.
 
-#### Assumptions
-- Data consist of paired observations on the same subjects, each classified into one of k categories at two time points or under two conditions.  
-- The contingency table is square (same set of k categories for “before” and “after”).  
-- Observations (pairs) are independent of one another.  
-- No cell has zero counts that prevent the necessary sums for the test (ideally none of the off‐diagonal cell sums are zero across all pairs).
+**Assumptions**
+* Data consist of paired observations on the same subjects, each classified into one of k categories at two time points or under two conditions.  
+* The contingency table is square (same set of k categories for “before” and “after”).  
+* Observations (pairs) are independent of one another.  
+* No cell has zero counts that prevent the necessary sums for the test (ideally none of the off‐diagonal cell sums are zero across all pairs).
 
-#### Strengths
-- Generalizes McNemar’s test to k > 2 categories.  
-- Specifically tests whether the overall marginal (row vs. column) distributions are the same.  
-- Computes a χ²‐statistic based on off‐diagonal discordances, summarizing all category shifts.
+**Strengths**
+* Generalizes McNemar’s test to k > 2 categories.  
+* Specifically tests whether the overall marginal (row vs. column) distributions are the same.  
+* Computes a χ²‐statistic based on off‐diagonal discordances, summarizing all category shifts.
 
-#### Weaknesses
-- Only detects overall marginal changes; does not indicate which category pairs drive the difference (post‐hoc needed).  
-- Sensitive to small sample sizes or sparse off‐diagonal entries (may lack power or violate asymptotic χ² approximation).  
-- Assumes symmetry under the null; if many pairs move in one direction but not the reverse, marginal sums can still balance, potentially masking certain shifts.
+**Weaknesses**
+* Only detects overall marginal changes; does not indicate which category pairs drive the difference (post‐hoc needed).  
+* Sensitive to small sample sizes or sparse off‐diagonal entries (may lack power or violate asymptotic χ² approximation).  
+* Assumes symmetry under the null; if many pairs move in one direction but not the reverse, marginal sums can still balance, potentially masking certain shifts.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The marginal distribution of pain levels is the same before and after treatment.  
-- **Alternative hypothesis (H₁):** The marginal distributions differ (some shifts in categories occurred).
+* **Null hypothesis (H₀):** The marginal distribution of pain levels is the same before and after treatment.  
+* **Alternative hypothesis (H₁):** The marginal distributions differ (some shifts in categories occurred).
 
 
 ``` r
@@ -4999,7 +4960,7 @@ data:  pain_table
 chi-squared = 9.9, df = 3, p-value = 0.02
 ```
 
-Interpretation:
+**Interpretation:**
 The Stuart–Maxwell χ² statistic = 9.89 with df = 3 and p-value = 0.0195. We
 reject the null hypothesis.
 Since the p-value is r round(stuart_result$p.value, 3), we
@@ -5007,7 +4968,7 @@ conclude that the marginal distribution of pain levels differs before vs. after 
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "two_sample_binomial_mh"></a>
 
 ::::spoiler
 
@@ -5015,31 +4976,29 @@ conclude that the marginal distribution of pain levels differs before vs. after 
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Comparing two independent binomial proportions, possibly stratified by a third variable (Mantel–Haenszel).  
-- **Real-world example:** Assessing whether a new vaccine reduces infection rates compared to placebo across multiple clinics.
+* **Used for** Comparing two independent binomial proportions, possibly stratified by a third variable (Mantel–Haenszel).  
+* **Real-world example:** Assessing whether a new vaccine reduces infection rates compared to placebo across multiple clinics.
 
-#### Assumptions
-- Observations within each group (and stratum, if stratified) are independent.  
-- Each observation has a binary outcome (success/failure).  
-- In the unstratified case, the two groups are independent and sample sizes are sufficiently large for the normal approximation (if using a z-test or `prop.test()`).  
-- For the Mantel–Haenszel test: effects are assumed homogeneous across strata (common odds ratio).
+**Assumptions**
+* Observations within each group (and stratum, if stratified) are independent.  
+* Each observation has a binary outcome (success/failure).  
+* In the unstratified case, the two groups are independent and sample sizes are sufficiently large for the normal approximation (if using a z-test or `prop.test()`).  
+* For the Mantel–Haenszel test: effects are assumed homogeneous across strata (common odds ratio).
 
-#### Strengths
-- Simple two‐sample z‐test or χ²‐based test (`prop.test()`) for unstratified comparisons.  
-- Mantel–Haenszel test controls for confounding by stratification, providing an overall test of association and a pooled odds ratio.  
-- Exact or asymptotic inference available (Fisher’s exact for small counts, Mantel–Haenszel χ² for larger).
+**Strengths**
+* Simple two‐sample z‐test or χ²‐based test (`prop.test()`) for unstratified comparisons.  
+* Mantel–Haenszel test controls for confounding by stratification, providing an overall test of association and a pooled odds ratio.  
+* Exact or asymptotic inference available (Fisher’s exact for small counts, Mantel–Haenszel χ² for larger).
 
-#### Weaknesses
-- The unstratified z‐test/χ² test can give misleading results if confounders are present.  
-- Mantel–Haenszel requires the common‐odds‐ratio assumption; if this fails (effect modification), the pooled estimate may be invalid.  
-- Both methods rely on adequate sample sizes in each cell (especially for asymptotic approximations).
+**Weaknesses**
+* The unstratified z‐test/χ² test can give misleading results if confounders are present.  
+* Mantel–Haenszel requires the common‐odds‐ratio assumption; if this fails (effect modification), the pooled estimate may be invalid.  
+* Both methods rely on adequate sample sizes in each cell (especially for asymptotic approximations).
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The infection rates in Vaccine and Placebo groups are equal across clinics (common odds ratio = 1).  
-- **Alternative hypothesis (H₁):** The infection rates differ between Vaccine and Placebo groups (common odds ratio ≠ 1).
+* **Null hypothesis (H₀):** The infection rates in Vaccine and Placebo groups are equal across clinics (common odds ratio = 1).  
+* **Alternative hypothesis (H₁):** The infection rates differ between Vaccine and Placebo groups (common odds ratio ≠ 1).
 
 
 ``` r
@@ -5083,7 +5042,7 @@ common odds ratio
            0.3316 
 ```
 
-Interpretation:
+**Interpretation:**
 The Mantel–Haenszel χ² statistic = 11.275 with df = 1 and p‐value = 7.86\times 10^{-4}. We
 reject the null hypothesis.
 Thus, since the p‐value is 0.001, we
@@ -5091,7 +5050,7 @@ conclude there is a significant difference in infection rates between Vaccine an
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "chi_square_rc"></a>
 
 ::::spoiler
 
@@ -5099,30 +5058,28 @@ conclude there is a significant difference in infection rates between Vaccine an
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether two categorical variables (with R rows and C columns) are independent in an R×C contingency table.  
-- **Real-world example:** Assessing if education level (High School, Bachelor’s, Master’s, PhD) is associated with preferred news source (TV, Online, Print) in a survey.
+* **Used for** Testing whether two categorical variables (with R rows and C columns) are independent in an R×C contingency table.  
+* **Real-world example:** Assessing if education level (High School, Bachelor’s, Master’s, PhD) is associated with preferred news source (TV, Online, Print) in a survey.
 
-#### Assumptions
-- Observations are independent (each subject contributes to exactly one cell).  
-- The table is R×C with mutually exclusive and exhaustive categories.  
-- Expected count in each cell is at least 5 for the χ² approximation to be valid; otherwise consider collapsing categories or using an exact test.
+**Assumptions**
+* Observations are independent (each subject contributes to exactly one cell).  
+* The table is R×C with mutually exclusive and exhaustive categories.  
+* Expected count in each cell is at least 5 for the χ² approximation to be valid; otherwise consider collapsing categories or using an exact test.
 
-#### Strengths
-- Simple to compute and interpret via a single χ² statistic and p-value.  
-- Applicable to any R×C table, not just 2×2.  
-- Nonparametric: does not assume any distribution of underlying continuous variables.
+**Strengths**
+* Simple to compute and interpret via a single χ² statistic and p-value.  
+* Applicable to any R×C table, not just 2×2.  
+* Nonparametric: does not assume any distribution of underlying continuous variables.
 
-#### Weaknesses
-- Sensitive to small expected counts—cells with expected < 5 can invalidate the approximation.  
-- Does not indicate which specific cells contribute most to the dependence; follow-up residual analysis or post-hoc tests are required.  
-- Requires sufficiently large sample sizes; for sparse tables consider Fisher’s exact or Monte Carlo methods.
+**Weaknesses**
+* Sensitive to small expected counts—cells with expected < 5 can invalidate the approximation.  
+* Does not indicate which specific cells contribute most to the dependence; follow-up residual analysis or post-hoc tests are required.  
+* Requires sufficiently large sample sizes; for sparse tables consider Fisher’s exact or Monte Carlo methods.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** Education level and preferred news source are independent.  
-- **Alternative hypothesis (H₁):** There is an association between education level and preferred news source (they are not independent).
+* **Null hypothesis (H₀):** Education level and preferred news source are independent.  
+* **Alternative hypothesis (H₁):** There is an association between education level and preferred news source (they are not independent).
 
 
 ``` r
@@ -5164,7 +5121,7 @@ data:  obs_matrix
 X-squared = 29, df = 6, p-value = 7e-05
 ```
 
-Interpretation:
+**Interpretation:**
 The test yields χ² = 28.71 with df = 6 and p-value = 6.91\times 10^{-5}. We
 reject the null hypothesis.
 Since the p-value is 0, we
@@ -5179,7 +5136,7 @@ Cells with |residual| > 2 indicate categories where the observed count deviates 
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "mantel_trend_test"></a>
 
 ::::spoiler
 
@@ -5187,31 +5144,29 @@ Cells with |residual| > 2 indicate categories where the observed count deviates 
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing for a linear (monotonic) association between two ordinal variables in an R×C contingency table (Mantel’s extension of the χ² test).  
-- **Real-world example:** Assessing whether increasing pain‐severity category (None < Mild < Moderate < Severe) is associated with increasing level of inflammation marker (Low < Medium < High) in the same patients.
+* **Used for**  Testing for a linear (monotonic) association between two ordinal variables in an R×C contingency table (Mantel’s extension of the χ² test).  
+* **Real-world example:** Assessing whether increasing pain‐severity category (None < Mild < Moderate < Severe) is associated with increasing level of inflammation marker (Low < Medium < High) in the same patients.
 
-#### Assumptions
-- Observations are independent.  
-- Both row and column variables are ordinal with a meaningful order.  
-- Expected counts in all cells are sufficiently large (≈ ≥ 5) for the χ² approximation to hold.  
-- The association between row and column scores is (approximately) linear on the log‐odds scale.
+**Assumptions**
+* Observations are independent.  
+* Both row and column variables are ordinal with a meaningful order.  
+* Expected counts in all cells are sufficiently large (≈ ≥ 5) for the χ² approximation to hold.  
+* The association between row and column scores is (approximately) linear on the log‐odds scale.
 
-#### Strengths
-- Specifically targets a linear trend across ordered categories rather than any arbitrary departure from independence.  
-- More powerful than a general χ² test of independence when the true association is monotonic.  
-- Accommodates arbitrary R×C tables (not limited to 2×k or k×2).
+**Strengths**
+* Specifically targets a linear trend across ordered categories rather than any arbitrary departure from independence.  
+* More powerful than a general χ² test of independence when the true association is monotonic.  
+* Accommodates arbitrary R×C tables (not limited to 2×k or k×2).
 
-#### Weaknesses
-- Only detects linear-by-linear association; non‐monotonic patterns (e.g. U‐shaped) may be missed.  
-- Requires correct ordering of both row and column categories—misordering invalidates the test.  
-- Sensitive to small expected counts in any cell, which can bias the χ² approximation.
+**Weaknesses**
+* Only detects linear-by-linear association; non‐monotonic patterns (e.g. U‐shaped) may be missed.  
+* Requires correct ordering of both row and column categories—misordering invalidates the test.  
+* Sensitive to small expected counts in any cell, which can bias the χ² approximation.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** No linear trend in the log‐odds of inflammation level across pain‐severity categories (row and column are independent in a linear sense).  
-- **Alternative hypothesis (H₁):** A positive (or negative) linear trend exists: higher pain severity is associated with higher inflammation levels.
+* **Null hypothesis (H₀):** No linear trend in the log‐odds of inflammation level across pain‐severity categories (row and column are independent in a linear sense).  
+* **Alternative hypothesis (H₁):** A positive (or negative) linear trend exists: higher pain severity is associated with higher inflammation levels.
 
 
 ``` r
@@ -5265,7 +5220,7 @@ mantel_result
 Error: object 'mantel_result' not found
 ```
 
-Interpretation:
+**Interpretation:**
 The output shows:
 
 A Mantel χ² statistic (linear‐by‐linear association) and its degrees of freedom (df = 1).
@@ -5284,7 +5239,7 @@ If p‐value ≥ 0.05, we would fail to reject H₀, concluding no evidence of a
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "chi_square_heterogeneity"></a>
 
 ::::spoiler
 
@@ -5292,31 +5247,29 @@ If p‐value ≥ 0.05, we would fail to reject H₀, concluding no evidence of a
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether two groups have the same distribution across k categories (heterogeneity of proportions in a 2×k table).  
-- **Real-world example:** Comparing the distribution of smoking status (Never, Former, Current, Occasional) between males and females.
+* **Used for** Testing whether two groups have the same distribution across k categories (heterogeneity of proportions in a 2×k table).  
+* **Real-world example:** Comparing the distribution of smoking status (Never, Former, Current, Occasional) between males and females.
 
-#### Assumptions
-- Observations are independent.  
-- Categories (columns) are mutually exclusive and exhaustive.  
-- Expected count in each cell is at least 5 for the χ² approximation to be valid.  
-- The table is 2×k (two groups by k categories).
+**Assumptions**
+* Observations are independent.  
+* Categories (columns) are mutually exclusive and exhaustive.  
+* Expected count in each cell is at least 5 for the χ² approximation to be valid.  
+* The table is 2×k (two groups by k categories).
 
-#### Strengths
-- Simple to compute via `chisq.test()` in R.  
-- Tests whether proportions differ across all k categories simultaneously.  
-- Does not require any parametric distribution beyond categorical counts.
+**Strengths**
+* Simple to compute via `chisq.test()` in R.  
+* Tests whether proportions differ across all k categories simultaneously.  
+* Does not require any parametric distribution beyond categorical counts.
 
-#### Weaknesses
-- Sensitive to small expected counts; if many cells have expected < 5, approximation may be invalid.  
-- Only indicates that distributions differ, not which categories drive the difference (follow‐up residual or post‐hoc tests needed).  
-- Requires independence; not suitable for paired or repeated measures.
+**Weaknesses**
+* Sensitive to small expected counts; if many cells have expected < 5, approximation may be invalid.  
+* Only indicates that distributions differ, not which categories drive the difference (follow‐up residual or post‐hoc tests needed).  
+* Requires independence; not suitable for paired or repeated measures.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The two groups have the same distribution across the k categories (no heterogeneity).  
-- **Alternative hypothesis (H₁):** At least one category’s proportion differs between the two groups.
+* **Null hypothesis (H₀):** The two groups have the same distribution across the k categories (no heterogeneity).  
+* **Alternative hypothesis (H₁):** At least one category’s proportion differs between the two groups.
 
 
 ``` r
@@ -5352,7 +5305,7 @@ data:  obs_matrix
 X-squared = 10, df = 3, p-value = 0.02
 ```
 
-Interpretation:
+**Interpretation:**
 The χ² statistic = 10.07 with df = 3 and p-value = 0.018. We
 reject the null hypothesis.
 Thus, there is
@@ -5370,7 +5323,7 @@ Cells with |residual| > 2 indicate categories where observed counts deviate subs
 ## Incidens- og rate-tests
 
 
-<a id = "test-navn"></a>
+<a id = "one_sample_incidence_rate_test"></a>
 
 ::::spoiler
 
@@ -5378,30 +5331,28 @@ Cells with |residual| > 2 indicate categories where observed counts deviate subs
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether an observed incidence rate (events per unit person‐time) differs from a specified rate.  
-- **Real-world example:** Determining if a hospital’s rate of catheter‐associated infections (per 1,000 patient‐days) equals the national benchmark.
+* **Used for** Testing whether an observed incidence rate (events per unit person‐time) differs from a specified rate.  
+* **Real-world example:** Determining if a hospital’s rate of catheter‐associated infections (per 1,000 patient‐days) equals the national benchmark.
 
-#### Assumptions
-- Events occur independently and follow a Poisson process.  
-- The incidence rate is constant over the observation period.  
-- Person‐time is measured accurately and non‐overlapping.
+**Assumptions**
+* Events occur independently and follow a Poisson process.  
+* The incidence rate is constant over the observation period.  
+* Person‐time is measured accurately and non‐overlapping.
 
-#### Strengths
-- Exact test based on the Poisson distribution—no large‐sample approximation needed.  
-- Naturally accounts for differing follow‐up times via person‐time.  
-- Valid for rare events and small counts.
+**Strengths**
+* Exact test based on the Poisson distribution—no large‐sample approximation needed.  
+* Naturally accounts for differing follow‐up times via person‐time.  
+* Valid for rare events and small counts.
 
-#### Weaknesses
-- Sensitive to overdispersion (variance > mean) and violation of Poisson assumptions.  
-- Cannot adjust for covariates or time‐varying rates.  
-- Assumes homogeneity of the rate across the period.
+**Weaknesses**
+* Sensitive to overdispersion (variance > mean) and violation of Poisson assumptions.  
+* Cannot adjust for covariates or time‐varying rates.  
+* Assumes homogeneity of the rate across the period.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The true incidence rate λ = 2 infections per 1,000 patient‐days.  
-- **Alternative hypothesis (H₁):** λ ≠ 2 infections per 1,000 patient‐days.
+* **Null hypothesis (H₀):** The true incidence rate λ = 2 infections per 1,000 patient‐days.  
+* **Alternative hypothesis (H₁):** λ ≠ 2 infections per 1,000 patient‐days.
 
 
 ``` r
@@ -5437,7 +5388,7 @@ event rate
   0.002286 
 ```
 
-Interpretation:
+**Interpretation:**
 The test compares the observed 8 infections over 3,500 patient‐days to the expected rate of 2/1,000 patient‐days (i.e., 7 infections). With a p‐value of r signif(test_result$p.value, 3), we
 r if(test_result$p.value < 0.05) "reject the null hypothesis" else "fail to reject the null hypothesis".
 Thus, there is
@@ -5445,7 +5396,7 @@ r if(test_result$p.value < 0.05) "evidence that the hospital’s infection rate 
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "two_sample_incidence_rates"></a>
 
 ::::spoiler
 
@@ -5453,31 +5404,30 @@ r if(test_result$p.value < 0.05) "evidence that the hospital’s infection rate 
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Comparing incidence rates (events per unit person‐time) between two independent groups.  
-- **Real-world example:** Determining if Hospital A’s rate of central‐line infections (per 1,000 catheter‐days) differs from Hospital B’s rate.
+**Used for**
+* Comparing incidence rates (events per unit person‐time) between two independent groups.  
+* **Real-world example:** Determining if Hospital A’s rate of central‐line infections (per 1,000 catheter‐days) differs from Hospital B’s rate.
 
-#### Assumptions
-- Events in each group follow a Poisson process.  
-- The incidence rate is constant over person‐time within each group.  
-- Person‐time is measured accurately and non‐overlapping.  
-- Groups are independent and there is no unaccounted confounding.
+**Assumptions**
+* Events in each group follow a Poisson process.  
+* The incidence rate is constant over person‐time within each group.  
+* Person‐time is measured accurately and non‐overlapping.  
+* Groups are independent and there is no unaccounted confounding.
 
-#### Strengths
-- Accounts for differing follow‐up times via person‐time denominators.  
-- Provides an exact test (via Poisson) for comparing rates without relying on large‐sample normal approximations.  
-- Outputs both a rate‐ratio estimate and confidence interval.
+**Strengths**
+* Accounts for differing follow‐up times via person‐time denominators.  
+* Provides an exact test (via Poisson) for comparing rates without relying on large‐sample normal approximations.  
+* Outputs both a rate‐ratio estimate and confidence interval.
 
-#### Weaknesses
-- Sensitive to violations of the Poisson assumption (e.g., overdispersion or clustering of events).  
-- Does not adjust for covariates—only a crude two‐group comparison.  
-- Assumes constant risk over time within each group; if rates change, inference may be biased.
+**Weaknesses**
+* Sensitive to violations of the Poisson assumption (e.g., overdispersion or clustering of events).  
+* Does not adjust for covariates—only a crude two‐group comparison.  
+* Assumes constant risk over time within each group; if rates change, inference may be biased.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** The two incidence rates are equal (\(\lambda_A = \lambda_B\)).  
-- **Alternative hypothesis (H₁):** The incidence rates differ (\(\lambda_A \neq \lambda_B\)).
+* **Null hypothesis (H₀):** The two incidence rates are equal (\(\lambda_A = \lambda_B\)).  
+* **Alternative hypothesis (H₁):** The incidence rates differ (\(\lambda_A \neq \lambda_B\)).
 
 
 ``` r
@@ -5520,7 +5470,7 @@ event rate
   0.002286 
 ```
 
-Interpretation:
+**Interpretation:**
 The test reports a rate ratio (Hospital A vs. Hospital B) = 0.002, with a 95% CI = [0.001, 0.005], and p-value = 0.702. We
 fail to reject the null hypothesis.
 Thus, there is
@@ -5529,7 +5479,7 @@ no evidence to conclude a difference in infection rates between the two hospital
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "poisson_trend"></a>
 
 ::::spoiler
 
@@ -5537,31 +5487,29 @@ no evidence to conclude a difference in infection rates between the two hospital
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether there is a linear trend in incidence rates across ordered exposure groups.  
-- **Real-world example:** Evaluating whether lung cancer incidence per 1,000 person‐years increases across smoking intensity categories (Non‐smoker, Light‐smoker, Heavy‐smoker).
+* **Used for** Testing whether there is a linear trend in incidence rates across ordered exposure groups.  
+* **Real-world example:** Evaluating whether lung cancer incidence per 1,000 person‐years increases across smoking intensity categories (Non‐smoker, Light‐smoker, Heavy‐smoker).
 
-#### Assumptions
-- Events in each group follow a Poisson process.  
-- The exposure groups have a natural order and can be assigned numeric scores (e.g., 0, 1, 2).  
-- Person‐time denominators are measured accurately and non‐overlapping.  
-- The log‐rate of events is linearly related to the numeric score of the exposure groups.
+**Assumptions**
+* Events in each group follow a Poisson process.  
+* The exposure groups have a natural order and can be assigned numeric scores (e.g., 0, 1, 2).  
+* Person‐time denominators are measured accurately and non‐overlapping.  
+* The log‐rate of events is linearly related to the numeric score of the exposure groups.
 
-#### Strengths
-- Directly tests for a dose‐response (linear) relationship in rates.  
-- Accounts for differing person‐time across groups via an offset in Poisson regression.  
-- Provides an estimate of the rate‐ratio per one‐unit increase in the exposure score.
+**Strengths**
+* Directly tests for a dose‐response (linear) relationship in rates.  
+* Accounts for differing person‐time across groups via an offset in Poisson regression.  
+* Provides an estimate of the rate‐ratio per one‐unit increase in the exposure score.
 
-#### Weaknesses
-- Only detects a linear trend; non‐linear patterns across groups may be missed.  
-- Sensitive to misclassification of exposure group ordering or scoring.  
-- Assumes no overdispersion; if variance > mean, inference may be invalid unless corrected.
+**Weaknesses**
+* Only detects a linear trend; non‐linear patterns across groups may be missed.  
+* Sensitive to misclassification of exposure group ordering or scoring.  
+* Assumes no overdispersion; if variance > mean, inference may be invalid unless corrected.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** There is no linear trend in incidence rates across exposure groups (β = 0).  
-- **Alternative hypothesis (H₁):** β ≠ 0 (the log‐rate changes linearly with the exposure score).
+* **Null hypothesis (H₀):** There is no linear trend in incidence rates across exposure groups (β = 0).  
+* **Alternative hypothesis (H₁):** β ≠ 0 (the log‐rate changes linearly with the exposure score).
 
 
 ``` r
@@ -5609,7 +5557,7 @@ AIC: 19.69
 Number of Fisher Scoring iterations: 3
 ```
 
-Interpretation:
+**Interpretation:**
 
 The estimated coefficient for score is 0.984.
 
@@ -5631,7 +5579,7 @@ per category increase, and since p $<0.05$, we conclude that incidence rises sig
 
 ::::
 
-<a id = "test-navn"></a>
+<a id = "Exact_rate_ratio_test"></a>
 
 ::::spoiler
 
@@ -5639,31 +5587,29 @@ per category increase, and since p $<0.05$, we conclude that incidence rises sig
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing whether the incidence rate in one group differs from that in another group using an exact (Poisson) method for the rate ratio.  
-- **Real-world example:** Comparing ICU infection rates between two antibiotic regimens (A vs. B) when event counts and person‐time are relatively small.
+* **Used for** Testing whether the incidence rate in one group differs from that in another group using an exact (Poisson) method for the rate ratio.  
+* **Real-world example:** Comparing ICU infection rates between two antibiotic regimens (A vs. B) when event counts and person‐time are relatively small.
 
-#### Assumptions
-- Events in each group follow a Poisson process.  
-- The rate within each group is constant over the observed person‐time.  
-- Person‐time denominators are measured accurately and non‐overlapping.  
-- Groups are independent (no shared person‐time or overlapping exposure).
+**Assumptions**
+* Events in each group follow a Poisson process.  
+* The rate within each group is constant over the observed person‐time.  
+* Person‐time denominators are measured accurately and non‐overlapping.  
+* Groups are independent (no shared person‐time or overlapping exposure).
 
-#### Strengths
-- Provides an exact confidence interval for the rate ratio and an exact test p‐value without relying on large‐sample normal approximations.  
-- Valid for small counts or rare events.  
-- Directly tests the null hypothesis $\text{RR} = 1$ (where $\text{RR} = \lambda_1 / \lambda_2$).
+**Strengths**
+* Provides an exact confidence interval for the rate ratio and an exact test p‐value without relying on large‐sample normal approximations.  
+* Valid for small counts or rare events.  
+* Directly tests the null hypothesis $\text{RR} = 1$ (where $\text{RR} = \lambda_1 / \lambda_2$).
 
-#### Weaknesses
-- Sensitive to overdispersion (variance > mean) or clustering—assumes Poisson variance equals the mean.  
-- Only compares two groups at a time; cannot easily adjust for covariates.  
-- Assumes constant rate over time; if rates vary, inference can be biased.
+**Weaknesses**
+* Sensitive to overdispersion (variance > mean) or clustering—assumes Poisson variance equals the mean.  
+* Only compares two groups at a time; cannot easily adjust for covariates.  
+* Assumes constant rate over time; if rates vary, inference can be biased.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis ($H_{0}$):** The rate in group A equals the rate in group B, i.e.  $\text{RR} = 1$
-- **Alternative hypothesis ($H_{1}$):** The rate in group A differs from the rate in group B, i.e.  $\text{RR} \neq 1$
+* **Null hypothesis ($H_{0}$):** The rate in group A equals the rate in group B, i.e.  $\text{RR} = 1$
+* **Alternative hypothesis ($H_{1}$):** The rate in group A differs from the rate in group B, i.e.  $\text{RR} \neq 1$
 
 
 ``` r
@@ -5702,7 +5648,7 @@ rate ratio
     0.6944 
 ```
 
-Interpretation:
+**Interpretation:**
 
 The estimated rate ratio is
 
@@ -5734,7 +5680,7 @@ then, since $p = 0.289 \ge 0.05$, we fail to reject $H_{0}$. There is no evidenc
 ## Overlevelsesanalyse
 
 
-<a id = "test-navn"></a>
+<a id = "log_rank_test"></a>
 
 ::::spoiler
 
@@ -5742,30 +5688,28 @@ then, since $p = 0.289 \ge 0.05$, we fail to reject $H_{0}$. There is no evidenc
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Comparing the survival distributions of two or more groups in time-to-event data.  
-- **Real-world example:** Testing whether patients receiving Drug A have different overall survival than patients receiving Drug B after cancer diagnosis.
+* **Used for** Comparing the survival distributions of two or more groups in time-to-event data.  
+* **Real-world example:** Testing whether patients receiving Drug A have different overall survival than patients receiving Drug B after cancer diagnosis.
 
-#### Assumptions
-- Censoring is independent of survival (noninformative).  
-- Survival times are continuously distributed.  
-- The hazard functions are proportional over time (i.e., the ratio of hazard rates between groups is constant).
+**Assumptions**
+* Censoring is independent of survival (noninformative).  
+* Survival times are continuously distributed.  
+* The hazard functions are proportional over time (i.e., the ratio of hazard rates between groups is constant).
 
-#### Strengths
-- Nonparametric: does not assume any specific survival distribution.  
-- Accommodates right-censoring.  
-- Widely used and easy to implement via `survdiff()`.
+**Strengths**
+* Nonparametric: does not assume any specific survival distribution.  
+* Accommodates right-censoring.  
+* Widely used and easy to implement via `survdiff()`.
 
-#### Weaknesses
-- Sensitive to violations of proportional hazards—if hazards cross, test may mislead.  
-- Only tests for equality of entire survival curves, not pinpointing when differences occur.  
-- Requires adequate numbers of events—limited power if many censored observations.
+**Weaknesses**
+* Sensitive to violations of proportional hazards—if hazards cross, test may mislead.  
+* Only tests for equality of entire survival curves, not pinpointing when differences occur.  
+* Requires adequate numbers of events—limited power if many censored observations.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis ($H_{0}$):** The survival functions in the two groups are equal, i.e.  $S_{A}(t) = S_{B}(t)\quad \text{for all } t$
-- **Alternative hypothesis ($H_{1}$):** The survival functions differ, i.e.  $S_{A}(t) \neq S_{B}(t)\quad \text{for some } t$
+* **Null hypothesis ($H_{0}$):** The survival functions in the two groups are equal, i.e.  $S_{A}(t) = S_{B}(t)\quad \text{for all } t$
+* **Alternative hypothesis ($H_{1}$):** The survival functions differ, i.e.  $S_{A}(t) \neq S_{B}(t)\quad \text{for some } t$
 
 
 
@@ -5819,7 +5763,7 @@ group=B 50       42     36.6     0.789      1.53
  Chisq= 1.5  on 1 degrees of freedom, p= 0.2 
 ```
 
-Interpretation:
+**Interpretation:**
 The log-rank test yields a chi-square statistic $\chi^{2} \;=\; \text{surv_diff\$chisq}$
 
 
@@ -5831,7 +5775,7 @@ conclude there is no evidence of a difference in survival between Drug A and Dru
 
 ::::
 
-<a id="default-anchor"></a>
+<a id="weibull_survival"></a>
 
 ::::spoiler
 
@@ -5839,34 +5783,31 @@ conclude there is no evidence of a difference in survival between Drug A and Dru
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Modeling time‐to‐event data with a specified parametric form—specifically the Weibull distribution—for both the baseline hazard and covariate effects.  
-- **Real-world example:** Estimating the effect of a new chemotherapy agent on time to disease progression, assuming a Weibull hazard shape.
+* **Used for** Modeling time‐to‐event data with a specified parametric form—specifically the Weibull distribution—for both the baseline hazard and covariate effects.  
+* **Real-world example:** Estimating the effect of a new chemotherapy agent on time to disease progression, assuming a Weibull hazard shape.
 
-#### Assumptions
-- **Weibull distribution**: The survival times \(T\) follow a Weibull distribution with shape parameter \(\alpha\) and scale parameter \(\lambda\), so the hazard is  $h(t) = \alpha \lambda^{\alpha} t^{\alpha - 1}$
-
-- **Independent censoring**: Censoring times are independent of true event times.  
-- **Correct functional form**: The log of survival time is linearly related to covariates (if covariates are included).  
-- **Linear predictor**: In the accelerated‐failure‐time (AFT) parameterization, we assume  $\log(T_i) = \mathbf{X}_i^\top \boldsymbol{\beta} + \sigma W_i$
+**Assumptions**
+* **Weibull distribution**: The survival times \(T\) follow a Weibull distribution with shape parameter \(\alpha\) and scale parameter \(\lambda\), so the hazard is  $h(t) = \alpha \lambda^{\alpha} t^{\alpha - 1}$
+* **Independent censoring**: Censoring times are independent of true event times.  
+* **Correct functional form**: The log of survival time is linearly related to covariates (if covariates are included).  
+* **Linear predictor**: In the accelerated‐failure‐time (AFT) parameterization, we assume  $\log(T_i) = \mathbf{X}_i^\top \boldsymbol{\beta} + \sigma W_i$
 
 where \(W_i\) is a random error with extreme‐value distribution.
 
-#### Strengths
-- Provides a fully specified likelihood, enabling efficient estimation and confidence intervals.  
-- Yields both scale (AFT) and hazard‐ratio interpretations (via transformation).  
-- Can extrapolate beyond observed follow‐up (if model fit is adequate).  
+**Strengths**
+* Provides a fully specified likelihood, enabling efficient estimation and confidence intervals.  
+* Yields both scale (AFT) and hazard‐ratio interpretations (via transformation).  
+* Can extrapolate beyond observed follow‐up (if model fit is adequate).  
 
-#### Weaknesses
-- Mis‐specification of the Weibull form (shape \(\alpha\) wrong) can bias estimates and inferences.  
-- Less robust than semi‐parametric Cox models if the true hazard is not Weibull‐shaped.  
-- Requires careful checking of model fit (e.g., via residuals or AIC comparisons).
+**Weaknesses**
+* Mis‐specification of the Weibull form (shape \(\alpha\) wrong) can bias estimates and inferences.  
+* Less robust than semi‐parametric Cox models if the true hazard is not Weibull‐shaped.  
+* Requires careful checking of model fit (e.g., via residuals or AIC comparisons).
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (\(H_{0}\))**: The new chemotherapy does not change time to progression, i.e. the coefficient \(\beta_{\text{treatment}} = 0\).  
-- **Alternative hypothesis (\(H_{1}\))**: The new chemotherapy changes time to progression, i.e. \(\beta_{\text{treatment}} \neq 0\).
+* **Null hypothesis (\(H_{0}\))**: The new chemotherapy does not change time to progression, i.e. the coefficient \(\beta_{\text{treatment}} = 0\).  
+* **Alternative hypothesis (\(H_{1}\))**: The new chemotherapy changes time to progression, i.e. \(\beta_{\text{treatment}} \neq 0\).
 
 
 ``` r
@@ -5963,7 +5904,7 @@ Number of Newton-Raphson Iterations: 5
 n= 200 
 ```
 
-Interpretation:
+**Interpretation:**
 
 In the AFT parameterization, survreg() reports a scale which equals 
 𝜎^=1/𝛼^σ^ =1/ α^ .
@@ -6008,7 +5949,7 @@ giving a 95 % CI for HR:
 
 ::::
 
-<a id="default-anchor"></a>
+<a id="cox_ph_model"></a>
 
 ::::spoiler
 
@@ -6016,36 +5957,32 @@ giving a 95 % CI for HR:
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Modeling the hazard (instantaneous event rate) for time‐to‐event data as a function of covariates without specifying a baseline hazard.  
-- **Real-world example:** Estimating the effect of a new drug (Drug A vs. Drug B) on time to cancer recurrence, adjusting for age and tumor grade.
+* **Used for** Modeling the hazard (instantaneous event rate) for time‐to‐event data as a function of covariates without specifying a baseline hazard.  
+* **Real-world example:** Estimating the effect of a new drug (Drug A vs. Drug B) on time to cancer recurrence, adjusting for age and tumor grade.
 
-#### Assumptions
-- **Proportional hazards**: For any two individuals \(i\) and \(j\),  $ \frac{h_i(t)}{h_j(t)} = \exp\bigl(\boldsymbol{X}_i^\top \boldsymbol{\beta} - \boldsymbol{X}_j^\top \boldsymbol{\beta}\bigr) $
+**Assumptions**
+* **Proportional hazards**: For any two individuals \(i\) and \(j\),  $ \frac{h_i(t)}{h_j(t)} = \exp\bigl(\boldsymbol{X}_i^\top \boldsymbol{\beta} - \boldsymbol{X}_j^\top \boldsymbol{\beta}\bigr) $
 is constant over time (no interaction between covariates and time).  
-- **Independent censoring**: Censoring times are independent of event times.  
-- **Linearity**: The log‐hazard is a linear function of continuous covariates:  $\log h(t \mid \boldsymbol{X}) = \log h_0(t) + \boldsymbol{X}^\top \boldsymbol{\beta}$.
+* **Independent censoring**: Censoring times are independent of event times.  
+* **Linearity**: The log‐hazard is a linear function of continuous covariates:  $\log h(t \mid \boldsymbol{X}) = \log h_0(t) + \boldsymbol{X}^\top \boldsymbol{\beta}$.
 
-- No important omitted covariates that interact with time.
+* No important omitted covariates that interact with time.
 
-#### Strengths
-- **Semi‐parametric**: No need to specify \(h_0(t)\) (baseline hazard) explicitly.  
-- Accommodates right‐censoring and time‐dependent covariates (if extended).  
-- Provides easily interpretable **hazard ratios** (\(\text{HR} = \exp(\beta)\)).  
-- Widely used and implemented (e.g., `coxph()` in R).
+**Strengths**
+* **Semi‐parametric**: No need to specify \(h_0(t)\) (baseline hazard) explicitly.  
+* Accommodates right‐censoring and time‐dependent covariates (if extended).  
+* Provides easily interpretable **hazard ratios** (\(\text{HR} = \exp(\beta)\)).  
+* Widely used and implemented (e.g., `coxph()` in R).
 
-#### Weaknesses
-- Sensitive to violation of proportional hazards—if hazards cross, estimates and tests may be invalid.  
-- Does not automatically provide baseline survival estimate unless explicitly requested (e.g., via `survfit()`).  
-- Cannot easily handle non‐linear effects of continuous covariates without transformations or splines.
+**Weaknesses**
+* Sensitive to violation of proportional hazards—if hazards cross, estimates and tests may be invalid.  
+* Does not automatically provide baseline survival estimate unless explicitly requested (e.g., via `survfit()`).  
+* Cannot easily handle non‐linear effects of continuous covariates without transformations or splines.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (\(H_{0}\))**: There is no difference in hazard between Drug A and Drug B after adjusting for age and tumor grade, i.e.  $\beta_{\text{drug}} = 0 \quad \Longrightarrow \quad \text{HR} = \exp(\beta_{\text{drug}}) = 1$.
-
-- **Alternative hypothesis (\(H_{1}\))**: Drug A and Drug B have different hazards, i.e.  $\beta_{\text{drug}} \neq 0 \quad \Longrightarrow \quad \text{HR} \neq 1$.
-
+* **Null hypothesis (\(H_{0}\))**: There is no difference in hazard between Drug A and Drug B after adjusting for age and tumor grade, i.e.  $\beta_{\text{drug}} = 0 \quad \Longrightarrow \quad \text{HR} = \exp(\beta_{\text{drug}}) = 1$.
+* **Alternative hypothesis (\(H_{1}\))**: Drug A and Drug B have different hazards, i.e.  $\beta_{\text{drug}} \neq 0 \quad \Longrightarrow \quad \text{HR} \neq 1$.
 
 
 
@@ -6129,7 +6066,7 @@ Wald test            = 69.4  on 4 df,   p=3e-14
 Score (logrank) test = 70.7  on 4 df,   p=2e-14
 ```
 
-Interpretation:
+**Interpretation:**
 
 For each covariate, summary(cox_fit) reports:
 
@@ -6187,7 +6124,7 @@ Overall, because all covariate p values for drug, age, and grade are < 0.05, we 
 
 ::::
 
-<a id="default-anchor"></a>
+<a id="Accelerated-Failure-Time"></a>
 
 ::::spoiler
 
@@ -6195,43 +6132,40 @@ Overall, because all covariate p values for drug, age, and grade are < 0.05, we 
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Modeling time‐to‐event data under the assumption that covariates act multiplicatively on survival time (“accelerate” or “decelerate” survival).  
-- **Real‐world example:** Estimating how a new treatment (“Drug A” vs. “Drug B”) affects time to relapse, assuming survival follows an exponential or log‐logistic distribution.
+* **Used for** Modeling time‐to‐event data under the assumption that covariates act multiplicatively on survival time (“accelerate” or “decelerate” survival).  
+* **Real‐world example:** Estimating how a new treatment (“Drug A” vs. “Drug B”) affects time to relapse, assuming survival follows an exponential or log‐logistic distribution.
 
-#### Assumptions
-- **AFT form:** For each subject \(i\),  
+**Assumptions**
+* **AFT form:** For each subject \(i\),  
   \[
     \log T_i \;=\; \mathbf{X}_i^\top \boldsymbol{\beta} \;+\; \sigma\,W_i,
   \]  
   where \(W_i\) has a known distribution (e.g., extreme‐value for exponential, logistic for log‐logistic).  
-- **Exponential AFT:** \(W_i\) is standard extreme‐value, so survival \(\bigl(T_i\mid \mathbf{X}_i\bigr)\sim \text{Weibull}\) with shape \(\alpha=1\).  
-- **Log‐Logistic AFT:** \(W_i\) is standard logistic, so \(\log T_i\) is logistic, and \(T_i\sim \text{Log‐Logistic}(\alpha,\lambda)\).  
-- Independent right‐censoring: censoring times are independent of event times.  
-- Correct specification of the error distribution (exponential vs. log‐logistic).  
-- Covariates enter linearly on the log‐time scale; no omitted interacting variables.
+* **Exponential AFT:** \(W_i\) is standard extreme‐value, so survival \(\bigl(T_i\mid \mathbf{X}_i\bigr)\sim \text{Weibull}\) with shape \(\alpha=1\).  
+* **Log‐Logistic AFT:** \(W_i\) is standard logistic, so \(\log T_i\) is logistic, and \(T_i\sim \text{Log‐Logistic}(\alpha,\lambda)\).  
+* Independent right‐censoring: censoring times are independent of event times.  
+* Correct specification of the error distribution (exponential vs. log‐logistic).  
+* Covariates enter linearly on the log‐time scale; no omitted interacting variables.
 
-#### Strengths
-- Provides a direct interpretation in terms of **time ratios**:  
+**Strengths**
+* Provides a direct interpretation in terms of **time ratios**:  
   \[
     \text{Time Ratio for covariate }j = \exp\bigl(\beta_{j}\bigr),
   \]  
   i.e.\ each unit increase in \(X_j\) multiplies median survival time by \(\exp(\beta_{j})\).  
-- Parametric: can yield more precise estimates (smaller standard errors) if the distributional form is correct.  
-- Can extrapolate beyond the observed data if model fit is adequate.
+* Parametric: can yield more precise estimates (smaller standard errors) if the distributional form is correct.  
+* Can extrapolate beyond the observed data if model fit is adequate.
 
-#### Weaknesses
-- Mis‐specifying the error distribution (e.g.\ assuming exponential when data are log‐logistic) biases estimates and inference.  
-- Less robust than the semi‐parametric Cox model if true hazard shape deviates from assumed form.  
-- Requires checking model fit (e.g.\ via AIC, residual plots) to ensure the chosen distribution is appropriate.
+**Weaknesses**
+* Mis‐specifying the error distribution (e.g.\ assuming exponential when data are log‐logistic) biases estimates and inference.  
+* Less robust than the semi‐parametric Cox model if true hazard shape deviates from assumed form.  
+* Requires checking model fit (e.g.\ via AIC, residual plots) to ensure the chosen distribution is appropriate.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (\(H_{0}\)):** Treatment has no effect on log‐survival time, i.e.  
+* **Null hypothesis (\(H_{0}\)):** Treatment has no effect on log‐survival time, i.e.  
   $\beta_{\text{treatment}} = 0 \quad \Longrightarrow \quad \text{Time Ratio} = \exp(0) = 1.$
-
-Alternative hypothesis (𝐻_1 ): Treatment alters log‐survival time, i.e.
+* Alternative hypothesis (𝐻_1 ): Treatment alters log‐survival time, i.e.
 $\beta_{\text{treatment}} \neq 0 \quad \Longrightarrow \quad \text{Time Ratio} \neq 1.$
 
 
@@ -6348,7 +6282,7 @@ Number of Newton-Raphson Iterations: 4
 n= 150 
 ```
 
-Interpretation:
+**Interpretation:**
 
 Exponential AFT (dist="exponential")
 
@@ -6411,31 +6345,29 @@ exp( β^_treatment )≈0.56 (p = 0.008), indicating DrugA significantly reduces 
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing equality of cumulative incidence functions between groups in the presence of competing risks.  
-- **Real-world example:** Comparing the incidence of cancer relapse (event of interest) between two treatment arms, accounting for death from other causes as a competing event.
+* **Used for** Testing equality of cumulative incidence functions between groups in the presence of competing risks.  
+* **Real-world example:** Comparing the incidence of cancer relapse (event of interest) between two treatment arms, accounting for death from other causes as a competing event.
 
-#### Assumptions
-- Competing risks are mutually exclusive and each subject experiences at most one event.  
-- Censoring is independent of the event processes.  
-- The cause‐specific hazards are proportional across groups.
+**Assumptions**
+* Competing risks are mutually exclusive and each subject experiences at most one event.  
+* Censoring is independent of the event processes.  
+* The cause‐specific hazards are proportional across groups.
 
-#### Strengths
-- Directly compares cumulative incidence functions rather than cause‐specific hazards.  
-- Accounts properly for competing events (does not treat them as noninformative censoring).  
-- Implemented in `cmprsk::cuminc()` with the Gray test built in.
+**Strengths**
+* Directly compares cumulative incidence functions rather than cause‐specific hazards.  
+* Accounts properly for competing events (does not treat them as noninformative censoring).  
+* Implemented in `cmprsk::cuminc()` with the Gray test built in.
 
-#### Weaknesses
-- Assumes proportional subdistribution hazards (which may be violated).  
-- Sensitive to heavy censoring or sparse events in one group.  
-- Only tests overall equality of curves, not differences at specific time points.
+**Weaknesses**
+* Assumes proportional subdistribution hazards (which may be violated).  
+* Sensitive to heavy censoring or sparse events in one group.  
+* Only tests overall equality of curves, not differences at specific time points.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis ($H_{0}$):**  $F_1^{(1)}(t) = F_2^{(1)}(t)\quad\text{for all }t$
+* **Null hypothesis ($H_{0}$):**  $F_1^{(1)}(t) = F_2^{(1)}(t)\quad\text{for all }t$
 (the cumulative incidence of the event of interest is the same in both groups).  
-- **Alternative hypothesis ($H_{1}$):**  $F_1^{(1)}(t) \neq F_2^{(1)}(t)\quad\text{for some }t$
+* **Alternative hypothesis ($H_{1}$):**  $F_1^{(1)}(t) \neq F_2^{(1)}(t)\quad\text{for some }t$
 
 
 
@@ -6487,7 +6419,7 @@ A 2 0.003545 0.004399 0.004399 0.004399 0.004399
 B 2 0.002181 0.002181 0.002546 0.003065       NA
 ```
 
-Interpretation:
+**Interpretation:**
 The Gray test for cause 1 (relapse) yields
 
 $\chi^2 = \text{ci\$Tests["1  A vs B", "stat"]},\quad p = \text{ci\$Tests["1  A vs B","pv"]}$
@@ -6498,7 +6430,7 @@ If $p \ge 0.05$, we fail to reject $H_{0}$, indicating no evidence of a differen
 
 ::::
 
-<a id="default-anchor"></a>
+<a id="cox_ph_assumption_test"></a>
 
 ::::spoiler
 
@@ -6506,32 +6438,29 @@ If $p \ge 0.05$, we fail to reject $H_{0}$, indicating no evidence of a differen
 
 EJ KORREKTURLÆST
 
-#### Used for
-- Testing the proportional‐hazards assumption in Cox models using Schoenfeld residuals.  
-- **Real-world example:** Verifying that the hazard ratio between a new drug and control remains constant over follow‐up time.
+' **Used for** Testing the proportional‐hazards assumption in Cox models using Schoenfeld residuals.  
+* **Real-world example:** Verifying that the hazard ratio between a new drug and control remains constant over follow‐up time.
 
-#### Assumptions
-- You have a fitted Cox model (`coxph()`).  
-- Censoring is noninformative.  
-- The true hazard ratios are constant over time under the null.
+**Assumptions**
+* You have a fitted Cox model (`coxph()`).  
+* Censoring is noninformative.  
+* The true hazard ratios are constant over time under the null.
 
-#### Strengths
-- Provides both a global test and covariate‐specific tests.  
-- Uses residuals to detect time‐varying effects.  
-- Easy to implement via `cox.zph()`.
+**Strengths**
+* Provides both a global test and covariate‐specific tests.  
+* Uses residuals to detect time‐varying effects.  
+* Easy to implement via `cox.zph()`.
 
-#### Weaknesses
-- Sensitive to sparse data or few events.  
-- May flag minor, clinically irrelevant departures.  
-- Graphical interpretation can be subjective.
+**Weaknesses**
+* Sensitive to sparse data or few events.  
+* May flag minor, clinically irrelevant departures.  
+* Graphical interpretation can be subjective.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis ($H_0$):** The hazard ratio is constant over time for each covariate, i.e.  
+* **Null hypothesis ($H_0$):** The hazard ratio is constant over time for each covariate, i.e.  
 $ \frac{h_i(t)}{h_j(t)} = \exp\bigl(\beta_k (X_{ik}-X_{jk})\bigr)\quad\text{independent of }t.$
-
-- **Alternative hypothesis ($H_1$):** At least one covariate’s hazard ratio varies with time.
+* **Alternative hypothesis ($H_1$):** At least one covariate’s hazard ratio varies with time.
 
 
 ``` r
@@ -6586,7 +6515,7 @@ plot(zph_test)
 
 <img src="fig/stat-tests-1-rendered-cox_ph_assumption_test-1.png" style="display: block; margin: auto;" /><img src="fig/stat-tests-1-rendered-cox_ph_assumption_test-2.png" style="display: block; margin: auto;" /><img src="fig/stat-tests-1-rendered-cox_ph_assumption_test-3.png" style="display: block; margin: auto;" />
 
-Interpretation:
+**Interpretation:**
 
 The output shows a test statistic and p‐value for each covariate and a GLOBAL test.
 
@@ -6604,7 +6533,7 @@ If all p‐values $\ge 0.05$, we fail to reject $H_0$ and conclude the proportio
 ## Aftale- og concordance-mål
 
 
-<a id="default-anchor"></a>
+<a id="kappa_statistic"></a>
 
 ::::spoiler
 
@@ -6613,34 +6542,28 @@ If all p‐values $\ge 0.05$, we fail to reject $H_0$ and conclude the proportio
 EJ KORREKTURLÆST
 MON IKKE DENNE SNARERE SKAL KONSOLIDERES MED DEN COHENS VI ALLEREDE HAR?
 
-#### Used for
+* **Used for** Quantifying agreement between two raters classifying the same subjects into categories, beyond chance.  
+* **Real-world example:** Assessing whether two pathologists agree on “Benign” vs. “Malignant” diagnoses.
 
-- Quantifying agreement between two raters classifying the same subjects into categories, beyond chance.  
-- **Real-world example:** Assessing whether two pathologists agree on “Benign” vs. “Malignant” diagnoses.
+**Assumptions**
+* Each subject is independently rated by both raters.  
+* Ratings are categorical (nominal or ordinal).  
+* The marginal distributions of categories need not be equal.
 
-#### Assumptions
+**Strengths**
+* Corrects for agreement expected by chance.  
+* Provides an interpretable coefficient, $\kappa$, ranging from –1 to 1.  
+* Can be weighted for ordinal categories.
 
-- Each subject is independently rated by both raters.  
-- Ratings are categorical (nominal or ordinal).  
-- The marginal distributions of categories need not be equal.
+**Weaknesses**
+* Sensitive to prevalence and marginal imbalances (“paradox”).  
+* Doesn’t distinguish systematic bias from random disagreement.  
+* Requires at least two raters and non‐sparse tables for stable estimates.
 
-#### Strengths
+**Example**
 
-- Corrects for agreement expected by chance.  
-- Provides an interpretable coefficient, $\kappa$, ranging from –1 to 1.  
-- Can be weighted for ordinal categories.
-
-#### Weaknesses
-
-- Sensitive to prevalence and marginal imbalances (“paradox”).  
-- Doesn’t distinguish systematic bias from random disagreement.  
-- Requires at least two raters and non‐sparse tables for stable estimates.
-
-#### Example
-
-##### Hypothesis
-- **Null hypothesis ($H_{0}$):** $\kappa = 0$ (no agreement beyond chance).  
-- **Alternative hypothesis ($H_{1}$):** $\kappa \neq 0$ (agreement beyond chance).
+* **Null hypothesis ($H_{0}$):** $\kappa = 0$ (no agreement beyond chance).  
+* **Alternative hypothesis ($H_{1}$):** $\kappa \neq 0$ (agreement beyond chance).
 
 
 ``` r
@@ -6699,7 +6622,7 @@ weighted kappa   0.077     0.34   0.6
 
  Number of subjects = 50 
 ```
-
+**Interpretation**
 The estimated Cohen’s $\kappa$ is
 
 $\widehat{\kappa}$ = 0.3377
@@ -6815,7 +6738,7 @@ there is no evidence of reliability beyond chance among the raters.
 
 ::::
 
-<a id="default-anchor"></a>
+<a id="bland_altman"></a>
 
 ::::spoiler
 
@@ -6823,34 +6746,32 @@ there is no evidence of reliability beyond chance among the raters.
 
 EJ KORREKTURLÆST
 
-#### Used for
-Assessing agreement between two quantitative measurement methods by examining 
+* **Used for** Assessing agreement between two quantitative measurement methods by examining 
 the mean difference (bias) and the limits of agreement. It tests if any difference
 is constant across the range of measurements, and if there is heteroskedasticity
 in the data (are there differences that are dependent on measurement levels)
-**Real-world example:** Comparing blood pressure readings from a new wrist monitor and a standard sphygmomanometer.
+* **Real-world example:** Comparing blood pressure readings from a new wrist monitor and a standard sphygmomanometer.
 
 
-#### Assumptions
-- Paired measurements on the same subjects.  
-- Differences (method A – method B) are approximately normally distributed.  
-- No strong relationship between the magnitude of the measurement and the difference (homoscedasticity).
+**Assumptions**
+* Paired measurements on the same subjects.  
+* Differences (method A – method B) are approximately normally distributed.  
+* No strong relationship between the magnitude of the measurement and the difference (homoscedasticity).
 
-#### Strengths
-- Provides both a visual (Bland–Altman plot) and numerical summary (bias and limits) of agreement.  
-- Easy to interpret clinically: shows how far apart two methods can differ for most observations.  
-- Does not rely on correlation, which can be misleading for agreement.
+**Strengths**
+* Provides both a visual (Bland–Altman plot) and numerical summary (bias and limits) of agreement.  
+* Easy to interpret clinically: shows how far apart two methods can differ for most observations.  
+* Does not rely on correlation, which can be misleading for agreement.
 
-#### Weaknesses
-- Assumes constant bias across range of measurements.  
-- Sensitive to outliers, which can widen limits of agreement.  
-- Requires adequate sample size (n ≥ 30 preferred) to estimate limits reliably.
+**Weaknesses**
+* Assumes constant bias across range of measurements.  
+* Sensitive to outliers, which can widen limits of agreement.  
+* Requires adequate sample size (n ≥ 30 preferred) to estimate limits reliably.
 
-#### Example
+**Example**
 
-##### Hypothesis
-- **Null hypothesis (H₀):** Mean difference between methods A and B is zero (no systematic bias).  
-- **Alternative hypothesis (H₁):** Mean difference ≠ 0 (systematic bias exists).
+* **Null hypothesis (H₀):** Mean difference between methods A and B is zero (no systematic bias).  
+* **Alternative hypothesis (H₁):** Mean difference ≠ 0 (systematic bias exists).
 
 
 ``` r
@@ -6917,6 +6838,7 @@ mean of x
    0.3333 
 ```
 
+**Interpretation**
 The mean difference (bias) is 0.33 units, with 95% limits of 
 agreement from -1.6 to 2.26 units. 
 The t-test for zero bias yields a p-value of 0.266, so we
