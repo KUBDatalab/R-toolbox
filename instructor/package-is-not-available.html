@@ -443,6 +443,9 @@
 <li><a href="#a-binary-for-your-os-may-not-exist">7. A binary for your OS may not exist</a></li>
 <li><a href="#the-package-is-on-github.-or-another-location.">8. The package is on GitHub. Or another location.</a></li>
 <li><a href="#there-is-no-source-version-of-the-package">9. There is no source version of the package</a></li>
+<li><a href="#the-package-is-in-a-non-standard-repository.">10. The package is in a non-standard repository.</a></li>
+<li><a href="#the-repo-is-down-or-does-not-exist.">11. the repo is down or does not exist.</a></li>
+<li><a href="#the-repo-is-blocking-you">12. The repo is blocking you</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -525,7 +528,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>When install.packages fail</h1>
-        <p>Last updated on 2025-06-17 |
+        <p>Last updated on 2025-06-18 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/package-is-not-available.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -616,10 +619,12 @@ with that.</p>
 <p>You have now downloaded and installed a package in R.</p>
 <p>But how can this go wrong, and what can we do to fix it?</p>
 </section><section><h2 class="section-heading" id="you-cant-spell">1. You can’t spell<a class="anchor" aria-label="anchor" href="#you-cant-spell"></a></h2>
-<hr class="half-width"><p>Well, you probably can. But if you made a typo, install.packages will
-not find the correct package name. Also, package names are case
-sensitive. This is an annoying mistake to make, and in our experience
-surprisingly difficult to locate.</p>
+<hr class="half-width"><p>Well, you probably can. But packages are not always spelled as you
+would expect. The correct spelling is defined as the way the package
+name is spelled, and if you make a typo relative to that,
+install.packages will not find the correct package name. Also, package
+names are case sensitive. This is an annoying mistake to make, and in
+our experience surprisingly difficult to locate.</p>
 </section><section><h2 class="section-heading" id="you-did-not-look-in-the-right-repository-">2. You did not look in the right repository.<a class="anchor" aria-label="anchor" href="#you-did-not-look-in-the-right-repository-"></a></h2>
 <hr class="half-width"><p>By default <code>install.packages()</code> looks in CRAN. But
 sometimes we need packages that live in other repositories.</p>
@@ -650,7 +655,7 @@ selected:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ap</span> <span class="op">&lt;-</span> <span class="fu">available.packages</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<p>In this example we find 22308 packages.</p>
+<p>In this example we find 22307 packages.</p>
 <p>Rather than viewing all of them, it is better to test if the package
 we are looking for is actually available:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -765,23 +770,34 @@ package resides:</p>
 <p>Other similar services exist, and <code>remotes</code> provides
 function for the more popular.</p>
 </section><section><h2 class="section-heading" id="there-is-no-source-version-of-the-package">9. There is no source version of the package<a class="anchor" aria-label="anchor" href="#there-is-no-source-version-of-the-package"></a></h2>
-<hr class="half-width"><p>A binary version may be available, but a source version is not. This
-can cause problems. or so we’re told. run
-<code>options(install.packages.check.source = "no")</code></p>
-<ol start="10" style="list-style-type: decimal"><li><p>The package is in a non-standard repository. If the repository is
-reasonably compliant with CRAN,
-<code>install.packages("Rbbg", repos = "http://r.findata.org")</code>
+<hr class="half-width"><p>A binary version may be available, but a source version is not. Why
+this should cause problems is a mystery, but it happens.</p>
+<p>This can be solved by asking install.packages to stop checking for
+access to a source version, by running:</p>
+<p><code>options(install.packages.check.source = "no")</code></p>
+<p>Remember to change the option back to “yes” after installing the
+offending package.</p>
+</section><section><h2 class="section-heading" id="the-package-is-in-a-non-standard-repository-">10. The package is in a non-standard repository.<a class="anchor" aria-label="anchor" href="#the-package-is-in-a-non-standard-repository-"></a></h2>
+<hr class="half-width"><p>CRAN is the major repository. BioC a close second. But others exist.
+If the repository is reasonably compliant with CRAN,
+<code>install.packages("Rbbg", repos = "http://r.nonstandard.repo.org")</code>
 will work. Otherwise you will have to read the documentation of the
-non-standard repo.</p></li>
-<li><p>the repo is down or does not exist. you will typically get
-something like
-<code>Warning: unable to access index for repository</code>
-install.packages(“quux”, repos = “<a href="https://does.not.exist/CRAN" class="external-link uri">https://does.not.exist/CRAN</a>”)</p></li>
-</ol><p>In this case it fails because does.not.exist does not exist.</p>
-<ol start="12" style="list-style-type: decimal"><li>The repo is blocking you installing from github can cause problems,
-if a lot of people try to install at the same time from the same
-location. Wait.</li>
-</ol><div id="keypoints1" class="callout keypoints">
+non-standard repo.</p>
+</section><section><h2 class="section-heading" id="the-repo-is-down-or-does-not-exist-">11. the repo is down or does not exist.<a class="anchor" aria-label="anchor" href="#the-repo-is-down-or-does-not-exist-"></a></h2>
+<hr class="half-width"><p>You will typically get something like
+<code>Warning: unable to access index for repository</code></p>
+<p>Running this
+<code>install.packages("quux", repos = "https://does.not.exist/CRAN")</code>
+will fail because “does.not.exist” does not exist. Double check that the
+repo actually exist (or that you have no typos in the name). If it does
+exist, it might be a temporary problem and can, maybe, be solved by
+trying again later.</p>
+</section><section><h2 class="section-heading" id="the-repo-is-blocking-you">12. The repo is blocking you<a class="anchor" aria-label="anchor" href="#the-repo-is-blocking-you"></a></h2>
+<hr class="half-width"><p>Besides being blocked because you are not allowed to access the repo,
+this can be caused by the repo throttling accesss. It often happens with
+installations from GitHub, if a lot op people try to install at the same
+time from the same location. In this case you will have to wait.</p>
+<div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
@@ -855,8 +871,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/package-is-not-available.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/package-is-not-available.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-06-17",
-  "datePublished": "2025-06-17"
+  "dateModified": "2025-06-18",
+  "datePublished": "2025-06-18"
 }
 
   </script><script>
