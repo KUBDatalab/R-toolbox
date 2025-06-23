@@ -1729,10 +1729,16 @@ received antibiotics?</p>
 </div>
 <div class="section level3">
 <h3 id="infantbp">INFANTBP<a class="anchor" aria-label="anchor" href="#infantbp"></a></h3>
+<p>100 3 day old infants were given a drop of various solutions (salt or
+sugar), and the vigour with witch they sucked was recorded. First ten
+measurements were done with solutions only containing salt (or no salt
+at all). As a control, after the measurements of the response to salt,
+the response to sugar solutions were recorded. A common hypothesis is
+that the response to the taste of salt depends on the blood pressure. Is
+this true?</p>
 <p><em>Dimensions:</em> Rows: 100 Columns: 18</p>
 <p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/INFANTBP.csv" class="external-link">Download</a></p>
-<p>Salt Taste Variables den er på side 202 i bogen</p>
 <div id="accordionSpoiler19" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler19" aria-expanded="false" aria-controls="collapseSpoiler19">
@@ -1750,41 +1756,34 @@ received antibiotics?</p>
 <td></td>
 <td></td>
 </tr><tr class="even"><td>Mn_sbp</td>
-<td>Mean SBP 99.99=missing</td>
-<td></td>
+<td>Mean SBP†</td>
+<td>mmHg</td>
 </tr><tr class="odd"><td>Mn_dbp</td>
-<td>Mean DBP 99.99=missing</td>
-<td></td>
-</tr><tr class="even"><td>MSB1slt</td>
-<td>MSB-trial 1* water</td>
-<td></td>
-</tr><tr class="odd"><td>MSB2slt</td>
+<td>Mean DBP†</td>
+<td>mmHg</td>
+</tr></tbody></table><p>Salt Taste Variables</p>
+<table class="table"><thead><tr class="header"><th>Variable</th>
+<th>Description</th>
+</tr></thead><tbody><tr class="odd"><td>MSB1slt</td>
+<td>MSB-trial 1‡ water</td>
+</tr><tr class="even"><td>MSB2slt</td>
 <td>MSB-trial 2 water</td>
-<td></td>
-</tr><tr class="even"><td>MSB3slt</td>
+</tr><tr class="odd"><td>MSB3slt</td>
 <td>MSB-trial 3 0.1 molar salt + water</td>
-<td></td>
-</tr><tr class="odd"><td>MSB4slt</td>
+</tr><tr class="even"><td>MSB4slt</td>
 <td>MSB-trial 4 0.1 molar salt + water</td>
-<td></td>
-</tr><tr class="even"><td>MSB5slt</td>
+</tr><tr class="odd"><td>MSB5slt</td>
 <td>MSB-trial 5 water</td>
-<td></td>
-</tr><tr class="odd"><td>MSB6slt</td>
+</tr><tr class="even"><td>MSB6slt</td>
 <td>MSB-trial 6 water</td>
-<td></td>
-</tr><tr class="even"><td>MSB7slt</td>
+</tr><tr class="odd"><td>MSB7slt</td>
 <td>MSB-trial 7 0.3 molar salt + water</td>
-<td></td>
-</tr><tr class="odd"><td>MSB8slt</td>
+</tr><tr class="even"><td>MSB8slt</td>
 <td>MSB-trial 8 0.3 molar salt + water</td>
-<td></td>
-</tr><tr class="even"><td>MSB9slt</td>
+</tr><tr class="odd"><td>MSB9slt</td>
 <td>MSB-trial 9 water</td>
-<td></td>
-</tr><tr class="odd"><td>MSB10slt</td>
+</tr><tr class="even"><td>MSB10slt</td>
 <td>MSB-trial 10 water</td>
-<td></td>
 </tr></tbody></table><p>Sugar Taste Variables</p>
 <table class="table"><thead><tr class="header"><th>Variable</th>
 <th>Description</th>
@@ -1797,16 +1796,23 @@ received antibiotics?</p>
 </tr><tr class="even"><td>MSB4sug</td>
 <td>MSB-trial 4 15% sucrose + water</td>
 </tr><tr class="odd"><td>MSB5sug</td>
-<td>MSB-trial 5 non-nutritive sucking</td>
-</tr></tbody></table><ul><li>for MSB data 999.99 is a missing value; 0 indicates the baby did not
-suck.</li>
-</ul></div>
+<td>MSB-trial 5 non-nutritive sucking⸸</td>
+</tr></tbody></table><p>† For mean bloodpressure (Mn_sbp/Mn_dbp) 99.99 indicates a missing
+value.</p>
+<p>‡ Unit of all MSB data is “mean number of sucks pr burst of sucking”.
+999.99 indicates a missing value; 0 indicates the baby did not suck.</p>
+<p>⸸ non-nutrive sucking is sucking without the infant receiving
+liquid.</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="lead">LEAD<a class="anchor" aria-label="anchor" href="#lead"></a></h3>
+<p>A study of the effect of exposure to lead on neurological and
+psychological parameters for children. 124 children were studied in
+1972</p>
 <p><em>Dimensions:</em> Rows: 124 Columns: 40</p>
 <p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/LEAD.csv" class="external-link">Download</a></p>
@@ -1821,160 +1827,144 @@ suck.</li>
 </button>
 <div id="collapseSpoiler20" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler20" aria-labelledby="headingSpoiler20">
 <div class="accordion-body">
-<table class="table"><colgroup><col width="28%"><col width="71%"></colgroup><thead><tr class="header"><th>VARIABLE</th>
-<th>DESCRIPTION</th>
+<p><strong>Demographic variables</strong></p>
+<table class="table"><colgroup><col width="25%"><col width="62%"><col width="12%"></colgroup><thead><tr class="header"><th>Variable</th>
+<th>Description</th>
+<th>Unit</th>
 </tr></thead><tbody><tr class="odd"><td>id</td>
-<td>IDENTIFICATION NUMBER</td>
+<td>Identification number</td>
+<td></td>
 </tr><tr class="even"><td>area</td>
-<td>AREA - RESIDENCE ON AUG’72 <br> 1 = 0-1 MILES FROM SMELTER <br> 2 =
-1-2.5 MILES <br> 3 = 2.5-4.1 MILES</td>
+<td>Residence on Aug ’72 <br> 1 = 0-1 <br> 2 = 1-2.5 <br> 3 =
+2.5-4.1</td>
+<td>Miles from smelter</td>
 </tr><tr class="odd"><td>ageyrs</td>
-<td>AGE in years</td>
+<td>Age</td>
+<td>Years</td>
 </tr><tr class="even"><td>sex</td>
-<td>SEX <br> 1 = MALE <br> 2 = FEMALE</td>
-</tr></tbody></table><p>IQ TEST RESULTS</p>
-<table class="table"><colgroup><col width="14%"><col width="85%"></colgroup><thead><tr class="header"><th>VARIABLE</th>
-<th>DESCRIPTION</th>
+<td>1 = Male <br> 2 = Female</td>
+<td></td>
+</tr></tbody></table><p><strong>IQ test results</strong></p>
+<table class="table"><colgroup><col width="14%"><col width="85%"></colgroup><thead><tr class="header"><th>Variable</th>
+<th>Description</th>
 </tr></thead><tbody><tr class="odd"><td>iqv_inf</td>
-<td>INF - INFORMATION SUBTEST IN WISC AND WPPSI</td>
+<td>Information subtest in WISC and WPPSI</td>
 </tr><tr class="even"><td>iqv_comp</td>
-<td>COMP - COMPREHENSION SUBTEST IN WISC AND WPPSI</td>
+<td>Comprehension subtest in WISC and WPPSI</td>
 </tr><tr class="odd"><td>iqv_ar</td>
-<td>AR - ARITHMETIC SUBTEST IN WISC AND WPPSI</td>
+<td>Arithmetic subtest in WISC and WPPSI</td>
 </tr><tr class="even"><td>iqv_ds</td>
-<td>DS - DIGIT SPAN SUBTEST(WISC) AND SENTENCE COMPLETION(WPPSI)</td>
+<td>Digit span subtest (WISC) and Sentence Completion (WPPSI)</td>
 </tr><tr class="odd"><td>iqv_raw</td>
-<td>V/RAW - RAW SCORE/VERBAL IQ</td>
+<td>Raw score/Verbal IQ</td>
 </tr><tr class="even"><td>iqp_pc</td>
-<td>PC - PICTURE COMPLETION SUBTEST IN WISC AND WPPSI</td>
+<td>Picture completion subtest in WISC and WPPSI</td>
 </tr><tr class="odd"><td>iqp_bd</td>
-<td>BD - BLOCK DESIGN SUBTEST IN WISC AND WPPSI</td>
+<td>Block design subtest in WISC and WPPSI</td>
 </tr><tr class="even"><td>iqp_oa</td>
-<td>OA - OBJECT ASSEMBLY SUBTEST(WISC), ANIMAL HOUSE SUBTEST(WPPSI)</td>
+<td>Object assembly subtest (WISC), animal house subtest (WPPSI)</td>
 </tr><tr class="odd"><td>iqp_cod</td>
-<td>COD - CODING SUBTEST(WISC), GEOMETRIC DESIGN SUBTEST(WPPSI)</td>
+<td>Coding subtest (WISC), geometric design subtest(WPPSI)</td>
 </tr><tr class="even"><td>iqp_raw</td>
-<td>P/RAW - RAW SCORE/PERFORMANCE IQ (TOTAL OF SCORES PC, BD, OA, &amp;
-COD)</td>
+<td>Raw socre/performance IQ (total of scores pc, bd, oa &amp; cod)</td>
 </tr><tr class="odd"><td>hh_index</td>
-<td>HH/INDEX - HOLLINGSHEAD INDEX OF SOCIAL STATUS</td>
+<td>Hollingshead index of social status</td>
 </tr><tr class="even"><td>iqv</td>
-<td>IQV - VERBAL IQ</td>
+<td>Verbal IQ</td>
 </tr><tr class="odd"><td>iqp</td>
-<td>IQP - PERFORMANCE IQ</td>
+<td>Performance IQ</td>
 </tr><tr class="even"><td>iqf</td>
-<td>IQF - FULL SCALE IQ (NOT SUM OR AVERAGE OF IQV D IQP)</td>
+<td>Full scale IQ (not sum or average of iqv or iqp)</td>
 </tr><tr class="odd"><td>iq_type</td>
-<td>TYPE OF IQ TEST <br> 1 = WISC <br> 2 = WPPSI <br> (WISC USUALLY
-GIVEN TO CHILDREN GE 5 YRS 1 MONTH OF AGE <br> WPPSI USUALLY GIVEN TO
-CHILDREN LE 5YRS OF AGE)</td>
-</tr><tr class="even"><td>lead_grp</td>
-<td>GROUP - BLOOD LEAD LEVEL GROUP</td>
-</tr><tr class="odd"><td></td>
-<td>1=BLOOD LEAD LEVELS BELOW 40 MICROGRAMS/100ML IN</td>
+<td>Type of IQ test <br> 1 = WISC <br> 2 = WPPSI <br> (WISC usually
+given to children age &gt;= 5 year 1 month<br> WPPSI usually given to
+children age &lt; 5 year)</td>
+</tr></tbody></table><p><strong>Lead exposure</strong></p>
+<table class="table"><colgroup><col width="13%"><col width="80%"><col width="6%"></colgroup><thead><tr class="header"><th>Variable</th>
+<th>Description</th>
+<th>Unit</th>
+</tr></thead><tbody><tr class="odd"><td>lead_grp</td>
+<td>Blood lead level group <br> 1 = blood lead levels &lt; 40 in both
+1972 &amp; 1973 (control group) <br> 2 = blood lead levels &gt;= 40 in
+both 72 &amp; 1973, or &gt;= 40 in 1973 alone (3 cases) (currently
+exposed group) <br> 3 = blood lead levels &gt;= 40 in 1972 and &lt; 40
+in 1973 (previously exposed group)</td>
+<td>µg/100mL</td>
 </tr><tr class="even"><td></td>
-<td>BOTH 1972 &amp; 1973 (control group)</td>
-</tr><tr class="odd"><td></td>
-<td>2=BLOOD LEAD LEVELS GREATER THAN OR EQUAL TO</td>
-</tr><tr class="even"><td></td>
-<td>40 MICROGRAMS/100ML</td>
-</tr><tr class="odd"><td></td>
-<td>IN BOTH 72 &amp; 73 OR A LEVEL GREATER THAN OR</td>
-</tr><tr class="even"><td></td>
-<td>EQUAL TO 40</td>
-</tr><tr class="odd"><td></td>
-<td>IN 73 ALONE (3 CASES ONLY) (currently exposed</td>
-</tr><tr class="even"><td></td>
-<td>Group)</td>
-</tr><tr class="odd"><td></td>
-<td>3=BLOOD LEAD LEVELS GREATER THAN OR EQUAL TO</td>
-</tr><tr class="even"><td></td>
-<td>40 MICROGRAMS/100ML</td>
-</tr><tr class="odd"><td></td>
-<td>IN 72 AND LESS THAN 40 IN 73</td>
-</tr><tr class="even"><td></td>
-<td>(previously exposed group)</td>
+<td></td>
+<td></td>
 </tr><tr class="odd"><td>Group</td>
-<td>1=control group; 2=exposed group</td>
+<td>1=control group <br> 2=exposed group</td>
+<td></td>
 </tr><tr class="even"><td>ld72</td>
-<td>LD72 - BLOOD LEAD VALUES (MICROGRAMS/100ML) IN72</td>
-</tr><tr class="odd"><td></td>
-<td>MISSING=99</td>
-</tr><tr class="even"><td>ld73</td>
-<td>LD73 - BLOOD LEAD VALUES (MICROGRAMS/100ML) IN 73</td>
-</tr><tr class="odd"><td>fst2yrs</td>
-<td>FST2YRS - DID CHILD LIVE FOR 1ST 2 YRS WITHIN</td>
-</tr><tr class="even"><td></td>
-<td>1 MILE OF SMELTER 1=YES 2=NO</td>
+<td>Blood lead values in 1972 †</td>
+<td>µg/100mL</td>
+</tr><tr class="odd"><td>ld73</td>
+<td>Blood lead values in 1973</td>
+<td>µg/100mL</td>
+</tr><tr class="even"><td>fst2yrs</td>
+<td>Did child live for 1st 2 years within 1 mile of smelter <br> 1 = yes
+<br> 2 = no</td>
+<td></td>
 </tr><tr class="odd"><td>totyrs</td>
-<td>TOTYRS - TOTAL NUMBER OF YEARS SPENT WITHIN</td>
-</tr><tr class="even"><td></td>
-<td>4.1 MILES OF SMELTER</td>
-</tr></tbody></table><p>SYMPTOM DATA (AS REPORTED BY PARENTS)</p>
-<table class="table"><thead><tr class="header"><th>VARIABLE</th>
-<th>DESCRIPTION</th>
+<td>Total number of years spent within 4.1 miles of smelter</td>
+<td>years</td>
+</tr></tbody></table><p>† 99 indicates missing data</p>
+<p><strong>Symptom data (as reported by parents)</strong></p>
+<table class="table"><thead><tr class="header"><th>Variable</th>
+<th>Description</th>
 </tr></thead><tbody><tr class="odd"><td>pica</td>
-<td>PICA <br> 1 = YES <br> 2 = NO</td>
+<td>An eating disorder <br> 1 = yes <br> 2 = no</td>
 </tr><tr class="even"><td>colic</td>
-<td>COLIC <br> 1 = YES <br> 2 = NO</td>
+<td>Colic <br> 1 = yes <br> 2 = no</td>
 </tr><tr class="odd"><td>clumsi</td>
-<td>CLUMSINESS <br> 1 = YES <br> 2 = NO</td>
+<td>Clumsiness <br> 1 = yes <br> 2 = no</td>
 </tr><tr class="even"><td>irrit</td>
-<td>IRRITABILITY <br> 1 = YES <br> 2 = NO</td>
+<td>Irritability <br> 1 = yes <br> 2 = no</td>
 </tr><tr class="odd"><td>convul</td>
-<td>CONVULSIONS <br> 1 = YES <br> 2 = NO</td>
-</tr></tbody></table><p>CONTAIN NEUROLOGICAL TEST DATA</p>
-<table class="table"><colgroup><col width="15%"><col width="84%"></colgroup><thead><tr class="header"><th>VARIABLE</th>
-<th>DESCRIPTION</th>
+<td>Convulsions <br> 1 = yes <br> 2 = no</td>
+</tr></tbody></table><p><strong>Neurological test data</strong></p>
+<table class="table"><colgroup><col width="14%"><col width="78%"><col width="7%"></colgroup><thead><tr class="header"><th>Variable</th>
+<th>Description</th>
+<th>Unit</th>
 </tr></thead><tbody><tr class="odd"><td>_2plat_r</td>
-<td># OF TAPS FOR RIGHT HAND IN THE 2-PLATE TAPPING</td>
-</tr><tr class="even"><td></td>
-<td>TEST (#TAPS IN ONE 10 SECOND TRIAL)</td>
-</tr><tr class="odd"><td></td>
-<td>MISSING=99</td>
+<td>Number of taps for right hand in the 2-plate tapping test (number of
+taps in one 10 second trial) †</td>
+<td></td>
 </tr><tr class="even"><td>_2plat_l</td>
-<td># OF TAPS FOR LEFT HAND IN THE 2-PLATE TAPPING TEST</td>
-</tr><tr class="odd"><td></td>
-<td>(#TAPS IN ONE 10 SECOND TRIAL)</td>
-</tr><tr class="even"><td></td>
-<td>MISSING=99</td>
+<td>Number of taps for left hand in the 2-plate tapping test (number of
+taps in one 10 second trial) †</td>
+<td></td>
 </tr><tr class="odd"><td>visrea_r</td>
-<td>VISUAL REACTION TIME RIGHT HAND (MILLISECONDS)</td>
-</tr><tr class="even"><td></td>
-<td>MISSING=99</td>
-</tr><tr class="odd"><td>visrea_l</td>
-<td>VISUAL REATION TIME LEFT HAND (MILLISECONDS)</td>
-</tr><tr class="even"><td></td>
-<td>MISSING=99</td>
+<td>Visual reaction time right hand †</td>
+<td>ms</td>
+</tr><tr class="even"><td>visrea_l</td>
+<td>Visual reaction time left hand †</td>
+<td>ms</td>
 </tr><tr class="odd"><td>audrea_r</td>
-<td>AUDITORY REACTION TIME RIGHT HAND (MILLISECONDS)</td>
-</tr><tr class="even"><td></td>
-<td>MISSING=99</td>
-</tr><tr class="odd"><td>audrea_l</td>
-<td>AUDITORY REACTION TIME LEFT HAND (MILLISECONDS)</td>
-</tr><tr class="even"><td></td>
-<td>MISSING=99</td>
+<td>Auditory reaction time right hand †</td>
+<td>ms</td>
+</tr><tr class="even"><td>audrea_l</td>
+<td>Auditory reaction time left hand †</td>
+<td>ms</td>
 </tr><tr class="odd"><td>fwt_r</td>
-<td>FINGER-WRIST TAPPING TEST RIGHT HAND</td>
-</tr><tr class="even"><td></td>
-<td>(# TAPS IN ONE 10 SECOND TRIAL)</td>
-</tr><tr class="odd"><td></td>
-<td>MISSING=99</td>
+<td>Finger-wrist tapping test right hand (number of taps in one 10
+second trial) †</td>
+<td></td>
 </tr><tr class="even"><td>fwt_l</td>
-<td>FINGER-WRIST TAPPING TEST LEFT HAND</td>
-</tr><tr class="odd"><td></td>
-<td>(#TAPS IN ONE 10 SECOND TRIAL)</td>
-</tr><tr class="even"><td></td>
-<td>MISSING=99</td>
+<td>Finger-wrist tapping test left hand (number of taps in one 10 second
+trial) †</td>
+<td></td>
 </tr><tr class="odd"><td>hyperact</td>
-<td>WWPS - WERRY-WEISS-PETERS SCALE FOR HYPERACTIVITY</td>
-</tr><tr class="even"><td></td>
-<td>0=NO ACTIVITY . . . . 4=SEVERLY HYPERACTIVE</td>
-</tr><tr class="odd"><td></td>
-<td>(AS REPORTED BY PARENTS) MISSING=99</td>
+<td>WWPS - Werry-Weiss-Peters Scale for hyperactivity <br> 0 = no
+activity . . . . 4 = severely hyperactive <br> (as reported by parents)
+†</td>
+<td></td>
 </tr><tr class="even"><td>maxfwt</td>
-<td>Finger-wrist tapping test in dominant hand(max of fwt_r,fwt_l)</td>
-</tr></tbody></table></div>
+<td>Finger-wrist tapping test in dominant hand (max of fwt_r,fwt_l)</td>
+<td></td>
+</tr></tbody></table><p>† 99 indicates missing data</p>
+</div>
 </div>
 </div>
 </div>
@@ -2002,13 +1992,13 @@ CHILDREN LE 5YRS OF AGE)</td>
 <td></td>
 </tr><tr class="even"><td>Group</td>
 <td>
-<br> 1 = RP <br> 2 = NORMAL</td>
+<br> 1 = RP <br> 2 = normal</td>
 <td></td>
 </tr><tr class="odd"><td>Trtgrp</td>
-<td>TREATMENT GROUP <br> A = LIGHT <br> B = DIM <br> C = DARK</td>
+<td>Treatment group <br> A = light <br> B = dim <br> C = dark</td>
 <td></td>
 </tr><tr class="even"><td>Age</td>
-<td>AGE</td>
+<td>Age</td>
 <td>days</td>
 </tr><tr class="odd"><td>B_amp</td>
 <td>B AMP</td>
@@ -2113,11 +2103,7 @@ best?</p>
 </tr><tr class="even"><td>lv3sys</td>
 <td>Level 3 systolic bp</td>
 <td>mm Hg</td>
-</tr></tbody></table></div>
-</div>
-</div>
-</div>
-<ul><li><p>Immediately prior to randomization.</p></li>
+</tr></tbody></table><ul><li><p>Immediately prior to randomization.</p></li>
 <li><p>Highest heart rate and systolic blood pressure at baseline and
 each level of therapy respectively.</p></li>
 </ul><p>Values of 999 indicates that either</p>
@@ -2128,6 +2114,10 @@ therapy,</p></li>
 <li><p>the patient encountered this level of therapy, but this
 particular piece of data was missing.</p></li>
 </ol></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="oto">OTO<a class="anchor" aria-label="anchor" href="#oto"></a></h3>
 <p>Data from a litterature <a href="data.html#buring_5">study</a><sup>5</sup> on nephro- and
@@ -2378,16 +2368,16 @@ female.</p>
 value of zero.</td>
 <td></td>
 </tr></tbody></table><p>999 and 9999 = missing values</p>
-</div>
-</div>
-</div>
-</div>
 <ul><li>This variable represents adjusted carbon monoxide (CO) values. CO
 values were adjusted for minutes elapsed since last cigarette smoked
 using the formula Log 10 CO (Adjusted) = Log 10 CO - (-0.000638) X (Min
 - 80), where Min is the number of minutes elapsed since the last
 cigarette smoked.</li>
 </ul></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section level3">
 <h3 id="swiss">SWISS<a class="anchor" aria-label="anchor" href="#swiss"></a></h3>
 <p>Data from the Swiss Analgesic Study, done to assess the effect on
@@ -2744,76 +2734,76 @@ i.e. NA-values.</p>
 <td>STRING TYPE OF RACQUET USED DURING LAST EPISODE</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>1=NYLON</td>
+<td>1 = nylon</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>2=GUT</td>
+<td>2 = gut</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>3=DON’T KNOW</td>
+<td>3 = DON’T KNOW</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>9=MISSING</td>
+<td>9 = missing</td>
 <td></td>
 </tr><tr class="even"><td>Typ_curr</td>
-<td>TYPE OF RACQUET USED CURRENTLY</td>
+<td>Type of racquet used currently</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>1 = CONVENTIONAL SIZE</td>
+<td>1 = conventional size</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>2 = MID-SIZE</td>
+<td>2 = mid-size</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>3 = OVER-SIZE</td>
+<td>3 = over-size</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>9 = MISSING</td>
+<td>9 = missing</td>
 <td></td>
 </tr><tr class="odd"><td>Wgt_curr</td>
 <td>WEIGHT OF RACQUET USED CURRENTLY</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>1 = HEAVY</td>
+<td>1 = heavy</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>2 = MEDIUM</td>
+<td>2 = medium</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>3 = LIGHT</td>
+<td>3 = light</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>4 = DON’T KNOW</td>
+<td>4 = don’t know</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>9 = MISSING</td>
+<td>9 = missing</td>
 <td></td>
 </tr><tr class="odd"><td>Mat_curr</td>
 <td>MATERIAL OF RACQUET USED CURRENTLY</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>1 = WOOD</td>
+<td>1 = wood</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>2 = ALUMINUM</td>
+<td>2 = aluminium</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>3 = FIBERGLASS AND COMPOSITE</td>
+<td>3 = FIBERGLASS and composite</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>4 = GRAPHITE</td>
+<td>4 = graphite</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>5 = STEEL</td>
+<td>5 = steel</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>6 = COMPOSITE</td>
+<td>6 = composite</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>7 = OTHER</td>
+<td>7 = other</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>9 = MISSING</td>
+<td>9 = missing</td>
 <td></td>
 </tr><tr class="even"><td>Str_curr</td>
 <td>STRING TYPE OF RACQUET USED CURRENTLY</td>
@@ -2822,13 +2812,13 @@ i.e. NA-values.</p>
 <td>1 = NYLON</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>2 = GUT</td>
+<td>2 = gut</td>
 <td></td>
 </tr><tr class="odd"><td></td>
-<td>3 = DON’T KNOW</td>
+<td>3 = don’t know</td>
 <td></td>
 </tr><tr class="even"><td></td>
-<td>9 = MISSING</td>
+<td>9 = missing</td>
 <td></td>
 </tr></tbody></table></div>
 </div>
@@ -3267,28 +3257,11 @@ Machine Learning Repository, <a href="https://doi.org/10.24432/C5PC7J" class="ex
 <p><a id="stoet_10">10</a>: Stoet, G. &amp; Geary, D.C. 2019, A
 simplified approach to measuring national gender inequality, PLOS ONE,
 14(1), 1-18, <a href="https://doi.org/10.1371/journal.pone.0205349" class="external-link uri">https://doi.org/10.1371/journal.pone.0205349</a></p>
-</section><section><h2 class="section-heading" id="list-of-datasets-not-sufficiently-documented-yet">List of datasets not sufficiently documented yet<a class="anchor" aria-label="anchor" href="#list-of-datasets-not-sufficiently-documented-yet"></a></h2>
-<hr class="half-width"><p>Der hakkes af efterhånden som de er færdige - og så er issue 113
-done.</p>
-<ul><li>infantbp siden identificeret 202</li>
-<li>lead siden identificeret 29</li>
-<li>mice</li>
-<li>nephro</li>
-<li>nifed</li>
-<li>oto</li>
-<li>piriform</li>
-<li>smoke</li>
-<li>tear</li>
-<li>temperat</li>
-<li>tennis1</li>
-<li>tennis2</li>
-<li>valid</li>
-<li>spermatozoa</li>
-<li>who</li>
-</ul><!--
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
- --></section></div> <!-- / div.lesson-content -->
+ -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="index.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
