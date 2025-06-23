@@ -67,7 +67,8 @@ install.packages("usethis")
 library(usethis)
 ```
 
-Begin by introducing yourself to Git. Go to the terminal ![](../fig/the-rstudio-terminal.png), 
+Begin by introducing yourself to Git. Go to the terminal ![](../fig/the-rstudio-terminal.png)
+
 and run these three commands:
 
 

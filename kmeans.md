@@ -160,32 +160,32 @@ clustering
 ```
 
 ``` output
-K-means clustering with 3 clusters of sizes 100, 28, 50
+K-means clustering with 3 clusters of sizes 47, 62, 69
 
 Cluster means:
-   Alcohol Malicacid    Ash Alcalinityofash Magnesium Totalphenols Flavanoids
-1 12.60250  2.463600 2.3293        20.69600   93.7400     2.050400   1.633500
-2 13.82214  1.773929 2.4900        16.96429  105.3571     2.923929   3.111429
-3 13.33680  2.396800 2.3718        18.51000  108.6000     2.432400   2.214800
-  Nonflavanoidphenols Proanthocyanins Colorintensity      Hue
-1           0.3987000        1.421900       4.694800 0.911900
-2           0.2985714        1.986786       6.202857 1.103571
-3           0.3236000        1.707200       5.143600 0.966720
-  OD280OD315ofdilutedwines Proline
-1                 2.381700  517.75
-2                 2.984643 1301.50
-3                 2.862800  894.60
+   Alcohol Malicacid      Ash Alcalinityofash Magnesium Totalphenols Flavanoids
+1 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
+2 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
+3 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
+  Nonflavanoidphenols Proanthocyanins Colorintensity       Hue
+1           0.2853191        1.910426       5.702553 1.0782979
+2           0.3883871        1.503387       5.650323 0.8839677
+3           0.3901449        1.451884       4.086957 0.9411594
+  OD280OD315ofdilutedwines   Proline
+1                 3.114043 1195.1489
+2                 2.365484  728.3387
+3                 2.490725  458.2319
 
 Clustering vector:
-  [1] 3 3 2 2 3 2 2 2 3 3 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 2 2 3 3 2 2 3 2 3 3 3
- [38] 2 3 3 3 3 3 1 3 3 3 3 3 2 2 2 2 2 3 2 3 2 2 1 1 1 1 1 1 1 1 1 3 3 3 1 1 3
- [75] 3 1 1 1 3 1 1 3 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 3 1 1 1 1 1 1 1 1 1 1
-[112] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 3 1 1 3 3 1 1
-[149] 1 1 1 1 1 1 1 3 1 3 1 1 1 1 1 1 1 1 1 1 3 1 1 1 1 3 3 3 3 1
+  [1] 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 2 2 1 1 2 1 1 1 1 1 1 2 2
+ [38] 1 1 2 2 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 2 3 2 3 3 2 3 3 2 2 2 3 3 1
+ [75] 2 3 3 3 2 3 3 2 2 3 3 3 3 3 2 2 3 3 3 3 3 2 2 3 2 3 2 3 3 3 2 3 3 3 3 2 3
+[112] 3 2 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 2 3 3 2 2 2 2 3 3 3 2 2 3 3 2 2 3 2
+[149] 2 3 3 3 3 2 2 2 3 2 2 2 3 2 3 2 2 3 2 2 2 2 3 3 2 2 2 2 2 3
 
 Within cluster sum of squares by cluster:
-[1] 1263330.5  550201.0  815783.7
- (between_SS / total_SS =  85.1 %)
+[1] 1360950.5  566572.5  443166.7
+ (between_SS / total_SS =  86.5 %)
 
 Available components:
 
@@ -224,9 +224,9 @@ table(testing_clusters)
 ``` output
      true
 quess  1  2  3
-    1  1 62 37
-    2 28  0  0
-    3 30  9 11
+    1 46  1  0
+    2 13 20 29
+    3  0 50 19
 ```
 
 The algorithm have no idea about how the true groups are numbered, so the numbering does not match. But it appears
