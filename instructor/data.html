@@ -2081,6 +2081,14 @@ best?</p>
 </div>
 <div class="section level3">
 <h3 id="nifed">NIFED<a class="anchor" aria-label="anchor" href="#nifed"></a></h3>
+<p>A test of nifedipine as a drug for reducing chest pain in patients
+with angina. Unless the patient was withdrawn, discharged or died the
+study ran for 14 days. Patients were randomly assigned either nifedipine
+or propanolol, and given identical dosage at level 1 of therapy. If pain
+did not cease or recurred, the patient progressed to level 2 with
+increased dosage. Similar with a progression to level 3. A secondary
+objective was to understand the effect of these drugs on heart rate and
+blood pressure.</p>
 <p><em>Dimensions:</em> Rows: 34 Columns: 10</p>
 <p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/NIFED.csv" class="external-link">Download</a></p>
@@ -2102,12 +2110,12 @@ best?</p>
 <td></td>
 </tr><tr class="even"><td>trtgrp</td>
 <td>Treatment group</td>
-<td>N=nifedipine/P=placebo</td>
+<td>N=nifedipine/P=propanolol</td>
 </tr><tr class="odd"><td>bashrtrt</td>
-<td>Baseline heart rate*</td>
+<td>Baseline heart rate †</td>
 <td>beats/min</td>
 </tr><tr class="even"><td>lv1hrtrt</td>
-<td>Level 1 heart rate+</td>
+<td>Level 1 heart rate ‡</td>
 <td>beats/min</td>
 </tr><tr class="odd"><td>lv2hrtrt</td>
 <td>Level 2 heart rate</td>
@@ -2116,10 +2124,10 @@ best?</p>
 <td>Level 3 heart rate</td>
 <td>beats/min</td>
 </tr><tr class="odd"><td>bassys</td>
-<td>Baseline systolic bp*</td>
+<td>Baseline systolic bp †</td>
 <td>mm Hg</td>
 </tr><tr class="even"><td>lv1sys</td>
-<td>Level 1 systolic bp</td>
+<td>Level 1 systolic bp ‡</td>
 <td>mm Hg</td>
 </tr><tr class="odd"><td>lv2sys</td>
 <td>Level 2 systolic bp</td>
@@ -2127,10 +2135,10 @@ best?</p>
 </tr><tr class="even"><td>lv3sys</td>
 <td>Level 3 systolic bp</td>
 <td>mm Hg</td>
-</tr></tbody></table><ul><li><p>Immediately prior to randomization.</p></li>
-<li><p>Highest heart rate and systolic blood pressure at baseline and
-each level of therapy respectively.</p></li>
-</ul><p>Values of 999 indicates that either</p>
+</tr></tbody></table><p>† Immediately prior to randomization.</p>
+<p>‡ Highest heart rate and systolic blood pressure at baseline and each
+level of therapy respectively.</p>
+<p>Values of 999 indicates that either</p>
 <ol style="list-style-type: lower-alpha"><li><p>the patient withdrew from the study prior to entering this level
 of therapy</p></li>
 <li><p>the patient achieved pain relief prior to reaching this level or
@@ -2974,6 +2982,17 @@ with baseline</p>
 </div>
 <div class="section level3">
 <h3 id="valid">VALID<a class="anchor" aria-label="anchor" href="#valid"></a></h3>
+<p>Two ways of assessing consumption of specific foods were compared.
+173 nurses recored four weeks of diet recording (DR), approximately
+equally spaced over 12 months. After each recording period, a
+food-frequency questionaire (FFQ) were completed. Diet recording and
+subsequent calculation of consumption of specific nutrients are
+considered the gold standard, but are more expensive to administer than
+the FFQ, where subjects record the number of servings of &gt;100
+individual food items typically eaten.</p>
+<p>Compare the estimates of consumption between the two recording
+methods. Is a given respondent placed in the same quintile for eg
+alcohol consumption measured by DR as measured by FFQ?</p>
 <p><em>Dimensions:</em> Rows: 173 Columns: 9</p>
 <p><a href="data.html#rosner_1">Source</a><sup>1</sup></p>
 <p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/VALID.csv" class="external-link">Download</a></p>
@@ -2995,28 +3014,28 @@ with baseline</p>
 <td></td>
 </tr><tr class="even"><td>sfat_dr</td>
 <td>Saturated fat-DR</td>
-<td></td>
+<td>g</td>
 </tr><tr class="odd"><td>sfat_ffq</td>
 <td>Saturated fat-FFQ</td>
-<td></td>
+<td>g</td>
 </tr><tr class="even"><td>tfat_dr</td>
 <td>Total fat-DR</td>
-<td></td>
+<td>g</td>
 </tr><tr class="odd"><td>tfat_ffq</td>
 <td>Total fat-FFQ</td>
-<td></td>
+<td>g</td>
 </tr><tr class="even"><td>alco_dr</td>
 <td>Alcohol consumption-DR</td>
-<td></td>
+<td>oz</td>
 </tr><tr class="odd"><td>alco_ffq</td>
 <td>Alcohol consumption-FFQ</td>
-<td></td>
+<td>oz</td>
 </tr><tr class="even"><td>cal_dr</td>
 <td>Total calories-DR</td>
-<td></td>
+<td>kcal</td>
 </tr><tr class="odd"><td>cal_ffq</td>
 <td>Total calories-FFQ</td>
-<td></td>
+<td>kcal</td>
 </tr></tbody></table></div>
 </div>
 </div>
@@ -3255,6 +3274,7 @@ Machine Learning Repository, <a href="https://doi.org/10.24432/C5PC7J" class="ex
 <p><a id="stoet_10">10</a>: Stoet, G. &amp; Geary, D.C. 2019, A
 simplified approach to measuring national gender inequality, PLOS ONE,
 14(1), 1-18, <a href="https://doi.org/10.1371/journal.pone.0205349" class="external-link uri">https://doi.org/10.1371/journal.pone.0205349</a></p>
+<p><a href="https://www.unilus.ac.zm/lms/e-books/books/Basic_Sciences/Behavioural%20sciences%20and%20public%20health/Fundamentals%20of%20Biostatistics%20%287th%20Edition%29.pdf" class="external-link uri">https://www.unilus.ac.zm/lms/e-books/books/Basic_Sciences/Behavioural%20sciences%20and%20public%20health/Fundamentals%20of%20Biostatistics%20%287th%20Edition%29.pdf</a></p>
 <p>† ‡ ⸸ <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
