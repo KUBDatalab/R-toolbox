@@ -504,7 +504,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data sets</h1>
-        <p>Last updated on 2025-07-15 |
+        <p>Last updated on 2025-07-16 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/learners/data.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -3258,6 +3258,105 @@ at 315 nm.</p>
 </div>
 </div>
 </div>
+<div class="section level3">
+<h3 id="essequal">essequal<a class="anchor" aria-label="anchor" href="#essequal"></a></h3>
+<p>A subset of data from European Social Survey, ESS11, edition 1.2,
+containing responses from 46162 respondents in 28 different countries.
+Responces relating to respondents experience of unfair treatment because
+of sex have been selected.</p>
+<p><em>Dimensions:</em> Rows: 46162 Columns: 9</p>
+<p><a href="data.html#ess_11">Source</a><sup>11</sup></p>
+<p><a href="https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/essequal.csv" class="external-link">Download</a></p>
+<div id="accordionSpoiler38" class="accordion spoiler-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler38" aria-expanded="false" aria-controls="collapseSpoiler38">
+  <h3 class="accordion-header" id="headingSpoiler38">
+  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>
+  Metadata
+  </h3>
+</button>
+<div id="collapseSpoiler38" class="accordion-collapse collapse" aria-labelledby="headingSpoiler38" data-bs-parent="#accordionSpoiler38">
+<div class="accordion-body">
+<table class="table"><colgroup><col width="16%"><col width="46%"><col width="37%"></colgroup><thead><tr class="header"><th>Variable</th>
+<th>Description</th>
+<th>Unit</th>
+</tr></thead><tbody><tr class="odd"><td>idno</td>
+<td>Respondent’s identification number</td>
+<td></td>
+</tr><tr class="even"><td>cntry</td>
+<td>Country</td>
+<td></td>
+</tr><tr class="odd"><td>gndr</td>
+<td>Sex of respondent. <br> 1: Male <br> 2: Female <br> 9. No
+answer/missing value</td>
+<td></td>
+</tr><tr class="even"><td>trmedmw</td>
+<td>Unfairly treated when visiting a doctor or seeking medical treatment
+because being a man/woman †</td>
+<td></td>
+</tr><tr class="odd"><td>trwrkmw</td>
+<td>Unfairly treated in hiring pay or promotion at work because being a
+man/woman †</td>
+<td></td>
+</tr><tr class="even"><td>trplcmw</td>
+<td>Unfairly treated by the police because being a man/woman †</td>
+<td></td>
+</tr><tr class="odd"><td>trmdcnt</td>
+<td>Women/men: treated equally fairly when seeking medical treatment in
+country ‡</td>
+<td></td>
+</tr><tr class="even"><td>trwkcnt</td>
+<td>Women/men: treated equally fairly in hiring, pay or promotions at
+work in [country] ‡</td>
+<td></td>
+</tr><tr class="odd"><td>trplcnt</td>
+<td>How fair the police in [country] treat women/men ⸸</td>
+<td></td>
+</tr></tbody></table><p>† Responses in trmedmw, trwrkmw, trplcmw codes as:</p>
+<table class="table"><thead><tr class="header"><th>Value</th>
+<th>Category</th>
+</tr></thead><tbody><tr class="odd"><td>1</td>
+<td>Yes, once</td>
+</tr><tr class="even"><td>2</td>
+<td>Yes, more than once</td>
+</tr><tr class="odd"><td>3</td>
+<td>No</td>
+</tr><tr class="even"><td>4</td>
+<td>Have never visited doctor or sought medical treatment</td>
+</tr><tr class="odd"><td>6</td>
+<td>Not applicable*</td>
+</tr><tr class="even"><td>7</td>
+<td>Refusal*</td>
+</tr><tr class="odd"><td>8</td>
+<td>Don’t know*</td>
+</tr><tr class="even"><td>9</td>
+<td>No answer*</td>
+</tr></tbody></table><p>‡ Responses in trmdcnt, trwkcnt coded as:</p>
+<table class="table"><thead><tr class="header"><th>Value</th>
+<th>Category</th>
+</tr></thead><tbody><tr class="odd"><td>1</td>
+<td>Women are treated less fairly than men</td>
+</tr><tr class="even"><td>2</td>
+<td>Men are treated less fairly than women</td>
+</tr><tr class="odd"><td>3</td>
+<td>Women and men are treated equally fairly</td>
+</tr><tr class="even"><td>7</td>
+<td>Refusal*</td>
+</tr><tr class="odd"><td>8</td>
+<td>Don’t know*</td>
+</tr><tr class="even"><td>9</td>
+<td>No answer*</td>
+</tr></tbody></table><p>⸸ Responses in trplcnt coded as:</p>
+<p>Value Category 1 The police treat women less fairly than men 2 The
+police treat men less fairly than women 3 Women and men are treated
+equally fairly 7 Refusal<em> 8 Don’t know</em> 9 No answer*</p>
+<p>*) Missing Value</p>
+</div>
+</div>
+</div>
+</div>
+<p><a href="../doi:10.21338/ess11md_e01_2" class="uri">doi:10.21338/ess11md_e01_2</a></p>
+</div>
 <section><h2 class="section-heading" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
 <hr class="half-width"><p><a id="rosner_1">1</a>: Rosner, Bernard A. Fundamentals of
 Biostatistics, 7/e, International Edition, 2011 ISBN: 9780538735896. <a href="https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&amp;product_isbn_issn=9780538733496&amp;token" class="external-link uri">https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&amp;product_isbn_issn=9780538733496&amp;token</a></p>
@@ -3291,6 +3390,8 @@ Machine Learning Repository, <a href="https://doi.org/10.24432/C5PC7J" class="ex
 <p><a id="stoet_10">10</a>: Stoet, G. &amp; Geary, D.C. 2019, A
 simplified approach to measuring national gender inequality, PLOS ONE,
 14(1), 1-18, <a href="https://doi.org/10.1371/journal.pone.0205349" class="external-link uri">https://doi.org/10.1371/journal.pone.0205349</a></p>
+<p><a id="ess_11">10</a>: ESS11 Multilevel Data, edition 1.2
+(published 04.07.25): <a href="https://doi.org/10.21338/ess11md_e01_2" class="external-link uri">https://doi.org/10.21338/ess11md_e01_2</a></p>
 <p><a href="https://www.unilus.ac.zm/lms/e-books/books/Basic_Sciences/Behavioural%20sciences%20and%20public%20health/Fundamentals%20of%20Biostatistics%20%287th%20Edition%29.pdf" class="external-link uri">https://www.unilus.ac.zm/lms/e-books/books/Basic_Sciences/Behavioural%20sciences%20and%20public%20health/Fundamentals%20of%20Biostatistics%20%287th%20Edition%29.pdf</a></p>
 <p>† ‡ ⸸ <!--
 Place links that you need to refer to multiple times across pages here. Delete
@@ -3354,8 +3455,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/data.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/data.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-07-15",
-  "datePublished": "2025-07-15"
+  "dateModified": "2025-07-16",
+  "datePublished": "2025-07-16"
 }
 
   </script><script>
