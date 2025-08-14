@@ -523,7 +523,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Statistical tests</h1>
-        <p>Last updated on 2025-08-12 |
+        <p>Last updated on 2025-08-14 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/stat-tests-1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -608,14 +608,14 @@ examples etc have not been checked.</p>
 </button>
 <div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
-<p>EJ KORREKTURLÆST</p>
+<p>Or, more complete - one-sample chi-square goodnes-of-fit test.</p>
 <ul><li>
 <strong>Used for:</strong> Testing whether observed categorical
 frequencies differ from expected frequencies under a specified
 distribution.</li>
 <li>
 <strong>Real-world example:</strong> Mars Inc. claims a specific
-distribution of colours in their M&amp;M bags. Does the observed
+distribution of colours in their M&amp;M bags. Do the observed
 proportions in a given bag match their claim?</li>
 </ul><p><strong>Assumptions</strong></p>
 <ul><li>Observations are independent.<br></li>
@@ -623,7 +623,7 @@ proportions in a given bag match their claim?</li>
 <li>
 <em>Expected</em> count in each category is at least 5 (for the
 chi-square approximation to be valid). The observed counts can be
-smaller.</li>
+smaller, it is the expected counts that are important.</li>
 </ul><p><strong>Strengths</strong></p>
 <ul><li>Simple to compute and interpret.</li>
 <li>Does not require the data to be normally distributed.</li>
@@ -648,8 +648,8 @@ least one colour differs from the claimed distribution.</li>
 <code class="sourceCode R"><span><span class="co"># Observed counts of M&amp;M colors:</span></span>
 <span><span class="va">observed</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span>red <span class="op">=</span> <span class="fl">20</span>, blue <span class="op">=</span> <span class="fl">25</span>, green <span class="op">=</span> <span class="fl">15</span>, brown <span class="op">=</span> <span class="fl">18</span>, orange <span class="op">=</span> <span class="fl">12</span>, yellow <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Manufacturer's claimed proportions:</span></span>
-<span><span class="va">p_expected</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span>red <span class="op">=</span> <span class="fl">0.20</span>, blue <span class="op">=</span> <span class="fl">0.20</span>, green <span class="op">=</span> <span class="fl">0.20</span>, brown <span class="op">=</span> <span class="fl">0.20</span>, orange <span class="op">=</span> <span class="fl">0.10</span>, yellow <span class="op">=</span> <span class="fl">0.10</span><span class="op">)</span></span>
+<span><span class="co"># Manufacturer's claimed proportions.</span></span>
+<span><span class="va">p_expected</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span>red <span class="op">=</span> <span class="fl">0.12</span>, blue <span class="op">=</span> <span class="fl">0.24</span>, green <span class="op">=</span> <span class="fl">0.16</span>, brown <span class="op">=</span> <span class="fl">0.14</span>, orange <span class="op">=</span> <span class="fl">0.20</span>, yellow <span class="op">=</span> <span class="fl">0.14</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Perform one-sample chi-square goodness-of-fit test:</span></span>
 <span><span class="va">test_result</span> <span class="op">&lt;-</span> <span class="fu">chisq.test</span><span class="op">(</span>x <span class="op">=</span> <span class="va">observed</span>, p <span class="op">=</span> <span class="va">p_expected</span><span class="op">)</span></span>
@@ -664,11 +664,14 @@ least one colour differs from the claimed distribution.</li>
 	Chi-squared test for given probabilities
 
 data:  observed
-X-squared = 3.1, df = 5, p-value = 0.6846</code></pre>
+X-squared = 10.923, df = 5, p-value = 0.05292</code></pre>
 </div>
-<p><strong>Interpretation</strong>: The test yields χ² = 3.1 with a
-p-value = 0.685. We fail to reject the null hypothesis”, and there is no
-evidence to conclude a difference from the claimed distribution.</p>
+<p><strong>Interpretation</strong>: The test yields χ² = 10.9 with a
+p-value = 0.05292. We fail to reject the null hypothesis, and there is
+no evidence to conclude a difference from the claimed distribution.</p>
+<p>Note that in this example, the number of observations sums to 100.
+<code>chisq.test()</code> normalises the expected values, so we do not
+<em>have</em> to match the numbers.</p>
 </div>
 </div>
 </div>
@@ -8131,8 +8134,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/stat-tests-1.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/stat-tests-1.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-08-12",
-  "datePublished": "2025-08-12"
+  "dateModified": "2025-08-14",
+  "datePublished": "2025-08-14"
 }
 
   </script><script>
