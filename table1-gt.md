@@ -85,7 +85,50 @@ Error: object 'blood' not found
 ```
 
 
+
+``` r
+blood |> 
+  tbl_strata2(
+    strata = case,
+    .tbl_fun = ~ .x |> 
+      tbl_summary(include = c(ageblood, estradol, testost),
+    type = all_continuous() ~"continuous2",
+      statistic = all_continuous() ~c(
+             "{N_nonmiss}",
+        "{median} ({p25}, {p75})",
+        "{min}, {max}"
+         )
+      ) |> 
+      add_n() 
+      
+  )  |> as_gtsummary()
+```
+
+
+
+
+
+``` r
+tbl_summary(blood, 
+            by = case, 
+              type = all_continuous() ~ "continuous2", # for at få multilinie summary stats
+            include = c(ageblood, testost, curpmh),
+                statistic = all_continuous() ~ c(
+      "{mean} ({min}, {max})",
+      "{median} ({p25}, {p75})"
+    )
+            ) |>
+    add_overall(last = TRUE)
+```
+
+``` error
+Error in add_overall(tbl_summary(blood, by = case, type = all_continuous() ~ : could not find function "add_overall"
+```
+
 Og det gør vi så med gt i stedet.
+er der lettere måder? Ja, det er der. Link til lettere måde. 
+Men! det her giver os ret omfattende muligheder for at tilpasse tabellen.
+
 
 Herunder er vi ikke helt i mål endnu. Men vi er ret tæt.
 
@@ -98,13 +141,7 @@ library(gtsummary)
 base <- blood |>
   select(age, grade, stage, trt) |>
   mutate(grade = paste("Grade", grade))
-```
 
-``` error
-Error: object 'blood' not found
-```
-
-``` r
 # rækkefølge på paneler: Overall først, derefter Grade I/II/III
 lvl <- c("Overall", paste("Grade", levels(trial$grade)))
 
@@ -114,13 +151,7 @@ df <- bind_rows(
   base |> mutate(.panel = grade)
 ) |>
   mutate(.panel = factor(.panel, levels = lvl))
-```
 
-``` error
-Error: object 'base' not found
-```
-
-``` r
 # tabel: tre strata + et overall-stratum
 tbl <- df |>
   tbl_strata(
@@ -131,24 +162,8 @@ tbl <- df |>
       add_n(),
     .header = "**{strata}**, N = {n}"
   )
-```
 
-``` error
-Error in `tbl_strata()`:
-! The `data` argument must be class <data.frame/survey.design>, not a
-  function.
-```
-
-``` r
 tbl
-```
-
-``` output
-function(src, ...) {
-  UseMethod("tbl")
-}
-<bytecode: 0x56312b0f2ff8>
-<environment: namespace:dplyr>
 ```
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
