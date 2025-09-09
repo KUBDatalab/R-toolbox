@@ -1,19 +1,20 @@
 ---
-title: 'lasso-regularisation'
+title: 'LASSO regularisation'
 teaching: 10
 exercises: 2
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How do you write a lesson using R Markdown and `{sandpaper}`?
+- How do we avoid overfitting in multiple linear regression?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::: objectives
 
-- Explain how to use markdown with the new lesson template
-- Demonstrate how to include pieces of code, figures, and nested challenge blocks
+- Explain the rationale behind regularisation in linear regresssions
+- Demonstrate how to perform a LASSO-regularisation
+- Demonstrate how to use cross-validation to optimise the hyperparamter.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -23,81 +24,64 @@ exercises: 2
 
 ## Least Absolute Shrinkage and Selection Operator.
 
-Når vi laver en lineær model, forsøger vi at finde koefficienterne i udtrykket:
+One of the risks when we build a linear model based on several predictive variables,
+is that we add too many variables to the model. We should always try to 
+build a parsimonius model, one that only include the variables that actually
+contribute to the predictive value of the model.
 
-$$\hat{y}= \beta_0 + \beta_1*x_1 + \beta_2*x_2 + \beta_3*x_3 +....$$
+Adding too many variables, can lead to overfitting, and in turn bad predictions on
+new data.
 
-Og vi er specifikt ude efter dem der minimerer forskellen på de "sande" værdier
-af y vi kender, og modellens forudsigelse $\hat{y}$
+But which variables should we include? 
 
-Det vi typisk gør, er at vi forsøger at minimere en såkaldt loss-funktion.
-Det er typisk RSS (kvadrerede residualer).
+Guessing is often a viable route to take, but we run the risk of letting our
+own biases influence the model. 
+
+Rather than guessing, techniques for letting the computer make the choices for us,
+exist. 
+
+One of these is called "LASSO" - Least Absolute Shrinkage and Selection Operator.
+Probably a bacronym. 
+
+When we normally build a linear model, we ask the algorithm to identify the
+coefficients in the expression:
+
+$$\hat{y}= \beta_0 + \beta_1x_1 + \beta_2x_2 + \beta_3x_3 +... + \beta_nx_n$$
+
+We explicitly want a model that minimises the difference, residual, between the "true"
+values of y that we know, and the prediction the model makes, $\hat{y}$. 
+
+The algorithm that does all the work for us, do that by minimising the so called
+loss-function, typically the sum of the square of the residuals:
 
 $$RSS = \sum(y_i - \hat{y_i})^2$$
 
-Algoritmen der klarer beregningerne for os justerer på snedig vis $\beta$'erne 
-så RSS bliver så lille som muligt.
-Vi kan tænke på det som forskellen på de "sande" værdier som vi kender, og de
-forudsagte værdier, baseret på modellen og vors uafhængige variable. For alle
-vores observationer beregner vi forskellen, kvadrerer dem og lægger dem alle sammen.
-
-Når vi bygger modellen, er en af de ting vi skal tage stilling til, hvor mange
-og hvilke variable vi skal have med. Har vi tilstrækkeligt mange med kan vi
-forudsige y meget præcist. Men det fører let til at modellen i virkeligheden 
-ikke har fundet sammenhænge mellem den afhængige og de uafhængige variable, men
-i stedet har "lært" datasættet uden ad.
-
-Den bedste model er derfor den hvor vi har så få uafhængige variable med som muligt.
-Men samtidig forklarer mest muligt af variationen
-
-Og alt det her hører nok hjemme et andet sted end hvor vi specifik taler om 
-LASSO. 
-
-
-
-Et problem er at vi skal tage stilling til, er hvor mange og hvilke variable
-vi skal have med i modellen. Hvis vi medtager tilstrækkeligt mange parametre,
-skal det nok lykkes at forklare alt.
-
-En teknik der kan udvælge er lasso. I stedet for at optimere på RSS, optimerer vi på:
-
+In the LASSO algorithm, we instead minimise this loss-function:
 
 $$\sum_{i=1}^{n}(y_i - \sum_{j} x_{ij}\beta_j)^2 + \lambda\sum_{j=1}^p |\beta_j|$$
 
+Or, a bit shorter:
 
-
-
-
-Eller, lidt kortere:
-d
 $$RSS + \lambda\sum_{j=1}^p |\beta_j|$$
 
+The additional term, $\lambda\sum_{j=1}^p |\beta_j|$ sum the absolute 
+values of all the coefficients (except for the intercept), and multiplies it with
+a parameter $\lambda$. 
 
+The additional term regulates, or regularises the solution, and prevent the model from being too
+flexible. We therefor call this technique LASSO-regularisation. Others exist, and LASSO is often
+also called L1-regularisation.
 
-Så det udtryk vi nu forsøger at minimere - algoritmen gør det for os - 
-er nu tilføjet summen af alle vores koefficienter - i absolutte værdier, så de
-ikke kommer til at udligne hinanden. Og så ganger vi en faktor på. Det betyder
-at hvis der er mange variable med i modellen - så bliver straf-leddet større.
-Og derfor vil algoritmen kunne opnå et bedre resultat, ved at lade nogen af 
-koefficienterne blive 0. Så bidrager de ikke længere til loss-funktionen, og den
-bliver mindre. 
+Mathematically this has the consequence that we might get the minimum of the loss function 
+by setting some coefficients $\beta$ to zero. In that way, the LASSO algorithm can eliminate
+coefficients, and thereby variables in the model, that do not contribute enough to the overall model.
 
-$\lambda$ styrer hvor hårdt vi straffer modellen for at have for mange eller
-for store koefficienter. Det betyder også at der er en parameter som ikke 
-styres af algoritmen, men som vi selv skal vælge. Det er en hyperparameter,
-som vi selv skal optimere på.
+$\lambda$ controls how severe we punish the model for having too many or to large coefficients. 
+Therefore we still have to chose the value of $\lambda$ when we build the model using LASSO regularisation.
 
-Netto resultatet er at vi lader en algoritme styre hvilke variable vi skal
-have med i modellen. Og så kan vi ikke rigtigt beskyldes for at være gået på
-p-fisketur.
+Let us look at an example.
 
-
-Hvordan gør man så?
-
-Vi napper mtcars som eksempel. Vi skal nok have fundet et andet på et tidspunkt.
-
-og så skal vi bruge pakker der implementerer løsningen - for vi gider ikke selv
-skrive koden.
+First of all we need a package to do the calculations for us. `glmnet` is one such package:
 
 
 ``` r
@@ -121,87 +105,618 @@ The following objects are masked from 'package:tidyr':
 ```
 
 ``` output
-Loaded glmnet 4.1-8
+Loaded glmnet 4.1-10
 ```
 
+We are going to build a model predicting the fuel efficiency, `mpg` based on other 
+parameters (cyl, disp, hp, drat, wt, qsec), in the `mtcars` dataset
 
-Implementeringen af lasso i glmnet, kræver at den afhængige variabel ligger i en
-vektor, og at prediktor variablene ligger i en matrix.
-
-Vi vil forudsige antallet af hestekræfter i en bil, baseret på mpg, wt, drat og
-qsec
-
-her skal vi nok lege lidt med data og parametre. For det er et dårligt 
-eksempel i x giver det fin mening at drat ikke skal være med. Men det er noget
-snask at z ikke piller nogen ud overhovedet. For den feature vil vi gerne vise.
-
-``` r
-y <- mtcars$hp
-x <- mtcars %>% 
-  select(mpg, wt, drat, qsec) %>% 
-  data.matrix()
-z <- data.matrix(mtcars[, c('mpg', 'wt', 'drat', 'qsec', 'cyl', 'disp')])
-```
-Og nu kan vi så lave en Lasso regression. funktionen hedder glmnet. Og den kan
-lave andre former for regression. Hvis det er lasso, skal argumentet alpha 
-sættes til 1. Vi skal selv vælge straf termen lambda. Vi prøver med 1.5
+First - this is the result in a ordinary linear model (OLS):
 
 
 ``` r
-set.seed(47)
-model <- glmnet(x,y,alpha = 1, lambda = 1.5)
-coef(model)
+lm_model <- lm(mpg ~ cyl + disp + hp + drat + wt + qsec, data = mtcars)
+coef(lm_model)
 ```
 
 ``` output
-5 x 1 sparse Matrix of class "dgCMatrix"
-                    s0
-(Intercept) 488.868159
-mpg          -2.851152
-wt           22.951695
-drat          .       
-qsec        -20.098919
+(Intercept)         cyl        disp          hp        drat          wt 
+26.30735899 -0.81856023  0.01320490 -0.01792993  1.32040573 -4.19083238 
+       qsec 
+ 0.40146117 
 ```
-Og så får vi et resultat for koefficienterne. Bemærk at koefficienten fro `drat`
-er blevet helt væk. Ved man lidt om biler er det ikke meget overraskende (men
-dog en lille smule).
 
-Men er det den bedst tænkelige lambda?
-
-Det betyder at vi har brug for en måde at sammenligne. Hvis vi bygger en model
-med en bestemt lambda - hvor god er den så rent faktisk. Og det kan vi sammenligne
-med en anden model med et andet lambda.
-
-Så vi krydsvaliderer. Vi tager vores data, og deler det op i eksempelvis 10
-"folds" eller portioner. Så vælger vi en lambda, og fitter modellen på de 9 sidste fold, og 
-ser hvor godt den forudsiger de "sande" værdier i den 1. fold. Det gentager vi,
-hvor vi fitter på alle fold, bortset fra den anden. Osv. Når vi er færdige
-har vi 10 kvalitetsmål for en bestemt værdi af lambda. Og tager gennemsnittet
-af dem. Så har vi et kvalitetsmål for en bestemt værdi af lambda.
-
-Gentag processen for en masse forskellige lambda, og vi kan vælge den lambda
-der har det bedste mål for kvaliteten.
-Det gider vi heller ikke gøre i hånden. Så der er heldigvis en funktion der 
-gør det:
+Some datamanipulation is needed in order to remove categorical variables. The implementation
+of LASSO in `glmnet` also require that the response variable is provided in a vector, and the
+predictor variables in a matrix:
 
 
 ``` r
-set.seed(47)
+y <- mtcars$mpg
+x <- as.matrix(mtcars[,c(2:7)])
+```
+
+Now we are ready to run the regression with LASSO regularisation. The function is also
+called `glmnet`. As mentioned other regularisation techniques exist, and we chose LASSO by
+setting the argument `alpha` to 1. We also have to chose $\lambda$ ourself. We make a first 
+attempt with 1.5.
+
+
+``` r
+L1_model <- glmnet(x,y,alpha = 1, lambda = 1.5)
+coef(L1_model)
+```
+
+``` output
+7 x 1 sparse Matrix of class "dgCMatrix"
+                      s0
+(Intercept) 33.593471359
+cyl         -0.835573047
+disp         .          
+hp          -0.006175254
+drat         .          
+wt          -2.308463917
+qsec         .          
+```
+
+Compare with the ordinary model:
+<!--html_preserve--><div id="fxzflprbnh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fxzflprbnh table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#fxzflprbnh thead, #fxzflprbnh tbody, #fxzflprbnh tfoot, #fxzflprbnh tr, #fxzflprbnh td, #fxzflprbnh th {
+  border-style: none;
+}
+
+#fxzflprbnh p {
+  margin: 0;
+  padding: 0;
+}
+
+#fxzflprbnh .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fxzflprbnh .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fxzflprbnh .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fxzflprbnh .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fxzflprbnh .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fxzflprbnh .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fxzflprbnh .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fxzflprbnh .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fxzflprbnh .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fxzflprbnh .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fxzflprbnh .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fxzflprbnh .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fxzflprbnh .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fxzflprbnh .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fxzflprbnh .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxzflprbnh .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fxzflprbnh .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fxzflprbnh .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fxzflprbnh .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxzflprbnh .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fxzflprbnh .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxzflprbnh .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fxzflprbnh .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxzflprbnh .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fxzflprbnh .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fxzflprbnh .gt_left {
+  text-align: left;
+}
+
+#fxzflprbnh .gt_center {
+  text-align: center;
+}
+
+#fxzflprbnh .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fxzflprbnh .gt_font_normal {
+  font-weight: normal;
+}
+
+#fxzflprbnh .gt_font_bold {
+  font-weight: bold;
+}
+
+#fxzflprbnh .gt_font_italic {
+  font-style: italic;
+}
+
+#fxzflprbnh .gt_super {
+  font-size: 65%;
+}
+
+#fxzflprbnh .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#fxzflprbnh .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fxzflprbnh .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fxzflprbnh .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fxzflprbnh .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fxzflprbnh .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fxzflprbnh .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#fxzflprbnh .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#fxzflprbnh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="coef">coef</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="LASSO">LASSO</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="OLS">OLS</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="coef" class="gt_row gt_left">(Intercept)</td>
+<td headers="LASSO" class="gt_row gt_right">33.593471359</td>
+<td headers="OLS" class="gt_row gt_right">26.30735899</td></tr>
+    <tr><td headers="coef" class="gt_row gt_left">cyl</td>
+<td headers="LASSO" class="gt_row gt_right">-0.835573047</td>
+<td headers="OLS" class="gt_row gt_right">-0.81856023</td></tr>
+    <tr><td headers="coef" class="gt_row gt_left">disp</td>
+<td headers="LASSO" class="gt_row gt_right">0.000000000</td>
+<td headers="OLS" class="gt_row gt_right">0.01320490</td></tr>
+    <tr><td headers="coef" class="gt_row gt_left">hp</td>
+<td headers="LASSO" class="gt_row gt_right">-0.006175254</td>
+<td headers="OLS" class="gt_row gt_right">-0.01792993</td></tr>
+    <tr><td headers="coef" class="gt_row gt_left">drat</td>
+<td headers="LASSO" class="gt_row gt_right">0.000000000</td>
+<td headers="OLS" class="gt_row gt_right">1.32040573</td></tr>
+    <tr><td headers="coef" class="gt_row gt_left">wt</td>
+<td headers="LASSO" class="gt_row gt_right">-2.308463917</td>
+<td headers="OLS" class="gt_row gt_right">-4.19083238</td></tr>
+    <tr><td headers="coef" class="gt_row gt_left">qsec</td>
+<td headers="LASSO" class="gt_row gt_right">0.000000000</td>
+<td headers="OLS" class="gt_row gt_right">0.40146117</td></tr>
+  </tbody>
+  
+  
+</table>
+</div><!--/html_preserve-->
+
+Note that the coefficients for `disp`, `drat` and `qsec` are eliminated, or set to zero in the LASSO-regression.
+
+But we still made a choice by setting $\lambda$ to 1.5. What is the optimal $\lambda$?
+
+The optimal $\lambda$ is the $\lambda$ that leads to a model that best predict the response variable.
+
+:::: challenge
+
+Suggest one way to find the optimal $\lambda$
+
+:::: solution
+## One way of doing it - but which problems does it have?
+We could do that by splitting the data in two parts, build different models on one part with 
+different $\lambda$ s and use them to predict the results for the other part of the data.
+The model that best predicts the data is the best, and we know which $\lambda$ was the best.
+::::
+
+:::: solution
+
+## Some problems with this approach
+Our dataset is not very large. If we pull out a fifth of the dataset for
+evaluation purposes, we only have 25 observations left.
+
+And what if the random split of our data by chance happen to be bad?
+We run the risk of splitting it in a way where we do not have a
+representative sample for training.
+Would we get the same result if we split it in a different way?
+
+::::
+::::
+
+### How do we handle this? 
+We handle this problem with the randomness of sampling, and the limited size of our data,
+by splitting (sampling) the data randomly a number of times (often 10). For each random split
+we test different values of $\lambda$, and then calculate the average of how well a given 
+value of $\lambda$ perform, for the 10 different splits. We can then chose the best $\lambda$,
+and build a final model using that.
+
+
+`glmnet` provides a function for handling all that. We can chose which $\lambda$ s the function should test, we
+can chose another number of random selections (folds) than the default 10 and a lot of other details. We go with the
+defaults here:
+
+
+
+``` r
+set.seed(47) # The folds are selected at random - this line of code makes those reproducable 
 model <- cv.glmnet(x, y, alpha = 1)
 ```
 
-Modellen indeholder nu værdier for mange forskellige lambda.
-Det kan vi plotte:
+Our model now contains results for many different $\lambda$s
 
+If we plot it, we get the mean-squared-error on the y-axis. That is the value we want to minimise, and 
+$\log{\lambda}$ on the x-axis:
 
 ``` r
 plot(model)
 ```
 
-<img src="fig/lasso-regularisation-rendered-unnamed-chunk-6-1.png" style="display: block; margin: auto;" />
-Vi kan kigge på plottet og finde den bedste værdi. Vi kan også trække det
-ud af modellen:
+<img src="fig/lasso-regularisation-rendered-unnamed-chunk-8-1.png" style="display: block; margin: auto;" />
 
+The numbers above the plot indicates the number of variables left in the model for at given $\lambda$. To the far left, we do 
+not eliminate any variables. To the far right, only two are left.
+
+We could look at the plot and determine the best value of $\lambda$. The first is `lambda.min` which is the $\lambda$ 
+that, on average, give the lowest error, and `lambda.1se` which is the largest $\lambda$ that give an error within
+one standarderror of the minimum.
+
+Which should we chose? lambda.min give us the lowest error when we want to predict values, but have more variables
+left in the model. lambda.1se accepts a larger (but not large) error , but returns a simpler model.
+
+Lets go with lambda.min
 
 ``` r
 best_l <- model$lambda.min
@@ -209,10 +724,10 @@ best_l
 ```
 
 ``` output
-[1] 2.668219
+[1] 0.458192
 ```
-Nu ved vi hvilket lambda vi skal bruge, og så kan vi fitte vores lasso model
-med den:
+
+Now we know which lambda to use, and we can fit the overall model:
 
 
 ``` r
@@ -221,51 +736,26 @@ coef(best_model)
 ```
 
 ``` output
-5 x 1 sparse Matrix of class "dgCMatrix"
-                   s0
-(Intercept) 484.20742
-mpg          -2.95796
-wt           21.37988
-drat          .      
-qsec        -19.43425
-```
-
-CAVE. Det kan godt være det er værd at skalere værdierne. 
-
-
-``` r
-range(mtcars$mpg)
-```
-
-``` output
-[1] 10.4 33.9
-```
-
-``` r
-range(mtcars$wt)
-```
-
-``` output
-[1] 1.513 5.424
+7 x 1 sparse Matrix of class "dgCMatrix"
+                     s0
+(Intercept) 36.29975118
+cyl         -0.87369436
+disp         .         
+hp          -0.01497565
+drat         0.16884990
+wt          -2.86383756
+qsec         .         
 ```
 
 
 
-::::callout
-## regularisation
 
-Vi gør modellen mere regulær - eller ordnet, ved at tilføje elementer til problemet,
-der gør det lettere at løse. Det er vist ikke en helt perfekt forklaring. Men den
-nærmer sig.
-
-::::
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
+- It is important to avoid overfitting in multiple linear regression.
+- LASSO can remove unnessecary variables in linear models.
+- Cross validation can optimise the LASSO regularisation.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
