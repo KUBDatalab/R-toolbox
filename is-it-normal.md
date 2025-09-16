@@ -83,7 +83,7 @@ normal_test_data %>%
 ```
 
 ``` output
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 <img src="fig/is-it-normal-rendered-histogram-1.png" style="display: block; margin: auto;" />
@@ -195,6 +195,17 @@ Base-R do not have functions for this, but the package `e1071` does:
 
 ``` r
 library(e1071)
+```
+
+``` output
+
+Attaching package: 'e1071'
+```
+
+``` output
+The following object is masked from 'package:ggplot2':
+
+    element
 ```
 
 #### Skewness

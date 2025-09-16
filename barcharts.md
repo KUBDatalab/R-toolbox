@@ -33,7 +33,7 @@ library(tidyverse)
 ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.2
-✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+✔ ggplot2   4.0.0     ✔ tibble    3.3.0
 ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
 ✔ purrr     1.1.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -118,6 +118,10 @@ labs(
   title = "Number of penguins at Palmer Station, Antarctica")
 ```
 
+``` warning
+Warning: `label` cannot be a <ggplot2::element_blank> object.
+```
+
 <img src="fig/barcharts-rendered-colours-labels-1.png" style="display: block; margin: auto;" />
 It is not strictly necessary to remove the label of the x-axis, but it is superfluous
 in this case.
@@ -147,6 +151,10 @@ labs(
   title = "Number of penguins at Palmer Station, Antarctica")
 ```
 
+``` warning
+Warning: `label` cannot be a <ggplot2::element_blank> object.
+```
+
 <img src="fig/barcharts-rendered-order-1.png" style="display: block; margin: auto;" />
 This facilitates the reading of the graph - it becomes very easy to see that 
 the most frequent species of penguin is Adelie penguins. 
@@ -174,6 +182,10 @@ labs(
   title = "Number of penguins at Palmer Station, Antarctica")
 ```
 
+``` warning
+Warning: `label` cannot be a <ggplot2::element_blank> object.
+```
+
 <img src="fig/barcharts-rendered-rotation-1.png" style="display: block; margin: auto;" />
 
 ## Size of text
@@ -196,6 +208,10 @@ labs(
   title = "Number of penguins at Palmer Station, Antarctica") +
   theme_grey(base_size = 14) +
   theme(plot.title = element_text(size = rel(1.1)))
+```
+
+``` warning
+Warning: `label` cannot be a <ggplot2::element_blank> object.
 ```
 
 <img src="fig/barcharts-rendered-text-size-1.png" style="display: block; margin: auto;" />
@@ -223,6 +239,10 @@ labs(
   theme_grey(base_size = 14) +
   theme(plot.title = element_text(size = rel(1.1))) +
   scale_x_continuous(expand = expansion(mult = c(0, 0.01)))
+```
+
+``` warning
+Warning: `label` cannot be a <ggplot2::element_blank> object.
 ```
 
 <img src="fig/barcharts-rendered-unnecessary-space-1.png" style="display: block; margin: auto;" />
@@ -262,6 +282,10 @@ labs(
   )
 ```
 
+``` warning
+Warning: `label` cannot be a <ggplot2::element_blank> object.
+```
+
 <img src="fig/barcharts-rendered-decluttering-1.png" style="display: block; margin: auto;" />
 First we change the default theme of the plot from `theme_grey` to `theme_minimal`,
 which gets rid of the grey background. In the additional `theme()` function we 
@@ -298,6 +322,11 @@ penguin_example %>%
     colour = "white") +
   geom_vline(xintercept = 0) +
   scale_x_continuous(breaks = NULL, expand = expansion(mult = c(0, 0.01))) 
+```
+
+``` warning
+Warning: `label` cannot be a <ggplot2::element_blank> object.
+`label` cannot be a <ggplot2::element_blank> object.
 ```
 
 <img src="fig/barcharts-rendered-count_penguins-1.png" style="display: block; margin: auto;" />
