@@ -50,7 +50,7 @@ of the data we provide it with:
 hist(penguins$bill_length_mm)
 ```
 
-<img src="fig/histograms-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/histograms-rendered-penguin_base_histogram-1.png" style="display: block; margin: auto;" />
 
 This is not a very nice looking histogram, and `ggplot2` provides us with a 
 more easily customisable `geom_histogram()` function:
@@ -70,7 +70,7 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
 
-<img src="fig/histograms-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="fig/histograms-rendered-penguin_ggplot_histogram-1.png" style="display: block; margin: auto;" />
 
 This is the distibution of the length, in millimeter, of the bill (or beak) of
 a selection of penguins. 
@@ -105,7 +105,7 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
 
-<img src="fig/histograms-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="fig/histograms-rendered-facetted_histogram-1.png" style="display: block; margin: auto;" />
 
 The data now looks a bit more normally distributed. And we can observe that
 male penguins tend to have longer beaks than female penguins. We can also
@@ -140,7 +140,7 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
 
-<img src="fig/histograms-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="fig/histograms-rendered-bins_20-1.png" style="display: block; margin: auto;" />
 
 ::::
 
@@ -203,6 +203,7 @@ The number of bins are then found as
 $$
 k = \lceil \frac{range}{h} \rceil
 $$
+
 ::::challenge
 ## Try it yourself
 
@@ -235,11 +236,14 @@ Now find the recommended bin-width:
 ``` r
 h <- 2*iqr*n^(-1/3)
 ```
+
 And then the number of bins:
+
 
 ``` r
 k <- (max(bill_lengths) - min(bill_lengths))/h
 ```
+
 Remember to take the ceiling:
 
 ``` r
@@ -291,6 +295,7 @@ ceiling(sqrt(n))
 ``` output
 [1] 19
 ```
+
 ::::
 ::::
 
@@ -350,10 +355,13 @@ ceiling(k)
 Again we get $k$ directly from $n$:
 
 $$k = \lceil 2n^{1/3}\rceil$$
+
 ::::challenge
+## Try it yourself
 
 According to the Rice rule, how many bins should we use for a histogram
 of the length of penguin bills?
+
 ::::solution
 
 Get all the lengths of the penguin bills, excluding missing values:
@@ -384,6 +392,7 @@ ceiling(k)
 ``` output
 [1] 14
 ```
+
 ::::
 ::::
 
@@ -403,9 +412,11 @@ Doanes rule basically adds extra bins based on how skewed the data is, and
 works better than Sturges' rule for non-normal distributions.
 
 ::::challenge
+## Try it yourself
 
 According to Doanes rule, how many bins should we use for a histogram
 of the length of penguin bills?
+
 ::::solution
 
 Get all the lengths of the penguin bills, excluding missing values:
@@ -425,11 +436,22 @@ Find $g_1$:
 
 
 ``` r
-g1 <- skewness(bill_lengths)
+library(e1071)
 ```
 
-``` error
-Error in skewness(bill_lengths): could not find function "skewness"
+``` output
+
+Attaching package: 'e1071'
+```
+
+``` output
+The following object is masked from 'package:ggplot2':
+
+    element
+```
+
+``` r
+g1 <- skewness(bill_lengths)
 ```
 Find $\sigma_{g1}$:
 
@@ -443,10 +465,6 @@ Now we can find $k$. Remember to take the absolute value of $g_1$
 ``` r
 k <- 1 + log2(n) + log2(1+abs(g1)/s_g1)
 ```
-
-``` error
-Error: object 'g1' not found
-```
 And then round up $k$ to get the number of bins:
 
 
@@ -455,7 +473,7 @@ ceiling(k)
 ```
 
 ``` output
-[1] 14
+[1] 10
 ```
 
 ::::
@@ -471,9 +489,11 @@ Where $\sigma$ is the standard deviation of the data. This rule implicitly assum
 that the data is normally distributed.
 
 ::::challenge
+## Try it yourself
 
 According to Scott's rule, how many bins should we use for a histogram
 of the length of penguin bills?
+
 ::::solution
 
 Get all the lengths of the penguin bills, excluding missing values:
@@ -541,6 +561,7 @@ nclass.Sturges(penguins$bill_length_mm)
 ``` output
 [1] 10
 ```
+
 `nclass.FD` and `nclass.scott` works similarly, but note that it is necessary
 to remove missing values. If one of the other heuristics is needed, we either
 need to do the calculations ourself - or try to identify a package that contains
@@ -598,7 +619,7 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
 
-<img src="fig/histograms-rendered-unnamed-chunk-36-1.png" style="display: block; margin: auto;" />
+<img src="fig/histograms-rendered-penguins_with_seq-1.png" style="display: block; margin: auto;" />
 
 ## Do not abuse the option of specifying breaks!
 
