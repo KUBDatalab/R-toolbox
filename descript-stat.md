@@ -58,20 +58,6 @@ the actual data is called `penguins` and is part of the package `palmerpenguins`
 
 ``` r
 library(palmerpenguins)
-```
-
-``` output
-
-Attaching package: 'palmerpenguins'
-```
-
-``` output
-The following objects are masked from 'package:datasets':
-
-    penguins, penguins_raw
-```
-
-``` r
 head(penguins)
 ```
 
@@ -136,9 +122,10 @@ The mean is the average of all datapoints. We add all values (excluding
 the missing values encoded with `NA`), and divide with the number of
 observations:
 
-$$\overline{x} = \frac{1}{N}\sum_1^N x_i$$ Where N is the number of
-observations, and $x_i$ is the individual observations in the sample
-$x$.
+$$\overline{x} = \frac{1}{N}\sum_1^N x_i$$ 
+
+Where N is the number of
+observations, and $x_i$ is the individual observations in the sample $x$.
 
 The easiest way of getting the mean is using the `mean()` function:
 
