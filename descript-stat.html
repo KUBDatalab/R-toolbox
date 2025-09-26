@@ -552,7 +552,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Descriptive Statistics</h1>
-        <p>Last updated on 2025-09-23 |
+        <p>Last updated on 2025-09-26 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/descript-stat.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -629,26 +629,8 @@ is part of the package <code>palmerpenguins</code>:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">palmerpenguins</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>
-Attaching package: 'palmerpenguins'</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>The following objects are masked from 'package:datasets':
-
-    penguins, penguins_raw</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb5">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">head</span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">palmerpenguins</span><span class="op">)</span></span>
+<span><span class="fu">head</span><span class="op">(</span><span class="va">penguins</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -672,7 +654,7 @@ of their bill (beak).</p>
 Horst}</p>
 <p>Specifically we are going to work with the weight of the penguins,
 stored in the variable <code>body_mass_g</code>:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -712,11 +694,12 @@ stored in the variable <code>body_mass_g</code>:</p>
 (excluding the missing values encoded with <code>NA</code>), and divide
 with the number of observations:</p>
 <p><span class="math display">\[\overline{x} = \frac{1}{N}\sum_1^N
-x_i\]</span> Where N is the number of observations, and <span class="math inline">\(x_i\)</span> is the individual observations in the
+x_i\]</span></p>
+<p>Where N is the number of observations, and <span class="math inline">\(x_i\)</span> is the individual observations in the
 sample <span class="math inline">\(x\)</span>.</p>
 <p>The easiest way of getting the mean is using the <code>mean()</code>
 function:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -729,7 +712,7 @@ function:</p>
 </div>
 <p>A slightly more cumbersome way is using the <code>summarise()</code>
 function from <code>tidyverse</code>:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -761,7 +744,7 @@ expression of the location of the data. If we order our data by size,
 from the smallest to the largest value, and locate the middle
 observation, we get the median. This is the value that half of the
 observations is smaller than. And half the observations is larger.</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -776,7 +759,7 @@ observations is smaller than. And half the observations is larger.</p>
 that the data is skewed, in this case toward the larger penguins.</p>
 <p>We can get both <code>median</code> and <code>mean</code> in one go
 using the <code>summarise()</code> function:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -802,7 +785,7 @@ by counting the different observations,and locating the most common
 one.</p>
 <p>We typically do not use this for continous variables. The mode of the
 <code>sex</code> variable in this dataset can be found like this:</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -835,7 +818,7 @@ they vary? How can we describe the variation in the data?</p>
 the smallest and what is the largest value? Or, what is the spread?</p>
 <p>We can get that by using the <code>min()</code> and
 <code>max()</code> functions in a <code>summarise()</code> function:</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -857,7 +840,7 @@ function expects to get <em>one</em> value.</p>
 <p>If we would like to use the <code>range()</code> function, we can add
 it using the <code>reframe()</code> function instead of
 <code>summarise()</code>:</p>
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -923,7 +906,7 @@ s^2 = \frac{\sum_{i=1}^N(x_i - \overline{x})^2}{N-1}
 <p>Note that we also change the <span class="math inline">\(\sigma\)</span> to an <span class="math inline">\(s\)</span>.</p>
 <p>And again we are not going to do that by hand, but will ask R to do
 it for us:</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -949,7 +932,7 @@ scale from the actual values. There is also a problem with the unit
 which is in <span class="math inline">\(g^2\)</span>.</p>
 <p>A measurement of the variation of the data would be the standard
 deviation, simply defined as the square root of the variance:</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -976,7 +959,7 @@ we make, is a histogram.</p>
 <p>A histogram is a plot or graph where we split the range of
 observations in a number of “buckets”, and count the number of
 observations in each bucket:</p>
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1004,7 +987,7 @@ observations in each bucket:</p>
 </div>
 <p>Typically, rather than counting ourself, we leave the work to R, and
 make a histogram directly:</p>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1025,7 +1008,7 @@ make a histogram directly:</p>
 </div>
 <figure><img src="fig/descript-stat-rendered-histogram-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>By default ggplot chooses 30 bins, typically we should chose a
 different number:</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1040,7 +1023,7 @@ different number:</p>
 (`stat_bin()`).</code></pre>
 </div>
 <figure><img src="fig/descript-stat-rendered-change_bin_n-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Or, ideally, set the widths of them, manually:</p>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1058,7 +1041,7 @@ different number:</p>
 <p><img src="fig/descript-stat-rendered-change_bin_width-1.png" style="display: block; margin: auto;" class="figure">
 Or even specify the exact intervals we want, here intervals from 0 to
 6500 gram in intervals of 250 gram:</p>
-<div class="codewrapper sourceCode" id="cb36">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1088,7 +1071,7 @@ smaller.</p>
 or second quartile. Quartile implies four parts, and the existence of a
 third or 75% quartile.</p>
 <p>We can calcultate those using the quantile function:</p>
-<div class="codewrapper sourceCode" id="cb38">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1101,7 +1084,7 @@ third or 75% quartile.</p>
 3550 </code></pre>
 </div>
 <p>and</p>
-<div class="codewrapper sourceCode" id="cb40">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1118,7 +1101,7 @@ third or 75% quartile.</p>
 observations fall.</p>
 <p>That is used often enough that we have a dedicated function for
 it:</p>
-<div class="codewrapper sourceCode" id="cb42">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1136,7 +1119,7 @@ it:</p>
 <p>The name of the quantile function implies that we might have other
 quantiles than quartiles. Actually we can calculate any quantile, eg the
 2.5% quantile:</p>
-<div class="codewrapper sourceCode" id="cb44">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1153,7 +1136,7 @@ a visual representation of <em>all</em> quantiles, we can calculate all
 of them, and plot them.</p>
 <p>Instead of doing that by hand, we can use a concept called
 <em>CDF</em> or cumulative density function:</p>
-<div class="codewrapper sourceCode" id="cb46">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1176,7 +1159,7 @@ observations were skewed to the left, and that the “tail” on the right
 was longer than on the left. That skewness can be quantised.</p>
 <p>There is no function for skewness build into R, but we can get it
 from the library <code>e1071</code></p>
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1195,7 +1178,7 @@ Attaching package: 'e1071'</code></pre>
 
     element</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb51">
+<div class="codewrapper sourceCode" id="cb48">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1219,7 +1202,7 @@ tails?” leading to a relatively low peak. Or, as “how pointy is the
 peak” - because the majority of observations are centered in the peak,
 rather than appearing in the tails.</p>
 <p>We use the <code>e1071</code> package again:</p>
-<div class="codewrapper sourceCode" id="cb53">
+<div class="codewrapper sourceCode" id="cb50">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1237,7 +1220,7 @@ peak is flat, and the tails are fat.</p>
 </section><section><h2 class="section-heading" id="everything-everywhere-all-at-once">Everything Everywhere All at Once<a class="anchor" aria-label="anchor" href="#everything-everywhere-all-at-once"></a></h2>
 <hr class="half-width"><p>A lot of these descriptive values can be gotten for every variable in
 the dataset using the <code>summary</code> function:</p>
-<div class="codewrapper sourceCode" id="cb55">
+<div class="codewrapper sourceCode" id="cb52">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1268,7 +1251,7 @@ IQR), the median and the mean and, rather useful, the number of missing
 values in each variable.</p>
 <p>We can also get all the descriptive values in one table, by adding
 more than one summarizing function to the summarise function:</p>
-<div class="codewrapper sourceCode" id="cb57">
+<div class="codewrapper sourceCode" id="cb54">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1297,7 +1280,7 @@ more than one summarizing function to the summarise function:</p>
 <p>As noted, we have three different species of penguins in the dataset.
 Their weight varies a lot. If we want to do the summarising on each for
 the species, we can group the data by species, before summarising:</p>
-<div class="codewrapper sourceCode" id="cb59">
+<div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1325,7 +1308,7 @@ table.</p>
 </section><section><h2 class="section-heading" id="boxplots">Boxplots<a class="anchor" aria-label="anchor" href="#boxplots"></a></h2>
 <hr class="half-width"><p>Finally boxplots offers a way of visualising some of the summary
 statistics:</p>
-<div class="codewrapper sourceCode" id="cb61">
+<div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1353,7 +1336,7 @@ variables, maybe grouped by one or more categorical variables.</p>
 counting.</p>
 <p>Counting the different values in a single categorical variable in
 base-R is done using the <code>table(()</code> function</p>
-<div class="codewrapper sourceCode" id="cb63">
+<div class="codewrapper sourceCode" id="cb60">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1370,7 +1353,7 @@ female   male
 different combinations of the values in more than one categorical
 variable, eg the distribution of the two different penguin sexes on the
 three different islands:</p>
-<div class="codewrapper sourceCode" id="cb65">
+<div class="codewrapper sourceCode" id="cb62">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1388,7 +1371,7 @@ three different islands:</p>
 <p>We can event group on three (or more) categorical variables, but the
 output becomes increasingly difficult to read the mote variables we
 add:</p>
-<div class="codewrapper sourceCode" id="cb67">
+<div class="codewrapper sourceCode" id="cb64">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1424,7 +1407,7 @@ add:</p>
 </section><section><h2 class="section-heading" id="aggregate">Aggregate<a class="anchor" aria-label="anchor" href="#aggregate"></a></h2>
 <hr class="half-width"><p>A different way of doing that in base-R is using the
 <code>aggregate()</code> function:</p>
-<div class="codewrapper sourceCode" id="cb69">
+<div class="codewrapper sourceCode" id="cb66">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1445,7 +1428,7 @@ to calculate summary statistics on groups, by adjusting the
 </section><section><h2 class="section-heading" id="counting-in-tidyverse">Counting in tidyverse<a class="anchor" aria-label="anchor" href="#counting-in-tidyverse"></a></h2>
 <hr class="half-width"><p>In tidyverse we will typically group the data by the variables we
 want to count, and then tallying them:</p>
-<div class="codewrapper sourceCode" id="cb71">
+<div class="codewrapper sourceCode" id="cb68">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1465,7 +1448,7 @@ want to count, and then tallying them:</p>
 </div>
 <p><code>group_by</code> works equally well with more than one
 group:</p>
-<div class="codewrapper sourceCode" id="cb73">
+<div class="codewrapper sourceCode" id="cb70">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1493,7 +1476,7 @@ group:</p>
 manipulation to get into a wider tabular format.</p>
 <p>A shortcut exists in tidyverse, <code>count</code>, which combines
 group_by and tally:</p>
-<div class="codewrapper sourceCode" id="cb75">
+<div class="codewrapper sourceCode" id="cb72">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1589,8 +1572,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/descript-stat.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/descript-stat.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-09-23",
-  "datePublished": "2025-09-23"
+  "dateModified": "2025-09-26",
+  "datePublished": "2025-09-26"
 }
 
   </script><script>
