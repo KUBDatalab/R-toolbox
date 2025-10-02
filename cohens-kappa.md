@@ -6,7 +6,7 @@ exercises: 2
 
 :::::::::::::::::::::::::::::::::::::: questions 
 
-- How can agrement on classification be quantised?
+- How can agrement on classification be quantified?
 - How is Cohens $\kappa$ calculated?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
@@ -21,7 +21,7 @@ exercises: 2
 ## What do we use it for?
 
 We use Cohens Kappa (or $\kappa$), to compare if two sets of categorisations
-is done reliably.
+are done reliably.
 
 Imagine a set of images. We ask two persons to answer a simple question - is there
 a cat on the images. To what degree do the two persons agree on the presence 
@@ -54,6 +54,9 @@ or persons agree?
 *Educational research*. Will two teachers give the same grade to the same papers
 turned in by students.
 
+*Comparison of classifications from machine learning models* basically the extension of the above cases.
+But where one (or more) of the raters are not human, but rather an algorithm doing the classifications.
+
 In humanities we are concerned with intersubjectively transferability - based
 on available data, are the subjective evaluation of two different persons 
 in agreement.
@@ -71,64 +74,13 @@ The library `vcd` contains a function `Kappa()` that does the heavy lifting.
 
 It needs a so called confusion matrix. Let us begin by constructing one.
 
-::::spoiler
-## Constructing the data
+First we read in the dataset:
 
-Ja, dette bør ligge i et datasæt der kan indlæses.
 
 ``` r
 library(tidyverse)
+diagnoses <- read_csv("https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/diagnoses.csv")
 ```
-
-``` output
-── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.1     ✔ stringr   1.5.2
-✔ ggplot2   4.0.0     ✔ tibble    3.3.0
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.1.0     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
-```
-
-``` r
-diagnoses <- tribble(~rater1, ~rater2,
-  "dep", "dep",
-  "dep", "dep",
-  "dep", "dep",
-  "dep", "dep",
-  "dep", "dep",
-  "dep", "dep",
-  "dep", "dep",
-  "dep", "dis",
-  "dep", "sch",
-  "dep", "sch",
-  "dep", "neu",
-  "dep", "neu",
-  "dep", "neu",
-  "dis", "dis",
-  "dis", "dis",
-  "dis", "dis",
-  "dis", "dis",
-  "dis", "dis",
-  "dis", "dis",
-  "dis", "dis",
-  "dis", "dis",
-  "dis", "sch",
-  "dis", "sch",
-  "sch", "sch",
-  "sch", "sch",
-  "neu", "neu",
-  "oth", "oth",
-  "oth", "oth",
-  "oth", "oth",
-  "oth", "oth"
-  )
-```
-
-::::
 
 The object `diagnoses` now contains 30 observations. Imagine two psychiatrists 
 both evaluating 30 patients. They diagnose one of these disorders: Depression
@@ -152,6 +104,7 @@ head(diagnoses)
 6 dep    dep   
 ```
 
+
 ``` r
 conf_table <- table(diagnoses)
 conf_table
@@ -166,6 +119,7 @@ rater1 dep dis neu oth sch
    oth   0   0   0   4   0
    sch   0   0   0   0   2
 ```
+
 This is the confusion matrix. 7 patients are diagnosed with depression by
 both raters (psychiatrists). But looking at Schizophrenia, we see that two
 patients are diagnosed with Schizophrenia by rater2, but with Depression by
@@ -224,6 +178,7 @@ Kappa              lwr       upr
   Unweighted 0.4548491 0.8464610
   Weighted   0.3075771 0.8100699
 ```
+
 ## Interpretation
 
 Cohens $\kappa$ takes into account the possibility that the two raters agree
@@ -294,8 +249,8 @@ Cohens $\kappa$ have the following requirements:
 We define $\kappa$ as:
 
 $$\kappa =  \frac{P_0 - P_e}{1-P_e}$$
-Where 
-$P_0$ is the degree of agreement we observe, and $P_e$ is the degree of agreement
+
+Where $P_0$ is the degree of agreement we observe, and $P_e$ is the degree of agreement
 that is random. 
 
 The null hypothesis declares that any agreement is random, and $\kappa$ is 0.
@@ -323,7 +278,7 @@ The random agreement $P_e$ takes a bit more math:
 * Doctor 1 answers "yes" in $\frac{R_1}{N}$ cases.
 * Doctor 2 answers "yes" in $\frac{C_1}{N}$ cases.
 
-Based on this, the probability that they both, randomly and by chance, answers
+Based on this, the probability that they both, randomly and by chance, answer
 "yes" is:
 
 $$\frac{R1}{N}  \frac{C1}{N}$$
@@ -354,7 +309,7 @@ Z-distribution (if normality is assured, otherwise the t-distribution).
 If you have ever looked at how the math in a $\chi^2$ test works, this might
 look familiar. Thats because it actually is.
 
-With two raters and two categories, that $\kappa$ statistic is the same. And
+With two raters and two categories, the $\kappa$ statistic is the same. And
 if you want to delve deeper into that, you can look up this paper:
 
 Feingold, Marcia (1992). "The Equivalence of Cohen's Kappa and Pearson's Chi-Square Statistics in the 2 × 2 Table." Educational and Psychological Measurement 52(1): 57-61. <https://hdl.handle.net/2027.42/67443>
