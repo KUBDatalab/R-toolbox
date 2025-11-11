@@ -118,11 +118,11 @@
   R-toolbox
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 91%" class="percentage">
-    91%
+<aside class="col-md-12 lesson-progress"><div style="width: 89%" class="percentage">
+    89%
   </div>
   <div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 91%" aria-valuenow="91" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar library" role="progressbar" style="width: 89%" aria-valuenow="89" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -492,6 +492,15 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
+<div class="accordion accordion-flush" id="accordionFlush32">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading32">
+        <a href="checkliste.html">31. checkliste</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
                 </div>
               </div>
             </div>
@@ -577,7 +586,7 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Explain how to use markdown with the new lesson template</li>
+<ul><li>Provide a description on how to run common statistical tests</li>
 </ul></div>
 </div>
 </div>
@@ -697,9 +706,10 @@ deviation is known.<br></li>
 <li>
 <strong>Real-world example:</strong> Checking if the average
 diameter of manufactured ball bearings equals the specified 5.00 cm when
-σ is known. This checks if the average is different, ie either smaller
-<em>or</em> larger. We can also test if it <em>is</em> smaller or
-larger.</li>
+σ is known. It can differ in three ways. It can differ from the
+specification. That is a Two-sided test. It can be smaller, that is a
+(left side) One-sided test. And it can be larger, that is a (right side)
+One-sided test.</li>
 </ul><p><strong>Assumptions</strong></p>
 <ul><li>Sample is a simple random sample from the population.<br></li>
 <li>Observations are independent.<br></li>
@@ -715,12 +725,16 @@ larger.</li>
 <li>Sensitive to departures from normality for small samples.<br></li>
 <li>Misspecification of σ leads to incorrect inferences.</li>
 </ul><p><strong>Example</strong></p>
-<ul><li>
-<strong>Null hypothesis (H₀):</strong> The true mean diameter μ =
-5.00 cm.<br></li>
-<li>
-<strong>Alternative hypothesis (H₁):</strong> μ ≠ 5.00 cm.</li>
-</ul><div class="codewrapper sourceCode" id="cb3">
+<p>Two-sided: * <strong>Null hypothesis (H₀):</strong> The true mean
+diameter μ = 5.00 cm.<br>
+* <strong>Alternative hypothesis (H₁):</strong> μ ≠ 5.00 cm.</p>
+<p>One-sided, left: * <strong>Null hypothesis (H₀):</strong> The true
+mean diameter μ = 5.00 cm.<br>
+* <strong>Alternative hypothesis (H₁):</strong> μ &lt; 5.00 cm.</p>
+<p>One-sided, right: * <strong>Null hypothesis (H₀):</strong> The true
+mean diameter μ = 5.00 cm.<br>
+* <strong>Alternative hypothesis (H₁):</strong> μ &gt; 5.00 cm.</p>
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -794,7 +808,7 @@ larger (p = 0.3299686) or that it is smaller (p = 0.6700314)</p>
 <p>EJ KORREKTURLÆST!</p>
 <p>Her kan vi nok med fordel bruge samme eksempel som i z-testen.</p>
 <ul><li>
-<strong>Used for: </strong> Testing whether the mean of a single
+<strong>Used for:</strong> Testing whether the mean of a single
 sample differs from a known or hypothesized population mean when the
 population standard deviation is unknown.<br></li>
 <li>
