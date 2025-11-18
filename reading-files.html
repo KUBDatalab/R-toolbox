@@ -495,7 +495,7 @@
 <div class="accordion accordion-flush" id="accordionFlush32">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading32">
-        <a href="checkliste.html">31. checkliste</a>
+        <a href="checkliste.html">31. Checkliste</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -669,7 +669,8 @@ want to read in:</p>
 <p><code>read_excel(path = "filename", sheet = 2)</code></p>
 <p>Which will read in sheet number 2 from the workbook “filename”.</p>
 <p>Read the documentation for details on how to read in specific cells
-or ranges.</p>
+or ranges. You can find it running <code>?read_excel</code>, or
+<code>help(read_excel)</code>.</p>
 </section><section><h2 class="section-heading" id="spss">SPSS<a class="anchor" aria-label="anchor" href="#spss"></a></h2>
 <hr class="half-width"><p>SPSS, originally “Statistical Package for the Social Sciences”, later
 renamed “Statistical Product and Service Solutions” is a proprietary
@@ -685,7 +686,7 @@ files</p>
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">haven</span><span class="op">)</span></span>
 <span><span class="fu">read_spss</span><span class="op">(</span><span class="st">"filename"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>The function returns at tibble.</p>
+<p>The function returns a tibble.</p>
 <p>Note that SPSS uses a variety of different formats.
 <code>read_spss()</code> will make a guess of the correct format, but if
 problems arise, try using one of the other functions provided in
