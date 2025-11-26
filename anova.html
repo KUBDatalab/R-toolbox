@@ -553,7 +553,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>ANOVA</h1>
-        <p>Last updated on 2025-11-25 |
+        <p>Last updated on 2025-11-26 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/anova.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -604,8 +604,8 @@ penguins:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">palmerpenguins</span><span class="op">)</span></span>
-<span><span class="va">penguins</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>mean_flipper_length <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">flipper_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -626,7 +626,7 @@ rather the <code>aov()</code> function:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">aov</span><span class="op">(</span><span class="va">flipper_length_mm</span> <span class="op">~</span> <span class="va">species</span>, data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="fu">aov</span><span class="op">(</span><span class="va">flipper_length_mm</span> <span class="op">~</span> <span class="va">species</span>, data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">summary</span><span class="op">(</span><span class="op">)</span> </span></code></pre>
 </div>
 <div class="codewrapper">
@@ -664,7 +664,7 @@ look at both:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x<span class="op">=</span><span class="va">flipper_length_mm</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">species</span><span class="op">)</span></span></code></pre>
@@ -676,21 +676,26 @@ That looks reasonable.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">aov</span><span class="op">(</span><span class="va">flipper_length_mm</span> <span class="op">~</span> <span class="va">species</span>, data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span><span class="op">$</span><span class="va">residuals</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="fu">aov</span><span class="op">(</span><span class="va">flipper_length_mm</span> <span class="op">~</span> <span class="va">species</span>, data <span class="op">=</span> <span class="va">penguins</span><span class="op">)</span><span class="op">$</span><span class="va">residuals</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">hist</span><span class="op">(</span><span class="va">.</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/anova-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>That looks fine - if we want a more specific test, those exists, but
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error: object '.' not found</code></pre>
+</div>
+<p>That looks fine - if we want a more specific test, those exists, but
 will not be covered here.</p>
 <ol start="3" style="list-style-type: decimal"><li>Homoskedacity</li>
 </ol><p>A weird name, it simply means that the variance in the different
 groups are more or less the same. We can calculate the variance and
 compare:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">species</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">summarise</span><span class="op">(</span>variance <span class="op">=</span> <span class="fu">var</span><span class="op">(</span><span class="va">flipper_length_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -713,12 +718,12 @@ smaller differences in variance can be problematic.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> More specific methods exist. </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>There are probably more than than three tests for homoskedacity, here
 are three:</p>
 <p>Fligner-Killeen test:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -734,7 +739,7 @@ data:  flipper_length_mm by species
 Fligner-Killeen:med chi-squared = 0.69172, df = 2, p-value = 0.7076</code></pre>
 </div>
 <p>Bartlett’s test:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -750,7 +755,7 @@ data:  flipper_length_mm by species
 Bartlett's K-squared = 0.91722, df = 2, p-value = 0.6322</code></pre>
 </div>
 <p>Levene test:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -781,7 +786,7 @@ Attaching package: 'car'</code></pre>
 
     some</code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -813,7 +818,7 @@ two other species.</p>
 Significant Differences”. We do that by saving the result of our
 ANOVa-analysis and run the <code>TukeyHSD()</code> function on the
 result:</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -857,13 +862,13 @@ three different species of the iris-family of flowers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">aov</span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span><span class="va">Species</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="fu">aov</span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span><span class="va">Species</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">summary</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -899,13 +904,13 @@ can reject the hypothesis that there is no difference.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">aov</span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span><span class="va">Species</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="fu">aov</span><span class="op">(</span><span class="va">Sepal.Width</span> <span class="op">~</span><span class="va">Species</span>, data <span class="op">=</span> <span class="va">iris</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">TukeyHSD</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1001,8 +1006,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/anova.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/anova.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-11-25",
-  "datePublished": "2025-11-25"
+  "dateModified": "2025-11-26",
+  "datePublished": "2025-11-26"
 }
 
   </script><script>
