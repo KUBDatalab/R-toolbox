@@ -56,7 +56,7 @@ The following objects are masked from 'package:datasets':
 ```
 
 ``` r
-penguin_example <- penguins %>% 
+penguin_example <- penguins |> 
   select(species)
 ```
 
@@ -93,7 +93,7 @@ The us make the first barchart:
 
 
 ``` r
-penguin_example %>% 
+penguin_example |> 
 ggplot(aes(x = species)) + 
 geom_bar() 
 ```
@@ -109,7 +109,7 @@ a title to the plot:
 
 
 ``` r
-penguin_example %>% 
+penguin_example |> 
 ggplot(aes(x = species)) + 
 geom_bar(fill = "darkorchid3") +
 labs(
@@ -141,8 +141,8 @@ ordered by frequency:
 
 
 ``` r
-penguin_example %>% 
-  mutate(species = fct_infreq(species)) %>% 
+penguin_example |> 
+  mutate(species = fct_infreq(species)) |> 
 ggplot(aes(x = species)) + 
 geom_bar(fill = "darkorchid3") +
 labs(
@@ -172,8 +172,8 @@ the `x` in the `aes()` function to `y`:
 
 
 ``` r
-penguin_example %>% 
-  mutate(species = fct_infreq(species)) %>% 
+penguin_example |> 
+  mutate(species = fct_infreq(species)) |> 
 ggplot(aes(y = species)) + 
 geom_bar(fill = "darkorchid3") +
 labs(
@@ -198,8 +198,8 @@ the number of categories.
 
 
 ``` r
-penguin_example %>% 
-  mutate(species = fct_infreq(species)) %>% 
+penguin_example |> 
+  mutate(species = fct_infreq(species)) |> 
 ggplot(aes(y = species)) + 
 geom_bar(fill = "darkorchid3") +
 labs(
@@ -228,8 +228,8 @@ Let us get rid of that:
 
 
 ``` r
-penguin_example %>% 
-  mutate(species = fct_infreq(species)) %>% 
+penguin_example |> 
+  mutate(species = fct_infreq(species)) |> 
 ggplot(aes(y = species)) + 
 geom_bar(fill = "darkorchid3") +
 labs(
@@ -265,8 +265,8 @@ grey background we get by default is not very nice. Remove them:
 
 
 ``` r
-penguin_example %>% 
-  mutate(species = fct_infreq(species)) %>% 
+penguin_example |> 
+  mutate(species = fct_infreq(species)) |> 
 ggplot(aes(y = species)) + 
 geom_bar(fill = "darkorchid3") +
 labs(
@@ -303,8 +303,8 @@ to construct a dataframe with the data:
 
 ``` r
 penguin_count <- count(penguin_example, species)
-penguin_example %>% 
-  mutate(species = fct_infreq(species)) %>% 
+penguin_example |> 
+  mutate(species = fct_infreq(species)) |> 
   ggplot(aes(y = species)) + 
   geom_bar(fill = "darkorchid3") +
   labs(
@@ -348,8 +348,8 @@ We can do the same with labels if we want:
 
 
 ``` r
-penguin_example %>% 
-  mutate(species = fct_infreq(species)) %>%
+penguin_example |> 
+  mutate(species = fct_infreq(species)) |> 
   ggplot(aes(y = species)) + 
   geom_bar(fill = "darkorchid3") +
   labs(
@@ -392,8 +392,8 @@ might want to adjust the width of the bars:
 
 
 ``` r
-penguin_example %>% 
-  mutate(species = fct_infreq(species)) %>% 
+penguin_example |> 
+  mutate(species = fct_infreq(species)) |> 
   ggplot(aes(y = species)) + 
   geom_bar(
     fill = "darkorchid3",

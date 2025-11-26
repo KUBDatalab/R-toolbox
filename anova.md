@@ -37,8 +37,8 @@ three different species of penguins:
 ``` r
 library(tidyverse)
 library(palmerpenguins)
-penguins %>% 
-  group_by(species) %>% 
+penguins |> 
+  group_by(species) |> 
   summarise(mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE))
 ```
 
@@ -58,7 +58,7 @@ the ANOVA-method, or rather the `aov()` function:
 
 
 ``` r
-aov(flipper_length_mm ~ species, data = penguins) %>% 
+aov(flipper_length_mm ~ species, data = penguins) |> 
   summary() 
 ```
 
@@ -104,7 +104,7 @@ Is the data normally distributed?
 
 
 ``` r
-penguins %>% 
+penguins |> 
   ggplot(aes(x=flipper_length_mm)) +
   geom_histogram() +
   facet_wrap(~species)
@@ -117,11 +117,13 @@ And the residuals?
 
 
 ``` r
-aov(flipper_length_mm ~ species, data = penguins)$residuals %>% 
+aov(flipper_length_mm ~ species, data = penguins)$residuals |> 
   hist(.)
 ```
 
-<img src="fig/anova-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+``` error
+Error: object '.' not found
+```
 
 That looks fine - if we want a more specific test, those exists,
 but will not be covered here.
@@ -134,8 +136,8 @@ and compare:
 
 
 ``` r
-penguins %>% 
-  group_by(species) %>% 
+penguins |> 
+  group_by(species) |> 
   summarise(variance = var(flipper_length_mm, na.rm = TRUE))
 ```
 
@@ -289,7 +291,7 @@ of the three species?
 :::: solution
 
 ``` r
-aov(Sepal.Width ~Species, data = iris) %>% 
+aov(Sepal.Width ~Species, data = iris) |> 
   summary()
 ```
 
@@ -312,7 +314,7 @@ Which species differ?
 
 
 ``` r
-aov(Sepal.Width ~Species, data = iris) %>% 
+aov(Sepal.Width ~Species, data = iris) |> 
   TukeyHSD()
 ```
 
