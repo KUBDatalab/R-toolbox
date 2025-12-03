@@ -607,7 +607,7 @@ more common.</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>The most important point is that there is a very high probability
 that at least one package exists that is designed to read a specific
@@ -619,7 +619,7 @@ weird data format.</p>
 <figure><img src="../fig/manyfiles.webp" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="use-code">Use code!<a class="anchor" aria-label="anchor" href="#use-code"></a></h2>
 <hr class="half-width"><p>RStudio makes it simple to load most common data formats: Click on
 the file in the “Files” tab in RStudio, and choose “Import Dataset”:</p>
-<figure><img src="../fig/import-file.png" class="figure mx-auto d-block"></figure><p>RStudio will then provide an interface for loading the data:</p>
+<figure><img src="../fig/import-file.png" class="figure mx-auto d-block"></figure><figure><img src="../fig/import_wizzard_gif.gif" class="figure mx-auto d-block"></figure><p>RStudio will then provide an interface for loading the data:</p>
 <figure><img src="../fig/data_import.png" class="figure mx-auto d-block"></figure><p>However in general we prefer to have a script or a document, that can
 be run without us pointing and clicking. So - instead of importing the
 data in this way, copy the code that RStudio uses to import the data,
