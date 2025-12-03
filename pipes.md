@@ -116,8 +116,8 @@ end up assigning the result to a new object. Sometimes the same object:
 
 
 ``` r
-my_data <- my_data %>% 
-  filter(lending > 10) %>% 
+my_data <- my_data |> 
+  filter(lending > 10) |> 
   mutate(area = lenght * width)
 ```
 
@@ -126,7 +126,7 @@ The assignment pipe can shorten this:
 
 ``` r
 my_data %<>% 
-  filter(lending > 10) %>% 
+  filter(lending > 10) |> 
   mutate(area = lenght * width)
 ```
 
