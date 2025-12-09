@@ -557,7 +557,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>R on UCloud</h1>
-        <p>Last updated on 2025-12-03 |
+        <p>Last updated on 2025-12-09 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/ucloud.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -597,90 +597,64 @@ UCloud</li>
 </div>
 <p>You need to run R on a computer that has more muscles than you
 own.</p>
-<p>If you are a student at UCPH, you are in luck, because you have
-access to a High Performance Computing (HPC) facility; UCloud. It can be
-acessed at cloud.sdu.dk using the normal UCPH login and password.</p>
+<p>If you are a student at a Danish university, you are in luck, because
+you have access to a High Performance Computing (HPC) facility; UCloud.
+It can be acessed at cloud.sdu.dk using the normal UCPH login and
+password.</p>
 <p>Depending on the user allowances, it will look something like
 this.</p>
-<figure><img src="../fig/ucloud_front.png" class="figure mx-auto d-block"></figure><p>provides access to a multitude of different applications organized in
-the application store:</p>
+<figure><img src="../fig/ucloud_front.png" class="figure mx-auto d-block"></figure><p>UCloud provides access to a multitude of different applications
+organized in the application store:</p>
 <figure><img src="../fig/ucloud_store.png" class="figure mx-auto d-block"></figure><p>Amongst the more popular picks from the store is RStudio:</p>
 <figure><img src="../fig/ucloud_picks.png" class="figure mx-auto d-block"></figure><p>This allow us to start a session of RStudio, accessible in the
 browser.</p>
-<figure><img src="../fig/ucloud_rstudio.png" class="figure mx-auto d-block"></figure><p>Note that we can chose different machine types. Parallel processing
-is not the solution to every problem, but sometimes it is, and here we
-get access to a <em>lot</em> of cores.</p>
-<p>You select a suitable type of machine, chose how long you want it to
-run, click submit, and after a short wait, you can click “Interface”,
-and you will have, in your browser, something that looks almost exactly
-like RStudio.</p>
+<figure><img src="../fig/ucloud_rstudio.png" class="figure mx-auto d-block"></figure><p>Note that we can chose different machine types. You select a suitable
+type of machine (with enough CPUs and RAM, more on this below), chose
+how long you want it to run, click submit, and after a short wait, you
+can click “Interface”, and you will have, in your browser, something
+that looks almost exactly like RStudio.</p>
 <section><h2 class="section-heading" id="this-is-not-a-computer-as-such">This is not a computer as such<a class="anchor" aria-label="anchor" href="#this-is-not-a-computer-as-such"></a></h2>
 <hr class="half-width"><p>What we can start is not a computer. It is a virtual machine. A
-virtual machine is not a real computer, it is a simulation of a
-computer, that runs on a larger computer. Rather than installing an
-operating system and software on a real computer, we ask the larger
-computer to start a simulation of a computer. Since we interact with it
-through the web, we might not discover the difference. But there are
-some, which are important to know about.</p>
+virtual machine is not a real computer, it is a simulation of a computer
+that runs on a larger computer. Rather than installing an operating
+system and software on a real computer, we ask the larger computer to
+start a simulation of a computer. Since we interact with it through the
+web, we might not discover the difference. But there are some, which are
+important to know about.</p>
 <div class="section level3">
-<h3 id="compute">Compute<a class="anchor" aria-label="anchor" href="#compute"></a></h3>
+<h3 id="compute-cpus">Compute (CPUs)<a class="anchor" aria-label="anchor" href="#compute-cpus"></a></h3>
 <p>Running a virtual computer on a HPC-facility gives us access to a lot
-of resources, primarily “CPU”s and “RAM”.</p>
-<p>Your own computer have a CPU. It is the physical unit that actually
-runs your code. When we ask R to calculate <code>1+1</code>, it is the
-CPU that does the calculation.</p>
-<p>Most modern CPU have multiple “cores”. So in reality it is not the
-CPU that actually performs the calculation, it is one of the cores in
-the CPU.</p>
-<p>The computer used for writing this text have 20 cores.</p>
-<p>This is nice, for the core can - in principle - only do one
-calculation at a time. When we calculate <code>1+1</code>, that is the
-only thing the core can do at that precise moment.</p>
-<p>The truth is a lot more complicated, but the analogy is useful in
-order to understand why it can be nice to have more than one.</p>
-<p>Having access to more than one core allow us to run some of our
-calculations in parallel. If you are asked to do 10 simple
-multiplications, you are finished when you have done 10 multiplications.
-Ask a friend to help, and do 5 yourself, and let your friend do 5 - you
-will be done in half the time.</p>
-<p>Some calculations we want to do in R can be parallelized, where we
-ask one core to distribute the tasks to 10 different cores. The
-calculation will then be done much faster, than if only one core worked
-on the problem.</p>
-<p>Chosing a machine on with a lot of cores will not necesarily speed up
-your work. The code you run will have to be written to make use of all
-the cores. And sometimes it takes longer to do that, than just leaving
-all the work to a single core.</p>
-<p>How do we find out how many cores we have? It should be simple. The
-library <code>parallel</code> have a function <code>detectCores()</code>
-that returns the number of cores we have access to:</p>
-<div class="codewrapper sourceCode" id="cb1">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">parallel</span><span class="fu">::</span><span class="fu">detectCores</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+of resources, primarily “CPUs” and “RAM”. Most modern CPUs have multiple
+“cores”, which are the units that do calculations. Roughly speaking,
+having 6 CPUs with 4 cores each would allow you to do 24 calculations at
+a time, rather than just one.</p>
+<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
+  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div class="accordion-body">
+<p>To do: hyperlink to the parallelization page for more on cores and
+parallellization:</p>
+<p>For your code to make use of the fact that you have multiple cores,
+and get the speed benefits, you need to set it up do so. This is called
+parallellization. It is sometimes worthwhile, but not always. You can
+read our short guide on parallellization <a href="link">here</a>.</p>
 </div>
-<p>Reading the documentation reveals that it is not that simple:</p>
-<p>“Where virtual machines are in use, one would hope that the result
-for logical = TRUE represents the number of CPUs available (or
-potentially available) to that particular VM.”</p>
-<p>Or use this:</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">future</span><span class="fu">::</span><span class="fu">availableCores</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="section level3">
-<h3 id="memory">Memory<a class="anchor" aria-label="anchor" href="#memory"></a></h3>
+<h3 id="memory-ram">Memory (RAM)<a class="anchor" aria-label="anchor" href="#memory-ram"></a></h3>
 <p>Looking at the interface, we see that we also get access to more
 memory, or RAM.</p>
 <p>RAM is the short term memory of the computer. If we want to
-manipulate 10 Gb data, we need to be able to have 10 Gb of data in the
-memory of the computer. And we probably need to have access to much more
-than 10 Gb, because R likes to use a lot of memory, and tends to make a
-copy of the data it manipulates.</p>
+manipulate 10 Gb of data, we need to be able to have 10 Gb of data in
+the memory of the computer. And we probably need to have access to much
+more than 10 Gb, because R likes to use a lot of memory, and tends to
+make a copy of the data it manipulates.</p>
 <p>We might therefore have to chose a certain size of virtual machine,
 not because we actually need 64 cores, but because we need the
 memory.</p>
@@ -713,8 +687,8 @@ lost.</p>
 </div>
 <div class="section level3">
 <h3 id="your-drive">Your drive<a class="anchor" aria-label="anchor" href="#your-drive"></a></h3>
-<p>Not all is lost when you restart a virtual machine. provides you with
-a drive:</p>
+<p>Not all is lost when you restart a virtual machine. UCloud provides
+you with a drive:</p>
 <figure><img src="../fig/ucloud_drive.png" class="figure mx-auto d-block"></figure><p>In it we find a listing of what is in our drive: <img src="../fig/ucloud_drive_2.png" class="figure"></p>
 <p>The folder “Jobs” contains data from the individual runs of virtual
 machines you have done. And Trash contains deleted files.</p>
@@ -797,12 +771,12 @@ download your files.</p>
 files you want to save, click on the little cogwheel saying “More” and
 chose “Export”. RStudio will now zip the files, and ask you where to
 save them.</p>
-<figure><img src="../fig/ucloud_save.png" class="figure mx-auto d-block"></figure><div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
+<figure><img src="../fig/ucloud_save.png" class="figure mx-auto d-block"></figure><div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
-  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor2" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor2" aria-labelledby="headingInstructor2">
 <div class="accordion-body">
 <p>To do: include how to use the UCloud archiving app to download an
 entire folder</p>
@@ -862,20 +836,16 @@ you will, on a virtual machine, have to start with
 time!</em></p>
 <p>R environments help you handle this. Think of them as bubbles in
 which you have all the right packages installed.</p>
-<p>First of all, and <em>this is important!</em> you chose the folder we
-demonstrated how to use earlier:</p>
-<figure><img src="../fig/ucloud_start_1.png" class="figure mx-auto d-block"></figure><p>The method requires the setup to know exactly where your files
-are.</p>
-<p>Secondly, and for the same reason, you <em>must</em> <a href="#creating-a-project">create a project</a> in the folder you
-attached to the run of the virtual machine.</p>
-<p>Then make a script-file. It is not important what you call it, here
-we call it “setup.R”</p>
-<p>Copy the code below into that file, and run the code
-<em>line-by-line</em>. That is because some of the lines of code restart
-R. This is necessary for R to read-in new options and settings. And when
-R is restarted, it does not know where to continue. So you’ll have to
-feed it the lines one at a time.</p>
-<div class="codewrapper sourceCode" id="cb3">
+<p>First of all, and make sure that when you start your Rstudio job, you
+attach the folder we demonstrated how to use earlier:</p>
+<figure><img src="../fig/ucloud_start_1.png" class="figure mx-auto d-block"></figure><p>Secondly, and for the same reason, you <em>must</em> <a href="#creating-a-project">create a project</a> in that same folder, the
+one you attached to the run of the virtual machine.</p>
+<p>Then start the RStudio job and run the following code
+<em>line-by-line</em>. That is needed because some of the lines of code
+restart R. This is necessary for R to read-in new options and settings.
+And when R is restarted, it does not know where to continue. So you’ll
+have to feed it the lines one at a time.</p>
+<div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -884,13 +854,13 @@ feed it the lines one at a time.</p>
 <span><span class="co"># restart R in order to set the environment variable</span></span>
 <span><span class="fu">.rs.restartR</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Initializing renv. You will be asked if you want to do it. You do.</span></span>
+<span><span class="co"># Initializing renv. You might be asked if you want to do it.</span></span>
+<span><span class="co"># You do (enter "y").</span></span>
 <span><span class="fu">renv</span><span class="fu">::</span><span class="fu">init</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#install all the packages you need. For example:</span></span>
 <span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"textdata"</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"stringr"</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"glmnet"</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"quanteda"</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co">#You can add more packages to the environment later</span></span>
 <span><span class="co">#(see below)</span></span>
@@ -904,7 +874,7 @@ feed it the lines one at a time.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Notes on R environments, renv and caches </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Data analysis is not worth much, if we are not able to reproduce our
 results. A significant amount of work has therefore gone into providing
@@ -919,12 +889,12 @@ versions of which packages are used in a project.</p>
 “renv”, a file “renv.lock”, and probably a file “.Rprofile”.</p>
 <p>Looking into that, we will find a line of code
 “source(”renv/activate.R”)”</p>
-<p>When ever we start the project, what ever we have written to
-.Rprofile will be run. What will be run in this case is the script
-“activate.R” which does a lot of interesting stuff. The important thing
-is, that the renv-library is started. And whenever we now install a
-package, it will be installed in the renv folder. Do not delve too deep
-into that, leave it to the machine.</p>
+<p>When ever we start the project, whatever we have written to .Rprofile
+will be run. What will be run in this case is the script “activate.R”
+which does a lot of interesting stuff. The important thing is, that the
+renv-library is started. And whenever we now install a package, it will
+be installed in the renv folder. Do not delve too deep into that, leave
+it to the machine.</p>
 <p>One issue with this is, that there are still installed packages weird
 places on the machine. Caches of the packages are stored outside our
 project. The idea is that other projects might use these cached
@@ -970,14 +940,14 @@ packages.</p>
 <h3 id="other-issues">Other issues<a class="anchor" aria-label="anchor" href="#other-issues"></a></h3>
 <p>Renv is a bit finicky. You might get messages about packages being in
 “an inconsistent state”. Try running this first:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">renv</span><span class="fu">::</span><span class="fu">restore</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <p>And if that does not solve the problem, try:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -987,7 +957,7 @@ packages.</p>
 </div>
 <p>Sometimes renv forgets that a library is installed…</p>
 <p>Fortunately the libraries are easily available, so an</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -999,10 +969,10 @@ what is actually missing.</p>
 </section><section><h2 class="section-heading" id="setup-when-you-need-python">Setup when you need Python<a class="anchor" aria-label="anchor" href="#setup-when-you-need-python"></a></h2>
 <hr class="half-width"><p>In machine learning, many of the algorithms we work with require us
 to have specific Python libraries installed and available to R. Typical
-examples are tensorflow and keras, which we need to create our own
-neural networks and fit them to data. Those python libraries also
-disappear from the virtual machine, unless we keep them in our R
-environment as well.</p>
+examples are <code>Tensorflow</code> and <code>Keras</code>, which we
+need to create our own neural networks and fit them to data. Those
+python libraries also disappear from the virtual machine, unless we keep
+them in our R environment as well.</p>
 <p>And to complicate matters even more, some of them require specific
 versions of Python, and are unable to run on the newest version. And by
 default the version of Python on Ucloud is the newest. So we also need
@@ -1026,9 +996,10 @@ job</a> and <a href="#creating-a-project">creating a new project</a>.
 Give the project a Directory name that helps you remember this is your
 environment for using Python.</p>
 <p>The following code will allow you to use Python packages in R and
-sets up Tensorflow and Keras, two the most commonly used machine
-learning packages:</p>
-<div class="codewrapper sourceCode" id="cb7">
+sets up <code>Tensorflow</code> and <code>Keras</code>, two of the most
+commonly used machine learning packages. Once again, you need to run it
+line by line:</p>
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1041,7 +1012,8 @@ learning packages:</p>
 <span><span class="fu">renv</span><span class="fu">::</span><span class="fu">init</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Yes, it should be possible to do this in one go. </span></span>
-<span><span class="co"># It fails. So, three lines of code...</span></span>
+<span><span class="co"># It fails. So, three lines of code. Again, run these</span></span>
+<span><span class="co"># line by line (important!) and select "y" if prompted:</span></span>
 <span><span class="fu">renv</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">"reticulate"</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu">renv</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">'rstudio/tensorflow'</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu">renv</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">"rstudio/keras"</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
@@ -1082,12 +1054,12 @@ learning packages:</p>
 <span><span class="co"># You might be asked if you want to proceed. You do.</span></span>
 <span><span class="fu">renv</span><span class="fu">::</span><span class="fu">snapshot</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor3" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
-  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor3" aria-expanded="false" aria-controls="collapseInstructor3">
+  <h3 class="accordion-header" id="headingInstructor3">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
+<div id="collapseInstructor3" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor3" aria-labelledby="headingInstructor3">
 <div class="accordion-body">
 <p>Det svære her er at få korrekte versioner. Og at få openssl
 installeret med den samme version som der kører på systemet.</p>
@@ -1101,7 +1073,7 @@ fejlbeskeder om at ssl ikke kan findes.</p>
 loading the environment in Rstudio. You can <a href="#what-about-other-packages">add other packages</a> to it just like
 before. But for reasons we do not entirely understand at KUB Datalab
 (yet), you also have to run:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1112,7 +1084,7 @@ before. But for reasons we do not entirely understand at KUB Datalab
 else.</p>
 <p>One way to check that the whole set-up worked is to run the following
 script:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1150,7 +1122,7 @@ being pretty violent with the virtual machine.</p>
 <p>When you have started the virtual machine, and opened a project, make
 a new R-script in the project, copy the following code (or download it
 from here), and run it line by line.</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1268,7 +1240,7 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/ucloud.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/ucloud.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-12-03",
+  "dateModified": "2025-12-09",
   "datePublished": "2025-12-09"
 }
 
