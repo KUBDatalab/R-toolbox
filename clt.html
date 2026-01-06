@@ -561,7 +561,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Central Limit Theorem</h1>
-        <p>Last updated on 2025-12-09 |
+        <p>Last updated on 2026-01-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/clt.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -612,7 +612,7 @@ values, and plot a histogram of them:</p>
 <code class="sourceCode R"><span><span class="va">random_numbers</span> <span class="op">&lt;-</span> <span class="fu">runif</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span> </span>
 <span><span class="fu">hist</span><span class="op">(</span><span class="va">random_numbers</span><span class="op">)</span></span></code></pre>
 </div>
-<p><img src="fig/clt-rendered-random-histogram-1.png" style="display: block; margin: auto;" class="figure">
+<p><img src="fig/clt-rendered-random-histogram-1.png" alt="" style="display: block; margin: auto;" class="figure">
 This is definitely not normally distributed.</p>
 <p>The mean of these random numbers is:</p>
 <div class="codewrapper sourceCode" id="cb2">
@@ -624,7 +624,7 @@ This is definitely not normally distributed.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.4728462</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.5390974</code></pre>
 </div>
 <p>The important point of the Central Limit Theorem is, that if we take
 a large number of random samples, and calculate the mean of each of
@@ -640,7 +640,7 @@ this:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.4821998</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.5083776</code></pre>
 </div>
 <p>And we can use the <code>replicate()</code> function to repeat that
 calculation several times, in this case 1000 times:</p>
@@ -658,7 +658,7 @@ we get this result:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">hist</span><span class="op">(</span><span class="va">repeated_means</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/clt-rendered-repeated-means-histogram-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The histogram looks quite normally distributed, even though the
+<figure><img src="fig/clt-rendered-repeated-means-histogram-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The histogram looks quite normally distributed, even though the
 distribution from which we drew the random samples were not.</p>
 <p>This is the essense of the Central Limit Theorem. The distrubution of
 the means of our samples will approximate the normal distribution,
@@ -747,7 +747,7 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/clt.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/clt.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-12-09",
+  "dateModified": "2026-01-06",
   "datePublished": "2026-01-06"
 }
 

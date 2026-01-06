@@ -568,7 +568,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Histograms</h1>
-        <p>Last updated on 2025-12-09 |
+        <p>Last updated on 2026-01-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/histograms.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -634,7 +634,7 @@ make a basic histogram, of the data we provide it with:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">hist</span><span class="op">(</span><span class="va">penguins</span><span class="op">$</span><span class="va">bill_length_mm</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/histograms-rendered-penguin_base_histogram-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This is not a very nice looking histogram, and <code>ggplot2</code>
+<figure><img src="fig/histograms-rendered-penguin_base_histogram-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This is not a very nice looking histogram, and <code>ggplot2</code>
 provides us with a more easily customisable
 <code>geom_histogram()</code> function:</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -647,7 +647,7 @@ provides us with a more easily customisable
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre class="output" tabindex="0"><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -655,7 +655,7 @@ provides us with a more easily customisable
 <pre class="warning" tabindex="0"><code>Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
-<figure><img src="fig/histograms-rendered-penguin_ggplot_histogram-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This is the distibution of the length, in millimeter, of the bill (or
+<figure><img src="fig/histograms-rendered-penguin_ggplot_histogram-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>This is the distibution of the length, in millimeter, of the bill (or
 beak) of a selection of penguins.</p>
 <p>By default the <code>geom_histogram()</code> function divides the
 range of the data (min = 32.1, max = 59.6 mm) into 30 bins. Each bin
@@ -680,7 +680,7 @@ use the possibilities available in <code>ggplot2</code>:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<pre class="output" tabindex="0"><code>`stat_bin()` using `bins = 30`. Pick better value `binwidth`.</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -688,7 +688,7 @@ use the possibilities available in <code>ggplot2</code>:</p>
 <pre class="warning" tabindex="0"><code>Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
-<figure><img src="fig/histograms-rendered-facetted_histogram-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The data now looks a bit more normally distributed. And we can
+<figure><img src="fig/histograms-rendered-facetted_histogram-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The data now looks a bit more normally distributed. And we can
 observe that male penguins tend to have longer beaks than female
 penguins. We can also see that the different species of penguins have
 different bill lengths.</p>
@@ -718,7 +718,7 @@ different numbers of bins.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -733,7 +733,7 @@ different numbers of bins.</p>
 <pre class="warning" tabindex="0"><code>Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
-<figure><img src="fig/histograms-rendered-bins_20-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
+<figure><img src="fig/histograms-rendered-bins_20-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
 </div>
@@ -758,7 +758,7 @@ exist.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Why do we call it a heuristic? </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>A heuristic is a fancy way of saying “rule of thumb”. “Heuristic”
 sounds like we know what we are talking about.</p>
@@ -806,7 +806,7 @@ of the bill length of the penguins?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -885,7 +885,7 @@ histogram of the length of penguin bills?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -948,7 +948,7 @@ histogram of the length of penguin bills?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -1013,7 +1013,7 @@ histogram of the length of penguin bills?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -1087,7 +1087,7 @@ of the length of penguin bills?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -1110,11 +1110,29 @@ values:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span></span>
-<span><span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu">skewness</span><span class="op">(</span><span class="va">bill_lengths</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>
+Attaching package: 'e1071'</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>The following object is masked from 'package:ggplot2':
+
+    element</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb37">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">g1</span> <span class="op">&lt;-</span> <span class="fu">skewness</span><span class="op">(</span><span class="va">bill_lengths</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Find <span class="math inline">\(\sigma_{g1}\)</span>:</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1122,7 +1140,7 @@ values:</p>
 </div>
 <p>Now we can find <span class="math inline">\(k\)</span>. Remember to
 take the absolute value of <span class="math inline">\(g_1\)</span></p>
-<div class="codewrapper sourceCode" id="cb36">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1130,7 +1148,7 @@ take the absolute value of <span class="math inline">\(g_1\)</span></p>
 </div>
 <p>And then round up <span class="math inline">\(k\)</span> to get the
 number of bins:</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1172,11 +1190,11 @@ histogram of the length of penguin bills?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
-<div class="codewrapper sourceCode" id="cb39">
+<div class="codewrapper sourceCode" id="cb42">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1184,35 +1202,35 @@ values:</p>
 <span>  <span class="fu">na.omit</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Find <span class="math inline">\(n\)</span>:</p>
-<div class="codewrapper sourceCode" id="cb40">
+<div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu">length</span><span class="op">(</span><span class="va">bill_lengths</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Find <span class="math inline">\(\sigma\)</span>:</p>
-<div class="codewrapper sourceCode" id="cb41">
+<div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sigma</span> <span class="op">&lt;-</span> <span class="fu">sd</span><span class="op">(</span><span class="va">bill_lengths</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Now we can find the bin-width <span class="math inline">\(h\)</span>:</p>
-<div class="codewrapper sourceCode" id="cb42">
+<div class="codewrapper sourceCode" id="cb45">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fl">3.49</span><span class="op">*</span><span class="va">sigma</span><span class="op">*</span><span class="op">(</span><span class="va">n</span><span class="op">^</span><span class="op">(</span><span class="op">-</span><span class="fl">1</span><span class="op">/</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <p>And from that, the number of bins <span class="math inline">\(k\)</span>:</p>
-<div class="codewrapper sourceCode" id="cb43">
+<div class="codewrapper sourceCode" id="cb46">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">k</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu">max</span><span class="op">(</span><span class="va">bill_lengths</span><span class="op">)</span> <span class="op">-</span> <span class="fu">min</span><span class="op">(</span><span class="va">bill_lengths</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="va">h</span></span></code></pre>
 </div>
 <p>Remember to round up <span class="math inline">\(k\)</span>:</p>
-<div class="codewrapper sourceCode" id="cb44">
+<div class="codewrapper sourceCode" id="cb47">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1237,7 +1255,7 @@ histogram - the splits in bins - should occur.</p>
 can see the other options that <code>hist()</code> can work with,
 “Scott” and “FD” for Freedman-Diaconis. We also get a hint of the
 functions that can return the number of bins:</p>
-<div class="codewrapper sourceCode" id="cb46">
+<div class="codewrapper sourceCode" id="cb49">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1275,7 +1293,7 @@ function - we just need to calculate them our self.</p>
 <p>The <code>seq()</code> function is useful for this.</p>
 <p>This function returns a sequence of numbers from a start value, to
 and end value, in steps that we can chose:</p>
-<div class="codewrapper sourceCode" id="cb48">
+<div class="codewrapper sourceCode" id="cb51">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1289,7 +1307,7 @@ and end value, in steps that we can chose:</p>
 <p>You will have to think about the <code>from</code> and the
 <code>to</code> arguments, to not exclude any observations, but this
 method give us much more natural breaks in the histogram:</p>
-<div class="codewrapper sourceCode" id="cb50">
+<div class="codewrapper sourceCode" id="cb53">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1303,10 +1321,10 @@ method give us much more natural breaks in the histogram:</p>
 <pre class="warning" tabindex="0"><code>Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).</code></pre>
 </div>
-<figure><img src="fig/histograms-rendered-penguins_with_seq-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="do-not-abuse-the-option-of-specifying-breaks">Do not abuse the option of specifying breaks!<a class="anchor" aria-label="anchor" href="#do-not-abuse-the-option-of-specifying-breaks"></a></h2>
+<figure><img src="fig/histograms-rendered-penguins_with_seq-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="do-not-abuse-the-option-of-specifying-breaks">Do not abuse the option of specifying breaks!<a class="anchor" aria-label="anchor" href="#do-not-abuse-the-option-of-specifying-breaks"></a></h2>
 <hr class="half-width"><p>Instead of using the <code>seq()</code> function we could construct
 the breaks by hand:</p>
-<div class="codewrapper sourceCode" id="cb52">
+<div class="codewrapper sourceCode" id="cb55">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1314,7 +1332,7 @@ the breaks by hand:</p>
 </div>
 <p>And it might be tempting enter breaks that would lead to uneven
 binwidths:</p>
-<div class="codewrapper sourceCode" id="cb53">
+<div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1403,7 +1421,7 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/histograms.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/histograms.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2025-12-09",
+  "dateModified": "2026-01-06",
   "datePublished": "2026-01-06"
 }
 
