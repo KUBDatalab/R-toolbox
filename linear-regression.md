@@ -30,11 +30,11 @@ library(tidyverse)
 
 ``` output
 ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.2     ✔ tibble    3.3.0
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.1.0     
+✔ dplyr     1.1.4     ✔ readr     2.1.6
+✔ forcats   1.0.1     ✔ stringr   1.6.0
+✔ ggplot2   4.0.1     ✔ tibble    3.3.0
+✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+✔ purrr     1.2.0     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
@@ -47,7 +47,7 @@ cars |>
   geom_point()
 ```
 
-<img src="fig/linear-regression-rendered-unnamed-chunk-1-1.png" style="display: block; margin: auto;" />
+<img src="fig/linear-regression-rendered-unnamed-chunk-1-1.png" alt="" style="display: block; margin: auto;" />
 
 Not surprisingly the faster the car travels, the longer distance it takes to stop it.
 
@@ -83,7 +83,7 @@ cars |>
 `geom_smooth()` using formula = 'y ~ x'
 ```
 
-<img src="fig/linear-regression-rendered-unnamed-chunk-2-1.png" style="display: block; margin: auto;" />
+<img src="fig/linear-regression-rendered-unnamed-chunk-2-1.png" alt="" style="display: block; margin: auto;" />
 
 The points do not fall precisely on the line, but it's not very bad.
 
@@ -425,7 +425,7 @@ qqnorm(residuals)
 qqline(residuals)
 ```
 
-<img src="fig/linear-regression-rendered-unnamed-chunk-9-1.png" style="display: block; margin: auto;" />
+<img src="fig/linear-regression-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" />
 
 The points should be (close to be) on the straight line in the plot. In this
 case they are close enough.
@@ -443,7 +443,7 @@ qqnorm(penguin_residuals)
 qqline(penguin_residuals)
 ```
 
-<img src="fig/linear-regression-rendered-unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+<img src="fig/linear-regression-rendered-unnamed-chunk-10-1.png" alt="" style="display: block; margin: auto;" />
 They are relatively close to normal.
 ::::
 

@@ -2292,7 +2292,7 @@ ggplot(df, aes(x = x, y = y)) +
 `geom_smooth()` using formula = 'y ~ x'
 ```
 
-<img src="fig/stat-tests-1-rendered-simple_linear_regression-1.png" style="display: block; margin: auto;" />
+<img src="fig/stat-tests-1-rendered-simple_linear_regression-1.png" alt="" style="display: block; margin: auto;" />
 
 **Interpretation:**
 The estimated slope is 1.555, with a p-value of 5.51\times 10^{-20}. We
@@ -5222,7 +5222,8 @@ mantel_result <- CMHtest(
 ```
 
 ``` error
-Error in CMHtest(x = ctab, score = list(row = row_scores, col = col_scores)): could not find function "CMHtest"
+Error in `CMHtest()`:
+! could not find function "CMHtest"
 ```
 
 ``` r
@@ -5231,7 +5232,8 @@ mantel_result
 ```
 
 ``` error
-Error: object 'mantel_result' not found
+Error:
+! object 'mantel_result' not found
 ```
 
 **Interpretation:**
@@ -5462,7 +5464,8 @@ test_result <- poisson.test(
 ```
 
 ``` error
-Error in poisson.test(x = c(events_A, events_B), T = c(person_days_A, : unused argument (ratio = 1)
+Error in `poisson.test()`:
+! unused argument (ratio = 1)
 ```
 
 ``` r
@@ -5852,7 +5855,8 @@ W <- evd::revdbeta(n, 1, 1)  # Alternatively, simulate from Gumbel via -log(-log
 ```
 
 ``` error
-Error: 'revdbeta' is not an exported object from 'namespace:evd'
+Error:
+! 'revdbeta' is not an exported object from 'namespace:evd'
 ```
 
 ``` r
@@ -5861,7 +5865,8 @@ logT <- beta0 + beta1 * treatment + sigma * W
 ```
 
 ``` error
-Error: object 'W' not found
+Error:
+! object 'W' not found
 ```
 
 ``` r
@@ -5870,7 +5875,8 @@ time <- exp(logT)
 ```
 
 ``` error
-Error: object 'logT' not found
+Error:
+! object 'logT' not found
 ```
 
 ``` r
@@ -6527,7 +6533,7 @@ GLOBAL 4.4158  4 0.353
 plot(zph_test)
 ```
 
-<img src="fig/stat-tests-1-rendered-cox_ph_assumption_test-1.png" style="display: block; margin: auto;" /><img src="fig/stat-tests-1-rendered-cox_ph_assumption_test-2.png" style="display: block; margin: auto;" /><img src="fig/stat-tests-1-rendered-cox_ph_assumption_test-3.png" style="display: block; margin: auto;" />
+<img src="fig/stat-tests-1-rendered-cox_ph_assumption_test-1.png" alt="" style="display: block; margin: auto;" /><img src="fig/stat-tests-1-rendered-cox_ph_assumption_test-2.png" alt="" style="display: block; margin: auto;" /><img src="fig/stat-tests-1-rendered-cox_ph_assumption_test-3.png" alt="" style="display: block; margin: auto;" />
 
 **Interpretation:**
 
@@ -6819,7 +6825,7 @@ ggplot(ba_df, aes(x = mean, y = diff)) +
        y = "Difference (Wrist – Sphyg)")
 ```
 
-<img src="fig/stat-tests-1-rendered-bland_altman-1.png" style="display: block; margin: auto;" />
+<img src="fig/stat-tests-1-rendered-bland_altman-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 # Print numerical results:

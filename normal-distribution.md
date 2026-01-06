@@ -34,7 +34,7 @@ the likelihood of different outcomes in a random experiment. It gives us
 probabilities for all possible outcomes, and is normalised so that the sum
 of all the probabilities is 1. 
 
-<img src="fig/normal-distribution-rendered-4-distibutions-1.png" style="display: block; margin: auto;" />
+<img src="fig/normal-distribution-rendered-4-distibutions-1.png" alt="" style="display: block; margin: auto;" />
 
 
 Probability distributions can be discrete, or they can be continuous. The normal
@@ -102,7 +102,7 @@ or smaller, than something. Or between certain values.
 
 Rather that plotting the probability density, we can plot the cumulative density.
 
-<img src="fig/normal-distribution-rendered-cdf-plot-1.png" style="display: block; margin: auto;" />
+<img src="fig/normal-distribution-rendered-cdf-plot-1.png" alt="" style="display: block; margin: auto;" />
 
 Note that we also find the cumulitive probability in the original plot of 
 the normal distribution - now it is a bit more direct.

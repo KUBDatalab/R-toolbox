@@ -50,7 +50,7 @@ of the data we provide it with:
 hist(penguins$bill_length_mm)
 ```
 
-<img src="fig/histograms-rendered-penguin_base_histogram-1.png" style="display: block; margin: auto;" />
+<img src="fig/histograms-rendered-penguin_base_histogram-1.png" alt="" style="display: block; margin: auto;" />
 
 This is not a very nice looking histogram, and `ggplot2` provides us with a 
 more easily customisable `geom_histogram()` function:
@@ -62,7 +62,7 @@ ggplot(penguins, aes(x=bill_length_mm)) +
 ```
 
 ``` output
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 ``` warning
@@ -70,7 +70,7 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
 
-<img src="fig/histograms-rendered-penguin_ggplot_histogram-1.png" style="display: block; margin: auto;" />
+<img src="fig/histograms-rendered-penguin_ggplot_histogram-1.png" alt="" style="display: block; margin: auto;" />
 
 This is the distibution of the length, in millimeter, of the bill (or beak) of
 a selection of penguins. 
@@ -97,7 +97,7 @@ ggplot(penguins, aes(x=bill_length_mm)) +
 ```
 
 ``` output
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
 ``` warning
@@ -105,7 +105,7 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
 
-<img src="fig/histograms-rendered-facetted_histogram-1.png" style="display: block; margin: auto;" />
+<img src="fig/histograms-rendered-facetted_histogram-1.png" alt="" style="display: block; margin: auto;" />
 
 The data now looks a bit more normally distributed. And we can observe that
 male penguins tend to have longer beaks than female penguins. We can also
@@ -140,7 +140,7 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
 
-<img src="fig/histograms-rendered-bins_20-1.png" style="display: block; margin: auto;" />
+<img src="fig/histograms-rendered-bins_20-1.png" alt="" style="display: block; margin: auto;" />
 
 ::::
 
@@ -437,6 +437,20 @@ Find $g_1$:
 
 ``` r
 library(e1071)
+```
+
+``` output
+
+Attaching package: 'e1071'
+```
+
+``` output
+The following object is masked from 'package:ggplot2':
+
+    element
+```
+
+``` r
 g1 <- skewness(bill_lengths)
 ```
 Find $\sigma_{g1}$:
@@ -605,7 +619,7 @@ Warning: Removed 2 rows containing non-finite outside the scale range
 (`stat_bin()`).
 ```
 
-<img src="fig/histograms-rendered-penguins_with_seq-1.png" style="display: block; margin: auto;" />
+<img src="fig/histograms-rendered-penguins_with_seq-1.png" alt="" style="display: block; margin: auto;" />
 
 ## Do not abuse the option of specifying breaks!
 

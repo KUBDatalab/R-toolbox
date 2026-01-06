@@ -35,7 +35,7 @@ random_numbers <- runif(100)
 hist(random_numbers)
 ```
 
-<img src="fig/clt-rendered-random-histogram-1.png" style="display: block; margin: auto;" />
+<img src="fig/clt-rendered-random-histogram-1.png" alt="" style="display: block; margin: auto;" />
 This is definitely not normally distributed. 
 
 The mean of these random numbers is:
@@ -45,7 +45,7 @@ mean(random_numbers)
 ```
 
 ``` output
-[1] 0.4728462
+[1] 0.5390974
 ```
 The important point of the Central Limit Theorem is, that if we take a large
 number of random samples, and calculate the mean of each of these samples,
@@ -59,7 +59,7 @@ mean(runif(100))
 ```
 
 ``` output
-[1] 0.4821998
+[1] 0.5083776
 ```
 And we can use the `replicate()` function to repeat that calculation several times, in this case 1000 times:
 
@@ -74,7 +74,7 @@ numbers, we get this result:
 hist(repeated_means)
 ```
 
-<img src="fig/clt-rendered-repeated-means-histogram-1.png" style="display: block; margin: auto;" />
+<img src="fig/clt-rendered-repeated-means-histogram-1.png" alt="" style="display: block; margin: auto;" />
 
 The histogram looks quite normally distributed, even though the distribution
 from which we drew the random samples were not.

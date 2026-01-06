@@ -110,7 +110,7 @@ penguins |>
   facet_wrap(~species)
 ```
 
-<img src="fig/anova-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="fig/anova-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
 That looks reasonable.
 
 And the residuals?
@@ -122,7 +122,8 @@ aov(flipper_length_mm ~ species, data = penguins)$residuals |>
 ```
 
 ``` error
-Error: object '.' not found
+Error:
+! object '.' not found
 ```
 
 That looks fine - if we want a more specific test, those exists,

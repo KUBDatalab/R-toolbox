@@ -41,14 +41,14 @@ It can look like this:
 <thead>
 <tr>
 <th class='rowlabel firstrow lastrow'></th>
-<th class='firstrow lastrow'><span class='stratlabel'>control<br><span class='stratn'>(N=346)</span></span></th>
-<th class='firstrow lastrow'><span class='stratlabel'>case<br><span class='stratn'>(N=164)</span></span></th>
-<th class='firstrow lastrow'><span class='stratlabel'>Overall<br><span class='stratn'>(N=510)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>control<br/><span class='stratn'>(N=346)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>case<br/><span class='stratn'>(N=164)</span></span></th>
+<th class='firstrow lastrow'><span class='stratlabel'>Overall<br/><span class='stratn'>(N=510)</span></span></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class='rowlabel firstrow'>Age (years)</td>
+<td class='rowlabel firstrow'><span class='varlabel'>Age<span class='varunits'> (years)</span></span></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -66,7 +66,7 @@ It can look like this:
 <td class='lastrow'>62.0 [45.0, 69.0]</td>
 </tr>
 <tr>
-<td class='rowlabel firstrow'>testost</td>
+<td class='rowlabel firstrow'><span class='varlabel'>testost</span></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -90,7 +90,7 @@ It can look like this:
 <td class='lastrow'>12 (2.4%)</td>
 </tr>
 <tr>
-<td class='rowlabel firstrow'>prolactn</td>
+<td class='rowlabel firstrow'><span class='varlabel'>prolactn</span></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
 <td class='firstrow'></td>
@@ -133,23 +133,23 @@ tbl_summary(blood,
     add_overall(last = TRUE)
 ```
 
-<!--html_preserve--><div id="atlawdvxwa" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#atlawdvxwa table {
+<!--html_preserve--><div id="lwsczcpfoi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#lwsczcpfoi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#atlawdvxwa thead, #atlawdvxwa tbody, #atlawdvxwa tfoot, #atlawdvxwa tr, #atlawdvxwa td, #atlawdvxwa th {
+#lwsczcpfoi thead, #lwsczcpfoi tbody, #lwsczcpfoi tfoot, #lwsczcpfoi tr, #lwsczcpfoi td, #lwsczcpfoi th {
   border-style: none;
 }
 
-#atlawdvxwa p {
+#lwsczcpfoi p {
   margin: 0;
   padding: 0;
 }
 
-#atlawdvxwa .gt_table {
+#lwsczcpfoi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -175,12 +175,12 @@ tbl_summary(blood,
   border-left-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_caption {
+#lwsczcpfoi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#atlawdvxwa .gt_title {
+#lwsczcpfoi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -192,7 +192,7 @@ tbl_summary(blood,
   border-bottom-width: 0;
 }
 
-#atlawdvxwa .gt_subtitle {
+#lwsczcpfoi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -204,7 +204,7 @@ tbl_summary(blood,
   border-top-width: 0;
 }
 
-#atlawdvxwa .gt_heading {
+#lwsczcpfoi .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -216,13 +216,13 @@ tbl_summary(blood,
   border-right-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_bottom_border {
+#lwsczcpfoi .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_col_headings {
+#lwsczcpfoi .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -237,7 +237,7 @@ tbl_summary(blood,
   border-right-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_col_heading {
+#lwsczcpfoi .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -257,7 +257,7 @@ tbl_summary(blood,
   overflow-x: hidden;
 }
 
-#atlawdvxwa .gt_column_spanner_outer {
+#lwsczcpfoi .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -269,15 +269,15 @@ tbl_summary(blood,
   padding-right: 4px;
 }
 
-#atlawdvxwa .gt_column_spanner_outer:first-child {
+#lwsczcpfoi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#atlawdvxwa .gt_column_spanner_outer:last-child {
+#lwsczcpfoi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#atlawdvxwa .gt_column_spanner {
+#lwsczcpfoi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -289,11 +289,11 @@ tbl_summary(blood,
   width: 100%;
 }
 
-#atlawdvxwa .gt_spanner_row {
+#lwsczcpfoi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#atlawdvxwa .gt_group_heading {
+#lwsczcpfoi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -319,7 +319,7 @@ tbl_summary(blood,
   text-align: left;
 }
 
-#atlawdvxwa .gt_empty_group_heading {
+#lwsczcpfoi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -334,15 +334,15 @@ tbl_summary(blood,
   vertical-align: middle;
 }
 
-#atlawdvxwa .gt_from_md > :first-child {
+#lwsczcpfoi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#atlawdvxwa .gt_from_md > :last-child {
+#lwsczcpfoi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#atlawdvxwa .gt_row {
+#lwsczcpfoi .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -361,7 +361,7 @@ tbl_summary(blood,
   overflow-x: hidden;
 }
 
-#atlawdvxwa .gt_stub {
+#lwsczcpfoi .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -374,7 +374,7 @@ tbl_summary(blood,
   padding-right: 5px;
 }
 
-#atlawdvxwa .gt_stub_row_group {
+#lwsczcpfoi .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -388,15 +388,15 @@ tbl_summary(blood,
   vertical-align: top;
 }
 
-#atlawdvxwa .gt_row_group_first td {
+#lwsczcpfoi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#atlawdvxwa .gt_row_group_first th {
+#lwsczcpfoi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#atlawdvxwa .gt_summary_row {
+#lwsczcpfoi .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -406,16 +406,16 @@ tbl_summary(blood,
   padding-right: 5px;
 }
 
-#atlawdvxwa .gt_first_summary_row {
+#lwsczcpfoi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_first_summary_row.thick {
+#lwsczcpfoi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#atlawdvxwa .gt_last_summary_row {
+#lwsczcpfoi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -425,7 +425,7 @@ tbl_summary(blood,
   border-bottom-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_grand_summary_row {
+#lwsczcpfoi .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -435,7 +435,7 @@ tbl_summary(blood,
   padding-right: 5px;
 }
 
-#atlawdvxwa .gt_first_grand_summary_row {
+#lwsczcpfoi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -445,7 +445,7 @@ tbl_summary(blood,
   border-top-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_last_grand_summary_row_top {
+#lwsczcpfoi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -455,11 +455,11 @@ tbl_summary(blood,
   border-bottom-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_striped {
+#lwsczcpfoi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#atlawdvxwa .gt_table_body {
+#lwsczcpfoi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -468,7 +468,7 @@ tbl_summary(blood,
   border-bottom-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_footnotes {
+#lwsczcpfoi .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -482,7 +482,7 @@ tbl_summary(blood,
   border-right-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_footnote {
+#lwsczcpfoi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -491,7 +491,7 @@ tbl_summary(blood,
   padding-right: 5px;
 }
 
-#atlawdvxwa .gt_sourcenotes {
+#lwsczcpfoi .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -505,7 +505,7 @@ tbl_summary(blood,
   border-right-color: #D3D3D3;
 }
 
-#atlawdvxwa .gt_sourcenote {
+#lwsczcpfoi .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -513,72 +513,72 @@ tbl_summary(blood,
   padding-right: 5px;
 }
 
-#atlawdvxwa .gt_left {
+#lwsczcpfoi .gt_left {
   text-align: left;
 }
 
-#atlawdvxwa .gt_center {
+#lwsczcpfoi .gt_center {
   text-align: center;
 }
 
-#atlawdvxwa .gt_right {
+#lwsczcpfoi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#atlawdvxwa .gt_font_normal {
+#lwsczcpfoi .gt_font_normal {
   font-weight: normal;
 }
 
-#atlawdvxwa .gt_font_bold {
+#lwsczcpfoi .gt_font_bold {
   font-weight: bold;
 }
 
-#atlawdvxwa .gt_font_italic {
+#lwsczcpfoi .gt_font_italic {
   font-style: italic;
 }
 
-#atlawdvxwa .gt_super {
+#lwsczcpfoi .gt_super {
   font-size: 65%;
 }
 
-#atlawdvxwa .gt_footnote_marks {
+#lwsczcpfoi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#atlawdvxwa .gt_asterisk {
+#lwsczcpfoi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#atlawdvxwa .gt_indent_1 {
+#lwsczcpfoi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#atlawdvxwa .gt_indent_2 {
+#lwsczcpfoi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#atlawdvxwa .gt_indent_3 {
+#lwsczcpfoi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#atlawdvxwa .gt_indent_4 {
+#lwsczcpfoi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#atlawdvxwa .gt_indent_5 {
+#lwsczcpfoi .gt_indent_5 {
   text-indent: 25px;
 }
 
-#atlawdvxwa .katex-display {
+#lwsczcpfoi .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#atlawdvxwa div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#lwsczcpfoi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -628,9 +628,8 @@ N = 510</span><span class="gt_footnote_marks" style="white-space:nowrap;font-sty
 <td headers="stat_2" class="gt_row gt_center">29 (18%)</td>
 <td headers="stat_0" class="gt_row gt_center">77 (15%)</td></tr>
   </tbody>
-  
-  <tfoot class="gt_footnotes">
-    <tr>
+  <tfoot>
+    <tr class="gt_footnotes">
       <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> <span class='gt_from_md'>n (%)</span></td>
     </tr>
   </tfoot>
@@ -682,7 +681,8 @@ df <- bind_rows(
 ```
 
 ``` error
-Error: object 'base' not found
+Error:
+! object 'base' not found
 ```
 
 ``` r
@@ -712,7 +712,7 @@ tbl
 function(src, ...) {
   UseMethod("tbl")
 }
-<bytecode: 0x55ad4915d138>
+<bytecode: 0x557bcf8fe720>
 <environment: namespace:dplyr>
 ```
 

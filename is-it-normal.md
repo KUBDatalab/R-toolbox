@@ -83,14 +83,14 @@ normal_test_data |>
 ```
 
 ``` output
-`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+`stat_bin()` using `bins = 30`. Pick better value `binwidth`.
 ```
 
-<img src="fig/is-it-normal-rendered-histogram-1.png" style="display: block; margin: auto;" />
+<img src="fig/is-it-normal-rendered-histogram-1.png" alt="" style="display: block; margin: auto;" />
 
 A normal distribution would have this shape:
 
-<img src="fig/is-it-normal-rendered-normal_curve-1.png" style="display: block; margin: auto;" />
+<img src="fig/is-it-normal-rendered-normal_curve-1.png" alt="" style="display: block; margin: auto;" />
 Our histogram does not really look like the theoretical curve.
 The fact that mean
 and median are almost identical was not a sufficient criterium for
@@ -106,7 +106,7 @@ normal_test_data |>
   geom_density()
 ```
 
-<img src="fig/is-it-normal-rendered-densityplot-1.png" style="display: block; margin: auto;" />
+<img src="fig/is-it-normal-rendered-densityplot-1.png" alt="" style="display: block; margin: auto;" />
 
 We can think of this as a histogram with infinitely small bins.
 
@@ -140,7 +140,7 @@ normal_test_data |>
   geom_qq_line()
 ```
 
-<img src="fig/is-it-normal-rendered-qq-plot-1.png" style="display: block; margin: auto;" />
+<img src="fig/is-it-normal-rendered-qq-plot-1.png" alt="" style="display: block; margin: auto;" />
 
 The `geom_qq` function calculate and plots which percentile an
 observation is in.
@@ -174,7 +174,7 @@ wrong with the data - in regards to how it deviates from normalcy.
 | Above     | Above      | Right skewed | A tail that stretches to the higher values - the extreme values are larger. |
 | Below     | Below      | Left skewed  | A tail that stretches to the lower values - the extreme values are smaller. |
 
-<img src="fig/is-it-normal-rendered-different_kurtoses-1.png" style="display: block; margin: auto;" />
+<img src="fig/is-it-normal-rendered-different_kurtoses-1.png" alt="" style="display: block; margin: auto;" />
 :::
 
 ## Numerical measures rather than graphical
@@ -195,6 +195,17 @@ Base-R do not have functions for this, but the package `e1071` does:
 
 ``` r
 library(e1071)
+```
+
+``` output
+
+Attaching package: 'e1071'
+```
+
+``` output
+The following object is masked from 'package:ggplot2':
+
+    element
 ```
 
 #### Skewness

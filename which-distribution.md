@@ -232,7 +232,7 @@ And we can get at graphical description as well:
 plot(fit)
 ```
 
-<img src="fig/which-distribution-rendered-plot-fit-1.png" style="display: block; margin: auto;" />
+<img src="fig/which-distribution-rendered-plot-fit-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` output
 ******************************************************************
