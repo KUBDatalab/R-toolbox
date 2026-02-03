@@ -999,36 +999,28 @@ Start by <a href="#lets-get-started-with-rstudio">launching an RStudio
 job</a> and <a href="#creating-a-project">creating a new project</a>.
 Give the project a Directory name that helps you remember this is your
 environment for using Python.</p>
+<div id="callout1" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div class="callout-inner">
+<div class="callout-content">
+<p>The following code set up Python. It should be run in addition to the
+code setting up your R-environment. That is, when setting up your Python
+evironment, first run the code above, and then the code below.</p>
+</div>
+</div>
+</div>
 <p>The following code will allow you to use Python packages in R and
 sets up <code>Tensorflow</code> and <code>Keras</code>, two of the most
 commonly used machine learning packages. Once again, you need to run it
-line by line:</p>
+line by line. Remember to first run the setup for R as shown above.:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Set path to renv cache</span></span>
-<span><span class="fu">writeLines</span><span class="op">(</span><span class="st">'RENV_PATHS_CACHE = "renv/cache"'</span>, <span class="st">".Renviron"</span><span class="op">)</span></span>
-<span><span class="co"># restart R in order to set the environment variable</span></span>
-<span><span class="fu">.rs.restartR</span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Initializing renv. You might be asked if you want to do it.</span></span>
-<span><span class="co"># You do (enter "y").</span></span>
-<span><span class="fu">renv</span><span class="fu">::</span><span class="fu">init</span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">#install all the packages you need. For example:</span></span>
-<span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"textdata"</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"stringr"</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu">install.packages</span><span class="op">(</span><span class="st">"quanteda"</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">#You can add more packages to the environment later</span></span>
-<span><span class="co">#(see below)</span></span>
-<span></span>
-<span><span class="co"># Storing information about installed packages</span></span>
-<span><span class="co"># You might be asked if you want to proceed. You do.</span></span>
-<span><span class="fu">renv</span><span class="fu">::</span><span class="fu">snapshot</span><span class="op">(</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Yes, it should be possible to do this in one go. </span></span>
+<code class="sourceCode R"><span><span class="co"># Yes, it should be possible to do this in one go. </span></span>
 <span><span class="co"># It fails. So, three lines of code. Again, run these</span></span>
 <span><span class="co"># line by line (important!) and select "y" if prompted:</span></span>
 <span><span class="fu">renv</span><span class="fu">::</span><span class="fu">install</span><span class="op">(</span><span class="st">"reticulate"</span>, prompt <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
