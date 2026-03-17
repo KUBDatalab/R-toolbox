@@ -1283,24 +1283,24 @@
     },
     "SQUAREM": {
       "Package": "SQUAREM",
-      "Version": "2021.1",
+      "Version": "2026.1",
       "Source": "Repository",
-      "Date": "2021-01-12",
       "Title": "Squared Extrapolation Methods for Accelerating EM-Like Monotone Algorithms",
-      "Description": "Algorithms for accelerating the convergence of slow, monotone sequences from smooth, contraction mapping such as the EM algorithm. It can be used to accelerate any smooth, linearly convergent acceleration scheme.  A tutorial style introduction to this package is available in a vignette on the CRAN download page or, when the package is loaded in an R session, with vignette(\"SQUAREM\"). Refer to the J Stat Software article: <doi:10.18637/jss.v092.i07>.",
+      "Description": "Algorithms for accelerating the convergence of slow, monotone  sequences from smooth, contraction mappings such as the EM algorithm.  It can be used to accelerate any smooth, linearly convergent scheme.  A tutorial-style introduction is available in vignette(\"SQUAREM\").  See also: Varadhan & Roland (2008) <doi:10.18637/jss.v092.i07>.",
       "Depends": [
-        "R (>= 3.0)"
+        "R (>= 4.0)"
       ],
       "Suggests": [
-        "setRNG"
+        "setRNG",
+        "interval"
       ],
-      "LazyLoad": "yes",
       "License": "GPL (>= 2)",
-      "Author": "Ravi Varadhan",
+      "Authors@R": "person(given = \"Ravi\", family = \"Varadhan\", role = c(\"aut\", \"cre\"), email = \"ravi.varadhan@jhu.edu\")",
+      "Encoding": "UTF-8",
+      "NeedsCompilation": "no",
+      "Author": "Ravi Varadhan [aut, cre]",
       "Maintainer": "Ravi Varadhan <ravi.varadhan@jhu.edu>",
-      "URL": "https://coah.jhu.edu/people/Faculty_personal_Pages/Varadhan.html",
-      "Repository": "CRAN",
-      "NeedsCompilation": "no"
+      "Repository": "CRAN"
     },
     "SparseM": {
       "Package": "SparseM",
@@ -1662,18 +1662,18 @@
     },
     "arm": {
       "Package": "arm",
-      "Version": "1.14-4",
+      "Version": "1.15-1",
       "Source": "Repository",
-      "Date": "2024-4-1",
+      "Date": "2026-3-15",
       "Title": "Data Analysis Using Regression and Multilevel/Hierarchical Models",
       "Authors@R": "c(person(\"Andrew\", \"Gelman\", role = \"aut\", email = \"gelman@stat.columbia.edu\"), person(\"Yu-Sung\", \"Su\", role =  c(\"aut\", \"cre\"),  email = \"suyusung@tsinghua.edu.cn\",  comment = c(ORCID = \"0000-0001-5021-8209\")), person(\"Masanao\", \"Yajima\", role =  \"ctb\", email = \"yajima@bu.edu\"), person(\"Jennifer\", \"Hill\", role =  \"ctb\", email = \"jennifer.hill@nyu.edu\"), person(\"Maria Grazia\", \"Pittau\", role =  \"ctb\", email = \"grazia@stat.columbia.edu\"), person(\"Jouni\", \"Kerman\", role =  \"ctb\", email = \"jouni@kerman.com\"), person(\"Tian\", \"Zheng\", role =  \"ctb\", email = \"tzheng@stat.columbia.edu\"), person(\"Vincent\", \"Dorie\", role =  \"ctb\", email = \"vjd4@nyu.edu\") )",
-      "Author": "Andrew Gelman [aut], Yu-Sung Su [aut, cre] (<https://orcid.org/0000-0001-5021-8209>), Masanao Yajima [ctb], Jennifer Hill [ctb], Maria Grazia Pittau [ctb], Jouni Kerman [ctb], Tian Zheng [ctb], Vincent Dorie [ctb]",
+      "Author": "Andrew Gelman [aut], Yu-Sung Su [aut, cre] (ORCID: <https://orcid.org/0000-0001-5021-8209>), Masanao Yajima [ctb], Jennifer Hill [ctb], Maria Grazia Pittau [ctb], Jouni Kerman [ctb], Tian Zheng [ctb], Vincent Dorie [ctb]",
       "Maintainer": "Yu-Sung Su <suyusung@tsinghua.edu.cn>",
       "BugReports": "https://github.com/suyusung/arm/issues/",
       "Depends": [
         "R (>= 3.1.0)",
         "MASS",
-        "Matrix (>= 1.0)",
+        "Matrix (>= 1.6-1.1)",
         "stats",
         "lme4 (>= 1.0)"
       ],
@@ -1687,7 +1687,7 @@
         "utils"
       ],
       "Description": "Functions to accompany A. Gelman and J. Hill, Data Analysis Using Regression and Multilevel/Hierarchical Models, Cambridge University Press, 2007.",
-      "License": "GPL (> 2)",
+      "License": "GPL (>= 2)",
       "URL": "https://CRAN.R-project.org/package=arm",
       "NeedsCompilation": "no",
       "Repository": "CRAN"
@@ -4578,7 +4578,7 @@
     },
     "future": {
       "Package": "future",
-      "Version": "1.69.0",
+      "Version": "1.70.0",
       "Source": "Repository",
       "Title": "Unified Parallel and Distributed Processing in R for Everyone",
       "Depends": [
@@ -4590,6 +4590,7 @@
         "listenv (>= 0.8.0)",
         "parallel",
         "parallelly (>= 1.44.0)",
+        "tools",
         "utils"
       ],
       "Suggests": [
@@ -5470,7 +5471,7 @@
     },
     "globals": {
       "Package": "globals",
-      "Version": "0.19.0",
+      "Version": "0.19.1",
       "Source": "Repository",
       "Depends": [
         "R (>= 3.1.2)"
@@ -7223,7 +7224,7 @@
     },
     "listenv": {
       "Package": "listenv",
-      "Version": "0.10.0",
+      "Version": "0.10.1",
       "Source": "Repository",
       "Depends": [
         "R (>= 3.1.2)"
@@ -7242,6 +7243,8 @@
       "URL": "https://listenv.futureverse.org, https://github.com/futureverse/listenv",
       "BugReports": "https://github.com/futureverse/listenv/issues",
       "RoxygenNote": "7.3.3",
+      "Encoding": "UTF-8",
+      "Language": "en-US",
       "NeedsCompilation": "no",
       "Author": "Henrik Bengtsson [aut, cre, cph]",
       "Maintainer": "Henrik Bengtsson <henrikb@braju.com>",
@@ -8089,10 +8092,10 @@
     },
     "mvtnorm": {
       "Package": "mvtnorm",
-      "Version": "1.3-3",
+      "Version": "1.3-6",
       "Source": "Repository",
       "Title": "Multivariate Normal and t Distributions",
-      "Date": "2025-01-09",
+      "Date": "2026-03-13",
       "Authors@R": "c(person(\"Alan\", \"Genz\", role = \"aut\"), person(\"Frank\", \"Bretz\", role = \"aut\"), person(\"Tetsuhisa\", \"Miwa\", role = \"aut\"), person(\"Xuefei\", \"Mi\", role = \"aut\"), person(\"Friedrich\", \"Leisch\", role = \"ctb\"), person(\"Fabian\", \"Scheipl\", role = \"ctb\"), person(\"Bjoern\", \"Bornkamp\", role = \"ctb\", comment = c(ORCID = \"0000-0002-6294-8185\")), person(\"Martin\", \"Maechler\", role = \"ctb\", comment = c(ORCID = \"0000-0002-8685-9910\")), person(\"Torsten\", \"Hothorn\", role = c(\"aut\", \"cre\"), email = \"Torsten.Hothorn@R-project.org\", comment = c(ORCID = \"0000-0001-8301-0471\")))",
       "Description": "Computes multivariate normal and t probabilities, quantiles, random deviates,  and densities. Log-likelihoods for multivariate Gaussian models and Gaussian copulae  parameterised by Cholesky factors of covariance or precision matrices are implemented  for interval-censored and exact data, or a mix thereof. Score functions for these  log-likelihoods are available. A class representing multiple lower triangular matrices  and corresponding methods are part of this package.",
       "Imports": [
@@ -8103,12 +8106,13 @@
       ],
       "Suggests": [
         "qrng",
-        "numDeriv"
+        "numDeriv",
+        "bibtex"
       ],
       "License": "GPL-2",
       "URL": "http://mvtnorm.R-forge.R-project.org",
       "NeedsCompilation": "yes",
-      "Author": "Alan Genz [aut], Frank Bretz [aut], Tetsuhisa Miwa [aut], Xuefei Mi [aut], Friedrich Leisch [ctb], Fabian Scheipl [ctb], Bjoern Bornkamp [ctb] (<https://orcid.org/0000-0002-6294-8185>), Martin Maechler [ctb] (<https://orcid.org/0000-0002-8685-9910>), Torsten Hothorn [aut, cre] (<https://orcid.org/0000-0001-8301-0471>)",
+      "Author": "Alan Genz [aut], Frank Bretz [aut], Tetsuhisa Miwa [aut], Xuefei Mi [aut], Friedrich Leisch [ctb], Fabian Scheipl [ctb], Bjoern Bornkamp [ctb] (ORCID: <https://orcid.org/0000-0002-6294-8185>), Martin Maechler [ctb] (ORCID: <https://orcid.org/0000-0002-8685-9910>), Torsten Hothorn [aut, cre] (ORCID: <https://orcid.org/0000-0001-8301-0471>)",
       "Maintainer": "Torsten Hothorn <Torsten.Hothorn@R-project.org>",
       "Repository": "CRAN"
     },
@@ -9093,10 +9097,11 @@
     },
     "png": {
       "Package": "png",
-      "Version": "0.1-8",
+      "Version": "0.1-9",
       "Source": "Repository",
       "Title": "Read and write PNG images",
-      "Author": "Simon Urbanek <Simon.Urbanek@r-project.org>",
+      "Author": "Simon Urbanek [aut, cre, cph] (https://urbanek.nz, ORCID: <https://orcid.org/0000-0003-2297-1732>)",
+      "Authors@R": "person(\"Simon\", \"Urbanek\", role=c(\"aut\",\"cre\",\"cph\"), email=\"Simon.Urbanek@r-project.org\", comment=c(\"https://urbanek.nz\", ORCID=\"0000-0003-2297-1732\"))",
       "Maintainer": "Simon Urbanek <Simon.Urbanek@r-project.org>",
       "Depends": [
         "R (>= 2.9.0)"
@@ -9104,7 +9109,8 @@
       "Description": "This package provides an easy and simple way to read, write and display bitmap images stored in the PNG format. It can read and write both files and in-memory raw vectors.",
       "License": "GPL-2 | GPL-3",
       "SystemRequirements": "libpng",
-      "URL": "http://www.rforge.net/png/",
+      "URL": "https://www.rforge.net/png/",
+      "BugReports": "https://github.com/s-u/png/issues/",
       "NeedsCompilation": "yes",
       "Repository": "CRAN"
     },
@@ -9197,7 +9203,7 @@
     },
     "prodlim": {
       "Package": "prodlim",
-      "Version": "2025.04.28",
+      "Version": "2026.03.11",
       "Source": "Repository",
       "Title": "Product-Limit Estimation for Censored Event History Analysis",
       "Authors@R": "person(given = c(\"Thomas\", \"A.\"), family = \"Gerds\", role = c(\"aut\", \"cre\"), email = \"tag@biostat.ku.dk\")",
@@ -9212,6 +9218,7 @@
         "data.table",
         "grDevices",
         "ggplot2",
+        "scales",
         "graphics",
         "diagram",
         "survival",
@@ -9220,8 +9227,11 @@
       ],
       "Suggests": [
         "tibble",
-        "pammtools",
-        "ggthemes"
+        "ggthemes",
+        "riskRegression",
+        "testthat",
+        "etm",
+        "survey"
       ],
       "LinkingTo": [
         "Rcpp"
