@@ -731,15 +731,15 @@ summary(penguins)
                                  Mean   :43.92   Mean   :17.15  
                                  3rd Qu.:48.50   3rd Qu.:18.70  
                                  Max.   :59.60   Max.   :21.50  
-                                 NA's   :2       NA's   :2      
+                                 NAs    :2       NAs    :2      
  flipper_length_mm  body_mass_g       sex           year     
  Min.   :172.0     Min.   :2700   female:165   Min.   :2007  
  1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  
- Median :197.0     Median :4050   NA's  : 11   Median :2008  
+ Median :197.0     Median :4050   NAs   : 11   Median :2008  
  Mean   :200.9     Mean   :4202                Mean   :2008  
  3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
  Max.   :231.0     Max.   :6300                Max.   :2009  
- NA's   :2         NA's   :2                                 
+ NAs    :2         NAs    :2                                 
 ```
 
 Here we get the range, the 1st and 3rd quantiles (and from those the

@@ -3024,6 +3024,12 @@ library(lme4)
 Loading required package: Matrix
 ```
 
+``` output
+Registered S3 method overwritten by 'lme4':
+  method           from
+  na.action.merMod car 
+```
+
 ``` r
 library(lmerTest)
 ```
