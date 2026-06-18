@@ -1115,13 +1115,11 @@ group  2   0.872 0.4296
       27               
 ```
 
+
+
 **Interpretation:**
 
-Levene’s test yields an F-statistic of 0.87 
-with a p-value of 0.43. We
-fail to reject the null hypothesis.
-This means there is
-no evidence of differing variances across clinics.
+Levene's test yields an F-statistic of 0.87 with a p-value of 0.43. We fail to reject the null hypothesis. This means there is no evidence of differing variances across clinics. 
 
 ::::
 
