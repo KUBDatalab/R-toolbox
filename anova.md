@@ -112,7 +112,7 @@ penguins |>
   facet_wrap(~species)
 ```
 
-<img src="fig/anova-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/anova-rendered-histogram-1.png" alt="" style="display: block; margin: auto;" />
 That looks reasonable.
 
 And the residuals?
