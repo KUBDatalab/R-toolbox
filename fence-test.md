@@ -148,6 +148,38 @@ eksempelvis "Mac" i en group-tab, så skifter de andre group-tabs også til
 "coatless-rpkg/livelink"
 
 
+``` r
+library(livelink)
+```
+
+``` error
+Error in `library()`:
+! there is no package called 'livelink'
+```
+
+
+``` r
+link <- webr_repl_link({
+  data(mtcars)
+  plot(mtcars$mpg, mtcars$wt)
+})
+```
+
+``` error
+Error in `webr_repl_link()`:
+! could not find function "webr_repl_link"
+```
+
+``` r
+print(link)
+```
+
+``` error
+Error:
+! object 'link' not found
+```
+
+
 
 ``` r
 library(tidyverse)
