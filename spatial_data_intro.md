@@ -53,48 +53,17 @@ terra 1.9.27
 ``` r
 par(mfrow = c(1, 2))
 
-f <- "episodes/data/dhm_koebenhavn_frederiksberg_10m.tif"
+f <- "data/dhm_koebenhavn_frederiksberg_10m.tif"
 
 r = rast(f)
-```
-
-``` warning
-Warning: episodes/data/dhm_koebenhavn_frederiksberg_10m.tif: No such file or
-directory (GDAL error 4)
-```
-
-``` error
-Error:
-! [rast] file does not exist: episodes/data/dhm_koebenhavn_frederiksberg_10m.tif
-```
-
-``` r
 plot(r, main = "Elevation of Copenhagen & Frederiksberg [m]")
-```
 
-``` error
-Error in `h()`:
-! error in evaluating the argument 'x' in selecting a method for function 'plot': object 'r' not found
-```
-
-``` r
-f <- "episodes/data/bydele_and_frederiksberg.gpkg"
+f <- "data/bydele_and_frederiksberg.gpkg"
 v = vect(f)
-```
-
-``` error
-Error:
-! [vect] file does not exist: episodes/data/bydele_and_frederiksberg.gpkg
-```
-
-``` r
 plot(v, "befolkning", main = "Population of Copenhagen & Frederiksberg")
 ```
 
-``` error
-Error in `h()`:
-! error in evaluating the argument 'x' in selecting a method for function 'plot': object 'v' not found
-```
+<img src="fig/spatial_data_intro-rendered-unnamed-chunk-1-1.png" alt="" style="display: block; margin: auto;" />
 
 ## Raster model
 
