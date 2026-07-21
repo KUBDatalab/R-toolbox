@@ -145,7 +145,11 @@ eksempelvis "Mac" i en group-tab, så skifter de andre group-tabs også til
 
 ## livelink
 
+
+Kan pt installeres fra. Men fungerer ikke her af årsager. Når pakken er tilgængelig på cran er den værd at kigge på.
+
 "coatless-rpkg/livelink"
+
 
 
 
