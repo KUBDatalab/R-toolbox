@@ -436,6 +436,7 @@
       <div class="accordion-body">
         <ul><li><a href="#register-as-a-user">Register as a user</a></li>
 <li><a href="#chose-an-area-of-interest">Chose an area of interest</a></li>
+<li><a href="#quotas">Quotas</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -626,23 +627,46 @@ Browser</a></p>
 without login, but in order to download data you will have to register
 as a user. It is free, although there are limitations on how much data
 you can download.</p>
-<p>The first step is therefore to register as a user on the
+<p>After navigating to the <a href="https://browser.dataspace.copernicus.eu/" class="external-link">Copernicus Browser
+website</a>, the first step is therefore to register as a user on the
 platform:</p>
-<figure><img src="fig/sentinel-01.png" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="chose-an-area-of-interest">Chose an area of interest<a class="anchor" aria-label="anchor" href="#chose-an-area-of-interest"></a></h2>
+<figure><img src="fig/sentinel-01.png" style="width:50.0%" class="figure mx-auto d-block"></figure><p>Following the ordinary registry process including confirming your
+email, we are ready to locate the are we are interested in.</p>
+</section><section><h2 class="section-heading" id="chose-an-area-of-interest">Chose an area of interest<a class="anchor" aria-label="anchor" href="#chose-an-area-of-interest"></a></h2>
 <hr class="half-width"><p>Zoom in on the area you are interested in. Depending on the specific
 satelite, and area, images will be recorded several times pr week. Those
 images are rather large, and although we can download the entire
 recording, we often download a smaller part of the image. This also make
 subsequent data manipulation easier and faster.</p>
-<figure><img src="fig/sentinel-02.png" class="figure mx-auto d-block"></figure><p>den skal findes i sentinelbilleder, og de skal i øvrigt omdøbes.</p>
-<p>Here we select a part of the creater Copenhagen area.</p>
-<p>Vi vælger et udsnit af københavn. man akn se at vi har valgt 317
-kvadratkilometer</p>
-<p>husk - show more for at få alle bånd med. Klik download, og pak
-zip-filen ud!</p>
-<figure><img src="fig/sentinel-03.png" class="figure mx-auto d-block"></figure><figure><img src="fig/sentinel-04.png" class="figure mx-auto d-block"></figure><p><img src="fig/sentinel-05.png" class="figure"><img src="fig/sentinel-06.png" class="figure"><img src="fig/sentinel-07.png" class="figure"><img src="fig/sentinel-08.png" class="figure"> ##
-Quotas</p>
-<p><a href="https://browser.dataspace.copernicus.eu/" class="external-link uri">https://browser.dataspace.copernicus.eu/</a></p>
+<figure><img src="fig/sentinel-02.png" class="figure mx-auto d-block"></figure><p>Click the pentagon in the right side. Chosing the square tools, we
+can select a square/rectangular area.</p>
+<p>Here we have selected a part of the creater Copenhagen area.</p>
+<figure><img src="fig/sentinel-03.png" alt="A selection of Copenhagen" class="figure mx-auto d-block"><div class="figcaption">A selection of Copenhagen</div>
+</figure><p>Next we select the data collection we want to work with. Several
+collections exist, and information about them are provided by clicking
+on the “i”-icon.</p>
+<p>Here we chose the Sentinel-2 L2A collection. It contains
+multispectral recordings, corrected for atmospheric effects.</p>
+<figure><img src="fig/sentinel-04a.png" style="width:50.0%" class="figure mx-auto d-block"></figure><p>We now select the date from which we want to retrieve data. We also
+chose a cloud cover of 0%. Note that the cloud cover is calculated based
+on the entire image. A cloud cover of 5% might be problematic if all the
+clouds are above the area of interest.</p>
+<figure><img src="fig/sentinel-04.png" style="width:50.0%" class="figure mx-auto d-block"></figure><p>Grey dates are dates where imaging exists, a blue frame indicate that
+imaging with the specified maximum cloud cover exists.</p>
+<figure><img src="fig/sentinel-05.png" style="width:50.0%" class="figure mx-auto d-block"></figure><p>After chosing a date, click the download image icon on the right</p>
+<figure><img src="fig/sentinel-06.png" style="width:50.0%" class="figure mx-auto d-block"></figure><p>In the dialogue box, select “Analytical”. Chose image format,
+resolution and coordinate system, and chose the bands you want to
+download. For the purposes of introductory training here, B02, B03, B04
+and B08 are enough.</p>
+<figure><img src="fig/sentinel-07.png" style="width:50.0%" class="figure mx-auto d-block"></figure><p>Finally click download. Data is downloaded as a zip-file. When that
+has been unzipped, the individual exposures are available.</p>
+<figure><img src="fig/sentinel-08.png" style="width:50.0%" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="quotas">Quotas<a class="anchor" aria-label="anchor" href="#quotas"></a></h2>
+<hr class="half-width"><p>General users, that do not pay for the product, have limits on their
+use. Your current use can be found by clicking “SH DASHBOARD” in the
+left side of the screen. You get get 30 000 processing units and 30 000
+requests each month. The math behind the use is a bit opaque. Making
+this set of training materials have used less than 10% of the monthly
+quota.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -690,7 +714,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
