@@ -118,7 +118,7 @@
     <a id="search-button" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
 </nav><aside class="col-md-12 lesson-progress"><div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 92%" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">92%</div>
+    <div class="progress-bar library" role="progressbar" style="width: 93%" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">93%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -433,7 +433,7 @@
 <div class="accordion accordion-flush" id="accordionFlush28">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading28">
-        <a href="git-00-setup.html">27. Setup for Git</a>
+        <a href="gis_raster-data.html">27. Raster data</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -442,7 +442,7 @@
 <div class="accordion accordion-flush" id="accordionFlush29">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading29">
-        <a href="git-01-git-intro.html">28. Introduction to Git(Hub)</a>
+        <a href="git-00-setup.html">28. Setup for Git</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -451,7 +451,7 @@
 <div class="accordion accordion-flush" id="accordionFlush30">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading30">
-        <a href="git-09-practice.html">29. Practice makes perfect</a>
+        <a href="git-01-git-intro.html">29. Introduction to Git(Hub)</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -460,7 +460,16 @@
 <div class="accordion accordion-flush" id="accordionFlush31">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading31">
-        <a href="stat-tests-1.html">30. Statistical tests</a>
+        <a href="git-09-practice.html">30. Practice makes perfect</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush32">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading32">
+        <a href="stat-tests-1.html">31. Statistical tests</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -472,7 +481,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        31. When install.packages fail
+        32. When install.packages fail
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -499,19 +508,10 @@
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
-<div class="accordion accordion-flush" id="accordionFlush33">
-  <div class="accordion-item">
-    <div class="accordion-header" id="flush-heading33">
-        <a href="extracting-tiff-layers.html">32. Extracting tiff-layers</a>
-    </div><!--/div.accordion-header-->
-
-  </div><!--/div.accordion-item-->
-</div><!--/div.accordion-flush-->
-
 <div class="accordion accordion-flush" id="accordionFlush34">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading34">
-        <a href="fence-test.html">33. Fences på vores undervisningssider</a>
+        <a href="extracting-tiff-layers.html">33. Extracting tiff-layers</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -520,7 +520,7 @@
 <div class="accordion accordion-flush" id="accordionFlush35">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading35">
-        <a href="making-a-new-course.html">34. Make a new course</a>
+        <a href="fence-test.html">34. Fences på vores undervisningssider</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -529,7 +529,16 @@
 <div class="accordion accordion-flush" id="accordionFlush36">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading36">
-        <a href="checkliste.html">35. Checkliste</a>
+        <a href="making-a-new-course.html">35. Make a new course</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush37">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading37">
+        <a href="checkliste.html">36. Checkliste</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -718,10 +727,40 @@ selected:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ap</span> <span class="op">&lt;-</span> <span class="fu">available.packages</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<p>In this example we find 28183 packages.</p>
+<div class="codewrapper">
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="warning" tabindex="0"><code>Warning: unable to access index for repository https://bioconductor.org/packages/3.23/bioc/src/contrib:
+  cannot open URL 'https://bioconductor.org/packages/3.23/bioc/src/contrib/PACKAGES'</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="warning" tabindex="0"><code>Warning: unable to access index for repository https://bioconductor.org/packages/3.23/data/annotation/src/contrib:
+  cannot open URL 'https://bioconductor.org/packages/3.23/data/annotation/src/contrib/PACKAGES'</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="warning" tabindex="0"><code>Warning: unable to access index for repository https://bioconductor.org/packages/3.23/data/experiment/src/contrib:
+  cannot open URL 'https://bioconductor.org/packages/3.23/data/experiment/src/contrib/PACKAGES'</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="warning" tabindex="0"><code>Warning: unable to access index for repository https://bioconductor.org/packages/3.23/workflows/src/contrib:
+  cannot open URL 'https://bioconductor.org/packages/3.23/workflows/src/contrib/PACKAGES'</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="warning" tabindex="0"><code>Warning: unable to access index for repository https://bioconductor.org/packages/3.23/books/src/contrib:
+  cannot open URL 'https://bioconductor.org/packages/3.23/books/src/contrib/PACKAGES'</code></pre>
+</div>
+<p>In this example we find 24400 packages.</p>
 <p>Rather than viewing all of them, it is better to test if the package
 we are looking for is actually available:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -751,7 +790,7 @@ your current setup.</p>
 <hr class="half-width"><p>The package you want might depend on a more recent version of R. Or
 another package.</p>
 <p>Take a look at the list of available packages we got earlier:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -767,7 +806,7 @@ sure that you have a version of <code>parsnip</code> installed that
 meets the requirements. And also make sure your installed version of R
 is adequate.</p>
 <p>Depending on your setup, the easy way to update R is:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -778,7 +817,7 @@ is adequate.</p>
 <hr class="half-width"><p>For example it could be archived. If a package is no longer
 maintained, and do no longer pass the automatic checks in the
 repositories, it will be archived. However, we can still access it:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -789,7 +828,7 @@ repositories, it will be archived. However, we can still access it:</p>
 control system). This is especially useful if the package is actually
 still maintained but have been archived by CRAN because any error in the
 automatic checks have not yet been fixed:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -810,7 +849,7 @@ installed</a>.</p>
 <p>On a Linux machine you will have to compile most packages, but your
 operating system have access to what it need to do this already.</p>
 <p>Havin prepared by installing Rtools or Xcode, you can now run:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -823,7 +862,7 @@ operating system have access to what it need to do this already.</p>
 github because it has been archived on CRAN. It requires the
 <code>remotes</code> package, and knowledge about where on GitHub the
 package resides:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -907,7 +946,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
