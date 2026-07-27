@@ -119,7 +119,32 @@ all the available packages in the repositories we have selected:
 ap <- available.packages()
 ```
 
-In this example we find 28183 packages.
+``` warning
+Warning: unable to access index for repository https://bioconductor.org/packages/3.23/bioc/src/contrib:
+  cannot open URL 'https://bioconductor.org/packages/3.23/bioc/src/contrib/PACKAGES'
+```
+
+``` warning
+Warning: unable to access index for repository https://bioconductor.org/packages/3.23/data/annotation/src/contrib:
+  cannot open URL 'https://bioconductor.org/packages/3.23/data/annotation/src/contrib/PACKAGES'
+```
+
+``` warning
+Warning: unable to access index for repository https://bioconductor.org/packages/3.23/data/experiment/src/contrib:
+  cannot open URL 'https://bioconductor.org/packages/3.23/data/experiment/src/contrib/PACKAGES'
+```
+
+``` warning
+Warning: unable to access index for repository https://bioconductor.org/packages/3.23/workflows/src/contrib:
+  cannot open URL 'https://bioconductor.org/packages/3.23/workflows/src/contrib/PACKAGES'
+```
+
+``` warning
+Warning: unable to access index for repository https://bioconductor.org/packages/3.23/books/src/contrib:
+  cannot open URL 'https://bioconductor.org/packages/3.23/books/src/contrib/PACKAGES'
+```
+
+In this example we find 24400 packages.
 
 Rather than viewing all of them, it is better to test if the package we are 
 looking for is actually available:
