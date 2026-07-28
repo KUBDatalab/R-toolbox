@@ -15,7 +15,13 @@ exercises: 42
 We are going to work with spectral raster data from the European Sentinel satelites. These satelites capture images of the planet, recording reflected light from the 
 surface in different spectral bands.
 
-![](fig/multispektral_imaging.png){alt="illustration of a sentinel satelite capturing multispectral data"}
+illustration of a sentinel satelite capturing multispectral data
+
+
+[![](fig/multispektral_imaging.png)](fig/multispektral_imaging.png){target="_blank"}
+
+
+## Get the data
 
 In this session we are working with four specific bands:
 
@@ -29,8 +35,7 @@ In this session we are working with four specific bands:
 
 : Selected spectral bands from Sentinel 2. {#tbl-sentinel}
 
-
-Download the files to a folder in your project named `data`, either manually from the linkes above, or by copy-pasting this code:
+Download the files to a folder in your project named `data`, either manually from the links above, or by copy-pasting this code:
 
 
 ``` r
@@ -63,6 +68,8 @@ sentinel <- rast(files)
 
 
 ## Looking at the data
+
+The four files each contain a spectral band, and those four bands are now contained in one object, `sentinel`.
 
 We can access the basic metadata simply by outputting the object:
 
@@ -104,6 +111,7 @@ plot(sentinel[["blue"]])
 
 <img src="fig/gis_raster-data-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
 
+And it is now revealed that we are working with data covering (part of) the Greater Copenhagen area.
 
 :::: challenge
 ## Which of the four bands is the most distinct
@@ -115,7 +123,13 @@ Try plotting the four different bands, and decide which of them you think is the
 
 What is the most distinct is of course a matter of taste, but some would argue that the NIR-band is the one that differs most from the others:
 
-`plot(sentinel[["nir"]])`
+
+``` r
+plot(sentinel[["nir"]])
+```
+
+<img src="fig/gis_raster-data-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" />
+
 
 ::::
 ::::
@@ -189,7 +203,13 @@ Extract the data using values. For a quick result you can use the base plot func
 :::: solution
 ## Solution
 
-`sentinel[["blue"]] |> values(mat = FALSE) |> hist()`
+
+``` r
+sentinel[["blue"]] |> values(mat = FALSE) |> hist()
+```
+
+<img src="fig/gis_raster-data-rendered-unnamed-chunk-7-1.png" alt="" style="display: block; margin: auto;" />
+
 
 Bonus: Try comparing with the NIR-band.
 
@@ -201,7 +221,7 @@ Bonus: Try comparing with the NIR-band.
 
 ## Scaling the data
 
-The data we get from Sentinel has been saved as a 16 bit tiff. That means that the reflektans, which go from 0 - indicating no reflectanse at all, to 1 indicating 100% reflectance, has been encodes with a 16 bit integer, which go from 0 to 65535 (because 2^16 = 65536).
+The data we get from Sentinel has been saved as a 16 bit tiff. That means that the reflektans, which go from 0 - indicating no reflectanse at all, to 1 indicating 100% reflectance, has been encoded as a 16 bit integer, which go from 0 to 65535 (because 2^16 = 65536).
 
 In order to scale the raw data to values closer related to the physical world, we need to scale the data.
 
@@ -240,7 +260,7 @@ This does not affect the plot, but note the difference in scale:
 plot(sentinel[["blue"]])
 ```
 
-<img src="fig/gis_raster-data-rendered-unnamed-chunk-6-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/gis_raster-data-rendered-unnamed-chunk-8-1.png" alt="" style="display: block; margin: auto;" />
 
 
 
@@ -260,7 +280,7 @@ plot(
 )
 ```
 
-<img src="fig/gis_raster-data-rendered-unnamed-chunk-7-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/gis_raster-data-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" />
 
 The range specifies, that the color scale should have a minimum at 0.02 reflectance, and a maximum at 0.17. Values lower than 0.02 will all get the same color, as will values higher than 0.17. This results in a larger difference in colors for the values in between, making it easier to see structure in the data.
 
@@ -291,7 +311,7 @@ plotRGB(sentinel, r = 3, g = 2, b = 1,
   stretch = "lin")
 ```
 
-<img src="fig/gis_raster-data-rendered-unnamed-chunk-9-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/gis_raster-data-rendered-unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" />
 
 `plotRGB` expects values for each band between 0 and 255. We have more physically relevant values, but the `stretch = "lin"` tells `plotRGB` to "stretch" these values to fit the range of 0 to 255.
 
@@ -312,7 +332,7 @@ plotRGB(sentinel, r = 4, g = 3, b = 2,
   stretch = "lin")
 ```
 
-<img src="fig/gis_raster-data-rendered-unnamed-chunk-10-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/gis_raster-data-rendered-unnamed-chunk-12-1.png" alt="" style="display: block; margin: auto;" />
 
 We can use these false colour composites to highlight what is in specific parts of the area we are investigating.
 
@@ -367,7 +387,7 @@ max value   :   1
 plot(ndvi)
 ```
 
-<img src="fig/gis_raster-data-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/gis_raster-data-rendered-unnamed-chunk-15-1.png" alt="" style="display: block; margin: auto;" />
 
 Setting a cutoff where we define areas with an NDVI value larger than 0.4 as vegetation, we can get a map of where there is vegetation in Copenhagen:
 
@@ -375,7 +395,7 @@ Setting a cutoff where we define areas with an NDVI value larger than 0.4 as veg
 plot(ndvi > 0.4)
 ```
 
-<img src="fig/gis_raster-data-rendered-unnamed-chunk-14-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/gis_raster-data-rendered-unnamed-chunk-16-1.png" alt="" style="display: block; margin: auto;" />
 
 We can also get an indication of how much of Copenhagen that is covered in vegetation. We first extract the values, compare them to 0.4, and calculate the mean, giving us the proprotion of cells in the map with an NDVI indicating vegetation:
 
@@ -442,7 +462,7 @@ And then plot it:
 plot(ndvi_class)
 ```
 
-<img src="fig/gis_raster-data-rendered-unnamed-chunk-18-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/gis_raster-data-rendered-unnamed-chunk-20-1.png" alt="" style="display: block; margin: auto;" />
 
 The numbering can be replaced by class-names:
 
