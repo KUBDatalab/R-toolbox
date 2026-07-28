@@ -170,6 +170,10 @@ library(tidyverse)
 ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
+## Tabeller
+
+Der er ikke en direkte måde at justere bredde af tabeller. Men antallet af "-" i linie to har betydning for hvordan pandoc vælger bredden.
+
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
 - Brug fences til at fremhæve eller skjule indhold på siderne.
