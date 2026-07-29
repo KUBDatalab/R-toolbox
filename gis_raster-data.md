@@ -557,7 +557,9 @@ freq(ndvi_class) |>
 6     1 Dense overgrown vegetation   41249  0.9603925
 ```
 
+This indicates that the greater Copenhagen area is rather green.
 
+Other spectral indeces exists, but might require additional spectral bands to the ones we have access to here.
 
 ::: keypoints
 -   FIXME
