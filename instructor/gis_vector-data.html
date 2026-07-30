@@ -614,7 +614,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Vector data</h1>
-        <p>Last updated on 2026-07-29 |
+        <p>Last updated on 2026-07-30 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/gis_vector-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -765,9 +765,9 @@ names of the polygons:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<p>To save space this shows only the first 10 names:</p>
+<p>To save space this code only return the first 10 names:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -871,7 +871,7 @@ is the smallest.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
 <div class="accordion-body">
 <p>We can extract values from the neighborhood object using the
 <code>values()</code> function (just like we did with raster data).
@@ -889,7 +889,7 @@ The last option give a nicer looking output.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -932,7 +932,7 @@ perimeters to the parks.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -956,20 +956,87 @@ perimeters to the parks.</p>
 </h3>
 <pre class="output" tabindex="0"><code>class       : SpatVector
 geometry    : polygons
-dimensions  : 1014, 61  (geometries, attributes)
+dimensions  : 1014, 5  (geometries, attributes)
 extent      : 12.45406, 12.64811, 55.61572, 55.72894  (xmin, xmax, ymin, ymax)
 source      : parks_cph_frederiksberg.gpkg (parks)
 coord. ref. : lon/lat WGS 84 (EPSG:4326)
-names       :  osm_id            name access access.conditi~ alt_name architect barrier building building.levels check_date   (and 51 more)
-type        :   &lt;chr&gt;           &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;    &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;           &lt;chr&gt;      &lt;chr&gt;
-values      : 3098756  Ørstedsparken     NA              NA       NA        NA      NA       NA              NA         NA
-              3098803   Botanisk Have     NA              NA       NA        NA      NA       NA              NA         NA
-              3099108 Hørsholmparken     NA              NA       NA        NA      NA       NA              NA         NA
+names       :  osm_id            name   dog area_m2 perimeter_m
+type        :   &lt;chr&gt;           &lt;chr&gt; &lt;chr&gt;   &lt;num&gt;       &lt;num&gt;
+values      : 3098756  Ørstedsparken    NA 64378.8     1090.32
+              3098803   Botanisk Have    NA  120140     1447.47
+              3099108 Hørsholmparken    NA 15398.7     844.803
               ...</code></pre>
 </div>
-<p>VI SKAL NOK HAVE PILLET NOGET METADATA UD AF DET HER.</p>
+<p>To make further analysis easier, we exclude parks smaller than 2000
+<span class="math inline">\(m^2\)</span>. We can treat the
+<code>park</code> data as a data frame, and select rows based on a
+logical comparison of <code>parks$area_m2</code> with 2000:</p>
+<div class="codewrapper sourceCode" id="cb20">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">parks_clean</span> <span class="op">&lt;-</span> <span class="va">parks</span><span class="op">[</span><span class="va">parks</span><span class="op">$</span><span class="va">area_m2</span> <span class="op">&gt;</span> <span class="fl">2000</span>, <span class="op">]</span> </span></code></pre>
+</div>
 </section><section><h2 class="section-heading" id="spatial-relationships">Spatial Relationships<a class="anchor" aria-label="anchor" href="#spatial-relationships"></a></h2>
-<hr class="half-width"></section><section><h2 class="section-heading" id="availability-analysis">Availability Analysis<a class="anchor" aria-label="anchor" href="#availability-analysis"></a></h2>
+<hr class="half-width"><p>Which neighborhoods have the most parks?</p>
+<p>The function <code>relate()</code> take two spatVector objects, and
+return a logical matrix indicating if there is a relation between the
+objects in the two spatial vectors. It can handle different relations
+(see the list in the documentation running <code>?relate</code>). Here
+we ask if there is an intersection between the objects - more
+intuitively: “is there an overlap”. That also means that some parks
+might be located in more than one neighborhood</p>
+<div class="codewrapper sourceCode" id="cb21">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">intersect_matrix</span> <span class="op">&lt;-</span> <span class="fu">relate</span><span class="op">(</span><span class="va">neighborhoods</span>, <span class="va">parks_clean</span>, relation <span class="op">=</span> <span class="st">"intersects"</span><span class="op">)</span> </span></code></pre>
+</div>
+<p>The result is a logical matrix. We can easily figure out how many
+parks are in each neighbourhood. Each row is one neighbourhood, each
+column is a park. And the cell that intersects a row and a column, is
+TRUE if the park is located (partially) in the neighbourhood. Adding the
+values in each row, tells us how many parks are in each
+neighbourhood:</p>
+<div class="codewrapper sourceCode" id="cb22">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">rowSums</span><span class="op">(</span><span class="va">intersect_matrix</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code> [1] 44 38 24 44 34 27 24 56 31 18 78</code></pre>
+</div>
+<p>We do not get the names, but the order of neighbourhoods in the
+matrix is the same as the order of the names of the neighbourhoods in
+our <code>neighbourhoods</code> data. That means we can augment the
+result and get a nice table:</p>
+<div class="codewrapper sourceCode" id="cb24">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">neighbourhood_stat</span> <span class="op">&lt;-</span> <span class="fu">data.frame</span><span class="op">(</span>name <span class="op">=</span> <span class="va">neighborhoods</span><span class="op">$</span><span class="va">name</span>, count <span class="op">=</span> <span class="fu">rowSums</span><span class="op">(</span><span class="va">intersect_matrix</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">neighbourhood_stat</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>                        name count
+1                   Indre By    44
+2                   Nørrebro    38
+3                    Vanløse    24
+4             Brønshøj-Husum    44
+5                 Bispebjerg    34
+6                 Amager Øst    27
+7                Amager Vest    24
+8  Vesterbro-Kongens Enghave    56
+9                      Valby    31
+10                  Østerbro    18
+11             Frederiksberg    78</code></pre>
+</div>
+</section><section><h2 class="section-heading" id="availability-analysis">Availability Analysis<a class="anchor" aria-label="anchor" href="#availability-analysis"></a></h2>
 <hr class="half-width"></section><section><h2 class="section-heading" id="proximity-analysis">Proximity Analysis<a class="anchor" aria-label="anchor" href="#proximity-analysis"></a></h2>
 <hr class="half-width"></section><section><h2 class="section-heading" id="exporting-results">Exporting Results<a class="anchor" aria-label="anchor" href="#exporting-results"></a></h2>
 <hr class="half-width"><div id="keypoints1" class="callout keypoints">
@@ -1018,7 +1085,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
@@ -1047,8 +1114,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/gis_vector-data.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/gis_vector-data.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2026-07-29",
-  "datePublished": "2026-07-29"
+  "dateModified": "2026-07-30",
+  "datePublished": "2026-07-30"
 }
 
   </script><script>
