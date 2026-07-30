@@ -114,7 +114,7 @@ Use the same technique to extract the names of the parks.
 :::: solution
 ## Solution
 
-To save space this shows only the first 10 names:
+To save space this code only return the first 10 names:
 
 ``` r
 parks$name |> head(n = 10)
@@ -240,8 +240,6 @@ neighborhoods |>
 
 Repeat the calculations we did on the neighborhoods to add areas and perimeters to the parks.
 
-
-
 :::: solution
 ## Solution
 
@@ -264,22 +262,71 @@ parks
 ``` output
 class       : SpatVector
 geometry    : polygons
-dimensions  : 1014, 61  (geometries, attributes)
+dimensions  : 1014, 5  (geometries, attributes)
 extent      : 12.45406, 12.64811, 55.61572, 55.72894  (xmin, xmax, ymin, ymax)
 source      : parks_cph_frederiksberg.gpkg (parks)
 coord. ref. : lon/lat WGS 84 (EPSG:4326)
-names       :  osm_id            name access access.conditi~ alt_name architect barrier building building.levels check_date   (and 51 more)
-type        :   <chr>           <chr>  <chr>           <chr>    <chr>     <chr>   <chr>    <chr>           <chr>      <chr>
-values      : 3098756  Ørstedsparken     NA              NA       NA        NA      NA       NA              NA         NA
-              3098803   Botanisk Have     NA              NA       NA        NA      NA       NA              NA         NA
-              3099108 Hørsholmparken     NA              NA       NA        NA      NA       NA              NA         NA
+names       :  osm_id            name   dog area_m2 perimeter_m
+type        :   <chr>           <chr> <chr>   <num>       <num>
+values      : 3098756  Ørstedsparken    NA 64378.8     1090.32
+              3098803   Botanisk Have    NA  120140     1447.47
+              3099108 Hørsholmparken    NA 15398.7     844.803
               ...
 ```
 
-VI SKAL NOK HAVE PILLET NOGET METADATA UD AF DET HER.
+To make further analysis easier, we exclude parks smaller than 2000 $m^2$. We can treat the `park` data as a data frame, and select rows based on a logical comparison of `parks$area_m2` with 2000:
+
+
+``` r
+parks_clean <- parks[parks$area_m2 > 2000, ] 
+```
 
 
 ## Spatial Relationships
+
+Which neighborhoods have the most parks? 
+
+The function `relate()` take two spatVector objects, and return a logical matrix indicating if there is a relation between the objects in the two spatial vectors. It can handle different relations (see the list in the documentation running `?relate`). Here we ask if there is an intersection between the objects - more intuitively: "is there an overlap". That also means that some parks might be located in more than one neighborhood
+
+
+``` r
+intersect_matrix <- relate(neighborhoods, parks_clean, relation = "intersects") 
+```
+
+The result is a logical matrix. We can easily figure out how many parks are in each neighbourhood. Each row is one neighbourhood, each column is a park. And the cell that intersects a row and a column, is TRUE if the park is located (partially) in the neighbourhood. Adding the values in each row, tells us how many parks are in each neighbourhood: 
+
+
+``` r
+rowSums(intersect_matrix)
+```
+
+``` output
+ [1] 44 38 24 44 34 27 24 56 31 18 78
+```
+
+We do not get the names, but the order of neighbourhoods in the matrix is the same as the order of the names of the neighbourhoods in our `neighbourhoods` data. That means we can augment the result and get a nice table:
+
+
+``` r
+neighbourhood_stat <- data.frame(name = neighborhoods$name, count = rowSums(intersect_matrix))
+neighbourhood_stat
+```
+
+``` output
+                        name count
+1                   Indre By    44
+2                   Nørrebro    38
+3                    Vanløse    24
+4             Brønshøj-Husum    44
+5                 Bispebjerg    34
+6                 Amager Øst    27
+7                Amager Vest    24
+8  Vesterbro-Kongens Enghave    56
+9                      Valby    31
+10                  Østerbro    18
+11             Frederiksberg    78
+```
+
 
 ## Availability Analysis
 
