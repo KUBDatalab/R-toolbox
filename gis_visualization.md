@@ -1,0 +1,26 @@
+---
+title: "GIS visualization"
+teaching: 42
+exercises: 42
+---
+
+::: questions
+-   FIXME
+:::
+
+::: objectives
+-   FIXME
+
+:::
+
+
+Visualisering med tidyterra
+
+skal der være indhold?
+
+
+
+::: keypoints
+- FIXME
+
+:::
