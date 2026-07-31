@@ -23,20 +23,7 @@ If we want to make more advanced visualizations, or if we want to make them more
 library(terra)
 library(ggplot2)
 library(tidyterra)
-```
-
-``` error
-Error in `library()`:
-! there is no package called 'tidyterra'
-```
-
-``` r
 library(ggspatial)
-```
-
-``` error
-Error in `library()`:
-! there is no package called 'ggspatial'
 ```
 
 
@@ -101,10 +88,11 @@ ggplot() +
   mapping = aes(fill = nir))
 ```
 
-``` error
-Error in `geom_spatraster()`:
-! could not find function "geom_spatraster"
+``` output
+<SpatRaster> resampled to 500712 cells.
 ```
+
+<img src="fig/gis_visualization-rendered-initial_spat_plot-1.png" alt="" style="display: block; margin: auto;" />
 
 Note the message. There are about 4.3 million cells in the nir-layer of this dataset. In order to speed up the plot, `geom_spatraster()` resamples the data to about 500,000 cells.
 
@@ -122,10 +110,7 @@ ggplot() +
   theme_minimal()
 ```
 
-``` error
-Error in `geom_spatraster()`:
-! could not find function "geom_spatraster"
-```
+<img src="fig/gis_visualization-rendered-nicer_spat_plot-1.png" alt="" style="display: block; margin: auto;" />
 
 Best practice in spatial data visualization is to include both an arrow indicating north, and a scale using km as its unit.
 
@@ -148,16 +133,68 @@ ggplot() +
   theme_minimal()
 ```
 
-``` error
-Error in `geom_spatraster()`:
-! could not find function "geom_spatraster"
-```
+<img src="fig/gis_visualization-rendered-better_spat_plot-1.png" alt="" style="display: block; margin: auto;" />
 
 The north arrow is placed in the *t*op*l*eft corner using the `annotation_north_arrow()` function, and padded with 1 cm of extra space in both directions to move it into the map. By default it is black and white, which can be difficult to see on the mostly darkgrey background, and we have changed the colours to red and white.
 
 The scale, added with `annotation_scale()` take similar arguments.
 
+## Facetting
 
+The only part of the standard ggplot2 template not demonstrated yet, is the facet_*`functions.
+
+If we have more than one layer in our SpatRaster object, we can facet, using `lyr` as the faceting variable:
+
+
+``` r
+ggplot() +
+  geom_spatraster(data  = sentinel) +
+  facet_wrap(~lyr)
+```
+
+``` output
+<SpatRaster> resampled to 500712 cells.
+```
+
+<img src="fig/gis_visualization-rendered-unnamed-chunk-1-1.png" alt="" style="display: block; margin: auto;" />
+
+### RGB composition
+
+
+## Vector data
+
+### Choropleth map
+
+ggplot() +
+  geom_spatvector(data = districts, aes(fill = area_km2), color = "white") +
+  scale_fill_gradient(low = "grey", high = "brown") +
+  labs(title = "Area of districts in Warsaw", fill = expression("Area [km"^2*"]")) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5)
+  )
+
+### Combining layers
+
+ggplot() +
+  geom_spatvector(data = districts, fill = NA) +
+  geom_spatvector(data = parks, fill = "darkgreen", color = NA) +
+  labs(title = "Parks in Warsaw") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5)
+  )
+
+### Reprojecting
+ggplot() +
+  geom_spatvector(data = districts, fill = NA) +
+  geom_spatvector(data = parks, fill = "darkgreen", color = NA) +
+  coord_sf(crs = "EPSG:2180", datum = "EPSG:2180") +
+  labs(title = "Parks in Warsaw") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5)
+  )
 
 ::: keypoints
 - FIXME
