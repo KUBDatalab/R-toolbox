@@ -462,6 +462,8 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#visualization">Visualization</a></li>
+<li><a href="#facetting">Facetting</a></li>
+<li><a href="#vector-data">Vector data</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -644,25 +646,8 @@ package, augmented by the <code>ggspatial</code> package.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">terra</span><span class="op">)</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">ggplot2</span><span class="op">)</span></span>
-<span><span class="kw">library</span><span class="op">(</span><span class="va">tidyterra</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `library()`:
-! there is no package called 'tidyterra'</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb3">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">ggspatial</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `library()`:
-! there is no package called 'ggspatial'</code></pre>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">tidyterra</span><span class="op">)</span></span>
+<span><span class="kw">library</span><span class="op">(</span><span class="va">ggspatial</span><span class="op">)</span></span></code></pre>
 </div>
 <section><h2 class="section-heading" id="visualization">Visualization<a class="anchor" aria-label="anchor" href="#visualization"></a></h2>
 <hr class="half-width"><p>In <code>ggplot2</code> the main functions for making specific graphs
@@ -674,7 +659,7 @@ are the same.</p>
 <div class="section level3">
 <h3 id="raster-data">Raster Data<a class="anchor" aria-label="anchor" href="#raster-data"></a></h3>
 <p>We begin by reading ind some data</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -693,7 +678,7 @@ are the same.</p>
 <div class="accordion-body">
 <p>Make sure you have a <code>data</code> folder in your project folder,
 and then run this code:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -714,7 +699,7 @@ and then run this code:</p>
 </div>
 <p>We need to prepare the data a bit; easier to type names, and a
 rescaling to reflectance values, rather than the 16 bit encoding:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -724,7 +709,7 @@ rescaling to reflectance values, rather than the 16 bit encoding:</p>
 <p>Normally we would pipe in the data to the <code>ggplot()</code>
 function, but <code>geom_spatraster()</code> requires the data to be
 specified directly in the function:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -733,19 +718,18 @@ specified directly in the function:</p>
 <span>  mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">nir</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in `geom_spatraster()`:
-! could not find function "geom_spatraster"</code></pre>
+<pre class="output" tabindex="0"><code>&lt;SpatRaster&gt; resampled to 500712 cells.</code></pre>
 </div>
-<p>Note the message. There are about 4.3 million cells in the nir-layer
+<figure><img src="fig/gis_visualization-rendered-initial_spat_plot-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Note the message. There are about 4.3 million cells in the nir-layer
 of this dataset. In order to speed up the plot,
 <code>geom_spatraster()</code> resamples the data to about 500,000
 cells.</p>
 <p>Having the data in the ggplot environment, we immediately gain access
 to the tools in ggplot2, and it is easy(ish) to adjust colours, titles
 and the general theming:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -758,15 +742,9 @@ and the general theming:</p>
 <span>       fill <span class="op">=</span> <span class="st">"Reflectance"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `geom_spatraster()`:
-! could not find function "geom_spatraster"</code></pre>
-</div>
-<p>Best practice in spatial data visualization is to include both an
+<figure><img src="fig/gis_visualization-rendered-nicer_spat_plot-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Best practice in spatial data visualization is to include both an
 arrow indicating north, and a scale using km as its unit.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -786,13 +764,7 @@ arrow indicating north, and a scale using km as its unit.</p>
 <span>       fill <span class="op">=</span> <span class="st">"Reflectance"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="error" tabindex="0"><code>Error in `geom_spatraster()`:
-! could not find function "geom_spatraster"</code></pre>
-</div>
-<p>The north arrow is placed in the <em>t</em>op<em>l</em>eft corner
+<figure><img src="fig/gis_visualization-rendered-better_spat_plot-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The north arrow is placed in the <em>t</em>op<em>l</em>eft corner
 using the <code>annotation_north_arrow()</code> function, and padded
 with 1 cm of extra space in both directions to move it into the map. By
 default it is black and white, which can be difficult to see on the
@@ -800,6 +772,51 @@ mostly darkgrey background, and we have changed the colours to red and
 white.</p>
 <p>The scale, added with <code>annotation_scale()</code> take similar
 arguments.</p>
+</div>
+</section><section><h2 class="section-heading" id="facetting">Facetting<a class="anchor" aria-label="anchor" href="#facetting"></a></h2>
+<hr class="half-width"><p>The only part of the standard ggplot2 template not demonstrated yet,
+is the facet_*`functions.</p>
+<p>If we have more than one layer in our SpatRaster object, we can
+facet, using <code>lyr</code> as the faceting variable:</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatraster</span><span class="op">(</span>data  <span class="op">=</span> <span class="va">sentinel</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">lyr</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>&lt;SpatRaster&gt; resampled to 500712 cells.</code></pre>
+</div>
+<figure><img src="fig/gis_visualization-rendered-unnamed-chunk-1-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="section level3">
+<h3 id="rgb-composition">RGB composition<a class="anchor" aria-label="anchor" href="#rgb-composition"></a></h3>
+</div>
+</section><section><h2 class="section-heading" id="vector-data">Vector data<a class="anchor" aria-label="anchor" href="#vector-data"></a></h2>
+<hr class="half-width"><div class="section level3">
+<h3 id="choropleth-map">Choropleth map<a class="anchor" aria-label="anchor" href="#choropleth-map"></a></h3>
+<p>ggplot() + geom_spatvector(data = districts, aes(fill = area_km2),
+color = “white”) + scale_fill_gradient(low = “grey”, high = “brown”) +
+labs(title = “Area of districts in Warsaw”, fill = expression(“Area
+[km”^2*”]”)) + theme_minimal() + theme( plot.title = element_text(face =
+“bold”, hjust = 0.5) )</p>
+</div>
+<div class="section level3">
+<h3 id="combining-layers">Combining layers<a class="anchor" aria-label="anchor" href="#combining-layers"></a></h3>
+<p>ggplot() + geom_spatvector(data = districts, fill = NA) +
+geom_spatvector(data = parks, fill = “darkgreen”, color = NA) +
+labs(title = “Parks in Warsaw”) + theme_minimal() + theme( plot.title =
+element_text(face = “bold”, hjust = 0.5) )</p>
+</div>
+<div class="section level3">
+<h3 id="reprojecting">Reprojecting<a class="anchor" aria-label="anchor" href="#reprojecting"></a></h3>
+<p>ggplot() + geom_spatvector(data = districts, fill = NA) +
+geom_spatvector(data = parks, fill = “darkgreen”, color = NA) +
+coord_sf(crs = “EPSG:2180”, datum = “EPSG:2180”) + labs(title = “Parks
+in Warsaw”) + theme_minimal() + theme( plot.title = element_text(face =
+“bold”, hjust = 0.5) )</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -847,7 +864,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
