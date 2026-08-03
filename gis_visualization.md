@@ -58,7 +58,9 @@ Make sure you have a `data` folder in your project folder, and then run this cod
 urls <- c("https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B02_(Raw).tiff",
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B03_(Raw).tiff",
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B04_(Raw).tiff",
-"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B08_(Raw).tiff")
+"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B08_(Raw).tiff",
+"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighborhoods_and_frederiksberg.gpkg",
+"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/parks_cph_frederiksberg.gpkg")
 
 download.file(
   urls,
@@ -160,41 +162,236 @@ ggplot() +
 
 ### RGB composition
 
+Just like we could make an RGB-composite image using `plotRGB`, we can also make  them using `ggplot`:
+
+
+``` r
+ggplot() +
+  geom_spatraster_rgb(data = sentinel, r = 3, g = 2, b = 1, stretch = "lin")
+```
+
+``` output
+! `data` has 4 layers. Selecting layers 3, 2, and 1.
+```
+
+``` output
+<SpatRaster> resampled to 500712 cells.
+```
+
+<img src="fig/gis_visualization-rendered-unnamed-chunk-2-1.png" alt="" style="display: block; margin: auto;" />
+
+And now adding titles, captions etc works just like it normally does using `ggplot`
+
+:::: challenge
+Try to plot the common false color composite, where we place the NIR-band in the red channel, the red band in the green channel and the bu
+
+:::: hint
+
+You can remind yourself of the order of bands in our `sentinel` data running `names(sentinel)`
+
+::::
+
+
+:::: solution
+
+
+``` r
+ggplot() +
+  geom_spatraster_rgb(data = sentinel, r = 4, g = 3 , b = 2, stretch = "lin")
+```
+
+::::
+::::
 
 ## Vector data
 
+### Load data
+
+We are going to work with the neighbourhood and parks data for Copenhagen and Frederiksberg again:
+
+
+``` r
+neighbourhoods <- vect("data/cph_neighborhoods_and_frederiksberg.gpkg")
+parks <- vect("data/parks_cph_frederiksberg.gpkg")
+```
+
+
 ### Choropleth map
 
+If we inspect the `neighbourhoods` data, we can observe that there is a `population` column in the `values` part of it:
+
+
+``` r
+neighbourhoods
+```
+
+``` output
+class       : SpatVector
+geometry    : polygons
+dimensions  : 11, 2  (geometries, attributes)
+extent      : 12.45305, 12.73425, 55.61284, 55.73271  (xmin, xmax, ymin, ymax)
+source      : cph_neighborhoods_and_frederiksberg.gpkg (områder)
+coord. ref. : lon/lat WGS 84 (EPSG:4326)
+names       :      name population
+type        :     <chr>      <num>
+values      :  Indre By      58224
+              Nørrebro      79779
+               Vanløse      40847
+              ...
+```
+
+We can plot the neighbourhoods, and then colour the polygons, based on the value in `population`;
+
+
+``` r
 ggplot() +
-  geom_spatvector(data = districts, aes(fill = area_km2), color = "white") +
+  geom_spatvector(data = neighbourhoods, aes(fill = population))
+```
+
+<img src="fig/gis_visualization-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
+
+Note that we map the colour/fill argument to population just like we normally do when we use `ggplot`.
+
+And we can adjust the plot in the exact same way we would do with any other `ggplot`, and add a north-arrow and scale
+
+
+``` r
+ggplot() +
+  geom_spatvector(data = neighbourhoods, aes(fill = population)) +
   scale_fill_gradient(low = "grey", high = "brown") +
-  labs(title = "Area of districts in Warsaw", fill = expression("Area [km"^2*"]")) +
+  labs(title = "Population of neighbourhoods in Copenhagen and Frederiksberg", fill = expression("Population")  annotation_north_arrow(location = "tl",
+                          pad_x = unit(1, "cm"),
+                          pad_y = unit(1, "cm"),
+                          style = north_arrow_orienteering(fill = c("white", "red"))) +
+    annotation_scale(
+    location = "bl", pad_x = unit(1, "cm"), pad_y = unit(1, "cm"),
+    line_col = "white", text_col = "white", text_cex = 1, bar_cols = c("red", "white")) +) +
   theme_minimal() +
   theme(
     plot.title = element_text(face = "bold", hjust = 0.5)
-  )
+  ) +
+      annotation_north_arrow(location = "tl",
+                          pad_x = unit(1, "cm"),
+                          pad_y = unit(1, "cm")) +
+    annotation_scale(
+    location = "bl", pad_x = unit(1, "cm"), pad_y = unit(1, "cm"), text_cex = 1) 
+```
+
+``` error
+Error in parse(text = input): <text>:4:113: unexpected symbol
+3:   scale_fill_gradient(low = "grey", high = "brown") +
+4:   labs(title = "Population of neighbourhoods in Copenhagen and Frederiksberg", fill = expression("Population")  annotation_north_arrow
+                                                                                                                   ^
+```
+
+These kinds of maps are useful for visualizing quantities that vary amongst geographical areas. 
+The name `choropleth` originates with greek, khōros (χῶρος), meaning "area or region," and plêthos (πλῆθος), meaning "multitude or quantity".
+
+Here we have visualized the population. If we had the data, we could also visualize other quantities: Propotion of elderly people or frequency of certain diseases, to take just two examples.
+
+
+:::: challenge
+
+With the data we have available, and the techniques we have learned about earlier, try to plot the population density of the neighbourhoods.
+
+:::: hint
+
+Population density is defined as the number of people pr square kilometer (or any other measurement of area). We can find the area of each neighbourhood using the `expanse()` function.
+Start by calculating the area, and then divide the population with the area. We can use the `mutate()` just like normally.
+::::
+
+
+
+:::: solution
+
+
+``` r
+pop_density <- neighbourhoods |> 
+  mutate(area = expanse(neighbourhoods, unit = "km")) |> 
+  mutate(pop_density = population/area)
+
+ggplot() +
+  geom_spatvector(data = pop_density, aes(fill = pop_density))
+```
+
+::::
+
+
+::::
 
 ### Combining layers
 
+If we have more than one layer we would like to plot, a `ggplot` method for that exists as well:
+
+
+``` r
 ggplot() +
-  geom_spatvector(data = districts, fill = NA) +
-  geom_spatvector(data = parks, fill = "darkgreen", color = NA) +
-  labs(title = "Parks in Warsaw") +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(face = "bold", hjust = 0.5)
-  )
+  geom_spatvector(data = neighbourhoods) +
+  geom_spatvector(data = parks, fill = "green")
+```
+
+<img src="fig/gis_visualization-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" />
+
+We can even add a layer containing raster data, but we will have to think about the order.
+
+:::: challenge
+
+Try to plot the nir-band from `sentinel`, and then the `neighbourhoods` data. 
+
+
+:::: Hint
+
+Consider playing with the `alpha` and `colour` arguments
+
+::::
+
+:::: solution
+
+One possible way is this.
+
+
+``` r
+ggplot() +
+  geom_spatraster(data= sentinel, mapping = aes(fill = nir)) +
+  geom_spatvector(data = neighbourhoods, alpha = 0, colour= "white") 
+```
+::::
+
+If `alpha` is not set to 0, the second layer will make the first almost invisible. And the default `colour` for plotting the borders between the neighbourhoods is black and also almost invisible.
+
+::::
+
+
 
 ### Reprojecting
+
+Handling the mapping of data described as points on a globe to data described as points on a two-dimensional map, is not trivial, but we have access to functions that do it for us.
+
+That is called `reprojecting`. We have data projected in one system, but would like to have it in another.
+It is generally important to have all data in the same system, but another advantage is that we can project data described as coordinates in degrees, minutes and seconds into coordinates in km (relative to geodaetic points in the landscape definded by Danish Geodata Agency).
+
+
+``` r
 ggplot() +
-  geom_spatvector(data = districts, fill = NA) +
+  geom_spatvector(data = neighbourhoods, fill = NA) +
   geom_spatvector(data = parks, fill = "darkgreen", color = NA) +
-  coord_sf(crs = "EPSG:2180", datum = "EPSG:2180") +
-  labs(title = "Parks in Warsaw") +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(face = "bold", hjust = 0.5)
-  )
+  coord_sf(
+    crs = "EPSG:25832",
+    datum = "EPSG:4258"
+)
+```
+
+<img src="fig/gis_visualization-rendered-unnamed-chunk-6-1.png" alt="" style="display: block; margin: auto;" />
+
+
+Note that the choise of Coordinate Reference System depends on the location. For example it can be relevant to use EPSG::25833 if the data is covering Bornholm.
+
+
+### Interactive maps
+
+Leaflet
+
+
 
 ::: keypoints
 - FIXME
