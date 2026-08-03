@@ -442,7 +442,7 @@
 <div class="accordion accordion-flush" id="accordionFlush29">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading29">
-        <a href="gis_vector-data.html">28. Vector data</a>
+        <a href="gis_vector-data.html">28. Spatial Vector Data</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -591,7 +591,7 @@
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="gis_vector-data.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Vector data
+          Previous: Spatial Vector Data
         </a>
         <a class="chapter-link float-end" href="git-00-setup.html" rel="next">
           Next: Setup for Git...
@@ -600,7 +600,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Spatial visualization</h1>
-        <p>Last updated on 2026-07-31 |
+        <p>Last updated on 2026-08-03 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/gis_visualization.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -670,9 +670,7 @@ are the same.</p>
 <div id="accordionHint1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
-  <h4 class="accordion-header" id="headingHint1">
-  Have to download the data again?
-  </h4>
+  <h4 class="accordion-header" id="headingHint1"> Have to download the data again? </h4>
 </button>
 <div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
@@ -685,7 +683,9 @@ and then run this code:</p>
 <code class="sourceCode R"><span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B02_(Raw).tiff"</span>,</span>
 <span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B03_(Raw).tiff"</span>,</span>
 <span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B04_(Raw).tiff"</span>,</span>
-<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B08_(Raw).tiff"</span><span class="op">)</span></span>
+<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B08_(Raw).tiff"</span>,</span>
+<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighborhoods_and_frederiksberg.gpkg"</span>,</span>
+<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/parks_cph_frederiksberg.gpkg"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">download.file</span><span class="op">(</span></span>
 <span>  <span class="va">urls</span>,</span>
@@ -793,30 +793,316 @@ facet, using <code>lyr</code> as the faceting variable:</p>
 </div>
 <figure><img src="fig/gis_visualization-rendered-unnamed-chunk-1-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div class="section level3">
 <h3 id="rgb-composition">RGB composition<a class="anchor" aria-label="anchor" href="#rgb-composition"></a></h3>
+<p>Just like we could make an RGB-composite image using
+<code>plotRGB</code>, we can also make them using
+<code>ggplot</code>:</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatraster_rgb</span><span class="op">(</span>data <span class="op">=</span> <span class="va">sentinel</span>, r <span class="op">=</span> <span class="fl">3</span>, g <span class="op">=</span> <span class="fl">2</span>, b <span class="op">=</span> <span class="fl">1</span>, stretch <span class="op">=</span> <span class="st">"lin"</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>! `data` has 4 layers. Selecting layers 3, 2, and 1.</code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>&lt;SpatRaster&gt; resampled to 500712 cells.</code></pre>
+</div>
+<figure><img src="fig/gis_visualization-rendered-unnamed-chunk-2-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>And now adding titles, captions etc works just like it normally does
+using <code>ggplot</code></p>
+<div id="challenge1" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
+<div class="callout-content">
+<p>Try to plot the common false color composite, where we place the
+NIR-band in the red channel, the red band in the green channel and the
+bu</p>
+</div>
+</div>
+</div>
+<div id="accordionHint2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint2" aria-expanded="false" aria-controls="collapseHint2">
+  <h4 class="accordion-header" id="headingHint2"> Give me a hint </h4>
+</button>
+<div id="collapseHint2" class="accordion-collapse collapse" aria-labelledby="headingHint2" data-bs-parent="#accordionHint2">
+<div class="accordion-body">
+<p>You can remind yourself of the order of bands in our
+<code>sentinel</code> data running <code>names(sentinel)</code></p>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatraster_rgb</span><span class="op">(</span>data <span class="op">=</span> <span class="va">sentinel</span>, r <span class="op">=</span> <span class="fl">4</span>, g <span class="op">=</span> <span class="fl">3</span> , b <span class="op">=</span> <span class="fl">2</span>, stretch <span class="op">=</span> <span class="st">"lin"</span><span class="op">)</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </section><section><h2 class="section-heading" id="vector-data">Vector data<a class="anchor" aria-label="anchor" href="#vector-data"></a></h2>
 <hr class="half-width"><div class="section level3">
+<h3 id="load-data">Load data<a class="anchor" aria-label="anchor" href="#load-data"></a></h3>
+<p>We are going to work with the neighbourhood and parks data for
+Copenhagen and Frederiksberg again:</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">neighbourhoods</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/cph_neighborhoods_and_frederiksberg.gpkg"</span><span class="op">)</span></span>
+<span><span class="va">parks</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/parks_cph_frederiksberg.gpkg"</span><span class="op">)</span></span></code></pre>
+</div>
+</div>
+<div class="section level3">
 <h3 id="choropleth-map">Choropleth map<a class="anchor" aria-label="anchor" href="#choropleth-map"></a></h3>
-<p>ggplot() + geom_spatvector(data = districts, aes(fill = area_km2),
-color = “white”) + scale_fill_gradient(low = “grey”, high = “brown”) +
-labs(title = “Area of districts in Warsaw”, fill = expression(“Area
-[km”^2*”]”)) + theme_minimal() + theme( plot.title = element_text(face =
-“bold”, hjust = 0.5) )</p>
+<p>If we inspect the <code>neighbourhoods</code> data, we can observe
+that there is a <code>population</code> column in the
+<code>values</code> part of it:</p>
+<div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">neighbourhoods</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>class       : SpatVector
+geometry    : polygons
+dimensions  : 11, 2  (geometries, attributes)
+extent      : 12.45305, 12.73425, 55.61284, 55.73271  (xmin, xmax, ymin, ymax)
+source      : cph_neighborhoods_and_frederiksberg.gpkg (områder)
+coord. ref. : lon/lat WGS 84 (EPSG:4326)
+names       :      name population
+type        :     &lt;chr&gt;      &lt;num&gt;
+values      :  Indre By      58224
+              Nørrebro      79779
+               Vanløse      40847
+              ...</code></pre>
+</div>
+<p>We can plot the neighbourhoods, and then colour the polygons, based
+on the value in <code>population</code>;</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatvector</span><span class="op">(</span>data <span class="op">=</span> <span class="va">neighbourhoods</span>, <span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">population</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<figure><img src="fig/gis_visualization-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Note that we map the colour/fill argument to population just like we
+normally do when we use <code>ggplot</code>.</p>
+<p>And we can adjust the plot in the exact same way we would do with any
+other <code>ggplot</code>, and add a north-arrow and scale</p>
+<div class="codewrapper sourceCode" id="cb19">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1" aria-label="code-block-19-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1" aria-label="code-block-19-2"></a>  <span class="fu">geom_spatvector</span>(<span class="at">data =</span> neighbourhoods, <span class="fu">aes</span>(<span class="at">fill =</span> population)) <span class="sc">+</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1" aria-label="code-block-19-3"></a>  <span class="fu">scale_fill_gradient</span>(<span class="at">low =</span> <span class="st">"grey"</span>, <span class="at">high =</span> <span class="st">"brown"</span>) <span class="sc">+</span></span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1" aria-label="code-block-19-4"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Population of neighbourhoods in Copenhagen and Frederiksberg"</span>, <span class="at">fill =</span> <span class="fu">expression</span>(<span class="st">"Population"</span>)  <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"tl"</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1" aria-label="code-block-19-5"></a>                          <span class="at">pad_x =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"cm"</span>),</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1" aria-label="code-block-19-6"></a>                          <span class="at">pad_y =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"cm"</span>),</span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1" aria-label="code-block-19-7"></a>                          <span class="at">style =</span> <span class="fu">north_arrow_orienteering</span>(<span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"white"</span>, <span class="st">"red"</span>))) <span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1" aria-label="code-block-19-8"></a>    <span class="fu">annotation_scale</span>(</span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1" aria-label="code-block-19-9"></a>    <span class="at">location =</span> <span class="st">"bl"</span>, <span class="at">pad_x =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"cm"</span>), <span class="at">pad_y =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"cm"</span>),</span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1" aria-label="code-block-19-10"></a>    <span class="at">line_col =</span> <span class="st">"white"</span>, <span class="at">text_col =</span> <span class="st">"white"</span>, <span class="at">text_cex =</span> <span class="dv">1</span>, <span class="at">bar_cols =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"white"</span>)) <span class="sc">+</span>) <span class="sc">+</span></span>
+<span id="cb19-11"><a href="#cb19-11" tabindex="-1" aria-label="code-block-19-11"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb19-12"><a href="#cb19-12" tabindex="-1" aria-label="code-block-19-12"></a>  <span class="fu">theme</span>(</span>
+<span id="cb19-13"><a href="#cb19-13" tabindex="-1" aria-label="code-block-19-13"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" tabindex="-1" aria-label="code-block-19-14"></a>  ) <span class="sc">+</span></span>
+<span id="cb19-15"><a href="#cb19-15" tabindex="-1" aria-label="code-block-19-15"></a>      <span class="fu">annotation_north_arrow</span>(<span class="at">location =</span> <span class="st">"tl"</span>,</span>
+<span id="cb19-16"><a href="#cb19-16" tabindex="-1" aria-label="code-block-19-16"></a>                          <span class="at">pad_x =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"cm"</span>),</span>
+<span id="cb19-17"><a href="#cb19-17" tabindex="-1" aria-label="code-block-19-17"></a>                          <span class="at">pad_y =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"cm"</span>)) <span class="sc">+</span></span>
+<span id="cb19-18"><a href="#cb19-18" tabindex="-1" aria-label="code-block-19-18"></a>    <span class="fu">annotation_scale</span>(</span>
+<span id="cb19-19"><a href="#cb19-19" tabindex="-1" aria-label="code-block-19-19"></a>    <span class="at">location =</span> <span class="st">"bl"</span>, <span class="at">pad_x =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"cm"</span>), <span class="at">pad_y =</span> <span class="fu">unit</span>(<span class="dv">1</span>, <span class="st">"cm"</span>), <span class="at">text_cex =</span> <span class="dv">1</span>) </span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="error" tabindex="0"><code>Error in parse(text = input): &lt;text&gt;:4:113: unexpected symbol
+3:   scale_fill_gradient(low = "grey", high = "brown") +
+4:   labs(title = "Population of neighbourhoods in Copenhagen and Frederiksberg", fill = expression("Population")  annotation_north_arrow
+                                                                                                                   ^</code></pre>
+</div>
+<p>These kinds of maps are useful for visualizing quantities that vary
+amongst geographical areas. The name <code>choropleth</code> originates
+with greek, khōros (χῶρος), meaning “area or region,” and plêthos
+(πλῆθος), meaning “multitude or quantity”.</p>
+<p>Here we have visualized the population. If we had the data, we could
+also visualize other quantities: Propotion of elderly people or
+frequency of certain diseases, to take just two examples.</p>
+<div id="challenge2" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
+<div class="callout-content">
+<p>With the data we have available, and the techniques we have learned
+about earlier, try to plot the population density of the
+neighbourhoods.</p>
+</div>
+</div>
+</div>
+<div id="accordionHint3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint3" aria-expanded="false" aria-controls="collapseHint3">
+  <h4 class="accordion-header" id="headingHint3"> Give me a hint </h4>
+</button>
+<div id="collapseHint3" class="accordion-collapse collapse" aria-labelledby="headingHint3" data-bs-parent="#accordionHint3">
+<div class="accordion-body">
+<p>Population density is defined as the number of people pr square
+kilometer (or any other measurement of area). We can find the area of
+each neighbourhood using the <code>expanse()</code> function. Start by
+calculating the area, and then divide the population with the area. We
+can use the <code>mutate()</code> just like normally.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
+  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
+</button>
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb21">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">pop_density</span> <span class="op">&lt;-</span> <span class="va">neighbourhoods</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>area <span class="op">=</span> <span class="fu">expanse</span><span class="op">(</span><span class="va">neighbourhoods</span>, unit <span class="op">=</span> <span class="st">"km"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>pop_density <span class="op">=</span> <span class="va">population</span><span class="op">/</span><span class="va">area</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatvector</span><span class="op">(</span>data <span class="op">=</span> <span class="va">pop_density</span>, <span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">pop_density</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="combining-layers">Combining layers<a class="anchor" aria-label="anchor" href="#combining-layers"></a></h3>
-<p>ggplot() + geom_spatvector(data = districts, fill = NA) +
-geom_spatvector(data = parks, fill = “darkgreen”, color = NA) +
-labs(title = “Parks in Warsaw”) + theme_minimal() + theme( plot.title =
-element_text(face = “bold”, hjust = 0.5) )</p>
+<p>If we have more than one layer we would like to plot, a
+<code>ggplot</code> method for that exists as well:</p>
+<div class="codewrapper sourceCode" id="cb22">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatvector</span><span class="op">(</span>data <span class="op">=</span> <span class="va">neighbourhoods</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatvector</span><span class="op">(</span>data <span class="op">=</span> <span class="va">parks</span>, fill <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span></span></code></pre>
+</div>
+<figure><img src="fig/gis_visualization-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>We can even add a layer containing raster data, but we will have to
+think about the order.</p>
+<div id="challenge3" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
+<div class="callout-content">
+<p>Try to plot the nir-band from <code>sentinel</code>, and then the
+<code>neighbourhoods</code> data.</p>
+<div class="Hint">
+<p>Consider playing with the <code>alpha</code> and <code>colour</code>
+arguments</p>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution3" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
+  <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
+</button>
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div class="accordion-body">
+<p>One possible way is this.</p>
+<div class="codewrapper sourceCode" id="cb23">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatraster</span><span class="op">(</span>data<span class="op">=</span> <span class="va">sentinel</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>fill <span class="op">=</span> <span class="va">nir</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatvector</span><span class="op">(</span>data <span class="op">=</span> <span class="va">neighbourhoods</span>, alpha <span class="op">=</span> <span class="fl">0</span>, colour<span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> </span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="discussion1" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<span class="callout-header">Discussion</span>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge<em> (continued)</em>
+</h3>
+<div class="callout-content">
+<p>If <code>alpha</code> is not set to 0, the second layer will make the
+first almost invisible. And the default <code>colour</code> for plotting
+the borders between the neighbourhoods is black and also almost
+invisible.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="reprojecting">Reprojecting<a class="anchor" aria-label="anchor" href="#reprojecting"></a></h3>
-<p>ggplot() + geom_spatvector(data = districts, fill = NA) +
-geom_spatvector(data = parks, fill = “darkgreen”, color = NA) +
-coord_sf(crs = “EPSG:2180”, datum = “EPSG:2180”) + labs(title = “Parks
-in Warsaw”) + theme_minimal() + theme( plot.title = element_text(face =
-“bold”, hjust = 0.5) )</p>
+<p>Handling the mapping of data described as points on a globe to data
+described as points on a two-dimensional map, is not trivial, but we
+have access to functions that do it for us.</p>
+<p>That is called <code>reprojecting</code>. We have data projected in
+one system, but would like to have it in another. It is generally
+important to have all data in the same system, but another advantage is
+that we can project data described as coordinates in degrees, minutes
+and seconds into coordinates in km (relative to geodaetic points in the
+landscape definded by Danish Geodata Agency).</p>
+<div class="codewrapper sourceCode" id="cb24">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatvector</span><span class="op">(</span>data <span class="op">=</span> <span class="va">neighbourhoods</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatvector</span><span class="op">(</span>data <span class="op">=</span> <span class="va">parks</span>, fill <span class="op">=</span> <span class="st">"darkgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">coord_sf</span><span class="op">(</span></span>
+<span>    crs <span class="op">=</span> <span class="st">"EPSG:25832"</span>,</span>
+<span>    datum <span class="op">=</span> <span class="st">"EPSG:4258"</span></span>
+<span><span class="op">)</span></span></code></pre>
+</div>
+<figure><img src="fig/gis_visualization-rendered-unnamed-chunk-6-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>Note that the choise of Coordinate Reference System depends on the
+location. For example it can be relevant to use EPSG::25833 if the data
+is covering Bornholm.</p>
+</div>
+<div class="section level3">
+<h3 id="interactive-maps">Interactive maps<a class="anchor" aria-label="anchor" href="#interactive-maps"></a></h3>
+<p>Leaflet</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -842,7 +1128,7 @@ any links that you are not going to use.
       <div class="d-none d-sm-none d-md-block">
         <a class="chapter-link" href="gis_vector-data.html" rel="prev">
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
-          Previous: Vector data
+          Previous: Spatial Vector Data
         </a>
         <a class="chapter-link float-end" href="git-00-setup.html" rel="next">
           Next: Setup for Git...
@@ -864,7 +1150,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
@@ -893,8 +1179,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/gis_visualization.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/gis_visualization.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2026-07-31",
-  "datePublished": "2026-07-31"
+  "dateModified": "2026-08-03",
+  "datePublished": "2026-08-03"
 }
 
   </script><script>
