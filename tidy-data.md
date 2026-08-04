@@ -5,11 +5,16 @@ exercises: 2
 ---
 
 ::: questions
--   How do we structure our data best?
+- What makes a tabular dataset tidy?
+- How can information stored in column names or table layout be converted into variables?
+- Why does data structure affect later analysis?
 :::
 
 ::: objectives
--   Explain what tidy data is
+- Diagnose common violations of the tidy-data principles.
+- Reshape datasets with pivot_longer() and pivot_wider().
+- Separate compound variables into individual columns.
+- Design spreadsheets that can be imported and analysed without manual restructuring.
 :::
 
 
@@ -22,14 +27,14 @@ structured in the right way.
 
 Working within the paradigm of `tidyverse` it is preferable if the data is *tidy*.
 
-![](fig/tidy_why.jpg){alt=''}
+![Artwork by Allison Horst](fig/tidy_why.jpg){alt='Illustration showing that well-structured data makes analysis easier'}
 
 
 Tidy data is not the opposite of messy data. Data can be nice and well 
 structured, tidy as in non-messy, without being tidy in the way we understand 
 it in this context.
 
-![](fig/tidy_hadley_2.jpg){alt=''}
+![Artwork by Allison Horst](fig/tidy_hadley_2.jpg){alt='Illustration distinguishing tidy data from data that merely looks neat'}
 
 
 Tidy data in the world of R, especially the dialect of R we call tidyverse, 
@@ -39,7 +44,7 @@ are characterized by:
 -   Each observation is a row; each row is an observation.
 -   Each value is a cell; each cell is a single value.
 
-![](fig/tidy_hadley.jpg){alt=''}
+![Artwork by Allison Horst](fig/tidy_hadley.jpg){alt='Diagram showing tidy data with variables in columns, observations in rows, and values in cells'}
 
 This way of structuring our data is useful not only in R, but also in other 
 software packages. 
@@ -135,5 +140,7 @@ on time-consuming and traumatic experiences wrangling data from Excel to R.
 Illustrations from the Openscapes blog Tidy Data for reproducibility, efficiency, and collaboration by Julia Lowndes and Allison Horst
 
 ::: keypoints
--   tidy data provides a consistent way of organizing data
+- Each variable should occupy one column, each observation one row, and each value one cell.
+- Information encoded in headers, colours, or layout should generally become explicit values.
+- Tidy structure simplifies transformation, visualisation, modelling, and reuse.
 :::

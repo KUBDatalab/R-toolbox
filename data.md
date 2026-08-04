@@ -343,7 +343,7 @@ _Dimensions:_ Rows: 1200 Columns: 18
 
 [Download](https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/bydele_and_frederiksberg.gpkg)
 
-Geopackage file containing a SpatVector containing polygons describing the 10 suburbs of Copenhagen and Frederiksberg. Data from the [GeoServer](wfs-kbhkort.kk.dk) of the municipality of Copenhagen, and OSM. Population added from https://kk.statistikbank.dk/statbank5a/SelectVarVal/Define.asp?Maintable=KKBEF1&PLanguage=0 and wikipedia 2026
+Geopackage file containing a SpatVector containing polygons describing the 10 suburbs of Copenhagen and Frederiksberg. Data from the [GeoServer](https://wfs-kbhkort.kk.dk) of the municipality of Copenhagen, and OSM. Population added from https://kk.statistikbank.dk/statbank5a/SelectVarVal/Define.asp?Maintable=KKBEF1&PLanguage=0 and wikipedia 2026
 
 ###  CORNEAL
 
@@ -1848,10 +1848,6 @@ doi:10.21338/ess11md_e01_2
 ## References
 
 <a id="rosner_1">1</a>: Rosner, Bernard A. Fundamentals of Biostatistics, 7/e, International Edition, 2011 ISBN: 9780538735896. https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&product_isbn_issn=9780538733496&token
-
-der er også guf her https://www.doc88.com/p-5925003681540.html
-
-https://statanaly.com/wp-content/uploads/2023/04/Fundamentals-of-Biostatistics-7th-Edition.pdf
 
 <a id="hopper_2">2</a>: Hopper, J.H. & Seeman, E (1994). The bone density
 of female twins discordant for tobacco use. New England Journal of Medicine, 330, 387-392.
