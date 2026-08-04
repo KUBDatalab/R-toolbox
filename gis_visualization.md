@@ -259,13 +259,15 @@ And we can adjust the plot in the exact same way we would do with any other `ggp
 ggplot() +
   geom_spatvector(data = neighbourhoods, aes(fill = population)) +
   scale_fill_gradient(low = "grey", high = "brown") +
-  labs(title = "Population of neighbourhoods in Copenhagen and Frederiksberg", fill = expression("Population")  annotation_north_arrow(location = "tl",
+  labs(title = "Population of neighbourhoods in Copenhagen and Frederiksberg", 
+              fill = expression("Population") ) +
+  annotation_north_arrow(location = "tl",
                           pad_x = unit(1, "cm"),
                           pad_y = unit(1, "cm"),
                           style = north_arrow_orienteering(fill = c("white", "red"))) +
     annotation_scale(
     location = "bl", pad_x = unit(1, "cm"), pad_y = unit(1, "cm"),
-    line_col = "white", text_col = "white", text_cex = 1, bar_cols = c("red", "white")) +) +
+    line_col = "white", text_col = "white", text_cex = 1, bar_cols = c("red", "white")) +
   theme_minimal() +
   theme(
     plot.title = element_text(face = "bold", hjust = 0.5)
@@ -277,12 +279,7 @@ ggplot() +
     location = "bl", pad_x = unit(1, "cm"), pad_y = unit(1, "cm"), text_cex = 1) 
 ```
 
-``` error
-Error in parse(text = input): <text>:4:113: unexpected symbol
-3:   scale_fill_gradient(low = "grey", high = "brown") +
-4:   labs(title = "Population of neighbourhoods in Copenhagen and Frederiksberg", fill = expression("Population")  annotation_north_arrow
-                                                                                                                   ^
-```
+<img src="fig/gis_visualization-rendered-choropleth-1.png" alt="" style="display: block; margin: auto;" />
 
 These kinds of maps are useful for visualizing quantities that vary amongst geographical areas. 
 The name `choropleth` originates with greek, khōros (χῶρος), meaning "area or region," and plêthos (πλῆθος), meaning "multitude or quantity".
