@@ -630,7 +630,9 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How do I ensure that my results can be reproduced?</li>
+<ul><li>What makes a data analysis reproducible?</li>
+<li>How can code, documentation, and results be kept together?</li>
+<li>How can hidden dependencies in an analysis be detected?</li>
 </ul></div>
 </div>
 </div>
@@ -638,8 +640,10 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Explain how to use markdown</li>
-<li>Demonstrate how to include pieces of code</li>
+<ul><li>Identify common threats to reproducibility in an R workflow.</li>
+<li>Create an R Markdown document containing text, executable code, and
+output.</li>
+<li>Test whether an analysis can be executed in a clean R session.</li>
 </ul></div>
 </div>
 </div>
@@ -763,7 +767,7 @@ the first chunk, add your own text, and change the plot to plot the
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Make a new RMarkdown document - File -&gt; New File -&gt; R
 Markdown.</p>
@@ -780,7 +784,11 @@ instead of plot(pressure), and add <code><a href="https://tidyverse.tidyverse.or
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>Use RMarkdown to enforce reproducible analysis</li>
+<ul><li>A reproducible analysis records data, code, software dependencies,
+and analytical decisions.</li>
+<li>Rendering an R Markdown document executes the code in a defined
+order.</li>
+<li>Analyses should not depend on objects saved in the workspace.</li>
 </ul></div>
 </div>
 </div>
@@ -820,7 +828,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 

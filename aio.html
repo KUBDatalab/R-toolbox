@@ -765,7 +765,9 @@
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>How do I ensure that my results can be reproduced?</li>
+<li>What makes a data analysis reproducible?</li>
+<li>How can code, documentation, and results be kept together?</li>
+<li>How can hidden dependencies in an analysis be detected?</li>
 </ul>
 </div>
 </div>
@@ -775,8 +777,10 @@
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Explain how to use markdown</li>
-<li>Demonstrate how to include pieces of code</li>
+<li>Identify common threats to reproducibility in an R workflow.</li>
+<li>Create an R Markdown document containing text, executable code, and
+output.</li>
+<li>Test whether an analysis can be executed in a clean R session.</li>
 </ul>
 </div>
 </div>
@@ -913,7 +917,7 @@ the first chunk, add your own text, and change the plot to plot the
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Make a new RMarkdown document - File -&gt; New File -&gt; R
 Markdown.</p>
@@ -931,7 +935,11 @@ instead of plot(pressure), and add <code><a href="https://tidyverse.tidyverse.or
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>Use RMarkdown to enforce reproducible analysis</li>
+<li>A reproducible analysis records data, code, software dependencies,
+and analytical decisions.</li>
+<li>Rendering an R Markdown document executes the code in a defined
+order.</li>
+<li>Analyses should not depend on objects saved in the workspace.</li>
 </ul>
 </div>
 </div>
@@ -4507,7 +4515,7 @@ geometric standard deviation. Change the code to write out “Geom.” and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4854,7 +4862,7 @@ specifying <code>render.categorical</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4907,7 +4915,7 @@ straightforward.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Try to remove the empty string from the function, and use it is a
 table one as previously shown:</p>
@@ -5177,23 +5185,23 @@ Missing
 <span>    <span class="fu">add_overall</span><span class="op">(</span>last <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <!--html_preserve-->
-<div id="oglgdhfdhn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#oglgdhfdhn table {
+<div id="vmejvljtyx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vmejvljtyx table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#oglgdhfdhn thead, #oglgdhfdhn tbody, #oglgdhfdhn tfoot, #oglgdhfdhn tr, #oglgdhfdhn td, #oglgdhfdhn th {
+#vmejvljtyx thead, #vmejvljtyx tbody, #vmejvljtyx tfoot, #vmejvljtyx tr, #vmejvljtyx td, #vmejvljtyx th {
   border-style: none;
 }
 
-#oglgdhfdhn p {
+#vmejvljtyx p {
   margin: 0;
   padding: 0;
 }
 
-#oglgdhfdhn .gt_table {
+#vmejvljtyx .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5219,12 +5227,12 @@ Missing
   border-left-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_caption {
+#vmejvljtyx .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#oglgdhfdhn .gt_title {
+#vmejvljtyx .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5236,7 +5244,7 @@ Missing
   border-bottom-width: 0;
 }
 
-#oglgdhfdhn .gt_subtitle {
+#vmejvljtyx .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5248,7 +5256,7 @@ Missing
   border-top-width: 0;
 }
 
-#oglgdhfdhn .gt_heading {
+#vmejvljtyx .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5260,13 +5268,13 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_bottom_border {
+#vmejvljtyx .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_col_headings {
+#vmejvljtyx .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5281,7 +5289,7 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_col_heading {
+#vmejvljtyx .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5301,7 +5309,7 @@ Missing
   overflow-x: hidden;
 }
 
-#oglgdhfdhn .gt_column_spanner_outer {
+#vmejvljtyx .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5313,15 +5321,15 @@ Missing
   padding-right: 4px;
 }
 
-#oglgdhfdhn .gt_column_spanner_outer:first-child {
+#vmejvljtyx .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#oglgdhfdhn .gt_column_spanner_outer:last-child {
+#vmejvljtyx .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#oglgdhfdhn .gt_column_spanner {
+#vmejvljtyx .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5333,11 +5341,11 @@ Missing
   width: 100%;
 }
 
-#oglgdhfdhn .gt_spanner_row {
+#vmejvljtyx .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#oglgdhfdhn .gt_group_heading {
+#vmejvljtyx .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5363,7 +5371,7 @@ Missing
   text-align: left;
 }
 
-#oglgdhfdhn .gt_empty_group_heading {
+#vmejvljtyx .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5378,15 +5386,15 @@ Missing
   vertical-align: middle;
 }
 
-#oglgdhfdhn .gt_from_md > :first-child {
+#vmejvljtyx .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#oglgdhfdhn .gt_from_md > :last-child {
+#vmejvljtyx .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#oglgdhfdhn .gt_row {
+#vmejvljtyx .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5405,7 +5413,7 @@ Missing
   overflow-x: hidden;
 }
 
-#oglgdhfdhn .gt_stub {
+#vmejvljtyx .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5418,7 +5426,7 @@ Missing
   padding-right: 5px;
 }
 
-#oglgdhfdhn .gt_stub_row_group {
+#vmejvljtyx .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5432,15 +5440,15 @@ Missing
   vertical-align: top;
 }
 
-#oglgdhfdhn .gt_row_group_first td {
+#vmejvljtyx .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#oglgdhfdhn .gt_row_group_first th {
+#vmejvljtyx .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#oglgdhfdhn .gt_summary_row {
+#vmejvljtyx .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5450,16 +5458,16 @@ Missing
   padding-right: 5px;
 }
 
-#oglgdhfdhn .gt_first_summary_row {
+#vmejvljtyx .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_first_summary_row.thick {
+#vmejvljtyx .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#oglgdhfdhn .gt_last_summary_row {
+#vmejvljtyx .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5469,7 +5477,7 @@ Missing
   border-bottom-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_grand_summary_row {
+#vmejvljtyx .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5479,7 +5487,7 @@ Missing
   padding-right: 5px;
 }
 
-#oglgdhfdhn .gt_first_grand_summary_row {
+#vmejvljtyx .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5489,7 +5497,7 @@ Missing
   border-top-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_last_grand_summary_row_top {
+#vmejvljtyx .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5499,11 +5507,11 @@ Missing
   border-bottom-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_striped {
+#vmejvljtyx .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#oglgdhfdhn .gt_table_body {
+#vmejvljtyx .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5512,7 +5520,7 @@ Missing
   border-bottom-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_footnotes {
+#vmejvljtyx .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5526,7 +5534,7 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_footnote {
+#vmejvljtyx .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5535,7 +5543,7 @@ Missing
   padding-right: 5px;
 }
 
-#oglgdhfdhn .gt_sourcenotes {
+#vmejvljtyx .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5549,7 +5557,7 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#oglgdhfdhn .gt_sourcenote {
+#vmejvljtyx .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5557,72 +5565,72 @@ Missing
   padding-right: 5px;
 }
 
-#oglgdhfdhn .gt_left {
+#vmejvljtyx .gt_left {
   text-align: left;
 }
 
-#oglgdhfdhn .gt_center {
+#vmejvljtyx .gt_center {
   text-align: center;
 }
 
-#oglgdhfdhn .gt_right {
+#vmejvljtyx .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#oglgdhfdhn .gt_font_normal {
+#vmejvljtyx .gt_font_normal {
   font-weight: normal;
 }
 
-#oglgdhfdhn .gt_font_bold {
+#vmejvljtyx .gt_font_bold {
   font-weight: bold;
 }
 
-#oglgdhfdhn .gt_font_italic {
+#vmejvljtyx .gt_font_italic {
   font-style: italic;
 }
 
-#oglgdhfdhn .gt_super {
+#vmejvljtyx .gt_super {
   font-size: 65%;
 }
 
-#oglgdhfdhn .gt_footnote_marks {
+#vmejvljtyx .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#oglgdhfdhn .gt_asterisk {
+#vmejvljtyx .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#oglgdhfdhn .gt_indent_1 {
+#vmejvljtyx .gt_indent_1 {
   text-indent: 5px;
 }
 
-#oglgdhfdhn .gt_indent_2 {
+#vmejvljtyx .gt_indent_2 {
   text-indent: 10px;
 }
 
-#oglgdhfdhn .gt_indent_3 {
+#vmejvljtyx .gt_indent_3 {
   text-indent: 15px;
 }
 
-#oglgdhfdhn .gt_indent_4 {
+#vmejvljtyx .gt_indent_4 {
   text-indent: 20px;
 }
 
-#oglgdhfdhn .gt_indent_5 {
+#vmejvljtyx .gt_indent_5 {
   text-indent: 25px;
 }
 
-#oglgdhfdhn .katex-display {
+#vmejvljtyx .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#oglgdhfdhn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vmejvljtyx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5855,7 +5863,7 @@ muligheder for at tilpasse tabellen.</p>
 {
     UseMethod("tbl")
 }
-&lt;bytecode: 0x55f86e2aef48&gt;
+&lt;bytecode: 0x55a7214cb640&gt;
 &lt;environment: namespace:dplyr&gt;</code></pre>
 </div>
 
@@ -6193,7 +6201,7 @@ of 0 and a standard deviation of 1.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6229,7 +6237,7 @@ for which 42% of the observations is smaller?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6282,7 +6290,7 @@ cm is 4%</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> How does that work? </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>We have a lot of men with an average height of 183. They all have an
 individual heigth. If we subtract 183 from their height, and use that as
@@ -6327,7 +6335,7 @@ get:</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Hint </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>What proportion of men are shorter than 190 cm? And what proportion
 of men are shorter than 170 cm?</p>
@@ -6340,7 +6348,7 @@ of men are shorter than 170 cm?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6385,7 +6393,7 @@ of Molybdenum (Mo) in their blood?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We begin by calculating the probability of observing a Mo
 concentration lower than 0:</p>
@@ -7064,24 +7072,12 @@ the 23 distributions that are defined for positive, real numbers:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>  |                                                                              |=================================                                     |  48%</code></pre>
+<pre class="output" tabindex="0"><code>  |                                                                              |=================================                                     |  48%  |                                                                              |=====================================                                 |  52%  |                                                                              |========================================                              |  57%  |                                                                              |===========================================                           |  61%  |                                                                              |==============================================                        |  65%  |                                                                              |=================================================                     |  70%  |                                                                              |====================================================                  |  74%</code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>  |                                                                              |=====================================                                 |  52%</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>  |                                                                              |========================================                              |  57%  |                                                                              |===========================================                           |  61%  |                                                                              |==============================================                        |  65%  |                                                                              |=================================================                     |  70%  |                                                                              |====================================================                  |  74%</code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>  |                                                                              |=======================================================               |  78%  |                                                                              |==========================================================            |  83%Error in solve.default(oout$hessian) :
-  Lapack routine dgesv: system is exactly singular: U[4,4] = 0
-  |                                                                              |=============================================================         |  87%Error in solve.default(oout$hessian) :
+<pre class="output" tabindex="0"><code>  |                                                                              |=======================================================               |  78%  |                                                                              |==========================================================            |  83%  |                                                                              |=============================================================         |  87%Error in solve.default(oout$hessian) :
   Lapack routine dgesv: system is exactly singular: U[4,4] = 0
   |                                                                              |================================================================      |  91%  |                                                                              |===================================================================   |  96%  |                                                                              |======================================================================| 100%</code></pre>
 </div>
@@ -7090,7 +7086,7 @@ is not possible to fit this particular data to <em>all</em> the
 distributions, and the ones where the fit fails (enough), we will get an
 error message.</p>
 <p>The output from <code>fitDist()</code> will return the best fit:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -7141,7 +7137,7 @@ correct one.</p>
 <p>If we start by getting the errors out of the way,
 <code>fit$failed</code> returns the two distributions that failed enough
 to cause errors:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -7159,7 +7155,7 @@ to cause errors:</p>
 <p>As mentioned <code>fitDist()</code> fitted the data to 23 different
 distributions. We can inspect the rest, and their associated AIC-values
 like this:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -7170,10 +7166,10 @@ like this:</p>
 </h3>
 <pre class="output" tabindex="0"><code>    WEI2     WEI3      WEI       GG    BCPEo     BCPE    BCCGo     BCCG
 179.2449 179.2449 179.2449 181.1349 181.4953 181.4953 183.1245 183.1245
-     GB2     BCTo      BCT   exGAUS       GA   LOGNO2    LOGNO       IG
-183.1358 185.1245 185.1245 190.2994 194.4665 198.3047 198.3047 198.3558
+     GB2      BCT     BCTo   exGAUS       GA   LOGNO2    LOGNO       IG
+183.1355 185.1245 185.1247 190.2994 194.4665 198.3047 198.3047 198.3558
   IGAMMA      EXP  PARETO2       GP PARETO2o
-202.6759 861.8066 863.8067 863.8067 863.8071 </code></pre>
+202.6759 861.8066 863.8066 863.8071 863.8077 </code></pre>
 </div>
 <p>Here we get <code>WEI2</code> first, with an AIC of 179.2449, but we
 can see that <code>WEI3</code> and <code>WEI1</code> have almost exactly
@@ -7188,7 +7184,7 @@ distributions have to be larger than 2 for us to see a significant
 difference.</p>
 <p>We can get more details using the <code>summary()</code>
 function:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -7218,7 +7214,7 @@ Global Deviance:     175.245
             SBC:     185.574 </code></pre>
 </div>
 <p>And we can get at graphical description as well:</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -7283,7 +7279,7 @@ eruption times are all positive, and on the real number line.</p>
 <p>Behind the scenes <code>fitDist</code> fits the data to the chosen
 selection of distributions, and returns the best.</p>
 <p>Looking at the result of the fit we see this:</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -7313,7 +7309,7 @@ Global Deviance:     175.245
 <p>and from that we can deduces that if we want to fit the data to eg
 the log-normal distribution (in the documentation we find that the
 abbreviation for that is “LOGNO”), we can do it like this:</p>
-<div class="codewrapper sourceCode" id="cb22">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -7325,7 +7321,7 @@ abbreviation for that is “LOGNO”), we can do it like this:</p>
 <pre class="output" tabindex="0"><code>GAMLSS-RS iteration 1: Global Deviance = 194.3047
 GAMLSS-RS iteration 2: Global Deviance = 194.3047 </code></pre>
 </div>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -7613,7 +7609,7 @@ mph?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>3.932*12.5 - 17.579 = 31.571 ft</p>
 </div>
@@ -7638,7 +7634,7 @@ that prediction?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Yep. We might be able to measure the speed with the implied
 precision. But the prediction implies a precision on the scale of
@@ -7752,7 +7748,7 @@ library <code>palmerpenguins</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7829,7 +7825,7 @@ distributed.</p></li>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> The assumptions - differently defined </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>The three assumptions can be formulated in different ways, and it can
 be useful to read more than one in order to understand them. This is a
@@ -7890,7 +7886,7 @@ distributed.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8284,7 +8280,7 @@ included.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8445,7 +8441,7 @@ centimeter high, postmenopausal woman weighing 62 kg?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>We find it by adding all the terms:</p>
 <ul>
@@ -8684,23 +8680,23 @@ wt          -2.308463917
 qsec         .          </code></pre>
 </div>
 Compare with the ordinary model: <!--html_preserve-->
-<div id="vubiywudmf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#vubiywudmf table {
+<div id="kufxafdmgb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kufxafdmgb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vubiywudmf thead, #vubiywudmf tbody, #vubiywudmf tfoot, #vubiywudmf tr, #vubiywudmf td, #vubiywudmf th {
+#kufxafdmgb thead, #kufxafdmgb tbody, #kufxafdmgb tfoot, #kufxafdmgb tr, #kufxafdmgb td, #kufxafdmgb th {
   border-style: none;
 }
 
-#vubiywudmf p {
+#kufxafdmgb p {
   margin: 0;
   padding: 0;
 }
 
-#vubiywudmf .gt_table {
+#kufxafdmgb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -8726,12 +8722,12 @@ Compare with the ordinary model: <!--html_preserve-->
   border-left-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_caption {
+#kufxafdmgb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vubiywudmf .gt_title {
+#kufxafdmgb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -8743,7 +8739,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-width: 0;
 }
 
-#vubiywudmf .gt_subtitle {
+#kufxafdmgb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -8755,7 +8751,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-top-width: 0;
 }
 
-#vubiywudmf .gt_heading {
+#kufxafdmgb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -8767,13 +8763,13 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_bottom_border {
+#kufxafdmgb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_col_headings {
+#kufxafdmgb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8788,7 +8784,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_col_heading {
+#kufxafdmgb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8808,7 +8804,7 @@ Compare with the ordinary model: <!--html_preserve-->
   overflow-x: hidden;
 }
 
-#vubiywudmf .gt_column_spanner_outer {
+#kufxafdmgb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8820,15 +8816,15 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 4px;
 }
 
-#vubiywudmf .gt_column_spanner_outer:first-child {
+#kufxafdmgb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vubiywudmf .gt_column_spanner_outer:last-child {
+#kufxafdmgb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vubiywudmf .gt_column_spanner {
+#kufxafdmgb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -8840,11 +8836,11 @@ Compare with the ordinary model: <!--html_preserve-->
   width: 100%;
 }
 
-#vubiywudmf .gt_spanner_row {
+#kufxafdmgb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vubiywudmf .gt_group_heading {
+#kufxafdmgb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8870,7 +8866,7 @@ Compare with the ordinary model: <!--html_preserve-->
   text-align: left;
 }
 
-#vubiywudmf .gt_empty_group_heading {
+#kufxafdmgb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -8885,15 +8881,15 @@ Compare with the ordinary model: <!--html_preserve-->
   vertical-align: middle;
 }
 
-#vubiywudmf .gt_from_md > :first-child {
+#kufxafdmgb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vubiywudmf .gt_from_md > :last-child {
+#kufxafdmgb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vubiywudmf .gt_row {
+#kufxafdmgb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8912,7 +8908,7 @@ Compare with the ordinary model: <!--html_preserve-->
   overflow-x: hidden;
 }
 
-#vubiywudmf .gt_stub {
+#kufxafdmgb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8925,7 +8921,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#vubiywudmf .gt_stub_row_group {
+#kufxafdmgb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8939,15 +8935,15 @@ Compare with the ordinary model: <!--html_preserve-->
   vertical-align: top;
 }
 
-#vubiywudmf .gt_row_group_first td {
+#kufxafdmgb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vubiywudmf .gt_row_group_first th {
+#kufxafdmgb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vubiywudmf .gt_summary_row {
+#kufxafdmgb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8957,16 +8953,16 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#vubiywudmf .gt_first_summary_row {
+#kufxafdmgb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_first_summary_row.thick {
+#kufxafdmgb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vubiywudmf .gt_last_summary_row {
+#kufxafdmgb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8976,7 +8972,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_grand_summary_row {
+#kufxafdmgb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8986,7 +8982,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#vubiywudmf .gt_first_grand_summary_row {
+#kufxafdmgb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8996,7 +8992,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-top-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_last_grand_summary_row_top {
+#kufxafdmgb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9006,11 +9002,11 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_striped {
+#kufxafdmgb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vubiywudmf .gt_table_body {
+#kufxafdmgb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9019,7 +9015,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_footnotes {
+#kufxafdmgb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9033,7 +9029,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_footnote {
+#kufxafdmgb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -9042,7 +9038,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#vubiywudmf .gt_sourcenotes {
+#kufxafdmgb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9056,7 +9052,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#vubiywudmf .gt_sourcenote {
+#kufxafdmgb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -9064,72 +9060,72 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#vubiywudmf .gt_left {
+#kufxafdmgb .gt_left {
   text-align: left;
 }
 
-#vubiywudmf .gt_center {
+#kufxafdmgb .gt_center {
   text-align: center;
 }
 
-#vubiywudmf .gt_right {
+#kufxafdmgb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vubiywudmf .gt_font_normal {
+#kufxafdmgb .gt_font_normal {
   font-weight: normal;
 }
 
-#vubiywudmf .gt_font_bold {
+#kufxafdmgb .gt_font_bold {
   font-weight: bold;
 }
 
-#vubiywudmf .gt_font_italic {
+#kufxafdmgb .gt_font_italic {
   font-style: italic;
 }
 
-#vubiywudmf .gt_super {
+#kufxafdmgb .gt_super {
   font-size: 65%;
 }
 
-#vubiywudmf .gt_footnote_marks {
+#kufxafdmgb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vubiywudmf .gt_asterisk {
+#kufxafdmgb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vubiywudmf .gt_indent_1 {
+#kufxafdmgb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vubiywudmf .gt_indent_2 {
+#kufxafdmgb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vubiywudmf .gt_indent_3 {
+#kufxafdmgb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vubiywudmf .gt_indent_4 {
+#kufxafdmgb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vubiywudmf .gt_indent_5 {
+#kufxafdmgb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#vubiywudmf .katex-display {
+#kufxafdmgb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#vubiywudmf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#kufxafdmgb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -9252,7 +9248,7 @@ predict the response variable.</p>
   One way of doing it - but which problems does it have?
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>We could do that by splitting the data in two parts, build different
 models on one part with different <span class="math inline">\(\lambda\)</span> s and use them to predict the
@@ -9269,7 +9265,7 @@ data is the best, and we know which <span class="math inline">\(\lambda\)</span>
   Some problems with this approach
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Our dataset is not very large. If we pull out a fifth of the dataset
 for evaluation purposes, we only have 25 observations left.</p>
@@ -9507,7 +9503,7 @@ relation between them?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9856,7 +9852,7 @@ model, to the the probability directly:_</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>We run the prediction:</p>
 <div class="codewrapper sourceCode" id="cb30">
@@ -9900,7 +9896,7 @@ girl, with a lung volume of 1.1 liter?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Begin by making a dataframe describing the girl:</p>
 <div class="codewrapper sourceCode" id="cb33">
@@ -10009,7 +10005,7 @@ This is definitely not normally distributed.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.5246194</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.4893738</code></pre>
 </div>
 <p>The important point of the Central Limit Theorem is, that if we take
 a large number of random samples, and calculate the mean of each of
@@ -10025,7 +10021,7 @@ this:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.5043503</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.4922042</code></pre>
 </div>
 <p>And we can use the <code>replicate()</code> function to repeat that
 calculation several times, in this case 1000 times:</p>
@@ -10919,7 +10915,7 @@ data/customers into 10 groups.</p>
   Why 10?
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>In the case of the online bookseller the number was chosen to get a
 relatively small number of clusters, in order not to have to manage 20
@@ -11487,7 +11483,7 @@ smaller differences in variance can be problematic.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> More specific methods exist. </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>There are probably more than than three tests for homoskedacity, here
 are three:</p>
@@ -11632,7 +11628,7 @@ three different species of the iris-family of flowers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -11674,7 +11670,7 @@ can reject the hypothesis that there is no difference.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -11902,7 +11898,7 @@ Weighted   0.5588 0.1282 4.359 1.304e-05</code></pre>
   Unweighted vs Weighted?
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>For some use cases it does not really matter what kind of
 disagreement the two raters have. They of course should agree, but the
@@ -12092,7 +12088,7 @@ t-distribution).</p>
   This looks like something I have seen before?
   </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>If you have ever looked at how the math in a <span class="math inline">\(\chi^2\)</span> test works, this might look
 familiar. Thats because it actually is.</p>
@@ -13662,10 +13658,10 @@ instructions for that software listed in the table above.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-Windows">
+<div id="nav-tabpanel-1-Windows" class="tab-pane show active" aria-labelledby="nav-tab-1-Windows" role="tabpanel">
 <p>To install the geospatial libraries, install the latest version <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link">RTools</a></p>
 </div>
-<div id="nav-tabpanel-1-macOS-one-click" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-macOS-one-click">
+<div id="nav-tabpanel-1-macOS-one-click" class="tab-pane" aria-labelledby="nav-tab-1-macOS-one-click" role="tabpanel">
 <p>The simplest way to install these geospatial libraries is to install
 the latest version of <a href="https://www.kyngchaos.com/software/frameworks" class="external-link">Kyng Chaos’s
 pre-built package</a> for GDAL Complete. Be aware that several other
@@ -13678,7 +13674,7 @@ Depending on your security settings, you may get an error message about
 <a href="https://kb.wisc.edu/page.php?id=25443" class="external-link">these instructions</a>
 for installing programs from unidentified developers.</p>
 </div>
-<div id="nav-tabpanel-1-macOS-3commands" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-macOS-3commands">
+<div id="nav-tabpanel-1-macOS-3commands" class="tab-pane" aria-labelledby="nav-tab-1-macOS-3commands" role="tabpanel">
 <p>Alternatively, participants who are comfortable with the command line
 can install the geospatial libraries individually using <a href="https://brew.sh" class="external-link">homebrew</a>:</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -13689,7 +13685,7 @@ can install the geospatial libraries individually using <a href="https://brew.sh
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="ex">$</span> brew install gdal</span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-1-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Linux">
+<div id="nav-tabpanel-1-Linux" class="tab-pane" aria-labelledby="nav-tab-1-Linux" role="tabpanel">
 <p>Steps for installing the geospatial libraries will vary based on
 which form of Linux you are using. These instructions are adapted from
 the <a href="https://github.com/r-spatial/sf" class="external-link"><code>sf</code> package’s
@@ -13739,7 +13735,7 @@ install it using the command line ahead of time.</p>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Steps for installing the geospatial will vary based on which form of
 Linux you are using. These instructions are adapted from the <a href="https://github.com/r-spatial/sf" class="external-link"><code>sf</code> package’s
@@ -15723,7 +15719,7 @@ are the same.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Have to download the data again? </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>Make sure you have a <code>data</code> folder in your project folder,
 and then run this code:</p>
@@ -15888,7 +15884,7 @@ bu</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint2" aria-expanded="false" aria-controls="collapseHint2">
   <h4 class="accordion-header" id="headingHint2"> Give me a hint </h4>
 </button>
-<div id="collapseHint2" class="accordion-collapse collapse" data-bs-parent="#accordionHint2" aria-labelledby="headingHint2">
+<div id="collapseHint2" class="accordion-collapse collapse" aria-labelledby="headingHint2" data-bs-parent="#accordionHint2">
 <div class="accordion-body">
 <p>You can remind yourself of the order of bands in our
 <code>sentinel</code> data running <code>names(sentinel)</code></p>
@@ -15901,7 +15897,7 @@ bu</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -16024,7 +16020,7 @@ neighbourhoods.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint3" aria-expanded="false" aria-controls="collapseHint3">
   <h4 class="accordion-header" id="headingHint3"> Give me a hint </h4>
 </button>
-<div id="collapseHint3" class="accordion-collapse collapse" data-bs-parent="#accordionHint3" aria-labelledby="headingHint3">
+<div id="collapseHint3" class="accordion-collapse collapse" aria-labelledby="headingHint3" data-bs-parent="#accordionHint3">
 <div class="accordion-body">
 <p>Population density is defined as the number of people pr square
 kilometer (or any other measurement of area). We can find the area of
@@ -16040,7 +16036,7 @@ can use the <code>mutate()</code> just like normally.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -16095,7 +16091,7 @@ arguments</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>One possible way is this.</p>
 <div class="codewrapper sourceCode" id="cb22">
@@ -20566,8 +20562,8 @@ Number of obs: 2000, groups:  hospital, 20
 
 Fixed effects:
              Estimate Std. Error z value Pr(&gt;|z|)
-(Intercept) -2.132901   0.370427  -5.758 8.51e-09 ***
-age          0.035056   0.005317   6.593 4.30e-11 ***
+(Intercept) -2.132901   0.370417  -5.758 8.51e-09 ***
+age          0.035056   0.005317   6.594 4.29e-11 ***
 comorbidity  0.457562   0.044238  10.343  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -20579,7 +20575,7 @@ comorbidity -0.293  0.101</code></pre>
 </div>
 <p><strong>Interpretation:</strong> The fixed‐effect estimate for age is
 0.035 (SE = 0.005), giving an odds ratio of 1.036 per year of age. With
-a z‐value = 6.59 and p ≈ 4.3^{-11}, we reject the null hypothesis. This
+a z‐value = 6.59 and p ≈ 4.29^{-11}, we reject the null hypothesis. This
 indicates that age is significantly associated with higher odds of
 readmission, accounting for hospital clustering.</p>
 </div>
@@ -25188,7 +25184,9 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>Hvilke fences har vi til rådighed i det her setup?</li>
+<li>Hvilke fences understøtter vores Workbench-opsætning?</li>
+<li>Hvordan indlejres challenges, hints og solutions korrekt?</li>
+<li>Hvilken fence passer til hvilken undervisningsfunktion?</li>
 </ul>
 </div>
 </div>
@@ -25198,8 +25196,11 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Lever en oversigt over fences vi kan bruge i
-undervisningsmaterialet.</li>
+<li>Oprette og afslutte en fence med korrekt syntaks.</li>
+<li>Vælge en fence ud fra indholdets undervisningsmæssige funktion.</li>
+<li>Indlejre hint og solution korrekt i en challenge.</li>
+<li>Oprette synkroniserede faner med group-tab.</li>
+<li>Kontrollere resultatet ved at bygge lektionen lokalt.</li>
 </ul>
 </div>
 </div>
@@ -25256,7 +25257,7 @@ er en X fence”.</p>
   dette er en hint fence
   </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 
 </div>
@@ -25309,7 +25310,7 @@ siden man roligt kan ignorere.</p>
   dette er en spoiler fence
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 
 </div>
@@ -25335,7 +25336,7 @@ siden man roligt kan ignorere.</p>
   Den optræder som regel med en solution fence
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Og den er “inde i” challenge fencen.</p>
 </div>
@@ -25368,13 +25369,13 @@ group-tabs også til “Mac”.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-Windows" class="tab-pane show active" aria-labelledby="nav-tab-1-Windows" role="tabpanel">
+<div id="nav-tabpanel-1-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-Windows">
 <p>1</p>
 </div>
-<div id="nav-tabpanel-1-Mac" class="tab-pane" aria-labelledby="nav-tab-1-Mac" role="tabpanel">
+<div id="nav-tabpanel-1-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Mac">
 <p>2</p>
 </div>
-<div id="nav-tabpanel-1-Linux" class="tab-pane" aria-labelledby="nav-tab-1-Linux" role="tabpanel">
+<div id="nav-tabpanel-1-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Linux">
 <p>3</p>
 </div>
 </div>
@@ -25403,16 +25404,16 @@ group-tabs også til “Mac”.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-2" class="tab-content">
-<div id="nav-tabpanel-2-Windows" class="tab-pane show active" aria-labelledby="nav-tab-2-Windows" role="tabpanel">
+<div id="nav-tabpanel-2-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-2-Windows">
 <p>4</p>
 </div>
-<div id="nav-tabpanel-2-Mac" class="tab-pane" aria-labelledby="nav-tab-2-Mac" role="tabpanel">
+<div id="nav-tabpanel-2-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Mac">
 <p>5</p>
 </div>
-<div id="nav-tabpanel-2-Linux" class="tab-pane" aria-labelledby="nav-tab-2-Linux" role="tabpanel">
+<div id="nav-tabpanel-2-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Linux">
 <p>6</p>
 </div>
-<div id="nav-tabpanel-2-raspbian" class="tab-pane" aria-labelledby="nav-tab-2-raspbian" role="tabpanel">
+<div id="nav-tabpanel-2-raspbian" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-raspbian">
 <p>7</p>
 </div>
 </div>
@@ -25457,7 +25458,15 @@ bredden.</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>Brug fences til at fremhæve eller skjule indhold på siderne.</li>
+<li>Fences giver indholdet semantisk struktur og ikke kun en bestemt
+farve.</li>
+<li>Indlejrede fences skal lukkes i omvendt rækkefølge af den, de blev
+åbnet i.</li>
+<li>solution og hint hører normalt til en konkret challenge.</li>
+<li>Instructor-noter kan vises for undervisere uden at fylde i
+kursistvisningen.</li>
+<li>Komponenter, som Workbench ikke officielt understøtter, bør testes
+før de bruges i kursusmateriale.</li>
 </ul>
 </div>
 </div>
@@ -25482,7 +25491,11 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>How do I make a new course-page based on this??</li>
+<li>How can a new course site be created from the R-toolbox
+template?</li>
+<li>Which configuration, episode, dependency, and citation files must be
+changed?</li>
+<li>How can the course be built, published, updated, and released?</li>
 </ul>
 </div>
 </div>
@@ -25492,8 +25505,12 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Explain how to make a new lesson based on this template</li>
-<li>Provide a checklist for doing so</li>
+<li>Create a new repository from the template.</li>
+<li>Configure the title, source, episode order, and other project
+metadata.</li>
+<li>Remove unused episodes and dependencies.</li>
+<li>Build and check the lesson before enabling GitHub Pages.</li>
+<li>Update citation metadata and create a documented release.</li>
 </ul>
 </div>
 </div>
@@ -25677,8 +25694,15 @@ content, not to CITATION.cff, but to CITATION. Commit etc.</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>It is fairly easy to make a new course page</li>
-<li>Have patience!</li>
+<li>A repository created from the template is an independent copy and
+does not receive later changes automatically.</li>
+<li>Episode order and visibility are controlled through
+config.yaml.</li>
+<li>Unused episode files can still increase dependency installation and
+build time.</li>
+<li>The lesson should be built and checked before publication.</li>
+<li>Releases, citations, and DOIs must refer to the new course rather
+than to the original template.</li>
 </ul>
 </div>
 </div>
@@ -25707,7 +25731,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
