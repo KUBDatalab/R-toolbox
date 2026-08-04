@@ -681,7 +681,7 @@ are the same.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Have to download the data again? </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
 <div class="accordion-body">
 <p>Make sure you have a <code>data</code> folder in your project folder,
 and then run this code:</p>
@@ -832,7 +832,7 @@ using <code>ggplot</code></p>
 <div class="callout-inner">
 <h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
-<p>Try to plot the common false color composite, where we place the
+<p>Try to plot the common false colour composite, where we place the
 NIR-band in the red channel, the red band in the green channel and the
 bu</p>
 </div>
@@ -843,7 +843,7 @@ bu</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint2" aria-expanded="false" aria-controls="collapseHint2">
   <h4 class="accordion-header" id="headingHint2"> Give me a hint </h4>
 </button>
-<div id="collapseHint2" class="accordion-collapse collapse" aria-labelledby="headingHint2" data-bs-parent="#accordionHint2">
+<div id="collapseHint2" class="accordion-collapse collapse" data-bs-parent="#accordionHint2" aria-labelledby="headingHint2">
 <div class="accordion-body">
 <p>You can remind yourself of the order of bands in our
 <code>sentinel</code> data running <code>names(sentinel)</code></p>
@@ -856,7 +856,7 @@ bu</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -975,7 +975,7 @@ neighbourhoods.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint3" aria-expanded="false" aria-controls="collapseHint3">
   <h4 class="accordion-header" id="headingHint3"> Give me a hint </h4>
 </button>
-<div id="collapseHint3" class="accordion-collapse collapse" aria-labelledby="headingHint3" data-bs-parent="#accordionHint3">
+<div id="collapseHint3" class="accordion-collapse collapse" data-bs-parent="#accordionHint3" aria-labelledby="headingHint3">
 <div class="accordion-body">
 <p>Population density is defined as the number of people pr square
 kilometer (or any other measurement of area). We can find the area of
@@ -991,7 +991,7 @@ can use the <code>mutate()</code> just like normally.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1045,7 +1045,7 @@ arguments</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>One possible way is this.</p>
 <div class="codewrapper sourceCode" id="cb22">
@@ -1082,7 +1082,7 @@ landscape definded by Danish Geodata Agency).</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">geom_spatvector</span><span class="op">(</span>data <span class="op">=</span> <span class="va">neighbourhoods</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_spatvector</span><span class="op">(</span>data <span class="op">=</span> <span class="va">parks</span>, fill <span class="op">=</span> <span class="st">"darkgreen"</span>, color <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_spatvector</span><span class="op">(</span>data <span class="op">=</span> <span class="va">parks</span>, fill <span class="op">=</span> <span class="st">"darkgreen"</span>, colour <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">coord_sf</span><span class="op">(</span></span>
 <span>    crs <span class="op">=</span> <span class="st">"EPSG:25832"</span>,</span>
 <span>    datum <span class="op">=</span> <span class="st">"EPSG:4258"</span></span>
@@ -1138,7 +1138,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
