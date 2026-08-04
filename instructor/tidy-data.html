@@ -630,7 +630,10 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How do we structure our data best?</li>
+<ul><li>What makes a tabular dataset tidy?</li>
+<li>How can information stored in column names or table layout be
+converted into variables?</li>
+<li>Why does data structure affect later analysis?</li>
 </ul></div>
 </div>
 </div>
@@ -638,7 +641,11 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Explain what tidy data is</li>
+<ul><li>Diagnose common violations of the tidy-data principles.</li>
+<li>Reshape datasets with pivot_longer() and pivot_wider().</li>
+<li>Separate compound variables into individual columns.</li>
+<li>Design spreadsheets that can be imported and analysed without manual
+restructuring.</li>
 </ul></div>
 </div>
 </div>
@@ -649,15 +656,18 @@
 <em>If</em> the data is structured in the right way.</p>
 <p>Working within the paradigm of <code>tidyverse</code> it is
 preferable if the data is <em>tidy</em>.</p>
-<figure><img src="../fig/tidy_why.jpg" alt="" class="figure mx-auto d-block"></figure><p>Tidy data is not the opposite of messy data. Data can be nice and
+<figure><img src="../fig/tidy_why.jpg" alt="Illustration showing that well-structured data makes analysis easier" class="figure mx-auto d-block"><div class="figcaption">Artwork by Allison Horst</div>
+</figure><p>Tidy data is not the opposite of messy data. Data can be nice and
 well structured, tidy as in non-messy, without being tidy in the way we
 understand it in this context.</p>
-<figure><img src="../fig/tidy_hadley_2.jpg" alt="" class="figure mx-auto d-block"></figure><p>Tidy data in the world of R, especially the dialect of R we call
+<figure><img src="../fig/tidy_hadley_2.jpg" alt="Illustration distinguishing tidy data from data that merely looks neat" class="figure mx-auto d-block"><div class="figcaption">Artwork by Allison Horst</div>
+</figure><p>Tidy data in the world of R, especially the dialect of R we call
 tidyverse, are characterized by:</p>
 <ul><li>Each variable is a column; each column is a variable.</li>
 <li>Each observation is a row; each row is an observation.</li>
 <li>Each value is a cell; each cell is a single value.</li>
-</ul><figure><img src="../fig/tidy_hadley.jpg" alt="" class="figure mx-auto d-block"></figure><p>This way of structuring our data is useful not only in R, but also in
+</ul><figure><img src="../fig/tidy_hadley.jpg" alt="Diagram showing tidy data with variables in columns, observations in rows, and values in cells" class="figure mx-auto d-block"><div class="figcaption">Artwork by Allison Horst</div>
+</figure><p>This way of structuring our data is useful not only in R, but also in
 other software packages.</p>
 </section><section><h2 class="section-heading" id="an-examples">An examples<a class="anchor" aria-label="anchor" href="#an-examples"></a></h2>
 <hr class="half-width"><p>This is an example of untidy data, on new cases of tubercolosis in
@@ -743,7 +753,12 @@ efficiency, and collaboration by Julia Lowndes and Allison Horst</p>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>tidy data provides a consistent way of organizing data</li>
+<ul><li>Each variable should occupy one column, each observation one row,
+and each value one cell.</li>
+<li>Information encoded in headers, colours, or layout should generally
+become explicit values.</li>
+<li>Tidy structure simplifies transformation, visualisation, modelling,
+and reuse.</li>
 </ul></div>
 </div>
 </div>
@@ -782,7 +797,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 

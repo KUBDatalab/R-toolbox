@@ -917,7 +917,7 @@ the first chunk, add your own text, and change the plot to plot the
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Make a new RMarkdown document - File -&gt; New File -&gt; R
 Markdown.</p>
@@ -992,13 +992,13 @@ data.</p>
 impossible to cover every possible format. Here we cover some of the
 more common.</p>
 
-<figure><img src="fig/manyfiles.webp" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="use-code">Use code!<a class="anchor" aria-label="anchor" href="#use-code"></a>
+<figure><img src="fig/manyfiles.webp" alt="Illustration of files stored in many different formats" class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="use-code">Use code!<a class="anchor" aria-label="anchor" href="#use-code"></a>
 </h2>
 <hr class="half-width">
 <p>RStudio makes it simple to load most common data formats: Click on
 the file in the “Files” tab in RStudio, and choose “Import Dataset”:</p>
 <p>RStudio will then provide an interface for loading the data:</p>
-<figure><img src="fig/import_wizzard_gif.gif" class="figure mx-auto d-block"></figure><p>However in general we prefer to have a script or a document, that can
+<figure><img src="fig/import_wizzard_gif.gif" alt="Animation showing how to import a dataset through RStudio" class="figure mx-auto d-block"></figure><p>However in general we prefer to have a script or a document, that can
 be run without us pointing and clicking. So - instead of importing the
 data in this way, copy the code that RStudio uses to import the data,
 and paste it into your script or document.</p>
@@ -1120,7 +1120,7 @@ reading specific file formats.</p>
 <hr class="half-width">
 <p>SAS is a proprietary statistical software suite developed by SAS
 Institute.</p>
-<figure><img src="fig/SasScreenshot.png" class="figure mx-auto d-block"></figure><p>The package <code>haven</code> can read SAS-files:</p>
+<figure><img src="fig/SasScreenshot.png" alt="Screenshot of the SAS statistical software interface" class="figure mx-auto d-block"></figure><p>The package <code>haven</code> can read SAS-files:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2407,7 +2407,7 @@ different numbers of bins.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2450,7 +2450,7 @@ exist.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Why do we call it a heuristic? </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>A heuristic is a fancy way of saying “rule of thumb”. “Heuristic”
 sounds like we know what we are talking about.</p>
@@ -2503,7 +2503,7 @@ of the bill length of the penguins?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -2583,7 +2583,7 @@ histogram of the length of penguin bills?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -2647,7 +2647,7 @@ histogram of the length of penguin bills?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -2713,7 +2713,7 @@ histogram of the length of penguin bills?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -2788,7 +2788,7 @@ of the length of penguin bills?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -2892,7 +2892,7 @@ histogram of the length of penguin bills?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <p>Get all the lengths of the penguin bills, excluding missing
 values:</p>
@@ -4515,7 +4515,7 @@ geometric standard deviation. Change the code to write out “Geom.” and
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4862,7 +4862,7 @@ specifying <code>render.categorical</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4915,7 +4915,7 @@ straightforward.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Try to remove the empty string from the function, and use it is a
 table one as previously shown:</p>
@@ -5185,23 +5185,23 @@ Missing
 <span>    <span class="fu">add_overall</span><span class="op">(</span>last <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <!--html_preserve-->
-<div id="lwwwamkbuq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lwwwamkbuq table {
+<div id="ijldbjubel" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ijldbjubel table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lwwwamkbuq thead, #lwwwamkbuq tbody, #lwwwamkbuq tfoot, #lwwwamkbuq tr, #lwwwamkbuq td, #lwwwamkbuq th {
+#ijldbjubel thead, #ijldbjubel tbody, #ijldbjubel tfoot, #ijldbjubel tr, #ijldbjubel td, #ijldbjubel th {
   border-style: none;
 }
 
-#lwwwamkbuq p {
+#ijldbjubel p {
   margin: 0;
   padding: 0;
 }
 
-#lwwwamkbuq .gt_table {
+#ijldbjubel .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5227,12 +5227,12 @@ Missing
   border-left-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_caption {
+#ijldbjubel .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lwwwamkbuq .gt_title {
+#ijldbjubel .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5244,7 +5244,7 @@ Missing
   border-bottom-width: 0;
 }
 
-#lwwwamkbuq .gt_subtitle {
+#ijldbjubel .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5256,7 +5256,7 @@ Missing
   border-top-width: 0;
 }
 
-#lwwwamkbuq .gt_heading {
+#ijldbjubel .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5268,13 +5268,13 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_bottom_border {
+#ijldbjubel .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_col_headings {
+#ijldbjubel .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5289,7 +5289,7 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_col_heading {
+#ijldbjubel .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5309,7 +5309,7 @@ Missing
   overflow-x: hidden;
 }
 
-#lwwwamkbuq .gt_column_spanner_outer {
+#ijldbjubel .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5321,15 +5321,15 @@ Missing
   padding-right: 4px;
 }
 
-#lwwwamkbuq .gt_column_spanner_outer:first-child {
+#ijldbjubel .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lwwwamkbuq .gt_column_spanner_outer:last-child {
+#ijldbjubel .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lwwwamkbuq .gt_column_spanner {
+#ijldbjubel .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5341,11 +5341,11 @@ Missing
   width: 100%;
 }
 
-#lwwwamkbuq .gt_spanner_row {
+#ijldbjubel .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lwwwamkbuq .gt_group_heading {
+#ijldbjubel .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5371,7 +5371,7 @@ Missing
   text-align: left;
 }
 
-#lwwwamkbuq .gt_empty_group_heading {
+#ijldbjubel .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5386,15 +5386,15 @@ Missing
   vertical-align: middle;
 }
 
-#lwwwamkbuq .gt_from_md > :first-child {
+#ijldbjubel .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lwwwamkbuq .gt_from_md > :last-child {
+#ijldbjubel .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lwwwamkbuq .gt_row {
+#ijldbjubel .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5413,7 +5413,7 @@ Missing
   overflow-x: hidden;
 }
 
-#lwwwamkbuq .gt_stub {
+#ijldbjubel .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5426,7 +5426,7 @@ Missing
   padding-right: 5px;
 }
 
-#lwwwamkbuq .gt_stub_row_group {
+#ijldbjubel .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5440,15 +5440,15 @@ Missing
   vertical-align: top;
 }
 
-#lwwwamkbuq .gt_row_group_first td {
+#ijldbjubel .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lwwwamkbuq .gt_row_group_first th {
+#ijldbjubel .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lwwwamkbuq .gt_summary_row {
+#ijldbjubel .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5458,16 +5458,16 @@ Missing
   padding-right: 5px;
 }
 
-#lwwwamkbuq .gt_first_summary_row {
+#ijldbjubel .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_first_summary_row.thick {
+#ijldbjubel .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lwwwamkbuq .gt_last_summary_row {
+#ijldbjubel .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5477,7 +5477,7 @@ Missing
   border-bottom-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_grand_summary_row {
+#ijldbjubel .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5487,7 +5487,7 @@ Missing
   padding-right: 5px;
 }
 
-#lwwwamkbuq .gt_first_grand_summary_row {
+#ijldbjubel .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5497,7 +5497,7 @@ Missing
   border-top-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_last_grand_summary_row_top {
+#ijldbjubel .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5507,11 +5507,11 @@ Missing
   border-bottom-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_striped {
+#ijldbjubel .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#lwwwamkbuq .gt_table_body {
+#ijldbjubel .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5520,7 +5520,7 @@ Missing
   border-bottom-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_footnotes {
+#ijldbjubel .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5534,7 +5534,7 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_footnote {
+#ijldbjubel .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5543,7 +5543,7 @@ Missing
   padding-right: 5px;
 }
 
-#lwwwamkbuq .gt_sourcenotes {
+#ijldbjubel .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5557,7 +5557,7 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#lwwwamkbuq .gt_sourcenote {
+#ijldbjubel .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5565,72 +5565,72 @@ Missing
   padding-right: 5px;
 }
 
-#lwwwamkbuq .gt_left {
+#ijldbjubel .gt_left {
   text-align: left;
 }
 
-#lwwwamkbuq .gt_center {
+#ijldbjubel .gt_center {
   text-align: center;
 }
 
-#lwwwamkbuq .gt_right {
+#ijldbjubel .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lwwwamkbuq .gt_font_normal {
+#ijldbjubel .gt_font_normal {
   font-weight: normal;
 }
 
-#lwwwamkbuq .gt_font_bold {
+#ijldbjubel .gt_font_bold {
   font-weight: bold;
 }
 
-#lwwwamkbuq .gt_font_italic {
+#ijldbjubel .gt_font_italic {
   font-style: italic;
 }
 
-#lwwwamkbuq .gt_super {
+#ijldbjubel .gt_super {
   font-size: 65%;
 }
 
-#lwwwamkbuq .gt_footnote_marks {
+#ijldbjubel .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lwwwamkbuq .gt_asterisk {
+#ijldbjubel .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lwwwamkbuq .gt_indent_1 {
+#ijldbjubel .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lwwwamkbuq .gt_indent_2 {
+#ijldbjubel .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lwwwamkbuq .gt_indent_3 {
+#ijldbjubel .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lwwwamkbuq .gt_indent_4 {
+#ijldbjubel .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lwwwamkbuq .gt_indent_5 {
+#ijldbjubel .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lwwwamkbuq .katex-display {
+#ijldbjubel .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lwwwamkbuq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ijldbjubel div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5863,7 +5863,7 @@ muligheder for at tilpasse tabellen.</p>
 {
     UseMethod("tbl")
 }
-&lt;bytecode: 0x55c30b6c7e00&gt;
+&lt;bytecode: 0x55df45668f68&gt;
 &lt;environment: namespace:dplyr&gt;</code></pre>
 </div>
 
@@ -5903,7 +5903,10 @@ any links that you are not going to use.
 <div class="inner">
 <h3 class="card-title">Questions</h3>
 <ul>
-<li>How do we structure our data best?</li>
+<li>What makes a tabular dataset tidy?</li>
+<li>How can information stored in column names or table layout be
+converted into variables?</li>
+<li>Why does data structure affect later analysis?</li>
 </ul>
 </div>
 </div>
@@ -5913,7 +5916,11 @@ any links that you are not going to use.
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
 <ul>
-<li>Explain what tidy data is</li>
+<li>Diagnose common violations of the tidy-data principles.</li>
+<li>Reshape datasets with pivot_longer() and pivot_wider().</li>
+<li>Separate compound variables into individual columns.</li>
+<li>Design spreadsheets that can be imported and analysed without manual
+restructuring.</li>
 </ul>
 </div>
 </div>
@@ -5927,17 +5934,20 @@ any links that you are not going to use.
 <em>If</em> the data is structured in the right way.</p>
 <p>Working within the paradigm of <code>tidyverse</code> it is
 preferable if the data is <em>tidy</em>.</p>
-<figure><img src="fig/tidy_why.jpg" alt="" class="figure mx-auto d-block"></figure><p>Tidy data is not the opposite of messy data. Data can be nice and
+<figure><img src="fig/tidy_why.jpg" alt="Illustration showing that well-structured data makes analysis easier" class="figure mx-auto d-block"><div class="figcaption">Artwork by Allison Horst</div>
+</figure><p>Tidy data is not the opposite of messy data. Data can be nice and
 well structured, tidy as in non-messy, without being tidy in the way we
 understand it in this context.</p>
-<figure><img src="fig/tidy_hadley_2.jpg" alt="" class="figure mx-auto d-block"></figure><p>Tidy data in the world of R, especially the dialect of R we call
+<figure><img src="fig/tidy_hadley_2.jpg" alt="Illustration distinguishing tidy data from data that merely looks neat" class="figure mx-auto d-block"><div class="figcaption">Artwork by Allison Horst</div>
+</figure><p>Tidy data in the world of R, especially the dialect of R we call
 tidyverse, are characterized by:</p>
 <ul>
 <li>Each variable is a column; each column is a variable.</li>
 <li>Each observation is a row; each row is an observation.</li>
 <li>Each value is a cell; each cell is a single value.</li>
 </ul>
-<figure><img src="fig/tidy_hadley.jpg" alt="" class="figure mx-auto d-block"></figure><p>This way of structuring our data is useful not only in R, but also in
+<figure><img src="fig/tidy_hadley.jpg" alt="Diagram showing tidy data with variables in columns, observations in rows, and values in cells" class="figure mx-auto d-block"><div class="figcaption">Artwork by Allison Horst</div>
+</figure><p>This way of structuring our data is useful not only in R, but also in
 other software packages.</p>
 </section><section><h2 class="section-heading" id="an-examples">An examples<a class="anchor" aria-label="anchor" href="#an-examples"></a>
 </h2>
@@ -6032,7 +6042,12 @@ efficiency, and collaboration by Julia Lowndes and Allison Horst</p>
 <div class="callout-inner">
 <div class="callout-content">
 <ul>
-<li>tidy data provides a consistent way of organizing data</li>
+<li>Each variable should occupy one column, each observation one row,
+and each value one cell.</li>
+<li>Information encoded in headers, colours, or layout should generally
+become explicit values.</li>
+<li>Tidy structure simplifies transformation, visualisation, modelling,
+and reuse.</li>
 </ul>
 </div>
 </div>
@@ -6201,7 +6216,7 @@ of 0 and a standard deviation of 1.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6237,7 +6252,7 @@ for which 42% of the observations is smaller?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6290,7 +6305,7 @@ cm is 4%</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> How does that work? </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>We have a lot of men with an average height of 183. They all have an
 individual heigth. If we subtract 183 from their height, and use that as
@@ -6335,7 +6350,7 @@ get:</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Hint </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <p>What proportion of men are shorter than 190 cm? And what proportion
 of men are shorter than 170 cm?</p>
@@ -6348,7 +6363,7 @@ of men are shorter than 170 cm?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6393,7 +6408,7 @@ of Molybdenum (Mo) in their blood?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>We begin by calculating the probability of observing a Mo
 concentration lower than 0:</p>
@@ -8292,7 +8307,7 @@ included.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8453,7 +8468,7 @@ centimeter high, postmenopausal woman weighing 62 kg?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>We find it by adding all the terms:</p>
 <ul>
@@ -8692,23 +8707,23 @@ wt          -2.308463917
 qsec         .          </code></pre>
 </div>
 Compare with the ordinary model: <!--html_preserve-->
-<div id="udflggesht" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#udflggesht table {
+<div id="yujptfzdhe" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yujptfzdhe table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#udflggesht thead, #udflggesht tbody, #udflggesht tfoot, #udflggesht tr, #udflggesht td, #udflggesht th {
+#yujptfzdhe thead, #yujptfzdhe tbody, #yujptfzdhe tfoot, #yujptfzdhe tr, #yujptfzdhe td, #yujptfzdhe th {
   border-style: none;
 }
 
-#udflggesht p {
+#yujptfzdhe p {
   margin: 0;
   padding: 0;
 }
 
-#udflggesht .gt_table {
+#yujptfzdhe .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -8734,12 +8749,12 @@ Compare with the ordinary model: <!--html_preserve-->
   border-left-color: #D3D3D3;
 }
 
-#udflggesht .gt_caption {
+#yujptfzdhe .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#udflggesht .gt_title {
+#yujptfzdhe .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -8751,7 +8766,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-width: 0;
 }
 
-#udflggesht .gt_subtitle {
+#yujptfzdhe .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -8763,7 +8778,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-top-width: 0;
 }
 
-#udflggesht .gt_heading {
+#yujptfzdhe .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -8775,13 +8790,13 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#udflggesht .gt_bottom_border {
+#yujptfzdhe .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#udflggesht .gt_col_headings {
+#yujptfzdhe .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8796,7 +8811,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#udflggesht .gt_col_heading {
+#yujptfzdhe .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8816,7 +8831,7 @@ Compare with the ordinary model: <!--html_preserve-->
   overflow-x: hidden;
 }
 
-#udflggesht .gt_column_spanner_outer {
+#yujptfzdhe .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8828,15 +8843,15 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 4px;
 }
 
-#udflggesht .gt_column_spanner_outer:first-child {
+#yujptfzdhe .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#udflggesht .gt_column_spanner_outer:last-child {
+#yujptfzdhe .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#udflggesht .gt_column_spanner {
+#yujptfzdhe .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -8848,11 +8863,11 @@ Compare with the ordinary model: <!--html_preserve-->
   width: 100%;
 }
 
-#udflggesht .gt_spanner_row {
+#yujptfzdhe .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#udflggesht .gt_group_heading {
+#yujptfzdhe .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8878,7 +8893,7 @@ Compare with the ordinary model: <!--html_preserve-->
   text-align: left;
 }
 
-#udflggesht .gt_empty_group_heading {
+#yujptfzdhe .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -8893,15 +8908,15 @@ Compare with the ordinary model: <!--html_preserve-->
   vertical-align: middle;
 }
 
-#udflggesht .gt_from_md > :first-child {
+#yujptfzdhe .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#udflggesht .gt_from_md > :last-child {
+#yujptfzdhe .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#udflggesht .gt_row {
+#yujptfzdhe .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8920,7 +8935,7 @@ Compare with the ordinary model: <!--html_preserve-->
   overflow-x: hidden;
 }
 
-#udflggesht .gt_stub {
+#yujptfzdhe .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8933,7 +8948,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#udflggesht .gt_stub_row_group {
+#yujptfzdhe .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8947,15 +8962,15 @@ Compare with the ordinary model: <!--html_preserve-->
   vertical-align: top;
 }
 
-#udflggesht .gt_row_group_first td {
+#yujptfzdhe .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#udflggesht .gt_row_group_first th {
+#yujptfzdhe .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#udflggesht .gt_summary_row {
+#yujptfzdhe .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8965,16 +8980,16 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#udflggesht .gt_first_summary_row {
+#yujptfzdhe .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#udflggesht .gt_first_summary_row.thick {
+#yujptfzdhe .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#udflggesht .gt_last_summary_row {
+#yujptfzdhe .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8984,7 +8999,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#udflggesht .gt_grand_summary_row {
+#yujptfzdhe .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8994,7 +9009,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#udflggesht .gt_first_grand_summary_row {
+#yujptfzdhe .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9004,7 +9019,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-top-color: #D3D3D3;
 }
 
-#udflggesht .gt_last_grand_summary_row_top {
+#yujptfzdhe .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9014,11 +9029,11 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#udflggesht .gt_striped {
+#yujptfzdhe .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#udflggesht .gt_table_body {
+#yujptfzdhe .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9027,7 +9042,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#udflggesht .gt_footnotes {
+#yujptfzdhe .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9041,7 +9056,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#udflggesht .gt_footnote {
+#yujptfzdhe .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -9050,7 +9065,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#udflggesht .gt_sourcenotes {
+#yujptfzdhe .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9064,7 +9079,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#udflggesht .gt_sourcenote {
+#yujptfzdhe .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -9072,72 +9087,72 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#udflggesht .gt_left {
+#yujptfzdhe .gt_left {
   text-align: left;
 }
 
-#udflggesht .gt_center {
+#yujptfzdhe .gt_center {
   text-align: center;
 }
 
-#udflggesht .gt_right {
+#yujptfzdhe .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#udflggesht .gt_font_normal {
+#yujptfzdhe .gt_font_normal {
   font-weight: normal;
 }
 
-#udflggesht .gt_font_bold {
+#yujptfzdhe .gt_font_bold {
   font-weight: bold;
 }
 
-#udflggesht .gt_font_italic {
+#yujptfzdhe .gt_font_italic {
   font-style: italic;
 }
 
-#udflggesht .gt_super {
+#yujptfzdhe .gt_super {
   font-size: 65%;
 }
 
-#udflggesht .gt_footnote_marks {
+#yujptfzdhe .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#udflggesht .gt_asterisk {
+#yujptfzdhe .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#udflggesht .gt_indent_1 {
+#yujptfzdhe .gt_indent_1 {
   text-indent: 5px;
 }
 
-#udflggesht .gt_indent_2 {
+#yujptfzdhe .gt_indent_2 {
   text-indent: 10px;
 }
 
-#udflggesht .gt_indent_3 {
+#yujptfzdhe .gt_indent_3 {
   text-indent: 15px;
 }
 
-#udflggesht .gt_indent_4 {
+#yujptfzdhe .gt_indent_4 {
   text-indent: 20px;
 }
 
-#udflggesht .gt_indent_5 {
+#yujptfzdhe .gt_indent_5 {
   text-indent: 25px;
 }
 
-#udflggesht .katex-display {
+#yujptfzdhe .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#udflggesht div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yujptfzdhe div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -9260,7 +9275,7 @@ predict the response variable.</p>
   One way of doing it - but which problems does it have?
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>We could do that by splitting the data in two parts, build different
 models on one part with different <span class="math inline">\(\lambda\)</span> s and use them to predict the
@@ -9277,7 +9292,7 @@ data is the best, and we know which <span class="math inline">\(\lambda\)</span>
   Some problems with this approach
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Our dataset is not very large. If we pull out a fifth of the dataset
 for evaluation purposes, we only have 25 observations left.</p>
@@ -9515,7 +9530,7 @@ relation between them?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -9864,7 +9879,7 @@ model, to the the probability directly:_</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>We run the prediction:</p>
 <div class="codewrapper sourceCode" id="cb30">
@@ -9908,7 +9923,7 @@ girl, with a lung volume of 1.1 liter?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Begin by making a dataframe describing the girl:</p>
 <div class="codewrapper sourceCode" id="cb33">
@@ -10017,7 +10032,7 @@ This is definitely not normally distributed.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.4908856</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.5141973</code></pre>
 </div>
 <p>The important point of the Central Limit Theorem is, that if we take
 a large number of random samples, and calculate the mean of each of
@@ -10033,7 +10048,7 @@ this:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.549673</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.5305407</code></pre>
 </div>
 <p>And we can use the <code>replicate()</code> function to repeat that
 calculation several times, in this case 1000 times:</p>
@@ -11042,31 +11057,31 @@ we can work with afterwards:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>K-means clustering with 3 clusters of sizes 62, 69, 47
+<pre class="output" tabindex="0"><code>K-means clustering with 3 clusters of sizes 47, 62, 69
 
 Cluster means:
    Alcohol Malicacid      Ash Alcalinityofash Magnesium Totalphenols Flavanoids
-1 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
-2 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
-3 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
+1 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
+2 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
+3 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
   Nonflavanoidphenols Proanthocyanins Colorintensity       Hue
-1           0.3883871        1.503387       5.650323 0.8839677
-2           0.3901449        1.451884       4.086957 0.9411594
-3           0.2853191        1.910426       5.702553 1.0782979
+1           0.2853191        1.910426       5.702553 1.0782979
+2           0.3883871        1.503387       5.650323 0.8839677
+3           0.3901449        1.451884       4.086957 0.9411594
   OD280OD315ofdilutedwines   Proline
-1                 2.365484  728.3387
-2                 2.490725  458.2319
-3                 3.114043 1195.1489
+1                 3.114043 1195.1489
+2                 2.365484  728.3387
+3                 2.490725  458.2319
 
 Clustering vector:
-  [1] 3 3 3 3 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 1 1 3 3 1 1 3 3 1 3 3 3 3 3 3 1 1
- [38] 3 3 1 1 3 3 1 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 1 2 1 2 2 1 2 2 1 1 1 2 2 3
- [75] 1 2 2 2 1 2 2 1 1 2 2 2 2 2 1 1 2 2 2 2 2 1 1 2 1 2 1 2 2 2 1 2 2 2 2 1 2
-[112] 2 1 2 2 2 2 2 2 2 1 2 2 2 2 2 2 2 2 2 1 2 2 1 1 1 1 2 2 2 1 1 2 2 1 1 2 1
-[149] 1 2 2 2 2 1 1 1 2 1 1 1 2 1 2 1 1 2 1 1 1 1 2 2 1 1 1 1 1 2
+  [1] 1 1 1 1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 1 1 2 2 1 1 2 1 1 1 1 1 1 2 2
+ [38] 1 1 2 2 1 1 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3 2 3 2 3 3 2 3 3 2 2 2 3 3 1
+ [75] 2 3 3 3 2 3 3 2 2 3 3 3 3 3 2 2 3 3 3 3 3 2 2 3 2 3 2 3 3 3 2 3 3 3 3 2 3
+[112] 3 2 3 3 3 3 3 3 3 2 3 3 3 3 3 3 3 3 3 2 3 3 2 2 2 2 3 3 3 2 2 3 3 2 2 3 2
+[149] 2 3 3 3 3 2 2 2 3 2 2 2 3 2 3 2 2 3 2 2 2 2 3 3 2 2 2 2 2 3
 
 Within cluster sum of squares by cluster:
-[1]  566572.5  443166.7 1360950.5
+[1] 1360950.5  566572.5  443166.7
  (between_SS / total_SS =  86.5 %)
 
 Available components:
@@ -11106,9 +11121,9 @@ found, and match them with the true values:</p>
 </h3>
 <pre class="output" tabindex="0"><code>     true
 quess  1  2  3
-    1 13 20 29
-    2  0 50 19
-    3 46  1  0</code></pre>
+    1 46  1  0
+    2 13 20 29
+    3  0 50 19</code></pre>
 </div>
 <p>The algorithm have no idea about how the true groups are numbered, so
 the numbering does not match. But it appears that i does a relatively
@@ -11495,7 +11510,7 @@ smaller differences in variance can be problematic.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> More specific methods exist. </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>There are probably more than than three tests for homoskedacity, here
 are three:</p>
@@ -11640,7 +11655,7 @@ three different species of the iris-family of flowers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -11682,7 +11697,7 @@ can reject the hypothesis that there is no difference.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -12479,7 +12494,7 @@ have to feed it the lines one at a time.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Notes on R environments, renv and caches </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Data analysis is not worth much, if we are not able to reproduce our
 results. A significant amount of work has therefore gone into providing
@@ -13058,7 +13073,7 @@ version 4.1 in May 2021.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> R dialects </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>R-programmers tend to write in one dialect of R, small variations
 that are understandable - but still different. The three common dialects
@@ -13238,7 +13253,7 @@ equal to 1.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -13305,7 +13320,7 @@ the side effect.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Defining three functions </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -13415,7 +13430,7 @@ Sepal.Width in the iris dataset.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
 <div class="accordion-body">
 <p>Something like this:</p>
 <div class="codewrapper sourceCode" id="cb9">
@@ -13436,7 +13451,7 @@ Sepal.Width in the iris dataset.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>This cannot be done.</p>
 <p>In this attempt:</p>
@@ -14379,7 +14394,7 @@ think is the most distinct.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>What is the most distinct is of course a matter of taste, but some
 would argue that the NIR-band is the one that differs most from the
@@ -14439,7 +14454,7 @@ random sample of 100 000 observations.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>We observe that the values in each band in the object have values
 from approximately 0 to somewhere in the 65000’s. The mean and medians
@@ -14495,7 +14510,7 @@ base plot function <code>hist</code></p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -14663,7 +14678,7 @@ blue in your very own false colour plot</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Suggested Solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>As long as it is your own, there is no wrong answer. This version is
 nice and orangey:</p>
@@ -15090,7 +15105,7 @@ names of the polygons:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>To save space this code only return the first 10 names:</p>
 <div class="codewrapper sourceCode" id="cb8">
@@ -15200,7 +15215,7 @@ is the smallest.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
 <div class="accordion-body">
 <p>We can extract values from the neighborhood object using the
 <code>values()</code> function (just like we did with raster data).
@@ -15218,7 +15233,7 @@ The last option give a nicer looking output.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -15261,7 +15276,7 @@ perimeters to the parks.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -15422,7 +15437,7 @@ would be the conceptual steps in doing that be? Discuss!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>There are probably many ways of doing this. One suggestion would
 be:</p>
@@ -15731,7 +15746,7 @@ are the same.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Have to download the data again? </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>Make sure you have a <code>data</code> folder in your project folder,
 and then run this code:</p>
@@ -15896,7 +15911,7 @@ bu</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint2" aria-expanded="false" aria-controls="collapseHint2">
   <h4 class="accordion-header" id="headingHint2"> Give me a hint </h4>
 </button>
-<div id="collapseHint2" class="accordion-collapse collapse" data-bs-parent="#accordionHint2" aria-labelledby="headingHint2">
+<div id="collapseHint2" class="accordion-collapse collapse" aria-labelledby="headingHint2" data-bs-parent="#accordionHint2">
 <div class="accordion-body">
 <p>You can remind yourself of the order of bands in our
 <code>sentinel</code> data running <code>names(sentinel)</code></p>
@@ -15909,7 +15924,7 @@ bu</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -16032,7 +16047,7 @@ neighbourhoods.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint3" aria-expanded="false" aria-controls="collapseHint3">
   <h4 class="accordion-header" id="headingHint3"> Give me a hint </h4>
 </button>
-<div id="collapseHint3" class="accordion-collapse collapse" data-bs-parent="#accordionHint3" aria-labelledby="headingHint3">
+<div id="collapseHint3" class="accordion-collapse collapse" aria-labelledby="headingHint3" data-bs-parent="#accordionHint3">
 <div class="accordion-body">
 <p>Population density is defined as the number of people pr square
 kilometer (or any other measurement of area). We can find the area of
@@ -16048,7 +16063,7 @@ can use the <code>mutate()</code> just like normally.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -16103,7 +16118,7 @@ arguments</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>One possible way is this.</p>
 <div class="codewrapper sourceCode" id="cb22">
@@ -24831,7 +24846,7 @@ selected:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ap</span> <span class="op">&lt;-</span> <span class="fu">available.packages</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<p>In this example we find 28278 packages.</p>
+<p>In this example we find 28294 packages.</p>
 <p>Rather than viewing all of them, it is better to test if the package
 we are looking for is actually available:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -25743,7 +25758,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
