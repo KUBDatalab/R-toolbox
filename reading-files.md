@@ -30,7 +30,7 @@ at least one package exists that is designed to read a specific weird
 data format.
 :::
 
-![](fig/manyfiles.webp)
+![](fig/manyfiles.webp){alt="Illustration of files stored in many different formats"}
 
 ## Use code!
 
@@ -39,7 +39,7 @@ the file in the "Files" tab in RStudio, and choose "Import Dataset":
 
 RStudio will then provide an interface for loading the data:
 
-![](fig/import_wizzard_gif.gif)
+![](fig/import_wizzard_gif.gif){alt="Animation showing how to import a dataset through RStudio"}
 
 However in general we prefer to have a script or a document, that can be
 run without us pointing and clicking. So - instead of importing the data
@@ -166,7 +166,7 @@ formats.
 SAS is a proprietary statistical software suite developed by SAS
 Institute.
 
-![](fig/SasScreenshot.png)
+![](fig/SasScreenshot.png){  alt="Screenshot of the SAS statistical software interface"}
 
 The package `haven` can read SAS-files:
 
