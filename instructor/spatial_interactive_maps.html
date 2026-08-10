@@ -460,12 +460,26 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         30. Interactive maps
         </span>
-      
+      </button>
     </div><!--/div.accordion-header-->
+
+    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
+      <div class="accordion-body">
+        <ul><li><a href="#introduction-to-interactive-maps">Introduction to interactive maps</a></li>
+<li><a href="#creating-your-first-leaflet-map">Creating your first Leaflet map</a></li>
+<li><a href="#coordinate-reference-systems-in-leaflet">Coordinate reference systems in Leaflet</a></li>
+<li><a href="#mapping-point-data">Mapping point data</a></li>
+<li><a href="#combining-several-spatial-layers">Combining several spatial layers</a></li>
+<li><a href="#adding-raster-data">Adding raster data</a></li>
+<li><a href="#designing-useful-popups-and-labels">Designing useful popups and labels</a></li>
+<li><a href="#saving-and-publishing-the-map">Saving and publishing the map</a></li>
+        </ul></div><!--/div.accordion-body-->
+    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -600,7 +614,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Interactive maps</h1>
-        <p>Last updated on 2026-08-04 |
+        <p>Last updated on 2026-08-10 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/spatial_interactive_maps.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -635,12 +649,70 @@
 </div>
 </div>
 </div>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">terra</span><span class="op">)</span></span>
+<span><span class="va">files</span> <span class="op">&lt;-</span> <span class="fu">list.files</span><span class="op">(</span><span class="st">"data/"</span>, pattern <span class="op">=</span> <span class="st">".tiff"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">sentinel</span> <span class="op">&lt;-</span> <span class="fu">rast</span><span class="op">(</span><span class="va">files</span><span class="op">)</span></span></code></pre>
+</div>
+<div id="accordionHint1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
+  <h4 class="accordion-header" id="headingHint1"> Have to download the data again? </h4>
+</button>
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div class="accordion-body">
+<p>Make sure you have a <code>data</code> folder in your project folder,
+and then run this code:</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">urls</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B02_(Raw).tiff"</span>,</span>
+<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B03_(Raw).tiff"</span>,</span>
+<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B04_(Raw).tiff"</span>,</span>
+<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B08_(Raw).tiff"</span>,</span>
+<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighborhoods_and_frederiksberg.gpkg"</span>,</span>
+<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/parks_cph_frederiksberg.gpkg"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">download.file</span><span class="op">(</span></span>
+<span>  <span class="va">urls</span>,</span>
+<span>  destfile <span class="op">=</span> <span class="fu">file.path</span><span class="op">(</span><span class="st">"data"</span>, <span class="fu">basename</span><span class="op">(</span><span class="va">urls</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  mode <span class="op">=</span> <span class="st">"wb"</span></span>
+<span><span class="op">)</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">names</span><span class="op">(</span><span class="va">sentinel</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu">c</span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"green"</span>, <span class="st">"red"</span>, <span class="st">"nir"</span><span class="op">)</span></span>
+<span><span class="va">sentinel</span> <span class="op">&lt;-</span> <span class="va">sentinel</span><span class="op">/</span><span class="fl">65535</span></span></code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">neighbourhoods</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/cph_neighborhoods_and_frederiksberg.gpkg"</span><span class="op">)</span></span>
+<span><span class="va">parks</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/parks_cph_frederiksberg.gpkg"</span><span class="op">)</span></span></code></pre>
+</div>
+<p>oprette et interaktivt Leaflet-kort fra et sf-objekt, transformere
+spatiale data til et CRS, der kan vises i Leaflet, visualisere punkter
+og polygoner med relevante visuelle egenskaber, tilføje labels, popups,
+farveskalaer og signaturforklaringer, kombinere flere datalag og give
+brugeren kontrol over dem, gemme og publicere kortet som en selvstændig
+HTML-fil.</p>
 <div class="section level3">
 <h3 id="interactive-maps">Interactive maps<a class="anchor" aria-label="anchor" href="#interactive-maps"></a></h3>
 <p>source(“scripts/make-leaflet-map.R”)</p>
 <p>Kan vi smide det ind her?</p>
 <p>Kan vi skrive indholdet af en chunk?</p>
-<div class="codewrapper sourceCode" id="cb1">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -683,6 +755,252 @@
 </div>
 <iframe src="files/leaflet-eksempel.html" title="Interaktivt Leaflet-kort" width="100%" height="550" style="border: 1px solid #cccccc;">
 </iframe>
+</div>
+<section><h2 class="section-heading" id="introduction-to-interactive-maps">Introduction to interactive maps<a class="anchor" aria-label="anchor" href="#introduction-to-interactive-maps"></a></h2>
+<hr class="half-width"><p>Formål: Forklare hvad Leaflet tilføjer i forhold til plot() og
+ggplot2.</p>
+<p>Vis et færdigt kort tidligt.</p>
+<p>Overskrifter Static and interactive maps When is an interactive map
+useful? The Leaflet map model Maps, basemaps and data layers Our final
+map</p>
+<p>Centrale pointer Et interaktivt kort er ikke automatisk bedre end et
+statisk kort. Leaflet er særlig nyttigt, når brugeren skal: zoome og
+panorere, undersøge enkelte objekter, tænde og slukke lag, se
+attributter via labels og popups. Et Leaflet-kort bygges trinvist ved at
+tilføje lag som tiles, markers, polygons og controls. Kort øvelse</p>
+<div id="challenge1" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
+<div class="callout-content">
+<p>Which information are suitiable to show with:</p>
+<ul><li>Geometry</li>
+<li>colour or size</li>
+<li>popup</li>
+<li>label</li>
+<li>signaturforklaring.</li>
+</ul></div>
+</div>
+</div>
+<div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
+</button>
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div class="accordion-body">
+<p>Geometri - det der faktisk har geografisk placering og udstrækning.
+Parker - polygoner. Stationer som punkter, veje som linier Farve eller
+størrelse - variable der skal kunne sammenlignes mellem objekter-
+befolkningstæthed er et bud. Antal besøgende i parker ved størrelse
+popups - ting der først er relevatne når brugeren klikker. Navn, areal,
+befolkning, datakilder og den slags Label - kort identifikation der kan
+aflæses ved hover. eg navn eller en enkelt central værdi.
+Signaturforklaring. Forklaring af de visuelle koder. Hvad betyder
+farver, størrelser, symboler etc.</p>
+</div>
+</div>
+</div>
+</div>
+</section><section><h2 class="section-heading" id="creating-your-first-leaflet-map">Creating your first Leaflet map<a class="anchor" aria-label="anchor" href="#creating-your-first-leaflet-map"></a></h2>
+<hr class="half-width"><p>Dette bør være det egentlige startpunkt for kodningen.</p>
+<p>Overskrifter Creating an empty map Adding a basemap Adding spatial
+data Setting the initial view Understanding the pipe-based workflow
+Grundeksempel library(sf) library(leaflet)</p>
+<p>neighborhoods &lt;- read_sf( “data/bydele_and_frederiksberg.gpkg”
+)</p>
+<p>leaflet(neighborhoods) |&gt;
+addProviderTiles(providers$CartoDB.Positron) |&gt; addPolygons()
+Underemner leaflet(data) addTiles() og addProviderTiles() setView()
+kontra fitBounds() Hvad der ligger i data-argumentet Leaflets
+lagfunktioner</p>
+<p>Jeg ville bruge fitBounds() eller lade geometrien bestemme udsnittet
+frem for at starte med håndskrevne koordinater.</p>
+<p>Øvelse</p>
+<p>Skift mellem to eller tre baggrundskort, og bed kursisterne vælge
+det, der bedst understøtter dataene.</p>
+</section><section><h2 class="section-heading" id="coordinate-reference-systems-in-leaflet">Coordinate reference systems in Leaflet<a class="anchor" aria-label="anchor" href="#coordinate-reference-systems-in-leaflet"></a></h2>
+<hr class="half-width"><p>Selv om CRS allerede er gennemgået, bør dette have sin egen korte
+sektion, fordi Leaflet opfører sig anderledes end mange statiske
+kortværktøjer.</p>
+<p>Overskrifter Leaflet maps use longitude and latitude Inspecting the
+CRS Transforming data for Leaflet Projected data versus displayed data
+Kernekode st_crs(neighborhoods)</p>
+<p>neighborhoods &lt;- neighborhoods |&gt; st_transform(4326)
+Budskab</p>
+<p>Data kan analyseres i eksempelvis:</p>
+<p>EPSG:25832</p>
+<p>men bør som hovedregel transformeres til:</p>
+<p>EPSG:4326</p>
+<p>inden de sendes til Leaflet.</p>
+<p>Jeg ville understrege forskellen mellem:</p>
+<p>analyse-CRS, eksempelvis UTM til afstande og buffere, visnings-CRS,
+som Leaflet bruger på webkortet.</p>
+<p>Det er et godt sted til en challenge, hvor kursisterne forsøger at
+vise UTM-data og derefter diagnosticerer problemet.</p>
+</section><section><h2 class="section-heading" id="mapping-point-data">Mapping point data<a class="anchor" aria-label="anchor" href="#mapping-point-data"></a></h2>
+<hr class="half-width"><p>Punkter er den letteste geometri at introducere interaktivitet
+med.</p>
+<p>Overskrifter Markers and circle markers Encoding values with size
+Labels and popups Clustering many points Choosing between markers and
+circles Funktioner addMarkers() addCircleMarkers() addCircles()</p>
+<p>Jeg ville primært undervise i addCircleMarkers(). De er lettere at
+formatere og er normalt mere velegnede til datavisualisering end de
+klassiske nålemarkører.</p>
+<p>Eksempel leaflet(parks) |&gt;
+addProviderTiles(providers$CartoDB.Positron) |&gt; addCircleMarkers(
+radius = 5, label = ~navn, popup = ~paste0( “<strong>”, navn,
+“</strong><br>”, “Type:”, type ) )</p>
+<p>Leaflet skelner mellem label, der typisk vises ved hover, og popup,
+der åbnes ved klik. Markører kan desuden grupperes i clusters ved store
+punktmængder.</p>
+<p>Øvelse</p>
+<p>Lad kursisterne:</p>
+<p>tilføje parkernes navne som labels, indsætte flere attributter i en
+popup, ændre radius ud fra en numerisk variabel. 5. Styling spatial
+data</p>
+<p>Dette er efter min vurdering modulets vigtigste episode. Her går
+kortet fra “geometri oven på et baggrundskort” til egentlig
+datavisualisering.</p>
+<p>Overskrifter Mapping variables to visual properties Creating colour
+functions Continuous and categorical palettes Missing values Adding a
+legend Choosing sensible classifications Funktioner colorNumeric()
+colorBin() colorQuantile() colorFactor() addLegend() Eksempel med
+befolkning pal &lt;- colorBin( palette = “YlOrRd”, domain =
+neighborhoods$population, bins = 5 )</p>
+<p>leaflet(neighborhoods) |&gt;
+addProviderTiles(providers$CartoDB.Positron) |&gt; addPolygons(
+fillColor = ~pal(population), fillOpacity = 0.7, weight = 1, color =
+“white”, popup = ~paste0( “<strong>”, navn, “</strong><br>”,
+“Population:”, population ) ) |&gt; addLegend( pal = pal, values =
+~population, title = “Population” )</p>
+<p>Leaflet har særskilte palettefunktioner og addLegend() til at holde
+kortets farver og signaturforklaring konsistente.</p>
+<p>Vigtig faglig diskussion</p>
+<p>Her ville jeg have et afsnit om:</p>
+<p>hvorfor man ikke bør bruge tilfældige farver til numeriske værdier,
+forskellen på kontinuerte værdier og kategorier, hvorfor polygonareal
+kan dominere kortets visuelle indtryk, forskellen på total befolkning og
+befolkningstæthed.</p>
+<p>Befolkningstæthed er et oplagt sted at genbruge deres viden om
+projicerede CRS:</p>
+<p>neighborhoods |&gt; st_transform(25832) |&gt; mutate( area_km2 =
+as.numeric(st_area(geometry)) / 1e6, density = population / area_km2 )
+|&gt; st_transform(4326) ## Polygon maps and choropleths</p>
+<p>Denne episode kan enten være selvstændig eller lægges sammen med
+styling.</p>
+<p>Overskrifter Adding polygons Choropleth maps Borders, fills and
+transparency Highlighting features Writing informative popups Avoiding
+misleading choropleths Relevant funktionalitet addPolygons(
+highlightOptions = highlightOptions( weight = 3, bringToFront = TRUE ) )
+Øvelse</p>
+<p>Lav to kort:</p>
+<p>samlet befolkning pr. bydel, befolkning pr. km².</p>
+<p>Lad derefter kursisterne forklare, hvorfor de to kort fortæller
+forskellige historier.</p>
+<p>Det vil være en fagligt stærkere øvelse end blot at bede dem ændre
+farver.</p>
+</section><section><h2 class="section-heading" id="combining-several-spatial-layers">Combining several spatial layers<a class="anchor" aria-label="anchor" href="#combining-several-spatial-layers"></a></h2>
+<hr class="half-width"><p>Her samles punkter, linjer og polygoner.</p>
+<p>Overskrifter Layer groups Overlaying points and polygons Controlling
+layer order Adding a layer control Base groups and overlay groups
+Showing and hiding layers Eksempel leaflet() |&gt; addProviderTiles(
+providers<span class="math inline">\(CartoDB.Positron,
+    group = "Light"
+  ) |&gt;
+  addProviderTiles(
+    providers\)</span>OpenStreetMap, group = “OpenStreetMap” ) |&gt;
+addPolygons( data = neighborhoods, group = “Neighborhoods” ) |&gt;
+addCircleMarkers( data = parks, group = “Parks” ) |&gt;
+addLayersControl( baseGroups = c( “Light”, “OpenStreetMap” ),
+overlayGroups = c( “Neighborhoods”, “Parks” ) )</p>
+<p>Leaflet bruger group sammen med addLayersControl() til at vise og
+skjule lag.</p>
+<p>God challenge</p>
+<p>Tilføj:</p>
+<p>bydele, parker, en eller flere ruter eller linjer, to forskellige
+baggrundskort.</p>
+<p>Lad derefter kursisterne beslutte, hvilke lag der skal være synlige
+ved start.</p>
+</section><section><h2 class="section-heading" id="adding-raster-data">Adding raster data<a class="anchor" aria-label="anchor" href="#adding-raster-data"></a></h2>
+<hr class="half-width"><p>Fordi I allerede arbejder med Sentinel og NDVI, ville jeg have dette
+med — men som valgfri eller avanceret episode.</p>
+<p>Overskrifter Vector and raster layers in Leaflet Preparing a raster
+for display Colouring raster values Adding an NDVI layer Transparency
+and layer controls Browser and file-size limitations Relevant eksempel
+library(terra) library(leaflet)</p>
+<p>ndvi &lt;- rast(“data/ndvi.tif”)</p>
+<p>pal_ndvi &lt;- colorNumeric( palette = “YlGn”, domain = values(ndvi),
+na.color = “transparent” )</p>
+<p>leaflet() |&gt; addProviderTiles(providers$CartoDB.Positron) |&gt;
+addRasterImage( ndvi, colors = pal_ndvi, opacity = 0.7, group = “NDVI” )
+|&gt; addLegend( pal = pal_ndvi, values = values(ndvi), title = “NDVI” )
+Her bør I tale om rasterens opløsning, filstørrelse, reprojektion,
+nedskalering, hvorfor et stort Sentinel-raster ikke nødvendigvis bør
+sendes direkte til browseren.</p>
+<p>Leaflets officielle materiale behandler rastervisning og projektion
+som særskilte spatial-data-emner, så det passer naturligt som en mere
+avanceret del.</p>
+</section><section><h2 class="section-heading" id="designing-useful-popups-and-labels">Designing useful popups and labels<a class="anchor" aria-label="anchor" href="#designing-useful-popups-and-labels"></a></h2>
+<hr class="half-width"><p>Dette kan være en mindre sektion, men det er værd at behandle som
+design og ikke kun syntaks.</p>
+<p>Overskrifter What belongs in a popup? Labels versus popups Formatting
+text with HTML Formatting numbers Handling missing values Avoiding
+information overload Eksempel popup_text &lt;- paste0( “<strong>”,
+neighborhoods<span class="math inline">\(navn,
+"&lt;/strong&gt;&lt;br&gt;",
+  "Population: ",
+  format(
+    neighborhoods\)</span>population, big.mark = “,” ), “<br>”, “Area:”,
+round(neighborhoods$area_km2, 1), ” km²” )</strong></p>
+<p>Undervis gerne i at konstruere popupteksten som en separat
+kolonne:</p>
+<p>neighborhoods &lt;- neighborhoods |&gt; mutate( popup = paste0(
+“<strong>”, navn, “</strong><br>”, “Population:”, population ) )</p>
+<p>Det er renere end at lægge en meget lang paste0() direkte inde i
+addPolygons().</p>
+</section><section><h2 class="section-heading" id="saving-and-publishing-the-map">Saving and publishing the map<a class="anchor" aria-label="anchor" href="#saving-and-publishing-the-map"></a></h2>
+<hr class="half-width"><p>Denne del er særlig relevant i jeres Carpentries-system.</p>
+<p>Overskrifter Leaflet maps are HTML widgets Saving a map as an HTML
+file Opening a map outside R Embedding maps in the lesson website
+Relative paths and project structure Reproducible map generation
+Centrale funktioner htmlwidgets::saveWidget()</p>
+<p>og iframe-løsningen, vi netop har talt om.</p>
+<p>Jeg ville vise en foreslået projektstruktur:</p>
+<p>episodes/ leaflet-maps.Rmd files/ leaflet-final.html</p>
+<p>data/ bydele_and_frederiksberg.gpkg parks.gpkg</p>
+<p>scripts/ prepare-spatial-data.R</p>
+<p>Adskil gerne:</p>
+<p>databearbejdning, kortkonstruktion, publicering.</p>
+<p>Kursisterne skal helst ikke tro, at alle GIS-operationer nødvendigvis
+hører hjemme i den samme lange Leaflet-pipeline.</p>
+<p>Afsluttende projekt</p>
+<p>Jeg ville afslutte med én større challenge:</p>
+<p>Challenge: Build an interactive map of Copenhagen</p>
+<p>Krav til kortet:</p>
+<p>Vis København og Frederiksbergs områder som polygoner. Farvelæg dem
+efter befolkningstæthed. Tilføj parker som et separat lag. Tilføj labels
+med områdenavn. Tilføj popups med relevante værdier. Tilføj en
+signaturforklaring. Tilføj mindst to baggrundskort. Tilføj lagkontrol.
+Gem kortet som en HTML-fil. Udvidelser Tilføj en NDVI-raster. Brug
+marker clustering. Tilføj en målestok. Tilføj en titel med addControl().
+Fremhæv polygoner ved hover. Lav en anden klassifikation og sammenlign
+resultatet.</p>
+<p>Det er en god Carpentries-øvelse, fordi den tester konkrete
+færdigheder, som svarer direkte til læringsmålene. Carpentries’
+designmateriale anbefaler netop at definere læringsmål og derefter
+konstruere øvelser, der demonstrerer, om deltagerne har nået dem.</p>
+<p>Foreslåede samlede læringsmål</p>
+<p>Efter modulet skal deltagerne kunne:</p>
+<p>oprette et interaktivt Leaflet-kort fra et sf-objekt, transformere
+spatiale data til et CRS, der kan vises i Leaflet, visualisere punkter
+og polygoner med relevante visuelle egenskaber, tilføje labels, popups,
+farveskalaer og signaturforklaringer, kombinere flere datalag og give
+brugeren kontrol over dem, gemme og publicere kortet som en selvstændig
+HTML-fil. Hvad jeg ville holde ude af grundmodulet</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -698,11 +1016,7 @@
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</div>
-
-
-
-      </div> <!-- / div.lesson-content -->
+</section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter Bottom"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/gis_visualization.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/git-00-setup.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -733,7 +1047,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
@@ -762,8 +1076,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/spatial_interactive_maps.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/spatial_interactive_maps.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2026-08-04",
-  "datePublished": "2026-08-04"
+  "dateModified": "2026-08-10",
+  "datePublished": "2026-08-10"
 }
 
   </script><script>
