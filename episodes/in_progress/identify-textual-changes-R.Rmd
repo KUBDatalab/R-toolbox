@@ -1,0 +1,353 @@
+---
+title: "Identify textual changes"
+output: html_document
+---
+
+# Identify textual changes
+
+As example data we use the first chapter of two different editions of the novel *Frankenstein*.
+
+Metadata first book:
+
+- **Author:** Shelley, Mary Wollstonecraft, 1797–1851
+- **Title:** *Frankenstein; Or, The Modern Prometheus*
+- **Original publication:** United Kingdom: Lackington, Hughes, Harding, Mavor, & Jones, 1818.
+
+Metadata second book:
+
+- **Author:** Shelley, Mary Wollstonecraft, 1797–1851
+- **Title:** *Frankenstein; Or, The Modern Prometheus*
+- **Original publication:** United Kingdom: H. Colburn and R. Bentley, 1831.
+
+After we have extracted the first chapter of each book, we try two different approaches to text comparison.
+
+For the first approach we use the R package `diffobj`. Its `diffChr()` function compares character vectors and provides a visual representation of the differences between them.
+
+For the second approach we use Levenshtein distance to calculate the similarity between the two texts. R provides Levenshtein distance directly through `adist()`.
+
+# Download the two novels from Gutenberg.org
+
+Download the two novels from Gutenberg.org and extract the first chapter of each book.
+
+```{r}
+# Get the 1818 edition
+url1 <- "https://gutenberg.org/cache/epub/41445/pg41445.txt"
+
+raw_text1 <- readLines(
+  url1,
+  warn = FALSE,
+  encoding = "UTF-8"
+) |>
+  paste(collapse = "\n")
+
+# Get Chapter I
+chap1_1 <- sub(
+  "^[\\s\\S]*?(CHAPTER I[\\s\\S]*?)CHAPTER II[\\s\\S]*$",
+  "\\1",
+  raw_text1,
+  perl = TRUE
+)
+
+
+# Get the 1831 edition
+url2 <- "https://gutenberg.org/cache/epub/42324/pg42324.txt"
+
+raw_text2 <- readLines(
+  url2,
+  warn = FALSE,
+  encoding = "UTF-8"
+) |>
+  paste(collapse = "\n")
+
+# Get Chapter I
+chap1_2 <- sub(
+  "^[\\s\\S]*?(CHAPTER I[\\s\\S]*?)CHAPTER II[\\s\\S]*$",
+  "\\1",
+  raw_text2,
+  perl = TRUE
+)
+```
+
+The regular expression keeps the text beginning with `CHAPTER I` and ending immediately before `CHAPTER II`.
+
+# Preprocess the text to get homogeneous data
+
+We define a small preprocessing function. It:
+
+1. replaces carriage returns and line breaks with spaces,
+2. removes characters other than letters, numbers, underscores, whitespace and full stops,
+3. reduces repeated whitespace to a single space.
+
+```{r}
+preprocess_text <- function(text) {
+
+  text <- gsub(
+    "[\r\n]",
+    " ",
+    text
+  )
+
+  text <- gsub(
+    "[^[:alnum:]_[:space:].]",
+    "",
+    text
+  )
+
+  text <- gsub(
+    "\\s+",
+    " ",
+    text,
+    perl = TRUE
+  )
+
+  trimws(text)
+}
+
+
+edition1818 <- preprocess_text(chap1_1)
+edition1831 <- preprocess_text(chap1_2)
+```
+
+# Using `diffobj` for text comparison
+
+The Python version uses `difflib.Differ()`. In R, the package `diffobj` provides similar functionality.
+
+Install the package if necessary:
+
+```{r eval=FALSE}
+install.packages("diffobj")
+```
+
+Load it:
+
+```{r}
+library(diffobj)
+```
+
+We first make a function that splits the texts into sentences and compares them.
+
+```{r}
+compare_texts <- function(text1, text2) {
+
+  # Split the texts into sentences
+  lines1 <- strsplit(
+    text1,
+    "\\.\\s+",
+    perl = TRUE
+  )[[1]]
+
+  lines2 <- strsplit(
+    text2,
+    "\\.\\s+",
+    perl = TRUE
+  )[[1]]
+
+  # Compare the texts
+  diffChr(
+    lines1,
+    lines2,
+    pager = "off"
+  )
+}
+```
+
+Compare the first 2000 characters in the first chapter of each edition:
+
+```{r}
+compare_texts(
+  substr(edition1818, 1, 2000),
+  substr(edition1831, 1, 2000)
+)
+```
+
+`diffChr()` highlights text that occurs only in the first text, text that occurs only in the second text, and text shared by the two versions.
+
+The precise visual representation depends on the output device. In an interactive R session, `diffobj` can use colour and formatting to make additions and deletions easier to see.
+
+# Using Levenshtein distance to compute the similarity of two texts
+
+The Python example uses `fuzzywuzzy` and its `fuzz.ratio()` function.
+
+R already contains a function for calculating Levenshtein edit distance: `adist()`.
+
+The Levenshtein distance is the minimum number of insertions, deletions and substitutions required to transform one string into another.
+
+We can turn the distance into a percentage similarity score.
+
+```{r}
+compare_sentences <- function(sentence1, sentence2) {
+
+  # Calculate Levenshtein distance
+  distance <- adist(
+    sentence1,
+    sentence2
+  )[1]
+
+  # Convert the distance to a similarity ratio
+  max_length <- max(
+    nchar(sentence1),
+    nchar(sentence2)
+  )
+
+  ratio <- 100 * (
+    1 - distance / max_length
+  )
+
+  ratio
+}
+```
+
+Calculate the similarity between the complete first chapters:
+
+```{r}
+similarity <- compare_sentences(
+  edition1818,
+  edition1831
+)
+
+sprintf(
+  "Similarity: %.0f%%",
+  similarity
+)
+```
+
+The result is a normalized Levenshtein similarity score:
+
+\[
+\text{similarity}
+=
+100
+\left(
+1 -
+\frac{\text{Levenshtein distance}}
+     {\text{length of the longest text}}
+\right)
+\]
+
+A score of 100% means that the two strings are identical. Lower scores indicate increasingly large differences.
+
+# Complete example
+
+The complete workflow can therefore be written compactly as:
+
+```{r eval=FALSE}
+library(diffobj)
+
+url1 <- "https://gutenberg.org/cache/epub/41445/pg41445.txt"
+url2 <- "https://gutenberg.org/cache/epub/42324/pg42324.txt"
+
+raw_text1 <- readLines(
+  url1,
+  warn = FALSE,
+  encoding = "UTF-8"
+) |>
+  paste(collapse = "\n")
+
+raw_text2 <- readLines(
+  url2,
+  warn = FALSE,
+  encoding = "UTF-8"
+) |>
+  paste(collapse = "\n")
+
+
+chap1_1 <- sub(
+  "^[\\s\\S]*?(CHAPTER I[\\s\\S]*?)CHAPTER II[\\s\\S]*$",
+  "\\1",
+  raw_text1,
+  perl = TRUE
+)
+
+chap1_2 <- sub(
+  "^[\\s\\S]*?(CHAPTER I[\\s\\S]*?)CHAPTER II[\\s\\S]*$",
+  "\\1",
+  raw_text2,
+  perl = TRUE
+)
+
+
+preprocess_text <- function(text) {
+
+  text <- gsub(
+    "[\r\n]",
+    " ",
+    text
+  )
+
+  text <- gsub(
+    "[^[:alnum:]_[:space:].]",
+    "",
+    text
+  )
+
+  text <- gsub(
+    "\\s+",
+    " ",
+    text,
+    perl = TRUE
+  )
+
+  trimws(text)
+}
+
+
+edition1818 <- preprocess_text(chap1_1)
+edition1831 <- preprocess_text(chap1_2)
+
+
+compare_texts <- function(text1, text2) {
+
+  lines1 <- strsplit(
+    text1,
+    "\\.\\s+",
+    perl = TRUE
+  )[[1]]
+
+  lines2 <- strsplit(
+    text2,
+    "\\.\\s+",
+    perl = TRUE
+  )[[1]]
+
+  diffChr(
+    lines1,
+    lines2,
+    pager = "off"
+  )
+}
+
+
+compare_texts(
+  substr(edition1818, 1, 2000),
+  substr(edition1831, 1, 2000)
+)
+
+
+compare_sentences <- function(sentence1, sentence2) {
+
+  distance <- adist(
+    sentence1,
+    sentence2
+  )[1]
+
+  max_length <- max(
+    nchar(sentence1),
+    nchar(sentence2)
+  )
+
+  100 * (
+    1 - distance / max_length
+  )
+}
+
+
+similarity <- compare_sentences(
+  edition1818,
+  edition1831
+)
+
+sprintf(
+  "Similarity: %.0f%%",
+  similarity
+)
+```
