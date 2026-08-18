@@ -29,7 +29,10 @@ For the second approach we use Levenshtein distance to calculate the similarity 
 
 Download the two novels from Gutenberg.org and extract the first chapter of each book.
 
+HER SKAL VI NOK HAVE NOGET MED GUTENBERGR PAKKEN I STEDET.
+
 ```{r}
+library(gutenbergr)
 # Get the 1818 edition
 url1 <- "https://gutenberg.org/cache/epub/41445/pg41445.txt"
 
