@@ -156,7 +156,7 @@ read_stata("filename")
 
 The function returns at tibble.
 
-As with SPSS Stata uses a couple of different fileformats, and
+SPSS Stata uses a couple of different fileformats, and
 `read_stata` makes a guess as to which format is used. If problems
 arise, `haven` has more specific functions for reading specific file
 formats.
