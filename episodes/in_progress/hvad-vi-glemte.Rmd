@@ -18,7 +18,7 @@ exercises: 2
 
 ## Introduction
 
-What we forgot to tell you about R.
+What we forgot to tell you about R. A collection of details, tips, tricks etc in and with R
 
 ## Math in R is imprecise!
 
@@ -49,14 +49,9 @@ Pretty close but not 0.
 R, in the best case, uses 64 bits for storing numerics, and that means the best
 we can expect to be correct is 15-16 significant digits after the decimal separator.
 
-This means that we have to expect errors, and that they might accumulate.
+Because of this, we have to expect errors, and that they might accumulate.
 
 
-```{r integrate}
-integrand <- function(x) {1/((x+1)*sqrt(x))}
-integrate(integrand, lower = 0, upper = Inf)
-
-```
 
 
 ## When should the warning be ignored?
@@ -70,8 +65,8 @@ way of learning the ropes.
 However. The moment you have learned (a bit of) R, you should stop ignoring 
 errors. What you should do is:
 
-1. figure out what the warning is saying
-2. figure out why the warning is triggered
+1. Figure out what the warning is saying
+2. Figure out why the warning is triggered
 3. Figure out the effect on the results of the computation
 4. Determine based on step 3, if your results will be erronious
 
@@ -102,6 +97,10 @@ how to name stuff af jenny bc
 
 ## Think global, act local
 
+We do not usually talk about the scope of object/variables/data in R.
+
+Scoping determines where an object is available. 
+
 Or something like that. The scope you are working in matters.
 
 
@@ -114,10 +113,11 @@ The way to make abstractions in R is to write functions.
 og det er når vi begynder at skrive funktoner, at vi bevæger os fra
 at bruge R, til at programmere i R.
 
-Når der skrives funktioner - så skriv små funktioner. Der gør en ting. Og kun
-en ting. Det er langt lettere at finde fejlen, når (ikke hvis) den opstår.
-Og små funktioner har større sandsynlighed for at være nyttige i andre 
-sammenhænge.
+When you write functions - write small functions. Functions that do one, and only one thing.
+It make it much easier to locate the error when, not if, that happens. 
+Small functions also have a higher probability of being useful in other contexts.
+
+## Functions that produce functions
 
 Funktioner hvis output er en funktion.
 
@@ -129,9 +129,17 @@ mycumfun(0)
 
 https://rstudio.github.io/renv/
 
-xkcd.com/1179
+## Writing dates
+
+There are many ways of writing dates. And all but one is wrong. 
+
+These problems have bothered people working with data for many years. The problem was solved with a standard, ISO-8601,
+creating the new problem of getting people to follow the standard.
+
+![xkcd #117, https://imgs.xkcd.com/comics/iso_8601.png](https://imgs.xkcd.com/comics/iso_8601.png)
 
 
+## Shortcuts
 
 Tools → Keyboard Shortcuts Help. alt-shift-k (Option+Shift+K på mac)
 
@@ -232,6 +240,50 @@ general rule of thumb save ressources. We may not need to evaluate a complex exp
 no reason to actually do it. On the other hand, this can make it more difficult to debug code, as the 
 reason for an error might hide many lines earlier than it actually occurs.
 
+
+
+```{r integrate}
+integrand <- function(x) {1/((x+1)*sqrt(x))}
+integrate(integrand, lower = 0, upper = Inf)
+
+```
+
+# Nifty tricks
+
+Which might belong on another page, but now they are here
+
+## Copy-paste from excel
+
+If you are working on a windows computer, and you need to get data from Excel to R, you can select the data in Excel, copy it, and run this code:
+
+```{r clipboard-1, eval = FALSE}
+data <- read.delim(
+"clipboard",
+header = TRUE,
+check.names = FALSE
+)
+```
+
+If you are working with a danish version of Excel, you might have to do this instead, if the data is semicolon, rather than comma separated:
+
+```{r clipboard-2, eval = FALSE}
+data <- read.delim2(
+"clipboard",
+header = TRUE,
+check.names = FALSE
+)
+```
+
+If the selection from Excel does not include column names:
+
+```{r clipboard-3, eval = FALSE}
+data <- read.delim(
+"clipboard",
+header = FALSE
+)
+```
+
+But beware! This almost quarantee that your script will not be reproducible!
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 

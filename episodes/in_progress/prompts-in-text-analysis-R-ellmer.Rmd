@@ -1,0 +1,655 @@
+---
+title: "Prompting in text analysis"
+output: html_document
+---
+
+# Prompting in text analysis
+
+This document gives examples of how prompt engineering can be used as a method in text analysis.
+
+You define a task, the model reads the text and returns an answer that you can work with further.
+
+We work with the fairy tale *The Tinderbox* by H. C. Andersen.
+
+# Using Mistral from R
+
+In R we can use the [`ellmer`](https://ellmer.tidyverse.org/) package to communicate with large language models.
+
+`ellmer` supports a number of providers, including Mistral, and provides the function `chat_mistral()`.
+
+Install the package once:
+
+```{r eval=FALSE}
+install.packages("ellmer")
+```
+
+Load it:
+
+```{r}
+library(ellmer)
+```
+
+## API key
+
+To use the Mistral API you need a Mistral API key.
+
+Do not save the key directly in an R Markdown document or an R script that you intend to share.
+
+Instead, save it as the environment variable:
+
+```text
+MISTRAL_API_KEY
+```
+
+One convenient way to do this is to edit your `.Renviron` file:
+
+```{r eval=FALSE}
+usethis::edit_r_environ()
+```
+
+Add a line such as:
+
+```text
+MISTRAL_API_KEY=your_key_here
+```
+
+Save the file and restart R.
+
+`ellmer::chat_mistral()` will automatically use the key stored in `MISTRAL_API_KEY`.
+
+# Create a Mistral chat
+
+A minimal Mistral chat can be created like this:
+
+```{r eval=FALSE}
+chat <- chat_mistral(
+  model = "mistral-small-latest"
+)
+
+chat$chat(
+  "What is the capital of Denmark?"
+)
+```
+
+The `chat` object represents a conversation.
+
+This means that it remembers previous messages:
+
+```{r eval=FALSE}
+chat <- chat_mistral(
+  model = "mistral-small-latest"
+)
+
+chat$chat(
+  "My favourite animal is the wombat."
+)
+
+chat$chat(
+  "What is my favourite animal?"
+)
+```
+
+For the exercises below, however, we want each analysis to be independent of the previous analyses.
+
+We therefore define a small helper function that creates a new chat for every request.
+
+```{r}
+ai_assistent <- function(
+  prompt,
+  system_prompt = "You are a helpful assistant.",
+  temperature = 0,
+  max_tokens = NULL
+) {
+
+  chat <- chat_mistral(
+    model = "mistral-small-latest",
+    system_prompt = system_prompt,
+    params = params(
+      temperature = temperature,
+      max_tokens = max_tokens
+    ),
+    echo = "none"
+  )
+
+  chat$chat(prompt)
+}
+```
+
+The function has four arguments:
+
+- `prompt`: the user prompt
+- `system_prompt`: general instructions to the model
+- `temperature`: controls variation in the generated response
+- `max_tokens`: optionally limits the length of the generated response
+
+# Load text: *The Tinderbox*
+
+We load the fairy tale from a text file.
+
+```{r}
+the_tinderbox <- readLines(
+  "the tinderbox.txt",
+  warn = FALSE,
+  encoding = "UTF-8"
+) |>
+  paste(collapse = "\n")
+```
+
+Look at the first 100 characters:
+
+```{r}
+substr(
+  the_tinderbox,
+  1,
+  100
+)
+```
+
+# Ask for a summary
+
+We can insert the fairy tale directly into the prompt.
+
+```{r}
+prompt <- paste0(
+  "What is the text about?\n\n",
+  the_tinderbox
+)
+
+summary <- ai_assistent(prompt)
+```
+
+Show the answer:
+
+```{r}
+cat(summary)
+```
+
+Save the answer to a text file:
+
+```{r}
+writeLines(
+  summary,
+  "summary_tinderbox.txt",
+  useBytes = TRUE
+)
+```
+
+Look at your summary.
+
+Are you satisfied with the answer?
+
+Should the task be formulated more precisely?
+
+# Prompt settings
+
+Several settings can influence the model's response.
+
+## Model
+
+We explicitly selected:
+
+```{r eval=FALSE}
+model = "mistral-small-latest"
+```
+
+Explicitly selecting a model makes the analysis less dependent on changes to the provider's default model.
+
+## User prompt
+
+The user prompt defines the concrete task.
+
+For example:
+
+```text
+You are presented with a fairy tale.
+Write a summary.
+
+[insert fairy tale]
+```
+
+or:
+
+```text
+You are presented with a fairy tale.
+Return the main characters as bullet points.
+
+[insert fairy tale]
+```
+
+In our function this is the `prompt` argument.
+
+## System prompt
+
+The system prompt gives the model general instructions about how it should behave.
+
+For example:
+
+```text
+You work with literary analysis.
+Always answer in English.
+Never return more than five points.
+```
+
+With `ellmer`, the system prompt is supplied when the chat is created:
+
+```{r eval=FALSE}
+chat <- chat_mistral(
+  model = "mistral-small-latest",
+  system_prompt = "You work with literary analysis."
+)
+```
+
+## Temperature
+
+Temperature controls variation in the generated response.
+
+For analytical tasks we often want relatively stable responses, so we use a low temperature:
+
+```{r eval=FALSE}
+params(
+  temperature = 0
+)
+```
+
+Higher values generally allow more variation in the generated text.
+
+## Maximum tokens
+
+We can also limit the maximum number of tokens generated:
+
+```{r eval=FALSE}
+params(
+  temperature = 0,
+  max_tokens = 1500
+)
+```
+
+A token is not necessarily the same as a word. A word may consist of one or more tokens.
+
+# A focused literary analysis
+
+We now make the task more specific.
+
+First define a system prompt:
+
+```{r}
+system_content <- paste(
+  "You work with literary analysis.",
+  "Answer in English.",
+  "Never return more than five points.",
+  "",
+  "Divide each point into:",
+  "1. an example from the text.",
+  "2. a brief paraphrase of the example.",
+  "3. an interpretation that justifies the example.",
+  sep = "\n"
+)
+```
+
+Then create the user prompt:
+
+```{r}
+prompt <- paste0(
+  "You are presented with a fairy tale by H. C. Andersen between <text> tags.\n\n",
+  'Your task is to find examples of "animals as helpers".\n\n',
+  "<text>\n",
+  the_tinderbox,
+  "\n</text>"
+)
+```
+
+Run the analysis:
+
+```{r}
+response <- ai_assistent(
+  prompt,
+  system_prompt = system_content,
+  temperature = 0,
+  max_tokens = 1500
+)
+```
+
+Show the answer:
+
+```{r}
+cat(response)
+```
+
+Save it:
+
+```{r}
+writeLines(
+  response,
+  "analysis_animals_tinderbox.txt",
+  useBytes = TRUE
+)
+```
+
+# A structured analysis
+
+A prompt can contain several tasks and specify how the answer should be formatted.
+
+First define the system prompt:
+
+```{r}
+system_content <- paste(
+  "You work with literary analysis.",
+  "Always answer in English.",
+  "Stay close to the text of the fairy tale.",
+  "Do not invent information that is not supported by the text.",
+  "Do not use an introduction.",
+  sep = "\n"
+)
+```
+
+Now create the prompt:
+
+```{r}
+prompt <- paste0(
+  "
+Your task is to perform the following actions:
+
+1 - Summarise the following text, delimited by <text> tags, in four sentences.
+2 - Return a list containing the fairy tale's \"good\" characters.
+3 - Return a list containing the fairy tale's \"evil\" characters.
+4 - Return a list containing the magical objects.
+5 - Return a short account of the fairy tale's repetition structure.
+
+Use the following format:
+
+Summary: see 1 above.
+Good characters: see 2 above.
+Evil characters: see 3 above.
+Magical objects: see 4 above.
+Repetition structure: see 5 above.
+
+<text>
+",
+  the_tinderbox,
+  "
+</text>"
+)
+```
+
+Send it to Mistral:
+
+```{r}
+response <- ai_assistent(
+  prompt,
+  system_prompt = system_content,
+  temperature = 0,
+  max_tokens = 1500
+)
+```
+
+Show the answer:
+
+```{r}
+cat(response)
+```
+
+Save the result:
+
+```{r}
+writeLines(
+  response,
+  "analysis2_tinderbox.txt",
+  useBytes = TRUE
+)
+```
+
+# Find and interpret semantic fields
+
+A language model can also help identify passages relevant to a particular question.
+
+Below we first use the model to find two passages and then classify their sentiment.
+
+# Find two passages
+
+Define the system prompt:
+
+```{r}
+system_content <- paste(
+  "You work with literary analysis.",
+  "Answer only on the basis of the supplied text.",
+  "Do not use introductions or other explanations in your response.",
+  sep = "\n"
+)
+```
+
+Create the prompt:
+
+```{r}
+prompt <- paste0(
+  "
+Find the two passages of the fairy tale where the soldier meets the witch.
+
+1st time: where he meets the witch.
+2nd time: where he kills the witch.
+
+Return the two passages from the English version as text.
+
+Use the following format:
+
+1. first passage.
+#####
+2. second passage.
+
+Fairy tale:
+
+<text>
+",
+  the_tinderbox,
+  "
+</text>"
+)
+```
+
+Send the prompt:
+
+```{r}
+response <- ai_assistent(
+  prompt,
+  system_prompt = system_content,
+  temperature = 0,
+  max_tokens = 1500
+)
+```
+
+Show the answer:
+
+```{r}
+cat(response)
+```
+
+Save the passages:
+
+```{r}
+writeLines(
+  response,
+  "soldier_and_witch.txt",
+  useBytes = TRUE
+)
+```
+
+# Sentiment analysis of the passages
+
+Load the two extracted passages:
+
+```{r}
+soldier_and_witch <- readLines(
+  "soldier_and_witch.txt",
+  warn = FALSE,
+  encoding = "UTF-8"
+) |>
+  paste(collapse = "\n")
+```
+
+Create a prompt asking the model to classify the sentiment of each passage:
+
+```{r}
+prompt <- paste0(
+  "
+You are presented with two different passages.
+
+What is the sentiment of each passage?
+
+Choose between:
+
+- positive
+- negative
+- neutral
+
+Passages:
+
+<passages>
+",
+  soldier_and_witch,
+  "
+</passages>
+
+Use the following format:
+
+1. first passage: [sentiment]. Justification.
+2. second passage: [sentiment]. Justification.
+"
+)
+```
+
+Run the analysis:
+
+```{r}
+response <- ai_assistent(
+  prompt,
+  system_prompt = "You work with text analysis.",
+  temperature = 0,
+  max_tokens = 1500
+)
+```
+
+Show the result:
+
+```{r}
+cat(response)
+```
+
+Save it:
+
+```{r}
+writeLines(
+  response,
+  "soldier_and_witch_sentiment.txt",
+  useBytes = TRUE
+)
+```
+
+# Working directly with `ellmer`
+
+Our `ai_assistent()` function is convenient because every call is independent.
+
+Sometimes, however, we deliberately want an ongoing conversation.
+
+Then we can work directly with the `Chat` object:
+
+```{r eval=FALSE}
+chat <- chat_mistral(
+  model = "mistral-small-latest",
+  system_prompt = "You work with literary analysis.",
+  params = params(
+    temperature = 0
+  )
+)
+
+chat$chat(
+  paste0(
+    "Summarise this fairy tale:\n\n",
+    the_tinderbox
+  )
+)
+
+chat$chat(
+  "Now list the three most important characters."
+)
+
+chat$chat(
+  "Which of those characters change during the story?"
+)
+```
+
+Each new call is interpreted in the context of the previous conversation.
+
+That is useful for an interactive dialogue, but less useful when we want separate, reproducible text-analysis tasks.
+
+# A reusable helper script
+
+The helper function can be saved in a separate file called, for example, `mistral.R`:
+
+```{r eval=FALSE}
+library(ellmer)
+
+ai_assistent <- function(
+  prompt,
+  system_prompt = "You are a helpful assistant.",
+  temperature = 0,
+  max_tokens = NULL
+) {
+
+  chat <- chat_mistral(
+    model = "mistral-small-latest",
+    system_prompt = system_prompt,
+    params = params(
+      temperature = temperature,
+      max_tokens = max_tokens
+    ),
+    echo = "none"
+  )
+
+  chat$chat(prompt)
+}
+```
+
+Then load it in another analysis with:
+
+```{r eval=FALSE}
+source("mistral.R")
+```
+
+and use:
+
+```{r eval=FALSE}
+answer <- ai_assistent(
+  "Your prompt here"
+)
+```
+
+# Complete minimal example
+
+The essential workflow is now very small:
+
+```{r eval=FALSE}
+library(ellmer)
+
+text <- readLines(
+  "the tinderbox.txt",
+  warn = FALSE,
+  encoding = "UTF-8"
+) |>
+  paste(collapse = "\n")
+
+chat <- chat_mistral(
+  model = "mistral-small-latest",
+  system_prompt = "You work with literary analysis.",
+  params = params(
+    temperature = 0
+  )
+)
+
+answer <- chat$chat(
+  paste0(
+    "Summarise the following fairy tale in five sentences:\n\n",
+    text
+  )
+)
+
+cat(answer)
+```
