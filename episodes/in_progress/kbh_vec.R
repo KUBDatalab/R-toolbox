@@ -63,7 +63,7 @@ områder
 
 st_write(
   områder,
-  "episodes/data/cph_neighborhoods_and_frederiksberg.gpkg",
+  "episodes/data/cph_neighbourhoods_and_frederiksberg.gpkg",
   layer = "områder",
   delete_layer = TRUE,
   quiet = TRUE

@@ -12,8 +12,8 @@ library(ggplot2)
 # 1. Filstier
 # ------------------------------------------------------------
 
-boundary_file <- "../episodes/data/cph_neighborhoods_and_frederiksberg.gpkg"
-boundary_file <- "episodes/data/cph_neighborhoods_and_frederiksberg.gpkg"
+boundary_file <- "../episodes/data/cph_neighbourhoods_and_frederiksberg.gpkg"
+boundary_file <- "episodes/data/cph_neighbourhoods_and_frederiksberg.gpkg"
 output_file <- paste0(
   "episodes/data/",
   "parks_cph_frederiksberg.gpkg"
