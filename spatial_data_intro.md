@@ -47,7 +47,7 @@ library(terra)
 ```
 
 ``` output
-terra 1.9.27
+terra 1.9.34
 ```
 
 ``` r

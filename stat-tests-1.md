@@ -6747,7 +6747,7 @@ icc_result
    ICC(A,1) = -0.0823
 
  F-Test, H0: r0 = 0 ; H1: r0 > 0 
-  F(9,16.8) = 0.77 , p = 0.645 
+    F(9,18) = 0.77 , p = 0.645 
 
  95%-Confidence Interval for ICC Population Values:
   -0.326 < ICC < 0.382
