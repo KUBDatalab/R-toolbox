@@ -17,7 +17,7 @@ stikprøve tilnærmer sig standard normalfordelingen.
 Eller, knap så præcist, for store stikprøver er deres gennemsnit
 mere eller mindre normalfordelt omkring det sande gennemsnit for populationen.
 
-## Moment generende funktioner
+## Moment genererende funktioner
 Vi starter med at introducere fænomenet "moment genererende funktion".
 
 Vi har en fordeling, det kunne eksempelvis være normalfordelingen.
