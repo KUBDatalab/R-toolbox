@@ -66,7 +66,28 @@ contact: 'kubdatalab@kb.dk'
 # Order of episodes in your lesson
 episodes: 
 - reproducible-analysis.Rmd
-
+- reading-files.Rmd
+- descript-stat.Rmd
+- histograms.Rmd
+- table1.Rmd
+- table1-gt.Rmd
+- tidy-data.Rmd
+- normal-distribution.Rmd
+- is-it-normal.Rmd
+- which-distribution.Rmd
+- linear-regression.Rmd
+- multiple-linear-regression.Rmd
+- lasso-regularisation.Rmd
+- logistic-regression.Rmd
+- clt.Rmd
+- barcharts.Rmd
+- powerberegninger.Rmd
+- kmeans.Rmd
+- anova.Rmd
+- cohens-kappa.Rmd
+- ucloud.Rmd
+- parallellization.Rmd
+- pipes.Rmd
 
 # Information for Learners
 learners: 
