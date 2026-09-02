@@ -59,7 +59,7 @@ urls <- c("https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B03_(Raw).tiff",
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B04_(Raw).tiff",
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B08_(Raw).tiff",
-"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighborhoods_and_frederiksberg.gpkg",
+"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighbourhoods_and_frederiksberg.gpkg",
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/parks_cph_frederiksberg.gpkg")
 
 download.file(
@@ -211,7 +211,7 @@ We are going to work with the neighbourhood and parks data for Copenhagen and Fr
 
 
 ``` r
-neighbourhoods <- vect("data/cph_neighborhoods_and_frederiksberg.gpkg")
+neighbourhoods <- vect("data/cph_neighbourhoods_and_frederiksberg.gpkg")
 parks <- vect("data/parks_cph_frederiksberg.gpkg")
 ```
 
@@ -230,7 +230,7 @@ class       : SpatVector
 geometry    : polygons
 dimensions  : 11, 2  (geometries, attributes)
 extent      : 12.45305, 12.73425, 55.61284, 55.73271  (xmin, xmax, ymin, ymax)
-source      : cph_neighborhoods_and_frederiksberg.gpkg (områder)
+source      : cph_neighbourhoods_and_frederiksberg.gpkg (områder)
 coord. ref. : lon/lat WGS 84 (EPSG:4326)
 names       :      name population
 type        :     <chr>      <num>

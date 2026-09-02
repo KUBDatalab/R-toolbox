@@ -22,7 +22,7 @@ Let's start by getting our hands on some spatial vector data.
 
 From the website we can download two vector files with the `.gpkg` extension (signifying it is in the format geopackage). The first represent the neighbourhoods of Copenhagen and the municipality of Frederiksberg, the second parks in these two municipalities:
 
-* [Neighborhoods](data/cph_neighborhoods_and_frederiksberg.gpkg)
+* [Neighbourhoods](data/cph_neighbourhoods_and_frederiksberg.gpkg)
 * [Parks](data/parks_cph_frederiksberg.gpkg)
 
 The first is extracted from the databank of Copenhagen, augmented with the borders of Frederiksberg extracted from OpenStreetMaps using the `osmdata` package.
@@ -33,7 +33,7 @@ Rather than downloading them manually, we can run the following script to downlo
 
 
 ``` r
-urls <- c("https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighborhoods_and_frederiksberg.gpkg",
+urls <- c("https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighbourhoods_and_frederiksberg.gpkg",
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/parks_cph_frederiksberg.gpkg"
 
 download.file(
@@ -53,7 +53,7 @@ Working with raster data, we used the `raster` function from the `terra` package
 ``` r
 library(terra)
 
-neighborhoods <- vect("data/cph_neighborhoods_and_frederiksberg.gpkg")
+neighbourhoods <- vect("data/cph_neighbourhoods_and_frederiksberg.gpkg")
 parks <- vect("data/parks_cph_frederiksberg.gpkg")
 ```
 
@@ -64,7 +64,7 @@ geometries are valid. The function `is.valid` checks this, and will return TRUE 
 ``` r
 all(is.valid(parks))
 [1] TRUE
-all(is.valid(neighborhoods))
+all(is.valid(neighbourhoods))
 [1] TRUE
 ```
 
@@ -72,7 +72,7 @@ We can inspect the data by simply calling the name:
 
 
 ``` r
-neighborhoods
+neighbourhoods
 ```
 
 ``` output
@@ -80,7 +80,7 @@ class       : SpatVector
 geometry    : polygons
 dimensions  : 11, 2  (geometries, attributes)
 extent      : 12.45305, 12.73425, 55.61284, 55.73271  (xmin, xmax, ymin, ymax)
-source      : cph_neighborhoods_and_frederiksberg.gpkg (områder)
+source      : cph_neighbourhoods_and_frederiksberg.gpkg (områder)
 coord. ref. : lon/lat WGS 84 (EPSG:4326)
 names       :      name population
 type        :     <chr>      <num>
@@ -94,7 +94,7 @@ And we can get a closer look at the `name` attribute using the `$` notation, whi
 
 
 ``` r
-neighborhoods$name
+neighbourhoods$name
 ```
 
 ``` output
@@ -150,11 +150,11 @@ Most of what OSM considers parks in this area have no names.
 
 ## Simple Plots
 
-For simple visualizations, we use the `plot()` function. We would like to have parks overlaid on the neighborhoods, and must use the `add = TRUE` argument to do that. The first plot is displayed as a base layer, and subsequent plots are added on top of that:
+For simple visualizations, we use the `plot()` function. We would like to have parks overlaid on the neighbourhoods, and must use the `add = TRUE` argument to do that. The first plot is displayed as a base layer, and subsequent plots are added on top of that:
 
 
 ``` r
-plot(neighborhoods, main = "Parks in Copenhagen")
+plot(neighbourhoods, main = "Parks in Copenhagen")
 plot(parks, add = TRUE, col = "darkgreen")
 ```
 
@@ -162,15 +162,15 @@ plot(parks, add = TRUE, col = "darkgreen")
 
 ## Polygon Statistics
 
-Both neighborhoods and parks are polygons with an area and a perimeter. 
+Both neighbourhoods and parks are polygons with an area and a perimeter. 
 
 The information is not stored directly in the data, but can be calculated from the data using the `expance()` and `perim()` functions from the `terra` package:
 
 
 ``` r
-neighborhoods$area_m2 <- expanse(neighborhoods, unit = "m")
-neighborhoods$perimeter_m <- perim(neighborhoods)
-neighborhoods
+neighbourhoods$area_m2 <- expanse(neighbourhoods, unit = "m")
+neighbourhoods$perimeter_m <- perim(neighbourhoods)
+neighbourhoods
 ```
 
 ``` output
@@ -178,7 +178,7 @@ class       : SpatVector
 geometry    : polygons
 dimensions  : 11, 4  (geometries, attributes)
 extent      : 12.45305, 12.73425, 55.61284, 55.73271  (xmin, xmax, ymin, ymax)
-source      : cph_neighborhoods_and_frederiksberg.gpkg (områder)
+source      : cph_neighbourhoods_and_frederiksberg.gpkg (områder)
 coord. ref. : lon/lat WGS 84 (EPSG:4326)
 names       :      name population     area_m2 perimeter_m
 type        :     <chr>      <num>       <num>       <num>
@@ -194,7 +194,7 @@ Note that we do not have to provide a unit for the calculation of the perimeter;
 :::: challenge
 ## Which neighborhood is the smallest?
 
-Try to figure out which of the neighborhoods (and/or Frederiksberg) is the smallest.
+Try to figure out which of the neighbourhoods (and/or Frederiksberg) is the smallest.
 
 
 :::: hint
@@ -213,7 +213,7 @@ An easier solution is to convert the spatial object to a data frame, using eithe
 
 ``` r
 library(tidyverse)
-neighborhoods |> 
+neighbourhoods |> 
     as_tibble() |> 
     arrange(area_m2) |> 
     slice(1)
@@ -238,7 +238,7 @@ neighborhoods |>
 :::: challenge
 ## Add a calculated area and perimeter to the parks
 
-Repeat the calculations we did on the neighborhoods to add areas and perimeters to the parks.
+Repeat the calculations we did on the neighbourhoods to add areas and perimeters to the parks.
 
 :::: solution
 ## Solution
@@ -284,13 +284,13 @@ parks_clean <- parks[parks$area_m2 > 2000, ]
 
 ## Spatial Relationships
 
-Which neighborhoods have the most parks? 
+Which neighbourhoods have the most parks? 
 
 The function `relate()` take two spatVector objects, and return a logical matrix indicating if there is a relation between the objects in the two spatial vectors. It can handle different relations (see the list in the documentation running `?relate`). Here we ask if there is an intersection between the objects - more intuitively: "is there an overlap". That also means that some parks might be located in more than one neighborhood
 
 
 ``` r
-intersect_matrix <- relate(neighborhoods, parks_clean, relation = "intersects") 
+intersect_matrix <- relate(neighbourhoods, parks_clean, relation = "intersects") 
 ```
 
 The result is a logical matrix. We can easily figure out how many parks are in each neighbourhood. Each row is one neighbourhood, each column is a park. And the cell that intersects a row and a column, is TRUE if the park is located (partially) in the neighbourhood. Adding the values in each row, tells us how many parks are in each neighbourhood: 
@@ -308,7 +308,7 @@ We do not get the names, but the order of neighbourhoods in the matrix is the sa
 
 
 ``` r
-neighbourhood_stat <- data.frame(name = neighborhoods$name, count = rowSums(intersect_matrix))
+neighbourhood_stat <- data.frame(name = neighbourhoods$name, count = rowSums(intersect_matrix))
 neighbourhood_stat
 ```
 
@@ -339,7 +339,7 @@ Adding those to the `intersect_matrix` allow us to know which parks are in which
 
 ``` r
 colnames(intersect_matrix) <- parks_clean$osm_id
-rownames(intersect_matrix) <- neighborhoods$name
+rownames(intersect_matrix) <- neighbourhoods$name
 
 intersect_matrix |> as_tibble(rownames = "name")
 ```
@@ -388,7 +388,7 @@ And now we can plot them:
 ``` r
 plot(buffer_200, col = "lightblue")
 plot(buffer_100, col = "darkblue", add = TRUE)
-plot(neighborhoods, add = TRUE, lwd = 3, border = "red")
+plot(neighbourhoods, add = TRUE, lwd = 3, border = "red")
 ```
 
 <img src="fig/gis_vector-data-rendered-unnamed-chunk-11-1.png" alt="" style="display: block; margin: auto;" />
@@ -400,7 +400,7 @@ Some of the buffered parks extends outside the city. We can cut the off using th
 
 
 ``` r
-borders <- aggregate(neighborhoods)
+borders <- aggregate(neighbourhoods)
 
 buffer_100 <- crop(buffer_100, borders)
 buffer_200 <- crop(buffer_200, borders)
@@ -411,7 +411,7 @@ And now we can repeat the plot - without any bufferzones and parks extending out
 ``` r
 plot(buffer_200, col = "lightblue")
 plot(buffer_100, col = "darkblue", add = TRUE)
-plot(neighborhoods, add = TRUE, lwd = 3, border = "red")
+plot(neighbourhoods, add = TRUE, lwd = 3, border = "red")
 ```
 
 <img src="fig/gis_vector-data-rendered-unnamed-chunk-13-1.png" alt="" style="display: block; margin: auto;" />
@@ -421,7 +421,7 @@ plot(neighborhoods, add = TRUE, lwd = 3, border = "red")
 
 
 ``` r
-city_area <- expanse(neighborhoods) |> sum()
+city_area <- expanse(neighbourhoods) |> sum()
 
 
 tribble(~distance, ~cov_area,
@@ -444,11 +444,11 @@ We can also identify the areas where access to parks is more difficult (distance
 
 
 ``` r
-bad_access <- erase(aggregate(neighborhoods), buffer_200)
+bad_access <- erase(aggregate(neighbourhoods), buffer_200)
 
-plot(neighborhoods, col = "lightgreen")
+plot(neighbourhoods, col = "lightgreen")
 plot(bad_access, col = "red", add = TRUE)
-plot(neighborhoods, add = TRUE)
+plot(neighbourhoods, add = TRUE)
 ```
 
 <img src="fig/gis_vector-data-rendered-unnamed-chunk-15-1.png" alt="" style="display: block; margin: auto;" />

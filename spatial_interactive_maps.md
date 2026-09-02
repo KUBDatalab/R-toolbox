@@ -35,7 +35,7 @@ urls <- c("https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B03_(Raw).tiff",
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B04_(Raw).tiff",
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B08_(Raw).tiff",
-"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighborhoods_and_frederiksberg.gpkg",
+"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighbourhoods_and_frederiksberg.gpkg",
 "https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/parks_cph_frederiksberg.gpkg")
 
 download.file(
@@ -56,7 +56,7 @@ sentinel <- sentinel/65535
 
 
 ``` r
-neighbourhoods <- vect("data/cph_neighborhoods_and_frederiksberg.gpkg")
+neighbourhoods <- vect("data/cph_neighbourhoods_and_frederiksberg.gpkg")
 parks <- vect("data/parks_cph_frederiksberg.gpkg")
 ```
 
@@ -188,11 +188,11 @@ Grundeksempel
 library(sf)
 library(leaflet)
 
-neighborhoods <- read_sf(
+neighbourhoods <- read_sf(
   "data/bydele_and_frederiksberg.gpkg"
 )
 
-leaflet(neighborhoods) |>
+leaflet(neighbourhoods) |>
   addProviderTiles(providers$CartoDB.Positron) |>
   addPolygons()
 Underemner
@@ -218,9 +218,9 @@ Inspecting the CRS
 Transforming data for Leaflet
 Projected data versus displayed data
 Kernekode
-st_crs(neighborhoods)
+st_crs(neighbourhoods)
 
-neighborhoods <- neighborhoods |>
+neighbourhoods <- neighbourhoods |>
   st_transform(4326)
 Budskab
 
@@ -299,11 +299,11 @@ addLegend()
 Eksempel med befolkning
 pal <- colorBin(
   palette = "YlOrRd",
-  domain = neighborhoods$population,
+  domain = neighbourhoods$population,
   bins = 5
 )
 
-leaflet(neighborhoods) |>
+leaflet(neighbourhoods) |>
   addProviderTiles(providers$CartoDB.Positron) |>
   addPolygons(
     fillColor = ~pal(population),
@@ -334,7 +334,7 @@ forskellen på total befolkning og befolkningstæthed.
 
 Befolkningstæthed er et oplagt sted at genbruge deres viden om projicerede CRS:
 
-neighborhoods |>
+neighbourhoods |>
   st_transform(25832) |>
   mutate(
     area_km2 = as.numeric(st_area(geometry)) / 1e6,
@@ -392,8 +392,8 @@ leaflet() |>
     group = "OpenStreetMap"
   ) |>
   addPolygons(
-    data = neighborhoods,
-    group = "Neighborhoods"
+    data = neighbourhoods,
+    group = "Neighbourhoods"
   ) |>
   addCircleMarkers(
     data = parks,
@@ -405,7 +405,7 @@ leaflet() |>
       "OpenStreetMap"
     ),
     overlayGroups = c(
-      "Neighborhoods",
+      "Neighbourhoods",
       "Parks"
     )
   )
@@ -481,21 +481,21 @@ Handling missing values
 Avoiding information overload
 Eksempel
 popup_text <- paste0(
-  "<strong>", neighborhoods$navn, "</strong><br>",
+  "<strong>", neighbourhoods$navn, "</strong><br>",
   "Population: ",
   format(
-    neighborhoods$population,
+    neighbourhoods$population,
     big.mark = ","
   ),
   "<br>",
   "Area: ",
-  round(neighborhoods$area_km2, 1),
+  round(neighbourhoods$area_km2, 1),
   " km²"
 )
 
 Undervis gerne i at konstruere popupteksten som en separat kolonne:
 
-neighborhoods <- neighborhoods |>
+neighbourhoods <- neighbourhoods |>
   mutate(
     popup = paste0(
       "<strong>", navn, "</strong><br>",
