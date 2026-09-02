@@ -285,6 +285,16 @@ header = FALSE
 
 But beware! This almost quarantee that your script will not be reproducible!
 
+## Updating packages
+
+You just updated R. And now all the packages stopped working. Run:
+
+```{r update_packages, eval = FALSE}
+update.packages(ask = FALSE, checkBuilt = TRUE)
+```
+
+It takes forever, especially if you have a lot of packages, but it solves the problem.
+
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
 - You will continue to learn new stuff
