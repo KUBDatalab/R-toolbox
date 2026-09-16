@@ -14,87 +14,90 @@ sample approaches the standard normal distribution.
 Or, less precise, that for large samples their average is more or less normally
 distributed around the true average of the population.
 
-Overordnet: CLT forklarer hvorfor mange fordelinger af data, tenderer en 
-normalfordeling (klokkekurven), når stikprøvestørrelsen bliver stor, uanset den 
-oprindelige fordelings form.
 
-Teoremet fortæller os, at fordelingen af det standardiserede gennemsnit af en 
-stikprøve tilnærmer sig standard normalfordelingen.
+Overall: CLT explains why many distributions of data, tend towards a normal distribution (bell curve) when the sample size becomes large, regardless of the original distribution shape.
 
-Eller, knap så præcist, for store stikprøver er deres gennemsnit
-mere eller mindre normalfordelt omkring det sande gennemsnit for populationen.
+The theorem tell us, that the distribution of the standardized mean of a sample, approximates the standard normal distribution.
 
-## Moment generende funktioner
-Vi starter med at introducere fænomenet "moment genererende funktion".
+Or, less precisely, for large samples, their mean is more or less normally distributed around the true mean of the population.
 
-Vi har en fordeling, det kunne eksempelvis være normalfordelingen.
+## Moment generating functions
 
-Den er defineret ved:
+Let us begin by introducing the phenomenon "moment generating function".
+
+We have a distribution, it could be the normal distribution.
+
+It is defined by:
 
 $$X(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$$
-Hvor $\mu$ er middelværdien, og $\sigma$ er standardafvigelsen (og $var^2$ er variansen).
 
-Vi definerer nu en momentgenererende funktion:
+Where $\mu$ is the mean, and $\sigma$ is the standard deviation (and $var^2$ is the variance).
+
+We now define a moment generating function:
+
 
 $$M(t) = E[e^{tX}]$$
 
-Hvor X er funktionen der definerer vores fordeling. Det er helt generelt.
-X kan være funktionen for normalfordelingen ovenfor. Det kunne være en
-anden.
+X is the function defining the distribution. This is completely general. X could be the function for the normal distribution, it could be any other.
 
-Den der eksponentialfunktion der er i udtrykket kan vi selvfølgelig 
-bare beregne med en knap på lommeregneren. Eller en funktion i R.
+The exponential function in the definition, can be calculated on a calculator, or with the `exp` function in R.
 
-Inde bagved hiver lommeregneren så fat i en såkaldt taylor-række:
+Calculators, or R, do not simply calculate the exponential, it uses another expression to do the calculation. So behind the scene, it 
+calculate a so-called Taylor series:
 $$e^{tX} = 1 + tX + \frac{(tX)^2}{2!} + \frac{(tX)^3}{3!} + \cdots$$
 
-Det næste led er så $\frac{(tX)^4}{4!}$. Det tillader os at beregne
-venstresiden med den præcision vi ønsker, vi tilføjer bare flere led.
+The next term will be $\frac{(tX)^4}{4!}$. This series allow us to calculate the left hand side of the 
+equation with the precision we want, we simply add more terms.
 
-Under passende forudsætninger, har vi lov til at erstatte X med $E(X)$, hvor
-$E(X) = \mu$, altså middelværdien - også kaldet forventningsværdien. Eller på 
-engelsk "Expectation value". Det er der "E" kommer fra.
+Under appropriate conditions, we are allowed to replace X with $E(X)$, where
+$E(X) = \mu$, that is the mean, also called the expected value (this is where "E" come from).
 
-Gør vi det får vi:
+If we do that, we get:
+
 
 $$M(t) = 1 + tE[X] + \frac{t^2 E[X^2]}{2!} + \frac{t^3 E[X^3]}{3!} + \cdots$$
 
-Hvis vi differentierer $M(t)$ med hensyn til t, får vi:
-$$M'(t) = E[X] + 2\frac{t E[X^2]}{2!} + 3\frac{t^2 E[X^3]}{3!} + \cdots$$
-Hvis vi indsætter t=0, får vi:
-$$M'(0) = E[X]$$
-Altså forventningsværdien, eller middelværdien.
 
-Differentierer vi to gange med hensyn til t, og indsætter t=0, får vi:
+If we differentiate $M(t)$ with regard to t, we get:
+$$M'(t) = E[X] + 2\frac{t E[X^2]}{2!} + 3\frac{t^2 E[X^3]}{3!} + \cdots$$
+
+Inserting t = 0, give:
+
+$$M'(0) = E[X]$$
+That is the expectation value, or mean.
+
+If we differentiate twice with regards to T, and insert t = 0, we get:
+
 
 $$M''(0) = E[X^2]$$
 
-Det er det såkaldte "rå andet moment" af vores fordelingsfunktion, og fra det
-kan vi få variansen. Det er et "råt" moment fordi vi ikke får variansen 
-direkte.
 
-Variansen er defineret ved:
+
+This is the so-called "raw second moment" of our distribution function, and from it we can get the variance. It is a "raw" moment because we don't get the variance directly.
+
+Variance is defined by:
 $$Var(X) = E[(X - \mu)^2]$$
-Det er kvadratet på forskellen mellem værdierne og værdiernes middelværdi.
 
-Det kan vi udvide til:
+Or, the square of the difference between the values, and the mean of the values.
+
+
+
+We can expand that to:
+
 $$\text{Var}(X) = E[X^2] - (E[X])^2$$
-Med andre ord, det rå andet moment, minus det rå første moment kvadreret,
-giver os variansen.
 
-Vi kan fortsætte, tredie moment, som vi får ved at differentiere mht t tre gange, 
-og indsætte t = 0, giver os "skewness", eller skævhed. Det fjerde er "kurtosis", 
-der hedder det samme på dansk. Det er et udtryk for hvor tykke
-haler en fordeling har.
+In other words, the raw second moment, minus the raw first moment squared, give us the variance.
 
-En central pointe er at hvis alle momenterne for to fordelingsfunktioner er ens, 
-så er funktionerne ens. 
+We can continue. The third momen, which we get by differentiating with reard to t three times,
+and inserting t = 0, give us the "skewness". The fourth is "kurtosis", an expression of how fat the tails of a distribution is.
 
-Når vi nu i det efterfølgende arbejder med en momentgenerende funktion - så er det 
-interessante altså om den ender med at være den samme som den momentgenererende
-funktion for normalfordelingen.
+A central point is, that if all moments of two distribution functions are equal, the 
+functions are equal.
 
-Den udleder vi ikke her, men den findes ved:
+When we in the following work with a moment generating function, the interesting questions
+is if it ends up being the same as teh momentgenerting function for the normal distribution.
+
+We will not derive it here, but it can be found with:
 
 $$
 N(xM \mu, \sigma^2) = \frac{1}{\sqrt{(2\pi\sigma^2)}}e^{-\frac{1}{2}(x-\mu)^2/\sigma^2} \\
@@ -104,44 +107,45 @@ $$
 
 
 
-## Videre!
-Med dette på plads, kan vi komme videre.
+## Onwards!
 
-Den centrale grænseværdisætning fortæller os, at når vi har en population med
-et defineret gennemsnit og standardafvigelse. Og tager tilpas mange 
-stikprøver fra den (og de i øvrigt er uafhængige og identisk fordelte), 
-så vil gennemsnittet af disse stikprøver være normalfordelte. 
-Uanset hvilken fordeling populationen ellers har.
+Havin established this, we can move onward.
 
-Hvis ellers vi overholder reglerne, kan vi derfor betragte et gennemsnit af 
-en stikprøve som normalfordelt. Og det betyder at vi kan bruge de 
-veldefinerede egenskaber ved normalfordelingen til at lave statistiske tests,
-beregne konfidensintervaller og andet godt.
+The central limit theorem tell that when we have a population with defined mean and standard deviation. And 
+take sufficiently many samples from that (and that the samples are also independent and with identical distribution),
+the mean of these samples will be normally distributed. 
+No matter the distribution of the population.
 
+If we do not break these rulse, we can therefore regard a mean of a sample as coming from a 
+normally distributed population. And because of that, we can use the well defined properties
+of the normal distribution to do statistical tests, calculate confidence intervals etc.
 
 
-## Hvad er det vi prøver at bevise?
+## What are we trying to prove?
 
-Lad os tage et antal tilfældige variable, $X_1 ... X_n$, der er uafhængige og 
-ens fordelt, med et konstant, kendt gennemsnit $\mu$ og konstant, endelig 
-varians $\sigma^2$.
+Let us take a number of random varaibles, $X_1 ... X_n$, that are independent and with identical distributions, with a
+known mean $\mu$ and a constant, non-infinite variance $\sigma^2$.
 
-Så definerer vi en tilfældig variabel Z:
+We then define a random variable Z:
 
 $$ Z = \frac{\overline{X} - \mu}{\sigma/\sqrt{n}}$$
 
-Med disse definitioner:
+With these definitions:
 
 $$\mu = E(X_i)$$
-Det er den "sande" middelværdi for populationen
+
+The "true" mean of the population.
+
+And:
 
 $$\sigma^2 = Var(X_i) $$
-Det er den "sande" varians for populationen.
+The "true" variance of the population.
 
-Men vi kender ikke den sande middelværdi (eller varians for den sags 
-skyld). Men vi kan beregne middelværdien af vores stikprøve:
+We do not know the true mean or variance, but we can calculate the mean of our sample:
 
 $$\overline{X} = \frac{1}{n}\sum_{i=1}^nX_i$$
+
+
 Postulatet fra sætningen er, at denne tilfældige variable Z, tilnærmer sig
 standard normalfordelingen (med middelværdi 0, og standardafvigelse 1).
 
@@ -152,13 +156,13 @@ genererende funktioner.
 
 Kan vi forstå dette som at X er vores stikprøver? Hm...
 
-## selve beviset
+## The proof itself
 
 Vi starter med at definere en ny tilfældig variabel Y. 
 
 $$Y_i = \frac{X_i - \mu}{\sigma}$$
 
-Forventningsværdien og variansen for hvert $Y_i$ er givet ved:
+The expectation value and variance for each $Y_i$ is given by:
 
 $$E(Y_i) = E\left(\frac{X_i - \mu}{\sigma}\right) = \frac{1}{\sigma}E(X_i - \mu) = \frac{1}{\sigma}(E(X_1)-\mu) = \frac{1}{n}(\mu - \mu) = 0$$
 
@@ -173,8 +177,7 @@ $$E(S) = E\left(\sum_{i = 1}^{n}Y_i\right) = \sum_{i = 1}^{n}E(Y_i) = \sum_{i = 
 
 $$Var(S) = Var\left(\sum_{i = 1}^{n}Y_i\right) = \sum_{i = 1}^{n}Var(Y_i) = \sum_{i = 1}^{n}1 = n$$
 
-Og nu "the moment of truth", pun intended. Vi definerer endnu en tilfældig variabel
-Z:
+And now the moment of thuth, pun intended. We define yet another random variable Z:
 
 $$Z = \frac{S \sqrt{n}}{n} = \frac{S}{\sqrt{n}}$$
 
@@ -222,6 +225,7 @@ $$M_S(t) = \prod_{i=1}^n M_{Y_{i}}(t) \\
 = \left[M_{Y_{i}}(t)\right]^n \\
 = \left( 1+ \frac{t^2}{2!} + \frac{t^3}{3!}E(Y_i^3) + ... + \frac{t^n}{n!}E(Y_i^n)   \right)^n
 $$
+
 Og så hiver vi fat på den momentgenerende funktion for $Z = \frac{S}{\sqrt{n}}$:
 
 $$M_z(t) = M_s\left(\frac{t}{\sqrt{n}}\right) = \\
@@ -229,42 +233,44 @@ $$M_z(t) = M_s\left(\frac{t}{\sqrt{n}}\right) = \\
 $$
 
 
-Så tager vi den naturlige logaritme til $M_Z(t)$:
+We then take the natural logarithm of $M_Z(t)$:
 
 $$
 \ln(M_Z(t)) = n\ln \left(1 + \frac{t^2}{2!n} + \frac{t^3}{3!n^{3/2}}E(Y_i^3) + ... + \frac{t^n}{n!n^{n/2}}E(Y_i^n) \right)
 $$
 
-Dette bringer mig til den del af Matematisk Analyse 3 som jeg virkelig hadede.
-Vi skal gætte på en løsning...
+This brings me to the part of Analysis 3 that I really hated. We have to guess a solution...
 
-På samme måde som der var en taylor-række for $e^x$, er der en taylor-række for 
-$\ln(1+x)$:
+
+In the same way a Taylor-series exist for $e^x$, there is a Taylor-series for $\ln(1+x)$:
 
 $$
 \ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \frac{x^5}{5} - \frac{x^6}{6} + ... \\
 = \sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}x^n
 $$
-Hvis vi sætter:
+
+If we insert:
 $$
 x = 1 + \frac{t^2}{2!n} + \frac{t^3}{3!n^{3/2}}E(Y_i^3) + ... + \frac{t^n}{n!n^{n/2}}E(Y_i^n)
 $$
 
-Får vi:
+We get: 
 $$
 \ln(M_Z(t)) = n\ln(1+x) =\\
 n\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}x^n = \\
 n\left( \sum_{k=1}^{\infty}\frac{(-1)^{k+1}}{k} \left( \frac{t^2}{2!n} + \frac{t^3}{3!n^{3/2}}E(Y_i^3) + ... + \frac{t^n}{n!n^{n/2}}E(Y_i^n) \right)^k\right)
 $$
-Den kan vi splitte op (det er endnu en ide man skal "få").
-Vi sætter k = 1, og 
+
+We can split this expression (this is another idea you have to "get").
+
+Insert k = 1 and:
 
 $$
 \ln(M_Z(t)) = n\left(\left( \frac{t^2}{2!n} + \frac{t^3}{3!n^{3/2}}E(Y_i^3) + ... + \frac{t^n}{n!n^{n/2}}E(Y_i^n) \right) + 
 \sum_{k=2}^{\infty}\frac{(-1)^{k+1}}{k} \left( \frac{t^2}{2!n} + \frac{t^3}{3!n^{3/2}}E(Y_i^3) + ... + \frac{t^n}{n!n^{n/2}}E(Y_i^n) \right)^k\right)
 $$
 
-Så ganger vi n ind i parantesen og reducerer den første sum:
+We multiply n into the paranthesis and reduce the first sum:
 
 $$
 \ln(M_Z(t)) = \left( \frac{nt^2}{2!n} + \frac{nt^3}{3!n^{3/2}}E(Y_i^3) + ... + \frac{nt^n}{n!n^{n/2}}E(Y_i^n) \right) + 
@@ -291,14 +297,12 @@ $$
 = \frac{t^2}{2}
 $$
 
-Når vi så eksponentierer for at komme af med logaritmen får vi:
+Exponentiating to get rid of the logarithm give us:
 
 $$
 M_Z(t) = e^{\ln(M_Z(t))} = e^{t^2/2}, n \rightarrow \infty
 $$
 
+This is identical to the moment generating function of the (standardized) normal distribution.
 
-Det er identisk med den momentgenerende funktion for (den standardiserede) 
-normalfordeling. 
-
-Hermed bevist!
+QED!

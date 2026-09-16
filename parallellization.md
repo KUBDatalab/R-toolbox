@@ -136,7 +136,7 @@ print(t_par)
 
 ``` output
    user  system elapsed 
-  0.434   0.050   5.642 
+  0.340   0.054   5.565 
 ```
 
 We can compare this was a versions of the same script that does the same thing sequentially, without parallellization (by using `%do%`). Check out how long this takes:
@@ -162,7 +162,7 @@ print(t_seq)
 
 ``` output
    user  system elapsed 
-  2.201   0.017   2.219 
+  1.720   0.004   1.725 
 ```
 
 On the machine with 8 cores that we tested this on, the parallellized version takes 2-3 times shorter.
