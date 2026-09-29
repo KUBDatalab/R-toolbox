@@ -118,7 +118,7 @@
     <a id="search-button" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
 </nav><aside class="col-md-12 lesson-progress"><div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 97%" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">97%</div>
+    <div class="progress-bar library" role="progressbar" style="width: 96%" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">96%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -534,7 +534,7 @@
 <div class="accordion accordion-flush" id="accordionFlush38">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading38">
-        <a href="fence-test.html">37. Fences på vores undervisningssider</a>
+        <a href="ggplot-1.html">37. ggplot</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -543,7 +543,16 @@
 <div class="accordion accordion-flush" id="accordionFlush39">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading39">
-        <a href="making-a-new-course.html">38. Make a new course</a>
+        <a href="fence-test.html">38. Fences på vores undervisningssider</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush40">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading40">
+        <a href="making-a-new-course.html">39. Make a new course</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -592,7 +601,7 @@
   <div class="col-xl-8 col-lg-12 primary-content">
     <nav class="lesson-content mx-md-4" aria-label="Previous and Next Chapter Top"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="package-is-not-available.html" rel="prev"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="fence-test.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="ggplot-1.html" rel="next">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -600,14 +609,14 @@
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: When install.packages fail...
         </a>
-        <a class="chapter-link float-end" href="fence-test.html" rel="next">
-          Next: Fences på vores undervisningssider...
+        <a class="chapter-link float-end" href="ggplot-1.html" rel="next">
+          Next: ggplot...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Extracting tiff-layers</h1>
-        <p>Last updated on 2026-09-01 |
+        <p>Last updated on 2026-09-29 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/extracting-tiff-layers.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -694,19 +703,13 @@ manipulation of the files):</p>
 <code class="sourceCode R"><span><span class="va">tif</span> <span class="op">&lt;-</span> <span class="fu">stack</span><span class="op">(</span><span class="st">"episodes/fig/poppendorf_5_band.tif"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
-<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="warning" tabindex="0"><code>Warning: episodes/fig/poppendorf_5_band.tif: No such file or directory (GDAL
-error 4)</code></pre>
-</div>
-<div class="codewrapper">
 <h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="error" tabindex="0"><code>Error in `.rasterObjectFromFile()`:
 ! Cannot create a RasterLayer object from this file. (file does not exist)</code></pre>
 </div>
 <p>This specific file contains 5 layers:</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -719,7 +722,7 @@ error 4)</code></pre>
 ! error in evaluating the argument 'x' in selecting a method for function 'nlayers': object 'tif' not found</code></pre>
 </div>
 <p>Each layer have name:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -733,7 +736,7 @@ error 4)</code></pre>
 </div>
 <p>In some tiff-files they do not have names, but numbers.</p>
 <p>We can plot the layers individually:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -746,7 +749,7 @@ error 4)</code></pre>
 ! error in evaluating the argument 'x' in selecting a method for function 'plot': object 'tif' not found</code></pre>
 </div>
 <p>And we can save the individual layers in separate files:</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -773,7 +776,7 @@ any links that you are not going to use.
 </section></div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter Bottom"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="package-is-not-available.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
-        <a class="chapter-link float-end" href="fence-test.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
+        <a class="chapter-link float-end" href="ggplot-1.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
       <!-- content for large screens -->
       <div class="d-none d-sm-none d-md-block">
@@ -781,8 +784,8 @@ any links that you are not going to use.
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>
           Previous: When install.packages fail...
         </a>
-        <a class="chapter-link float-end" href="fence-test.html" rel="next">
-          Next: Fences på vores undervisningssider...
+        <a class="chapter-link float-end" href="ggplot-1.html" rel="next">
+          Next: ggplot...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -801,7 +804,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
@@ -830,8 +833,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/extracting-tiff-layers.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/extracting-tiff-layers.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2026-09-01",
-  "datePublished": "2026-09-01"
+  "dateModified": "2026-09-29",
+  "datePublished": "2026-09-29"
 }
 
   </script><script>

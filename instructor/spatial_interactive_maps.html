@@ -118,7 +118,7 @@
     <a id="search-button" class="btn btn-primary" href="../instructor/aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
 </nav><aside class="col-md-12 lesson-progress"><div class="progress library">
-    <div class="progress-bar library" role="progressbar" style="width: 83%" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">83%</div>
+    <div class="progress-bar library" role="progressbar" style="width: 82%" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">82%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -541,7 +541,7 @@
 <div class="accordion accordion-flush" id="accordionFlush38">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading38">
-        <a href="fence-test.html">37. Fences på vores undervisningssider</a>
+        <a href="ggplot-1.html">37. ggplot</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -550,7 +550,16 @@
 <div class="accordion accordion-flush" id="accordionFlush39">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading39">
-        <a href="making-a-new-course.html">38. Make a new course</a>
+        <a href="fence-test.html">38. Fences på vores undervisningssider</a>
+    </div><!--/div.accordion-header-->
+
+  </div><!--/div.accordion-item-->
+</div><!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush40">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading40">
+        <a href="making-a-new-course.html">39. Make a new course</a>
     </div><!--/div.accordion-header-->
 
   </div><!--/div.accordion-item-->
@@ -614,7 +623,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Interactive maps</h1>
-        <p>Last updated on 2026-09-01 |
+        <p>Last updated on 2026-09-29 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/spatial_interactive_maps.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -662,7 +671,7 @@
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Have to download the data again? </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>Make sure you have a <code>data</code> folder in your project folder,
 and then run this code:</p>
@@ -674,7 +683,7 @@ and then run this code:</p>
 <span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B03_(Raw).tiff"</span>,</span>
 <span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B04_(Raw).tiff"</span>,</span>
 <span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/2026-05-25-00_00_2026-05-25-23_59_Sentinel-2_L2A_B08_(Raw).tiff"</span>,</span>
-<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighborhoods_and_frederiksberg.gpkg"</span>,</span>
+<span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/cph_neighbourhoods_and_frederiksberg.gpkg"</span>,</span>
 <span><span class="st">"https://raw.githubusercontent.com/KUBDatalab/R-toolbox/main/episodes/data/parks_cph_frederiksberg.gpkg"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">download.file</span><span class="op">(</span></span>
@@ -698,7 +707,7 @@ and then run this code:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">neighbourhoods</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/cph_neighborhoods_and_frederiksberg.gpkg"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">neighbourhoods</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/cph_neighbourhoods_and_frederiksberg.gpkg"</span><span class="op">)</span></span>
 <span><span class="va">parks</span> <span class="op">&lt;-</span> <span class="fu">vect</span><span class="op">(</span><span class="st">"data/parks_cph_frederiksberg.gpkg"</span><span class="op">)</span></span></code></pre>
 </div>
 <p>oprette et interaktivt Leaflet-kort fra et sf-objekt, transformere
@@ -790,7 +799,7 @@ tilføje lag som tiles, markers, polygons og controls. Kort øvelse</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Geometri - det der faktisk har geografisk placering og udstrækning.
 Parker - polygoner. Stationer som punkter, veje som linier Farve eller
@@ -810,9 +819,9 @@ farver, størrelser, symboler etc.</p>
 <p>Overskrifter Creating an empty map Adding a basemap Adding spatial
 data Setting the initial view Understanding the pipe-based workflow
 Grundeksempel library(sf) library(leaflet)</p>
-<p>neighborhoods &lt;- read_sf( “data/bydele_and_frederiksberg.gpkg”
+<p>neighbourhoods &lt;- read_sf( “data/bydele_and_frederiksberg.gpkg”
 )</p>
-<p>leaflet(neighborhoods) |&gt;
+<p>leaflet(neighbourhoods) |&gt;
 addProviderTiles(providers$CartoDB.Positron) |&gt; addPolygons()
 Underemner leaflet(data) addTiles() og addProviderTiles() setView()
 kontra fitBounds() Hvad der ligger i data-argumentet Leaflets
@@ -828,8 +837,8 @@ sektion, fordi Leaflet opfører sig anderledes end mange statiske
 kortværktøjer.</p>
 <p>Overskrifter Leaflet maps use longitude and latitude Inspecting the
 CRS Transforming data for Leaflet Projected data versus displayed data
-Kernekode st_crs(neighborhoods)</p>
-<p>neighborhoods &lt;- neighborhoods |&gt; st_transform(4326)
+Kernekode st_crs(neighbourhoods)</p>
+<p>neighbourhoods &lt;- neighbourhoods |&gt; st_transform(4326)
 Budskab</p>
 <p>Data kan analyseres i eksempelvis:</p>
 <p>EPSG:25832</p>
@@ -870,8 +879,8 @@ functions Continuous and categorical palettes Missing values Adding a
 legend Choosing sensible classifications Funktioner colorNumeric()
 colorBin() colorQuantile() colorFactor() addLegend() Eksempel med
 befolkning pal &lt;- colorBin( palette = “YlOrRd”, domain =
-neighborhoods$population, bins = 5 )</p>
-<p>leaflet(neighborhoods) |&gt;
+neighbourhoods$population, bins = 5 )</p>
+<p>leaflet(neighbourhoods) |&gt;
 addProviderTiles(providers$CartoDB.Positron) |&gt; addPolygons(
 fillColor = ~pal(population), fillOpacity = 0.7, weight = 1, color =
 “white”, popup = ~paste0( “<strong>”, navn, “</strong><br>”,
@@ -887,7 +896,7 @@ kan dominere kortets visuelle indtryk, forskellen på total befolkning og
 befolkningstæthed.</p>
 <p>Befolkningstæthed er et oplagt sted at genbruge deres viden om
 projicerede CRS:</p>
-<p>neighborhoods |&gt; st_transform(25832) |&gt; mutate( area_km2 =
+<p>neighbourhoods |&gt; st_transform(25832) |&gt; mutate( area_km2 =
 as.numeric(st_area(geometry)) / 1e6, density = population / area_km2 )
 |&gt; st_transform(4326) ## Polygon maps and choropleths</p>
 <p>Denne episode kan enten være selvstændig eller lægges sammen med
@@ -913,10 +922,10 @@ providers<span class="math inline">\(CartoDB.Positron,
   ) |&gt;
   addProviderTiles(
     providers\)</span>OpenStreetMap, group = “OpenStreetMap” ) |&gt;
-addPolygons( data = neighborhoods, group = “Neighborhoods” ) |&gt;
+addPolygons( data = neighbourhoods, group = “Neighbourhoods” ) |&gt;
 addCircleMarkers( data = parks, group = “Parks” ) |&gt;
 addLayersControl( baseGroups = c( “Light”, “OpenStreetMap” ),
-overlayGroups = c( “Neighborhoods”, “Parks” ) )</p>
+overlayGroups = c( “Neighbourhoods”, “Parks” ) )</p>
 <p>Leaflet bruger group sammen med addLayersControl() til at vise og
 skjule lag.</p>
 <p>God challenge</p>
@@ -950,15 +959,15 @@ design og ikke kun syntaks.</p>
 <p>Overskrifter What belongs in a popup? Labels versus popups Formatting
 text with HTML Formatting numbers Handling missing values Avoiding
 information overload Eksempel popup_text &lt;- paste0( “<strong>”,
-neighborhoods<span class="math inline">\(navn,
+neighbourhoods<span class="math inline">\(navn,
 "&lt;/strong&gt;&lt;br&gt;",
   "Population: ",
   format(
-    neighborhoods\)</span>population, big.mark = “,” ), “<br>”, “Area:”,
-round(neighborhoods$area_km2, 1), ” km²” )</strong></p>
+    neighbourhoods\)</span>population, big.mark = “,” ), “<br>”,
+“Area:”, round(neighbourhoods$area_km2, 1), ” km²” )</strong></p>
 <p>Undervis gerne i at konstruere popupteksten som en separat
 kolonne:</p>
-<p>neighborhoods &lt;- neighborhoods |&gt; mutate( popup = paste0(
+<p>neighbourhoods &lt;- neighbourhoods |&gt; mutate( popup = paste0(
 “<strong>”, navn, “</strong><br>”, “Population:”, population ) )</p>
 <p>Det er renere end at lægge en meget lang paste0() direkte inde i
 addPolygons().</p>
@@ -1047,7 +1056,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
@@ -1076,8 +1085,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/spatial_interactive_maps.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/spatial_interactive_maps.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2026-09-01",
-  "datePublished": "2026-09-01"
+  "dateModified": "2026-09-29",
+  "datePublished": "2026-09-29"
 }
 
   </script><script>
