@@ -76,7 +76,7 @@ Sometimes, we are able to use virtual machines with far more cores than we have 
 :::: instructor
 To do: hyperlink to the UCloud page:
 
-One HPC that students and employees at Danish universities have access to is UCloud. Here we get access to a _lot_ of cores. Read our guide to R on UCloud [here](link).
+One HPC that students and employees at Danish universities have access to is UCloud. Here we get access to a _lot_ of cores. Read our guide to [R on UCloud here](ucloud.Rmd).
 ::::
 
 In order for the big computer to split itself among different users or different tasks, every user or task gets allocated its own chunk of the big computer in the form of a virtual machine. When you spin up a virtual machine, you ask for a number of cores (and an amount of RAM) from the big computer to be set aside and made available to you, as if you got your own mini-machine inside the big machine.
@@ -136,7 +136,7 @@ print(t_par)
 
 ``` output
    user  system elapsed 
-  0.434   0.050   5.642 
+  0.238   0.041   3.995 
 ```
 
 We can compare this was a versions of the same script that does the same thing sequentially, without parallellization (by using `%do%`). Check out how long this takes:
@@ -162,7 +162,7 @@ print(t_seq)
 
 ``` output
    user  system elapsed 
-  2.201   0.017   2.219 
+  2.206   0.017   2.229 
 ```
 
 On the machine with 8 cores that we tested this on, the parallellized version takes 2-3 times shorter.
