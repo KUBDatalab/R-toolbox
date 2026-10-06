@@ -40,7 +40,10 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-8">
       <div class="large-logo">
-        <img id="lc-logo" alt="KUB DataLab" src="assets/images/library-logo.svg"><span class="badge text-bg-info">
+        <a href="index.html">
+        <img id="lc-logo" alt="KUB DataLab" src="assets/images/library-logo.svg"></a>
+
+        <span class="badge text-bg-info">
           <abbr title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.">
             <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
               <i aria-hidden="true" class="icon" data-feather="alert-circle" style="border-radius: 5px"></i>
@@ -96,8 +99,9 @@
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="KUB DataLab" src="assets/images/library-logo-sm.svg">
-</div>
+      <a href="index.html">
+      <img class="small-logo" alt="KUB DataLab" src="assets/images/library-logo-sm.svg"></a>
+    </div>
     <div class="lesson-title-md">
       R-toolbox
     </div>
@@ -145,7 +149,7 @@
       </fieldset>
     </form>
     -->
-    <a id="search-button" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
+    <a id="search-button-nav" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div>
 <!--/div.container-fluid -->
 </nav><div class="container">
@@ -157,6 +161,9 @@
           <i class="search-icon" data-feather="x" role="img"></i>
         </button>
         <div class="sidebar-inner">
+          <div class="row mobile-row" id="theme-row-mobile">
+            <a id="search-button-sidebar" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
+          </div>
           <div class="row mobile-row" id="theme-row-mobile">
             <menu class="col theme-selector" id="theme-selector-sidebar">
 <li class="nav-item dropdown theme-button-list" id="theme-button-list-sidebar">
@@ -205,6 +212,7 @@
 <!--/div.accordion-item-->
                 </div>
 <!--/div.accordion-flush-->
+
               </div>
 <!--div.sidenav-view-selector -->
             </div>
@@ -709,6 +717,34 @@
             </div>
 
             <hr class="half-width">
+<div class="accordion accordion-flush" id="accordion-links-toggle">
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading-links-toggle">
+                  <button class="accordion-button collapsed" id="links" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-links-toggle" aria-expanded="false" aria-controls="flush-collapse-links-toggle">
+                    LINKS
+                  </button>
+                </h2>
+                <div id="flush-collapse-links-toggle" class="accordion-collapse show collapse" data-bs-parent="#accordion-links-toggle">
+                    <div class="accordion-body">
+                        <ul>
+<li>
+                            <a href="key-points.html">Key Points</a>
+                            </li>
+                            <li>
+                            <a href="reference.html#glossary">Glossary</a>
+                            </li>
+                            <li>
+                            <a href="profiles.html">Learner Profiles</a>
+                            </li>
+                        </ul>
+</div>
+                </div>
+                </div>
+<!--/div.accordion-item-->
+            </div>
+<!--/div.accordion-flush-->
+
+            <hr class="half-width">
 <div class="accordion accordion-flush lesson-resources" id="accordion-resources-toggle">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-heading-resources-toggle">
@@ -719,16 +755,7 @@
                 <div id="flush-collapse-resources-toggle" class="accordion-collapse collapse" data-bs-parent="#accordion-resources-toggle">
                   <div class="accordion-body">
                     <ul>
-<li>
-                        <a href="key-points.html">Key Points</a>
-                      </li>
-                      <li>
-                        <a href="reference.html#glossary">Glossary</a>
-                      </li>
-                      <li>
-                        <a href="profiles.html">Learner Profiles</a>
-                      </li>
-                      <li><a href="CLT-dk.html">CLT - på dansk</a></li>
+<li><a href="CLT-dk.html">CLT - på dansk</a></li>
 <li><a href="CLT-en.html">CLT - in english</a></li>
 <li><a href="data.html">Data sets</a></li>
 <li><a href="reference.html">Reference</a></li>
@@ -763,7 +790,7 @@
         
 <section id="aio-reproducible-analysis"><p>Content from <a href="reproducible-analysis.html">Reproducible Data Analysis</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/reproducible-analysis.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -929,7 +956,7 @@ the first chunk, add your own text, and change the plot to plot the
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Make a new RMarkdown document - File -&gt; New File -&gt; R
 Markdown.</p>
@@ -963,7 +990,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-reading-files"><p>Content from <a href="reading-files.html">Reading data from file</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/reading-files.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -1251,7 +1278,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-descript-stat"><p>Content from <a href="descript-stat.html">Descriptive Statistics</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/descript-stat.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -2265,7 +2292,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-histograms"><p>Content from <a href="histograms.html">Histograms</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/histograms.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3085,7 +3112,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-table1"><p>Content from <a href="table1.html">Table One</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/table1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -4971,7 +4998,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-table1-gt"><p>Content from <a href="table1-gt.html">Table One - gt</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/table1-gt.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -5197,23 +5224,23 @@ Missing
 <span>    <span class="fu">add_overall</span><span class="op">(</span>last <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <!--html_preserve-->
-<div id="cyrtlkdxvt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#cyrtlkdxvt table {
+<div id="ugotpaoeuz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ugotpaoeuz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#cyrtlkdxvt thead, #cyrtlkdxvt tbody, #cyrtlkdxvt tfoot, #cyrtlkdxvt tr, #cyrtlkdxvt td, #cyrtlkdxvt th {
+#ugotpaoeuz thead, #ugotpaoeuz tbody, #ugotpaoeuz tfoot, #ugotpaoeuz tr, #ugotpaoeuz td, #ugotpaoeuz th {
   border-style: none;
 }
 
-#cyrtlkdxvt p {
+#ugotpaoeuz p {
   margin: 0;
   padding: 0;
 }
 
-#cyrtlkdxvt .gt_table {
+#ugotpaoeuz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -5239,12 +5266,12 @@ Missing
   border-left-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_caption {
+#ugotpaoeuz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#cyrtlkdxvt .gt_title {
+#ugotpaoeuz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -5256,7 +5283,7 @@ Missing
   border-bottom-width: 0;
 }
 
-#cyrtlkdxvt .gt_subtitle {
+#ugotpaoeuz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -5268,7 +5295,7 @@ Missing
   border-top-width: 0;
 }
 
-#cyrtlkdxvt .gt_heading {
+#ugotpaoeuz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -5280,13 +5307,13 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_bottom_border {
+#ugotpaoeuz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_col_headings {
+#ugotpaoeuz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5301,7 +5328,7 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_col_heading {
+#ugotpaoeuz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5321,7 +5348,7 @@ Missing
   overflow-x: hidden;
 }
 
-#cyrtlkdxvt .gt_column_spanner_outer {
+#ugotpaoeuz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5333,15 +5360,15 @@ Missing
   padding-right: 4px;
 }
 
-#cyrtlkdxvt .gt_column_spanner_outer:first-child {
+#ugotpaoeuz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#cyrtlkdxvt .gt_column_spanner_outer:last-child {
+#ugotpaoeuz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#cyrtlkdxvt .gt_column_spanner {
+#ugotpaoeuz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -5353,11 +5380,11 @@ Missing
   width: 100%;
 }
 
-#cyrtlkdxvt .gt_spanner_row {
+#ugotpaoeuz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#cyrtlkdxvt .gt_group_heading {
+#ugotpaoeuz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5383,7 +5410,7 @@ Missing
   text-align: left;
 }
 
-#cyrtlkdxvt .gt_empty_group_heading {
+#ugotpaoeuz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -5398,15 +5425,15 @@ Missing
   vertical-align: middle;
 }
 
-#cyrtlkdxvt .gt_from_md > :first-child {
+#ugotpaoeuz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#cyrtlkdxvt .gt_from_md > :last-child {
+#ugotpaoeuz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#cyrtlkdxvt .gt_row {
+#ugotpaoeuz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5425,7 +5452,7 @@ Missing
   overflow-x: hidden;
 }
 
-#cyrtlkdxvt .gt_stub {
+#ugotpaoeuz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5438,7 +5465,7 @@ Missing
   padding-right: 5px;
 }
 
-#cyrtlkdxvt .gt_stub_row_group {
+#ugotpaoeuz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -5452,15 +5479,15 @@ Missing
   vertical-align: top;
 }
 
-#cyrtlkdxvt .gt_row_group_first td {
+#ugotpaoeuz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#cyrtlkdxvt .gt_row_group_first th {
+#ugotpaoeuz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#cyrtlkdxvt .gt_summary_row {
+#ugotpaoeuz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5470,16 +5497,16 @@ Missing
   padding-right: 5px;
 }
 
-#cyrtlkdxvt .gt_first_summary_row {
+#ugotpaoeuz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_first_summary_row.thick {
+#ugotpaoeuz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#cyrtlkdxvt .gt_last_summary_row {
+#ugotpaoeuz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5489,7 +5516,7 @@ Missing
   border-bottom-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_grand_summary_row {
+#ugotpaoeuz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -5499,7 +5526,7 @@ Missing
   padding-right: 5px;
 }
 
-#cyrtlkdxvt .gt_first_grand_summary_row {
+#ugotpaoeuz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5509,7 +5536,7 @@ Missing
   border-top-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_last_grand_summary_row_top {
+#ugotpaoeuz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -5519,11 +5546,11 @@ Missing
   border-bottom-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_striped {
+#ugotpaoeuz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#cyrtlkdxvt .gt_table_body {
+#ugotpaoeuz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -5532,7 +5559,7 @@ Missing
   border-bottom-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_footnotes {
+#ugotpaoeuz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5546,7 +5573,7 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_footnote {
+#ugotpaoeuz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -5555,7 +5582,7 @@ Missing
   padding-right: 5px;
 }
 
-#cyrtlkdxvt .gt_sourcenotes {
+#ugotpaoeuz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -5569,7 +5596,7 @@ Missing
   border-right-color: #D3D3D3;
 }
 
-#cyrtlkdxvt .gt_sourcenote {
+#ugotpaoeuz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -5577,72 +5604,72 @@ Missing
   padding-right: 5px;
 }
 
-#cyrtlkdxvt .gt_left {
+#ugotpaoeuz .gt_left {
   text-align: left;
 }
 
-#cyrtlkdxvt .gt_center {
+#ugotpaoeuz .gt_center {
   text-align: center;
 }
 
-#cyrtlkdxvt .gt_right {
+#ugotpaoeuz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#cyrtlkdxvt .gt_font_normal {
+#ugotpaoeuz .gt_font_normal {
   font-weight: normal;
 }
 
-#cyrtlkdxvt .gt_font_bold {
+#ugotpaoeuz .gt_font_bold {
   font-weight: bold;
 }
 
-#cyrtlkdxvt .gt_font_italic {
+#ugotpaoeuz .gt_font_italic {
   font-style: italic;
 }
 
-#cyrtlkdxvt .gt_super {
+#ugotpaoeuz .gt_super {
   font-size: 65%;
 }
 
-#cyrtlkdxvt .gt_footnote_marks {
+#ugotpaoeuz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#cyrtlkdxvt .gt_asterisk {
+#ugotpaoeuz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#cyrtlkdxvt .gt_indent_1 {
+#ugotpaoeuz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#cyrtlkdxvt .gt_indent_2 {
+#ugotpaoeuz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#cyrtlkdxvt .gt_indent_3 {
+#ugotpaoeuz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#cyrtlkdxvt .gt_indent_4 {
+#ugotpaoeuz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#cyrtlkdxvt .gt_indent_5 {
+#ugotpaoeuz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#cyrtlkdxvt .katex-display {
+#ugotpaoeuz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#cyrtlkdxvt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ugotpaoeuz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -5875,7 +5902,7 @@ muligheder for at tilpasse tabellen.</p>
 {
     UseMethod("tbl")
 }
-&lt;bytecode: 0x55f5753cdba0&gt;
+&lt;bytecode: 0x55835b597558&gt;
 &lt;environment: namespace:dplyr&gt;</code></pre>
 </div>
 
@@ -5901,7 +5928,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-tidy-data"><p>Content from <a href="tidy-data.html">Tidy Data</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/tidy-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -6070,7 +6097,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-normal-distribution"><p>Content from <a href="normal-distribution.html">The normal distribution</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/normal-distribution.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -6228,7 +6255,7 @@ of 0 and a standard deviation of 1.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6264,7 +6291,7 @@ for which 42% of the observations is smaller?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6317,7 +6344,7 @@ cm is 4%</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> How does that work? </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>We have a lot of men with an average height of 183. They all have an
 individual heigth. If we subtract 183 from their height, and use that as
@@ -6362,7 +6389,7 @@ get:</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Hint </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>What proportion of men are shorter than 190 cm? And what proportion
 of men are shorter than 170 cm?</p>
@@ -6375,7 +6402,7 @@ of men are shorter than 170 cm?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -6420,7 +6447,7 @@ of Molybdenum (Mo) in their blood?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>We begin by calculating the probability of observing a Mo
 concentration lower than 0:</p>
@@ -6532,7 +6559,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-is-it-normal"><p>Content from <a href="is-it-normal.html">Testing for normality</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/is-it-normal.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -6702,7 +6729,7 @@ normally distributed.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> How skewed is the plot? </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>We have two tails in the qq-plot, a left and a right. And they can be
 either above or below the qq-line.</p>
@@ -6997,7 +7024,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-which-distribution"><p>Content from <a href="which-distribution.html">How is the data distributed?</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/which-distribution.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -7427,7 +7454,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-linear-regression"><p>Content from <a href="linear-regression.html">Linear regression</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/linear-regression.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -7648,7 +7675,7 @@ mph?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>3.932*12.5 - 17.579 = 31.571 ft</p>
 </div>
@@ -7673,7 +7700,7 @@ that prediction?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Yep. We might be able to measure the speed with the implied
 precision. But the prediction implies a precision on the scale of
@@ -7787,7 +7814,7 @@ library <code>palmerpenguins</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7864,7 +7891,7 @@ distributed.</p></li>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> The assumptions - differently defined </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>The three assumptions can be formulated in different ways, and it can
 be useful to read more than one in order to understand them. This is a
@@ -7925,7 +7952,7 @@ distributed.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7962,7 +7989,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-multiple-linear-regression"><p>Content from <a href="multiple-linear-regression.html">Multiple Linear Regression</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/multiple-linear-regression.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -8319,7 +8346,7 @@ included.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -8480,7 +8507,7 @@ centimeter high, postmenopausal woman weighing 62 kg?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>We find it by adding all the terms:</p>
 <ul>
@@ -8545,7 +8572,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-lasso-regularisation"><p>Content from <a href="lasso-regularisation.html">LASSO regularisation</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/lasso-regularisation.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -8719,23 +8746,23 @@ wt          -2.308463917
 qsec         .          </code></pre>
 </div>
 Compare with the ordinary model: <!--html_preserve-->
-<div id="gyncgxdyet" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gyncgxdyet table {
+<div id="cgeyfwjlku" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cgeyfwjlku table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gyncgxdyet thead, #gyncgxdyet tbody, #gyncgxdyet tfoot, #gyncgxdyet tr, #gyncgxdyet td, #gyncgxdyet th {
+#cgeyfwjlku thead, #cgeyfwjlku tbody, #cgeyfwjlku tfoot, #cgeyfwjlku tr, #cgeyfwjlku td, #cgeyfwjlku th {
   border-style: none;
 }
 
-#gyncgxdyet p {
+#cgeyfwjlku p {
   margin: 0;
   padding: 0;
 }
 
-#gyncgxdyet .gt_table {
+#cgeyfwjlku .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -8761,12 +8788,12 @@ Compare with the ordinary model: <!--html_preserve-->
   border-left-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_caption {
+#cgeyfwjlku .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gyncgxdyet .gt_title {
+#cgeyfwjlku .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -8778,7 +8805,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-width: 0;
 }
 
-#gyncgxdyet .gt_subtitle {
+#cgeyfwjlku .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -8790,7 +8817,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-top-width: 0;
 }
 
-#gyncgxdyet .gt_heading {
+#cgeyfwjlku .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -8802,13 +8829,13 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_bottom_border {
+#cgeyfwjlku .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_col_headings {
+#cgeyfwjlku .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -8823,7 +8850,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_col_heading {
+#cgeyfwjlku .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8843,7 +8870,7 @@ Compare with the ordinary model: <!--html_preserve-->
   overflow-x: hidden;
 }
 
-#gyncgxdyet .gt_column_spanner_outer {
+#cgeyfwjlku .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8855,15 +8882,15 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 4px;
 }
 
-#gyncgxdyet .gt_column_spanner_outer:first-child {
+#cgeyfwjlku .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gyncgxdyet .gt_column_spanner_outer:last-child {
+#cgeyfwjlku .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gyncgxdyet .gt_column_spanner {
+#cgeyfwjlku .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -8875,11 +8902,11 @@ Compare with the ordinary model: <!--html_preserve-->
   width: 100%;
 }
 
-#gyncgxdyet .gt_spanner_row {
+#cgeyfwjlku .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gyncgxdyet .gt_group_heading {
+#cgeyfwjlku .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8905,7 +8932,7 @@ Compare with the ordinary model: <!--html_preserve-->
   text-align: left;
 }
 
-#gyncgxdyet .gt_empty_group_heading {
+#cgeyfwjlku .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -8920,15 +8947,15 @@ Compare with the ordinary model: <!--html_preserve-->
   vertical-align: middle;
 }
 
-#gyncgxdyet .gt_from_md > :first-child {
+#cgeyfwjlku .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gyncgxdyet .gt_from_md > :last-child {
+#cgeyfwjlku .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gyncgxdyet .gt_row {
+#cgeyfwjlku .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -8947,7 +8974,7 @@ Compare with the ordinary model: <!--html_preserve-->
   overflow-x: hidden;
 }
 
-#gyncgxdyet .gt_stub {
+#cgeyfwjlku .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8960,7 +8987,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#gyncgxdyet .gt_stub_row_group {
+#cgeyfwjlku .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -8974,15 +9001,15 @@ Compare with the ordinary model: <!--html_preserve-->
   vertical-align: top;
 }
 
-#gyncgxdyet .gt_row_group_first td {
+#cgeyfwjlku .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gyncgxdyet .gt_row_group_first th {
+#cgeyfwjlku .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gyncgxdyet .gt_summary_row {
+#cgeyfwjlku .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -8992,16 +9019,16 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#gyncgxdyet .gt_first_summary_row {
+#cgeyfwjlku .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_first_summary_row.thick {
+#cgeyfwjlku .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gyncgxdyet .gt_last_summary_row {
+#cgeyfwjlku .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9011,7 +9038,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_grand_summary_row {
+#cgeyfwjlku .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -9021,7 +9048,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#gyncgxdyet .gt_first_grand_summary_row {
+#cgeyfwjlku .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9031,7 +9058,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-top-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_last_grand_summary_row_top {
+#cgeyfwjlku .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -9041,11 +9068,11 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_striped {
+#cgeyfwjlku .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gyncgxdyet .gt_table_body {
+#cgeyfwjlku .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -9054,7 +9081,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_footnotes {
+#cgeyfwjlku .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9068,7 +9095,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_footnote {
+#cgeyfwjlku .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -9077,7 +9104,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#gyncgxdyet .gt_sourcenotes {
+#cgeyfwjlku .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -9091,7 +9118,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_sourcenote {
+#cgeyfwjlku .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -9099,72 +9126,72 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#gyncgxdyet .gt_left {
+#cgeyfwjlku .gt_left {
   text-align: left;
 }
 
-#gyncgxdyet .gt_center {
+#cgeyfwjlku .gt_center {
   text-align: center;
 }
 
-#gyncgxdyet .gt_right {
+#cgeyfwjlku .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gyncgxdyet .gt_font_normal {
+#cgeyfwjlku .gt_font_normal {
   font-weight: normal;
 }
 
-#gyncgxdyet .gt_font_bold {
+#cgeyfwjlku .gt_font_bold {
   font-weight: bold;
 }
 
-#gyncgxdyet .gt_font_italic {
+#cgeyfwjlku .gt_font_italic {
   font-style: italic;
 }
 
-#gyncgxdyet .gt_super {
+#cgeyfwjlku .gt_super {
   font-size: 65%;
 }
 
-#gyncgxdyet .gt_footnote_marks {
+#cgeyfwjlku .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gyncgxdyet .gt_asterisk {
+#cgeyfwjlku .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gyncgxdyet .gt_indent_1 {
+#cgeyfwjlku .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gyncgxdyet .gt_indent_2 {
+#cgeyfwjlku .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gyncgxdyet .gt_indent_3 {
+#cgeyfwjlku .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gyncgxdyet .gt_indent_4 {
+#cgeyfwjlku .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gyncgxdyet .gt_indent_5 {
+#cgeyfwjlku .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gyncgxdyet .katex-display {
+#cgeyfwjlku .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gyncgxdyet div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cgeyfwjlku div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -9287,7 +9314,7 @@ predict the response variable.</p>
   One way of doing it - but which problems does it have?
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>We could do that by splitting the data in two parts, build different
 models on one part with different <span class="math inline">\(\lambda\)</span> s and use them to predict the
@@ -9304,7 +9331,7 @@ data is the best, and we know which <span class="math inline">\(\lambda\)</span>
   Some problems with this approach
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Our dataset is not very large. If we pull out a fifth of the dataset
 for evaluation purposes, we only have 25 observations left.</p>
@@ -9417,7 +9444,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-logistic-regression"><p>Content from <a href="logistic-regression.html">Logistic regression</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/logistic-regression.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -9981,7 +10008,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-clt"><p>Content from <a href="clt.html">Central Limit Theorem</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/clt.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -10044,7 +10071,7 @@ This is definitely not normally distributed.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.4957688</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.4758469</code></pre>
 </div>
 <p>The important point of the Central Limit Theorem is, that if we take
 a large number of random samples, and calculate the mean of each of
@@ -10060,7 +10087,7 @@ this:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] 0.5133068</code></pre>
+<pre class="output" tabindex="0"><code>[1] 0.4951796</code></pre>
 </div>
 <p>And we can use the <code>replicate()</code> function to repeat that
 calculation several times, in this case 1000 times:</p>
@@ -10111,7 +10138,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-barcharts"><p>Content from <a href="barcharts.html">Nicer barcharts</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/barcharts.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -10581,7 +10608,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-powerberegninger"><p>Content from <a href="powerberegninger.html">Power Calculations</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/powerberegninger.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -10900,7 +10927,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-kmeans"><p>Content from <a href="kmeans.html">k-means</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/kmeans.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -10954,7 +10981,7 @@ data/customers into 10 groups.</p>
   Why 10?
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>In the case of the online bookseller the number was chosen to get a
 relatively small number of clusters, in order not to have to manage 20
@@ -11069,31 +11096,31 @@ we can work with afterwards:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>K-means clustering with 3 clusters of sizes 62, 47, 69
+<pre class="output" tabindex="0"><code>K-means clustering with 3 clusters of sizes 69, 47, 62
 
 Cluster means:
    Alcohol Malicacid      Ash Alcalinityofash Magnesium Totalphenols Flavanoids
-1 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
+1 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
 2 13.80447  1.883404 2.426170        17.02340 105.51064     2.867234   3.014255
-3 12.51667  2.494203 2.288551        20.82319  92.34783     2.070725   1.758406
+3 12.92984  2.504032 2.408065        19.89032 103.59677     2.111129   1.584032
   Nonflavanoidphenols Proanthocyanins Colorintensity       Hue
-1           0.3883871        1.503387       5.650323 0.8839677
+1           0.3901449        1.451884       4.086957 0.9411594
 2           0.2853191        1.910426       5.702553 1.0782979
-3           0.3901449        1.451884       4.086957 0.9411594
+3           0.3883871        1.503387       5.650323 0.8839677
   OD280OD315ofdilutedwines   Proline
-1                 2.365484  728.3387
+1                 2.490725  458.2319
 2                 3.114043 1195.1489
-3                 2.490725  458.2319
+3                 2.365484  728.3387
 
 Clustering vector:
-  [1] 2 2 2 2 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 2 2 1 1 2 2 1 2 2 2 2 2 2 1 1
- [38] 2 2 1 1 2 2 1 1 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 1 3 1 3 3 1 3 3 1 1 1 3 3 2
- [75] 1 3 3 3 1 3 3 1 1 3 3 3 3 3 1 1 3 3 3 3 3 1 1 3 1 3 1 3 3 3 1 3 3 3 3 1 3
-[112] 3 1 3 3 3 3 3 3 3 1 3 3 3 3 3 3 3 3 3 1 3 3 1 1 1 1 3 3 3 1 1 3 3 1 1 3 1
-[149] 1 3 3 3 3 1 1 1 3 1 1 1 3 1 3 1 1 3 1 1 1 1 3 3 1 1 1 1 1 3
+  [1] 2 2 2 2 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 2 2 3 3 2 2 3 2 2 2 2 2 2 3 3
+ [38] 2 2 3 3 2 2 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 1 3 1 3 1 1 3 1 1 3 3 3 1 1 2
+ [75] 3 1 1 1 3 1 1 3 3 1 1 1 1 1 3 3 1 1 1 1 1 3 3 1 3 1 3 1 1 1 3 1 1 1 1 3 1
+[112] 1 3 1 1 1 1 1 1 1 3 1 1 1 1 1 1 1 1 1 3 1 1 3 3 3 3 1 1 1 3 3 1 1 3 3 1 3
+[149] 3 1 1 1 1 3 3 3 1 3 3 3 1 3 1 3 3 1 3 3 3 3 1 1 3 3 3 3 3 1
 
 Within cluster sum of squares by cluster:
-[1]  566572.5 1360950.5  443166.7
+[1]  443166.7 1360950.5  566572.5
  (between_SS / total_SS =  86.5 %)
 
 Available components:
@@ -11133,9 +11160,9 @@ found, and match them with the true values:</p>
 </h3>
 <pre class="output" tabindex="0"><code>     true
 quess  1  2  3
-    1 13 20 29
+    1  0 50 19
     2 46  1  0
-    3  0 50 19</code></pre>
+    3 13 20 29</code></pre>
 </div>
 <p>The algorithm have no idea about how the true groups are numbered, so
 the numbering does not match. But it appears that i does a relatively
@@ -11346,7 +11373,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-anova"><p>Content from <a href="anova.html">ANOVA</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/anova.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -11522,7 +11549,7 @@ smaller differences in variance can be problematic.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> More specific methods exist. </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>There are probably more than than three tests for homoskedacity, here
 are three:</p>
@@ -11667,7 +11694,7 @@ three different species of the iris-family of flowers.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb23">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -11709,7 +11736,7 @@ can reject the hypothesis that there is no difference.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -11757,7 +11784,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-cohens-kappa"><p>Content from <a href="cohens-kappa.html">Cohens Kappa</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/cohens-kappa.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -12182,7 +12209,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-ucloud"><p>Content from <a href="ucloud.html">R on UCloud</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/ucloud.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -12799,7 +12826,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-parallellization"><p>Content from <a href="parallellization.html">Parallellization in R</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/parallellization.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -13041,7 +13068,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-pipes"><p>Content from <a href="pipes.html">A deeper dive into pipes</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/pipes.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -13586,7 +13613,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-gis_setup"><p>Content from <a href="gis_setup.html">Setup for GIS</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/gis_setup.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -13774,7 +13801,7 @@ install it using the command line ahead of time.</p>
   Linux
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Steps for installing the geospatial will vary based on which form of
 Linux you are using. These instructions are adapted from the <a href="https://github.com/r-spatial/sf" class="external-link"><code>sf</code> package’s
@@ -13880,7 +13907,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-spatial_data_intro"><p>Content from <a href="spatial_data_intro.html">Introduction to Spatial Data Science</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/spatial_data_intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -14112,7 +14139,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-gis-downloading-sentinel"><p>Content from <a href="gis-downloading-sentinel.html">Downloading Sentinel satelite data</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/gis-downloading-sentinel.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -14221,7 +14248,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-gis_raster-data"><p>Content from <a href="gis_raster-data.html">Raster data</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/gis_raster-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -14964,7 +14991,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-gis_vector-data"><p>Content from <a href="gis_vector-data.html">Spatial Vector Data</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/gis_vector-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -15117,7 +15144,7 @@ names of the polygons:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>To save space this code only return the first 10 names:</p>
 <div class="codewrapper sourceCode" id="cb8">
@@ -15227,7 +15254,7 @@ is the smallest.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>We can extract values from the neighborhood object using the
 <code>values()</code> function (just like we did with raster data).
@@ -15245,7 +15272,7 @@ The last option give a nicer looking output.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -15288,7 +15315,7 @@ perimeters to the parks.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -15449,7 +15476,7 @@ would be the conceptual steps in doing that be? Discuss!</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>There are probably many ways of doing this. One suggestion would
 be:</p>
@@ -15685,7 +15712,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-gis_visualization"><p>Content from <a href="gis_visualization.html">Spatial visualization</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/gis_visualization.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -15758,7 +15785,7 @@ are the same.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Have to download the data again? </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>Make sure you have a <code>data</code> folder in your project folder,
 and then run this code:</p>
@@ -15918,7 +15945,7 @@ bu</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint2" aria-expanded="false" aria-controls="collapseHint2">
   <h4 class="accordion-header" id="headingHint2"> Give me a hint </h4>
 </button>
-<div id="collapseHint2" class="accordion-collapse collapse" data-bs-parent="#accordionHint2" aria-labelledby="headingHint2">
+<div id="collapseHint2" class="accordion-collapse collapse" aria-labelledby="headingHint2" data-bs-parent="#accordionHint2">
 <div class="accordion-body">
 <p>You can remind yourself of the order of bands in our
 <code>sentinel</code> data running <code>names(sentinel)</code></p>
@@ -15931,7 +15958,7 @@ bu</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -16054,7 +16081,7 @@ neighbourhoods.</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint3" aria-expanded="false" aria-controls="collapseHint3">
   <h4 class="accordion-header" id="headingHint3"> Give me a hint </h4>
 </button>
-<div id="collapseHint3" class="accordion-collapse collapse" data-bs-parent="#accordionHint3" aria-labelledby="headingHint3">
+<div id="collapseHint3" class="accordion-collapse collapse" aria-labelledby="headingHint3" data-bs-parent="#accordionHint3">
 <div class="accordion-body">
 <p>Population density is defined as the number of people pr square
 kilometer (or any other measurement of area). We can find the area of
@@ -16070,7 +16097,7 @@ can use the <code>mutate()</code> just like normally.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -16125,7 +16152,7 @@ arguments</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>One possible way is this.</p>
 <div class="codewrapper sourceCode" id="cb21">
@@ -16192,7 +16219,7 @@ any links that you are not going to use.
 </div>
 </section></section><section id="aio-spatial_interactive_maps"><p>Content from <a href="spatial_interactive_maps.html">Interactive maps</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/spatial_interactive_maps.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -16236,7 +16263,7 @@ any links that you are not going to use.
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Have to download the data again? </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
 <div class="accordion-body">
 <p>Make sure you have a <code>data</code> folder in your project folder,
 and then run this code:</p>
@@ -16369,7 +16396,7 @@ tilføje lag som tiles, markers, polygons og controls. Kort øvelse</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Geometri - det der faktisk har geografisk placering og udstrækning.
 Parker - polygoner. Stationer som punkter, veje som linier Farve eller
@@ -16613,7 +16640,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-git-00-setup"><p>Content from <a href="git-00-setup.html">Setup for Git</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/git-00-setup.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -16769,7 +16796,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-git-01-git-intro"><p>Content from <a href="git-01-git-intro.html">Introduction to Git(Hub)</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/git-01-git-intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -16957,7 +16984,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-git-09-practice"><p>Content from <a href="git-09-practice.html">Practice makes perfect</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/git-09-practice.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -17029,7 +17056,7 @@ the README files. Follow the directions exactly.</p>
 <p><em>This episode is partially adapted from “<a href="https://jennajordan.me/git-novice-speedrun" class="external-link">Intro to Git &amp;
 GitHub (Speedrun edition)</a>”, by Jenna Jordan.</em></p></section><section id="aio-stat-tests-1"><p>Content from <a href="stat-tests-1.html">Statistical tests</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/stat-tests-1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -20918,8 +20945,8 @@ Number of obs: 2000, groups:  hospital, 20
 
 Fixed effects:
              Estimate Std. Error z value Pr(&gt;|z|)
-(Intercept) -2.132901   0.370417  -5.758 8.51e-09 ***
-age          0.035056   0.005317   6.594 4.29e-11 ***
+(Intercept) -2.132901   0.370427  -5.758 8.51e-09 ***
+age          0.035056   0.005317   6.593 4.30e-11 ***
 comorbidity  0.457562   0.044238  10.343  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -20931,7 +20958,7 @@ comorbidity -0.293  0.101</code></pre>
 </div>
 <p><strong>Interpretation:</strong> The fixed‐effect estimate for age is
 0.035 (SE = 0.005), giving an odds ratio of 1.036 per year of age. With
-a z‐value = 6.59 and p ≈ 4.29^{-11}, we reject the null hypothesis. This
+a z‐value = 6.59 and p ≈ 4.3^{-11}, we reject the null hypothesis. This
 indicates that age is significantly associated with higher odds of
 readmission, accounting for hospital clustering.</p>
 </div>
@@ -25044,7 +25071,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-package-is-not-available"><p>Content from <a href="package-is-not-available.html">When install.packages fail</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/package-is-not-available.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -25175,7 +25202,7 @@ selected:</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ap</span> <span class="op">&lt;-</span> <span class="fu">available.packages</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<p>In this example we find 25229 packages.</p>
+<p>In this example we find 25309 packages.</p>
 <p>Rather than viewing all of them, it is better to test if the package
 we are looking for is actually available:</p>
 <div class="codewrapper sourceCode" id="cb4">
@@ -25357,7 +25384,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-extracting-tiff-layers"><p>Content from <a href="extracting-tiff-layers.html">Extracting tiff-layers</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/extracting-tiff-layers.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -25520,7 +25547,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-ggplot-1"><p>Content from <a href="ggplot-1.html">ggplot</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/ggplot-1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -25582,7 +25609,7 @@ axes.</p>
   Show the code
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -25630,7 +25657,7 @@ constructed by adding:</p>
 </div>
 <p>the <code>.x</code> refers to the range for the scale (x and y
 respectively), that is calculated automatically by ggplot. In this case
-that returns 9997.1136456, 1.0002547^{4}, we add 0 to that, and
+that returns 9996.7732854, 1.0002746^{4}, we add 0 to that, and
 calculate the limits usin the range function.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -25651,7 +25678,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-fence-test"><p>Content from <a href="fence-test.html">Fences på vores undervisningssider</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/fence-test.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -25738,7 +25765,7 @@ er en X fence”.</p>
   dette er en hint fence
   </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 
 </div>
@@ -25791,7 +25818,7 @@ siden man roligt kan ignorere.</p>
   dette er en spoiler fence
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 
 </div>
@@ -25817,7 +25844,7 @@ siden man roligt kan ignorere.</p>
   Den optræder som regel med en solution fence
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Og den er “inde i” challenge fencen.</p>
 </div>
@@ -25850,13 +25877,13 @@ group-tabs også til “Mac”.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-Windows" class="tab-pane show active" aria-labelledby="nav-tab-1-Windows" role="tabpanel">
+<div id="nav-tabpanel-1-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-Windows">
 <p>1</p>
 </div>
-<div id="nav-tabpanel-1-Mac" class="tab-pane" aria-labelledby="nav-tab-1-Mac" role="tabpanel">
+<div id="nav-tabpanel-1-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Mac">
 <p>2</p>
 </div>
-<div id="nav-tabpanel-1-Linux" class="tab-pane" aria-labelledby="nav-tab-1-Linux" role="tabpanel">
+<div id="nav-tabpanel-1-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-Linux">
 <p>3</p>
 </div>
 </div>
@@ -25885,16 +25912,16 @@ group-tabs også til “Mac”.</p>
 </button>
 </div>
 </nav><div id="nav-tabContent-2" class="tab-content">
-<div id="nav-tabpanel-2-Windows" class="tab-pane show active" aria-labelledby="nav-tab-2-Windows" role="tabpanel">
+<div id="nav-tabpanel-2-Windows" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-2-Windows">
 <p>4</p>
 </div>
-<div id="nav-tabpanel-2-Mac" class="tab-pane" aria-labelledby="nav-tab-2-Mac" role="tabpanel">
+<div id="nav-tabpanel-2-Mac" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Mac">
 <p>5</p>
 </div>
-<div id="nav-tabpanel-2-Linux" class="tab-pane" aria-labelledby="nav-tab-2-Linux" role="tabpanel">
+<div id="nav-tabpanel-2-Linux" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-Linux">
 <p>6</p>
 </div>
-<div id="nav-tabpanel-2-raspbian" class="tab-pane" aria-labelledby="nav-tab-2-raspbian" role="tabpanel">
+<div id="nav-tabpanel-2-raspbian" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-2-raspbian">
 <p>7</p>
 </div>
 </div>
@@ -25958,7 +25985,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-making-a-new-course"><p>Content from <a href="making-a-new-course.html">Make a new course</a></p>
 <hr>
-<p>Last updated on 2026-09-29 |
+<p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/making-a-new-course.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -26212,14 +26239,14 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
         <p>Materials licensed under <a href="LICENSE.html">CC BY-NC-SA 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.2)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.3)</a></p>
 		</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -26242,8 +26269,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/aio.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/aio.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2026-09-29",
-  "datePublished": "2026-09-29"
+  "dateModified": "2026-10-06",
+  "datePublished": "2026-10-06"
 }
 
   </script><script>

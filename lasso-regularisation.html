@@ -24,7 +24,10 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-8">
       <div class="large-logo">
-        <img id="lc-logo" alt="KUB DataLab" src="assets/images/library-logo.svg"><span class="badge text-bg-info">
+        <a href="index.html">
+        <img id="lc-logo" alt="KUB DataLab" src="assets/images/library-logo.svg"></a>
+
+        <span class="badge text-bg-info">
           <abbr title="This lesson is in the beta phase, which means that it is ready for teaching by instructors outside of the original author team.">
             <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
               <i aria-hidden="true" class="icon" data-feather="alert-circle" style="border-radius: 5px"></i>
@@ -74,7 +77,9 @@
       <span class="menu-title">Menu</span>
     </button>
     <div class="nav-logo">
-      <img class="small-logo" alt="KUB DataLab" src="assets/images/library-logo-sm.svg"></div>
+      <a href="index.html">
+      <img class="small-logo" alt="KUB DataLab" src="assets/images/library-logo-sm.svg"></a>
+    </div>
     <div class="lesson-title-md">
       R-toolbox
     </div>
@@ -115,7 +120,7 @@
       </fieldset>
     </form>
     -->
-    <a id="search-button" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
+    <a id="search-button-nav" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
 </nav><aside class="col-md-12 lesson-progress"><div class="progress library">
     <div class="progress-bar library" role="progressbar" style="width: 14%" aria-valuenow="14" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">14%</div>
@@ -129,6 +134,9 @@
           <i class="search-icon" data-feather="x" role="img"></i>
         </button>
         <div class="sidebar-inner">
+          <div class="row mobile-row" id="theme-row-mobile">
+            <a id="search-button-sidebar" class="btn btn-primary" href="aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
+          </div>
           <div class="row mobile-row" id="theme-row-mobile">
             <menu class="col theme-selector" id="theme-selector-sidebar"><li class="nav-item dropdown theme-button-list" id="theme-button-list-sidebar">
                 <button class="btn btn-link nav-link px-0 px-lg-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
@@ -171,6 +179,7 @@
                     </div>
                   </div><!--/div.accordion-item-->
                 </div><!--/div.accordion-flush-->
+
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
 
@@ -562,6 +571,29 @@
               </div>
             </div>
 
+            <hr class="half-width"><div class="accordion accordion-flush" id="accordion-links-toggle">
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-heading-links-toggle">
+                  <button class="accordion-button collapsed" id="links" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-links-toggle" aria-expanded="false" aria-controls="flush-collapse-links-toggle">
+                    LINKS
+                  </button>
+                </h2>
+                <div id="flush-collapse-links-toggle" class="accordion-collapse show collapse" data-bs-parent="#accordion-links-toggle">
+                    <div class="accordion-body">
+                        <ul><li>
+                            <a href="key-points.html">Key Points</a>
+                            </li>
+                            <li>
+                            <a href="reference.html#glossary">Glossary</a>
+                            </li>
+                            <li>
+                            <a href="profiles.html">Learner Profiles</a>
+                            </li>
+                        </ul></div>
+                </div>
+                </div><!--/div.accordion-item-->
+            </div><!--/div.accordion-flush-->
+
             <hr class="half-width"><div class="accordion accordion-flush lesson-resources" id="accordion-resources-toggle">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-heading-resources-toggle">
@@ -571,16 +603,7 @@
                 </h2>
                 <div id="flush-collapse-resources-toggle" class="accordion-collapse collapse" data-bs-parent="#accordion-resources-toggle">
                   <div class="accordion-body">
-                    <ul><li>
-                        <a href="key-points.html">Key Points</a>
-                      </li>
-                      <li>
-                        <a href="reference.html#glossary">Glossary</a>
-                      </li>
-                      <li>
-                        <a href="profiles.html">Learner Profiles</a>
-                      </li>
-                      <li><a href="CLT-dk.html">CLT - på dansk</a></li><li><a href="CLT-en.html">CLT - in english</a></li><li><a href="data.html">Data sets</a></li><li><a href="reference.html">Reference</a></li>
+                    <ul><li><a href="CLT-dk.html">CLT - på dansk</a></li><li><a href="CLT-en.html">CLT - in english</a></li><li><a href="data.html">Data sets</a></li><li><a href="reference.html">Reference</a></li>
                     </ul></div>
                 </div>
               </div>
@@ -616,7 +639,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>LASSO regularisation</h1>
-        <p>Last updated on 2026-09-29 |
+        <p>Last updated on 2026-10-06 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/lasso-regularisation.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -790,23 +813,23 @@ wt          -2.308463917
 qsec         .          </code></pre>
 </div>
 Compare with the ordinary model: <!--html_preserve-->
-<div id="gyncgxdyet" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gyncgxdyet table {
+<div id="cgeyfwjlku" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#cgeyfwjlku table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gyncgxdyet thead, #gyncgxdyet tbody, #gyncgxdyet tfoot, #gyncgxdyet tr, #gyncgxdyet td, #gyncgxdyet th {
+#cgeyfwjlku thead, #cgeyfwjlku tbody, #cgeyfwjlku tfoot, #cgeyfwjlku tr, #cgeyfwjlku td, #cgeyfwjlku th {
   border-style: none;
 }
 
-#gyncgxdyet p {
+#cgeyfwjlku p {
   margin: 0;
   padding: 0;
 }
 
-#gyncgxdyet .gt_table {
+#cgeyfwjlku .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -832,12 +855,12 @@ Compare with the ordinary model: <!--html_preserve-->
   border-left-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_caption {
+#cgeyfwjlku .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gyncgxdyet .gt_title {
+#cgeyfwjlku .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -849,7 +872,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-width: 0;
 }
 
-#gyncgxdyet .gt_subtitle {
+#cgeyfwjlku .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -861,7 +884,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-top-width: 0;
 }
 
-#gyncgxdyet .gt_heading {
+#cgeyfwjlku .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -873,13 +896,13 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_bottom_border {
+#cgeyfwjlku .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_col_headings {
+#cgeyfwjlku .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -894,7 +917,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_col_heading {
+#cgeyfwjlku .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -914,7 +937,7 @@ Compare with the ordinary model: <!--html_preserve-->
   overflow-x: hidden;
 }
 
-#gyncgxdyet .gt_column_spanner_outer {
+#cgeyfwjlku .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -926,15 +949,15 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 4px;
 }
 
-#gyncgxdyet .gt_column_spanner_outer:first-child {
+#cgeyfwjlku .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gyncgxdyet .gt_column_spanner_outer:last-child {
+#cgeyfwjlku .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gyncgxdyet .gt_column_spanner {
+#cgeyfwjlku .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -946,11 +969,11 @@ Compare with the ordinary model: <!--html_preserve-->
   width: 100%;
 }
 
-#gyncgxdyet .gt_spanner_row {
+#cgeyfwjlku .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gyncgxdyet .gt_group_heading {
+#cgeyfwjlku .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -976,7 +999,7 @@ Compare with the ordinary model: <!--html_preserve-->
   text-align: left;
 }
 
-#gyncgxdyet .gt_empty_group_heading {
+#cgeyfwjlku .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -991,15 +1014,15 @@ Compare with the ordinary model: <!--html_preserve-->
   vertical-align: middle;
 }
 
-#gyncgxdyet .gt_from_md > :first-child {
+#cgeyfwjlku .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gyncgxdyet .gt_from_md > :last-child {
+#cgeyfwjlku .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gyncgxdyet .gt_row {
+#cgeyfwjlku .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1018,7 +1041,7 @@ Compare with the ordinary model: <!--html_preserve-->
   overflow-x: hidden;
 }
 
-#gyncgxdyet .gt_stub {
+#cgeyfwjlku .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1031,7 +1054,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#gyncgxdyet .gt_stub_row_group {
+#cgeyfwjlku .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1045,15 +1068,15 @@ Compare with the ordinary model: <!--html_preserve-->
   vertical-align: top;
 }
 
-#gyncgxdyet .gt_row_group_first td {
+#cgeyfwjlku .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gyncgxdyet .gt_row_group_first th {
+#cgeyfwjlku .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gyncgxdyet .gt_summary_row {
+#cgeyfwjlku .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1063,16 +1086,16 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#gyncgxdyet .gt_first_summary_row {
+#cgeyfwjlku .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_first_summary_row.thick {
+#cgeyfwjlku .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gyncgxdyet .gt_last_summary_row {
+#cgeyfwjlku .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1082,7 +1105,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_grand_summary_row {
+#cgeyfwjlku .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1092,7 +1115,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#gyncgxdyet .gt_first_grand_summary_row {
+#cgeyfwjlku .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1102,7 +1125,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-top-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_last_grand_summary_row_top {
+#cgeyfwjlku .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1112,11 +1135,11 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_striped {
+#cgeyfwjlku .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gyncgxdyet .gt_table_body {
+#cgeyfwjlku .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1125,7 +1148,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-bottom-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_footnotes {
+#cgeyfwjlku .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1139,7 +1162,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_footnote {
+#cgeyfwjlku .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1148,7 +1171,7 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#gyncgxdyet .gt_sourcenotes {
+#cgeyfwjlku .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1162,7 +1185,7 @@ Compare with the ordinary model: <!--html_preserve-->
   border-right-color: #D3D3D3;
 }
 
-#gyncgxdyet .gt_sourcenote {
+#cgeyfwjlku .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1170,72 +1193,72 @@ Compare with the ordinary model: <!--html_preserve-->
   padding-right: 5px;
 }
 
-#gyncgxdyet .gt_left {
+#cgeyfwjlku .gt_left {
   text-align: left;
 }
 
-#gyncgxdyet .gt_center {
+#cgeyfwjlku .gt_center {
   text-align: center;
 }
 
-#gyncgxdyet .gt_right {
+#cgeyfwjlku .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gyncgxdyet .gt_font_normal {
+#cgeyfwjlku .gt_font_normal {
   font-weight: normal;
 }
 
-#gyncgxdyet .gt_font_bold {
+#cgeyfwjlku .gt_font_bold {
   font-weight: bold;
 }
 
-#gyncgxdyet .gt_font_italic {
+#cgeyfwjlku .gt_font_italic {
   font-style: italic;
 }
 
-#gyncgxdyet .gt_super {
+#cgeyfwjlku .gt_super {
   font-size: 65%;
 }
 
-#gyncgxdyet .gt_footnote_marks {
+#cgeyfwjlku .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gyncgxdyet .gt_asterisk {
+#cgeyfwjlku .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gyncgxdyet .gt_indent_1 {
+#cgeyfwjlku .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gyncgxdyet .gt_indent_2 {
+#cgeyfwjlku .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gyncgxdyet .gt_indent_3 {
+#cgeyfwjlku .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gyncgxdyet .gt_indent_4 {
+#cgeyfwjlku .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gyncgxdyet .gt_indent_5 {
+#cgeyfwjlku .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gyncgxdyet .katex-display {
+#cgeyfwjlku .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gyncgxdyet div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#cgeyfwjlku div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style><table class="table gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><thead><tr class="gt_col_headings"><th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="coef">
@@ -1337,7 +1360,7 @@ predict the response variable.</p>
   One way of doing it - but which problems does it have?
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>We could do that by splitting the data in two parts, build different
 models on one part with different <span class="math inline">\(\lambda\)</span> s and use them to predict the
@@ -1354,7 +1377,7 @@ data is the best, and we know which <span class="math inline">\(\lambda\)</span>
   Some problems with this approach
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Our dataset is not very large. If we pull out a fifth of the dataset
 for evaluation purposes, we only have 25 observations left.</p>
@@ -1493,14 +1516,14 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
         <p>Materials licensed under <a href="LICENSE.html">CC BY-NC-SA 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.2)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.21.1)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.1.3)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1522,8 +1545,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/lasso-regularisation.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/lasso-regularisation.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2026-09-29",
-  "datePublished": "2026-09-29"
+  "dateModified": "2026-10-06",
+  "datePublished": "2026-10-06"
 }
 
   </script><script>
