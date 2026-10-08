@@ -20,13 +20,33 @@ exercises: 2
 ## Introduction
 
 
-## Axes
 
-By default ggplot zooms in on the data. This break one of the most popular rules 
-when visualizing data - always include zero on the axes. 
+## Basic scaffolding
 
-This rule is not always helpful - as illustrated below
+The basic structure of a ggplot is shown below:
 
+ggplot-layers.png
+https://ggplot2.tidyverse.org/articles/ggplot2.html
+
+
+pivoting.png
+https://epirhandbook.com/en/new_pages/ggplot_basics.html
+
+ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) + 
+  <GEOM_FUNCTION>(
+     mapping = aes(<MAPPINGS>),
+     stat = <STAT>, 
+     position = <POSITION>
+  ) +
+  <COORDINATE_FUNCTION> +
+  <SCALE_FUNCTION> +
+  <FACET_FUNCTION> +
+  <THEME_FUNCTION>
+
+
+``` r
+library(tidyverse)
+```
 
 ``` output
 ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
@@ -40,6 +60,23 @@ This rule is not always helpful - as illustrated below
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
+
+``` r
+ggplot(mpg) +
+    aes(x = cty, y = hwy) +
+    geom_point()
+```
+
+<img src="fig/ggplot-1-rendered-unnamed-chunk-1-1.png" alt="" style="display: block; margin: auto;" />
+
+nedarvning. Konventioner. indpipning
+
+## Axes
+
+By default ggplot zooms in on the data. This break one of the most popular rules 
+when visualizing data - always include zero on the axes. 
+
+This rule is not always helpful - as illustrated below
 
 <img src="fig/ggplot-1-rendered-origin_00_not_always_good-1.png" alt="" style="display: block; margin: auto;" />
 
@@ -67,6 +104,7 @@ These two scatterplots show the exact same data, the first have an origin of the
 
 Controlling the scales - to make sure that certain values are included, can be done in several ways.
 
+
 In this specific example data was constructed to be normally distribued around (10000, 10000), and 
 the plot on the left was constructed by adding:
 
@@ -86,7 +124,7 @@ p_2 +
     scale_y_continuous(limits = ~range(.x, 0)) 
 ```
 
-the `.x` refers to the range for the scale (x and y respectively), that is calculated automatically by ggplot. In this case that returns 9996.7732854, 1.0002746\times 10^{4}, we add 0 to that, and calculate the limits usin the range function.
+the `.x` refers to the range for the scale (x and y respectively), that is calculated automatically by ggplot. In this case that returns 9997.3793807, 1.0002533\times 10^{4}, we add 0 to that, and calculate the limits usin the range function.
 
 
 

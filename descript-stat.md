@@ -270,7 +270,11 @@ penguins |>
 1  2700  6300
 ```
 
-There is a dedicated function, `range()`, that does the same.
+:::: spoiler
+
+## Using `range` instead
+
+A dedicated function, `range()`, does the same.
 However it returns two values (for each row), and the summarise function
 expects to get _one_ value. 
 
@@ -290,6 +294,9 @@ penguins  |>
 1  2700
 2  6300
 ```
+
+::::
+
 
 :::: instructor
 
