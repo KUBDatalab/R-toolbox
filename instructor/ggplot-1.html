@@ -543,6 +543,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#introduction">Introduction</a></li>
+<li><a href="#basic-scaffolding">Basic scaffolding</a></li>
 <li><a href="#axes">Axes</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -640,7 +641,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>ggplot</h1>
-        <p>Last updated on 2026-10-06 |
+        <p>Last updated on 2026-10-08 |
 
         <a href="https://github.com/KUBDatalab/R-toolbox/edit/main/episodes/ggplot-1.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -676,11 +677,20 @@
 </div>
 </div>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
-<hr class="half-width"></section><section><h2 class="section-heading" id="axes">Axes<a class="anchor" aria-label="anchor" href="#axes"></a></h2>
-<hr class="half-width"><p>By default ggplot zooms in on the data. This break one of the most
-popular rules when visualizing data - always include zero on the
-axes.</p>
-<p>This rule is not always helpful - as illustrated below</p>
+<hr class="half-width"></section><section><h2 class="section-heading" id="basic-scaffolding">Basic scaffolding<a class="anchor" aria-label="anchor" href="#basic-scaffolding"></a></h2>
+<hr class="half-width"><p>The basic structure of a ggplot is shown below:</p>
+<p>ggplot-layers.png <a href="https://ggplot2.tidyverse.org/articles/ggplot2.html" class="external-link uri">https://ggplot2.tidyverse.org/articles/ggplot2.html</a></p>
+<p>pivoting.png <a href="https://epirhandbook.com/en/new_pages/ggplot_basics.html" class="external-link uri">https://epirhandbook.com/en/new_pages/ggplot_basics.html</a></p>
+<p>ggplot(data = <data>, mapping = aes(<mappings>)) + <geom_function>(
+mapping = aes(<mappings>), stat = <stat>, position = <position> ) +
+<coordinate_function> + <scale_function> + <facet_function> +
+<theme_function></theme_function></facet_function></scale_function></coordinate_function></position></stat></mappings></geom_function></mappings></data></p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">tidyverse</span><span class="op">)</span></span></code></pre>
+</div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -695,6 +705,20 @@ axes.</p>
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">cty</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
+<figure><img src="../fig/ggplot-1-rendered-unnamed-chunk-1-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>nedarvning. Konventioner. indpipning</p>
+</section><section><h2 class="section-heading" id="axes">Axes<a class="anchor" aria-label="anchor" href="#axes"></a></h2>
+<hr class="half-width"><p>By default ggplot zooms in on the data. This break one of the most
+popular rules when visualizing data - always include zero on the
+axes.</p>
+<p>This rule is not always helpful - as illustrated below</p>
 <figure><img src="../fig/ggplot-1-rendered-origin_00_not_always_good-1.png" alt="" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="accordionSpoiler1" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
@@ -703,9 +727,9 @@ axes.</p>
   Show the code
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -733,7 +757,7 @@ included, can be done in several ways.</p>
 <p>In this specific example data was constructed to be normally
 distribued around (10000, 10000), and the plot on the left was
 constructed by adding:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -741,7 +765,7 @@ constructed by adding:</p>
 </div>
 <p>to the original plot.</p>
 <p>But a more robust way</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -751,7 +775,7 @@ constructed by adding:</p>
 </div>
 <p>the <code>.x</code> refers to the range for the scale (x and y
 respectively), that is calculated automatically by ggplot. In this case
-that returns 9996.7732854, 1.0002746^{4}, we add 0 to that, and
+that returns 9997.3793807, 1.0002533^{4}, we add 0 to that, and
 calculate the limits usin the range function.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -799,7 +823,7 @@ any links that you are not going to use.
         | <a href="https://github.com/KUBDatalab/R-toolbox/" class="external-link">Source</a></p>
         <p>
         <a href="https://github.com/KUBDatalab/R-toolbox/blob/main/" class="external-link">Cite</a>
-        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://kub.kb.dk/datalab" class="external-link">About</a></p>
+        | <a href="mailto:kubdatalab@kb.dk">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 		</div>
 		<div class="col-md-6">
 
@@ -828,8 +852,8 @@ any links that you are not going to use.
   "url": "https://KUBDatalab.github.io/R-toolbox/instructor/ggplot-1.html",
   "identifier": "https://KUBDatalab.github.io/R-toolbox/instructor/ggplot-1.html",
   "dateCreated": "2024-04-09",
-  "dateModified": "2026-10-06",
-  "datePublished": "2026-10-06"
+  "dateModified": "2026-10-08",
+  "datePublished": "2026-10-08"
 }
 
   </script><script>
