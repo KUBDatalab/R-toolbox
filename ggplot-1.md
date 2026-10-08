@@ -124,7 +124,7 @@ p_2 +
     scale_y_continuous(limits = ~range(.x, 0)) 
 ```
 
-the `.x` refers to the range for the scale (x and y respectively), that is calculated automatically by ggplot. In this case that returns 9997.3793807, 1.0002533\times 10^{4}, we add 0 to that, and calculate the limits usin the range function.
+the `.x` refers to the range for the scale (x and y respectively), that is calculated automatically by ggplot. In this case that returns 9997.0102021, 1.0002816\times 10^{4}, we add 0 to that, and calculate the limits usin the range function.
 
 
 
