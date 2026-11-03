@@ -3188,29 +3188,29 @@ Formula: readmit ~ age + comorbidity + (1 | hospital)
 
 Scaled residuals: 
     Min      1Q  Median      3Q     Max 
--3.9499 -0.9147  0.4555  0.6420  1.7336 
+-3.9500 -0.9147  0.4555  0.6420  1.7336 
 
 Random effects:
  Groups   Name        Variance Std.Dev.
- hospital (Intercept) 0.1931   0.4395  
+ hospital (Intercept) 0.1932   0.4395  
 Number of obs: 2000, groups:  hospital, 20
 
 Fixed effects:
              Estimate Std. Error z value Pr(>|z|)    
-(Intercept) -2.132901   0.370427  -5.758 8.51e-09 ***
-age          0.035056   0.005317   6.593 4.30e-11 ***
-comorbidity  0.457562   0.044238  10.343  < 2e-16 ***
+(Intercept) -2.132992   0.370790  -5.753 8.79e-09 ***
+age          0.035057   0.005323   6.586 4.53e-11 ***
+comorbidity  0.457574   0.044301  10.329  < 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Correlation of Fixed Effects:
             (Intr) age   
 age         -0.932       
-comorbidity -0.293  0.101
+comorbidity -0.292  0.101
 ```
 
 **Interpretation:**
-The fixed‐effect estimate for age is 0.035 (SE = 0.005), giving an odds ratio of 1.036 per year of age. With a z‐value = 6.59 and p ≈ 4.3\times 10^{-11}, we
+The fixed‐effect estimate for age is 0.035 (SE = 0.005), giving an odds ratio of 1.036 per year of age. With a z‐value = 6.59 and p ≈ 4.53\times 10^{-11}, we
 reject the null hypothesis.
 This indicates that age
 is significantly associated with higher odds of readmission, accounting for hospital clustering.
